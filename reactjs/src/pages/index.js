@@ -1,6 +1,6 @@
-import Site from "./conteudo";
+import Site from "../pages/home";
 
-export default function Princi() {
+export default function Principal() {
     return (
         <Site />
     )

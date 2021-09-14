@@ -1,13 +1,13 @@
 import {  BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Princi from './pages';
+import Principal from './pages';
 
 
 export default function Rotes() {
     return (
         <BrowserRouter>
             <Switch> 
-                <Route  path="/"  exact={true}  component={Princi} />    
+                <Route  path="/"  exact={true}  component={Principal} />    
             </Switch>
         </BrowserRouter> 
     )
