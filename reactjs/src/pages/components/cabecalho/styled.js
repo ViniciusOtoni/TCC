@@ -21,8 +21,9 @@ const StyledCabecalho = styled.div `
     }
 
     .titulo {
-        color: #F0AC54;
+        font-family: font1;
         font-size: 2em;
+        color: #F0AC54;
     }
 
     .pesquisa input {

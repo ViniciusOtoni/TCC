@@ -1,45 +1,45 @@
 @font-face {
-    font-family: Montserrat-black;
+    font-family: font1;
     src: local(font1), url("./Montserrat/Montserrat-Black.ttf") format('ttf');
   }
   
   @font-face {
-    font-family: Montserrat-bold;
+    font-family: MontserratBold;
     src: local(font2), url("./Montserrat/Montserrat-Bold.ttf") format('ttf');
   }
   
   @font-face {
-    font-family: Montserrat-extraBold;
+    font-family: ExtraBold;
     src: local(font2), url("./Montserrat/Montserrat-ExtraBold.ttf") format('ttf');
   }
   
   @font-face {
-    font-family: Montserrat-extraLight;
+    font-family: ExtraLight;
     src: local(font2), url("./Montserrat/Montserrat-ExtraLight.ttf") format('ttf');
   }
 
   @font-face {
-    font-family: Montserrat-light;
+    font-family: Light;
     src: local(font2), url("./Montserrat/Montserrat-Light.ttf") format('ttf');
   }
 
   @font-face {
-    font-family: Montserrat-medium;
+    font-family: Medio;
     src: local(font2), url("./Montserrat/Montserrat-Medium.ttf") format('ttf');
   }
 
   @font-face {
-    font-family: Montserrat-regular;
+    font-family: regular;
     src: local(font2), url("./Montserrat/Montserrat-Regular.ttf") format('ttf');
   }
 
   @font-face {
-    font-family: Montserrat-semiBold;
+    font-family: semiBold;
     src: local(font2), url("./Montserrat/Montserrat-SemiBold.ttf") format('ttf');
   }
 
   @font-face {
-    font-family: Montserrat-thin;
+    font-family: MontserratThin;
     src: local(font2), url("./Montserrat/Montserrat-Thin.ttf") format('ttf');
   }
 
