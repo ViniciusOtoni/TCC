@@ -1,0 +1,46 @@
+@font-face {
+    font-family: Montserrat-black;
+    src: local(font1), url("./Montserrat/Montserrat-Black.ttf") format('ttf');
+  }
+  
+  @font-face {
+    font-family: Montserrat-bold;
+    src: local(font2), url("./Montserrat/Montserrat-Bold.ttf") format('ttf');
+  }
+  
+  @font-face {
+    font-family: Montserrat-extraBold;
+    src: local(font2), url("./Montserrat/Montserrat-ExtraBold.ttf") format('ttf');
+  }
+  
+  @font-face {
+    font-family: Montserrat-extraLight;
+    src: local(font2), url("./Montserrat/Montserrat-ExtraLight.ttf") format('ttf');
+  }
+
+  @font-face {
+    font-family: Montserrat-light;
+    src: local(font2), url("./Montserrat/Montserrat-Light.ttf") format('ttf');
+  }
+
+  @font-face {
+    font-family: Montserrat-medium;
+    src: local(font2), url("./Montserrat/Montserrat-Medium.ttf") format('ttf');
+  }
+
+  @font-face {
+    font-family: Montserrat-regular;
+    src: local(font2), url("./Montserrat/Montserrat-Regular.ttf") format('ttf');
+  }
+
+  @font-face {
+    font-family: Montserrat-semiBold;
+    src: local(font2), url("./Montserrat/Montserrat-SemiBold.ttf") format('ttf');
+  }
+
+  @font-face {
+    font-family: Montserrat-thin;
+    src: local(font2), url("./Montserrat/Montserrat-Thin.ttf") format('ttf');
+  }
+
+  

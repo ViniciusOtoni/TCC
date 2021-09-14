@@ -1,3 +1,5 @@
+import "../../../../public/assets/fonts/fonts.css"
+
 export default function Cabecalho() {
     return (
         <main> 
