@@ -1,6 +1,8 @@
 import Cabecalho from "../components/cabecalho";
 import { StyledCarrinho } from "./styled";
 
+import Footer from "../components/rodape";
+
 import { StyledButtonHome } from "../components/botaoHome/styled";
 
 export default function Caixa() {
@@ -19,7 +21,9 @@ export default function Caixa() {
                     <div className="voltar">  </div>
                 
             </div> 
+            
         </StyledCarrinho>
+        <Footer />
         </main>
     )
 }
