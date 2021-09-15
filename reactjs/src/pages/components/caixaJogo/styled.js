@@ -25,7 +25,8 @@ const StyledJogo = styled.div`
     .preco {
         color: white;
         font-size: 36px;
-    }
+        padding-bottom: 0.2em;
+        }
 
     .imagem-jogo img {
         width: 11em;

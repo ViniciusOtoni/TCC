@@ -78,7 +78,7 @@ const StyledCabecalho = styled.div `
         padding-left: 2em;
         margin-right: 3em;
         position: relative;
-    z-index: 11;
+        z-index: 11;
     }
 `
 
