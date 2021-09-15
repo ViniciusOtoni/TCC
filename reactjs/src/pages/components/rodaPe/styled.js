@@ -63,9 +63,10 @@ const RodaPe = styled.div`
 
         margin-right: 3.5em;
 
-        width: 48em;
+        width: 67.5em;
     }
 
+    
     .align-title{
         display: flex;
         flex-direction: row;
@@ -88,12 +89,12 @@ const RodaPe = styled.div`
        justify-content: center;
        align-items: center;
 
-       margin-left: 8em;
+       margin-left: 11em;
     }
 
 
     .align-items4{
-        padding-right: 1.5em;
+        padding-right: 4.5em;
     }
 
 
