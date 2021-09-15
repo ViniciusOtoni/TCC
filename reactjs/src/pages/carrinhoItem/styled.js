@@ -4,6 +4,7 @@ const StyledCarrinhoItem = styled.div `
     display: flex;
     flex-direction: column;
     background-color: #333333;
+   
     
     
     .hr {
@@ -11,7 +12,8 @@ const StyledCarrinhoItem = styled.div `
         margin-right: 6.3em;
         margin-left: 4.3em;
         width: auto;
-        margin-bottom: 5em;
+        margin-top: 7em;
+       
     }
 
     
@@ -32,19 +34,21 @@ const StyledCarrinhoItem = styled.div `
         font-size: 64px;
         color: #F0AC54;
         margin-right: 2em;
+       font-family: MontserratBold;
 
     }
     .quantidade {
         font-size: 64px;
         color: #F0AC54;
         margin-right: 1em;
-
+        font-family: MontserratBold;
     }
 
     .titulo {
         font-size: 64px;
         color: #F0AC54;
         margin-left: 1em;
+        font-family: MontserratBold;
     }
 
     .box-preta {
@@ -61,6 +65,9 @@ const StyledCarrinhoItem = styled.div `
         width: 20em;
         height: 20em;
     }
+    .foto {
+        padding-bottom: 2em;
+    }
 
     .column-esp {
         display: flex;
@@ -70,9 +77,10 @@ const StyledCarrinhoItem = styled.div `
     .nome-produto {
         color: #FFFFFF;
         font-size: 38px;
-        width: 12.5em;
+        width: 10.5em;
         padding-left: 1em;
         padding-top: .4em;
+        font-family: Medio;
     }
 
     .row-vendido {
@@ -86,7 +94,9 @@ const StyledCarrinhoItem = styled.div `
         color: #ffffff;
         font-size: 30px;
         padding-top: 1em;
-        
+        font-family: Medio;
+        width: 9em;
+
     }
 
     .nome-dono {
@@ -94,6 +104,7 @@ const StyledCarrinhoItem = styled.div `
         padding-top: 1em;
         font-size: 30px;
         color: #F0AC54;
+        font-family: Medio;
     }
 
     .row-input {
@@ -149,13 +160,14 @@ const StyledCarrinhoItem = styled.div `
         color: #34D231;
         font-size: 28px;
         padding-left: 2em;
+        font-family: MontserratBold;
     }
 
     .valor-val1 {
         color: #34D231;
         font-size: 28px;
         padding-left: 0.8em;
-        
+        font-family: MontserratBold;
     }
 
     .column-valores {

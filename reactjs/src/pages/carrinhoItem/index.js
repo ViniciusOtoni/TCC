@@ -34,7 +34,9 @@ export default function CarrinhoItem() {
                             <div className="dono"> Entregue Por: </div>
                             <div className="nome-dono"> GameBudSedex </div>
                         </div>
+                        
                     </div>
+                 
                     <div className="column-valores">
                         <div className="row-valores"> 
                             <div className="select">  <SelectInput  style={{width:"4em", height:"2em", fontSize:"1em"}}>  
@@ -74,7 +76,7 @@ export default function CarrinhoItem() {
                     
                 </div>
                 </div>
-                <div className="hr"> </div>
+                
 
 
            
