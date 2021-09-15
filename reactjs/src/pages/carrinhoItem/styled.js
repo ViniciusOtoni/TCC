@@ -44,7 +44,54 @@ const StyledCarrinhoItem = styled.div `
         margin-left: 1em;
     }
 
+    .box-preta {
+        display: flex;
+        flex-direction: row;
+        background-color: #282828;
+        border-radius: .6em;
+        margin: 2em;
+        padding: 2em;
+        
+    }
 
+    .foto img {
+        width: 20em;
+        height: 20em;
+    }
+
+    .column-esp {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nome-produto {
+        color: #FFFFFF;
+        font-size: 38px;
+        width: 13.5em;
+        padding-left: 1em;
+        padding-top: .4em;
+    }
+
+    .row-vendido {
+        display: flex;
+        flex-direction: row;
+        
+    }
+
+    .dono {
+        padding-left: 1.4em;
+        color: #ffffff;
+        font-size: 30px;
+        padding-top: 1em;
+        
+    }
+
+    .nome-dono {
+        padding-left: 1.4em;
+        padding-top: 1em;
+        font-size: 30px;
+        color: #F0AC54;
+    }
 `
 
 export { StyledCarrinhoItem }
