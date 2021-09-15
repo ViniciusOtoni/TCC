@@ -7,7 +7,7 @@ export default function VendaUnica(){
         <div style={{backgroundColor:"#333333"}}> 
         <Cabecalho />
         <hr />
-        <main style={{ width:"1440px", margin: "auto"}}>
+        <main style={{ width:"1340px", margin: "auto"}}>
             
             <div className="title"> FIFA 21 para PS4 EA </div>
             <div className="content">
