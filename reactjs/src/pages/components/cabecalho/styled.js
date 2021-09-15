@@ -72,6 +72,7 @@ const StyledCabecalho = styled.div `
         flex-direction: row;
         align-items: center;
         position: relative;
+        font-family: MontserratBold;
    
         
     }
