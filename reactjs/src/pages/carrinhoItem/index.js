@@ -7,9 +7,14 @@ import { SelectInput } from "../components/select/styled"
 
 export default function CarrinhoItem() {
     return (
+        <div style={{backgroundColor:"#333333"}}>
+        <Cabecalho />
+        <hr />
+        <main style={{ width: "1440px", margin: "auto"}}> 
+        
        <StyledCarrinhoItem> 
-           <Cabecalho />
-           <div className="hr"> </div>
+          
+          
                 <div className="cabecalho"> 
                     <div className="titulo"> Carrinho </div>
                     <div class="itens-direita"> 
@@ -72,7 +77,11 @@ export default function CarrinhoItem() {
                 <div className="hr"> </div>
 
 
-           <Footer />
+           
        </StyledCarrinhoItem>
+       
+       </main>
+       <Footer />
+       </div>
     )
 }
