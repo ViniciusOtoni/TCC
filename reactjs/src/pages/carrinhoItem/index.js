@@ -1,9 +1,9 @@
 import { StyledCarrinhoItem } from "./styled"
 import Cabecalho from "../components/cabecalho"
-import Footer from "../components/rodaPe"
-import { StyledInput } from '../components/input/styled'
-import { StyledButtonVerde } from '../components/botaoVerde/styled'
-
+import Footer from "../components/rodape"
+import { StyledInput } from "../components/input/styled"
+import { StyledButtonVerde } from "../components/botaoVerde/styled"
+import { SelectInput } from "../components/select/styled"
 
 export default function CarrinhoItem() {
     return (
@@ -32,20 +32,31 @@ export default function CarrinhoItem() {
                     </div>
                     <div className="column-valores">
                         <div className="row-valores"> 
-                            <div className="select"> <select> </select> </div>
+                            <div className="select">  <SelectInput  style={{width:"4em", height:"2em", fontSize:"1em"}}>  
+                            <option value="vl1" >1 </option>
+                            <option value="vl2"> 2 </option>
+                            <option value="vl3"> 3 </option>
+                            <option value="vl4"> 4 </option>
+                            <option value="vl4"> 5 </option>
+                            <option value="vl4"> 6 </option>
+                            <option value="vl4"> 7 </option>
+                            <option value="vl4"> 8 </option>
+                            <option value="vl4"> 9 </option>
+                            <option value="vl4"> 10 </option>
+                             </SelectInput> </div>
                             <div className="valores-preco"> R$: 40,99 </div>
                         </div>
                         <div className="excluir"> Excluir </div>
                         <div className="row-input"> 
-                            <div className="frete"> Frete </div>
+                            <div className="frete"> Frete: </div>
                             <div className="input-frete">  <StyledInput placeholder="Cep"/> </div>
-                            <div className="botao-frete"> <StyledButtonVerde style={{width: "4em", height:"2em"}}> Calcular </StyledButtonVerde> </div>
+                            <div className="botao-frete"> <StyledButtonVerde style={{width: "4em", height:"1.8em"}}> Calcular </StyledButtonVerde> </div>
                         </div>
-                    </div>
+                    
                     <div className="row-localizacao">
-                        <div className="rua"> Rua </div>
-                        <div className="Bairro"> Bairro </div>
-                        <div className="Estado">  Cidade </div>
+                        <div className="rua"> Rua - </div>
+                        <div className="bairro"> Bairro - </div>
+                        <div className="estado">  Cidade </div>
                     </div>
                     <div className="row-val"> 
                         <div className="titulo-val"> Preço: </div>
@@ -53,10 +64,12 @@ export default function CarrinhoItem() {
                     </div>
                     <div className="row-val"> 
                         <div className="titulo-val"> Previsão: </div>
-                        <div className="valor-val"> 4 dias </div>
+                        <div className="valor-val1"> 4 dias </div>
                     </div>
-                    <div className="hr"> </div>
+                    
                 </div>
+                </div>
+                <div className="hr"> </div>
 
 
            <Footer />
