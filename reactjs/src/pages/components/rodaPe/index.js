@@ -1,6 +1,6 @@
 import React from "react";
 
-import  RodaPe  from './styled.js'
+import  { RodaPe }  from './styled.js'
 
 export default function Footer(){
     return(

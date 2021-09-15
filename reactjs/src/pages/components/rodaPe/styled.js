@@ -129,4 +129,4 @@ const RodaPe = styled.div`
     }
 `
 
-export default  RodaPe 
+export { RodaPe } 
