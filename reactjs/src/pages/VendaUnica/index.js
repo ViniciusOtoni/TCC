@@ -1,11 +1,14 @@
 import Cabecalho from '../components/cabecalho'
-import Footer from '../components/rodaPe'
+import Footer from '../components/rodape'
 import { StyledButtonVerde } from '../components/botaoVerde/styled'
 
 export default function VendaUnica(){
     return(
-        <main>
-            <Cabecalho />
+        <div style={{backgroundColor:"#333333"}}> 
+        <Cabecalho />
+        <hr />
+        <main style={{ width:"1440px", margin: "auto"}}>
+            
             <div className="title"> FIFA 21 para PS4 EA </div>
             <div className="content">
                     <div className="content-images">
@@ -33,7 +36,9 @@ export default function VendaUnica(){
                     </div>
                     <hr />
             </div>
-            <Footer />
+       
         </main>
+        <Footer />
+        </div>
     )
 }

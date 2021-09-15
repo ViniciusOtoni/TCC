@@ -1,18 +1,19 @@
 import Cabecalho from "../components/cabecalho"
-import { StyledConteudo } from "./styled"
+import { StyledConteudo, Bolota } from "./styled"
 import { StyledButtonHome  } from "../components/botaoHome/styled"
-import Footer  from "../components/rodaPe/index"
+import Footer  from "../components/rodape/index"
 import CaixaJogo from "../components/caixaJogo"
 import Categoria from "../components/escolhaTipo"
 
 
 export default function Home() {
     return (
-        <main style={{backgroundColor:"#333333"}}>
-
+        <main style={{backgroundColor:"#333333",  margin:"auto", position:"relative"}}>
+       <Bolota> <img src="/assets/images/Koko Caramel 3.svg" alt=""/> </Bolota>
         <Cabecalho  /> 
         <StyledConteudo> 
-        <div className="bolota"> <img className="" src="/assets/images/Koko Caramel 3.svg" alt="" /> </div>
+        <main> 
+        
            <div className="row">
             <div className="agp-melhor"> 
                 <div className="texto-melhor"> Há Melhor </div>
@@ -44,6 +45,7 @@ export default function Home() {
                </div>
 
             </section>
+            </main>
             <Footer/>
         </StyledConteudo>
         

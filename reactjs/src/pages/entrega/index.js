@@ -5,10 +5,15 @@ import { StyledEntrega } from "./styled";
 
 export default function EntregasSemItem()  {
     return (
-        <main> 
+        <div style={{backgroundColor:"#333333"}}> 
+        
             <Cabecalho />
+            <hr />
+            
+        <main style={{ width: "1440px", margin: "auto"}}> 
+            
             <StyledEntrega> 
-            <div className="hr"> </div>
+            
             <div className="titulo"> Entregas </div>
             <div className="agrupamento-carrinho">
                 <div className="logo"> <img src="/assets/images/Caminhao.svg" alt="" /> </div>
@@ -21,6 +26,6 @@ export default function EntregasSemItem()  {
             </StyledEntrega>
             
         </main>
-     
+    </div>
     )
 }

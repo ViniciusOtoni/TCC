@@ -8,8 +8,19 @@ const StyledConteudo = styled.div`
     flex-direction: column;
     background-color: #333333;
     position: relative;
-    z-index: 10;
+    & * {z-index : 11;}
+  
 
+    main  {
+    width: 1440px;
+    margin: auto;
+
+    }
+
+    .bolota {
+        max-width: 1440px;
+        margin: auto;
+    }
 
     .texto-melhor {
      color: white;
@@ -118,4 +129,16 @@ const StyledConteudo = styled.div`
     
 `
 
-export { StyledConteudo }
+const Bolota = styled.div`
+
+
+position: absolute;
+    top: -30em;
+    right: 0em;
+    z-index: 11;
+    overflow: hidden;
+    width: 60%;
+    height: 100%;
+`
+
+export { StyledConteudo, Bolota }

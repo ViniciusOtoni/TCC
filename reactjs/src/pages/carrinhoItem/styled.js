@@ -4,7 +4,7 @@ const StyledCarrinhoItem = styled.div `
     display: flex;
     flex-direction: column;
     background-color: #333333;
-
+    
     
     .hr {
         border: solid 0.7px #C4C4C4;
@@ -159,7 +159,7 @@ const StyledCarrinhoItem = styled.div `
     }
 
     .column-valores {
-        margin-left: 33em;
+        margin-left: 3em;
     }
 
     

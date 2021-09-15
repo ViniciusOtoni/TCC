@@ -8,7 +8,9 @@ const StyledCabecalho = styled.div `
     justify-content: space-between;
     align-items: center;
     background-color: #333333;
-    
+  
+    margin: auto;
+     & * {z-index : 11;}
 
     .logo-cabecalho  img {
         width: 6em;
@@ -49,7 +51,7 @@ const StyledCabecalho = styled.div `
         padding-left: 3.2em;
         outline: none;
         position: relative;
-    z-index: 11;
+    
     }
 
     .input::placeholder {
@@ -70,7 +72,7 @@ const StyledCabecalho = styled.div `
         flex-direction: row;
         align-items: center;
         position: relative;
-    z-index: 11;
+   
         
     }
 
@@ -83,7 +85,7 @@ const StyledCabecalho = styled.div `
         padding-left: 2em;
         margin-right: 3em;
         position: relative;
-        z-index: 11;
+        
     }
 `
 
