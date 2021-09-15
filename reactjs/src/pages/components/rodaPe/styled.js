@@ -66,6 +66,7 @@ const RodaPe = styled.div`
         width: 67.5em;
     }
 
+    
     .align-title{
         display: flex;
         flex-direction: row;
