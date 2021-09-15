@@ -67,8 +67,10 @@ const StyledConteudo = styled.div`
     }
 
     .titulo {
-        color: white;
+        font-family: ExtraBold;
         font-size: 48px;
+        color: white;
+
         padding-left: 1em;
        
     }

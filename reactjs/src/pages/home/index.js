@@ -1,7 +1,7 @@
 import Cabecalho from "../components/cabecalho"
 import { StyledConteudo } from "./styled"
 import { StyledButtonHome  } from "../components/botaoHome/styled"
-import Footer  from "../components/rodape/index"
+import Footer  from "../components/rodaPe/index"
 import CaixaJogo from "../components/caixaJogo"
 import Categoria from "../components/escolhaTipo"
 

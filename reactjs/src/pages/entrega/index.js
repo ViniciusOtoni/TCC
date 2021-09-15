@@ -1,5 +1,5 @@
 import Cabecalho from "../components/cabecalho";
-import Footer from "../components/rodape";
+import Footer from "../components/rodaPe";
 import { StyledButtonHome } from "../components/botaoHome/styled";
 import { StyledEntrega } from "./styled";
 import { StyledConteudo } from "../home/styled";

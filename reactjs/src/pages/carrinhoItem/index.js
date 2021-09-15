@@ -1,6 +1,6 @@
 import { StyledCarrinhoItem } from "./styled"
 import Cabecalho from "../components/cabecalho"
-import Footer from "../components/rodape"
+import Footer from "../components/rodaPe"
 
 export default function CarrinhoItem() {
     return (

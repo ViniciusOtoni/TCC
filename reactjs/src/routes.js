@@ -4,6 +4,7 @@ import Principal from './pages';
 import Caixa from './pages/carrinho';
 import EntregasSemItem from './pages/entrega';
 import CarrinhoItem from './pages/carrinhoItem';
+import VendaUnica from './pages/VendaUnica';
 
 export default function Rotes() {
     return (
@@ -13,6 +14,7 @@ export default function Rotes() {
                 <Route  path="/carrinho"  component={Caixa} />  
                 <Route  path="/entregas"  component={EntregasSemItem} /> 
                 <Route path="/carrinhoItem" component={CarrinhoItem} />
+                <Route path="/vendaUnica" component={VendaUnica} />
             </Switch>
         </BrowserRouter> 
     )
