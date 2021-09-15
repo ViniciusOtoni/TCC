@@ -12,13 +12,13 @@ const StyledConteudo = styled.div`
   
 
     main  {
-    width: 1340px;
-    margin: auto;
+        width: 1340px;
+        margin: auto;
 
     }
 
     .bolota {
-        max-width: 1440px;
+        max-width: 1340px;
         margin: auto;
     }
 

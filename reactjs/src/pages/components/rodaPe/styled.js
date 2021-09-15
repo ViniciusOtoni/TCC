@@ -44,7 +44,7 @@ const RodaPe = styled.div`
 
         align-items: center;
 
-        width: 100%;
+        width: 84.3em;
     }
 
     .item{
@@ -61,9 +61,7 @@ const RodaPe = styled.div`
         flex-direction: row;
         justify-content: space-between;
 
-        margin-right: 3.5em;
-
-        width: 67.5em;
+        width: 51.5em;
     }
 
     
@@ -89,12 +87,12 @@ const RodaPe = styled.div`
        justify-content: center;
        align-items: center;
 
-       margin-left: 11em;
+       margin-left: 8.5em;
     }
 
 
     .align-items4{
-        padding-right: 4.5em;
+        padding-right: 5em;
     }
 
 
@@ -125,7 +123,7 @@ const RodaPe = styled.div`
     .section3 > div {
         padding-left: 1.5em;
         padding-top: 1.5em;
-        width: 80%;
+        width: 75em;
     }
 
 `

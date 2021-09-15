@@ -26,7 +26,7 @@ const StyledCabecalho = styled.div `
     }
 
     .titulo {
-        font-family: font1;
+        font-family: MontserratBold;
         font-size: 2em;
         color: #F0AC54;
     }
