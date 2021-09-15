@@ -1,46 +1,46 @@
 @font-face {
     font-family: font1;
-    src: local(font1), url("./Montserrat/Montserrat-Black.ttf") format('ttf');
+    src: local(font1), url("Montserrat/Montserrat-Black.ttf") format('truetype');
   }
   
   @font-face {
     font-family: MontserratBold;
-    src: local(font2), url("./Montserrat/Montserrat-Bold.ttf") format('ttf');
+    src: local(font2), url("Montserrat/Montserrat-Bold.ttf") format('truetype');
   }
   
   @font-face {
     font-family: ExtraBold;
-    src: local(font2), url("./Montserrat/Montserrat-ExtraBold.ttf") format('ttf');
+    src: local(font3), url("./Montserrat/Montserrat-ExtraBold.ttf") format('truetype');
   }
   
   @font-face {
     font-family: ExtraLight;
-    src: local(font2), url("./Montserrat/Montserrat-ExtraLight.ttf") format('ttf');
+    src: local(font4), url("Montserrat/Montserrat-ExtraLight.ttf") format('truetype');
   }
 
   @font-face {
     font-family: Light;
-    src: local(font2), url("./Montserrat/Montserrat-Light.ttf") format('ttf');
+    src: local(font5), url("Montserrat/Montserrat-Light.ttf") format('truetype');
   }
 
   @font-face {
     font-family: Medio;
-    src: local(font2), url("./Montserrat/Montserrat-Medium.ttf") format('ttf');
+    src: local(font6), url("Montserrat/Montserrat-Medium.ttf") format('truetype');
   }
 
   @font-face {
     font-family: regular;
-    src: local(font2), url("./Montserrat/Montserrat-Regular.ttf") format('ttf');
+    src: local(font7), url("Montserrat/Montserrat-Regular.ttf") format('truetype');
   }
 
   @font-face {
     font-family: semiBold;
-    src: local(font2), url("./Montserrat/Montserrat-SemiBold.ttf") format('ttf');
+    src: local(font8), url("./Montserrat/Montserrat-SemiBold.ttf") format('truetype');
   }
 
   @font-face {
     font-family: MontserratThin;
-    src: local(font2), url("./Montserrat/Montserrat-Thin.ttf") format('ttf');
+    src: local(font9), url("./Montserrat/Montserrat-Thin.ttf") format('truetype');
   }
 
   

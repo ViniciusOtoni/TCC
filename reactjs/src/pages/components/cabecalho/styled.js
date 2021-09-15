@@ -29,9 +29,13 @@ const StyledCabecalho = styled.div `
         color: #F0AC54;
     }
 
+    .pesquisa{
+        width: 50%;
+    }
+
     .pesquisa input {
         border-radius: 5em;
-        width: 72em;
+        width: 100%;
         height: 3em;
         text-decoration: none;
         border: 2px solid #ffffff;

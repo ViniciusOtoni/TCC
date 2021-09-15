@@ -1,5 +1,6 @@
 import Cabecalho from '../components/cabecalho'
 import Footer from '../components/rodaPe'
+import { StyledButtonVerde } from '../components/botaoVerde/styled'
 
 export default function VendaUnica(){
     return(
@@ -9,7 +10,7 @@ export default function VendaUnica(){
             <div className="content">
                     <div className="content-images">
                         <div className="images">
-                            <img src="" alt="image-1"/>
+                            <img src="/assets/" alt="image-1"/>
                             <img src="" alt="image-2"/>
                             <img src="" alt="image-3"/>
                         </div>
@@ -27,8 +28,8 @@ export default function VendaUnica(){
                         <div> por R$79,90 </div>
                         <div> em 10x de R$ 39,95 sem juros </div>
                         <div> FRETE GRATÍS !!! </div>
-                        <div> component </div>
-                        <div> component </div>
+                        <StyledButtonVerde> Adicionar ao carrinho  </StyledButtonVerde>
+                        <StyledButtonVerde> Comprar agora </StyledButtonVerde>
                     </div>
                     <hr />
             </div>
