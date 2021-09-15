@@ -114,7 +114,6 @@ const RodaPe = styled.div`
     .section3{
         background-color: #F0AC54;
 
-        font-family: sans-serif;
         font-size: .9em;
         line-height: 1.5em;
 
@@ -127,6 +126,7 @@ const RodaPe = styled.div`
         padding-top: 1.5em;
         width: 80%;
     }
+
 `
 
 export { RodaPe } 

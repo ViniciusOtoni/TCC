@@ -63,7 +63,7 @@ export default function Footer(){
             </div>
             <div className="section3">
                 <hr />
-                <div> Copyright© 1995-2021 SAMSUNG. Todos os direitos reservados.
+                <div className="text"> Copyright© 1995-2021 SAMSUNG. Todos os direitos reservados.
 SAMSUNG ELETRÔNICA DA AMAZÔNIA LTDA., com sede em Av. dos Oitis, nº 1.460, Distrito Industrial, Manaus/AM, 69.007-002, inscrita no CNPJ/MF sob o nº. 00.280.273/0001-37.
 LOJA ONLINE SAMSUNG, operada pela SYNAPCOM COMERCIO ELETRÔNICO LTDA, com endereço na Avenida Antônio Cândido Machado, 3100, BOX 86 - Cajamar - SP, CEP: 07776-550, inscrita no CNPJ sob o nº. 27.932.734/0002-46 e IE 241.130.824.114. 
 Contato Eletrônico para compras na Loja Online.
