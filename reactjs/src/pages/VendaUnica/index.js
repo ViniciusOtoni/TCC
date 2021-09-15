@@ -1,5 +1,5 @@
 import Cabecalho from '../components/cabecalho'
-import Footer from '../components/rodaPe'
+import Footer from '../components/rodape'
 import { StyledButtonVerde } from '../components/botaoVerde/styled'
 
 export default function VendaUnica(){

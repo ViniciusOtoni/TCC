@@ -1,6 +1,6 @@
 
 
-import  { RodaPe }  from './styled.js'
+import { RodaPe } from './styled.js'
 
 export default function Footer(){
     return(
@@ -23,7 +23,7 @@ export default function Footer(){
                     <div className="item-image"> 
                         <img src="/assets/images/facebook.svg"/>
                         <img src="/assets/images/instagram.svg"/>
-                        <img src="/assets/images/facebook.svg"/>
+                        <img src="/assets/images/twitter.svg"/>
                     </div>
                 </div>
                 <div className="align">

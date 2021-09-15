@@ -1,6 +1,6 @@
 import { StyledCarrinhoItem } from "./styled"
 import Cabecalho from "../components/cabecalho"
-import Footer from "../components/rodaPe"
+import Footer from "../components/rodape"
 import { StyledInput } from "../components/input/styled"
 import { StyledButtonVerde } from "../components/botaoVerde/styled"
 import { SelectInput } from "../components/select/styled"
