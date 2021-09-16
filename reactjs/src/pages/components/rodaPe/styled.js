@@ -22,21 +22,20 @@ const RodaPe = styled.div`
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+        align-items: center;
 
         background-color: #DFA04E;
 
         font-family: sans-serif;
         font-weight: 800;
 
-        width: 100%;
         height: 5em;
-        align-items: center;
     }
 
     .section2{
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
 
         background-color: #F0AC54;
 
@@ -44,12 +43,14 @@ const RodaPe = styled.div`
         font-weight: 500;
 
         align-items: center;
-
-        
     }
 
     .item{
-        margin: .8em 0em;
+        margin: .8em 5em;
+    }
+
+    .item-header{
+        margin: 0em 5em;
     }
 
     .item:hover{
@@ -60,12 +61,20 @@ const RodaPe = styled.div`
     .align{
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
 
-        width: 71.5em;
-        margin-right: 4.5em;
     }
 
+    .align-header{
+        display: flex; 
+        flex-direction: row;
+
+        margin-left: 2em;
+    }
+
+    .align-items{
+        
+    }
     
     .align-title{
         display: flex;
@@ -74,7 +83,6 @@ const RodaPe = styled.div`
         justify-content: center;
         align-items: center;
 
-        margin-right: 8em;
     }
 
     .title-image{
@@ -89,12 +97,8 @@ const RodaPe = styled.div`
        justify-content: center;
        align-items: center;
 
-       margin-left: 12em;
-    }
-
-
-    .align-items4{
-        padding-right: 5em;
+       width: 9.3em;
+       margin-left: 2em;
     }
 
 

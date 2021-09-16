@@ -9,11 +9,13 @@ export default function Footer(){
                 <div className="align-title">
                     <img className="title-image" src="/assets/images/logo.svg" alt="logo"/>
                     <div> GameBud </div>
+                </div>
+                <div className="align-header">    
+                    <div className="item-header"> Exemplo </div>
+                    <div className="item-header"> Exemplo </div>
+                    <div className="item-header"> Exemplo </div>
+                    <div className="item-header"> Exemplo </div>
                 </div>    
-                <div className="item-header"> Exemplo </div>
-                <div className="item-header"> Exemplo </div>
-                <div className="item-header"> Exemplo </div>
-                <div className="item-header"> Exemplo </div>
             </div>
             <div className="section2">
                 <div className="align-itens-image">
@@ -27,14 +29,6 @@ export default function Footer(){
                     </div>
                 </div>
                 <div className="align">
-                    <div className="align-items1">
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                    </div>
                     <div className="align-items">
                         <div className="item"> Exemplo </div>
                         <div className="item"> Exemplo </div>
@@ -51,7 +45,15 @@ export default function Footer(){
                         <div className="item"> Exemplo </div>
                         <div className="item"> Exemplo </div>
                     </div>
-                    <div className="align-items4">
+                    <div className="align-items">
+                        <div className="item"> Exemplo </div>
+                        <div className="item"> Exemplo </div>
+                        <div className="item"> Exemplo </div>
+                        <div className="item"> Exemplo </div>
+                        <div className="item"> Exemplo </div>
+                        <div className="item"> Exemplo </div>
+                    </div>
+                    <div className="align-items">
                         <div className="item"> Exemplo </div>
                         <div className="item"> Exemplo </div>
                         <div className="item"> Exemplo </div>
