@@ -9,23 +9,23 @@ export default function CarrinhoItem() {
     return (
         <div style={{backgroundColor:"#333333"}}>
         <Cabecalho />
-        <hr />
+        <hr style={{marginLeft:"4em", marginRight:"4.3em"}}/>
         <main style={{ width: "1340px", margin: "auto"}}> 
         
        <StyledCarrinhoItem> 
           
           
                 <div className="cabecalho"> 
-                    <div className="titulo"> Carrinho </div>
+                    <div className="titulo"> Carrinho: </div>
                     <div class="itens-direita"> 
-                        <div className="quantidade"> Quantidade </div>
-                        <div className="preco"> Preço </div>
+                        <div className="quantidade"> Quantidade: </div>
+                        <div className="preco"> Preço: </div>
                     </div>
                 </div>
                 <div className="box-preta">
                     <div className="foto"> <img src="/assets/images/image 24.svg" alt="" /> </div>
                     <div className="column-esp"> 
-                        <div className="nome-produto"> Nome Grande Para Testar O Width e Ver O Quanto Que Vai ser Pra Ficar Bom</div>
+                        <div className="nome-produto">  Tom Clays Rainbow Six Siege </div>
                         <div className="row-vendido"> 
                             <div className="dono"> Vendido Por: </div>
                             <div className="nome-dono"> GameBud </div>
@@ -34,10 +34,12 @@ export default function CarrinhoItem() {
                             <div className="dono"> Entregue Por: </div>
                             <div className="nome-dono"> GameBudSedex </div>
                         </div>
+                        
                     </div>
+                 
                     <div className="column-valores">
                         <div className="row-valores"> 
-                            <div className="select">  <SelectInput  style={{width:"4em", height:"2em", fontSize:"1em"}}>  
+                            <div className="select">  <SelectInput  style={{width:"4em", height:"2em", fontSize:"1em", fontFamily: "MontserratBold"}}>  
                             <option value="vl1" >1 </option>
                             <option value="vl2"> 2 </option>
                             <option value="vl3"> 3 </option>
@@ -55,13 +57,13 @@ export default function CarrinhoItem() {
                         <div className="row-input"> 
                             <div className="frete"> Frete: </div>
                             <div className="input-frete">  <StyledInput placeholder="Cep"/> </div>
-                            <div className="botao-frete"> <StyledButtonVerde style={{width: "4em", height:"1.8em"}}> Calcular </StyledButtonVerde> </div>
+                            <div className="botao-frete"> <StyledButtonVerde style={{width: "7em", height:"1.8em", marginLeft:"2em"}}> Calcular </StyledButtonVerde> </div>
                         </div>
                     
                     <div className="row-localizacao">
-                        <div className="rua"> Rua - </div>
-                        <div className="bairro"> Bairro - </div>
-                        <div className="estado">  Cidade </div>
+                        <div className="rua"> Nome da Rua Bonito  </div>
+                        <div className="bairro"> Bairro com Nome Bonito  </div>
+                        <div className="estado">  Cidade com Nome Bonita </div>
                     </div>
                     <div className="row-val"> 
                         <div className="titulo-val"> Preço: </div>
@@ -74,7 +76,18 @@ export default function CarrinhoItem() {
                     
                 </div>
                 </div>
-                <div className="hr"> </div>
+                <div className="agp-realizar">
+                    <div className="row-preco"> 
+                        <div className="sub-total-baixo"> Sub-Total: </div>
+                        <div className="sub-valor-final"> R$:79,99</div>
+                    </div>
+                    <div className="row-preco"> 
+                        <div className="total-valor-baixo"> Total: </div>
+                        <div className="total-final"> R$:99,99 </div>
+                    </div>
+                    <div className="botao-finalizar"> <StyledButtonVerde style={{padding: ".3em", marginBottom:"1em", width:"14em"}}> Realizar Compra! </StyledButtonVerde> </div>
+                </div>
+                
 
 
            

@@ -4,15 +4,13 @@ const StyledCarrinhoItem = styled.div `
     display: flex;
     flex-direction: column;
     background-color: #333333;
+   
     
+   
+       
     
-    .hr {
-        border: solid 0.7px #C4C4C4;
-        margin-right: 6.3em;
-        margin-left: 4.3em;
-        width: auto;
-        margin-bottom: 5em;
-    }
+
+
 
     
 
@@ -29,22 +27,28 @@ const StyledCarrinhoItem = styled.div `
     }
 
     .preco {
-        font-size: 64px;
+        font-size: 24px;
         color: #F0AC54;
         margin-right: 2em;
+       font-family: MontserratBold;
+       margin-top: 2em;
+       margin-right: 5em;
 
     }
     .quantidade {
-        font-size: 64px;
+        font-size: 24px;
         color: #F0AC54;
-        margin-right: 1em;
-
+        margin-right: 6.5em;
+        font-family: MontserratBold;
+        margin-top: 2em;
     }
 
     .titulo {
-        font-size: 64px;
+        font-size: 24px;
         color: #F0AC54;
         margin-left: 1em;
+        font-family: MontserratBold;
+        margin-top: 2em;
     }
 
     .box-preta {
@@ -61,6 +65,9 @@ const StyledCarrinhoItem = styled.div `
         width: 20em;
         height: 20em;
     }
+    .foto {
+        padding-bottom: 2em;
+    }
 
     .column-esp {
         display: flex;
@@ -69,10 +76,12 @@ const StyledCarrinhoItem = styled.div `
 
     .nome-produto {
         color: #FFFFFF;
-        font-size: 38px;
-        width: 12.5em;
+        font-size: 28px;
+        width: 10.5em;
         padding-left: 1em;
         padding-top: .4em;
+        font-family: MontserratBold;
+        height: 8.5em;
     }
 
     .row-vendido {
@@ -84,27 +93,30 @@ const StyledCarrinhoItem = styled.div `
     .dono {
         padding-left: 1.4em;
         color: #ffffff;
-        font-size: 30px;
+        font-size: 20px;
         padding-top: 1em;
-        
+        font-family: MontserratBold;
+        width: 9em;
+
     }
 
     .nome-dono {
         padding-left: 1.4em;
         padding-top: 1em;
-        font-size: 30px;
+        font-size: 20px;
         color: #F0AC54;
+        font-family: MontserratBold;
     }
 
     .row-input {
         display: flex;
         flex-direction: row;
-
     }
 
     .frete {
         font-size: 28px;
         color: #ffffff;
+        font-family: MontserratBold;
     }
 
     .row-valores {
@@ -116,11 +128,13 @@ const StyledCarrinhoItem = styled.div `
         font-size: 30px;
         color: #ffffff;
         margin-left: .4em;
+        font-family: MontserratBold;
     }
 
     .excluir {
-        font-size: 25px;
+        font-size: 18px;
         color: #ffffff;
+        font-family: Medio;
     }
 
     .row-localizacao {
@@ -129,39 +143,125 @@ const StyledCarrinhoItem = styled.div `
         font-size: 28px;
         color: #ffffff;
         justify-content: space-between;
-        margin-left: 2.2em;
+        margin-left: 4em;
+        
     }
 
     .row-val {
         display: flex;
         flex-direction: row;
-        margin-left: 2.2em;
-        font-size: 28px;
+        margin-left: 5.3em;
+      
+        font-family: MontserratBold;
 
     }
 
     .titulo-val {
         color: #ffffff;
-        
+        font-family: MontserratBold;
+        font-size: 18px;
     }
 
     .valor-val {
         color: #34D231;
-        font-size: 28px;
+        font-size: 18px;
         padding-left: 2em;
+        font-family: MontserratBold;
     }
 
     .valor-val1 {
         color: #34D231;
-        font-size: 28px;
+        font-size: 18px;
         padding-left: 0.8em;
-        
+        font-family: MontserratBold;
     }
 
     .column-valores {
         margin-left: 3em;
     }
 
+    .bairro {
+        font-family: MontserratBold;
+        font-size: 18px;
+        width: 6em;
+        margin-top: .8em;
+    }
+
+    .rua {
+        font-family: MontserratBold;
+        font-size: 18px;
+        width: 6em;
+        margin-top: .8em;
+    }
+
+    .estado {
+        font-family: MontserratBold;
+        font-size: 18px;
+        margin-right: .8em;
+        margin-top: .8em;
+        margin-bottom: 2em;
+        width: 6em;
+    }
+
+    .select {
+        margin-left: 5em;
+    }
+
+    .valores-preco {
+        margin-left: 5em;
+    }
+
+    .excluir {
+        margin-top: .5em;
+        margin-left: 4.5em;
+        margin-bottom: 5em;
+
+    }
+
+    .frete {
+        margin-right: 1em;
+    }
+
+    .titulo-val {
+    margin-left: 1.4em;
+    }
+
+   .agp-realizar {
+       display: flex;
+       flex-direction: column;
+       align-items: flex-end;
+       
+   }
+   
+    .row-preco{
+       display: flex;
+       flex-direction: row;
+   }
+
+   .sub-total-baixo {
+    color: #ffffff;
+    font-size: 22px;
+    font-family: MontserratBold;
+    margin-right: 2em;
+   }
+   .sub-valor-final {
+    color: #ffffff;
+    font-size: 22px;
+    font-family: MontserratBold;
+   }
+   .total-valor-baixo{
+    color: #ffffff;
+    font-size: 22px;
+    font-family: MontserratBold;
+    margin-right: 2em;
+    margin-bottom: .4em;
+   }
+   .total-final{
+    color: #ffffff;
+    font-size: 22px;
+    font-family: MontserratBold;
+    
+   }
     
 
   

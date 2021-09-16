@@ -7,10 +7,12 @@ const StyledInput = styled.input `
     border-radius: .4em;
     border: none;
     outline: none;
+    font-family: MontserratBold;
     
     ::placeholder {
         color: #808080;
         font-size: 1em;
+        font-family: MontserratBold;
     }
     
     :focus::-webkit-input-placeholder {

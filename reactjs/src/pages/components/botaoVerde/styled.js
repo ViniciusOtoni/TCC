@@ -7,6 +7,7 @@ const  StyledButtonVerde = styled.button `
     font-size: 18px;
     border-radius: 0.4em;
     border: none;
+    font-family: MontserratBold;
 ;
 
 `
