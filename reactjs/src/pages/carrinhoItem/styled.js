@@ -183,15 +183,17 @@ const StyledCarrinhoItem = styled.div `
     .bairro {
         font-family: MontserratBold;
         font-size: 18px;
-        width: 6em;
+        color:white;
         margin-top: .8em;
+        margin-left: 6.5em;
     }
 
     .rua {
         font-family: MontserratBold;
         font-size: 18px;
-        width: 6em;
+        color:white;
         margin-top: .8em;
+        margin-left: 6.5em;
     }
 
     .estado {
@@ -200,7 +202,8 @@ const StyledCarrinhoItem = styled.div `
         margin-right: .8em;
         margin-top: .8em;
         margin-bottom: 2em;
-        width: 6em;
+        color:white;
+        margin-left: 6.5em;
     }
 
     .select {

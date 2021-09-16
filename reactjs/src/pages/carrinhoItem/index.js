@@ -60,11 +60,11 @@ export default function CarrinhoItem() {
                             <div className="botao-frete"> <StyledButtonVerde style={{width: "7em", height:"1.8em", marginLeft:"2em"}}> Calcular </StyledButtonVerde> </div>
                         </div>
                     
-                    <div className="row-localizacao">
+                    
                         <div className="rua"> Nome da Rua Bonito  </div>
                         <div className="bairro"> Bairro com Nome Bonito  </div>
                         <div className="estado">  Cidade com Nome Bonita </div>
-                    </div>
+                    
                     <div className="row-val"> 
                         <div className="titulo-val"> Preço: </div>
                         <div className="valor-val"> R$10,99 </div>
