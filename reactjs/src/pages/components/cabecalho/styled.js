@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import '../../index.css';
 
-import { Cor } from './index.js';
+
 
 const StyledCabecalho = styled.div `
     display: flex;
@@ -10,7 +10,7 @@ const StyledCabecalho = styled.div `
     justify-content: space-between;
     align-items: center;
     background-color: #333333;
-    color: ${props => Cor(props.color)};
+    
   
     margin: auto;
      & * {z-index : 11;}
@@ -31,7 +31,7 @@ const StyledCabecalho = styled.div `
     .titulo {
         font-family: MontserratBold;
         font-size: 2em;
-        color: #F0AC54;
+        color: ${props => props.corLetra === 'branco' ? '#ffffff' : '#F0AC54'};
     }
 
     .pesquisa{
@@ -54,13 +54,14 @@ const StyledCabecalho = styled.div `
         padding-left: 3.2em;
         outline: none;
         position: relative;
+        font-family: MontserratBold; 
     
     }
 
     .input::placeholder {
         color: white;
-        font-size: 1em;
-        
+       
+        font-family: MontserratBold; 
         
     }
 
@@ -69,7 +70,7 @@ const StyledCabecalho = styled.div `
      }
 
     .login {
-        color: #F0AC54;
+        color: ${props => props.corLetra === 'branco' ? '#ffffff' : '#F0AC54'};
         font-size: 2em;
         display: flex;
         flex-direction: row;
@@ -80,16 +81,15 @@ const StyledCabecalho = styled.div `
         
     }
 
-    .carrinho img {
-        width: 1.5em;
-        height: 1.5em;
-    }
+    
     .carrinho {
         padding-top: 0.4em;
         padding-left: 2em;
         margin-right: 3em;
         position: relative;
-        
+        content: url(${props => props.corLetra === 'branco' ? '/assets/images/cBranco.svg' : '/assets/images/carrinho.svg'});
+        width: 4em;
+        height: 4em;
     }
 `
 
