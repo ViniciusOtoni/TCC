@@ -8,11 +8,13 @@ import { StyledButtonHome } from "../components/botaoHome/styled";
 export default function Caixa() {
     return (
         <div style={{backgroundColor:"#333333"}}>
+       <Cabecalho />
+       <div className="hr"> </div>
        <main style={{  width: "1340px", margin: "auto"}}> 
-        <Cabecalho />
+        
       <StyledCarrinho>
             
-            <div className="hr"> </div>
+           
             <div className="titulo"> Carrinho </div>
             <div className="agrupamento-carrinho">
                 <div className="logo"> <img src="/assets/images/Vector (5).svg" alt="" /> </div>

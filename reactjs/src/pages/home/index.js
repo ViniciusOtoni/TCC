@@ -6,11 +6,11 @@ import CaixaJogo from "../components/caixaJogo"
 import Categoria from "../components/escolhaTipo"
 
 
-export default function Home() {
+export default function Home(props) {
     return (
         <main style={{backgroundColor:"#333333",  margin:"auto", position:"relative"}}>
        <Bolota> <img src="/assets/images/Koko Caramel 3.svg" alt=""/> </Bolota>
-        <Cabecalho  /> 
+        <Cabecalho color="branco" /> 
         <StyledConteudo> 
         <main> 
         

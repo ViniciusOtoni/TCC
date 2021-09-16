@@ -2,12 +2,15 @@ import styled from 'styled-components';
 
 import '../../index.css';
 
+import { Cor } from './index.js';
+
 const StyledCabecalho = styled.div `
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     background-color: #333333;
+    color: ${props => Cor(props.color)};
   
     margin: auto;
      & * {z-index : 11;}

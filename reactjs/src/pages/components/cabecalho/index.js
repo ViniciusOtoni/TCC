@@ -1,6 +1,14 @@
 import { StyledCabecalho } from "./styled"
 
 
+function Cor(color) {
+    if(color == 'branco') {
+        return '#ffffff';
+    } else {
+        return 'red'
+    }
+}
+
 export default function Cabecalho() {
     return (
       <StyledCabecalho> 
@@ -14,3 +22,5 @@ export default function Cabecalho() {
         </StyledCabecalho>
     )
 }
+
+ export { Cor } 

@@ -45,7 +45,7 @@ const RodaPe = styled.div`
 
         align-items: center;
 
-        width: 84.3em;
+        
     }
 
     .item{
@@ -62,7 +62,8 @@ const RodaPe = styled.div`
         flex-direction: row;
         justify-content: space-between;
 
-        width: 51.5em;
+        width: 71.5em;
+        margin-right: 4.5em;
     }
 
     
@@ -88,7 +89,7 @@ const RodaPe = styled.div`
        justify-content: center;
        align-items: center;
 
-       margin-left: 8.5em;
+       margin-left: 12em;
     }
 
 
