@@ -9,11 +9,13 @@ export default function Footer(){
                 <div className="align-title">
                     <img className="title-image" src="/assets/images/logo.svg" alt="logo"/>
                     <div> GameBud </div>
-                </div>    
-                <div className="item-header"> Exemplo </div>
-                <div className="item-header"> Exemplo </div>
-                <div className="item-header"> Exemplo </div>
-                <div className="item-header"> Exemplo </div>
+                </div>   
+                <div className="alinhar-texto"> 
+                    <div className="item-header"> Exemplo </div>
+                    <div className="item-header"> Exemplo </div>
+                    <div className="item-header"> Exemplo </div>
+                    <div className="item-header"> Exemplo </div>
+                </div>
             </div>
             <div className="section2">
                 <div className="align-itens-image">

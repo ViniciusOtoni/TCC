@@ -28,15 +28,20 @@ const RodaPe = styled.div`
         font-family: sans-serif;
         font-weight: 800;
 
-        width: 100%;
+      
         height: 5em;
         align-items: center;
+    }
+
+    .alinhar-texto {
+        display: flex;
+        flex-direction: row;
     }
 
     .section2{
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
 
         background-color: #F0AC54;
 
@@ -61,9 +66,9 @@ const RodaPe = styled.div`
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-
-        width: 71.5em;
-        margin-right: 4.5em;
+        margin-right: 10em;
+        
+        
     }
 
     
@@ -74,7 +79,7 @@ const RodaPe = styled.div`
         justify-content: center;
         align-items: center;
 
-        margin-right: 8em;
+        
     }
 
     .title-image{
@@ -88,13 +93,13 @@ const RodaPe = styled.div`
        flex-direction: column;
        justify-content: center;
        align-items: center;
-
-       margin-left: 12em;
+        width: 150px;
+       
     }
 
 
     .align-items4{
-        padding-right: 5em;
+      
     }
 
 
@@ -118,7 +123,7 @@ const RodaPe = styled.div`
         font-size: .9em;
         line-height: 1.5em;
 
-        width: 100%;
+        
         height: 13em;
     }
 
