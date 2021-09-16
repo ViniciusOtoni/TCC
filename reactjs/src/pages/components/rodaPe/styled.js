@@ -4,6 +4,7 @@ const RodaPe = styled.div`
     display: flex;
     flex-direction: column;
     margin: 0px;
+
     body{
         margin: 0px;
     }
