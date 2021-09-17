@@ -11,21 +11,21 @@ function alternar(cat) {
     else if(cat === '4')
     return 'Ps4'
     else if(cat === '5')
-    return 'Customizados'
+    return 'Outros'
  
 }
 
 function Desc(desc) {
     if(desc === '1')
-    return 'Personalizadas Para Você!'
+    return 'Feitas Para Você!'
     else if (desc === '2')
     return 'Todos Os Jogos!'
     else if(desc === '3')
-    return 'Personalizadas Para Você!'
+    return 'Feitas Para Você!'
     else if(desc === '4')
     return 'Todos Os Jogos!'
     else if(desc === '5')
-    return 'Personalizadas Para Você!'
+    return 'Feitas Para Você!'
 }
 
 function alternarImg(img) {
