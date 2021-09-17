@@ -84,12 +84,18 @@ const StyledCabecalho = styled.div `
     
     .carrinho {
         padding-top: 0.4em;
-        padding-left: 2em;
-        margin-right: 3em;
+        padding-left: 0em;
+        margin-right: 3.4em;
         position: relative;
         content: url(${props => props.corLetra === 'branco' ? '/assets/images/cBranco.svg' : '/assets/images/carrinho.svg'});
-        width: 4em;
-        height: 4em;
+        width: 5em;
+        height: 5em;
+    }
+
+    .entrega {
+        color: #ffffff;
+        font-size: 2em;
+        font-family: MontserratBold;
     }
 `
 

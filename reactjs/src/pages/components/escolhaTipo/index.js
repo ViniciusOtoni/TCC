@@ -1,26 +1,54 @@
 import { StyledEscolha } from "./styled";
 
 
-function titulo(cat) {
-    if(cat === 1)
+function alternar(cat) {
+    if(cat === '1')
     return 'Canecas'
-    else if (cat === 2)
+    else if (cat === '2')
     return 'Xbox'
-    else if(cat === 3)
+    else if(cat === '3')
     return 'Roupas'
-    else if(cat === 4)
+    else if(cat === '4')
     return 'Ps4'
-    else 
+    else if(cat === '5')
     return 'Customizados'
+ 
 }
+
+function Desc(desc) {
+    if(desc === '1')
+    return 'Personalizadas Para Você!'
+    else if (desc === '2')
+    return 'Todos Os Jogos!'
+    else if(desc === '3')
+    return 'Personalizadas Para Você!'
+    else if(desc === '4')
+    return 'Todos Os Jogos!'
+    else if(desc === '5')
+    return 'Personalizadas Para Você!'
+}
+
+function alternarImg(img) {
+    if(img === '1')
+    return '/assets/images/caneca.svg'
+    else if (img === '2')
+    return '/assets/images/xbox.svg'
+    else if(img === '3')
+    return '/assets/images/camiseta.svg'
+    else if(img === '4')
+    return '/assets/images/Ps4.svg'
+    else if(img === '5')
+    return '/assets/images/personalizado.svg'
+}
+
 
 export default function Categoria(props) {
     return (
         
         <StyledEscolha cat={props.cat}> 
-            <div className="imagem-categoria"> <img src="/assets/images/Vector (4).svg" alt="" />  </div>
-            <div className="titulo-categoria"> {props => titulo(props.cat)} </div>
-            <div className="desc-categoria"> Todos Os Jogos </div>
+            <div className="imagem-categoria"> <img src={alternarImg(props.img)} alt="" />  </div>
+            <div className="titulo-categoria"> {alternar(props.cat) }</div>
+            <div className="desc-categoria"> {Desc(props.desc)}</div>
         </StyledEscolha>
     )
 }

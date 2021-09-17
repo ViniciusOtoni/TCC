@@ -11,9 +11,10 @@ export default function Cabecalho(props) {
                 <div className="titulo"> GameBud </div>
             </div> 
             <div className="pesquisa"> <input className="input" placeholder="pesquise seu produto" /> </div>
-            <div className="login"> Login
-                <div className="carrinho">  </div>
-            </div>
+            <div className="login"> Login </div>
+            <div className="entrega"> {props.corLetra === 'branco' ? "Entregas" : null} </div>
+            <div className="carrinho">  </div>
+            
         </StyledCabecalho>
     )
 }

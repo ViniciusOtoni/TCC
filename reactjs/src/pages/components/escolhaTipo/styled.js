@@ -25,6 +25,8 @@ const StyledEscolha = styled.div`
         color: #ffffff;
         font-size: 26px;
         margin-bottom: 2em;
+        width: 7em;
+        text-align: center;
     }
 
 
