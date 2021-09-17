@@ -14,7 +14,7 @@ const StyledPaginacao = styled.div `
         font: 1em MontserratBold;
         border: none;
         border-radius: 0.2em;
-        padding: 0.3em;
+        padding: 0.5em;
     }
 
     .numero-pagina {
@@ -22,11 +22,12 @@ const StyledPaginacao = styled.div `
         color: #F0AC54;
         font: 1em MontserratBold;
         border-radius: 0.2em;
-        padding-left: 1em;
-        padding-right: 1em;
-        padding-top: 0.4em;
+        width: 2em;
+        height: 2em;
         margin: 2em;
-        text-align: center;
+        align-items: center;
+        justify-content: center;
+        display: flex;
       
     }
 
