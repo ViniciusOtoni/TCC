@@ -18,7 +18,7 @@ export default function Rotes() {
                 <Route path="/carrinhoItem" component={CarrinhoItem} />
                 <Route path="/vendaUnica" component={VendaUnica} />
                 <Route path="/entregaItem" component={EntregaItem} />
-                <Route path="/teste" component={Footer} />
+                <Route path="/testeRodape" component={Footer} />
                
 
             </Switch>
