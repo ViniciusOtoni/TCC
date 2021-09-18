@@ -18,7 +18,7 @@ export default function Home() {
             <div className="agp-melhor"> 
                 <div className="texto-melhor"> A Melhor </div>
                 <div className="texto-melhor"> Loja Do Brasil </div>
-                <div className="saiba-mais"> <StyledButtonHome style={{width:"224px", height:"68px", paddingTop:"1.4em" }}> Saiba Mais! </StyledButtonHome>  </div>
+                <div className="saiba-mais"> <StyledButtonHome style={{width:"224px", height:"68px", paddingTop:"1em" }}> Saiba Mais! </StyledButtonHome>  </div>
             </div>
             <div className="logo"> <img src="/assets/images/logo.svg" alt="" /> 
             </div>

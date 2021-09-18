@@ -9,6 +9,7 @@ const StyledButtonHome = styled.div `
     width: 7.8em;
     height: 2em;
     border-radius: 1.7em;
+    font: 1.2em MontserratBold;
     
 `
 
