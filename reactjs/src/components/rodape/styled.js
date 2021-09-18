@@ -32,6 +32,11 @@ const RodaPe = styled.div`
         height: 5em;
     }
 
+    .alinhar-texto {
+        display: flex;
+        flex-direction: row;
+    }
+
     .section2{
         display: flex;
         flex-direction: row;
@@ -122,7 +127,7 @@ const RodaPe = styled.div`
         font-size: .9em;
         line-height: 1.5em;
 
-        width: 100%;
+        
         height: 13em;
     }
 

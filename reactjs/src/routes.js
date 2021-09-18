@@ -6,6 +6,8 @@ import EntregasSemItem from './pages/entrega';
 import CarrinhoItem from './pages/carrinhoItem';
 import VendaUnica from './pages/VendaUnica';
 import EntregaItem from './pages/entregaItem';
+import EscolhaEntrega from './pages/escolhaEntrega';
+import Venda from './pages/venda';
 
 export default function Rotes() {
     return (
@@ -17,6 +19,10 @@ export default function Rotes() {
                 <Route path="/carrinhoItem" component={CarrinhoItem} />
                 <Route path="/vendaUnica" component={VendaUnica} />
                 <Route path="/entregaItem" component={EntregaItem} />
+                <Route path="/testeRodape" component={Footer} />
+                <Route path="/escolhaEntrega" component={EscolhaEntrega} />
+                <Route path="/venda" component={Venda} />
+
             </Switch>
         </BrowserRouter> 
     )

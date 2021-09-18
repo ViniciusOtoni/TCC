@@ -8,6 +8,7 @@ const StyledJogo = styled.div`
     justify-content: center;
     align-items: center;
     padding: 2em;
+   
 
 
     .row1 {
@@ -18,14 +19,16 @@ const StyledJogo = styled.div`
 
     .nome-jogo {
         color: white;
-        font-size: 18px;
+        
         padding-bottom: 0em;
+        font: 1.2em MontserratBold;
     }
 
     .preco {
         color: white;
-        font-size: 36px;
+       
         padding-bottom: 0.2em;
+        font: 1.5em MontserratBold;
         }
 
     .imagem-jogo img {
