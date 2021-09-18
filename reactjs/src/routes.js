@@ -8,6 +8,7 @@ import VendaUnica from './pages/VendaUnica';
 import EntregaItem from './pages/entregaItem';
 import EscolhaEntrega from './pages/escolhaEntrega';
 import Venda from './pages/venda';
+import Footer from './components/rodape';
 
 export default function Rotes() {
     return (

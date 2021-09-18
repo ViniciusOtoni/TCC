@@ -1,6 +1,6 @@
 
 import { StyledEscolhaEntrega } from "./styled"
-import Cabecalho from "../components/cabecalho"
+import Cabecalho from "../../components/cabecalho"
 import Paginacao from "../components/paginacao"
 
 export default function EscolhaEntrega() {
