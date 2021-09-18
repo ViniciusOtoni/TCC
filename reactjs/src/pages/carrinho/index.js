@@ -1,9 +1,9 @@
-import Cabecalho from "../components/cabecalho";
+import Cabecalho from "../../components/cabecalho";
 import { StyledCarrinho } from "./styled";
 
-import Footer from "../components/rodape";
+import Footer from "../../components/rodape";
 
-import { StyledButtonHome } from "../components/botaoHome/styled";
+import { StyledButtonHome } from "../../components/botaoHome/styled";
 
 export default function Caixa() {
     return (

@@ -53,9 +53,7 @@ background-color: #333333;
     .texto {
         font-size: 64px;
         color: #ffffff;
-        width: 9.4em;
-        margin-left: 5em;
-       
+        margin-left: 3.8em;
     }
 
 .button {

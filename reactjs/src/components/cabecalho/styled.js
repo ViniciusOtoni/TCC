@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import '../../index.css';
-
 import { Cor } from './index.js';
 
 const StyledCabecalho = styled.div `

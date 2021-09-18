@@ -5,7 +5,6 @@ import Caixa from './pages/carrinho';
 import EntregasSemItem from './pages/entrega';
 import CarrinhoItem from './pages/carrinhoItem';
 import VendaUnica from './pages/VendaUnica';
-import Footer from './pages/components/rodape';
 import EntregaItem from './pages/entregaItem';
 
 export default function Rotes() {
@@ -18,9 +17,6 @@ export default function Rotes() {
                 <Route path="/carrinhoItem" component={CarrinhoItem} />
                 <Route path="/vendaUnica" component={VendaUnica} />
                 <Route path="/entregaItem" component={EntregaItem} />
-                <Route path="/teste" component={Footer} />
-               
-
             </Switch>
         </BrowserRouter> 
     )

@@ -1,6 +1,6 @@
-import Cabecalho from '../components/cabecalho'
-import Footer from '../components/rodape'
-import { StyledButtonVerde } from '../components/botaoVerde/styled'
+import Cabecalho from '../../components/cabecalho'
+import Footer from '../../components/rodape'
+import { StyledButtonVerde } from '../../components/botaoVerde/styled'
 import { Content } from './styled'
 import { Conteudo } from './styled'
 

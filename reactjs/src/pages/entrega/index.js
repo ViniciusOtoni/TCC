@@ -1,5 +1,5 @@
-import Cabecalho from "../components/cabecalho";
-import { StyledButtonHome } from "../components/botaoHome/styled";
+import Cabecalho from "../../components/cabecalho";
+import { StyledButtonHome } from "../../components/botaoHome/styled";
 import { StyledEntrega } from "./styled";
 
 
