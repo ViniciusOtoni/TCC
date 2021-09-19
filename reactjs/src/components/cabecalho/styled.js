@@ -9,7 +9,7 @@ const StyledCabecalho = styled.div `
     align-items: center;
     background-color: #333333;
     
-  
+
     margin: auto;
      & * {z-index : 11;}
 

@@ -31,7 +31,7 @@ const StyledConteudo = styled.div`
     }
 
     .saiba-mais {
-        margin-top: 3em;
+        margin-top: 3em;        
         
     }
     
@@ -40,7 +40,10 @@ const StyledConteudo = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
+
         margin-left: 6em;
+
+        animation: bounceInLeft 1.4s;
     }
 
     .logo > img {

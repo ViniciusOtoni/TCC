@@ -33,6 +33,11 @@ const StyledEscolha = styled.div`
         font-family: MontserratBold;
     }
 
+    .desc-categoria:hover{
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
 
 
 

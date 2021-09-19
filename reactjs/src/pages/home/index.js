@@ -5,6 +5,7 @@ import Footer  from "../../components/rodape/index"
 import CaixaJogo from "../../components/caixaJogo"
 import Categoria from "../../components/escolhaTipo"
 import '../index.css'
+import "animate.css"
 
 export default function Home() {
     return (

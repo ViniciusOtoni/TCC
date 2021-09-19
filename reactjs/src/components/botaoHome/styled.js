@@ -11,6 +11,11 @@ const StyledButtonHome = styled.div `
     border-radius: 1.7em;
     font: 1.2em MontserratBold;
     
+    &:hover{
+        background-color: #F0AC54;
+        color: white;
+        transition: .5s;
+    }
 `
 
 export { StyledButtonHome }
