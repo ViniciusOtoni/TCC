@@ -23,7 +23,7 @@ const Container = styled.div`
         margin-bottom: 2em;
     }
 
-    main {
+    .sub-main {
         display: flex;
         flex-direction: row;
     }

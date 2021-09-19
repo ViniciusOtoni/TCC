@@ -1,11 +1,12 @@
 
 import { Container } from "./styled"
-import Cabecalho from "../components/cabecalho"
-import Footer from "../components/rodape"
+import Cabecalho from "../../components/cabecalho"
+import Footer from "../../components/rodape"
 
 export default function Venda() {
     return (
-        <Container>
+        <main style={{ backgroundColor: "#333333", width: "1340px", margin: "auto" }}>
+            <Container>
             <Cabecalho />
             <div className="textos">
                 <h1>Seja bem vindo! Saiba um pouco sobre nossa trajetória:</h1>
@@ -15,6 +16,7 @@ export default function Venda() {
                 </p>
             </div>
             <Footer />
-       </Container>
+            </Container>
+        </main>
     )
 }
