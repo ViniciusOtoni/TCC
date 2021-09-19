@@ -23,6 +23,7 @@ const StyledConteudo = styled.div`
     }
 
     .texto-melhor {
+     font-family: MontserratBold;
      color: white;
      font-size: 3.4em;
      text-align: center;
