@@ -8,7 +8,7 @@ export default function VendaUnica(){
     return(
         <Conteudo> 
             <Cabecalho />
-            <hr />
+            <hr style={{ marginLeft: "3.4em", marginRight: "3.4em" }} />
             <main style={{ width:"1340px", margin: "auto"}}> 
                 <div className="title"> FIFA 21 para PS4 EA </div>
                 <Content>

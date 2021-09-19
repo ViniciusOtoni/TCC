@@ -48,12 +48,15 @@ background-color: #333333;
         margin-top: 2em;
         margin-left: .7em;
         margin-bottom: 1em;
+        font-family: MontserratBold;
     }
 
     .texto {
-        font-size: 64px;
+        font-size: 44px;
         color: #ffffff;
         margin-left: 3.8em;
+        text-align: center;
+        font-family: MontserratBold;
     }
 
 .button {

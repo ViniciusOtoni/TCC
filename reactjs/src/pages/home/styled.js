@@ -107,7 +107,7 @@ const StyledConteudo = styled.div`
 
    .barra { 
        border: 3px solid #F0AC54;
-        width: 19em;
+        width: 24em;
         margin-left: 3em;
         margin-bottom: 4em;
    }
