@@ -9,10 +9,8 @@ import EntregaItem from './pages/entregaItem';
 import EscolhaEntrega from './pages/escolhaEntrega';
 import SaibaMais from './pages/saibaMais'
 import Venda from './pages/venda';
-
 import Termos from './pages/termos';
 import ConcluirCompra from './pages/concluirCompra';
-
 import Footer from './components/rodape';
 import GerenteVizualizar from './pages/GerenteVisualizar';
 
