@@ -33,6 +33,7 @@ export default function Rotes() {
                 <Route  path="/saibaMais" component={SaibaMais} />
                 <Route path="/termos" component={Termos} />
                 <Route path="/concluirCompra" component={ConcluirCompra} />
+                <Route path="/gerenteVizualizar" component={GerenteVizualizar} />
             </Switch>
         </BrowserRouter> 
     )
