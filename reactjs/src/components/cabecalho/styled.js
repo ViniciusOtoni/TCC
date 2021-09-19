@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Cor } from './index.js';
+
 
 const StyledCabecalho = styled.div `
     display: flex;
@@ -33,7 +33,7 @@ const StyledCabecalho = styled.div `
     }
 
     .pesquisa{
-        width: 50%;
+        width: 40%;
     }
 
     .pesquisa input {

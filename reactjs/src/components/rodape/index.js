@@ -7,7 +7,7 @@ export default function Footer(){
         <RodaPe>
             <div className="section1">
                 <div className="align-title">
-                    <img className="title-image" src="/assets/images/logo.svg" alt="logo"/>
+                    <img className="title-image" src="/assets/images/logo.svg" alt=""/>
                     <div> GameBud </div>
                 </div>
                 <div className="align-header">    
@@ -23,9 +23,9 @@ export default function Footer(){
                     <div className="item-image"> Exemplo </div>
                     <div className="item-image"> Exemplo </div>
                     <div className="item-image"> 
-                        <img src="/assets/images/facebook.svg"/>
-                        <img src="/assets/images/instagram.svg"/>
-                        <img src="/assets/images/twitter.svg"/>
+                        <img src="/assets/images/facebook.svg" alt=""/>
+                        <img src="/assets/images/instagram.svg" alt=""/>
+                        <img src="/assets/images/twitter.svg" alt="" />
                     </div>
                 </div>
                 <div className="align">
