@@ -5,13 +5,16 @@ import Caixa from './pages/carrinho';
 import EntregasSemItem from './pages/entrega';
 import CarrinhoItem from './pages/carrinhoItem';
 import VendaUnica from './pages/VendaUnica';
-import Footer from './pages/components/rodape';
 import EntregaItem from './pages/entregaItem';
 import EscolhaEntrega from './pages/escolhaEntrega';
 import SaibaMais from './pages/saibaMais'
 import Venda from './pages/venda';
+<<<<<<< HEAD
 import Termos from './pages/termos';
 import ConcluirCompra from './pages/concluirCompra';
+=======
+import Footer from './components/rodape';
+>>>>>>> a3e1494dc21f5bd44920976d05a5437fb06e56ff
 
 export default function Rotes() {
     return (

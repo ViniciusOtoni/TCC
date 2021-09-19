@@ -16,6 +16,7 @@ const StyledCarrinho = styled.div `
         margin-left: 2em;
         align-items: center;
         padding: 4em;
+        position: relative;
 
     }
 
@@ -46,28 +47,28 @@ const StyledCarrinho = styled.div `
         margin-top: 2em;
         margin-left: .7em;
         margin-bottom: 1em;
+        font-family: MontserratBold;
     }
 
     .texto {
-        font-size: 64px;
+        font-size: 44px;
         color: #ffffff;
-        width: 9.4em;
+        width: 10.4em;
         margin-left: 3em;
+        font-family: MontserratBold;
       
     }
 
     .botao  {
-        margin-left: 7em;
-        bottom: 26.5%;
+        margin-left: 6em;
+        bottom: 4.5em;
         position: absolute;
         font-size: 26px;
         display: flex;
         align-items: center;
-         justify-content: center;
-         padding-top: .8em;
-         padding-bottom: .8em;
-         
-         
+        justify-content: center;
+        padding-top: .8em;
+        padding-bottom: .8em; 
     }
 
     

@@ -1,5 +1,5 @@
-import Cabecalho from "../components/cabecalho";
-import { StyledButtonHome } from "../components/botaoHome/styled";
+import Cabecalho from "../../components/cabecalho";
+import { StyledButtonHome } from "../../components/botaoHome/styled";
 import { StyledEntrega } from "./styled";
 
 
@@ -8,7 +8,7 @@ export default function EntregasSemItem()  {
         <div style={{backgroundColor:"#333333"}}> 
         
             <Cabecalho />
-            <hr />
+            <hr style={{marginRight:"3.4em", marginLeft:"3.4em"}}/>
             
         <main style={{ width: "1340px", margin: "auto"}}> 
             

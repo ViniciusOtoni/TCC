@@ -1,10 +1,10 @@
-import Cabecalho from "../components/cabecalho"
+import Cabecalho from "../../components/cabecalho"
 import { StyledConteudo, Bolota } from "./styled"
-import { StyledButtonHome  } from "../components/botaoHome/styled"
-import Footer  from "../components/rodape/index"
-import CaixaJogo from "../components/caixaJogo"
-import Categoria from "../components/escolhaTipo"
-
+import { StyledButtonHome  } from "../../components/botaoHome/styled"
+import Footer  from "../../components/rodape/index"
+import CaixaJogo from "../../components/caixaJogo"
+import Categoria from "../../components/escolhaTipo"
+import '../index.css'
 
 export default function Home() {
     return (
@@ -20,7 +20,7 @@ export default function Home() {
                 <div className="texto-melhor"> Loja Do Brasil </div>
                 <div className="saiba-mais"> <StyledButtonHome style={{width:"224px", height:"68px", paddingTop:"1em" }}> Saiba Mais! </StyledButtonHome>  </div>
             </div>
-            <div className="logo"> <img src="/assets/images/logo.svg" alt="" /> 
+            <div className="logo"> <img src="/assets/images/controle.svg" alt="" /> 
             </div>
         </div> 
             <section> 

@@ -1,5 +1,5 @@
 import { StyledEntregaItem } from "./styled";
-import Cabecalho from "../components/cabecalho";
+import Cabecalho from "../../components/cabecalho";
 
 export default function EntregaItem() {
     return (

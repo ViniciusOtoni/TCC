@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import '../../index.css';
-
 
 
 const StyledCabecalho = styled.div `
@@ -35,7 +33,7 @@ const StyledCabecalho = styled.div `
     }
 
     .pesquisa{
-        width: 50%;
+        width: 40%;
     }
 
     .pesquisa input {

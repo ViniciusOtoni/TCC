@@ -42,10 +42,26 @@ const StyledConteudo = styled.div`
         margin-left: 6em;
     }
 
-    .logo img {
-        width: 30em;
-        height: 30em;
+    .logo > img {
+        animation: animate 2.5s ease-in-out infinite;
+        width: 15em;
+        height: 15em;
     }
+
+    @keyframes animate{
+        0%{
+            transform: translatey(0px);
+        }
+
+        50%{
+            transform: translatey(-40px);
+        }
+
+        100%{
+            transform: translatey(0px);
+        }
+    };
+
     .bolota {
         position:absolute;
         top: -33em;
@@ -70,6 +86,7 @@ const StyledConteudo = styled.div`
         align-items: center;
         justify-content: space-between;
         margin-bottom: 6em;
+        width: 70em;
     }
 
     .agp-jogo {
@@ -90,7 +107,7 @@ const StyledConteudo = styled.div`
 
    .barra { 
        border: 3px solid #F0AC54;
-        width: 19em;
+        width: 24em;
         margin-left: 3em;
         margin-bottom: 4em;
    }
