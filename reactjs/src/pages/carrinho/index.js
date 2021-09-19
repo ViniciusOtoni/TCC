@@ -10,7 +10,7 @@ export default function Caixa() {
         <div style={{backgroundColor:"#333333"}}>
        <Cabecalho />
        <div className="hr"> </div>
-       <main style={{  width: "1340px", margin: "auto", height:"768px"}}> 
+       <main style={{  width: "1340px", margin: "auto"}}> 
         
       <StyledCarrinho>
             
