@@ -15,6 +15,7 @@ const StyledButtonHome = styled.div `
         background-color: #F0AC54;
         color: white;
         transition: .5s;
+        cursor: pointer;
     }
 `
 

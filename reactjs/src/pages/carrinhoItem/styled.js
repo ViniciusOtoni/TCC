@@ -5,12 +5,6 @@ const StyledCarrinhoItem = styled.div `
     flex-direction: column;
     background-color: #333333;
    
-    
-   
-       
-    
-
-
 
     
 
@@ -30,9 +24,9 @@ const StyledCarrinhoItem = styled.div `
         font-size: 24px;
         color: #F0AC54;
         margin-right: 2em;
-       font-family: MontserratBold;
-       margin-top: 2em;
-       margin-right: 5em;
+        font-family: MontserratBold;
+        margin-top: 2em;
+        margin-right: 5em;
 
     }
     .quantidade {
@@ -77,17 +71,16 @@ const StyledCarrinhoItem = styled.div `
     .nome-produto {
         color: #FFFFFF;
         font-size: 28px;
-        width: 10.5em;
+        width: 12em;
         padding-left: 1em;
         padding-top: .4em;
         font-family: MontserratBold;
-        height: 8.5em;
+        height: 7em;
     }
 
     .row-vendido {
         display: flex;
         flex-direction: row;
-        
     }
 
     .dono {
@@ -97,7 +90,6 @@ const StyledCarrinhoItem = styled.div `
         padding-top: 1em;
         font-family: MontserratBold;
         width: 9em;
-
     }
 
     .nome-dono {
@@ -153,7 +145,6 @@ const StyledCarrinhoItem = styled.div `
         margin-left: 5.3em;
       
         font-family: MontserratBold;
-
     }
 
     .titulo-val {
@@ -218,7 +209,7 @@ const StyledCarrinhoItem = styled.div `
         margin-top: .5em;
         margin-left: 4.5em;
         margin-bottom: 5em;
-
+        cursor: pointer;
     }
 
     .frete {
@@ -251,6 +242,7 @@ const StyledCarrinhoItem = styled.div `
     color: #ffffff;
     font-size: 22px;
     font-family: MontserratBold;
+    margin-right: 2em;
    }
    .total-valor-baixo{
     color: #ffffff;
@@ -263,7 +255,7 @@ const StyledCarrinhoItem = styled.div `
     color: #ffffff;
     font-size: 22px;
     font-family: MontserratBold;
-    
+    margin-right: 2em;    
    }
     
 

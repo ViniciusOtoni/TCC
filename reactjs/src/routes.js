@@ -9,6 +9,7 @@ import EntregaItem from './pages/entregaItem';
 import EscolhaEntrega from './pages/escolhaEntrega';
 import Venda from './pages/venda';
 import Footer from './components/rodape';
+import GerenteVizualizar from './pages/GerenteVisualizar';
 
 export default function Rotes() {
     return (
@@ -23,7 +24,7 @@ export default function Rotes() {
                 <Route path="/testeRodape" component={Footer} />
                 <Route path="/escolhaEntrega" component={EscolhaEntrega} />
                 <Route path="/venda" component={Venda} />
-
+                <Route path="/gerenteVizualizar" component={GerenteVizualizar} />
             </Switch>
         </BrowserRouter> 
     )

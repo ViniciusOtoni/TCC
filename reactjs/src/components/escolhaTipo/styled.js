@@ -10,7 +10,12 @@ const StyledEscolha = styled.div`
     margin-bottom: 2em;
     border-radius: 1em;
     height: 22em;
+    cursor: pointer;
     
+
+    .imagem-categoria img{
+        cursor: pointer;
+    }
 
     .titulo-categoria {
         color: #F0AC54;
@@ -22,6 +27,7 @@ const StyledEscolha = styled.div`
         margin-top: 0.4em;
         border-radius: 0.2em;
         font-family: MontserratBold;
+        cursor: pointer;
     }
 
     .desc-categoria {

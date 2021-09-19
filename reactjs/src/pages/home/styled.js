@@ -102,7 +102,7 @@ const StyledConteudo = styled.div`
 
     .titulo {
         font-family: ExtraBold;
-        font-size: 48px;
+        font-size: 2.8em;
         color: white;
 
         padding-left: 1em;
@@ -111,7 +111,7 @@ const StyledConteudo = styled.div`
 
    .barra { 
        border: 3px solid #F0AC54;
-        width: 24em;
+        width: 23em;
         margin-left: 3em;
         margin-bottom: 4em;
    }

@@ -6,6 +6,7 @@ const SelectInput = styled.select`
     background-color: #ffff;
     border: none;
     outline: none;
+    cursor: pointer;
 `
 
 export { SelectInput }

@@ -8,6 +8,12 @@ const  StyledButtonVerde = styled.button `
     border-radius: 0.4em;
     border: none;
     font-family: MontserratBold;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #2dba2b;
+        transition: .5s;
+    }
 ;
 
 `
