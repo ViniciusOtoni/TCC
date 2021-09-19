@@ -58,16 +58,14 @@ const StyledCarrinho = styled.div `
 
     .botao  {
         margin-left: 7em;
-        bottom: 26.5%;
+        bottom: -1.5em;
         position: absolute;
         font-size: 26px;
         display: flex;
         align-items: center;
-         justify-content: center;
-         padding-top: .8em;
-         padding-bottom: .8em;
-         
-         
+        justify-content: center;
+        padding-top: .8em;
+        padding-bottom: .8em; 
     }
 
     
