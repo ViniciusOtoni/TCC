@@ -20,12 +20,6 @@ function Desc(desc) {
     return 'Feitas Para Você!'
     else if (desc === '2')
     return 'Todos Os Jogos!'
-    else if(desc === '3')
-    return 'Feitas Para Você!'
-    else if(desc === '4')
-    return 'Todos Os Jogos!'
-    else if(desc === '5')
-    return 'Feitas Para Você!'
 }
 
 function alternarImg(img) {
