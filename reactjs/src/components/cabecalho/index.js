@@ -1,6 +1,5 @@
 
 import { StyledCabecalho } from "./styled"
-import { StyledButtonAdm } from "../botaoAdm/styled"
 
 
 

@@ -31,8 +31,11 @@ const Container = styled.div`
 
     .textos{
         color: white;
-
         margin-left: 2.5em;
+    }
+
+    .textos div {
+        font-family: Medio;
     }
 
     .barra {
