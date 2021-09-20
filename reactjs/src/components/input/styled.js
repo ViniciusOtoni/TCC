@@ -21,4 +21,18 @@ const StyledInput = styled.input `
      }
 `
 
-export{ StyledInput }
+const StyledSelect = styled.select `
+    
+    background-color: #ffffff;
+    color: #808080;
+    padding: 0.6em;
+    border-radius: .4em;
+    border: none;
+    outline: none;
+    font-family: MontserratBold;
+    cursor: pointer;
+    
+`
+
+
+export{ StyledInput, StyledSelect }

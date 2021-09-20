@@ -1,15 +1,15 @@
 import { Container } from './styled'
 import Footer from "../../components/rodape"
+import Cabecalho from '../../components/cabecalho'
 
 export default function Termos() {
     return (
         <div style={{backgroundColor: "#333333"}}> 
+        <Cabecalho corLetra="nulo"/>
+        <hr style={{marginLeft:"3.4em", marginRight:"3.4em", borderColor:"#F0AC54"}}/>
         <main style={{width: "1340px", margin: "auto" }}>
             <Container>
-                <div className="cabecalho">
-                    <img src="/assets/images/logo.svg" alt="" />
-                    <h2 className="nomeEmpresa">GameBud</h2>
-                </div>
+               
                 
                 <div className="textos">
                     <h1>Termos e Serviços:</h1>

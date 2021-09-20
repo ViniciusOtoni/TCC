@@ -45,7 +45,7 @@ const Container = styled.div`
 
     hr {
         margin: 1em 2em;
-        height: 34em;
+        height: 35em;
     }
 
     .direita-grupo-input {
@@ -161,7 +161,13 @@ const Container = styled.div`
         color: white;
     }
 
+    .last-information-text1-last {
+        line-height: 40px;
+        margin-top: 3em;
+    }
+
     .last-information-text1 {
+        
         line-height: 36px;
     }
 
@@ -175,10 +181,7 @@ const Container = styled.div`
         margin-top: 10em;
     }
   
-    .last-information-text1-last {
-        margin-top: 3em;
-        line-height: 40px;
-    }
+  
 
     .verde-botao {
         background-color: #34D231;
