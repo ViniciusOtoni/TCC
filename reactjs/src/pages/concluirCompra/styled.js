@@ -38,14 +38,15 @@ const Container = styled.div`
     .text-input {
         font-size: 22px;
         line-height: 60px;
+        font-family: MontserratBold;
         
 
         color: white;
     }
 
     hr {
-        margin: 1em 2em;
-        height: 35em;
+        margin: 0em 2em;
+        height: 36em;
     }
 
     .direita-grupo-input {
@@ -56,12 +57,14 @@ const Container = styled.div`
     .credit-card {
         display: flex;
         flex-direction: column;
+       
     }
 
     .credit-card button {
         width: 300px;
         height: 30px;
-
+        font-family: MontserratBold;
+        font-size: 0.8em;
         background: #F3F3F3;
 
         border: none;
@@ -164,10 +167,11 @@ const Container = styled.div`
     .last-information-text1-last {
         line-height: 40px;
         margin-top: 3em;
+        font-family: MontserratBold;
     }
 
     .last-information-text1 {
-        
+        font-family: MontserratBold;
         line-height: 36px;
     }
 
