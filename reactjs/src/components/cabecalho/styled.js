@@ -57,6 +57,7 @@ const StyledCabecalho = styled.div `
         font-family: MontserratBold; 
         cursor: pointer;
         display: ${props => props.corLetra === 'nulo'  ? 'none' : 'block' };
+       
     }
 
     .input::placeholder {
@@ -79,6 +80,7 @@ const StyledCabecalho = styled.div `
         position: relative;
         font-family: MontserratBold;
         display: ${props => props.corLetra === 'nulo'  ? 'none' : 'block' };
+       
         cursor: pointer;
     }
 
@@ -92,6 +94,8 @@ const StyledCabecalho = styled.div `
         width: 4em;
         height: 4em;
         display: ${props => props.corLetra === 'nulo'  ? 'none' : 'block' };
+    
+       
         cursor: pointer;
     }
 
@@ -102,6 +106,9 @@ const StyledCabecalho = styled.div `
         display: ${props => props.corLetra === 'branco'  ? 'block' : 'none' };
         cursor: pointer;
     }
+
+ 
+    
 `
 
 

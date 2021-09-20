@@ -1,6 +1,6 @@
 
 import { StyledCabecalho } from "./styled"
-
+import { StyledButtonAdm } from "../botaoAdm/styled"
 
 
 
@@ -16,7 +16,6 @@ export default function Cabecalho(props) {
             <div className="login"> Login </div>
             <div className="entrega">  Entregas  </div>
             <div className="carrinho"> </div>
-            
         </StyledCabecalho>
     )
 }

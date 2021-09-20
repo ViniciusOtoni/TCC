@@ -25,7 +25,7 @@ const Container = styled.div`
     }
 
     h2 {
-        font-size: 29px;
+        font-size: 19px;
         font-family: Medio;
     }
 
@@ -43,9 +43,9 @@ const Container = styled.div`
     }
 
     .Secondh2 {
-        font-size: 36px;
+        font-size: 19px;
         width: 1150px;
-
+        font-family: Medio;
         margin-bottom: 5em;
     }
 

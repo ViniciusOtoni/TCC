@@ -1,19 +1,16 @@
  import React from "react"
 
  import { StyledButtonAdm } from "../../components/botaoAdm/styled"
+import Cabecalho from "../../components/cabecalho"
  import { Vizualizar } from "./styled"
  
  export default function GerenteVizualizar(){
      return(
          <div style={{ backgroundColor:"#333333" }}>
-
+             <Cabecalho corLetra="nulo" />
             <main style={{ width: '1340px', margin: 'auto'}}>
                 <Vizualizar>
                     <div className="header">
-                        <div className="align-header">
-                            <img className="logo" src="/assets/images/logo.svg" alt=""/>
-                            <div className="title"> GameBud </div>
-                        </div> 
                         <StyledButtonAdm  cor="laranja"> Novo Item </StyledButtonAdm>   
                     </div>
                     <div className="content">
