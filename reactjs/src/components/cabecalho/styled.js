@@ -9,7 +9,7 @@ const StyledCabecalho = styled.div `
     align-items: center;
     background-color: #333333;
     
-  
+
     margin: auto;
      & * {z-index : 11;}
 
@@ -17,6 +17,7 @@ const StyledCabecalho = styled.div `
         width: 6em;
         height: 5em;
         padding-top: 0.4em;
+        cursor: pointer;
     }
     
     .logo-cabecalho {
@@ -28,8 +29,9 @@ const StyledCabecalho = styled.div `
 
     .titulo {
         font-family: MontserratBold;
-        font-size: 2em;
+        font-size: 1.5em;
         color: ${props => props.corLetra === 'branco' ? '#ffffff' : '#F0AC54'};
+        cursor: pointer;
     }
 
     .pesquisa{
@@ -53,7 +55,7 @@ const StyledCabecalho = styled.div `
         outline: none;
         position: relative;
         font-family: MontserratBold; 
-    
+        cursor: pointer;
     }
 
     .input::placeholder {
@@ -69,14 +71,14 @@ const StyledCabecalho = styled.div `
 
     .login {
         color: ${props => props.corLetra === 'branco' ? '#ffffff' : '#F0AC54'};
-        font-size: 2em;
+        font-size: 1.5em;
         display: flex;
         flex-direction: row;
         align-items: center;
         position: relative;
         font-family: MontserratBold;
    
-        
+        cursor: pointer;
     }
 
     
@@ -86,14 +88,18 @@ const StyledCabecalho = styled.div `
         margin-right: 3.4em;
         position: relative;
         content: url(${props => props.corLetra === 'branco' ? '/assets/images/cBranco.svg' : '/assets/images/carrinho.svg'});
-        width: 5em;
-        height: 5em;
+        width: 4em;
+        height: 4em;
+
+        cursor: pointer;
     }
 
     .entrega {
         color: #ffffff;
-        font-size: 2em;
+        font-size: 1.5em;
         font-family: MontserratBold;
+
+        cursor: pointer;
     }
 `
 

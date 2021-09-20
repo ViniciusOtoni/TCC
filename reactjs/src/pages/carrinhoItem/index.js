@@ -9,7 +9,7 @@ export default function CarrinhoItem() {
     return (
         <div style={{backgroundColor:"#333333"}}>
         <Cabecalho />
-        <hr style={{marginLeft:"4em", marginRight:"4.3em"}}/>
+        <hr style={{marginLeft:"4em", marginRight:"4.3em"}} />
         <main style={{ width: "1340px", margin: "auto"}}> 
         
        <StyledCarrinhoItem> 
@@ -85,7 +85,7 @@ export default function CarrinhoItem() {
                         <div className="total-valor-baixo"> Total: </div>
                         <div className="total-final"> R$:99,99 </div>
                     </div>
-                    <div className="botao-finalizar"> <StyledButtonVerde style={{padding: ".3em", marginBottom:"1em", width:"14em"}}> Realizar Compra! </StyledButtonVerde> </div>
+                    <div className="botao-finalizar"> <StyledButtonVerde style={{padding: ".3em", marginBottom:"1em", marginRight: "2em", width:"14em"}}> Realizar Compra! </StyledButtonVerde> </div>
                 </div>
                 
 

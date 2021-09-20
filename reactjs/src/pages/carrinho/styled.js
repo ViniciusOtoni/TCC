@@ -43,10 +43,10 @@ const StyledCarrinho = styled.div `
 
     .titulo {
         color: #F0AC54;
-        font-size: 64px;
+        font-size: 3.5em;
         margin-top: 2em;
         margin-left: .7em;
-        margin-bottom: 1em;
+        margin-bottom: .5em;
         font-family: MontserratBold;
     }
 

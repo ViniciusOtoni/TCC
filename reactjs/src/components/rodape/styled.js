@@ -51,16 +51,22 @@ const RodaPe = styled.div`
     }
 
     .item{
+        font-family: Medio;
         margin: .8em 5em;
     }
 
     .item-header{
+        font-family: MontserratBold;
         margin: 0em 5em;
     }
 
     .item:hover{
         cursor: pointer;
         text-decoration: underline;
+    }
+
+    .item-image{
+        font-family: Medio;
     }
 
     .align{
@@ -87,8 +93,12 @@ const RodaPe = styled.div`
 
         justify-content: center;
         align-items: center;
-
     }
+
+    .align-title > div{
+        font-family: MontserratBold;
+    }
+
 
     .title-image{
         height: 5em;
@@ -104,6 +114,10 @@ const RodaPe = styled.div`
 
        width: 9.3em;
        margin-left: 2em;
+    }
+
+    .align-itens-image img:hover{
+        cursor: pointer;
     }
 
 
@@ -132,6 +146,7 @@ const RodaPe = styled.div`
     }
 
     .section3 > div {
+        font-family: Medio;
         padding-left: 1.5em;
         padding-top: 1.5em;
         width: 75em;

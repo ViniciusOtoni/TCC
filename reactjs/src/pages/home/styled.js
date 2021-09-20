@@ -23,6 +23,7 @@ const StyledConteudo = styled.div`
     }
 
     .texto-melhor {
+     font-family: MontserratBold;
      color: white;
      font-size: 3.4em;
      text-align: center;
@@ -30,7 +31,7 @@ const StyledConteudo = styled.div`
     }
 
     .saiba-mais {
-        margin-top: 3em;
+        margin-top: 3em;        
         
     }
     
@@ -39,7 +40,10 @@ const StyledConteudo = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
+
         margin-left: 6em;
+
+        animation: bounceInLeft 1.4s;
     }
 
     .logo > img {
@@ -98,7 +102,7 @@ const StyledConteudo = styled.div`
 
     .titulo {
         font-family: ExtraBold;
-        font-size: 48px;
+        font-size: 2.8em;
         color: white;
 
         padding-left: 1em;
@@ -107,7 +111,7 @@ const StyledConteudo = styled.div`
 
    .barra { 
        border: 3px solid #F0AC54;
-        width: 24em;
+        width: 23em;
         margin-left: 3em;
         margin-bottom: 4em;
    }

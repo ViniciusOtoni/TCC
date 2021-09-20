@@ -8,6 +8,7 @@ const StyledInput = styled.input `
     border: none;
     outline: none;
     font-family: MontserratBold;
+    cursor: pointer;
     
     ::placeholder {
         color: #808080;
