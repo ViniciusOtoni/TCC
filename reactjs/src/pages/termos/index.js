@@ -12,7 +12,7 @@ export default function Termos() {
                 
                 <div className="textos">
                     <h1>Termos e Serviços:</h1>
-                    <div>Bem vindo à família de website do<br />
+                    <div>Bem vindo à família de website do<br/>
                         GameBud, não se esqueça que você está legalmente sujeito <br /> a esses termos e serviços.</div>
                     <div className="barra"></div>
                     <h1>1. Usuários com ou sem conta:</h1>
