@@ -191,6 +191,16 @@ const Container = styled.div`
         margin-top: 6.5em;
 
     }
+
+    .parcelas-section {
+        background-color: #ffffff;
+        color: #808080;
+        padding: 0.6em;
+        border-radius: .4em;
+        border: none;
+        outline: none;
+        font-family: MontserratBold;
+    }
 `
 
 export { Container };

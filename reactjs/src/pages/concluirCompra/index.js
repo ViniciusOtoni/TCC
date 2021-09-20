@@ -38,27 +38,27 @@ export default function ConcluirCompra() {
                         <div className="cartoes">
                             <div className="cartao">
                                 <img src="/assets/images/VISA.svg" alt="" />
-                                <div className="cartao-bolinha"></div>
+                                <button className="cartao-bolinha"></button>
                             </div>
 
                             <div className="cartao">
                                 <img  className="img-cartao-2" src="/assets/images/MASTERCARD.svg" alt="" />
-                                <div className="cartao-bolinha2"></div>
+                                <button className="cartao-bolinha2"></button>
                             </div>
 
                             <div className="cartao">
                                 <img className="img-cartao-3" src="/assets/images/DINERS.svg" alt="" />
-                                <div className="cartao-bolinha2"></div>
+                                <button className="cartao-bolinha2"></button>
                             </div>
 
                             <div className="cartao">
                                 <img className="img-cartao-4" src="/assets/images/HIPERCARD.svg" alt="" />
-                                <div className="cartao-bolinha2"></div>
+                                <button className="cartao-bolinha2"></button>
                             </div>
 
                             <div className="cartao">
                                 <img className="img-cartao-5" src="/assets/images/ELO.svg" alt="" />
-                                <div className="cartao-bolinha2"></div>
+                                <button className="cartao-bolinha2"></button>
                             </div>
                         </div>
                     
@@ -74,7 +74,13 @@ export default function ConcluirCompra() {
                                 <StyledInput className="input-lastInfo-text1" />
                                 
                                 <div className="last-information-text1" className="last-information-text1-last">Percelas:</div>
-                                <StyledInput className="input-lastInfo-text1" placeholder="Parcelado em 10x"/>
+                                    <select className="parcelas-section" >
+                                        <option> 2x </option>
+                                        <option> 3x </option>
+                                        <option> 4x </option>
+                                        <option> 5x </option>
+                                        <option> 10x </option>
+                                    </select>
                             </div>
 
                             <div className="Last-information-inputs2">
@@ -86,6 +92,8 @@ export default function ConcluirCompra() {
 
                                 <div className="last-information-text1">Número do cartão</div>
                                 <StyledInput className="input-lastInfo-text1" />
+
+                                  
                                 
                             
                                 <button className="verde-botao">Concluir Compra!</button>
