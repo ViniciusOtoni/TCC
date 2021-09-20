@@ -4,7 +4,7 @@ import Cabecalho from "../../components/cabecalho";
 export default function EntregaItem() {
     return (
         <div style={{backgroundColor:"#333333"}}> 
-        <Cabecalho />
+        <Cabecalho corLetra="nulo"/>
         <hr style={{marginLeft:"3.6em", marginRight:"3.6em", borderColor:"#F0AC54"}} />
             <main style={{width:"1340px", margin:"auto"}}> 
                 <StyledEntregaItem> 

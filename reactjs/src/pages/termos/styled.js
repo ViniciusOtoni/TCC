@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: #333333;
+  
 
    
 
@@ -20,11 +20,13 @@ const Container = styled.div`
     }
 
     h1 {
-        font-size: 48px;
+        font-size: 38px;
+        font-family: MontserratBold;
     }
 
     h2 {
-        font-size: 36px;
+        font-size: 29px;
+        font-family: Medio;
     }
 
     .textos{

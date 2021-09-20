@@ -13,6 +13,7 @@ import Termos from './pages/termos';
 import ConcluirCompra from './pages/concluirCompra';
 import Footer from './components/rodape';
 import GerenteVizualizar from './pages/GerenteVisualizar';
+import GerenteAdicionar from './pages/gerenteAdicionar';
 
 
 export default function Rotes() {
@@ -32,6 +33,7 @@ export default function Rotes() {
                 <Route path="/termos" component={Termos} />
                 <Route path="/concluirCompra" component={ConcluirCompra} />
                 <Route path="/gerenteVizualizar" component={GerenteVizualizar} />
+                <Route path="/gerenteAdicionar" component={GerenteAdicionar} />
             </Switch>
         </BrowserRouter> 
     )
