@@ -15,7 +15,10 @@ const StyledPaginacao = styled.div `
         border: none;
         border-radius: 0.2em;
         padding: 0.5em;
+        margin: 0em .8em;
     }
+
+   
 
     .numero-pagina {
         background-color: #282828;
@@ -24,7 +27,7 @@ const StyledPaginacao = styled.div `
         border-radius: 0.2em;
         width: 2em;
         height: 2em;
-        margin: 2em;
+        margin: 1em;
         align-items: center;
         justify-content: center;
         display: flex;
