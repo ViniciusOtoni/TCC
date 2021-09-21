@@ -17,28 +17,43 @@ const Container = styled.div`
         justify-content: space-between;
     }
 
-   .table {
-       margin: 3em 0em;
+   table {
+        margin-top: 4em;
+        width: 1200px;
+
+        border-collapse: collapse;
+    }
+
+   
+
+   .linha-1 {
+       background-color: #282828;
+       
    }
 
-    .Linha-1, .Linha-2 {
-        display: flex;
-        flex-direction: row;
-        color: white;
-    }
+   .linha-2 {
+       background-color: #333333;
+   }
 
-    .Linha-1 {
-        padding: 1.2em;
-        background-color: #282828;
-        justify-content: space-between;
-    }
+   td {
+       text-align: left;
+       padding: 1em 3.5em;
+   }
 
-    .Linha-2 {
-        padding: 1.2em;
-        background-color: #333333;
-        justify-content: space-between;
-    }
+   th {
+       padding: 1em;
+       text-align: left;
+       font-size: 25px;
+   }
 
+   .quantidade {
+       text-align: center;
+   }
+
+
+   .last-item {
+       text-align: center;
+   }
     .voltar {
         color: white;
         padding: 1em;
@@ -65,7 +80,7 @@ const Container = styled.div`
 
     .back {
         background-color: #282828;
-        padding: .6em;
+        padding: .6em 1em;
 
         border-radius: 5px;
         margin-right: 1em;
