@@ -56,9 +56,10 @@ const Container = styled.div`
    }
     .voltar {
         color: white;
-        padding: 1em;
+       
         border: none;
-        background-color: #D9534F;
+        border-radius: 5px;
+      
     }
 
     .bottom-menu {
@@ -66,6 +67,7 @@ const Container = styled.div`
         flex-direction: row;
 
         margin: 6em 0em;
+        align-items: center;
 
 
     }

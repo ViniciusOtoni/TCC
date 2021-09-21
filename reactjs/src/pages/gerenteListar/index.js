@@ -1,5 +1,7 @@
 import { Container } from "./styled.js"
 import Cabecalho from "../../components/cabecalho"
+import Paginacao from "../../components/paginacao/index.js"
+import { StyledButtonAdm } from "../../components/botaoAdm/styled.js"
 
 export default function GerenteNaosei() {
     return (
@@ -71,14 +73,8 @@ export default function GerenteNaosei() {
                             </tbody>
                        </table>
                         <div className="bottom-menu">
-                            <button className="voltar" style={{ width: "150px", marginRight: "18em" }}>Voltar</button>
-                            <div className="navigation">
-                                <div className="back"> <img src="/assets/images/voltar.svg" alt="" /> Anterior </div>
-                                <div className="page">1</div>
-                                <div className="page">2</div>
-                                <div className="page">3</div>
-                                <div className="next">próximo <img src="/assets/images/avancar.svg" alt=""/> </div>
-                            </div>
+                            <StyledButtonAdm cor="vermelho" className="voltar" style={{ width: "150px", height: "51px", marginRight: "15em" }}>Voltar</StyledButtonAdm>
+                           <Paginacao />
                        </div>
                        
                     </div>

@@ -1,10 +1,11 @@
- import React from "react"
+import React from "react"
 
- import { StyledButtonAdm } from "../../components/botaoAdm/styled"
+import { StyledButtonAdm } from "../../components/botaoAdm/styled"
 import Cabecalho from "../../components/cabecalho"
- import { Vizualizar } from "./styled"
+
+import { Vizualizar } from "./styled"
  
- export default function GerenteVizualizar(){
+export default function GerenteVizualizar(){
      return(
          <div style={{ backgroundColor:"#333333" }}>
              <Cabecalho corLetra="nulo" />
@@ -60,4 +61,4 @@ import Cabecalho from "../../components/cabecalho"
             </main>
         </div>    
      )
- }
+}
