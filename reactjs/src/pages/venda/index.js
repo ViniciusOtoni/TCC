@@ -10,7 +10,7 @@ export default function Venda() {
         <div style={{backgroundColor:"#333333"}}> 
         <Cabecalho />
         <hr style={{marginLeft:"3.4em", marginRight:"3.4em"}} />
-            <main style={{ width: "1340px", margin: "auto"}}> 
+            <main style={{ width: "1240px", margin: "auto"}}> 
                 <StyledVenada> 
                     <div className="row-button"> 
                         <div className="ordem"> Ordenar: </div>

@@ -19,6 +19,8 @@ import Error from './pages/error';
 import GerenteListar from './pages/gerenteListar';
 import GerenteProdutosCadastrados from './pages/gerenteCadastrados';
 import GerentePedidos from './pages/GerentePedidos';
+import Popup from './components/popup';
+import Login from './pages/login';
 
 
 
@@ -44,6 +46,8 @@ export default function Rotes() {
                 <Route  path="/gerenteListar" component={GerenteListar} />
                 <Route path="/gerenteCadastrar" component={GerenteProdutosCadastrados} />
                 <Route path="/gerentePedidos" component={GerentePedidos} />
+                <Route path="/popup" component={Popup} />
+                <Route path="/login" component={Login} />
                 <Route  path="/*" component={Error} />
             </Switch>
         </BrowserRouter> 

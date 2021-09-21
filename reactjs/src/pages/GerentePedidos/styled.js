@@ -13,15 +13,13 @@ table {
 
 th {
     color: #ffffff;
-    font-size: 2em;
+    font-size: 1.5em;
     font-family: MontserratBold;
     text-align: left;
     padding-bottom: 1em;
 }
 
-.botao4 button {
-   width: 10em !important;
-}
+
 
 td {
     color: #ffffff;

@@ -7,14 +7,17 @@ const  StyledButtonAdm = styled.button`
 
     background-color: ${props => props.cor === 'vermelho' ? '#D9534F;' 
                                                     : props.cor === 'laranja' ? '#F0AC54;' 
-                                                                             :  '#5CB85C;'};
+                                                                             :  props.cor === 'preto' ? '#1A1A1A;'
+                                                                                : '#5CB85C;'
+                                                                              };
     border: none;
     
     &:hover{
         cursor: pointer;
         background-color: ${props => props.cor === 'vermelho' ? '#b5433f' 
                                                         : props.cor === 'laranja' ? '#cf9346;' 
-                                                                                 :  '#50a150;'};
+                                                                                  :  props.cor === 'preto' ? '#000000' 
+                                                                                    : '#50a150;'};
         transition: .5s;
     }
 `                                                                             

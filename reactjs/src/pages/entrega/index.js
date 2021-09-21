@@ -10,7 +10,7 @@ export default function EntregasSemItem()  {
             <Cabecalho />
             <hr style={{marginRight:"3.4em", marginLeft:"3.4em", }}/>
             
-        <main style={{ width: "1340px", margin: "auto"}}> 
+        <main style={{ width: "1240px", margin: "auto"}}> 
             
             <StyledEntrega> 
             

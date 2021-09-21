@@ -9,7 +9,7 @@ export default function GerenteVizualizar(){
      return(
          <div style={{ backgroundColor:"#333333" }}>
              <Cabecalho corLetra="nulo" />
-            <main style={{ width: '1340px', margin: 'auto'}}>
+            <main style={{ width: '1240px', margin: 'auto'}}>
                 <Vizualizar>
                     <div className="header">
                         <StyledButtonAdm  cor="laranja"> Novo Item </StyledButtonAdm>   

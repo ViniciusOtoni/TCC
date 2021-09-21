@@ -7,7 +7,7 @@ export default function Termos() {
         <div style={{backgroundColor: "#333333"}}> 
         <Cabecalho corLetra="nulo"/>
         <hr style={{marginLeft:"3.4em", marginRight:"3.4em", borderColor:"#F0AC54"}}/>
-        <main style={{width: "1340px", margin: "auto" }}>
+        <main style={{width: "1240px", margin: "auto" }}>
             <Container>
                 <div className="textos">
                     <h1>Termos e Serviços:</h1>

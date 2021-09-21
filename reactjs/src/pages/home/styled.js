@@ -12,7 +12,7 @@ const StyledConteudo = styled.div`
   
 
     main  {
-        width: 1340px;
+        width: 1240px;
         margin: auto;
 
     }

@@ -7,7 +7,7 @@ export default function Venda() {
     return (
         <div  style={{backgroundColor: "#333333"}}> 
         <Cabecalho />
-        <main style={{ width: "1340px", margin: "auto" }}>
+        <main style={{ width: "1240px", margin: "auto" }}>
             <Container>
             
             <div className="textos">

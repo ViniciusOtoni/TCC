@@ -7,7 +7,7 @@ export default function GerenteNaosei() {
     return (
         <div style={{ backgroundColor: "#333333" }}>
             <Cabecalho corLetra="nulo" />
-            <main style={{width: "1340px", margin: "auto", height:"100vh"}}>
+            <main style={{width: "1240px", margin: "auto", height:"100vh"}}>
                 <Container >
                     <div className="principal">
                        

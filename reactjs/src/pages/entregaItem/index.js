@@ -6,7 +6,7 @@ export default function EntregaItem() {
         <div style={{backgroundColor:"#333333"}}> 
         <Cabecalho corLetra="nulo"/>
         <hr style={{marginLeft:"3.6em", marginRight:"3.6em", borderColor:"#F0AC54"}} />
-            <main style={{width:"1340px", margin:"auto"}}> 
+            <main style={{width:"1240px", margin:"auto"}}> 
                 <StyledEntregaItem> 
                     <div className="agp-cima">
                      <div className="row-cima">  

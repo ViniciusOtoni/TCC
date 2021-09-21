@@ -197,9 +197,7 @@ const StyledCarrinhoItem = styled.div `
         margin-left: 6.5em;
     }
 
-    .select {
-        margin-left: 5em;
-    }
+    
 
     .valores-preco {
         margin-left: 5em;
@@ -207,7 +205,6 @@ const StyledCarrinhoItem = styled.div `
 
     .excluir {
         margin-top: .5em;
-        margin-left: 4.5em;
         margin-bottom: 5em;
         cursor: pointer;
     }

@@ -8,7 +8,7 @@ export default function ConcluirCompra() {
         <div style={{ backgroundColor: "#333333" }}>
             <Cabecalho corLetra="nulo"/>
             <hr  style={{borderColor:"#F0AC54", marginLeft:"3.4em", marginRight:"3.4em", marginBottom:"4em"}}/>
-            <main style={{ width: "1340px", margin: "auto" }}>
+            <main style={{ width: "1240px", margin: "auto" }}>
                 <Container>
                 
                

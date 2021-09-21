@@ -9,7 +9,7 @@ export default function GerenteProdutosCadastrados() {
     return (
         <div style={{backgroundColor:"#333333", minHeight:"100vh"}}> 
       <CabecalhoAdm />
-            <main style={{width:"1340px", margin:"auto"}}> 
+            <main style={{width:"1240px", margin:"auto"}}> 
                 <StyledGerenteCadastrados> 
                     <table> 
                         <thead> 

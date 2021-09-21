@@ -7,7 +7,7 @@ export default function GerenteAdicionar() {
     return (
         <div style={{backgroundColor:"#333333"}}> 
         <Cabecalho corLetra="nulo"/>
-            <main style={{width:"1340px", margin:"auto"}}> 
+            <main style={{width:"1240px", margin:"auto"}}> 
                  <StyledGerenteAdicionar>
                     <div className="content">
                         <div className="line alternating">

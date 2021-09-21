@@ -7,7 +7,7 @@ export default function GerenteAlterar() {
     return (
         <div style={{backgroundColor:"#333333"}}> 
         <Cabecalho corLetra='nulo' />
-            <main style={{width:"1340px", margin:"auto"}}> 
+            <main style={{width:"1240px", margin:"auto"}}> 
                 <StyledGerenteAlterar> 
                 <div className="new"> <StyledButtonAdm cor="laranja"> Novo Item </StyledButtonAdm> </div>
                 <div className="content">
