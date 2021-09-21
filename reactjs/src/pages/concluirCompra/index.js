@@ -73,7 +73,7 @@ export default function ConcluirCompra() {
                                 <div className="last-information-text1">Número do cartão</div>
                                 <StyledInput className="input-lastInfo-text1" />
                                 
-                                <div className="last-information-text1" className="last-information-text1-last">Percelas:</div>
+                                <div className="last-information-text1-last">Percelas:</div>
                                     <select className="parcelas-section" >
                                         <option> 2x </option>
                                         <option> 3x </option>

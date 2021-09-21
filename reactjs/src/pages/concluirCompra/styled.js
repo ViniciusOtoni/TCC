@@ -180,6 +180,10 @@ const Container = styled.div`
         line-height: 40px;
     }
 
+    .last-input-information-text1-last:hover {
+        outline: none;
+    }
+
     .verde-botao {
         background-color: #34D231;
         height: 40px;
