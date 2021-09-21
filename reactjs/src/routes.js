@@ -16,6 +16,8 @@ import GerenteVizualizar from './pages/GerenteVisualizar';
 import GerenteAdicionar from './pages/gerenteAdicionar';
 import GerenteAlterar from './pages/gerenteAlterar';
 import Popup from './components/popup';
+import GerenteNaosei from './pages/gerenteNaosei';
+import Error from './pages/error';
 
 
 export default function Rotes() {
@@ -38,6 +40,8 @@ export default function Rotes() {
                 <Route path="/gerenteAdicionar" component={GerenteAdicionar} />
                 <Route path="/gerenteAlterar" component={GerenteAlterar} />
                 <Route path="/popup" component={Popup} />
+                <Route path="/gerenteNaoSei" component={GerenteNaosei} />
+                <Route path="/*" component={Error} />
             </Switch>
         </BrowserRouter> 
     )
