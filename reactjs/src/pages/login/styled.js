@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledLogin = styled.div `
+const StyledPopupTela = styled.div `
 
 background-image: url('/assets/images/fundoTCC.png');
 background-size: 100% 100%;
@@ -10,4 +10,4 @@ align-items: center;
 justify-content: center;
 `
 
-export { StyledLogin }
+export { StyledPopupTela }

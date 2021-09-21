@@ -1,12 +1,13 @@
-import { StyledLogin } from "./styled";
+
 import Popup from "../../components/popup";
+import { StyledPopupTela } from "./styled";
 
 export default function Login() {
     return (
   
-            <StyledLogin> 
+            <StyledPopupTela> 
                 <Popup />
-            </StyledLogin>
+            </StyledPopupTela>
    
 )
 }

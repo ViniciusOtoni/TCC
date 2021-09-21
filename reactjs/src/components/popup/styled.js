@@ -36,9 +36,12 @@ header {
     padding-bottom: 0.4em;
 }
 
+
 .senha {
     font-family: MontserratBold;
     padding-bottom: 0.4em;
+    padding-top:${props => props.recuSenha === 'true' ? '2em' : '0em'} ;
+
 }
 
 .esqueceu-email {
@@ -46,6 +49,8 @@ header {
     font-size: 0.8em;
     text-align: right;
     padding-top: 0.7em;
+    display: ${props => props.recuSenha === 'true'  ? 'none' : 'block' };
+   
 }
 
 .esqueceu-email:hover {
@@ -58,6 +63,8 @@ header {
     font-size: 0.8em;
     text-align: right;
     padding-top: 0.7em;
+    display: ${props => props.recuSenha === 'true'  ? 'none' : 'block' };
+   
 }
 .esqueceu-senha:hover {
     text-decoration: underline;
@@ -79,10 +86,18 @@ header {
 
 .botao1 {
     margin-top: 2em;
+    display: ${props => props.recuSenha === 'true'  ? 'none' : 'block' };
 }
 
 .botao2 {
     margin-top: 1em;
+    display: ${props => props.recuSenha === 'true'  ? 'none' : 'block' };
+   
+}
+
+.botao3 {
+    margin-top: 1em;
+    padding-top:${props => props.recuSenha === 'true' ? '2em' : '0em'};
 }
 `
 
