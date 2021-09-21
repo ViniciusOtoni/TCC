@@ -15,7 +15,7 @@ import Footer from './components/rodape';
 import GerenteVizualizar from './pages/GerenteVisualizar';
 import GerenteAdicionar from './pages/gerenteAdicionar';
 import GerenteAlterar from './pages/gerenteAlterar';
-
+import Popup from './components/popup';
 
 
 export default function Rotes() {
@@ -37,6 +37,7 @@ export default function Rotes() {
                 <Route path="/gerenteVizualizar" component={GerenteVizualizar} />
                 <Route path="/gerenteAdicionar" component={GerenteAdicionar} />
                 <Route path="/gerenteAlterar" component={GerenteAlterar} />
+                <Route path="/popup" component={Popup} />
             </Switch>
         </BrowserRouter> 
     )

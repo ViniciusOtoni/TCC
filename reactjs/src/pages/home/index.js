@@ -26,7 +26,7 @@ export default function Home() {
         </div> 
             <section> 
                 <div className="titulo"> Mais Populares:  </div>
-                <div class="barra"> </div>
+                <div className="barra"> </div>
                 <div className="agp-jogo"> 
                     <CaixaJogo />
                     <CaixaJogo />
@@ -40,7 +40,7 @@ export default function Home() {
                   <div className="a2">  <Categoria cat="2" desc="2" img="2"/> </div>
                   <div className="a3">  <Categoria cat="3"desc="1" img="3"/> </div>
                 </div>
-                <div class="row2"> 
+                <div className="row2"> 
                 <div className="a4">   <Categoria cat="4" desc="2" img="4"/> </div>
                 <div className="a5">   <Categoria cat="5" desc="1" img="5"/> </div>
                </div>

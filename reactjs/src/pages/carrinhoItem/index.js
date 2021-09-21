@@ -17,7 +17,7 @@ export default function CarrinhoItem() {
           
                 <div className="cabecalho"> 
                     <div className="titulo"> Carrinho: </div>
-                    <div class="itens-direita"> 
+                    <div className="itens-direita"> 
                         <div className="quantidade"> Quantidade: </div>
                         <div className="preco"> Preço: </div>
                     </div>
