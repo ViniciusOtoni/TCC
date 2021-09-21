@@ -1,6 +1,5 @@
 import { StyledPopup } from "./styled";
 import { StyledInput } from "../input/styled";
-import { StyledButtonHome } from "../botaoHome/styled";
 import { StyledButtonPopup } from "../botaoPopup/styled";
 
 export default function Popup() {
