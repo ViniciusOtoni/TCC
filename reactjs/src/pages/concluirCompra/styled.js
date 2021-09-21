@@ -187,6 +187,10 @@ const Container = styled.div`
   
   
 
+    .last-input-information-text1-last:hover {
+        outline: none;
+    }
+
     .verde-botao {
         background-color: #34D231;
         height: 40px;
