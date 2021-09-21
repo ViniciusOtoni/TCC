@@ -15,6 +15,8 @@ import Footer from './components/rodape';
 import GerenteVizualizar from './pages/GerenteVisualizar';
 import GerenteAdicionar from './pages/gerenteAdicionar';
 import GerenteAlterar from './pages/gerenteAlterar';
+import Error from './pages/error';
+import GerenteNaosei from './pages/gerenteNaosei';
 
 
 
@@ -37,6 +39,8 @@ export default function Rotes() {
                 <Route path="/gerenteVizualizar" component={GerenteVizualizar} />
                 <Route path="/gerenteAdicionar" component={GerenteAdicionar} />
                 <Route path="/gerenteAlterar" component={GerenteAlterar} />
+                <Route path="/gerenteNaosei" component={GerenteNaosei} />
+                <Route path="/*" component={Error} />
             </Switch>
         </BrowserRouter> 
     )
