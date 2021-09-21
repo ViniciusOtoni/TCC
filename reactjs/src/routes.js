@@ -34,13 +34,13 @@ export default function Rotes() {
                 <Route  path="/escolhaEntrega" component={EscolhaEntrega} />
                 <Route  path="/venda" component={Venda} />
                 <Route  path="/saibaMais" component={SaibaMais} />
-                <Route path="/termos" component={Termos} />
-                <Route path="/concluirCompra" component={ConcluirCompra} />
-                <Route path="/gerenteVizualizar" component={GerenteVizualizar} />
-                <Route path="/gerenteAdicionar" component={GerenteAdicionar} />
-                <Route path="/gerenteAlterar" component={GerenteAlterar} />
-                <Route path="/gerenteListar" component={GerenteListar} />
-                <Route path="/*" component={Error} />
+                <Route  path="/termos" component={Termos} />
+                <Route  path="/concluirCompra" component={ConcluirCompra} />
+                <Route  path="/gerenteVizualizar" component={GerenteVizualizar} />
+                <Route  path="/gerenteAdicionar" component={GerenteAdicionar} />
+                <Route  path="/gerenteAlterar" component={GerenteAlterar} />
+                <Route  path="/gerenteListar" component={GerenteListar} />
+                <Route  path="/*" component={Error} />
             </Switch>
         </BrowserRouter> 
     )
