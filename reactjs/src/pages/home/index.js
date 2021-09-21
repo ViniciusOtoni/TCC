@@ -36,13 +36,13 @@ export default function Home() {
             </section>
             <section className="faixa3"> 
                 <div className="row2"> 
-                  <div className="a1">   <Categoria cat="1" desc="1" img="1"/> </div>
+                  <div className="a1">   <Categoria  cat="1" desc="1" img="1"/> </div>
                   <div className="a2">  <Categoria cat="2" desc="2" img="2"/> </div>
-                  <div className="a3">  <Categoria cat="3"desc="3" img="3"/> </div>
+                  <div className="a3">  <Categoria cat="3"desc="1" img="3"/> </div>
                 </div>
                 <div class="row2"> 
-                <div className="a4">   <Categoria cat="4" desc="4" img="4"/> </div>
-                <div className="a5">   <Categoria cat="5" desc="5" img="5"/> </div>
+                <div className="a4">   <Categoria cat="4" desc="2" img="4"/> </div>
+                <div className="a5">   <Categoria cat="5" desc="1" img="5"/> </div>
                </div>
 
             </section>

@@ -1,16 +1,17 @@
 import { Container } from "./styled"
 import { StyledInput } from '../../components/input/styled'
+import Cabecalho from "../../components/cabecalho"
+import { StyledButtonVerde } from "../../components/botaoVerde/styled"
 
 export default function ConcluirCompra() {
     return (
         <div style={{ backgroundColor: "#333333" }}>
+            <Cabecalho corLetra="nulo"/>
+            <hr  style={{borderColor:"#F0AC54", marginLeft:"3.4em", marginRight:"3.4em", marginBottom:"4em"}}/>
             <main style={{ width: "1340px", margin: "auto" }}>
                 <Container>
-                <div className="cabecalho">
-                    <img src="/assets/images/logo.svg" alt="" />
-                    <h2 className="nomeEmpresa">GameBud</h2>
-                </div>
-                <div className="cabecalho-barra"></div>
+                
+               
                 <main className="sub-main">
                     <div className="esquerda-grupo-input">
                         <div className="text-input">Inserir Cep</div>
@@ -31,8 +32,8 @@ export default function ConcluirCompra() {
                     <hr />
                     <div className="direita-grupo-input">
                         <div className="credit-card">
-                            <button style={{marginBottom: ".3em"}}>Cartão de Crédito <img  className="img-button" src="/assets/images/cartao.svg" /></button>
-                            <button>Cartão de Débito <img className="img-button2" src="/assets/images/cartao.svg"/></button>
+                            <button style={{marginBottom: ".3em"}}>Cartão de Crédito <img  className="img-button" src="/assets/images/cartao.svg" alt=""/></button>
+                            <button>Cartão de Débito <img className="img-button2" src="/assets/images/cartao.svg" alt=""/></button>
                         </div>
 
                         <div className="cartoes">
@@ -96,7 +97,7 @@ export default function ConcluirCompra() {
                                   
                                 
                             
-                                <button className="verde-botao">Concluir Compra!</button>
+                                <StyledButtonVerde style={{marginTop:"4.8em", height:"2em"}}> Concluir Compra! </StyledButtonVerde>
                             </div>
                         </div>
                     </div>

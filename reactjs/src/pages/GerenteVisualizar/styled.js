@@ -11,6 +11,7 @@ const Vizualizar = styled.div`
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        justify-content: right;
     }
 
     .align-header{
@@ -56,7 +57,7 @@ const Vizualizar = styled.div`
         background-color: #282828;
     }
 
-    .footer{}
+    
 
     .button{
         padding: .7em 2.5em;

@@ -17,13 +17,13 @@ const Container = styled.div`
     h1 {
         margin-top: 3em;
         font-size: 48px;
-
+        font-family: MontserratBold;
         width: 900px;
         align-self: center;
     }
 
     p {
-      
+        font-family: Medio;
         font-size: 26px;
         width: 830px;
         align-self: center;

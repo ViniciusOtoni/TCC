@@ -56,6 +56,8 @@ const StyledCabecalho = styled.div `
         position: relative;
         font-family: MontserratBold; 
         cursor: pointer;
+        display: ${props => props.corLetra === 'nulo'  ? 'none' : 'block' };
+       
     }
 
     .input::placeholder {
@@ -77,7 +79,8 @@ const StyledCabecalho = styled.div `
         align-items: center;
         position: relative;
         font-family: MontserratBold;
-   
+        display: ${props => props.corLetra === 'nulo'  ? 'none' : 'block' };
+       
         cursor: pointer;
     }
 
@@ -90,7 +93,9 @@ const StyledCabecalho = styled.div `
         content: url(${props => props.corLetra === 'branco' ? '/assets/images/cBranco.svg' : '/assets/images/carrinho.svg'});
         width: 4em;
         height: 4em;
-
+        display: ${props => props.corLetra === 'nulo'  ? 'none' : 'block' };
+    
+       
         cursor: pointer;
     }
 
@@ -98,9 +103,12 @@ const StyledCabecalho = styled.div `
         color: #ffffff;
         font-size: 1.5em;
         font-family: MontserratBold;
-
+        display: ${props => props.corLetra === 'branco'  ? 'block' : 'none' };
         cursor: pointer;
     }
+
+ 
+    
 `
 
 

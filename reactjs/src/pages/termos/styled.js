@@ -20,17 +20,22 @@ const Container = styled.div`
     }
 
     h1 {
-        font-size: 48px;
+        font-size: 38px;
+        font-family: MontserratBold;
     }
 
     h2 {
-        font-size: 36px;
+        font-size: 19px;
+        font-family: Medio;
     }
 
     .textos{
         color: white;
-
         margin-left: 2.5em;
+    }
+
+    .textos div {
+        font-family: Medio;
     }
 
     .barra {
@@ -41,9 +46,9 @@ const Container = styled.div`
     }
 
     .Secondh2 {
-        font-size: 36px;
+        font-size: 19px;
         width: 1150px;
-
+        font-family: Medio;
         margin-bottom: 5em;
     }
 

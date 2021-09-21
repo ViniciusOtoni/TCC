@@ -8,7 +8,7 @@ export default function EntregasSemItem()  {
         <div style={{backgroundColor:"#333333"}}> 
         
             <Cabecalho />
-            <hr style={{marginRight:"3.4em", marginLeft:"3.4em"}}/>
+            <hr style={{marginRight:"3.4em", marginLeft:"3.4em", }}/>
             
         <main style={{ width: "1340px", margin: "auto"}}> 
             

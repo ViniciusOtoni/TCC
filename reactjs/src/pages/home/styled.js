@@ -119,7 +119,7 @@ const StyledConteudo = styled.div`
    .faixa3 {
        display: flex;
        flex-direction: column;
-       justify-content: space-evenly;
+       justify-content: space-center;
        align-self: center;
        margin-top: 7em;
    }
