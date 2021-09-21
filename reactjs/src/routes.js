@@ -17,6 +17,7 @@ import GerenteAdicionar from './pages/gerenteAdicionar';
 import GerenteAlterar from './pages/gerenteAlterar';
 import Error from './pages/error';
 import GerenteListar from './pages/gerenteListar';
+import GerenteProdutosCadastrados from './pages/gerenteCadastrados';
 
 
 
@@ -40,6 +41,7 @@ export default function Rotes() {
                 <Route  path="/gerenteAdicionar" component={GerenteAdicionar} />
                 <Route  path="/gerenteAlterar" component={GerenteAlterar} />
                 <Route  path="/gerenteListar" component={GerenteListar} />
+                <Route path="/gerenteCadastrar" component={GerenteProdutosCadastrados} />
                 <Route  path="/*" component={Error} />
             </Switch>
         </BrowserRouter> 

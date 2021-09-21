@@ -1,0 +1,39 @@
+import styled from "styled-components";
+
+const StyledGerenteCadastrados = styled.div`
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+
+th {
+    color: #ffffff;
+    font-size: 2em;
+    font-family: MontserratBold;
+    text-align: left;
+    padding-bottom: 1em;
+}
+
+td {
+    color: #ffffff;
+    font-size: 1em;
+    font-family: MontserratBold;
+    text-align: left; 
+}
+
+td {
+    padding: 1em 0em;
+}
+
+.footer {
+   displaY: flex;
+   flex-direction: row;
+   align-items: center;
+   margin-top: 4em;
+}
+`
+export { StyledGerenteCadastrados }
