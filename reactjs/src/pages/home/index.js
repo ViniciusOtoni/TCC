@@ -7,6 +7,8 @@ import Categoria from "../../components/escolhaTipo"
 import '../index.css'
 import "animate.css"
 
+// eaaaaaaeee rapaaziaaadaaaaa
+
 export default function Home() {
     return (
         <main style={{backgroundColor:"#333333",  margin:"auto", position:"relative"}}>
