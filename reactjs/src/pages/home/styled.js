@@ -110,7 +110,7 @@ const StyledConteudo = styled.div`
     }
 
    .barra { 
-       border: 3px solid #F0AC54;
+       border: 4px solid #F0AC54;
         width: 23em;
         margin-left: 3em;
         margin-bottom: 4em;
@@ -285,10 +285,6 @@ position: absolute;
 
 @media (max-width: 425px) {
     display: none;
-
-    img {
-        display: none;
-    }
 }
 
 `

@@ -10,8 +10,8 @@ export default function Venda() {
         <div style={{backgroundColor:"#333333"}}> 
         <Cabecalho />
         <hr style={{marginLeft:"3.4em", marginRight:"3.4em"}} />
-            <main style={{ width: "1240px", margin: "auto"}}> 
                 <StyledVenada> 
+                <main className='a'> 
                     <div className="row-button"> 
                         <div className="ordem"> Ordenar: </div>
                         <div className="select-ordem"> <select> <option value="ordem" selected> Ordem </option> </select> </div>
@@ -29,9 +29,11 @@ export default function Venda() {
                      <div  className="bottom">    <CaixaJogo /> </div>
                      <div  className="bottom">    <CaixaJogo /> </div>
                     </div>
-                    <Paginacao />
+                  <div className="pag">  <Paginacao /> </div>
+                </main>
                 </StyledVenada>
-            </main>
+                
+           
             <Footer />
         </div>
     )

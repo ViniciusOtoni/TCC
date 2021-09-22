@@ -2,11 +2,15 @@ import styled from "styled-components";
 
 const StyledPaginacao = styled.div `
 
+    .pc {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     text-align: center;
+    }
+
+   
 
     .button-mudar button {
         background-color: #282828;
@@ -17,6 +21,10 @@ const StyledPaginacao = styled.div `
         padding: 0.5em;
         margin: 0em .8em;
     }
+
+    .cell {
+            display: none;
+        }
 
    
 
@@ -31,8 +39,29 @@ const StyledPaginacao = styled.div `
         align-items: center;
         justify-content: center;
         display: flex;
-      
     }
+        @media(max-width:375px) {
+            
+            .pc {
+                display: none;
+            }
+
+            .cell {
+                display: block;
+            }
+
+            display: flex;
+            flex-direction: column;
+
+            .row {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            
+        }
+    
 
 `
 

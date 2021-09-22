@@ -1,9 +1,16 @@
 import styled from "styled-components";
 
 const StyledVenada = styled.div `
-    display: flex;
-    flex-direction: column;
-  
+   
+
+
+    .a {
+         width: 1240px;
+          margin: auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+    }
 
     .row-button {
         display: flex;
@@ -41,6 +48,58 @@ const StyledVenada = styled.div `
         margin-bottom: 1em;
         margin-top: 3em;
     }
+
+    .pag {
+        margin-top: 3em;
+        margin-bottom: 3em;
+    }
+
+    @media(max-width:375px) {
+        margin: 0em;
+        padding: 0em;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .wrap {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            max-width: 100%;
+        }
+
+        .a {
+            width: 100%;
+            padding: 0em;
+            margin: 0em;
+        }
+
+        .ordem {
+            padding-left: 2em;
+        }
+
+        .row-button {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .select-ordem {
+            padding-right: 2em;
+        }
+
+        .pag {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2em;
+        }
+     
+}
 `
 
 export { StyledVenada }
