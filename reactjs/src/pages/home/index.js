@@ -19,21 +19,22 @@ export default function Home() {
             <div className="agp-melhor"> 
                 <div className="texto-melhor"> A Melhor </div>
                 <div className="texto-melhor"> Loja Do Brasil </div>
-                <div className="saiba-mais"> <StyledButtonHome style={{width:"224px", height:"68px", paddingTop:"1em" }}> Saiba Mais! </StyledButtonHome>  </div>
+                <div className="saiba-mais"> <StyledButtonHome className="teste"> Saiba Mais! </StyledButtonHome>  </div>
             </div>
             <div className="logo"> <img src="/assets/images/controle.svg" alt="" /> 
             </div>
         </div> 
-            <section> 
+            <section className="faixa2"> 
                 <div className="titulo"> Mais Populares:  </div>
                 <div class="barra"> </div>
                 <div className="agp-jogo"> 
-                    <CaixaJogo />
-                    <CaixaJogo />
-                    <CaixaJogo />
-                    <CaixaJogo />
+                  <div className="none"> <CaixaJogo />  </div>
+                  <div className="none"> <CaixaJogo />  </div>
+                  <div className="none"> <CaixaJogo />  </div>
+                <CaixaJogo /> 
                 </div>
-            </section>
+                </section>
+            
             <section className="faixa3"> 
                 <div className="row2"> 
                   <div className="a1">   <Categoria  cat="1" desc="1" img="1"/> </div>
@@ -47,9 +48,14 @@ export default function Home() {
 
             </section>
             </main>
-            <Footer/>
+            
+            
+           
+          
         </StyledConteudo>
-        
+        <Footer/>
         </main>
+        
+        
     )
 }

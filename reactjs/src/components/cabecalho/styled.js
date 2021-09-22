@@ -3,7 +3,10 @@ import styled from 'styled-components';
 
 
 const StyledCabecalho = styled.div `
-    display: flex;
+   
+
+     .pc {
+        display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -12,6 +15,7 @@ const StyledCabecalho = styled.div `
 
     margin: auto;
      & * {z-index : 11;}
+     }
 
     .logo-cabecalho  img {
         width: 6em;
@@ -99,12 +103,62 @@ const StyledCabecalho = styled.div `
         cursor: pointer;
     }
 
+    .cell {
+          display: none;
+      }
+
     .entrega {
         color: #ffffff;
         font-size: 1.5em;
         font-family: MontserratBold;
         display: ${props => props.corLetra === 'branco'  ? 'block' : 'none' };
         cursor: pointer;
+    }
+
+    @media (max-width: 375px) {
+
+      .pc {
+          display: none;
+      }
+
+      .cell {
+          display: block;
+          flex-direction: row;
+          display: flex;
+          width: auto;
+          font-size: 0.8em;
+          align-items: center;
+          margin: 0em;
+          padding: 0.3em;
+          justify-content: space-around;
+          
+        }
+
+      .carrinho {
+          width: auto;
+          height: 2em;
+          padding: 0em;
+          content: url('/assets/images/carrinho.svg');
+          margin-right: 1.3em;
+          
+      }
+
+      .agp-direita {
+          display: flex;
+          flex-direction: row;
+          align-self: center;
+          justify-content: space-around;
+      }
+      .lupa img {
+        height: 1.8em;
+        width: auto;
+      }
+      .login {
+        color: #F0AC54;
+      }
+      .logo-cabecalho {
+        padding-right: 3em;
+      }
     }
 
  

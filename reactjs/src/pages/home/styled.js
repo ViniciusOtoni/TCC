@@ -146,7 +146,126 @@ const StyledConteudo = styled.div`
    .a4 {
        margin-right: 12em;
    }
+
+  
+   .teste {
+    width:224px; 
+    height:68px; 
+    padding-top:1em;
+   }
    
+   
+        @media(max-width:375px) {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0em;
+            padding: 0em;
+            background-image: url('/assets/images/logo.svg');
+            background-repeat: no-repeat;
+            background-position-y: 2em;
+            background-position-x: 8em;
+
+           main {
+               width: 100%;
+           }
+            
+           .logo img {
+               display: none;
+           }
+            .row {
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               width:100%;
+               padding: 0em;
+               margin: 0em;
+            }
+           
+            .texto-melhor {
+                font-size: 2em;
+            }
+           
+            .teste {
+            width:8em; 
+            height: 2.4em; 
+            padding: .3em;
+            font-size: 1em;
+            margin-bottom: 1em;
+            }
+
+            .agp-melhor {
+                margin-top: 7em;
+                display: flex;
+                flex-direction: column;
+                margin-left: 0em;
+            }
+            
+            button:hover {
+                display: none;
+            }
+
+            .faixa2 {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+
+            }
+
+            .titulo {
+                padding: 0em;
+                padding-top: 1em;
+                padding-bottom: .2em;
+                font-size: 1.7em;
+            }
+
+
+            .barra {
+                width: 62%;
+                padding: 0em;
+                margin: 0em;
+                margin-bottom: 2em;
+            }
+
+            .agp-jogo {
+                width: 100%auto;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .row2 {
+                display: flex;
+                flex-direction: column;
+                margin: 0em;
+                padding: 0em;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .a1 {
+                margin: 0em;
+            }
+
+            .a2 {
+                margin: 0em;
+            }
+
+            .a3 {
+                margin: 0em;
+            }
+
+            .a4 {
+                margin: 0em;
+            }
+
+            .none {
+                display: none;
+            }
+        }
 
    
     
@@ -162,6 +281,16 @@ position: absolute;
     overflow: hidden;
     width: 60%;
     height: 100%;
+
+
+@media (max-width: 425px) {
+    display: none;
+
+    img {
+        display: none;
+    }
+}
+
 `
 
 export { StyledConteudo, Bolota }

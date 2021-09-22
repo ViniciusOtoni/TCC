@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 const RodaPe = styled.div`
-    display: flex;
+   
+   .pc {
+   display: flex;
     flex-direction: column;
     margin: 0px;
-
+   }
+   
     body{
         margin: 0px;
     }
@@ -13,7 +16,7 @@ const RodaPe = styled.div`
         box-sizing: border-box;
     }
 
-    main{
+    .pc {
         display: flex;
         flex-direction: column;
     }
@@ -151,7 +154,62 @@ const RodaPe = styled.div`
         padding-top: 1.5em;
         width: 75em;
     }
+    .cell {
+        display: none;
+    }
 
+    @media(max-width:375px) {
+       .pc {
+           display: none;
+       }
+
+       .cell {
+           display: block;
+       }
+
+       header {
+        width:100%;
+        background-color: #DFA04E;
+       }
+
+       .align-title {
+           display: flex;
+           flex-direction: row;
+           justify-content: left;
+       }
+
+       .fxa1 {
+        background-color: #F0AC54;
+        width: 100%;
+        padding: 2em;
+        display: flex;
+        flex-direction: column;
+       }
+       .row {
+           display: flex;
+           flex-direction: row;
+           align-items: center;
+       }
+
+       .topico {
+           font-family: Medio;
+           padding-top: 2em;
+       }
+
+       .valor-topico {
+        font-family: Medio;
+        padding-top: 2em;
+        padding-left: .4em;
+       }
+       .regiao img {
+           padding-top: 2em;
+           padding-left: 1em;
+       }
+       .img1 img {
+           padding-top: 1em;
+           padding-right: .5em;
+       }
+    }
 `
 
 export { RodaPe } 

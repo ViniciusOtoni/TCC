@@ -17,6 +17,13 @@ const StyledButtonHome = styled.div `
         transition: .5s;
         cursor: pointer;
     }
+
+  
+
+    @media(max-width: 425px) {
+        width: 7.8em;
+        height: 2.1em;
+    }
 `
 
 export { StyledButtonHome }
