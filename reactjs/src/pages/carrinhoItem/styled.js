@@ -254,8 +254,194 @@ const StyledCarrinhoItem = styled.div `
     font-family: MontserratBold;
     margin-right: 2em;    
    }
-    
 
+   .pc {
+       width: 1240px;
+       margin: auto;
+   }
+
+   .cell {
+       display: none;
+   }
+
+   .green {
+    margin-bottom:1em;
+     margin-right: 2em;
+    width: 14em;
+   }
+    
+   @media(max-width:375px) {
+       .cell {
+           width: 100%;
+       }
+       .box-preta {
+       width: 85%;
+       padding: 0em;
+       margin: 0em;
+       display: flex;
+       flex-direction: column;
+       margin-left: 2em;
+      
+   }
+
+   .cabecalho {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+   }
+
+   .foto img {
+       width: 15em;
+       height: 15em;
+   }
+
+   .foto {
+       text-align: center;
+   }
+
+   .preco {
+       display: none;
+   }
+
+   .cell {
+       display: block;
+   }
+
+   .pc {
+       display: none;
+   }
+
+   .row-valores {
+       display: flex;
+       flex-direction: row;
+       justify-content: left;
+   }
+
+ .excluirB {
+    width: 92%;
+    height: 3em;
+    border-radius: .4em;
+    margin-left: 1em;
+    margin-top: 2em;
+   }
+
+   .excluir {
+       margin-bottom: 2em;
+   }
+
+   .nome-produto {
+       margin-top: 1em;
+       width: 90%;
+       text-align: center;
+   }
+
+   .row-val {
+       display: flex;
+       flex-direction: row;
+       justify-content: left;
+       align-items: center;
+       padding: 0em;
+       margin: 0em;
+       
+   }
+
+   .valor-val {
+       padding-left: .8em;
+   }
+
+
+
+   .row-valores {
+       display: flex;
+       flex-direction: row;
+       align-items: center;
+    justify-content: left;
+       
+   }
+
+   .row-input {
+       width: 100%;
+       display: flex;
+       flex-direction: row;
+       align-items: center;
+       justify-content: left;
+       margin-top: 2.4em;
+   }
+
+   .frete {
+       font-size: 1.2em;
+       padding-left: 1em;
+   }
+
+   .cep {
+       width: 0em;
+   }
+
+   .quantidade {
+    color: #ffffff;
+    padding: 0em;
+    margin: 0em;
+    padding-left: 1em;
+    padding-top: 1em;
+    padding-right: 1em;
+   }
+   .select {
+       padding-top: 1.5em;
+   }
+
+   .valor-cep {
+       display: flex;
+       flex-direction: column;
+       justify-content: left;
+   }
+
+   .rua {
+       margin-left: 1em;
+   }
+
+   .bairro {
+       margin-left: 1em;
+   }
+
+   .estado {
+       margin-left: 1em;
+       margin-bottom: .5em;
+   }
+
+   .titulo-val {
+       padding-left: 1.4em;
+       margin: 0em;
+   }
+
+   .agp-realizar {
+       margin-top: 2em;
+   }
+   .sub-valor-final {
+       color: #ffffff;
+   }
+
+   .total-final {
+       color: #ffffff;
+   }
+
+   .titulo-val {
+    padding-left: 1em;
+   }
+
+   .green {
+       margin: 0em;
+        width: 90%;
+        margin-left: 1em;
+        padding: 1em;
+   }
+
+   .botao-finalizar {
+       width: 100%;
+       margin-bottom: 2em;
+   }
+}
+
+   
   
    
     
