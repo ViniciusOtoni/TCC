@@ -11,9 +11,6 @@ export default function GerenteVizualizar(){
              <CabecalhoAdm />
                 <Vizualizar>
                      <main>
-                        <div className="header">
-                            <StyledButtonAdm  cor="laranja" className="button-header"> Novo Item </StyledButtonAdm>   
-                        </div>
                         <div className="content">
                             <div className="line alternating">
                                 <div> Nome: </div>
