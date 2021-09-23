@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const StyledCabecalho = styled.div `
    
 
-     .pc {
+    .pc {
         display: flex;
     flex-direction: row;
     justify-content: space-between;
