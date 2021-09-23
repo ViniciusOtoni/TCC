@@ -7,6 +7,8 @@ const StyledCabecalhoAdm = styled.div `
     flex-direction: row;
     align-items: center;
     justify-content: ${props => props.nulo === 'true' ? 'none' : 'space-around'};
+    padding-left: 1em;
+    padding-top: 1em;
 
     .column {
         display: flex;
@@ -33,15 +35,18 @@ const StyledCabecalhoAdm = styled.div `
 
 
     .pedidos {
-        display: ${props => props.nuloB === 'strue' ? 'none' : 'block' };
-        display: ${props => props.nulo === 'true'  ? 'none' : 'block' };  
-        display: ${props => props.bNulo === 's' ? 'none' : 'block'};
+        display: ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : props.bNulo === true ? 'none' : 'break' };
+      
     }
 
+    
 
     .input {
-    display: ${props => props.nuloB === true  ? 'none' : 'block' };   
-    display: ${props => props.nulo === 'true'  ? 'none' : 'block' };  
+    display:  ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : 'block' };
+   }
+
+ .pesquisar {
+    display:  ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : 'block' };
    }
 
    
@@ -62,7 +67,7 @@ const StyledCabecalhoAdm = styled.div `
        background-repeat: no-repeat;
        background-position-x: center;
        background-position-y: center;
-       display: ${props => props.nuloB === true  ? 'none' : 'block'};  
+       display: ${props => props.nulob === true  ? 'none' : 'block'};  
        display: ${props => props.nulo === 'true'  ? 'none' : 'block'};   
     }
 

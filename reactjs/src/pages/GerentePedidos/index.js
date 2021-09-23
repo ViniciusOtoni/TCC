@@ -8,7 +8,7 @@ import Paginacao from "../../components/paginacao";
 export default function GerentePedidos() {
     return (
         <div style={{backgroundColor:"#333333", minHeight:"100vh"}}> 
-        <CabecalhoAdm bNulo='s' />
+        <CabecalhoAdm bNulo={true} />
               
                   <StyledGerentePedidos> 
                   <main > 

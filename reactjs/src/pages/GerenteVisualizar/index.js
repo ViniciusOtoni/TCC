@@ -8,7 +8,7 @@ import { Vizualizar } from "./styled"
 export default function GerenteVizualizar(){
      return(
          <div style={{ backgroundColor:"#333333" }}>
-             <CabecalhoAdm />
+             <CabecalhoAdm nuloB={true}/>
                 <Vizualizar>
                      <main>
                         <div className="content">
