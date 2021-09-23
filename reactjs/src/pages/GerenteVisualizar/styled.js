@@ -7,6 +7,7 @@ const Vizualizar = styled.div`
     height: 100vh;
 
 
+
     main {
         width: 1240px;
         margin: auto;
