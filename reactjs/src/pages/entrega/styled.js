@@ -5,7 +5,10 @@ const StyledEntrega = styled.div `
 background-color: #333333;
      height:  100vh;
     
-    
+    main {
+        width: 1240px;
+        margin: auto;
+    }
 
     .agrupamento-carrinho {
         display: flex;
@@ -62,6 +65,80 @@ background-color: #333333;
 .button {
     margin-left: 8.4em;
     margin-top: 1.4em;
+}
+
+.style {
+    height: 3em;
+    width:27em;
+    padding-top:0.7em;
+}
+
+@media(max-width:375px) {
+    main {
+        width: 100%;
+    }
+
+    .agrupamento-carrinho {
+        width: 100%;
+        margin: 0em;
+        padding: 0em;
+        position: relative;
+        padding-bottom: 5em;
+        height: 100%;
+    }
+
+    .logo {
+        margin: 0em;
+        padding: 0em;
+    }
+
+    .logo img {
+        width: auto;
+        height: 8em;
+        padding: 1em;
+    }
+
+    .texto {
+        padding: 0em;
+        margin: 0em;
+        font-size: 1em;
+        text-align: center;
+        align-self: center;
+        display: flex;
+    }
+
+    .column {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .style {
+    height: 3em;
+    padding-bottom: .7em;
+    text-align: center;
+    width: 90%;
+}
+
+.button {
+    margin: 0em;
+    padding: 0em;
+    position: absolute;
+    bottom: 0em;
+    width: 90%;
+    left: 2em;
+    padding-bottom: 1em;
+}
+
+.titulo {
+    font-size: 1.4em;
+    margin: 0em;
+    padding: 0em;
+    text-align: center;
+    margin-bottom: .3em;
+    margin-top: 2em;
+}
+ 
 }
     
 

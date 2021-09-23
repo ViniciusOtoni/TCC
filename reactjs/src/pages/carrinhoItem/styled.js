@@ -381,7 +381,7 @@ const StyledCarrinhoItem = styled.div `
     color: #ffffff;
     padding: 0em;
     margin: 0em;
-    padding-left: 1em;
+    padding-left:  .7em;
     padding-top: 1em;
     padding-right: 1em;
    }
@@ -439,6 +439,7 @@ const StyledCarrinhoItem = styled.div `
        width: 100%;
        margin-bottom: 2em;
    }
+   
 }
 
    

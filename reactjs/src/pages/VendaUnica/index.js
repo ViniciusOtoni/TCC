@@ -6,10 +6,12 @@ import { Conteudo } from './styled'
 
 export default function VendaUnica(){
     return(
+        <div style={{backgroundColor:"#333333"}}>
+        <Cabecalho />
         <Conteudo> 
-            <Cabecalho />
+            
             <hr style={{ marginLeft: "3.4em", marginRight: "3.4em" }} />
-            <main style={{ width:"1240px", margin: "auto"}}> 
+            <main style={{ width:"1340px", margin: "auto"}}> 
                 <div className="title"> FIFA 21 para PS4 EA </div>
                 <Content>
                     <div className="align-content">
@@ -42,7 +44,8 @@ export default function VendaUnica(){
                     <hr /> 
                 </Content>
             </main>
-            <Footer />
         </Conteudo>
+        <Footer />
+        </div>
     )
 }

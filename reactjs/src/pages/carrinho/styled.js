@@ -3,9 +3,12 @@ import styled from "styled-components";
 const StyledCarrinho = styled.div `
     
     background-color: #333333;
-     height:  100vh;
+    height:  100vh;
     
-    
+    main {
+        width: 1240px;
+        margin: auto;
+    }
 
     .agrupamento-carrinho {
         display: flex;
@@ -71,6 +74,63 @@ const StyledCarrinho = styled.div `
         padding-bottom: .8em; 
     }
 
+    .botao {
+        width: 14em;
+        height: 1em;
+    }
+
+
+    @media(max-width:375px) {
+        main {
+            width: 100%;
+        }
+
+        .agrupamento-carrinho {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            margin: 0em;
+            padding: 0em;
+            position: relative;
+            padding-bottom: 6em;
+            height: 100%;
+        }
+
+        .botao {
+            bottom: 1em;
+            margin: 0em;
+           
+            left: .7em;
+            width: 90%;
+        }
+        .texto {
+            margin: 0em;
+            font-size: 1em;
+        }
+
+        .logo {
+            margin: 0em;
+            padding: 1em;
+        }
+
+        .logo img {
+            width: auto;
+            height: 7em;
+            padding: 1em;
+        }
+
+        .titulo {
+            font-size: 2em;
+            margin: 0em;
+            padding: 0em;
+            text-align: center;
+            margin-top: 2.4em;
+            margin-bottom: .6em;
+        }
+
+        height: auto;
+        
+    }
     
 `
 

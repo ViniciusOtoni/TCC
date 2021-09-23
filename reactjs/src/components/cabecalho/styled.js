@@ -140,6 +140,7 @@ const StyledCabecalho = styled.div `
           padding: 0em;
           content: url('/assets/images/carrinho.svg');
           margin-right: 1.3em;
+          display: ${props => props.corLetra === 'nulo'  ? 'block' : 'block' };
           
       }
 
@@ -155,6 +156,7 @@ const StyledCabecalho = styled.div `
       }
       .login {
         color: #F0AC54;
+        display: ${props => props.corLetra === 'nulo'  ? 'block' : 'block' };
       }
       .logo-cabecalho {
         padding-right: 3em;
