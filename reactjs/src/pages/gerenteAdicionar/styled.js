@@ -6,7 +6,10 @@ const StyledGerenteAdicionar = styled.div`
     padding: 2em;
     height: 100vh;
 
-   
+   main {
+       margin: auto;
+       width: 1240px;
+   }
 
     .content{
         display: flex;

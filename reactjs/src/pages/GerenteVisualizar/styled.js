@@ -6,6 +6,12 @@ const Vizualizar = styled.div`
     padding: 2em;
     height: 100vh;
 
+
+    main {
+        width: 1240px;
+        margin: auto;
+    }
+
     .header{
         display: flex;
         flex-direction: row;
@@ -34,7 +40,7 @@ const Vizualizar = styled.div`
         display: flex;
         flex-direction: column;
 
-        margin: 5em 0em;
+        margin-bottom: 5em;
     }
 
     .line{

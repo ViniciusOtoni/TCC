@@ -6,7 +6,7 @@ import { StyledButtonAdm } from "../../components/botaoAdm/styled.js"
 export default function GerenteNaosei() {
     return (
         <div style={{ backgroundColor: "#333333" }}>
-            <Cabecalho corLetra="nulo" />
+            <Cabecalho  />
             <main style={{width: "1240px", margin: "auto", height:"100vh"}}>
                 <Container >
                     <div className="principal">

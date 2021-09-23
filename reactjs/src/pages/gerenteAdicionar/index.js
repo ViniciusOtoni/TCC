@@ -1,14 +1,16 @@
-import Cabecalho from "../../components/cabecalho"
+
 import { StyledGerenteAdicionar } from "./styled"
 import { StyledButtonAdm } from "../../components/botaoAdm/styled"
 import { StyledInput, StyledSelect } from "../../components/input/styled"
+import CabecalhoAdm from "../../components/cabecalhoAdm"
 
 export default function GerenteAdicionar() {
     return (
         <div style={{backgroundColor:"#333333"}}> 
-        <Cabecalho corLetra="nulo"/>
-            <main style={{width:"1240px", margin:"auto"}}> 
+        <CabecalhoAdm nulo='true' />
+            
                  <StyledGerenteAdicionar>
+                     <main> 
                     <div className="content">
                         <div className="line alternating">
                             <div className="topico1"> Nome: </div>
@@ -59,8 +61,9 @@ export default function GerenteAdicionar() {
                             <StyledButtonAdm>  Criar item </StyledButtonAdm>
                         </div>
                     </div>
+                    </main> 
                  </StyledGerenteAdicionar>
-            </main> 
+            
         </div>
     )
 }

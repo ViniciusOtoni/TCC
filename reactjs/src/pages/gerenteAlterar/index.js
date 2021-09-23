@@ -1,15 +1,17 @@
 import { StyledGerenteAlterar } from "./styled";
 import { StyledInput, StyledSelect } from "../../components/input/styled";
 import { StyledButtonAdm } from "../../components/botaoAdm/styled";
-import Cabecalho from "../../components/cabecalho";
+
+import CabecalhoAdm from "../../components/cabecalhoAdm";
 
 export default function GerenteAlterar() {
     return (
         <div style={{backgroundColor:"#333333"}}> 
-        <Cabecalho corLetra='nulo' />
-            <main style={{width:"1240px", margin:"auto"}}> 
+        <CabecalhoAdm nuloB={true}/>
+            
                 <StyledGerenteAlterar> 
-                <div className="new"> <StyledButtonAdm cor="laranja"> Novo Item </StyledButtonAdm> </div>
+                <main style={{width:"1240px", margin:"auto"}}> 
+               
                 <div className="content">
                         <div className="line alternating">
                             <div className="topico1"> Nome: </div>
@@ -60,8 +62,9 @@ export default function GerenteAlterar() {
                             <StyledButtonAdm>  Alterar item </StyledButtonAdm>
                         </div>
                     </div>
+                    </main>
                 </StyledGerenteAlterar>
-            </main>
+            
         </div>
     )
 }

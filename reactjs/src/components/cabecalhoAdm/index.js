@@ -4,7 +4,7 @@ import { StyledInput } from "../input/styled";
 
 export default function CabecalhoAdm(props) {
     return (
-        <StyledCabecalhoAdm nulo={props.nulo} > 
+        <StyledCabecalhoAdm nuloB={props.nuloB} nulo={props.nulo}> 
             <div className="agp"> 
                 <div className="logo"> <img src="/assets/images/logo.svg" alt="" /> </div>
                 <div className="game"> GameBud </div>
@@ -14,10 +14,9 @@ export default function CabecalhoAdm(props) {
                 <div className="pesquisar"> <button> </button> </div>
             </div>
             <div className="column"> 
-                <StyledButtonAdm cor="laranja" style={{marginBottom:"1em", marginTop:"2em"}}> Novo Item </StyledButtonAdm>
-            <div className="pedidos">    <StyledButtonAdm cor="laranja" style={{width:"9em"}}> Pedidos </StyledButtonAdm> </div>
+             <div className="nv">   <StyledButtonAdm cor="laranja" style={{marginBottom:"1em", marginTop:"2em"}} className="NV"> Novo Item </StyledButtonAdm> </div>
+            <div className="pedidos">    <StyledButtonAdm cor="laranja" style={{width:"8.3em"}}> Pedidos </StyledButtonAdm> </div>
             </div>
-
         </StyledCabecalhoAdm>
     )
 }

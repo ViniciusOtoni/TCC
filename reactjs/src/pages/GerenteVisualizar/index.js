@@ -1,19 +1,17 @@
 import React from "react"
 
 import { StyledButtonAdm } from "../../components/botaoAdm/styled"
-import Cabecalho from "../../components/cabecalho"
+import CabecalhoAdm from "../../components/cabecalhoAdm"
 
 import { Vizualizar } from "./styled"
  
 export default function GerenteVizualizar(){
      return(
          <div style={{ backgroundColor:"#333333" }}>
-             <Cabecalho corLetra="nulo" />
-            <main style={{ width: '1240px', margin: 'auto'}}>
+             <CabecalhoAdm nuloB={true} />
+            
                 <Vizualizar>
-                    <div className="header">
-                        <StyledButtonAdm  cor="laranja"> Novo Item </StyledButtonAdm>   
-                    </div>
+                <main >
                     <div className="content">
                         <div className="line alternating">
                             <div> Nome: </div>
@@ -57,8 +55,8 @@ export default function GerenteVizualizar(){
                             <StyledButtonAdm  className="button" cor="vermelho"> Voltar </StyledButtonAdm> 
                         </div>
                     </div>
+                    </main>
                 </Vizualizar>    
-            </main>
         </div>    
      )
 }
