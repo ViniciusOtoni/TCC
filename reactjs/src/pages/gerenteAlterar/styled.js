@@ -7,6 +7,10 @@ display: flex;
     padding: 2em;
     height: 100vh;
 
+    main {
+        width: 1240px;
+        margin: auto;
+    }
    
 
     .content{

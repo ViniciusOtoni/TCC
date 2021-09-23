@@ -8,9 +8,10 @@ import Paginacao from "../../components/paginacao";
 export default function GerentePedidos() {
     return (
         <div style={{backgroundColor:"#333333", minHeight:"100vh"}}> 
-        <CabecalhoAdm nulo='true' />
-              <main style={{width:"1240px", margin:"auto"}}> 
+        <CabecalhoAdm bNulo='s' />
+              
                   <StyledGerentePedidos> 
+                  <main > 
                       <table> 
                           <thead> 
                               <th style={{paddingRight:"1em"}}> ID: </th>
@@ -139,8 +140,9 @@ export default function GerentePedidos() {
                           <StyledButtonAdm cor="vermelho" style={{marginRight:"20%", width:"10em"}}> Voltar </StyledButtonAdm>
                           <Paginacao />
                       </div>
+                      </main>
                   </StyledGerentePedidos>
-              </main>
+            
           </div>
     )
 }

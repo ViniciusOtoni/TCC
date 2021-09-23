@@ -33,8 +33,9 @@ const StyledCabecalhoAdm = styled.div `
 
 
     .pedidos {
-        display: ${props => props.nuloB === true  ? 'none' : 'block' };
+        display: ${props => props.nuloB === 'strue' ? 'none' : 'block' };
         display: ${props => props.nulo === 'true'  ? 'none' : 'block' };  
+        display: ${props => props.bNulo === 's' ? 'none' : 'block'};
     }
 
 

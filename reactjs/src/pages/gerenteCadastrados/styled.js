@@ -7,6 +7,11 @@ const StyledGerenteCadastrados = styled.div`
 
 
 
+main {
+    width: 1240px;
+    margin: auto;
+}
+
 table {
     border-collapse: collapse;
     width: 100%;

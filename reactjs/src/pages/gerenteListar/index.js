@@ -1,14 +1,15 @@
 import { Container } from "./styled.js"
-import Cabecalho from "../../components/cabecalho"
+import CabecalhoAdm from "../../components/cabecalhoAdm/index.js"
 import Paginacao from "../../components/paginacao/index.js"
 import { StyledButtonAdm } from "../../components/botaoAdm/styled.js"
 
 export default function GerenteNaosei() {
     return (
         <div style={{ backgroundColor: "#333333" }}>
-            <Cabecalho  />
-            <main style={{width: "1240px", margin: "auto", height:"100vh"}}>
+            <CabecalhoAdm  nulo='true'/>
+            
                 <Container >
+                <main >
                     <div className="principal">
                        
                    
@@ -78,8 +79,9 @@ export default function GerenteNaosei() {
                        </div>
                        
                     </div>
+                    </main>
                 </Container>
-            </main>
+            
         </div>
     )
 }

@@ -9,6 +9,11 @@ table {
     margin-top: 5em;
 }
 
+main {
+    width: 1240px;
+    margin: auto;
+}
+
 
 
 th {

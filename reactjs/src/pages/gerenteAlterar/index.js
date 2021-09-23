@@ -7,10 +7,10 @@ import CabecalhoAdm from "../../components/cabecalhoAdm";
 export default function GerenteAlterar() {
     return (
         <div style={{backgroundColor:"#333333"}}> 
-        <CabecalhoAdm nuloB={true}/>
+        <CabecalhoAdm nuloB="strue" />
             
                 <StyledGerenteAlterar> 
-                <main style={{width:"1240px", margin:"auto"}}> 
+                <main> 
                
                 <div className="content">
                         <div className="line alternating">
