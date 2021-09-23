@@ -6,8 +6,8 @@ import Paginacao from "../../components/paginacao"
 export default function EscolhaEntrega() {
     return (
         <div style={{backgroundColor:"#333333"}}> 
-            <Cabecalho corLetra="nulo"/>
-            <hr style={{marginLeft:"3.6em", marginRight:"3.6em", borderColor:"#F0AC54"}} />
+            <Cabecalho corLetra="nulo"  />
+          
                  <StyledEscolhaEntrega>
                  <main className="pc"> 
                     <div className="titulo"> Seus Pedidos </div>

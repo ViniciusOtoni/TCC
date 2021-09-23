@@ -9,7 +9,7 @@ export default function Venda() {
     return (
         <div style={{backgroundColor:"#333333"}}> 
         <Cabecalho />
-        <hr style={{marginLeft:"3.4em", marginRight:"3.4em"}} />
+        
                 <StyledVenada> 
                 <main className='a'> 
                     <div className="row-button"> 

@@ -10,7 +10,7 @@ export default function CarrinhoItem() {
     return (
         <div style={{backgroundColor:"#333333"}}>
         <Cabecalho />
-        <hr style={{marginLeft:"4em", marginRight:"4.3em"}} />
+        
         
         
        <StyledCarrinhoItem> 

@@ -115,6 +115,12 @@ const StyledCabecalho = styled.div `
         cursor: pointer;
     }
 
+    hr {
+        margin-left: 3.4em;
+        margin-right: 3.4em;
+        border-color: ${props => props.corLetra === 'nulo' ? '#F0AC54' : '#FFFFFF'};
+    }
+
     @media (max-width: 375px) {
 
       .pc {
@@ -144,6 +150,17 @@ const StyledCabecalho = styled.div `
           
       }
 
+      .entrega {
+          display: ${props => props.corLetra === 'branco' ? 'block' : 'none' };
+          color: #F0AC54;
+      }
+
+      .column {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+
       .agp-direita {
           display: flex;
           flex-direction: row;
@@ -160,6 +177,12 @@ const StyledCabecalho = styled.div `
       }
       .logo-cabecalho {
         padding-right: 3em;
+      }
+
+      hr {
+          width: 100%;
+          border-color: #F0AC54;
+          margin: 0em;
       }
     }
 
