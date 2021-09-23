@@ -9,7 +9,7 @@ export default function Caixa() {
     return (
         <div style={{backgroundColor:"#333333"}}>
        <Cabecalho />
-       <div className="hr"> </div>
+       
         
       <StyledCarrinho>
       <main> 

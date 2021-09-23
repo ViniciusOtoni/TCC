@@ -24,8 +24,12 @@ export default function Cabecalho(props) {
             </div>
 
             <div className="logo-cabecalho"> <img src="/assets/images/logo.svg" alt=""  />  </div>
-            <div className="login"> Login </div>
+            <div className="column">
+                <div className="login"> Login </div>
+                <div className="entrega"> Entregas </div>
+                </div>
             </main>
+            <hr />
             
         </StyledCabecalho>
     )

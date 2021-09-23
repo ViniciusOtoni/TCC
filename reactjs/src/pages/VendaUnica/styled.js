@@ -38,6 +38,7 @@ const Conteudo = styled.div`
             display: block;
         }
         width: 100%;
+        margin-top: 2em;
     
         .align-button {
             width: 100%;
@@ -45,12 +46,18 @@ const Conteudo = styled.div`
             flex-direction: column;
             align-items: center;
             margin-bottom: 1em;
+           
         }
         .gren {
             width: 90%;
             
     
         }
+        hr {
+            display: none;
+        }
+
+       
     }
 
 

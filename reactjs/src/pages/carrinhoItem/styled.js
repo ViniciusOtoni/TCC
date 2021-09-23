@@ -269,6 +269,10 @@ const StyledCarrinhoItem = styled.div `
      margin-right: 2em;
     width: 14em;
    }
+
+   .cep {
+       width: 8em;
+   }
     
    @media(max-width:375px) {
        .cell {
@@ -374,7 +378,7 @@ const StyledCarrinhoItem = styled.div `
    }
 
    .cep {
-       width: 0em;
+       width: 4.5em;
    }
 
    .quantidade {
@@ -438,6 +442,11 @@ const StyledCarrinhoItem = styled.div `
    .botao-finalizar {
        width: 100%;
        margin-bottom: 2em;
+       
+   }
+
+   .botao-frete {
+       margin: 0em;
    }
    
 }

@@ -3,7 +3,14 @@ import styled from "styled-components";
 const StyledEntregaItem = styled.div `
 
     
+.pc {
+    width: 1240px;
+    margin: auto;
+}
 
+.cell {
+    display: none;
+}
 
 .agp-cima  {
     display: flex;
@@ -168,6 +175,124 @@ padding-bottom: 1em;
     padding-bottom: 2.84em;
 }
 
+
+
+@media(max-width:375px) {
+    .pc {
+        display: none;
+    }
+    .cell {
+        display: block;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        position: relative;
+    }
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2em;
+    }
+
+    .icon1 img{
+        width:4.3em;
+        height: 5em; 
+        padding-bottom:1em;
+    }
+
+   
+
+    .icon2 img{
+        width:4.3;
+        height: 5em; 
+        padding-bottom:1em;
+    }
+
+    .icon3 img{
+        width:4.3;
+        height: 5em; 
+        padding-bottom:1em;
+        padding-right: 1em;
+    }
+
+   
+
+    .limite1 img{
+        width:auto;
+        height: 3em; 
+        
+    }
+
+    .limite1 {
+        position: absolute;
+        right: 3em
+    }
+
+    .limite2 img{
+        width:auto;
+        height: 3em; 
+       
+    }
+
+    .limite2 {
+        position: absolute;
+        right: 3em;
+    }
+
+    
+
+    .limite3 {
+        position: absolute;
+        right: 3em
+    }
+
+    .limite3 img {
+        width: auto;
+        height: 3em;
+    }
+
+    .limite1 {
+        background-size: auto 1.3em;
+        margin-top: 2.8em;
+       
+    }
+
+    .limite2 {
+        background-size: auto 1.3em;
+        margin-top: 2.8em;
+        
+    }
+
+    .limite3 {
+        background-size: auto 1.3em;
+        margin-top: 2.8em;
+    }
+
+    .load-bar {
+        width: 70%;
+       margin-left: 4em;
+       
+    }
+
+    .agp-baixo {
+        padding: .9em;
+    }
+
+    .voltar {
+        width: 100%;
+        display: flex;
+    }
+
+    .voltar button {
+        width: 100%;
+        height: 3.2em;
+    }
+}
 
 `
 

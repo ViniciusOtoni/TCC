@@ -10,7 +10,7 @@ export default function CarrinhoItem() {
     return (
         <div style={{backgroundColor:"#333333"}}>
         <Cabecalho />
-        <hr style={{marginLeft:"4em", marginRight:"4.3em"}} />
+        
         
         
        <StyledCarrinhoItem> 
@@ -124,7 +124,7 @@ export default function CarrinhoItem() {
                 </div>
                 <div className="row-input"> 
                             <div className="frete"> Frete: </div>
-                            <div className="input-frete">  <StyledInput placeholder="Cep" style={{width:"8em"}} className="cep"/> </div>
+                            <div className="input-frete">  <StyledInput placeholder="Cep"  className="cep"/> </div>
                             <div className="botao-frete"> <StyledButtonVerde style={{width: "7em", height:"1.8em", marginLeft:"2em"}}> Calcular </StyledButtonVerde> </div>
                         </div>
                     

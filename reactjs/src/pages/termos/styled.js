@@ -74,6 +74,41 @@ const Container = styled.div`
         main {
             width: 100%;
         }
+
+        .Secondh2 {
+            width: 100%;
+            font-size: 1em;
+            padding: 0em;
+            margin: 0em;
+        }
+
+        .Thirdh2 {
+            width: 100%;
+            font-size: 1em;
+            padding: 0em;
+            margin: 0em;
+        }
+
+        .Fourthh2 {
+            width: 100%;
+            font-size: 1em;
+            padding: 0em;
+            margin: 0em;
+        }
+
+        .fifthh2 {
+            width: 100%; 
+            font-size: 1em;
+            padding: 0em;
+            margin: 0em;
+            
+        }
+
+        .textos {
+            margin: 1em;
+            text-align: center;
+          
+        }
     }
 `
 

@@ -6,7 +6,7 @@ export default function Termos() {
     return (
         <div style={{backgroundColor: "#333333"}}> 
         <Cabecalho corLetra="nulo"/>
-        <hr style={{marginLeft:"3.4em", marginRight:"3.4em", borderColor:"#F0AC54"}}/>
+   
        
             <Container>
             <main>
