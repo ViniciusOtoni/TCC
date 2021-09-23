@@ -8,6 +8,11 @@ height: 100vh;
 display: flex;
 align-items: center;
 justify-content: center;
+
+@media (max-width:375px) {
+    background-image: none;
+    height: auto;
+}
 `
 
 export { StyledPopupTela }

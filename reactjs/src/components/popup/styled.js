@@ -99,6 +99,15 @@ header {
     margin-top: 1em;
     padding-top:${props => props.recuSenha === 'true' ? '2em' : '0em'};
 }
+
+@media(max-width:375px) {
+    width: 100%;
+   
+
+    header {
+        width: 100%;
+    }
+}
 `
 
 export { StyledPopup }

@@ -26,6 +26,8 @@ const Container = styled.div`
     .sub-main {
         display: flex;
         flex-direction: row;
+        width: 1240px;
+        margin: auto;
     }
 
     .esquerda-grupo-input {
@@ -211,6 +213,85 @@ const Container = styled.div`
         border: none;
         outline: none;
         font-family: MontserratBold;
+    }
+
+    @media(max-width:375px) {
+      .sub-main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }  
+      .esquerda-grupo-input {
+            padding: 0em;
+            margin: 0em;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+      }
+
+      .Last-information-inputs {
+        display: flex;
+        flex-direction: column;
+      }
+      .text-input {
+          display: flex;
+          align-self: flex-start;
+          padding-left: 1.3em;
+      }
+
+      hr {
+          height: 1px;
+          margin-top: 3em;
+          margin-bottom: 3em;
+      }
+
+      .credit-card {
+        padding-left: .7em;
+      }
+
+      .cartoes {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          padding-left: 1em;
+          justify-content: center;
+      }
+
+      .cartao {
+          padding: 1em;
+      }
+
+      .Last-information-inputs {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+
+      .Last-information-inputs1 {
+          display: flex;
+          flex-direction: column;
+          align-items: left;
+          margin-right: 0em;
+      }
+
+      .Last-information-inputs2 {
+          display: flex;
+          flex-direction: column;
+          align-items: left;
+      }
+     
+
+      .bottom {
+          margin-bottom: 2em;
+          width: 100%;
+      }
+
+      .botao-buttom {
+        width: 100%;
+      }
+
+      height: auto;
     }
 `
 

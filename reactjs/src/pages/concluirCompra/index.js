@@ -8,7 +8,7 @@ export default function ConcluirCompra() {
         <div style={{ backgroundColor: "#333333" }}>
             <Cabecalho corLetra="nulo"/>
             <hr  style={{borderColor:"#F0AC54", marginLeft:"3.4em", marginRight:"3.4em", marginBottom:"4em"}}/>
-            <main style={{ width: "1240px", margin: "auto" }}>
+           
                 <Container>
                 
                
@@ -97,13 +97,13 @@ export default function ConcluirCompra() {
                                   
                                 
                             
-                                <StyledButtonVerde style={{marginTop:"4.8em", height:"2em"}}> Concluir Compra! </StyledButtonVerde>
+                              <div className="bottom">  <StyledButtonVerde style={{marginTop:"4.8em", height:"2em"}} className="botao-buttom"> Concluir Compra! </StyledButtonVerde> </div>
                             </div>
                         </div>
                     </div>
                 </main>
             </Container>
-            </main>
+            
         </div>
     )
 }
