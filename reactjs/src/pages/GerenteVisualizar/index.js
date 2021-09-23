@@ -1,19 +1,16 @@
 import React from "react"
 
 import { StyledButtonAdm } from "../../components/botaoAdm/styled"
-import Cabecalho from "../../components/cabecalho"
+import CabecalhoAdm from "../../components/cabecalhoAdm"
 
 import { Vizualizar } from "./styled"
  
 export default function GerenteVizualizar(){
      return(
          <div style={{ backgroundColor:"#333333" }}>
-             <Cabecalho/>
+             <CabecalhoAdm />
                 <Vizualizar>
                      <main>
-                        <div className="header">
-                            <StyledButtonAdm  cor="laranja" className="button-header"> Novo Item </StyledButtonAdm>   
-                        </div>
                         <div className="content">
                             <div className="line alternating">
                                 <div> Nome: </div>

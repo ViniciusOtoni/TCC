@@ -6,12 +6,14 @@ const StyledCabecalhoAdm = styled.div `
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: ${props => props.nulo === 'true' ? 'none' : 'space-around'};
 
     .column {
         display: flex;
         flex-direction: column;
+        display: ${props => props.nulo === 'true'  ? 'none' : 'block' };  
     }
+
     .logo {
         padding-top: 1em;
     }
@@ -23,15 +25,26 @@ const StyledCabecalhoAdm = styled.div `
         justify-content: center;
     }
 
+
     .agp {
         display: flex;
         flex-direction: row;
     }
 
+
     .pedidos {
-        display: ${props => props.nulo === 'true'  ? 'none' : 'block' };
+        display: ${props => props.nuloB === 'strue' ? 'none' : 'block' };
+        display: ${props => props.nulo === 'true'  ? 'none' : 'block' };  
+        display: ${props => props.bNulo === 's' ? 'none' : 'block'};
     }
 
+
+    .input {
+    display: ${props => props.nuloB === true  ? 'none' : 'block' };   
+    display: ${props => props.nulo === 'true'  ? 'none' : 'block' };  
+   }
+
+   
 
     .game {
         color: #F0AC54;
@@ -39,8 +52,8 @@ const StyledCabecalhoAdm = styled.div `
         font-size: 2em;
         margin-top: .8em;
     }
-
-    .pesquisar button{
+    
+    .pesquisar button {
        background-color: #F0AC54;
        border: none;
        width: 4em;
@@ -49,13 +62,12 @@ const StyledCabecalhoAdm = styled.div `
        background-repeat: no-repeat;
        background-position-x: center;
        background-position-y: center;
-       margin-top: .3em;
-        
+       display: ${props => props.nuloB === true  ? 'none' : 'block'};  
+       display: ${props => props.nulo === 'true'  ? 'none' : 'block'};   
     }
 
-    
-   
+    @media(max-width:375px) {
 
-`
-
+    }
+` 
 export { StyledCabecalhoAdm }

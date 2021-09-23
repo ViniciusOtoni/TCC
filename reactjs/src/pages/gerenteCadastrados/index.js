@@ -9,8 +9,9 @@ export default function GerenteProdutosCadastrados() {
     return (
         <div style={{backgroundColor:"#333333", minHeight:"100vh"}}> 
       <CabecalhoAdm />
-            <main style={{width:"1240px", margin:"auto"}}> 
+            
                 <StyledGerenteCadastrados> 
+                <main> 
                     <table> 
                         <thead> 
                             <th style={{paddingRight:"1em"}}> ID: </th>
@@ -128,8 +129,9 @@ export default function GerenteProdutosCadastrados() {
                         <StyledButtonAdm cor="vermelho" style={{marginRight:"20%", width:"10em"}}> Voltar </StyledButtonAdm>
                         <Paginacao />
                     </div>
+                    </main>
                 </StyledGerenteCadastrados>
-            </main>
+            
         </div>
     )
 }

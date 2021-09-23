@@ -10,6 +10,12 @@ const Container = styled.div`
         width: 95%;
     }
 
+    main {
+        width: 1240px;
+        height: 100vh;
+        margin: auto;
+    }
+
     .titulos {
         display: flex;
         flex-direction: row;
