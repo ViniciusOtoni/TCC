@@ -5,7 +5,10 @@ const Container = styled.div`
     flex-direction: column;
   
 
-   
+   main {
+       width: 1240px;
+       margin: auto;
+   }
 
     .nomeEmpresa {
         color: #F0AC54;
@@ -65,6 +68,12 @@ const Container = styled.div`
         width: 1140px;
 
         margin-bottom: 5em;
+    }
+
+    @media(max-width:375px) {
+        main {
+            width: 100%;
+        }
     }
 `
 

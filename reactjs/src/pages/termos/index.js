@@ -7,8 +7,9 @@ export default function Termos() {
         <div style={{backgroundColor: "#333333"}}> 
         <Cabecalho corLetra="nulo"/>
         <hr style={{marginLeft:"3.4em", marginRight:"3.4em", borderColor:"#F0AC54"}}/>
-        <main style={{width: "1240px", margin: "auto" }}>
+       
             <Container>
+            <main>
                 <div className="textos">
                     <h1>Termos e Serviços:</h1>
                     <div>Bem vindo à família de website do<br/>
@@ -26,8 +27,9 @@ export default function Termos() {
                     <h1>4. O seu trabalho protegido por direitos autorais:</h1>
                     <div className="fifthh2">Assim como a SIE LLC exige que os usuários dos nossos Sites respeitem os nossos direitos autorais e os das nossas <br />afiliadas, licenciadores e parceiros comerciais, respeitamos os direitos autorais das outras pessoas. Para isso, adotamos esta política de direitos autorais de acordo com a Digital Millennium Copyright Act (Lei dos Direitos Autorais 17 U.S.C. 512 et seq. do código civil norte-americano). Se, de boa-fé, você acredita que seu material protegido por direitos autorais foi reproduzido nos nossos Sites sem autorização, de modo que constitua uma violação de direitos autorais, ou se você é o fornecedor de conteúdo e acredita que uma notificação de violação de direitos autorais foi enviada erroneamente a você em virtude de engano ou falha na identificação do conteúdo supostamente protegido por direitos autorais.</div>
                 </div>
+                </main>
         </Container>
-       </main>
+       
        <Footer />
        </div> 
     )

@@ -6,12 +6,13 @@ const Conteudo = styled.div`
     
 
 
-    main {
+    .pc {
         display: flex; 
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
+        width:  1240px; 
+        margin: auto;
         height: 40em;
     }
 
@@ -23,6 +24,37 @@ const Conteudo = styled.div`
         padding-right: 6em;
         margin-bottom: .5em;
     }
+
+    .cell {
+        display: none;
+    }
+
+    @media(max-width:375px) {
+        .pc {
+            display: none;
+        }
+
+        .cell {
+            display: block;
+        }
+        width: 100%;
+    
+        .align-button {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1em;
+        }
+        .gren {
+            width: 90%;
+            
+    
+        }
+    }
+
+
+
 `
 
 const Content = styled.div`
@@ -111,6 +143,78 @@ const Content = styled.div`
         font-size: 1em;
         color: white;
         margin: .8em 0em .3em 0em;
+    }
+
+    @media(max-width:375px) {
+
+        height: auto;
+        .pc {
+            display: none;
+        }
+
+        .cell {
+            display: block;
+        }
+
+        width: 90%;
+        margin-left: 1em;
+
+        .align-content {
+            padding: 0em;
+            margin: 0em;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 10em;
+            margin-bottom: 10em;
+        }
+
+        .titulo {
+            font-size: 2em;
+            color: #ffffff;
+            font-family: MontserratBold;
+            padding-left: .4em;
+        }
+
+        .preco {
+            color:#F0AC54;
+            font-size: 1.3em;
+            padding-left: .7em;
+        }
+        .frete {
+            text-align: center;
+            padding-top: 1em;
+        }
+
+        .text {
+            padding-left: 1em;
+            padding-top: 1em;
+            width: 12em;
+        }
+
+        .image-main {
+            width: auto;
+            height: 12em;
+        }
+
+        .align-stars {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            padding: 1em;
+        }
+
+        .titulo1 {
+            text-align: center;
+            font-size: 2em;
+            color: #ffffff;
+            font-family: MontserratBold;
+           padding-bottom: 1em;
+
+          
+        }
+
+        
     }
 `
 
