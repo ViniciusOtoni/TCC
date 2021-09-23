@@ -119,6 +119,7 @@ const StyledCabecalho = styled.div `
         margin-left: 3.4em;
         margin-right: 3.4em;
         border-color: ${props => props.corLetra === 'nulo' ? '#F0AC54' : '#FFFFFF'};
+        display: ${props => props.corLetra === 'branco' ? 'none' : 'block' };
     }
 
     @media (max-width: 375px) {
@@ -183,6 +184,7 @@ const StyledCabecalho = styled.div `
           width: 100%;
           border-color: #F0AC54;
           margin: 0em;
+          display: ${props => props.corLetra === 'branco' ? 'block' : 'block' };
       }
     }
 
