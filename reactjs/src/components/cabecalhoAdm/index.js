@@ -4,7 +4,7 @@ import { StyledInput } from "../input/styled";
 
 export default function CabecalhoAdm(props) {
     return (
-        <StyledCabecalhoAdm  nulo={props.nulo} bNulo={props.bNulo} nuloB={props.nuloB}> 
+        <StyledCabecalhoAdm  nulob={props.nulob} nulo={props.nulo} bNulo={props.bNulo} > 
             <div className="agp"> 
                 <div className="logo"> <img src="/assets/images/logo.svg" alt="" /> </div>
                 <div className="game"> GameBud </div>

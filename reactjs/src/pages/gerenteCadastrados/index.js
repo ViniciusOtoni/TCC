@@ -130,6 +130,7 @@ export default function GerenteProdutosCadastrados() {
                         <Paginacao />
                     </div>
                     </main>
+                    
                 </StyledGerenteCadastrados>
             
         </div>

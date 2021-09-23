@@ -11,6 +11,8 @@ export default function Paginacao() {
                 <div className="numero-pagina"> 4 </div>
                 <div className="button-mudar"> <button> Próximo <img src="/assets/images/avancar.svg" alt="" /> </button></div> 
             </main>
+
+            
             <main className="cell">
             <div className="row">      
                 <div className="numero-pagina"> 1 </div>

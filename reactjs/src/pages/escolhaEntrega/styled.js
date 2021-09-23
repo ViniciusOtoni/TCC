@@ -47,6 +47,14 @@ const StyledEscolhaEntrega = styled.div `
         font-size: 1.3em;
         font-family: MontserratBold;
     }
+
+    .pag {
+        margin-top: 3em;
+        margin-bottom: 3em;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
     
     .pedido {
         font: 1em MontserratBold;
@@ -70,6 +78,8 @@ const StyledEscolhaEntrega = styled.div `
         display: none;
     }
 
+    
+
     @media(max-width:375px) {
         .cell {
             width: 100%;
@@ -80,6 +90,7 @@ const StyledEscolhaEntrega = styled.div `
             display: none;
         }
 
+      
 
 
         .row {

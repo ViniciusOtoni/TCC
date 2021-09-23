@@ -7,7 +7,7 @@ import CabecalhoAdm from "../../components/cabecalhoAdm";
 export default function GerenteAlterar() {
     return (
         <div style={{backgroundColor:"#333333"}}> 
-        <CabecalhoAdm nuloB="strue" />
+        <CabecalhoAdm nulob={true} />
             
                 <StyledGerenteAlterar> 
                 <main> 

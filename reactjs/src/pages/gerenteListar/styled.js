@@ -3,7 +3,8 @@ import styled from "styled-components";
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-
+    height: 100vh;
+    
     .principal {
         align-self: center;
         color: white;
@@ -12,7 +13,6 @@ const Container = styled.div`
 
     main {
         width: 1240px;
-        height: 100vh;
         margin: auto;
     }
 

@@ -52,6 +52,9 @@ const StyledVenada = styled.div `
     .pag {
         margin-top: 3em;
         margin-bottom: 3em;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
     }
 
     @media(max-width:375px) {
@@ -97,6 +100,7 @@ const StyledVenada = styled.div `
             justify-content: center;
             align-items: center;
             margin-bottom: 2em;
+       
         }
      
 }

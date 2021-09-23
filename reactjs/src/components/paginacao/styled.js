@@ -6,8 +6,7 @@ const StyledPaginacao = styled.div `
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    width: auto;
     }
 
    

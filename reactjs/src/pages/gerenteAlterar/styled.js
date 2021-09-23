@@ -5,7 +5,7 @@ const StyledGerenteAlterar = styled.div`
 display: flex;
     flex-direction: column;
     padding: 2em;
-    height: 100vh;
+   
 
     main {
         width: 1240px;
@@ -46,6 +46,7 @@ display: flex;
     .footer{
         display: flex;
         flex-direction: row;
+        margin-bottom: 4em;
     }
 
     .button{

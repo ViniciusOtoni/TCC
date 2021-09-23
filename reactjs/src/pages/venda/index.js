@@ -29,7 +29,8 @@ export default function Venda() {
                      <div  className="bottom">    <CaixaJogo /> </div>
                      <div  className="bottom">    <CaixaJogo /> </div>
                     </div>
-                  <div className="pag">  <Paginacao /> </div>
+                    
+                  <div className="pag">  <Paginacao  /> </div>
                 </main>
                 </StyledVenada>
                 
