@@ -138,9 +138,11 @@ export default function GerentePedidos() {
                       </table>
                       <div className="footer"> 
                           <StyledButtonAdm cor="vermelho" style={{marginRight:"20%", width:"10em"}}> Voltar </StyledButtonAdm>
-                          <Paginacao />
+                         <Paginacao /> 
                       </div>
                       </main>
+                     
+                     
                   </StyledGerentePedidos>
             
           </div>

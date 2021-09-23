@@ -32,8 +32,9 @@ export default function EscolhaEntrega() {
                             <div className="verificar-botao"> <button> Verificar </button> </div>
                             <div className="verificar-botao"> <button> Verificar  </button> </div>
                         </div> 
+                        
                     </div>
-                    <Paginacao />
+                    <div className="pag">  <Paginacao  /> </div>
                     </main>
                     <main className="cell">
                         <div className="titulo"> Seus Pedidos </div>

@@ -74,7 +74,7 @@ export default function GerenteNaosei() {
                             </tbody>
                        </table>
                         <div className="bottom-menu">
-                            <StyledButtonAdm cor="vermelho" className="voltar" style={{ width: "150px", height: "51px", marginRight: "15em" }}>Voltar</StyledButtonAdm>
+                            <StyledButtonAdm cor="vermelho" className="voltar" style={{marginRight:"20%", width:"10em"}}>Voltar</StyledButtonAdm>
                            <Paginacao />
                        </div>
                        
