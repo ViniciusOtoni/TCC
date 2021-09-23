@@ -123,9 +123,9 @@ const StyledCabecalho = styled.div `
 
     @media (max-width: 375px) {
 
-      .pc {
-          display: none;
-      }
+        .pc {
+            display: none;
+        }
 
       .cell {
           display: block;
@@ -139,6 +139,8 @@ const StyledCabecalho = styled.div `
           justify-content: space-around;
           
         }
+
+       
 
       .carrinho {
           width: auto;

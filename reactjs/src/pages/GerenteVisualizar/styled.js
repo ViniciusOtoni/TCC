@@ -83,8 +83,6 @@ const Vizualizar = styled.div`
 
       
 
-        
-
         .line {
             padding: 1.7em 0em;
             font-size: 20px;
@@ -99,6 +97,8 @@ const Vizualizar = styled.div`
             
         }
 
+
+
         .content {
             margin: 2em 0em;
         }
@@ -106,6 +106,7 @@ const Vizualizar = styled.div`
         .button-header {
            width: 70%;
            padding: 1em 0em;
+           margin: 1.5em;
            border-radius: 4px;
         }
 
