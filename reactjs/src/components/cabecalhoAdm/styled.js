@@ -67,7 +67,8 @@ const StyledCabecalhoAdm = styled.div `
     }
 
     @media(max-width:375px) {
-
+       
+       
     }
 ` 
 export { StyledCabecalhoAdm }
