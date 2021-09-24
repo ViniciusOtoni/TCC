@@ -76,31 +76,31 @@ const StyledGerenteAlterar = styled.div`
         padding-right: 8em;
     }
     .topico2 {
-        padding-right: 3em;
+        padding-right: 2.9em;
     }
     .topico3 {
-        padding-right: 6.4em;
+        padding-right: 6.2em;
     }
     .topico4 {
-        padding-right: 8.5em;
+        padding-right: 8.4em;
     }
     .topico5 {
-        padding-right: 2.2em;
+        padding-right: 2.0em;
     }
     .topico6 {
-        padding-right: 1em;
+        padding-right: 5.9em;
     }
     .topico7 {
-        padding-right: 1em;
+        padding-right: 5.8em;
     }
     .topico8 {
-        padding-right: 1em;
+        padding-right: 5.8em;
     }
     .topico9 {
-        padding-right: 1em;
+        padding-right: 6.7em;
     }
     .topico10 {
-        padding-right: 7em;
+        padding-right: 6.8em;
     }
 
     .new {
