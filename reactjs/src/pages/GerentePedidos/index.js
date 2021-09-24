@@ -11,7 +11,7 @@ export default function GerentePedidos() {
         <CabecalhoAdm bNulo={true} />
               
                   <StyledGerentePedidos> 
-                  <main > 
+                  <main className="pc"> 
                       <table> 
                           <thead> 
                               <th style={{paddingRight:"1em"}}> ID: </th>
@@ -141,6 +141,46 @@ export default function GerentePedidos() {
                          <Paginacao /> 
                       </div>
                       </main>
+                      <main className="cell"> 
+                        <div className="line-black"> 
+                            <div className="coluna"> ID: </div>
+                            <div className="valor-coluna"> 2345678 </div>
+                        </div>
+                        <div className="line-gray"> 
+                            <div className="coluna">  Cliente: </div>
+                            <div className="valor-coluna"> Vinicius Otoni </div>
+                        </div>
+                        <div className="line-black"> 
+                            <div className="coluna">  Pagamento </div>
+                            <div className="valor-coluna"> Débito </div>
+                        </div>
+                        <div className="line-gray"> 
+                            <div className="coluna"> Total </div>
+                            <div className="valor-coluna"> R$ 99,00  </div>
+                        </div>
+                        <div className="line-black"> 
+                            <div className="coluna"> Situação </div>
+                            <div className="valor-coluna"> Pago </div>
+                        </div>
+                        <div className="line-gray"> 
+                            <div className="coluna1"> Saiu Para Entrega  </div>
+                            <div className="valor-coluna"> <StyledButtonAdm className="styled"> Saiu Para Entrega </StyledButtonAdm> </div>
+                        </div>
+                        <div className="line-black"> 
+                            <div className="coluna"> A Caminho </div>
+                            <div className="valor-coluna"> <StyledButtonAdm cor='laranja' className="styled"> A Caminho </StyledButtonAdm> </div>
+                        </div>
+                        <div className="line-gray"> 
+                            <div className="coluna"> Entregue: </div>
+                            <div className="valor-coluna"> <StyledButtonAdm cor='vermelho' className="styled"> Entregue </StyledButtonAdm> </div>
+                        </div>
+                        <div className="line-black"> 
+                            <div className="coluna"> Ver Itens: </div>
+                            <div className="valor-coluna"> <StyledButtonAdm cor='preto' className="styled"> A Caminho </StyledButtonAdm> </div>
+                        </div>
+                       <div className="pag"> <Paginacao /> </div>
+                       <div className="back"> <StyledButtonAdm cor="vermelho" style={{width:"10em"}}> Voltar </StyledButtonAdm> </div>
+                    </main>
                      
                      
                   </StyledGerentePedidos>

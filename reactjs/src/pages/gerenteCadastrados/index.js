@@ -11,8 +11,8 @@ export default function GerenteProdutosCadastrados() {
       <CabecalhoAdm />
             
                <StyledGerenteCadastrados> 
-                <main> 
-                    <table className="table table-responsive"> 
+                <main className="pc"> 
+                    <table> 
                         <thead> 
                             <th style={{paddingRight:"1em"}}> ID: </th>
                             <th> Nome </th>
@@ -130,6 +130,42 @@ export default function GerenteProdutosCadastrados() {
                         <StyledButtonAdm cor="vermelho" className='buttonADM'> Voltar </StyledButtonAdm>
                         <Paginacao />
                     </div>
+                    </main>
+                    <main className="cell"> 
+                        <div className="line-black"> 
+                            <div className="coluna"> ID: </div>
+                            <div className="valor-coluna"> 2345678 </div>
+                        </div>
+                        <div className="line-gray"> 
+                            <div className="coluna"> Nome: </div>
+                            <div className="valor-coluna"> nome grandao p testar o flex wrap só mais um pouco </div>
+                        </div>
+                        <div className="line-black"> 
+                            <div className="coluna"> Código de Barra: </div>
+                            <div className="valor-coluna"> 12345678901 </div>
+                        </div>
+                        <div className="line-gray"> 
+                            <div className="coluna"> Categoria  </div>
+                            <div className="valor-coluna"> Xbox  </div>
+                        </div>
+                        <div className="line-black"> 
+                            <div className="coluna"> Preço </div>
+                            <div className="valor-coluna"> R$ 99,00 </div>
+                        </div>
+                        <div className="line-gray"> 
+                            <div className="coluna"> Vizualizar  </div>
+                            <div className="valor-coluna"> <StyledButtonAdm className="styled">  Vizualizar </StyledButtonAdm> </div>
+                        </div>
+                        <div className="line-black"> 
+                            <div className="coluna"> Editar </div>
+                            <div className="valor-coluna"> <StyledButtonAdm cor='laranja' className="styled2"> Editar </StyledButtonAdm> </div>
+                        </div>
+                        <div className="line-gray"> 
+                            <div className="coluna"> Excluir: </div>
+                            <div className="valor-coluna"> <StyledButtonAdm cor='vermelho' className="styled3"> Excluir </StyledButtonAdm> </div>
+                        </div>
+                       <div className="pag"> <Paginacao /> </div>
+                       <div className="back"> <StyledButtonAdm cor="vermelho" style={{width:"10em"}}> Voltar </StyledButtonAdm> </div>
                     </main>
                     
             </StyledGerenteCadastrados>

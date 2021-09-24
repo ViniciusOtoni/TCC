@@ -16,6 +16,7 @@ const StyledCabecalhoAdm = styled.div `
         display: flex;
         flex-direction: column;
         display: ${props => props.nulo === 'true'  ? 'none' : 'block' };  
+        padding-right: 5em;
     }
 
     .PE {
