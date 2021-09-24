@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledGerenteAdicionar = styled.div`
- display: flex;
+    display: flex;
     flex-direction: column;
     padding: 2em;
     height: 100vh;
@@ -18,7 +18,8 @@ const StyledGerenteAdicionar = styled.div`
         margin: 5em 0em;
     }
 
-    .input {
+    .style-input {
+        width: 22em;
     }
 
     .line{
@@ -39,6 +40,8 @@ const StyledGerenteAdicionar = styled.div`
 
     .alternating{
         background-color: #282828;
+        color: white;
+        font-family: Medio;
     }
 
     .footer{
@@ -84,6 +87,10 @@ const StyledGerenteAdicionar = styled.div`
     .topico10 {
         padding-right: 7em;
     }
+
+
+    
+
 `
 
 export { StyledGerenteAdicionar }

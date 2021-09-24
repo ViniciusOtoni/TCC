@@ -10,7 +10,7 @@ import "animate.css"
 export default function Home() {
     return (
         <main style={{backgroundColor:"#333333",  margin:"auto", position:"relative"}}>
-       <Bolota> <img src="/assets/images/Koko Caramel 3.svg" alt=""/> </Bolota>
+        <Bolota> <img src="/assets/images/Koko Caramel 3.svg" alt=""/> </Bolota>
         <Cabecalho corLetra="branco"  /> 
         <StyledConteudo> 
         <main> 

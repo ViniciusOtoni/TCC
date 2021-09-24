@@ -132,12 +132,12 @@ const StyledCabecalhoAdm = styled.div `
     
 
     .input {
-    display:  ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : 'block' };
-   }
+        display:  ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : 'block' };
+    }
 
  .pesquisar {
-    display:  ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : 'block' };
-   }
+        display:  ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : 'block' };
+    }
 
    
 

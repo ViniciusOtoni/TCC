@@ -2,7 +2,10 @@ import styled from "styled-components";
 
 const StyledGerenteAlterar = styled.div`
 
-display: flex;
+
+          
+
+    display: flex;
     flex-direction: column;
     padding: 2em;
    
@@ -20,7 +23,19 @@ display: flex;
         margin: 5em 0em;
     }
 
-    .input {
+    .alternating {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 3.5em;
+
+        background-color: #282828;
+    }
+
+    .alternating > div {
+        font-family: Medio;
+        color: white;
+        margin-left: 1em;
     }
 
     .line{
@@ -39,9 +54,9 @@ display: flex;
     }
 
 
-    .alternating{
-        background-color: #282828;
-    }
+   .input-input {
+       width: 22em;
+   }
 
     .footer{
         display: flex;
@@ -92,6 +107,111 @@ display: flex;
         display: flex;
         justify-content: right ;
     }
+
+
+    @media(max-width: 375px){
+        padding: 0em;
+        
+        main {
+            width: 100%;
+            margin: auto;
+        }
+
+        .alternating {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+           
+           
+           
+            background-color: transparent;
+        }
+
+        .input-input {
+            width: 100%;
+            
+        }
+
+        .input {
+            background-color: #333333;
+            padding: 1em 1em !important;
+           
+          
+        }
+
+        .alternating > div {
+            margin-left: 0px;
+            width: 100%;
+            padding: 0em 0em;
+        }
+
+        .topico1, .topico2, .topico3, .topico4, .topico5, .topico6, .topico7, .topico8, .topico9, .topico10  {
+            background-color: #282828;
+            
+            padding: 1em 1em !important;
+       
+            
+        }
+
+        .line {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 3em 0em;
+
+            background-color: transparent;
+           
+        }
+        
+        .line > div {
+            padding: 0em;
+            margin: 0em;
+
+            width: 100%;
+        }
+       
+        .topico2 {
+           margin-top: .8em !important;
+        }
+
+        .topico3 {
+            margin-top: 1.5em !important;
+        }
+
+        .topico4 {
+            margin-top: 2.4em !important;
+        }
+       
+        .topico5 {
+          margin-top: 3em !important;
+        }
+
+        .topico6 {
+            margin-top: 3.6em !important;
+        }
+
+        .topico7{
+            margin-top: 4.3em !important;
+        }
+
+        .topico8 {
+            margin-top: 5em !important;
+        }
+
+        .topico9 {
+            margin-top: 5.8em !important;
+        }
+
+        .topico10{
+            margin-top: 6.5em !important;
+        }
+
+        .footer {
+            justify-content: center;
+            margin-top: 10em;
+        }
+    } 
+   
 
 `
 
