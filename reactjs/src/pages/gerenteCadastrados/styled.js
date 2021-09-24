@@ -55,6 +55,11 @@ td {
     display: none;
 }
 
+.buttonADM {
+    margin-right: 30%;
+   
+}
+
 @media(max-width:375px) {
         .pc {
             display: none;

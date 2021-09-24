@@ -9,7 +9,7 @@ export default function GerenteNaosei() {
             <CabecalhoAdm  nulo='true'/>
             
                 <Container >
-                <main >
+                <main className="pc">
                     <div className="principal">
                        
                    
@@ -79,6 +79,36 @@ export default function GerenteNaosei() {
                        </div>
                        
                     </div>
+                    </main>
+                    <main className="cell"> 
+                    <div className="line-black"> 
+                            <div className="coluna"> ID: </div>
+                        </div>
+                        <div className="line-gray"> 
+                            <div className="valor-coluna"> 2345678 </div>
+                        </div>
+                        <div className="line-black"> 
+                            <div className="coluna"> Produto: </div>
+                        </div>
+                        <div className="line-gray"> 
+                            <div className="valor-coluna"> ProdutoSHow </div>
+                        </div>
+                        <div className="line-black"> 
+                            <div className="coluna"> Preço: </div>
+                        </div>
+                        <div className="line-gray"> 
+                            <div className="valor-coluna"> R$ 99,00 </div>
+                        </div>
+                        <div className="line-black"> 
+                            <div className="coluna"> Quantidade: </div>
+                        </div>
+                        <div className="line-gray"> 
+                            <div className="valor-coluna"> 1 </div>
+                        </div>
+                        <div className="line-black"> 
+                            <div className="coluna1"> <StyledButtonAdm cor="vermelho" style={{width:"10em"}}> Voltar </StyledButtonAdm> </div>
+                        </div>
+                        <div className="pag"> <Paginacao /> </div>
                     </main>
                 </Container>
             
