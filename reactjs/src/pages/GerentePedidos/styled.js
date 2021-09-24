@@ -44,6 +44,9 @@ td {
    margin-top: 4em;
 }
 
+.cell {
+    display: none;
+}
 
 @media(max-width:375px) {
         .pc {
