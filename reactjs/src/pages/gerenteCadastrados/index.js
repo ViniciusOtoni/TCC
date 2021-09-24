@@ -127,7 +127,7 @@ export default function GerenteProdutosCadastrados() {
                         </tbody>
                     </table>
                     <div className="footer"> 
-                        <StyledButtonAdm cor="vermelho" className='buttonADM'> Voltar </StyledButtonAdm>
+                        <StyledButtonAdm cor="vermelho"  className='buttonADM'> Voltar </StyledButtonAdm>
                         <Paginacao />
                     </div>
                     </main>
