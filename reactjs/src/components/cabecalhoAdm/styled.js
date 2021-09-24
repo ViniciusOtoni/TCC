@@ -161,10 +161,5 @@ const StyledCabecalhoAdm = styled.div `
 }
 
 
-
-
-
-
-
 ` 
 export { StyledCabecalhoAdm }

@@ -26,7 +26,7 @@ const Container = styled.div`
    table {
         margin-top: 4em;
         width: 1200px;
-
+      
         border-collapse: collapse;
     }
 
@@ -44,12 +44,14 @@ const Container = styled.div`
    td {
        text-align: left;
        padding: 1em 3.5em;
+       font-family: MontserratBold;
    }
 
    th {
        padding: 1em;
        text-align: left;
        font-size: 25px;
+       font-family: MontserratBold;
    }
 
    .quantidade {
