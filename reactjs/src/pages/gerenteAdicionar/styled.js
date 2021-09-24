@@ -1,28 +1,41 @@
 import styled from "styled-components";
 
-const StyledGerenteAdicionar = styled.div`
+const StyledGerenteAlterar = styled.div`
+
+
+          
+
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    padding: 2em;
+   
 
-   main {
-       margin: auto;
-       width: 1240px;
-   }
+    main {
+        width: 1240px;
+        margin: auto;
+    }
+   
 
     .content{
         display: flex;
         flex-direction: column;
        
-        margin: 4em 0em;
+        margin: 5em 0em;
     }
 
-<<<<<<< HEAD
-    .style-input {
-=======
-    .input {
->>>>>>> cc1ebf80ad4929ca671553cbc7caf5d73786ff82
-        width: 22em;
+    .alternating {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 3.5em;
+
+        background-color: #282828;
+    }
+
+    .alternating > div {
+        font-family: Medio;
+        color: white;
+        margin-left: 1em;
     }
 
     .line{
@@ -41,17 +54,14 @@ const StyledGerenteAdicionar = styled.div`
     }
 
 
-    .alternating{
-        background-color: #282828;
-        color: white;
-        font-family: Medio;
-    }
+   .input-input {
+       width: 22em;
+   }
 
     .footer{
         display: flex;
         flex-direction: row;
-
-        margin: 2em 0em;
+        margin-bottom: 4em;
     }
 
     .button{
@@ -63,42 +73,146 @@ const StyledGerenteAdicionar = styled.div`
     }
 
     .topico1 {
-        padding-right: 8em;
+        padding-right: 13.8em;
     }
     .topico2 {
-        padding-right: 3em;
+        padding-right: 8.6em;
     }
     .topico3 {
-        padding-right: 6.4em;
+        padding-right: 11.8em;
     }
     .topico4 {
-        padding-right: 8.5em;
+        padding-right: 14.2em;
     }
     .topico5 {
-        padding-right: 2.2em;
+        padding-right: 7.8em;
     }
     .topico6 {
-        padding-right: 1em;
+        padding-right: 6.5em;
     }
     .topico7 {
-        padding-right: 1em;
+        padding-right: 6.5em;
     }
     .topico8 {
-        padding-right: 1em;
+        padding-right: 6.5em;
     }
     .topico9 {
-        padding-right: 1em;
+        padding-right: 6.7em;
     }
     .topico10 {
-        padding-right: 7em;
+        padding-right: 12.6em;
     }
 
-<<<<<<< HEAD
+    .new {
+        display: flex;
+        justify-content: right ;
+    }
 
-    
 
-=======
->>>>>>> cc1ebf80ad4929ca671553cbc7caf5d73786ff82
+    @media(max-width: 375px){
+        padding: 0em;
+        
+        main {
+            width: 100%;
+            margin: auto;
+        }
+
+        .alternating {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+           
+           
+           
+            background-color: transparent;
+        }
+
+        .input-input {
+            width: 100%;
+            
+        }
+
+        .input {
+            background-color: #333333;
+            padding: 1em 1em !important;
+           
+          
+        }
+
+        .alternating > div {
+            margin-left: 0px;
+            width: 100%;
+            padding: 0em 0em;
+        }
+
+        .topico1, .topico2, .topico3, .topico4, .topico5, .topico6, .topico7, .topico8, .topico9, .topico10  {
+            background-color: #282828;
+            
+            padding: 1em 1em !important;
+       
+            
+        }
+
+        .line {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 3em 0em;
+
+            background-color: transparent;
+           
+        }
+        
+        .line > div {
+            padding: 0em;
+            margin: 0em;
+
+            width: 100%;
+        }
+       
+        .topico2 {
+           margin-top: .8em !important;
+        }
+
+        .topico3 {
+            margin-top: 1.5em !important;
+        }
+
+        .topico4 {
+            margin-top: 2.4em !important;
+        }
+       
+        .topico5 {
+          margin-top: 3em !important;
+        }
+
+        .topico6 {
+            margin-top: 3.6em !important;
+        }
+
+        .topico7{
+            margin-top: 4.3em !important;
+        }
+
+        .topico8 {
+            margin-top: 5em !important;
+        }
+
+        .topico9 {
+            margin-top: 5.8em !important;
+        }
+
+        .topico10{
+            margin-top: 6.5em !important;
+        }
+
+        .footer {
+            justify-content: center;
+            margin-top: 10em;
+        }
+    } 
+   
+
 `
 
-export { StyledGerenteAdicionar }
+export { StyledGerenteAlterar }
