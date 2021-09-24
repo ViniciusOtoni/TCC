@@ -10,7 +10,7 @@ export default function GerenteProdutosCadastrados() {
         <div style={{backgroundColor:"#333333", minHeight:"100vh"}}> 
       <CabecalhoAdm />
             
-            <StyledGerenteCadastrados> 
+               <StyledGerenteCadastrados> 
                 <main> 
                     <table className="table table-responsive"> 
                         <thead> 
@@ -132,7 +132,7 @@ export default function GerenteProdutosCadastrados() {
                     </div>
                     </main>
                     
-            </StyledGerenteCadastrados> 
+            </StyledGerenteCadastrados>
             
         </div>
     )
