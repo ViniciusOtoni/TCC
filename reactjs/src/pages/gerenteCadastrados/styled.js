@@ -6,9 +6,13 @@ import styled from "styled-components";
 const StyledGerenteCadastrados = styled.div`
 
 
+<<<<<<< HEAD
 
 
 .pc{
+=======
+main {
+>>>>>>> cc1ebf80ad4929ca671553cbc7caf5d73786ff82
     width: 1240px;
     margin: auto;
 }
@@ -20,6 +24,9 @@ table {
 }
 
 
+ tr:nth-child(2n){
+    background-color: #282828;
+}
 
 th {
     color: #ffffff;
@@ -28,6 +35,7 @@ th {
     text-align: left;
     padding-bottom: 1em;
 }
+
 
 td {
     color: #ffffff;

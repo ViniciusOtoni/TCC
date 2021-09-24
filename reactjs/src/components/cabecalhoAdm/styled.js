@@ -54,12 +54,12 @@ const StyledCabecalhoAdm = styled.div `
     
 
     .input {
-    display:  ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : props.bNulo === 'true' ? 'none' : 'block' };
-   }
+        display:  ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : props.bNulo === 'true' ? 'none' : 'block' };
+    }
 
- .pesquisar {
-    display:  ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : props.bNulo === 'true' ? 'none' : 'block' };
-   }
+    .pesquisar {
+        display:  ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : props.bNulo === 'true' ? 'none' : 'block' };
+    }
 
    
   
@@ -159,6 +159,8 @@ const StyledCabecalhoAdm = styled.div `
             width: 100%;
         } 
 }
+
+
 
 ` 
 export { StyledCabecalhoAdm }
