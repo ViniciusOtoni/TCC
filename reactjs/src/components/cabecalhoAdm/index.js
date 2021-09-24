@@ -15,7 +15,7 @@ export default function CabecalhoAdm(props) {
             </div>
             <div className="column"> 
              <div className="nv">   <StyledButtonAdm cor="laranja" style={{marginBottom:"1em", marginTop:"2em"}} className="NV"> Novo Item </StyledButtonAdm> </div>
-            <div className="pedidos">    <StyledButtonAdm cor="laranja"  className="PE"> Pedidos </StyledButtonAdm> </div>
+            <div className="pedidos">    <StyledButtonAdm cor="laranja" style={{width:"8.3em"}} className="PE"> Pedidos </StyledButtonAdm> </div>
             </div>
         </StyledCabecalhoAdm>
     )
