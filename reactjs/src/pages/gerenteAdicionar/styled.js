@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 const StyledGerenteAdicionar = styled.div`
- display: flex;
+    display: flex;
     flex-direction: column;
-    padding: 2em;
-    height: 100vh;
+    height: 100%;
 
    main {
        margin: auto;
@@ -15,10 +14,11 @@ const StyledGerenteAdicionar = styled.div`
         display: flex;
         flex-direction: column;
        
-        margin: 5em 0em;
+        margin: 4em 0em;
     }
 
     .input {
+        width: 22em;
     }
 
     .line{
@@ -44,6 +44,8 @@ const StyledGerenteAdicionar = styled.div`
     .footer{
         display: flex;
         flex-direction: row;
+
+        margin: 2em 0em;
     }
 
     .button{
@@ -84,6 +86,7 @@ const StyledGerenteAdicionar = styled.div`
     .topico10 {
         padding-right: 7em;
     }
+
 `
 
 export { StyledGerenteAdicionar }

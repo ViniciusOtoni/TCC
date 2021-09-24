@@ -21,6 +21,7 @@ display: flex;
     }
 
     .input {
+        width: 22em;
     }
 
     .line{
@@ -91,6 +92,88 @@ display: flex;
     .new {
         display: flex;
         justify-content: right ;
+    }
+
+    @media(max-width: 375px){
+        display: flex;
+        flex-direction: column;
+
+        margin: auto;
+        padding: 0px;
+
+
+        main{
+            width: 370px;
+        }
+
+        .line{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            
+            margin: .2em 0em;
+
+            height: 6em;
+            width: 23em;
+        }
+
+        .alternating {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .topico1 {
+            padding-right: 0px;
+            padding: 0.8em 0em;
+        }
+        .topico2 {
+            padding-right: 0px;
+            padding: 0.8em 0em;
+        }
+        .topico3 {
+            padding-right: 0px;
+            padding: 0.8em 0em;
+        }
+        .topico4 {
+            padding-right: 0px;
+            padding: 0.8em 0em;
+        }
+        .topico5 {
+            padding-right: 0px;
+            padding: 0.8em 0em;
+        }
+        .topico6 {
+            padding-right: 0px;
+            padding: 0.8em 0em;
+        }
+        .topico7 {
+            padding-right: 0px;
+            padding: 0.8em 0em;
+        }
+        .topico8 {
+            padding-right: 0px;
+            padding: 0.8em 0em;
+        }
+        .topico9 {
+            padding-right: 0px;
+            padding: 0.8em 0em;
+        }
+        .topico10 {
+            padding-right: 0px;
+            padding: 0.8em 0em;
+        }
+
+        .input {
+            width: 25em;
+        }
+    
+        .footer{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 23em;
+        }
     }
 
 `

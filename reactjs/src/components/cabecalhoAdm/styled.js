@@ -13,6 +13,7 @@ const StyledCabecalhoAdm = styled.div `
         justify-content: center;
         margin: 0em;
         padding: 0em;
+        width: 23em;
 
         
 
@@ -87,9 +88,10 @@ const StyledCabecalhoAdm = styled.div `
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: ${props => props.nulo === 'true' ? 'none' : 'space-around'};
+    justify-content: ${props => props.nulo === 'false' ? 'space-around' : props.bNulo === 'false' ? 'none' : 'space-between'};
     padding-left: 1em;
     padding-top: 1em;
+    width: 80em;
 
     .column {
         display: flex;
@@ -125,18 +127,17 @@ const StyledCabecalhoAdm = styled.div `
 
 
     .pedidos {
-        display: ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : props.bNulo === true ? 'none' : 'break' };
-      
+        display: ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : props.bNulo === 'true' ? 'none' : 'break' };
     }
 
     
 
     .input {
-    display:  ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : 'block' };
+    display:  ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : props.bNulo === 'true' ? 'none' : 'block' };
    }
 
  .pesquisar {
-    display:  ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : 'block' };
+    display:  ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : props.bNulo === 'true' ? 'none' : 'block' };
    }
 
    
@@ -158,9 +159,18 @@ const StyledCabecalhoAdm = styled.div `
        background-position-x: center;
        background-position-y: center;
        display: ${props => props.nulob === true  ? 'none' : 'block' };  
-       display: ${props => props.nulo === 'true'  ? 'none' : 'block' };   
+       display: ${props => props.nulo === 'true'  ? 'none' : 'block' }; 
+       display: ${props => props.bNulo === 'true'  ? 'none' : 'block' }; 
     } 
 
+    .NV {
+        display: ${props => props.bNulo === 'true'  ? 'block' : 'none' }; 
+        margin-right: ${props => props.bNulo === 'true' ? '2em' : 'none'};
+    }
+
+    .nv{
+        margin-right: ${props => props.bNulo === 'true' ? '2em' : 'none'};
+    }
 
 
 ` 
