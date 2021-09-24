@@ -5,7 +5,61 @@ const StyledCabecalhoAdm = styled.div `
 
 
 
+@media(max-width:375px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0em;
+        padding: 0em;
+        width: 23em;
 
+        background-color: red;
+
+
+        .agp {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0em;
+            padding: 0em;
+            margin-bottom: 1em;
+        }
+        
+        .agp-input {
+            
+            display: flex;
+            flex-direction: row;
+            justify-content: normal;
+        }
+
+        .NV {
+            width: 86%;
+            margin-left: 2em;
+        }
+
+        .PE {
+            width: 86% !important;
+            margin-left: 2em;
+        }
+
+        .in {
+            width: 20em !important;
+        }
+
+        .pedidos {
+            width: 100%;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            margin: 0em;
+            padding: 0em;
+            width: 100%;
+        }
+    }
 
 
 
@@ -100,61 +154,7 @@ const StyledCabecalhoAdm = styled.div `
     }
 
     
-    @media(max-width:375px) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin: 0em;
-        padding: 0em;
-        width: 23em;
-
-        background-color: red;
-
-
-        .agp {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 0em;
-            padding: 0em;
-            margin-bottom: 1em;
-        }
-        
-        .agp-input {
-            
-            display: flex;
-            flex-direction: row;
-            justify-content: normal;
-        }
-
-        .NV {
-            width: 86%;
-            margin-left: 2em;
-        }
-
-        .PE {
-            width: 86% !important;
-            margin-left: 2em;
-        }
-
-        .in {
-            width: 20em !important;
-        }
-
-        .pedidos {
-            width: 100%;
-        }
-
-        .column {
-            display: flex;
-            flex-direction: column;
-            margin: 0em;
-            padding: 0em;
-            width: 100%;
-        }
-    }
+   
 
 
 
