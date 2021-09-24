@@ -41,7 +41,7 @@ const Vizualizar = styled.div`
         display: flex;
         flex-direction: column;
 
-        margin-bottom: 5em;
+        margin-bottom: 9em;
     }
 
     .line{
@@ -70,6 +70,21 @@ const Vizualizar = styled.div`
         padding: .7em 2.5em;
     }
 
+    .footer {
+        displaY: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 4em;
+     
+       
+    }
+
+    .voltar {
+        margin-right: 20%;
+        width: 10em;
+    }
+
+    
 
     @media(max-width: 375px) {
         padding: 0px;
@@ -80,15 +95,11 @@ const Vizualizar = styled.div`
 
             background-color: #333333;
         }
+
         
         .alternating {
             padding: 1.7em 0em;
-
         }
-
-      
-
-      
 
         .line {
             padding: 1.7em 0em;
@@ -98,10 +109,7 @@ const Vizualizar = styled.div`
         .header {
             display: flex;
             flex-direction: row;
-            
             justify-content: center;
-
-            
         }
 
 
@@ -131,7 +139,24 @@ const Vizualizar = styled.div`
             padding: 1em 3.5em;
         }
        
+        .voltar {
+            margin: 1em;
+        }
        
+        .footer {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin: 0em;
+            padding: 0em;
+        }
+
+        .pag {
+            width: 100%;
+            margin: 0em;
+            padding: 0em;
+            padding-bottom: .8em;
+        }
     }
     
 `

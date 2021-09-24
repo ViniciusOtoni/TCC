@@ -3,8 +3,8 @@ import styled from "styled-components";
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    
+    min-height: 100vh;
+
     .principal {
         align-self: center;
         color: white;

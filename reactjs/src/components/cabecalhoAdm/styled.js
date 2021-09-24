@@ -3,6 +3,87 @@ import styled from "styled-components";
 
 const StyledCabecalhoAdm = styled.div `
 
+
+
+
+@media(max-width:375px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0em;
+        padding: 0em;
+
+        
+
+        .agp {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0em;
+            padding: 0em;
+            margin-bottom: 1em;
+        }
+
+        
+        .input {
+           
+        }
+
+       
+
+        .agp-input {
+            
+            display: flex;
+            flex-direction: row;
+            justify-content: normal;
+        }
+
+        
+
+    .NV {
+        width: 86%;
+        margin-left: 2em;
+    }
+
+
+       
+
+        .PE {
+            width: 86% !important;
+            margin-left: 2em;
+        }
+
+        .in {
+            width: 20em !important;
+        }
+
+        
+
+        .pedidos {
+            width: 100%;
+        }
+
+
+        
+       
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            margin: 0em;
+            padding: 0em;
+            width: 100%;
+        }
+
+     
+}
+
+
+
+
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -16,6 +97,10 @@ const StyledCabecalhoAdm = styled.div `
         display: ${props => props.nulo === 'true'  ? 'none' : 'block' };  
     }
 
+    .PE {
+        width: 8.3em;
+    }
+
     .logo {
         padding-top: 1em;
     }
@@ -25,6 +110,11 @@ const StyledCabecalhoAdm = styled.div `
         flex-direction: row;
         align-items: center;
         justify-content: center;
+    }
+
+    .in {
+        border-radius:0em;
+         width: 30em;
     }
 
 
@@ -67,12 +157,11 @@ const StyledCabecalhoAdm = styled.div `
        background-repeat: no-repeat;
        background-position-x: center;
        background-position-y: center;
-       display: ${props => props.nulob === true  ? 'none' : 'block'};  
-       display: ${props => props.nulo === 'true'  ? 'none' : 'block'};   
-    }
+       display: ${props => props.nulob === true  ? 'none' : 'block' };  
+       display: ${props => props.nulo === 'true'  ? 'none' : 'block' };   
+    } 
 
-    @media(max-width:375px) {
 
-    }
+
 ` 
 export { StyledCabecalhoAdm }

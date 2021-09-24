@@ -2,13 +2,14 @@ import React from "react"
 
 import { StyledButtonAdm } from "../../components/botaoAdm/styled"
 import CabecalhoAdm from "../../components/cabecalhoAdm"
+import Paginacao from "../../components/paginacao"
 
 import { Vizualizar } from "./styled"
  
 export default function GerenteVizualizar(){
      return(
          <div style={{ backgroundColor:"#333333" }}>
-             <CabecalhoAdm nuloB={true}/>
+             <CabecalhoAdm nulo='true'/>
                 <Vizualizar>
                      <main>
                         <div className="content">
@@ -49,11 +50,11 @@ export default function GerenteVizualizar(){
                                 <div className="line-value">  12345678911 </div>
                             </div>
                         </div>
-                        <div className="footer">
-                            <div>
-                                <StyledButtonAdm  className="button" cor="vermelho"> Voltar </StyledButtonAdm> 
-                            </div>
-                        </div>
+                        <div className="footer"> 
+                        <StyledButtonAdm cor="vermelho" className="voltar"> Voltar </StyledButtonAdm>
+                        <div className="pag"> <Paginacao /> </div>
+                    </div>
+                        
                     </main>
                 </Vizualizar>    
            
