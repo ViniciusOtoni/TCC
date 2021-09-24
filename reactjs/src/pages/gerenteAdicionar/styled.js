@@ -17,7 +17,11 @@ const StyledGerenteAdicionar = styled.div`
         margin: 4em 0em;
     }
 
+<<<<<<< HEAD
     .style-input {
+=======
+    .input {
+>>>>>>> cc1ebf80ad4929ca671553cbc7caf5d73786ff82
         width: 22em;
     }
 
@@ -89,9 +93,12 @@ const StyledGerenteAdicionar = styled.div`
         padding-right: 7em;
     }
 
+<<<<<<< HEAD
 
     
 
+=======
+>>>>>>> cc1ebf80ad4929ca671553cbc7caf5d73786ff82
 `
 
 export { StyledGerenteAdicionar }

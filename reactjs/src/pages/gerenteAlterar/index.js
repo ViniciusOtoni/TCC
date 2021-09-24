@@ -34,19 +34,19 @@ export default function GerenteAlterar() {
                             <div  className="input"> <StyledInput className="input-input" placeholder="URl da Imagem"/>  </div>
                         </div>
                         <div className="line">
-                            <div className="topico6"> Imagem Secundaria: </div>
+                            <div className="topico6"> Imagem 2: </div>
                             <div  className="input"> <StyledInput className="input-input" placeholder="URl da Imagem"/>  </div>
                         </div>
                         <div className="alternating">
-                            <div className="topico7"> Imagem Secundaria: </div>
+                            <div className="topico7"> Imagem 3: </div>
                             <div  className="input"> <StyledInput className="input-input" placeholder="URl da Imagem"/>  </div>
                         </div>
                         <div className="line">
-                            <div className="topico8">   Imagem Secundaria: </div>
+                            <div className="topico8">   Imagem 4: </div>
                             <div  className="input"> <StyledInput className="input-input" placeholder="URl da Imagem"/> </div>
                         </div>
                         <div className="alternating">
-                            <div className="topico9">  Imagem Secundaria: </div>
+                            <div className="topico9">  Situação: </div>
                             <div  className="input"> <StyledInput className="input-input"/>  </div>
                         </div>
                         <div className="line">
