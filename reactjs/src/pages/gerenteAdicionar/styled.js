@@ -3,8 +3,7 @@ import styled from "styled-components";
 const StyledGerenteAdicionar = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 2em;
-    height: 100vh;
+    min-height: 100vh;
 
    main {
        margin: auto;
@@ -15,7 +14,7 @@ const StyledGerenteAdicionar = styled.div`
         display: flex;
         flex-direction: column;
        
-        margin: 5em 0em;
+        margin: 4em 0em;
     }
 
     .style-input {
@@ -47,6 +46,8 @@ const StyledGerenteAdicionar = styled.div`
     .footer{
         display: flex;
         flex-direction: row;
+
+        margin: 2em 0em;
     }
 
     .button{

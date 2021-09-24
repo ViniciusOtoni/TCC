@@ -11,11 +11,11 @@ export default function CabecalhoAdm(props) {
             </div>
             <div className="agp-input"> 
                 <div className="input">  <StyledInput className="in" placeholder="Pesquisar Itens (Nome do Produto)" /> </div>
-                <div className="pesquisar"> <button> </button> </div>
+                <div className="pesquisar"> <button> <img src="/assets/images/Vector (8).svg" alt="" /> </button> </div>
             </div>
             <div className="column"> 
              <div className="nv">   <StyledButtonAdm cor="laranja" style={{marginBottom:"1em", marginTop:"2em"}} className="NV"> Novo Item </StyledButtonAdm> </div>
-            <div className="pedidos">    <StyledButtonAdm cor="laranja" style={{width:"8.3em"}} className="PE"> Pedidos </StyledButtonAdm> </div>
+            <div className="pedidos">    <StyledButtonAdm cor="laranja"  className="PE"> Pedidos </StyledButtonAdm> </div>
             </div>
         </StyledCabecalhoAdm>
     )
