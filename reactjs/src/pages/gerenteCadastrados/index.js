@@ -11,13 +11,8 @@ export default function GerenteProdutosCadastrados() {
       <CabecalhoAdm />
             
                <StyledGerenteCadastrados> 
-<<<<<<< HEAD
                 <main className="pc"> 
                     <table> 
-=======
-                <main> 
-                    <table className="table table-responsive"> 
->>>>>>> cc1ebf80ad4929ca671553cbc7caf5d73786ff82
                         <thead> 
                             <th style={{paddingRight:"1em"}}> ID: </th>
                             <th> Nome </th>
