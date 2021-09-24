@@ -4,8 +4,6 @@ import styled from "styled-components";
 const StyledCabecalhoAdm = styled.div `
 
 
-
-
 @media(max-width:375px) {
         display: flex;
         flex-direction: column;
@@ -14,8 +12,6 @@ const StyledCabecalhoAdm = styled.div `
         margin: 0em;
         padding: 0em;
         width: 23em;
-
-        
 
         .agp {
             display: flex;
@@ -27,13 +23,6 @@ const StyledCabecalhoAdm = styled.div `
             margin-bottom: 1em;
         }
 
-        
-        .input {
-           
-        }
-
-       
-
         .agp-input {
             
             display: flex;
@@ -41,15 +30,10 @@ const StyledCabecalhoAdm = styled.div `
             justify-content: normal;
         }
 
-        
-
-    .NV {
-        width: 86%;
-        margin-left: 2em;
-    }
-
-
-       
+        .NV {
+            width: 86%;
+            margin-left: 2em;
+        }
 
         .PE {
             width: 86% !important;
@@ -60,15 +44,9 @@ const StyledCabecalhoAdm = styled.div `
             width: 20em !important;
         }
 
-        
-
         .pedidos {
             width: 100%;
         }
-
-
-        
-       
 
         .column {
             display: flex;
@@ -77,12 +55,8 @@ const StyledCabecalhoAdm = styled.div `
             padding: 0em;
             width: 100%;
         }
-
-     
+                
 }
-
-
-
 
 
     display: flex;
@@ -91,7 +65,7 @@ const StyledCabecalhoAdm = styled.div `
     justify-content: ${props => props.nulo === 'false' ? 'space-around' : props.bNulo === 'false' ? 'none' : 'space-between'};
     padding-left: 1em;
     padding-top: 1em;
-    width: 80em;
+    width: 76em;
 
     .column {
         display: flex;
@@ -133,15 +107,14 @@ const StyledCabecalhoAdm = styled.div `
     
 
     .input {
-    display:  ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : props.bNulo === 'true' ? 'none' : 'block' };
-   }
+        display:  ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : props.bNulo === 'true' ? 'none' : 'block' };
+    }
 
- .pesquisar {
-    display:  ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : props.bNulo === 'true' ? 'none' : 'block' };
-   }
+    .pesquisar {
+        display:  ${props => props.nulob === true ? 'none' : props.nulo === 'true' ? 'none' : props.bNulo === 'true' ? 'none' : 'block' };
+    }
 
    
-
     .game {
         color: #F0AC54;
         font-family: MontserratBold;
@@ -171,6 +144,8 @@ const StyledCabecalhoAdm = styled.div `
     .nv{
         margin-right: ${props => props.bNulo === 'true' ? '2em' : 'none'};
     }
+
+
 
 
 ` 
