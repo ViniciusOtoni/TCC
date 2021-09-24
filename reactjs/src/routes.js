@@ -29,6 +29,7 @@ import LoginGerente from './pages/loginGerente';
 import EscolhaGerente from './pages/selecionarAdm';
 import CriarConta from './pages/criarConta';
 import CadastrarEmpresa from './pages/cadastrarEmpresa';
+import CabecalhoAdm from './components/cabecalhoAdm';
 
 export default function Rotes() {
     return (
@@ -62,6 +63,7 @@ export default function Rotes() {
                 <Route path="/escolhaGerente" component={EscolhaGerente} />
                 <Route path="/criarConta" component={CriarConta} />
                 <Route path="/cadastrarEmpresa" component={CadastrarEmpresa} />
+                <Route path="/testeADM" component={CabecalhoAdm} />
                 <Route  path="/*" component={Error} />
             </Switch>
         </BrowserRouter> 

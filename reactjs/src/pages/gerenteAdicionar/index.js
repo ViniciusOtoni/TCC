@@ -7,7 +7,7 @@ import CabecalhoAdm from "../../components/cabecalhoAdm"
 export default function GerenteAdicionar() {
     return (
         <div style={{backgroundColor:"#333333"}}> 
-        <CabecalhoAdm bNulo='true' />
+        <CabecalhoAdm nulo='true' />
             
                  <StyledGerenteAdicionar>
                      <main> 
