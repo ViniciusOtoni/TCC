@@ -11,7 +11,7 @@ const Container = styled.div`
         width: 95%;
     }
 
-    main {
+    .pc {
         width: 1240px;
         margin: auto;
     }
@@ -26,7 +26,7 @@ const Container = styled.div`
    table {
         margin-top: 4em;
         width: 1200px;
-
+      
         border-collapse: collapse;
     }
 
@@ -44,12 +44,14 @@ const Container = styled.div`
    td {
        text-align: left;
        padding: 1em 3.5em;
+       font-family: MontserratBold;
    }
 
    th {
        padding: 1em;
        text-align: left;
        font-size: 25px;
+       font-family: MontserratBold;
    }
 
    .quantidade {
@@ -107,6 +109,65 @@ const Container = styled.div`
         padding: .6em 1em;
         border-radius: 5px;
         margin-left: 1em;
+    }
+
+    .cell {
+        display: none;
+    }
+
+    @media(max-width:375px) {
+        .pc {
+            display: none;
+        }
+
+        .cell {
+            display: block;
+
+        }
+
+        .line-gray {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding-top: 3em;
+            padding-left: 1em;
+           
+            height: 4em;
+        }
+
+        .line-black {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-top: 3em;
+            padding-left: 1em;
+            background-color: #282828;
+            height: 4em;
+        }
+
+        .coluna {
+            color: #ffffff;
+            font-size: 1.4em;
+            font-family: MontserratBold;
+            padding-right: 2em;
+        }
+
+        .valor-coluna {
+            color: #ffffff;
+            font-size: 1em;
+            font-family: MontserratBold;
+            
+        }
+
+        .coluna1 {
+            margin-left: 7em;
+        }
+
+        .pag {
+            margin-bottom: 2em;
+        }
     }
 `
 
