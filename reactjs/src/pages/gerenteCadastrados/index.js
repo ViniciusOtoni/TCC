@@ -11,7 +11,7 @@ export default function GerenteProdutosCadastrados() {
       <CabecalhoAdm />
             
                <StyledGerenteCadastrados> 
-                <main className="pc"> 
+                <main className="pc1"> 
                     <table> 
                         <thead> 
                             <th style={{paddingRight:"1em"}}> ID: </th>
@@ -128,7 +128,7 @@ export default function GerenteProdutosCadastrados() {
                     </table>
                     <div className="footer"> 
                         <StyledButtonAdm cor="vermelho"  className='buttonADM'> Voltar </StyledButtonAdm>
-                        <Paginacao />
+                        <Paginacao/>  
                     </div>
                     </main>
                     <main className="cell"> 

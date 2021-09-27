@@ -8,7 +8,7 @@ const StyledGerenteCadastrados = styled.div`
 
 
 
-.pc{
+.pc1{
     width: 1240px;
     margin: auto;
 }
@@ -47,7 +47,10 @@ td {
 .footer {
    displaY: flex;
    flex-direction: row;
+   align-self: center;
    align-items: center;
+   width: 100%;
+  
    margin-top: 4em;
 }
 
@@ -57,11 +60,14 @@ td {
 
 .buttonADM {
     margin-right: 30%;
-   
 }
 
+
+
+
+
 @media(max-width:375px) {
-        .pc {
+        .pc1 {
             display: none;
         }
 
@@ -133,7 +139,7 @@ td {
             margin-top: 2em;
             background-color: #282828;
             padding: 2em;
-           padding-left: 7em;
+            padding-left: 7em;
         }
     }
 
