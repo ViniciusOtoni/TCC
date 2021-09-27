@@ -26,6 +26,8 @@ function alterarTitulo(tituloBaixo) {
     return 'Digite a Nova Senha:'
     if(tituloBaixo === '4')
     return 'Confirme o Email:'
+    if(tituloBaixo === '5')
+    return 'Produtos Cadastrados:'
     else 
     return 'Senha:'
 }
@@ -37,6 +39,8 @@ function alterarTitulo1(tituloCima) {
     return 'Nome:'
     if(tituloCima === '3')
     return 'Digite o novo Email:'
+    if(tituloCima === '4')
+    return 'Pedidos:'
     else 
     return 'Email:'
 }

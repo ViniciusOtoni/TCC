@@ -7,7 +7,7 @@ text-align: center;
     border: 3px solid #F0AC54;
     background-color: rgba(0,0,0,0);
     width: 15em;
-    height: 2em;
+    height: 2.5em;
     border-radius: .6em;
     font: 1.2em MontserratBold;
     
