@@ -6,6 +6,7 @@ import CaixaJogo from "../../components/caixaJogo"
 import Categoria from "../../components/escolhaTipo"
 import '../index.css'
 import "animate.css"
+import { Link } from 'react-router-dom'
 
 export default function Home() {
     return (
@@ -19,7 +20,7 @@ export default function Home() {
             <div className="agp-melhor"> 
                 <div className="texto-melhor"> A Melhor </div>
                 <div className="texto-melhor"> Loja Do Brasil </div>
-                <div className="saiba-mais"> <StyledButtonHome className="teste"> Saiba Mais! </StyledButtonHome>  </div>
+                <div className="saiba-mais"> <Link to="/saibaMais" style={{textDecoration: 'none'}}> <StyledButtonHome className="teste">Saiba Mais! </StyledButtonHome> </Link>  </div>
             </div>
             <div className="logo"> <img src="/assets/images/controle.svg" alt="" /> 
             </div>

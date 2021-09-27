@@ -1,6 +1,7 @@
 import { StyledPopup } from "./styled";
 import { StyledInput } from "../input/styled";
 import { StyledButtonPopup } from "../botaoPopup/styled";
+import { Link } from "react-router-dom";
 
 
 function alterar(botao1) {
@@ -57,12 +58,12 @@ export default function Popup(props) {
 
                 <div className="senha"> {alterarTitulo(props.tituloBaixo)} </div>
                 <div className="input"> <StyledInput style={{width:"100%", color:"#000000"}}/> </div>
-                <div className="esqueceu-senha"> Esqueceu  sua Senha </div>
+                <Link to="/recuperarSenha" style={{color:"#ffffff", textDecoration:"none"}}> <div className="esqueceu-senha"> Esqueceu  sua Senha </div>   </Link>
 
                 <div className="agp-botao">
-                <div className="botao1"> <StyledButtonPopup> Entrar  </StyledButtonPopup> </div>
-                <div className="botao2"> <StyledButtonPopup> Cadastra-se </StyledButtonPopup> </div>
-                <div className="botao3"> <StyledButtonPopup> {alterar(props.botao1)} </StyledButtonPopup> </div>
+                <div className="botao1"> <Link to="/">   <StyledButtonPopup> Entrar  </StyledButtonPopup> </Link> </div>
+              <div className="botao2">  <Link to="/criarConta">  <StyledButtonPopup> Cadastra-se </StyledButtonPopup> </Link> </div> 
+                <div className="botao3"> <Link to={alterar(props.botao1) === '1' ? '/redefinirSenha' : alterar(props.botao1) === '2' ? '/' :   alterar(props.botao1) === '3' ? '/recuperarEmail' :  alterar(props.botao1) === '4' ? '/' : alterar(props.botao1) === '5' ? '' : ''}> <StyledButtonPopup> {alterar(props.botao1)} </StyledButtonPopup> </Link> </div>
                 </div>
             </div>
 

@@ -1,6 +1,7 @@
 
 
 import { RodaPe } from './styled.js'
+import { Link } from 'react-router-dom'
 
 export default function Footer(){
     return(
@@ -21,7 +22,7 @@ export default function Footer(){
             <div className="section2">
                 <div className="align-itens-image">
                     <div className="item-image"> Exemplo </div>
-                    <div className="item-image"> Exemplo </div>
+                    <Link to="/termos" style={{textDecoration:"none", color:"#000000"}}>      <div className="item-image">  Exemplo   </div> </Link> 
                     <div className="item-image"> Exemplo </div>
                     <div className="item-image"> 
                         <img src="/assets/images/facebook.svg" alt=""/>
@@ -31,7 +32,7 @@ export default function Footer(){
                 </div>
                 <div className="align">
                     <div className="align-items">
-                        <div className="item"> Exemplo </div>
+                       <div className="item"> Exemplo </div>
                         <div className="item"> Exemplo </div>
                         <div className="item"> Exemplo </div>
                         <div className="item"> Exemplo </div>

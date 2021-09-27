@@ -2,6 +2,7 @@ import { Container } from "./styled"
 import { StyledInput } from '../../components/input/styled'
 import Cabecalho from "../../components/cabecalho"
 import { StyledButtonVerde } from "../../components/botaoVerde/styled"
+import { Link } from "react-router-dom"
 
 export default function ConcluirCompra() {
     return (
@@ -97,7 +98,7 @@ export default function ConcluirCompra() {
                                   
                                 
                             
-                              <div className="bottom">  <StyledButtonVerde style={{marginTop:"4.8em", height:"2em"}} className="botao-buttom"> Concluir Compra! </StyledButtonVerde> </div>
+                                <Link to="/">  <div className="bottom">  <StyledButtonVerde style={{marginTop:"4.8em", height:"2em"}} className="botao-buttom"> Concluir Compra! </StyledButtonVerde> </div> </Link>
                             </div>
                         </div>
                     </div>

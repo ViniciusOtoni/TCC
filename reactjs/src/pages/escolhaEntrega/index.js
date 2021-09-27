@@ -2,6 +2,7 @@
 import { StyledEscolhaEntrega } from "./styled"
 import Cabecalho from "../../components/cabecalho"
 import Paginacao from "../../components/paginacao"
+import { Link } from "react-router-dom"
 
 export default function EscolhaEntrega() {
     return (
@@ -29,8 +30,8 @@ export default function EscolhaEntrega() {
                         </div> 
                         <div className="column-acao">
                             <div className="title-column"> Inspecionar: </div>
-                            <div className="verificar-botao"> <button> Verificar </button> </div>
-                            <div className="verificar-botao"> <button> Verificar  </button> </div>
+                          <Link to="/entregas">  <div className="verificar-botao"> <button> Verificar </button> </div> </Link>
+                          <Link to="/entregaItem">  <div className="verificar-botao"> <button> Verificar  </button> </div> </Link>
                         </div> 
                         
                     </div>

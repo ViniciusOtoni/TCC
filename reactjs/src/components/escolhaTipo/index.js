@@ -1,4 +1,5 @@
 import { StyledEscolha } from "./styled";
+import { Link } from 'react-router-dom'
 
 
 function alternar(cat) {
@@ -39,10 +40,10 @@ function alternarImg(img) {
 export default function Categoria(props) {
     return (
         
-        <StyledEscolha cat={props.cat}> 
-            <div className="imagem-categoria"> <img src={alternarImg(props.img)} alt="" />  </div>
-            <div className="titulo-categoria"> {alternar(props.cat) }</div>
-            <div className="desc-categoria"> {Desc(props.desc)}</div>
-        </StyledEscolha>
+       <StyledEscolha cat={props.cat}>  
+            <div className="imagem-categoria">   <img src={alternarImg(props.img)} alt="" />  </div>
+            <Link to="/venda" style={{textDecoration:"none"}}>    <div className="titulo-categoria">   {alternar(props.cat) }  </div>
+            <div className="desc-categoria">   {Desc(props.desc)} </div> </Link>
+        </StyledEscolha> 
     )
 }
