@@ -1,6 +1,7 @@
 import { StyledPopupBig } from "./styled";
 import { StyledInput } from "../input/styled";
 import { StyledButtonPopup } from "../botaoPopup/styled";
+import { Link } from "react-router-dom";
 
 function alterarTitulo1(titulo1) {
     if(titulo1 === '1')
@@ -50,7 +51,7 @@ export default function PopupBig(props) {
                 <div className="repita"> {alterarTitulo4(props.titulo4)}</div>
                 <div className="input"> <StyledInput /> </div> 
 
-              <div className="butao">  <StyledButtonPopup> Criar Conta! </StyledButtonPopup> </div>
+              <div className="butao"> <Link to="/"> <StyledButtonPopup> Criar Conta! </StyledButtonPopup>  </Link> </div>
            </div>
 
         </StyledPopupBig> 

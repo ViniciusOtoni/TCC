@@ -1,5 +1,6 @@
 import { StyledPopup } from "./styled";
 import { StyledButtonPopup } from "../botaoPopup/styled";
+import { Link } from "react-router-dom";
 
 
 export default function PopupLittle() {
@@ -11,9 +12,9 @@ export default function PopupLittle() {
             </header>
             <div className="agp-column"> 
                 <div className="pedidos"> Pedidos: </div>
-                <div className="botao1"> <StyledButtonPopup> Entrar  </StyledButtonPopup> </div>
+                <div className="botao1"> <Link to="/gerentePedidos"> <StyledButtonPopup> Entrar  </StyledButtonPopup> </Link> </div>
                 <div className="pedidos"> Produtos Cadastrados: </div>
-                <div className="botao1"> <StyledButtonPopup> Entrar  </StyledButtonPopup> </div>
+                <div className="botao1">  <Link to="/gerenteCadastrar"> <StyledButtonPopup> Entrar  </StyledButtonPopup> </Link> </div>
             </div>
         </StyledPopup> 
     )

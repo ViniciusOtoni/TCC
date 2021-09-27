@@ -58,7 +58,7 @@ export default function Popup(props) {
             <div className="agp-column"> 
                 <div className="email"> {alterarTitulo1(props.tituloCima)} </div>
                 <div className="input"> <StyledInput style={{width:"100%", color:"#000000"}}/> </div>
-                <div className="esqueceu-email"> Esqueceu seu Email? </div>
+              <Link to="/recuperarEmail" style={{color:"#ffffff", textDecoration:"none"}}>   <div className="esqueceu-email"> Esqueceu seu Email? </div> </Link>
 
                 <div className="senha"> {alterarTitulo(props.tituloBaixo)} </div>
                 <div className="input"> <StyledInput style={{width:"100%", color:"#000000"}}/> </div>
@@ -67,7 +67,7 @@ export default function Popup(props) {
                 <div className="agp-botao">
                 <div className="botao1"> <Link to="/">   <StyledButtonPopup> Entrar  </StyledButtonPopup> </Link> </div>
               <div className="botao2">  <Link to="/criarConta">  <StyledButtonPopup> Cadastra-se </StyledButtonPopup> </Link> </div> 
-                <div className="botao3"> <Link to={alterar(props.botao1) === '1' ? '/redefinirSenha' : alterar(props.botao1) === '2' ? '/' :   alterar(props.botao1) === '3' ? '/recuperarEmail' :  alterar(props.botao1) === '4' ? '/' : alterar(props.botao1) === '5' ? '' : ''}> <StyledButtonPopup> {alterar(props.botao1)} </StyledButtonPopup> </Link> </div>
+                <div className="botao3"> <Link to={props.botao1 === '1' ? '/redefinirSenha' : props.botao1 === '2' ? '/' :   props.botao1 === '3' ? '/redefinirEmail' :  props.botao1 === '4' ? '/' : props.botao1 === '5' ? '/gerenteEscolha' : '/cadastrarEmpresa'}> <StyledButtonPopup> {alterar(props.botao1)} </StyledButtonPopup> </Link> </div>
                 </div>
             </div>
 
