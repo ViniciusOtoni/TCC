@@ -7,7 +7,7 @@ import CabecalhoAdm from "../../components/cabecalhoAdm";
 export default function GerenteAlterar() {
     return (
         <div style={{backgroundColor:"#333333"}}> 
-        <CabecalhoAdm nulob={true} />
+        <CabecalhoAdm nulo='true' />
             
                 <StyledGerenteAlterar> 
                 <main> 
@@ -59,7 +59,7 @@ export default function GerenteAlterar() {
                             <StyledButtonAdm  className="button" cor="vermelho"> Voltar </StyledButtonAdm> 
                         </div>
                         <div className="criar-item"> 
-                            <StyledButtonAdm>  Alterar item </StyledButtonAdm>
+                            <StyledButtonAdm>  Adicionar item </StyledButtonAdm>
                         </div>
                     </div>
                     </main>

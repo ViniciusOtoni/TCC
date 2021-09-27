@@ -1,6 +1,7 @@
 import { StyledCabecalhoAdm } from "./styled";
 import { StyledButtonAdm } from "../botaoAdm/styled";
 import { StyledInput } from "../input/styled";
+import { Link } from "react-router-dom";
 
 export default function CabecalhoAdm(props) {
     return (
@@ -14,8 +15,8 @@ export default function CabecalhoAdm(props) {
                 <div className="pesquisar"> <button> <img src="/assets/images/Vector (8).svg" alt="" /> </button> </div>
             </div>
             <div className="column"> 
-             <div className="nv">   <StyledButtonAdm cor="laranja" style={{marginBottom:"1em", marginTop:"2em"}} className="NV"> Novo Item </StyledButtonAdm> </div>
-            <div className="pedidos">    <StyledButtonAdm cor="laranja"  className="PE"> Pedidos </StyledButtonAdm> </div>
+             <div className="nv">    <Link to="/gerenteAdicionar"> <StyledButtonAdm cor="laranja" style={{marginBottom:"1em", marginTop:"2em"}} className="NV"> Novo Item </StyledButtonAdm> </Link> </div>
+            <div className="pedidos">   <Link to="/gerentePedidos" style={{textDecoration:"none"}}> <StyledButtonAdm cor="laranja"  className="PE"> Pedidos </StyledButtonAdm> </Link> </div>
             </div>
         </StyledCabecalhoAdm>
     )

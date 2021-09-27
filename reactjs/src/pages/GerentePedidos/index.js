@@ -1,7 +1,7 @@
 import { StyledGerentePedidos } from "./styled";
 import { StyledButtonAdm } from "../../components/botaoAdm/styled";
 import CabecalhoAdm from "../../components/cabecalhoAdm";
-
+import { Link } from "react-router-dom";
 import Paginacao from "../../components/paginacao";
 
 
@@ -77,7 +77,7 @@ export default function GerentePedidos() {
                                   <td className="botao1"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"8.5em", fontSize:".7em"}} cor="vermelho"> Saiu Para Entrega </StyledButtonAdm> </td>
                                   <td className="botao2"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"10.5em"}} cor="laranja"> A Caminho </StyledButtonAdm> </td>
                                   <td className="botao3"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} >  Entregue </StyledButtonAdm> </td>
-                                  <td className="botao4"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em", fontSize:".7em"}}  cor="preto">  Ver Itens </StyledButtonAdm> </td>
+                                  <td className="botao4"> <Link to="/gerenteListar"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em", fontSize:".7em"}}  cor="preto">  Ver Itens </StyledButtonAdm> </Link> </td>
                               </tr>
                               <tr> 
                                   <td style={{paddingLeft:"1em"}}> 1 </td>
@@ -137,7 +137,7 @@ export default function GerentePedidos() {
                           </tbody>
                       </table>
                       <div className="footer"> 
-                          <StyledButtonAdm cor="vermelho" style={{marginRight:"20%", width:"10em"}}> Voltar </StyledButtonAdm>
+                          <StyledButtonAdm cor="vermelho" style={{marginRight:"30%", width:"10em"}}> Voltar </StyledButtonAdm>
                          <Paginacao /> 
                       </div>
                       </main>

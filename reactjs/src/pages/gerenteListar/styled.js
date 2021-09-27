@@ -163,6 +163,7 @@ const Container = styled.div`
 
         .coluna1 {
             margin-left: 7em;
+            
         }
 
         .pag {

@@ -4,6 +4,8 @@ import CabecalhoAdm from "../../components/cabecalhoAdm";
 import Paginacao from "../../components/paginacao";
 import { StyledGerenteCadastrados } from "./styled";
 
+import { Link } from "react-router-dom";
+
 
 export default function GerenteProdutosCadastrados() {
     return (
@@ -30,9 +32,9 @@ export default function GerenteProdutosCadastrados() {
                                 <td style={{paddingLeft: "3.8em"}}> 12345678911 </td>
                                 <td style={{paddingLeft:"4em"}}> Xbox </td>
                                 <td>  R$ 999,00 </td>
-                                <td className="botao"  texto="true"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </td>
-                                <td className="botao"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </td>
-                                <td className="botao"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho">  Excluir </StyledButtonAdm> </td>
+                                <td className="botao"  texto="true"> <Link to="/gerenteVizualizar"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </Link> </td>
+                                <td className="botao"> <Link to="/gerenteAlterar">  <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </Link> </td>
+                                <td className="botao">  <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho">  Excluir </StyledButtonAdm>  </td>
                             </tr>
                             <tr> 
                                 <td style={{paddingLeft:"1em"}}> 1 </td>
