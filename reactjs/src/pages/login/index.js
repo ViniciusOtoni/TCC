@@ -6,7 +6,7 @@ export default function Login() {
     return (
   
             <StyledPopupTela> 
-                <Popup />
+                <Popup tituloCima="Login" />
             </StyledPopupTela>
    
 )

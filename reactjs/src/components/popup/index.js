@@ -56,7 +56,7 @@ export default function Popup(props) {
                 <div className="titulo"> GameBud </div>
             </header>
             <div className="agp-column"> 
-                <div className="email"> {alterarTitulo1(props.tituloCima)} </div>
+                <div className="email"> {props.tituloCima} </div>
                 <div className="input"> <StyledInput style={{width:"100%", color:"#000000"}}/> </div>
               <Link to="/recuperarEmail" style={{color:"#ffffff", textDecoration:"none"}}>   <div className="esqueceu-email"> Esqueceu seu Email? </div> </Link>
 
