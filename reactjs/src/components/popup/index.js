@@ -19,32 +19,6 @@ else
 return 'Cadastrar Empresa!'
 } 
 
-function alterarTitulo(tituloBaixo) {
-    if(tituloBaixo === '1') 
-    return 'Nome:'
-    if(tituloBaixo === '3')
-    return 'Digite a Nova Senha:'
-    if(tituloBaixo === '4')
-    return 'Confirme o Email:'
-    if(tituloBaixo === '5')
-    return 'Produtos Cadastrados:'
-    else 
-    return 'Senha:'
-}
-
-function alterarTitulo1(tituloCima) {
-    if(tituloCima === '1')
-    return 'Insira o código:'
-    if(tituloCima === '2')
-    return 'Nome:'
-    if(tituloCima === '3')
-    return 'Digite o novo Email:'
-    if(tituloCima === '4')
-    return 'Pedidos:'
-    else 
-    return 'Email:'
-}
-
 
 
 
@@ -60,7 +34,7 @@ export default function Popup(props) {
                 <div className="input"> <StyledInput style={{width:"100%", color:"#000000"}}/> </div>
               <Link to="/recuperarEmail" style={{color:"#ffffff", textDecoration:"none"}}>   <div className="esqueceu-email"> Esqueceu seu Email? </div> </Link>
 
-                <div className="senha"> {alterarTitulo(props.tituloBaixo)} </div>
+                <div className="senha"> {props.tituloBaixo} </div>
                 <div className="input"> <StyledInput style={{width:"100%", color:"#000000"}}/> </div>
                 <Link to="/recuperarSenha" style={{color:"#ffffff", textDecoration:"none"}}> <div className="esqueceu-senha"> Esqueceu  sua Senha </div>   </Link>
 
