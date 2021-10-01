@@ -7,8 +7,11 @@ const StyledJogo = styled.div`
     background-color: #282828;
     justify-content: center;
     align-items: center;
-    padding: 2em;
+    width: 20em;
     margin: 1em;
+    margin-left: 2.97em;
+    height: 25em;
+    
 
 
     .row1 {
@@ -19,10 +22,12 @@ const StyledJogo = styled.div`
 
     .nome-jogo {
         color: white;
-        
+        width: 10em;
+        text-align: center;
         padding-bottom: 0em;
         font: 1.2em MontserratBold;
     }
+
 
     .preco {
         color: white;

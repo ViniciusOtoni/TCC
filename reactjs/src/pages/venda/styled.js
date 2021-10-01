@@ -57,6 +57,16 @@ const StyledVenada = styled.div `
         justify-content: center;
     }
 
+    option {
+        color: #000000;
+        font-family: Medio;
+        
+    }
+
+    select {
+       outline: none;
+    }
+
     @media(max-width:375px) {
         margin: 0em;
         padding: 0em;
