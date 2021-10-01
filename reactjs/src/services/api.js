@@ -20,5 +20,10 @@ export default class Api {
         let r = await api.get(`/produto/${id}`);
         return r.data
     }
+
+    async alterarProduto(id) {
+        let r = await api.put(`/produto/${id}`);
+        return r.data;
+    }
 }
 
