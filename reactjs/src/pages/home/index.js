@@ -11,8 +11,22 @@ import 'react-multi-carousel/lib/styles.css';
 import '../index.css'
 import "animate.css"
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from "react"
+
+
+import Api from "../../services/api"
+const api = new Api();
 
 export default function Home() {
+
+    const [populares, setPopulares] = useState([]);
+
+
+
+    const listarPopulares = async () => {
+        const e = await api.listarProdutosPopulares()
+        setPopulares(e);
+    }
 
     const responsive = {
         desktop: {
@@ -31,6 +45,14 @@ export default function Home() {
           slidesToSlide: 1 
         }
       };
+
+      useEffect(() => {
+       
+        
+        listarPopulares()
+
+       
+    }, [])
 
     return (
         <main style={{backgroundColor:"#333333",  margin:"auto", position:"relative"}}>
@@ -51,7 +73,7 @@ export default function Home() {
             <section className="faixa2"> 
                 <div className="titulo"> Mais Populares:  </div>
                 <div class="barra"> </div>
-                
+              
                     <Carousel  responsive={responsive} className="agp-jogo"
                                 additionalTransfrom={0}
                                 arrows
@@ -64,13 +86,18 @@ export default function Home() {
                                 keyBoardControl
                                 minimumTouchDrag={80}
                                 renderButtonGroupOutside={false}
-                                showDots={true}
+                                showDots={true} 
                                 swipeable> 
-                         <CaixaJogo />  
-                         <CaixaJogo />  
-                         <CaixaJogo />  
-                         <CaixaJogo /> 
+                         {populares.map(x =>  <CaixaJogo  name={x.nm_produto != null && x.nm_produto.length >= 31 
+                                                                ? x.nm_produto.substr(0,31) + "..." 
+                                                                : x.nm_produto} 
+                                                                name2= {x.nm_produto}
+                                image={x.img_produto} 
+                                price={`R$: ${x.vl_preco}`} />   )} 
+                        
+                        
                     </Carousel>
+               
 
             </section>
 

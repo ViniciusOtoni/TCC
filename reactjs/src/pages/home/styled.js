@@ -98,6 +98,7 @@ const StyledConteudo = styled.div`
         flex-direction: row;
         justify-content: space-evenly;
         margin-bottom: 4em;
+        
     }
 
     .titulo {
@@ -108,6 +109,8 @@ const StyledConteudo = styled.div`
         padding-left: 1em;
        
     }
+
+   
 
    .barra { 
        border: 4px solid #F0AC54;
@@ -153,6 +156,8 @@ const StyledConteudo = styled.div`
     height:68px; 
     padding-top:1em;
    }
+
+   
    
    
         @media(max-width:375px) {
@@ -262,9 +267,7 @@ const StyledConteudo = styled.div`
                 margin: 0em;
             }
 
-            .none {
-                display: none;
-            }
+           
         }
 
    
