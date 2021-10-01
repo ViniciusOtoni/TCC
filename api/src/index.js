@@ -88,6 +88,19 @@ app.put('/produto/:idProduto', async (req, resp) => {
 })
 
 
+app.delete('/produto/:idProduto', async (req, resp) => {
+    
+    try {
+    let r = await db.infoa_gab_produto.destroy({
+       where: {
+           id_produto : req.params.idProduto
+       } 
+    })
+    resp.sendStatus(200); } catch (e) {
+        resp.send( e.toString() )
+    }
+})
+
 
 // Cadastrar Usuario
 app.post('/cadastrar', async (req, resp) => {

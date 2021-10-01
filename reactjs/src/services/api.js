@@ -16,6 +16,25 @@ export default class Api {
         return r.data
     }
 
+    async cadastrarProduto( nm_produto, vl_preco, ds_categoria, ds_codigo_barra, bt_situacao, vl_avaliacao, img_produto, img_secundaria, img_terciaria, img_quartenaria) {
+        
+        let jsonProduto = {
+            nm_produto,
+            vl_preco,
+            ds_categoria,
+            ds_codigo_barra,
+            bt_situacao,
+            vl_avaliacao,
+            img_produto,
+            img_secundaria,
+            img_terciaria,
+            img_quartenaria
+        }
+
+        let r = await api.post(`/produtos`, jsonProduto);
+        return r.data;
+    }
+
 
     async cadastrarUsuario (nm_usuario, ds_cpf, ds_email,  ds_senha) {
 
@@ -67,6 +86,7 @@ export default class Api {
         return r.data;
     }
 
+
     async listarProdutosId(id) {
         let r = await api.get(`/produto/${id}`);
         return r.data
@@ -74,6 +94,11 @@ export default class Api {
 
     async alterarProduto(id) {
         let r = await api.put(`/produto/${id}`);
+        return r.data;
+    }
+
+    async removerProduto(id) {
+        let r = await api.delete(`/produto/${id}`);
         return r.data;
     }
 }
