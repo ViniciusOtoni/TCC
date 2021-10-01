@@ -4,10 +4,33 @@ import { StyledButtonHome  } from "../../components/botaoHome/styled"
 import Footer  from "../../components/rodape/index"
 import CaixaJogo from "../../components/caixaJogo"
 import Categoria from "../../components/escolhaTipo"
+
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
 import '../index.css'
 import "animate.css"
 
 export default function Home() {
+
+    const responsive = {
+        desktop: {
+          breakpoint: { max: 3000, min: 1024 },
+          items: 3,
+          slidesToSlide: 3 
+        },
+        tablet: {
+          breakpoint: { max: 1024, min: 464 },
+          items: 2,
+          slidesToSlide: 2 
+        },
+        mobile: {
+          breakpoint: { max: 464, min: 0 },
+          items: 1,
+          slidesToSlide: 1 
+        }
+      };
+
     return (
         <main style={{backgroundColor:"#333333",  margin:"auto", position:"relative"}}>
        <Bolota> <img src="/assets/images/Koko Caramel 3.svg" alt=""/> </Bolota>
@@ -27,17 +50,32 @@ export default function Home() {
             <section className="faixa2"> 
                 <div className="titulo"> Mais Populares:  </div>
                 <div class="barra"> </div>
-                <div className="agp-jogo"> 
-                  <div className="none"> <CaixaJogo />  </div>
-                  <div className="none"> <CaixaJogo />  </div>
-                  <div className="none"> <CaixaJogo />  </div>
-                <CaixaJogo /> 
-                </div>
-                </section>
-            
+                
+                    <Carousel  responsive={responsive} className="agp-jogo"
+                                additionalTransfrom={0}
+                                arrows
+                                centerMode={false}
+                                className=""
+                                containerClass="container-with-dots"
+                                draggable
+                                focusOnSelect={false}
+                                infinite
+                                keyBoardControl
+                                minimumTouchDrag={80}
+                                renderButtonGroupOutside={false}
+                                showDots={true}
+                                swipeable> 
+                         <CaixaJogo />  
+                         <CaixaJogo />  
+                         <CaixaJogo />  
+                         <CaixaJogo /> 
+                    </Carousel>
+
+            </section>
+
             <section className="faixa3"> 
                 <div className="row2"> 
-                  <div className="a1">   <Categoria  cat="1" desc="1" img="1"/> </div>
+                  <div className="a1">  <Categoria  cat="1" desc="1" img="1"/> </div>
                   <div className="a2">  <Categoria cat="2" desc="2" img="2"/> </div>
                   <div className="a3">  <Categoria cat="3"desc="1" img="3"/> </div>
                 </div>
