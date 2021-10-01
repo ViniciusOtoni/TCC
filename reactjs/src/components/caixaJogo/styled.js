@@ -8,7 +8,7 @@ const StyledJogo = styled.div`
     justify-content: center;
     align-items: center;
     padding: 2em;
-   
+    margin: 1em;
 
 
     .row1 {
