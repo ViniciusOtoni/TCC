@@ -7,7 +7,7 @@ const StyledJogo = styled.div`
     background-color: #282828;
     justify-content: center;
     align-items: center;
-    width: 20em;
+    width: 15em;
     margin: 1em;
     margin-left: 2.97em;
     height: 25em;

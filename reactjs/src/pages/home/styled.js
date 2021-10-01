@@ -101,6 +101,8 @@ const StyledConteudo = styled.div`
         
     }
 
+  
+
     .titulo {
         font-family: ExtraBold;
         font-size: 2.8em;
@@ -110,6 +112,7 @@ const StyledConteudo = styled.div`
        
     }
 
+    
    
 
    .barra { 
