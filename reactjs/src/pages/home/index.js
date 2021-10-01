@@ -5,8 +5,6 @@ import Footer  from "../../components/rodape/index"
 import CaixaJogo from "../../components/caixaJogo"
 import Categoria from "../../components/escolhaTipo"
 
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
 
 import '../index.css'
 import "animate.css"
@@ -28,23 +26,7 @@ export default function Home() {
         setPopulares(e);
     }
 
-    const responsive = {
-        desktop: {
-          breakpoint: { max: 3000, min: 1024 },
-          items: 3,
-          slidesToSlide: 3 
-        },
-        tablet: {
-          breakpoint: { max: 1024, min: 464 },
-          items: 2,
-          slidesToSlide: 2 
-        },
-        mobile: {
-          breakpoint: { max: 464, min: 0 },
-          items: 1,
-          slidesToSlide: 1 
-        }
-      };
+   
 
       useEffect(() => {
        
@@ -53,6 +35,11 @@ export default function Home() {
 
        
     }, [])
+
+    
+
+
+   
 
     return (
         <main style={{backgroundColor:"#333333",  margin:"auto", position:"relative"}}>
@@ -73,21 +60,7 @@ export default function Home() {
             <section className="faixa2"> 
                 <div className="titulo"> Mais Populares:  </div>
                 <div class="barra"> </div>
-              
-                    <Carousel  responsive={responsive} className="agp-jogo"
-                                additionalTransfrom={0}
-                                arrows
-                                centerMode={false}
-                                className=""
-                                containerClass="container-with-dots"
-                                draggable
-                                focusOnSelect={false}
-                                infinite
-                                keyBoardControl
-                                minimumTouchDrag={80}
-                                renderButtonGroupOutside={false}
-                                showDots={true} 
-                                swipeable> 
+              <div className="agp-jogo">
                          {populares.map(x =>  <CaixaJogo  name={x.nm_produto != null && x.nm_produto.length >= 31 
                                                                 ? x.nm_produto.substr(0,31) + "..." 
                                                                 : x.nm_produto} 
@@ -96,7 +69,7 @@ export default function Home() {
                                 price={`R$: ${x.vl_preco}`} />   )} 
                         
                         
-                    </Carousel>
+                  </div>
                
 
             </section>
