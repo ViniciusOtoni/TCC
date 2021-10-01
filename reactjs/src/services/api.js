@@ -15,73 +15,6 @@ export default class Api {
         let r = await api.get(`/produto`)
         return r.data
     }
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     async cadastrarUsuario (nm_usuario, ds_cpf, ds_email,  ds_senha) {
@@ -131,6 +64,16 @@ export default class Api {
 
     async redefinirEmail(id, email) {
         let r = await api.put(`/login/email/${id}`, { email })
+        return r.data;
+    }
+
+    async listarProdutosId(id) {
+        let r = await api.get(`/produto/${id}`);
+        return r.data
+    }
+
+    async alterarProduto(id) {
+        let r = await api.put(`/produto/${id}`);
         return r.data;
     }
 }
