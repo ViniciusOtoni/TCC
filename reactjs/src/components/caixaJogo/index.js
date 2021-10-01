@@ -1,5 +1,6 @@
 import { StyledButtonHome } from "../botaoHome/styled";
 import { StyledJogo } from "./styled";
+import { Link } from 'react-router-dom'
 
 export default function CaixaJogo() {
     return (
@@ -14,7 +15,7 @@ export default function CaixaJogo() {
             <div class="avaliacao"> <img src="/assets/images/bi_star.svg" alt="" /> </div>
         </div>
         <div className="preco"> R$99.99 </div>
-        <StyledButtonHome style={{paddingTop: "0.2em"}}> Comprar </StyledButtonHome>
+        <Link to="/vendaUnica" style={{textDecoration:"none"}}> <StyledButtonHome style={{paddingTop: "0.2em"}}> Comprar </StyledButtonHome> </Link>
     </StyledJogo>
     )
 }

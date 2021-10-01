@@ -1,56 +1,57 @@
+import { StyledGerenteAlterar } from "./styled";
+import { StyledInput, StyledSelect } from "../../components/input/styled";
+import { StyledButtonAdm } from "../../components/botaoAdm/styled";
 
-import { StyledGerenteAdicionar } from "./styled"
-import { StyledButtonAdm } from "../../components/botaoAdm/styled"
-import { StyledInput, StyledSelect } from "../../components/input/styled"
-import CabecalhoAdm from "../../components/cabecalhoAdm"
+import CabecalhoAdm from "../../components/cabecalhoAdm";
 
-export default function GerenteAdicionar() {
+export default function GerenteAlterar() {
     return (
         <div style={{backgroundColor:"#333333"}}> 
         <CabecalhoAdm nulo='true' />
             
-                 <StyledGerenteAdicionar>
-                     <main> 
-                    <div className="content">
-                        <div className="line alternating">
+                <StyledGerenteAlterar> 
+                <main> 
+               
+                <div className="content">
+                        <div className="alternating">
                             <div className="topico1"> Nome: </div>
-                            <div> <StyledInput className="input"/> </div>
+                            <div className="input"> <StyledInput className="input-input"/> </div>
                         </div>
                         <div className="line">
                             <div className="topico2"> Código de Barra: </div>
-                            <div>  <StyledInput className="input"/> </div>
+                            <div  className="input">  <StyledInput className="input-input"/> </div>
                         </div>
-                        <div className="line alternating">
+                        <div className="alternating">
                             <div className="topico3"> Categoria: </div>
-                            <div> <StyledSelect className="input"> <option value="selecione">  selecione </option> </StyledSelect> </div>
+                            <div  className="input"> <StyledSelect className="input-input"> <option value="selecione">  selecione </option> </StyledSelect> </div>
                         </div>
                         <div className="line">
-                            <div className="topico4"> Preço: </div>
-                            <div> <StyledInput className="input"/> </div>
+                            <div className="topico4"> Preço </div>
+                            <div  className="input"> <StyledInput className="input-input topico4-input"/> </div>
                         </div>
-                        <div className="line alternating">
+                        <div className="alternating">
                             <div className="topico5">  Imagem Principal: </div>
-                            <div> <StyledInput className="input" placeholder="URl da Imagem"/>  </div>
+                            <div  className="input"> <StyledInput className="input-input" placeholder="URl da Imagem"/>  </div>
                         </div>
                         <div className="line">
                             <div className="topico6"> Imagem Secundaria: </div>
-                            <div> <StyledInput className="input" placeholder="URl da Imagem"/>  </div>
+                            <div  className="input"> <StyledInput className="input-input" placeholder="URl da Imagem"/>  </div>
                         </div>
-                        <div className="line alternating">
+                        <div className="alternating">
                             <div className="topico7"> Imagem Secundaria: </div>
-                            <div> <StyledInput className="input" placeholder="URl da Imagem"/>  </div>
+                            <div  className="input"> <StyledInput className="input-input" placeholder="URl da Imagem"/>  </div>
                         </div>
                         <div className="line">
-                            <div className="topico8">   Imagem Secundaria: </div>
-                            <div> <StyledInput className="input" placeholder="URl da Imagem"/> </div>
+                            <div className="topico8">   Imagem Secundaria:</div>
+                            <div  className="input"> <StyledInput className="input-input" placeholder="URl da Imagem"/> </div>
                         </div>
-                        <div className="line alternating">
-                            <div className="topico9">  Imagem Secundaria: </div>
-                            <div> <StyledInput className="input"/>  </div>
+                        <div className="alternating">
+                            <div className="topico9">  Imagem Secundaria </div>
+                            <div  className="input"> <StyledInput className="input-input"/>  </div>
                         </div>
                         <div className="line">
                             <div className="topico10"> Parcelas: </div>
-                            <div> <StyledSelect className="input">  <option value="selecione">  1 parcela </option> </StyledSelect> </div>
+                            <div  className="input"> <StyledSelect className="input-input">  <option value="selecione">  1 parcela </option> </StyledSelect> </div>
                         </div>
                     </div>
                     <div className="footer">
@@ -58,11 +59,11 @@ export default function GerenteAdicionar() {
                             <StyledButtonAdm  className="button" cor="vermelho"> Voltar </StyledButtonAdm> 
                         </div>
                         <div className="criar-item"> 
-                            <StyledButtonAdm>  Criar item </StyledButtonAdm>
+                            <StyledButtonAdm>  Adicionar item </StyledButtonAdm>
                         </div>
                     </div>
-                    </main> 
-                 </StyledGerenteAdicionar>
+                    </main>
+                </StyledGerenteAlterar>
             
         </div>
     )

@@ -4,6 +4,8 @@ import CabecalhoAdm from "../../components/cabecalhoAdm";
 import Paginacao from "../../components/paginacao";
 import { StyledGerenteCadastrados } from "./styled";
 
+import { Link } from "react-router-dom";
+
 
 export default function GerenteProdutosCadastrados() {
     return (
@@ -11,8 +13,8 @@ export default function GerenteProdutosCadastrados() {
       <CabecalhoAdm />
             
                <StyledGerenteCadastrados> 
-                <main> 
-                    <table className="table table-responsive"> 
+                <main className="pc1"> 
+                    <table> 
                         <thead> 
                             <th style={{paddingRight:"1em"}}> ID: </th>
                             <th> Nome </th>
@@ -30,9 +32,9 @@ export default function GerenteProdutosCadastrados() {
                                 <td style={{paddingLeft: "3.8em"}}> 12345678911 </td>
                                 <td style={{paddingLeft:"4em"}}> Xbox </td>
                                 <td>  R$ 999,00 </td>
-                                <td className="botao"  texto="true"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </td>
-                                <td className="botao"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </td>
-                                <td className="botao"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho">  Excluir </StyledButtonAdm> </td>
+                                <td className="botao"  texto="true"> <Link to="/gerenteVizualizar"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </Link> </td>
+                                <td className="botao"> <Link to="/gerenteAlterar">  <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </Link> </td>
+                                <td className="botao">  <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho">  Excluir </StyledButtonAdm>  </td>
                             </tr>
                             <tr> 
                                 <td style={{paddingLeft:"1em"}}> 1 </td>
@@ -127,9 +129,45 @@ export default function GerenteProdutosCadastrados() {
                         </tbody>
                     </table>
                     <div className="footer"> 
-                        <StyledButtonAdm cor="vermelho" className='buttonADM'> Voltar </StyledButtonAdm>
-                        <Paginacao />
+                        <StyledButtonAdm cor="vermelho"  className='buttonADM'> Voltar </StyledButtonAdm>
+                        <Paginacao/>  
                     </div>
+                    </main>
+                    <main className="cell"> 
+                        <div className="line-black"> 
+                            <div className="coluna"> ID: </div>
+                            <div className="valor-coluna"> 2345678 </div>
+                        </div>
+                        <div className="line-gray"> 
+                            <div className="coluna"> Nome: </div>
+                            <div className="valor-coluna"> nome grandao p testar o flex wrap só mais um pouco </div>
+                        </div>
+                        <div className="line-black"> 
+                            <div className="coluna"> Código de Barra: </div>
+                            <div className="valor-coluna"> 12345678901 </div>
+                        </div>
+                        <div className="line-gray"> 
+                            <div className="coluna"> Categoria  </div>
+                            <div className="valor-coluna"> Xbox  </div>
+                        </div>
+                        <div className="line-black"> 
+                            <div className="coluna"> Preço </div>
+                            <div className="valor-coluna"> R$ 99,00 </div>
+                        </div>
+                        <div className="line-gray"> 
+                            <div className="coluna"> Vizualizar  </div>
+                            <div className="valor-coluna"> <StyledButtonAdm className="styled">  Vizualizar </StyledButtonAdm> </div>
+                        </div>
+                        <div className="line-black"> 
+                            <div className="coluna"> Editar </div>
+                            <div className="valor-coluna"> <StyledButtonAdm cor='laranja' className="styled2"> Editar </StyledButtonAdm> </div>
+                        </div>
+                        <div className="line-gray"> 
+                            <div className="coluna"> Excluir: </div>
+                            <div className="valor-coluna"> <StyledButtonAdm cor='vermelho' className="styled3"> Excluir </StyledButtonAdm> </div>
+                        </div>
+                       <div className="pag"> <Paginacao /> </div>
+                       <div className="back"> <StyledButtonAdm cor="vermelho" style={{width:"10em"}}> Voltar </StyledButtonAdm> </div>
                     </main>
                     
             </StyledGerenteCadastrados>

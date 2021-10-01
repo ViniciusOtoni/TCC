@@ -6,7 +6,9 @@ import styled from "styled-components";
 const StyledGerenteCadastrados = styled.div`
 
 
-main {
+
+
+.pc1{
     width: 1240px;
     margin: auto;
 }
@@ -45,85 +47,102 @@ td {
 .footer {
    displaY: flex;
    flex-direction: row;
+   align-self: center;
    align-items: center;
+   width: 100%;
+  
    margin-top: 4em;
 }
 
-.buttonADM{
-    margin-right: 20%; 
-    width: 10em;
+.cell {
+    display: none;
+}
+
+.buttonADM {
+    margin-right: 30%;
 }
 
 
-@media (max-width: 375px) { 
 
-    main{
-        width: 375px;
+
+
+@media(max-width:375px) {
+        .pc1 {
+            display: none;
+        }
+
+        .cell {
+            display: block;
+            width: 100%;
+        }
+
+        .line-gray {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding-top: 3em;
+            padding-left: 1em;
+           
+            height: 4em;
+        }
+
+        .line-black {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-top: 3em;
+            padding-left: 1em;
+            background-color: #282828;
+            height: 4em;
+        }
+
+        .coluna {
+            color: #ffffff;
+            font-size: 1.4em;
+            font-family: MontserratBold;
+            padding-right: 2em;
+        }
+
+        .valor-coluna {
+            color: #ffffff;
+            font-size: 1em;
+            font-family: MontserratBold;
+            
+        }
+
+        .styled {
+            width: 100%;
+            height: auto;
+        }
+
+        .styled2 {
+            width: 100%;
+            height: auto;
+            margin-left: 3.2em;
+        }
+
+
+        .styled3 {
+            width: 100%;
+            height: auto;
+            margin-left: 2.2em;
+        }
+
+
+        .pag {
+            margin-top: 4em;
+        }
+
+        .back {
+            margin-top: 2em;
+            background-color: #282828;
+            padding: 2em;
+            padding-left: 7em;
+        }
     }
-  
-    .table-responsive {
-       display: flex;
-       flex-direction: row;
-    }
 
-    thead{
-        display: flex;
-        flex-direction: column;
-
-        font-size: .8em;
-    }    
-
-    th{
-        padding: 0px;
-        width: 1em;
-        margin: 1em 0em;
-    }
-
-    tr:nth-child(n+2):nth-child(-n+10){
-        display: none;
-    }
-
-    tr{
-        display: flex;
-        flex-direction: column;
-        margin: 0em;
-
-        background-color: transparent;
-    }
-
-    th:nth-child(6)::before{
-    content: 'Visualizar:'
-    }
-
-    th:nth-child(7)::before{
-        content: "Editar:";
-    }
-
-    th:nth-child(8)::before{
-        content: 'Excluir:'
-    }
-
-    td{
-        border-collapse: unset;
-        margin: 1.2em 8em;
-        background-color: rgb(40, 40, 40);
-        
-    }
-
-    .footer{
-        display: flex;
-        flex-direction: column-reverse;
-        align-items: normal;
-        justify-content: center;
-        margin-top: 0px;
-    }
-
-    .buttonADM{
-        margin-left: 9em;
-        margin-top: 1em;
-        width: 10em;
-    }
-
-}
+   
 `
 export { StyledGerenteCadastrados }

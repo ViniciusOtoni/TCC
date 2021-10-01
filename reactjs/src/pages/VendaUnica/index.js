@@ -3,6 +3,7 @@ import Footer from '../../components/rodape'
 import { StyledButtonVerde } from '../../components/botaoVerde/styled'
 import { Content } from './styled'
 import { Conteudo } from './styled'
+import { Link } from 'react-router-dom'
 
 export default function VendaUnica(){
     return(
@@ -35,8 +36,8 @@ export default function VendaUnica(){
                             <div className="text"> em 10x de R$ 39,95 sem juros </div>
                             <div className="frete"> FRETE GRATÍS !!! </div>
                             <div className="align-button">
-                                <StyledButtonVerde style={{ padding:".7em 2em", margin: ".8em 0em", fontFamily: "semiBold" }}> Adicionar ao carrinho  </StyledButtonVerde>
-                                <StyledButtonVerde style={{ padding:".7em 2em", fontFamily: "semiBold" }}> Comprar agora </StyledButtonVerde>
+                            <Link to="/carrinhoItem">  <StyledButtonVerde style={{ padding:".7em 3em", margin: ".8em 0em", fontFamily: "semiBold" }}> Adicionar ao carrinho  </StyledButtonVerde> </Link>
+                            <Link to="/concluirCompra"> <StyledButtonVerde style={{ padding:".7em 4.7em", fontFamily: "semiBold" }}> Comprar agora </StyledButtonVerde> </Link>
                             </div>    
                         </div>
                     </div>  

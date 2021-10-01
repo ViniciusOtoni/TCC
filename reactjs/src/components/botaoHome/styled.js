@@ -10,6 +10,7 @@ const StyledButtonHome = styled.div `
     height: 2em;
     border-radius: 1.7em;
     font: 1.2em MontserratBold;
+ 
     
     &:hover{
         background-color: #F0AC54;
