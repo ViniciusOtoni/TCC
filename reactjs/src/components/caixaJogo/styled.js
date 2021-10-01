@@ -44,8 +44,10 @@ const StyledJogo = styled.div`
     .imagem-jogo {
         padding-bottom: 0em;
     }
-
      
+    @media (max-width: 375px){
+        margin: 0em;
+    }
 
 `
 

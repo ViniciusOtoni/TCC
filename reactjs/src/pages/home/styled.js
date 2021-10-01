@@ -237,9 +237,17 @@ const StyledConteudo = styled.div`
             }
 
             .agp-jogo {
-                width: 100%auto;
                 display: flex;
                 flex-direction: column;
+
+                width: 100%;
+                padding: 0em;
+                margin: 0em;
+            }
+
+            .react-multi-carousel-list{
+                width: 95%;
+                margin-left: 3.5em;
             }
 
             .row2 {

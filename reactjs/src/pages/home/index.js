@@ -40,18 +40,16 @@ export default function Home() {
           slidesToSlide: 2 
         },
         mobile: {
-          breakpoint: { max: 464, min: 0 },
+          breakpoint: { max: 375, min: 0 },
           items: 1,
-          slidesToSlide: 1 
+          slidesToSlide: 1
         }
       };
 
       useEffect(() => {
        
-        
         listarPopulares()
 
-       
     }, [])
 
     return (
@@ -59,8 +57,7 @@ export default function Home() {
         <Bolota> <img src="/assets/images/Koko Caramel 3.svg" alt=""/> </Bolota>
         <Cabecalho corLetra="branco"  /> 
         <StyledConteudo> 
-        <main> 
-        
+        <main>   
            <div className="row">
             <div className="agp-melhor"> 
                 <div className="texto-melhor"> A Melhor </div>
@@ -74,31 +71,15 @@ export default function Home() {
                 <div className="titulo"> Mais Populares:  </div>
                 <div class="barra"> </div>
               
-                    <Carousel  responsive={responsive} className="agp-jogo"
-                                additionalTransfrom={0}
-                                arrows
-                                centerMode={false}
-                                className=""
-                                containerClass="container-with-dots"
-                                draggable
-                                focusOnSelect={false}
-                                infinite
-                                keyBoardControl
-                                minimumTouchDrag={80}
-                                renderButtonGroupOutside={false}
-                                showDots={true} 
-                                swipeable> 
+                    <div> 
                          {populares.map(x =>  <CaixaJogo  name={x.nm_produto != null && x.nm_produto.length >= 31 
                                                                 ? x.nm_produto.substr(0,31) + "..." 
                                                                 : x.nm_produto} 
                                                                 name2= {x.nm_produto}
                                 image={x.img_produto} 
                                 price={`R$: ${x.vl_preco}`} />   )} 
-                        
-                        
-                    </Carousel>
+                    </div>
                
-
             </section>
 
             <section className="faixa3"> 
