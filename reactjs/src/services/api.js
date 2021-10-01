@@ -15,5 +15,10 @@ export default class Api {
         let r = await api.get(`/produto`)
         return r.data
     }
+
+    async listarProdutosId(id) {
+        let r = await api.get(`/produto/${id}`);
+        return r.data
+    }
 }
 
