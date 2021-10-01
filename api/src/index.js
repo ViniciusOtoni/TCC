@@ -4,6 +4,7 @@ import cors from "cors";
 
 
 
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -11,7 +12,7 @@ app.use(express.json());
 
 app.get('/produto/populares', async (req,resp) => {
 
-    let r = await db.infoa_gab_produto.findAll({ where:{vl_avaliacao:  4 } })
+    let r = await db.infoa_gab_produto.findAll({ where:{vl_avaliacao: 4 } })
     resp.send(r)
 })
 
@@ -41,6 +42,487 @@ app.post('/produto', async (req, resp) => {
 
     resp.send(r)
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Cadastrar Usuario
+app.post('/cadastrar', async (req, resp) => {
+try {
+    
+    let r = req.body;
+
+    let l = await db.infoa_gab_usuario.create( {
+        nm_usuario: r.nm_usuario,
+        ds_cpf: r.ds_cpf,
+        ds_email: r.ds_email,
+        ds_senha: r.ds_senha,
+    })
+
+resp.send(l);
+
+} catch (error) {
+    resp.send( error.toString() )
+}
+ 
+})
+//Cadastrar Empresa
+app.post('/cadastrar/empresa', async (req, resp) => {
+    try {
+
+        let r = req.body;
+
+        let l = await db.infoa_gab_empresa.create({
+            nm_empresa: r.nm_empresa,
+            ds_cnpj: r.ds_cnpj,
+            ds_email: r.ds_email,
+            ds_senha: r.ds_senha,
+        })
+
+        resp.send(l) } catch(e) {
+            resp.send( e.toString() )
+        }
+})
+
+//Verificar Se o Usuario Existe
+app.post('/login', async (req, resp) => {
+  try {  let login = req.body;
+
+    let r = await db.infoa_gab_usuario.findOne({
+        where: {
+                ds_email: login.ds_email,
+                ds_senha: login.ds_senha
+        }
+    })
+    
+    if(r == null ) 
+    return resp.send( { erro: 'Credenciais Inválidas'})
+
+    resp.send(r)
+} catch (e) {
+    resp.send( e.toString() )
+}
+
+})
+
+//recuperarSenha
+app.post('/login/senha/:idUsuario', async (req, resp) => {
+try{
+    let login = req.body;
+
+    let q = await db.infoa_gab_usuario.findOne({
+        where: {
+        id_usuario: req.params.idUsuario,
+        nm_usuario: login.nm_usuario,
+        ds_email: login.ds_email,
+        }
+    })
+
+    if(q == null)
+    return resp.send({ erro: 'Credenciais Inválidas' })
+    resp.send(q) } catch (e) {
+        resp.send( e.toString() )
+    }
+})
+
+//recuperarEmail
+app.post('/login/email/:idUsuario', async (req, resp) => {
+    try {
+
+        let l = req.body
+
+        let r = await db.infoa_gab_usuario.findOne({ where: {
+            id_usuario: req.params.idUsuario,
+            nm_usuario: l.nm_usuario,
+            ds_senha: l.ds_senha
+        }}
+            
+        ) 
+            if(r == null)
+            return resp.send({ erro: 'Credenciais Inválidas' })
+            resp.send(r) } catch (e) {
+                resp.send ( e.toString())
+            }
+})  
+
+//Redefinir Senha
+app.put('/login/senha/:idUsuario', async (req, resp) => {
+    try {
+
+        let l = req.body
+
+        let r = await db.infoa_gab_usuario.update({ ds_senha: l.ds_senha }, {where:{  id_usuario: req.params.idUsuario }}) 
+        resp.sendStatus(200)
+        
+    } catch(e) {
+        resp.send( e.toString())
+    }
+})
+
+//Redefinir Email
+app.put('/login/email/:idUsuario', async (req, resp) => {
+    try {
+        let l = req.body
+
+        let r = await db.infoa_gab_usuario.update({ ds_email: l.ds_email}, { where: { id_usuario: req.params.idUsuario} })
+        resp.sendStatus(200)
+    } catch (e) {
+        resp.send( e.toString() )
+    }
+})
+
+
 
 
 app.listen( process.env.PORT, (x) => console.log(`Servidor Subiu na Porta ${process.env.PORT} Parabéns ai (: `));
