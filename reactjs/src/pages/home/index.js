@@ -26,14 +26,10 @@ export default function Home() {
         setPopulares(e);
     }
 
-   
-
       useEffect(() => {
        
-        
         listarPopulares()
 
-       
     }, [])
 
     
@@ -46,8 +42,7 @@ export default function Home() {
         <Bolota> <img src="/assets/images/Koko Caramel 3.svg" alt=""/> </Bolota>
         <Cabecalho corLetra="branco"  /> 
         <StyledConteudo> 
-        <main> 
-        
+        <main>   
            <div className="row">
             <div className="agp-melhor"> 
                 <div className="texto-melhor"> A Melhor </div>
@@ -60,7 +55,8 @@ export default function Home() {
             <section className="faixa2"> 
                 <div className="titulo"> Mais Populares:  </div>
                 <div class="barra"> </div>
-              <div className="agp-jogo">
+              
+                    <div className="agp-jogo"> 
                          {populares.map(x =>  <CaixaJogo  name={x.nm_produto != null && x.nm_produto.length >= 31 
                                                                 ? x.nm_produto.substr(0,31) + "..." 
                                                                 : x.nm_produto} 
@@ -71,7 +67,6 @@ export default function Home() {
                         
                   </div>
                
-
             </section>
 
             <section className="faixa3"> 

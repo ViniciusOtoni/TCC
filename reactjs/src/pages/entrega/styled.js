@@ -65,6 +65,7 @@ background-color: #333333;
 .button {
     margin-left: 8.4em;
     margin-top: 1.4em;
+    text-decoration: none;
 }
 
 .style {
