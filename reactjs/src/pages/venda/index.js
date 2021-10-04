@@ -35,16 +35,12 @@ export default function Venda() {
                     <div className="row-button"> 
                         <div className="ordem"> Ordenar: </div>
                         <div className="select-ordem"> 
-                        <select> 
-                            <option value="ordem" selected> Avaliação </option> 
-                            <option value="ordem">  Lançamento </option>
-                            <option value="ordem" > Melhor Preço </option>
-                           
-                        
-                        
-                        
-                        
-                        </select> </div>
+                            <select> 
+                                <option value="ordem" selected> Avaliação </option> 
+                                <option value="ordem">  Lançamento </option>
+                                <option value="ordem" > Melhor Preço </option>
+                            </select>
+                        </div>
                     </div>
                     <div className="wrap"> 
                     {produto.map (x  => 

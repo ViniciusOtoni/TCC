@@ -115,13 +115,14 @@ try {
         ds_senha: r.ds_senha,
     })
 
-resp.send(l);
+    resp.send(l);
 
 } catch (error) {
     resp.send( error.toString() )
 }
  
 })
+
 //Cadastrar Empresa
 app.post('/cadastrar/empresa', async (req, resp) => {
     try {

@@ -101,7 +101,10 @@ const StyledConteudo = styled.div`
         
     }
 
-  
+    .carousel.carousel-slider{
+        height: 29em;
+    }
+
 
     .titulo {
         font-family: ExtraBold;

@@ -4,6 +4,10 @@ import { StyledButtonHome  } from "../../components/botaoHome/styled"
 import Footer  from "../../components/rodape/index"
 import CaixaJogo from "../../components/caixaJogo"
 import Categoria from "../../components/escolhaTipo"
+
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
+
 import '../index.css'
 import "animate.css"
 import { Link } from 'react-router-dom'
@@ -24,30 +28,13 @@ export default function Home() {
         setPopulares(e);
     }
 
-    const responsive = {
-        desktop: {
-          breakpoint: { max: 3000, min: 1024 },
-          items: 3,
-          slidesToSlide: 3 
-        },
-        tablet: {
-          breakpoint: { max: 1024, min: 464 },
-          items: 2,
-          slidesToSlide: 2 
-        },
-        mobile: {
-          breakpoint: { max: 375, min: 0 },
-          items: 1,
-          slidesToSlide: 1
-        }
-      };
-
       useEffect(() => {
        
         listarPopulares()
 
     }, [])
 
+    
     return (
         <main style={{backgroundColor:"#333333",  margin:"auto", position:"relative"}}>
         <Bolota> <img src="/assets/images/Koko Caramel 3.svg" alt=""/> </Bolota>
@@ -67,15 +54,31 @@ export default function Home() {
                 <div className="titulo"> Mais Populares:  </div>
                 <div class="barra"> </div>
               
-                    <div> 
-                         {populares.map(x =>  <CaixaJogo  name={x.nm_produto != null && x.nm_produto.length >= 31 
+                    {/* <Carousel className="agp-jogo"> 
+                         {populares.map(x =>  <CaixaJogo    name={x.nm_produto != null && x.nm_produto.length >= 31 
                                                                 ? x.nm_produto.substr(0,31) + "..." 
                                                                 : x.nm_produto} 
-                                                                name2= {x.nm_produto}
-                                image={x.img_produto} 
-                                price={`R$: ${x.vl_preco}`} />   )} 
-                    </div>
+                                                            name2= {x.nm_produto}
+                                                            image={x.img_produto} 
+                                                            price={`R$: ${x.vl_preco}`} /> 
+                         )}  
+                    </Carousel> */}
+
+                    <Carousel axis="horizontal" showArrows="true" showIndicators="true" 
+                              showThumbs="false" showStatus="false" useKeyboardArrows="true"
+                              autoPlay="" stopOnHover="true" swipeable="true"
+                              dynamicHeight="true" emulateTouch="true" infiniteLoop="">   
+                            <CaixaJogo />
+                            <CaixaJogo />
+                            <CaixaJogo />
+                            <CaixaJogo />
+                            <CaixaJogo />
+                            <CaixaJogo />
+                            <CaixaJogo />
+                            <CaixaJogo />
+                    </Carousel>
                
+                
             </section>
 
             <section className="faixa3"> 
