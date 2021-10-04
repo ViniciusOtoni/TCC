@@ -4,10 +4,6 @@ import { StyledButtonHome  } from "../../components/botaoHome/styled"
 import Footer  from "../../components/rodape/index"
 import CaixaJogo from "../../components/caixaJogo"
 import Categoria from "../../components/escolhaTipo"
-
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-
 import '../index.css'
 import "animate.css"
 import { Link } from 'react-router-dom'
