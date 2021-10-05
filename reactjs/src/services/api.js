@@ -1,6 +1,6 @@
 import axios from 'axios'
 const api = axios.create({
-    baseURL: 'http://localhost:3030'
+baseURL: 'http://localhost:3030'
 })
 
 
@@ -50,39 +50,48 @@ export default class Api {
     }
 
     async cadastrarEmpresa (nm_empresa, ds_cnpj, ds_email, ds_senha) {
+        
         let jsonEmpresa = {
-            nm_empresa,
-             ds_cnpj,
-            ds_email,
-            ds_senha
+                nm_empresa,
+                ds_cnpj,
+                ds_email,
+                ds_senha
         }
 
         let r  = await api.post(`/cadastrar/empresa`, jsonEmpresa)
         return r.data;
     }
 
-    async login(email, senha) {
-        let r = await api.post('/login', { email, senha } )
+    async login(ds_email, ds_senha) {
+
+        let jsonLogin = {
+            ds_email,
+            ds_senha
+        }
+
+        let r = await api.post('/login', jsonLogin )
         return r.data;
     }
 
-    async recuperarSenha(nome, email, id) {
-        let r = await api.post(`/login/senha/${id}`, { nome, email})
+
+
+    async recuperarSenha(nm_usuario, ds_email) {
+        let r = await api.post(`/login/senha`, { nm_usuario, ds_email})
         return r.data;
     }
 
-    async redefinirSenha(id, senha) {
-        let r = await api.put(`/login/senha/${id}`, { senha })
+    async redefinirSenha(id, ds_senha) {
+        let r = await api.put(`/login/senha/${id}`, { ds_senha })
         return r.data;
     }
 
-    async recuperarEmail(id, nome, senha) {
-        let r = await api.post(`/login/email/${id}`, { nome, senha})
+    async recuperarEmail(nm_usuario, ds_senha) {
+        let r = await api.post(`/login/email`, { nm_usuario, ds_senha})
         return r.data;
     }
 
-    async redefinirEmail(id, email) {
-        let r = await api.put(`/login/email/${id}`, { email })
+    async redefinirEmail(idUsuario, ds_email) {
+        let r = await api.put(`/login/email/${idUsuario}`, { ds_email })
         return r.data;
     }
 

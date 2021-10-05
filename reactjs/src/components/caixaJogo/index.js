@@ -15,7 +15,7 @@ export default function CaixaJogo(props) {
             <div class="avaliacao"> <img src="/assets/images/bi_star.svg" alt="" /> </div>
         </div>
         <div className="preco">{props.price} </div>
-        <Link to="/vendaUnica" style={{textDecoration:"none"}}> <StyledButtonHome style={{paddingTop: "0.2em"}}> Comprar </StyledButtonHome> </Link>
+        <Link to="/vendaUnica" style={{textDecoration:"none"}}> <StyledButtonHome style={{paddingTop: "0.2em"}} className="absolute"> Comprar </StyledButtonHome> </Link>
     </StyledJogo>
     )
 }
