@@ -110,7 +110,11 @@ try {
 
     let u1 = await db.infoa_gab_usuario.findOne({ where: { ds_cpf: r.ds_cpf } })
     if(u1 != null)
-    resp.send({ error: 'CPF já está sendo usado'})
+    resp.send( { error: 'CPF já foi cadastrado!' } );
+
+    let u2 = await db.infoa_gab_usuario.findOne({ where: { ds_email: r.ds_email  } })
+    if(u2 != null)
+    resp.send( { error: 'Email já foi cadastrado!' } )
 
     let l = await db.infoa_gab_usuario.create( {
         nm_usuario: r.nm_usuario,
@@ -134,6 +138,14 @@ app.post('/cadastrar/empresa', async (req, resp) => {
         let r = req.body;
 
         let u1 = await db.infoa_gab_empresa.findOne( { where: { ds_cnpj: r.ds_cnpj } } )
+            
+            if(u1 != null)
+            resp.send( { error: 'CNPJ já foi cadastrado!' } )
+            
+        let u2 = await db.infoa_gab_empresa.findOne( { where: { ds_email: r.ds_email } })
+            
+            if(u2 != null)
+            resp.send( { error: 'Email já foi cadastrado!' })
 
         let l = await db.infoa_gab_empresa.create({
             nm_empresa: r.nm_empresa,

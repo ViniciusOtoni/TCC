@@ -52,9 +52,9 @@ export default function Popup(props) {
         }
     }
 
-    const logarGerente = async () => {
-        let r = await api.login
-    }
+   // const logarGerente = async () => {
+       // let r = await api.login
+    //}
 
     const recuSenha = async () => {
         let r = await api.recuperarSenha(vl2, vl1)
