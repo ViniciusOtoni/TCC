@@ -1,7 +1,7 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_gab_usuario extends Model {
+export default class infob_mw_usuario extends Model {
   static init(sequelize, DataTypes) {
   super.init({
     id_usuario: {
@@ -12,35 +12,47 @@ export default class infoa_gab_usuario extends Model {
     },
     nm_usuario: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: true
     },
-    ds_cpf: {
+    nm_sobrenome: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: true
+    },
+    nm_username: {
+      type: DataTypes.STRING(255),
+      allowNull: true
     },
     ds_email: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: true
     },
     ds_senha: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: true
     },
-    bt_gerente: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false
-    },
-    ds_codigo: {
-      type: DataTypes.TEXT,
-      allowNull: false
-    },
-    img_usuario: {
+    ds_genero: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: true
+    },
+    dt_nascimento: {
+      type: DataTypes.DATEONLY,
+      allowNull: true
+    },
+    ds_localizacao: {
+      type: DataTypes.STRING(500),
+      allowNull: true
+    },
+    ds_redes_sociais: {
+      type: DataTypes.STRING(500),
+      allowNull: true
+    },
+    ds_foto: {
+      type: DataTypes.STRING(1000),
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoa_gab_usuario',
+    tableName: 'infob_mw_usuario',
     timestamps: false,
     indexes: [
       {
@@ -53,6 +65,6 @@ export default class infoa_gab_usuario extends Model {
       },
     ]
   });
-  return infoa_gab_usuario;
+  return infob_mw_usuario;
   }
 }
