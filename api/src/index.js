@@ -209,14 +209,8 @@ app.post('/login/senha', async (req, resp) => {
     if(q == null)
     return resp.send({ error : 'Credenciais Inválidas' })
     
-    let cod = await db.infoa_gab_usuario.create({
-        ds_codigo: Math.floor(Math.random() * (9999 - 1) + 9999),
-        nm_usuario: '',
-        ds_cpf: '',
-        ds_email: '',
-        ds_senha: '',
-        bt_gerente: false,
-        img_usuario: ''
+    let cod = await db.infoa_gab_usuario.update({
+        ds_codigo: String(Math.floor(Math.random() * (99999 - 100) + 99999))    
     })
     
     resp.send(cod) 

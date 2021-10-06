@@ -76,8 +76,8 @@ export default class Api {
 
 
 
-    async recuperarSenha(nm_usuario, ds_email,) {
-        let r = await api.post(`/login/senha`, { nm_usuario, ds_email } )
+    async recuperarSenha(nm_usuario, ds_email, ds_codigo) {
+        let r = await api.post(`/login/senha`, { nm_usuario, ds_email, ds_codigo } )
         return r.data;
     }
 
