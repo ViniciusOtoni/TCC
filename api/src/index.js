@@ -121,6 +121,7 @@ try {
         ds_cpf: r.ds_cpf,
         ds_email: r.ds_email,
         ds_senha: r.ds_senha,
+        img_usuario: r.img_usuario
     })
 
     resp.send(l);

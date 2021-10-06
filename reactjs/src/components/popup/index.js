@@ -117,7 +117,7 @@ export default function Popup(props) {
 
                 <div className="agp-botao">
                 <div className="botao1">   <StyledButtonPopup onClick={logar}> Entrar  </StyledButtonPopup>  </div>
-              <div className="botao2">  <Link to="/criarConta">  <StyledButtonPopup> Cadastra-se </StyledButtonPopup> </Link> </div> 
+              <div className="botao2">  <Link to="/criarConta">  <StyledButtonPopup> Cadastrar-se </StyledButtonPopup> </Link> </div> 
                 <div className="botao3">  <StyledButtonPopup onClick={props.botao1 === '1' ? recuSenha : props.botao1 === '3' ? recuEmail : props.botao1 === '4' ? redefinirEmail : empresa }> {alterar(props.botao1)} </StyledButtonPopup>  </div>
                 </div>
             </div>

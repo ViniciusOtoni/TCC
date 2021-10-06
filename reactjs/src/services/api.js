@@ -36,13 +36,14 @@ export default class Api {
     }
 
 
-    async cadastrarUsuario (nm_usuario, ds_cpf, ds_email,  ds_senha) {
+    async cadastrarUsuario (nm_usuario, ds_cpf, ds_email,  ds_senha, img_usuario) {
 
         let jsonUsu = {
             nm_usuario,
             ds_cpf,
             ds_email,
-            ds_senha
+            ds_senha,
+            img_usuario
         }
 
         let r = await api.post(`/cadastrar`, jsonUsu)
