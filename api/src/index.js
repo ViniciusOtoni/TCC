@@ -5,6 +5,8 @@ import cors from "cors";
 
 
 
+
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -121,7 +123,9 @@ try {
         ds_cpf: r.ds_cpf,
         ds_email: r.ds_email,
         ds_senha: r.ds_senha,
-        img_usuario: r.img_usuario
+        img_usuario: r.img_usuario,
+        ds_codigo: '',
+        bt_gerente: false
     })
 
     resp.send(l);
@@ -189,6 +193,7 @@ app.get('/login', async (req, resp) => {
     resp.send(r)
 })
 
+
 //recuperarSenha
 app.post('/login/senha', async (req, resp) => {
 
@@ -196,14 +201,25 @@ app.post('/login/senha', async (req, resp) => {
 
     let q = await db.infoa_gab_usuario.findOne({
         where: {
-        nm_usuario: login.nm_usuario,
-        ds_email: login.ds_email,
+            nm_usuario: login.nm_usuario,
+            ds_email: login.ds_email,
         }
     })
 
     if(q == null)
     return resp.send({ error : 'Credenciais Inválidas' })
-    resp.send(q) 
+    
+    let cod = await db.infoa_gab_usuario.create({
+        ds_codigo: Math.floor(Math.random() * (9999 - 1) + 9999),
+        nm_usuario: '',
+        ds_cpf: '',
+        ds_email: '',
+        ds_senha: '',
+        bt_gerente: false,
+        img_usuario: ''
+    })
+    
+    resp.send(cod) 
 })
 
 //recuperarEmail
@@ -216,34 +232,45 @@ app.post('/login/email', async (req, resp) => {
             
             nm_usuario: l.nm_usuario,
             ds_senha: l.ds_senha
-        }}
-            
-        ) 
+        }}    ) 
+
+       
+
             if(r == null)
             return resp.send({ error: 'Credenciais Inválidas' })
+
             resp.send(r)  
 })  
 
-//Redefinir Senha
-app.put('/login/senha', async (req, resp) => {
+
+
+
+//Redefinir Senha                                     
+app.put('/login/senha/:codigo', async (req, resp) => {
     try {
 
         let l = req.body
+        
+        
 
-        let r = await db.infoa_gab_usuario.update({ ds_senha: l.ds_senha }, {where:{  id_usuario: req.params.idUsuario }}) 
+        let r = await db.infoa_gab_usuario.update( { ds_senha: l.ds_senha }, { where: {  ds_codigo: req.params.codigo } }) 
+        
+        
         resp.sendStatus(200)
         
-    } catch(e) {
-        resp.send( e.toString())
+    } catch(error) {
+        resp.send( { error: "sla" })
     }
 })
+
+
 
 //Redefinir Email
 app.put('/login/email', async (req, resp) => {
     try {
         let l = req.body
 
-        let r = await db.infoa_gab_usuario.update({ ds_email: l.ds_email }, { where: { id_usuario: req.params.idUsuario} })
+        let r = await db.infoa_gab_usuario.update({ ds_email: l.ds_email })
         resp.sendStatus(200)
     } catch (e) {
         resp.send( e.toString() )
