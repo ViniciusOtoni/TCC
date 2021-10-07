@@ -54,7 +54,7 @@ export default function Home() {
                 <div className="titulo"> Mais Populares:  </div>
                 <div class="barra"> </div>
               
-                            {/* <Carousel className="agp-jogo"> 
+                    {/* <Carousel className="agp-jogo"> 
                          {populares.map(x =>  <CaixaJogo    name={x.nm_produto != null && x.nm_produto.length >= 31 
                                                                 ? x.nm_produto.substr(0,31) + "..." 
                                                                 : x.nm_produto} 
@@ -62,10 +62,10 @@ export default function Home() {
                                                             image={x.img_produto} 
                                                             price={`R$: ${x.vl_preco}`} /> 
                          )}  
-                    </Carousel> 
+                    </Carousel> */}
 
                     <Carousel axis="horizontal" showArrows="true" showIndicators="true" 
-                              showThumbs="false" showStatus="false" useKeyboardArrows="true"
+                              showThumbs="" showStatus="" useKeyboardArrows="true"
                               autoPlay="" stopOnHover="true" swipeable="true"
                               dynamicHeight="true" emulateTouch="true" infiniteLoop="">   
                             <CaixaJogo />
@@ -76,12 +76,12 @@ export default function Home() {
                             <CaixaJogo />
                             <CaixaJogo />
                             <CaixaJogo />
-                </Carousel> */}
+                    </Carousel>
 
 
 
 
-               
+
                 
             </section>
 
