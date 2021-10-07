@@ -7,6 +7,7 @@ import cors from "cors";
 
 
 
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -197,23 +198,31 @@ app.get('/login', async (req, resp) => {
 //recuperarSenha
 app.post('/login/senha', async (req, resp) => {
 
+try {
     let login = req.body;
 
     let q = await db.infoa_gab_usuario.findOne({
         where: {
             nm_usuario: login.nm_usuario,
-            ds_email: login.ds_email,
+            ds_email: login.ds_email
         }
     })
 
+    
     if(q == null)
     return resp.send({ error : 'Credenciais Inválidas' })
     
     let cod = await db.infoa_gab_usuario.update({
-        ds_codigo: String(Math.floor(Math.random() * (99999 - 100) + 99999))    
-    })
+        ds_codigo: Math.floor(Math.random() * (99999 - 100) + 99999) 
+    }, { where: { id_usuario: q.id_usuario } })
     
-    resp.send(cod) 
+    
+    resp.sendStatus(200) 
+
+    
+    } catch( error ) {
+        resp.send({ error: " Xish "})
+    }
 })
 
 //recuperarEmail

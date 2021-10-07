@@ -57,7 +57,8 @@ export default function Popup(props) {
     //}
 
     const recuSenha = async () => {
-        let r = await api.recuperarSenha(vl2, vl1)
+     let r = await api.recuperarSenha(vl2, vl1)
+    
 
         if(r.error) {
             alert(`${r.error}`)
