@@ -78,7 +78,10 @@ export default function Home() {
                                     showDots={true}
                                     autoPlay={true}
                                     containerClass="carousel-container"
-                                    dotListClass="custom-dot-list-style">
+                                    dotListClass="custom-dot-list-style"
+                                    
+                                    >
+                                    
 
                             {populares.map(x =>  <CaixaJogo key={x.id_produto} name={x.nm_produto != null && x.nm_produto.length >= 31 
                                                                     ? x.nm_produto.substr(0,31) + "..." 

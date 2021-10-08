@@ -30,10 +30,6 @@ export default class infob_amz_tbdenuncia extends Model {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    qtd_reporte_recebido: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
     ds_rua: {
       type: DataTypes.STRING(255),
       allowNull: true

@@ -6,7 +6,7 @@ import { StyledPopupTela } from "../login/styled";
 export default function RecuperarEmail() {
     return (
         <StyledPopupTela>
-            <Popup recuSenha='true' botao1='3' tituloCima='Nome'  tituloBaixo="Senha:" />
+            <Popup recuSenha='true' botao1='3' tituloCima='CPF'  tituloBaixo="Senha:" />
         </StyledPopupTela>
     )
 }

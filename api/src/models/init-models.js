@@ -1,5 +1,11 @@
 import _sequelize from "sequelize";
 const DataTypes = _sequelize.DataTypes;
+import _infoa_dtn_tb_avaliacao from  "./infoa_dtn_tb_avaliacao.js";
+import _infoa_dtn_tb_cliente from  "./infoa_dtn_tb_cliente.js";
+import _infoa_dtn_tb_endereco from  "./infoa_dtn_tb_endereco.js";
+import _infoa_dtn_tb_favoritos from  "./infoa_dtn_tb_favoritos.js";
+import _infoa_dtn_tb_produto from  "./infoa_dtn_tb_produto.js";
+import _infoa_dtn_tb_tamanhos from  "./infoa_dtn_tb_tamanhos.js";
 import _infoa_enl_cartao_credito from  "./infoa_enl_cartao_credito.js";
 import _infoa_enl_categoria from  "./infoa_enl_categoria.js";
 import _infoa_enl_chat from  "./infoa_enl_chat.js";
@@ -74,6 +80,12 @@ import _infod_tif_post from  "./infod_tif_post.js";
 import _infod_tif_usuario from  "./infod_tif_usuario.js";
 
 export default function initModels(sequelize) {
+  var infoa_dtn_tb_avaliacao = _infoa_dtn_tb_avaliacao.init(sequelize, DataTypes);
+  var infoa_dtn_tb_cliente = _infoa_dtn_tb_cliente.init(sequelize, DataTypes);
+  var infoa_dtn_tb_endereco = _infoa_dtn_tb_endereco.init(sequelize, DataTypes);
+  var infoa_dtn_tb_favoritos = _infoa_dtn_tb_favoritos.init(sequelize, DataTypes);
+  var infoa_dtn_tb_produto = _infoa_dtn_tb_produto.init(sequelize, DataTypes);
+  var infoa_dtn_tb_tamanhos = _infoa_dtn_tb_tamanhos.init(sequelize, DataTypes);
   var infoa_enl_cartao_credito = _infoa_enl_cartao_credito.init(sequelize, DataTypes);
   var infoa_enl_categoria = _infoa_enl_categoria.init(sequelize, DataTypes);
   var infoa_enl_chat = _infoa_enl_chat.init(sequelize, DataTypes);
@@ -149,6 +161,12 @@ export default function initModels(sequelize) {
 
 
   return {
+    infoa_dtn_tb_avaliacao,
+    infoa_dtn_tb_cliente,
+    infoa_dtn_tb_endereco,
+    infoa_dtn_tb_favoritos,
+    infoa_dtn_tb_produto,
+    infoa_dtn_tb_tamanhos,
     infoa_enl_cartao_credito,
     infoa_enl_categoria,
     infoa_enl_chat,
