@@ -101,6 +101,31 @@ const StyledConteudo = styled.div`
         
     }
 
+    .lista-produtos {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+     .carousel-container{
+        width: 100%;
+        height: 100%;
+        margin-left: 2em;
+    }
+    
+    .react-multi-carousel-track {
+        margin-bottom: 1em;
+    }
+
+    .custom-dot-list-style{
+        margin-right: 2em;
+    }
+
+    .react-multiple-carousel__arrow--right {
+        right: 4.8em !important;
+    }
+
     .titulo {
         font-family: ExtraBold;
         font-size: 2.8em;
@@ -109,8 +134,6 @@ const StyledConteudo = styled.div`
         padding-left: 1em;
        
     }
-
-   
 
    .barra { 
        border: 4px solid #F0AC54;
@@ -157,6 +180,32 @@ const StyledConteudo = styled.div`
     padding-top:1em;
    }
 
+   .cell {
+       display: none;
+   }
+
+   .react-multiple-carousel__arrow--left {
+    left: 0em;
+}
+
+.react-multiple-carousel__arrow--right {
+    right: 5.8em;
+}
+
+.react-multi-carousel-dot-list {
+    margin-right: 5em;
+}
+
+.agp-jogo {
+    height: 30em;
+    
+}
+
+.pc {
+    margin-left: 2em;
+}
+
+
    
    
    
@@ -171,6 +220,15 @@ const StyledConteudo = styled.div`
             background-repeat: no-repeat;
             background-position-y: 2em;
             background-position-x: 8em;
+
+            .cell {
+                display: block;
+                margin: 0em;
+            }
+
+            .pc {
+                display: none;
+            }
 
            main {
                width: 100%;
@@ -191,6 +249,10 @@ const StyledConteudo = styled.div`
             .texto-melhor {
                 font-size: 2em;
             }
+
+            .jpWpPU {
+                        margin: 4em;
+                    }
            
             .teste {
             width:8em; 
@@ -199,6 +261,12 @@ const StyledConteudo = styled.div`
             font-size: 1em;
             margin-bottom: 1em;
             }
+
+            .carousel-status {
+                font-family: MontserratBold;
+                margin-right: .4em;
+            }
+            
 
             .agp-melhor {
                 margin-top: 7em;
@@ -237,9 +305,17 @@ const StyledConteudo = styled.div`
             }
 
             .agp-jogo {
-                width: 100%auto;
                 display: flex;
                 flex-direction: column;
+
+                width: 100%;
+                padding: 0em;
+                margin: 0em;
+            }
+
+            .react-multi-carousel-list{
+                width: 95%;
+                margin-left: 3.5em;
             }
 
             .row2 {

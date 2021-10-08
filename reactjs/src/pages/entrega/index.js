@@ -1,6 +1,7 @@
 import Cabecalho from "../../components/cabecalho";
 import { StyledButtonHome } from "../../components/botaoHome/styled";
 import { StyledEntrega } from "./styled";
+import { Link } from "react-router-dom";
 
 
 export default function EntregasSemItem()  {
@@ -20,7 +21,7 @@ export default function EntregasSemItem()  {
                 <div className="logo"> <img src="/assets/images/Caminhao.svg" alt="" /> </div>
                 <div className="column"> 
                     <div className="texto">  Você não possui nenhuma entrega  </div>
-                    <div className="button">  <StyledButtonHome   className="style"> Volte as Compras! </StyledButtonHome> </div> 
+                    <Link to="/" className="button">  <StyledButtonHome   className="style"> Volte as Compras! </StyledButtonHome> </Link> 
                 </div>
                 
             </div> 

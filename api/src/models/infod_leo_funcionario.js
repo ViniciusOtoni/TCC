@@ -1,46 +1,38 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_gab_usuario extends Model {
+export default class infod_leo_funcionario extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_usuario: {
+    id_funcionario: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    nm_usuario: {
+    nm_nome: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: true
     },
-    ds_cpf: {
+    ds_cargo: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: true
     },
     ds_email: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: true
     },
     ds_senha: {
-      type: DataTypes.STRING(255),
-      allowNull: false
+      type: DataTypes.STRING(10),
+      allowNull: true
     },
-    bt_gerente: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false
-    },
-    ds_codigo: {
-      type: DataTypes.TEXT,
-      allowNull: false
-    },
-    img_usuario: {
-      type: DataTypes.STRING(255),
-      allowNull: false
+    ds_telefone: {
+      type: DataTypes.STRING(11),
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoa_gab_usuario',
+    tableName: 'infod_leo_funcionario',
     timestamps: false,
     indexes: [
       {
@@ -48,11 +40,11 @@ export default class infoa_gab_usuario extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_usuario" },
+          { name: "id_funcionario" },
         ]
       },
     ]
   });
-  return infoa_gab_usuario;
+  return infod_leo_funcionario;
   }
 }

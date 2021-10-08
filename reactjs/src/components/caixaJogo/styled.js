@@ -7,10 +7,11 @@ const StyledJogo = styled.div`
     background-color: #282828;
     justify-content: center;
     align-items: center;
-    width: 20em;
+    width: 15em;
     margin: 1em;
     margin-left: 2.97em;
     height: 25em;
+    position: relative;
     
 
 
@@ -44,8 +45,15 @@ const StyledJogo = styled.div`
     .imagem-jogo {
         padding-bottom: 0em;
     }
-
      
+    .absolute {
+        position: absolute;
+        left: 2.3em;
+        bottom: 1em;
+    }
+    @media (max-width: 375px){
+        margin: 0em;
+    }
 
 `
 

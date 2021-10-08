@@ -1,38 +1,34 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_gab_entrega extends Model {
+export default class infod_tif_comunidade extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_entregas: {
+    id_comunidade: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_produtos: {
+    id_usuario: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    id_endereco: {
+    ds_capa: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    ds_situacao: {
+    nm_comunidade: {
       type: DataTypes.STRING(255),
       allowNull: false
     },
-    dt_saida: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
-    dt_entrega: {
+    dt_criacao: {
       type: DataTypes.DATE,
       allowNull: false
     }
   }, {
     sequelize,
-    tableName: 'infoa_gab_entrega',
+    tableName: 'infod_tif_comunidade',
     timestamps: false,
     indexes: [
       {
@@ -40,25 +36,18 @@ export default class infoa_gab_entrega extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_entregas" },
+          { name: "id_comunidade" },
         ]
       },
       {
-        name: "infoa_gab_entrega_fk0",
+        name: "id_usuario",
         using: "BTREE",
         fields: [
-          { name: "id_produtos" },
-        ]
-      },
-      {
-        name: "infoa_gab_entrega_fk1",
-        using: "BTREE",
-        fields: [
-          { name: "id_endereco" },
+          { name: "id_usuario" },
         ]
       },
     ]
   });
-  return infoa_gab_entrega;
+  return infod_tif_comunidade;
   }
 }

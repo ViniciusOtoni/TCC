@@ -43,10 +43,13 @@ header {
 }
 
 .email {
+    
     font-family: MontserratBold;
     padding-bottom: 0.4em;
     padding-top: 2em;
 }
+
+
 
 .senha {
     font-family: MontserratBold;
@@ -55,6 +58,13 @@ header {
 }
 
 .repita {
+    font-family: MontserratBold;
+    padding-bottom: 0.4em;
+    padding-top: 2em;
+}
+
+.img {
+   
     font-family: MontserratBold;
     padding-bottom: 0.4em;
     padding-top: 2em;

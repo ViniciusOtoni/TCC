@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const  StyledButtonVerde = styled.button `
+const  StyledButtonVerde = styled.button`
 
     background-color: #34D231;
     color: #ffffff;
@@ -13,8 +13,7 @@ const  StyledButtonVerde = styled.button `
     &:hover{
         background-color: #2dba2b;
         transition: .5s;
-    }
-;
+        }
 
 `
 

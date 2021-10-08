@@ -5,6 +5,7 @@ import { StyledInput } from "../../components/input/styled"
 import { StyledButtonVerde } from "../../components/botaoVerde/styled"
 import { SelectInput } from "../../components/select/styled"
 import { StyledButtonAdm } from "../../components/botaoAdm/styled"
+import { Link } from "react-router-dom"
 
 export default function CarrinhoItem() {
     return (
@@ -125,7 +126,7 @@ export default function CarrinhoItem() {
                 <div className="row-input"> 
                             <div className="frete"> Frete: </div>
                             <div className="input-frete">  <StyledInput placeholder="Cep"  className="cep"/> </div>
-                            <div className="botao-frete"> <StyledButtonVerde style={{width: "7em", height:"1.8em", marginLeft:"2em"}}> Calcular </StyledButtonVerde> </div>
+                            <div className="botao-frete">  <StyledButtonVerde style={{width: "7em", height:"1.8em", marginLeft:"2em"}}> Calcular </StyledButtonVerde> </div>
                         </div>
                     
                     <div className="valor-cep">
@@ -149,7 +150,7 @@ export default function CarrinhoItem() {
                         <div className="total-valor-baixo"> Total: </div>
                         <div className="total-final"> R$:99,99 </div>
                     </div>
-                    <div className="botao-finalizar"> <StyledButtonVerde style={{padding: ".3em"}} className="green"> Realizar Compra! </StyledButtonVerde> </div>
+                    <div className="botao-finalizar"> <Link to="/"> <StyledButtonVerde style={{padding: ".3em"}} className="green">  Realizar Compra!  </StyledButtonVerde> </Link>   </div> 
                 </div>
                 </main>
        </StyledCarrinhoItem>

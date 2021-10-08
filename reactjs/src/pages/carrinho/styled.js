@@ -72,11 +72,12 @@ const StyledCarrinho = styled.div `
         justify-content: center;
         padding-top: .8em;
         padding-bottom: .8em; 
-    }
-
-    .botao {
         width: 14em;
         height: 1em;
+    }
+
+    .botao > .link {
+        text-decoration: none;
     }
 
 
