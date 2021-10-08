@@ -221,17 +221,21 @@ const StyledConteudo = styled.div`
             background-position-y: 2em;
             background-position-x: 8em;
 
-            .cell {
-                display: block;
-                margin: 0em;
+           
+            .react-multiple-carousel__arrow {
+                display: none;
             }
 
-            .pc {
+            .react-multi-carousel-dot-list {
                 display: none;
             }
 
            main {
                width: 100%;
+           }
+
+           .lista-produtos {
+                margin-right: 6em;
            }
             
            .logo img {
