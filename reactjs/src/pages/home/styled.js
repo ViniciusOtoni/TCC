@@ -163,6 +163,30 @@ const StyledConteudo = styled.div`
     padding-top:1em;
    }
 
+   .cell {
+       display: none;
+   }
+
+   .react-multiple-carousel__arrow--left {
+    left: 0em;
+}
+
+.react-multiple-carousel__arrow--right {
+    right: 5.8em;
+}
+
+.react-multi-carousel-dot-list {
+    margin-right: 5em;
+}
+
+.agp-jogo {
+    height: 30em;
+    
+}
+
+.pc {
+    margin-left: 2em;
+}
 
 
    
@@ -179,6 +203,15 @@ const StyledConteudo = styled.div`
             background-repeat: no-repeat;
             background-position-y: 2em;
             background-position-x: 8em;
+
+            .cell {
+                display: block;
+                margin: 0em;
+            }
+
+            .pc {
+                display: none;
+            }
 
            main {
                width: 100%;
@@ -199,6 +232,10 @@ const StyledConteudo = styled.div`
             .texto-melhor {
                 font-size: 2em;
             }
+
+            .jpWpPU {
+                        margin: 4em;
+                    }
            
             .teste {
             width:8em; 
@@ -207,6 +244,12 @@ const StyledConteudo = styled.div`
             font-size: 1em;
             margin-bottom: 1em;
             }
+
+            .carousel-status {
+                font-family: MontserratBold;
+                margin-right: .4em;
+            }
+            
 
             .agp-melhor {
                 margin-top: 7em;

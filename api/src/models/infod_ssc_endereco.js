@@ -1,46 +1,38 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_gab_usuario extends Model {
+export default class infod_ssc_endereco extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_usuario: {
+    id_endereco: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    nm_usuario: {
+    ds_endereco: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: true
     },
-    ds_cpf: {
+    nr_endereco: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    ds_cep: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: true
     },
-    ds_email: {
+    nm_cidade: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: true
     },
-    ds_senha: {
+    ds_complemeno: {
       type: DataTypes.STRING(255),
-      allowNull: false
-    },
-    bt_gerente: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false
-    },
-    ds_codigo: {
-      type: DataTypes.TEXT,
-      allowNull: false
-    },
-    img_usuario: {
-      type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoa_gab_usuario',
+    tableName: 'infod_ssc_endereco',
     timestamps: false,
     indexes: [
       {
@@ -48,11 +40,11 @@ export default class infoa_gab_usuario extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_usuario" },
+          { name: "id_endereco" },
         ]
       },
     ]
   });
-  return infoa_gab_usuario;
+  return infod_ssc_endereco;
   }
 }

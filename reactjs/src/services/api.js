@@ -36,13 +36,14 @@ export default class Api {
     }
 
 
-    async cadastrarUsuario (nm_usuario, ds_cpf, ds_email,  ds_senha) {
+    async cadastrarUsuario (nm_usuario, ds_cpf, ds_email,  ds_senha, img_usuario) {
 
         let jsonUsu = {
             nm_usuario,
             ds_cpf,
             ds_email,
-            ds_senha
+            ds_senha,
+            img_usuario
         }
 
         let r = await api.post(`/cadastrar`, jsonUsu)
@@ -75,13 +76,13 @@ export default class Api {
 
 
 
-    async recuperarSenha(nm_usuario, ds_email) {
-        let r = await api.post(`/login/senha`, { nm_usuario, ds_email})
+    async recuperarSenha(nm_usuario, ds_email, ds_codigo) {
+        let r = await api.post(`/login/senha`, { nm_usuario, ds_email, ds_codigo } )
         return r.data;
     }
 
-    async redefinirSenha(id, ds_senha) {
-        let r = await api.put(`/login/senha/${id}`, { ds_senha })
+    async redefinirSenha(codigo, ds_senha) {
+        let r = await api.put(`/login/senha/${codigo}`, { ds_senha })
         return r.data;
     }
 
@@ -90,8 +91,8 @@ export default class Api {
         return r.data;
     }
 
-    async redefinirEmail(idUsuario, ds_email) {
-        let r = await api.put(`/login/email/${idUsuario}`, { ds_email })
+    async redefinirEmail( ds_email) {
+        let r = await api.put(`/login/email`, { ds_email })
         return r.data;
     }
 
