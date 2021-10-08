@@ -101,10 +101,30 @@ const StyledConteudo = styled.div`
         
     }
 
-    .carousel.carousel-slider{
-        height: 29em;
+    .lista-produtos {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
     }
 
+     .carousel-container{
+        width: 100%;
+        height: 100%;
+        margin-left: 2em;
+    }
+    
+    .react-multi-carousel-track {
+        margin-bottom: 1em;
+    }
+
+    .custom-dot-list-style{
+        margin-right: 2em;
+    }
+
+    .react-multiple-carousel__arrow--right {
+        right: 4.8em !important;
+    }
 
     .titulo {
         font-family: ExtraBold;
@@ -114,9 +134,6 @@ const StyledConteudo = styled.div`
         padding-left: 1em;
        
     }
-
-    
-   
 
    .barra { 
        border: 4px solid #F0AC54;

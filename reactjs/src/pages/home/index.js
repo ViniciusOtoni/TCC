@@ -5,12 +5,8 @@ import Footer  from "../../components/rodape/index"
 import CaixaJogo from "../../components/caixaJogo"
 import Categoria from "../../components/escolhaTipo"
 
-
-import Carousel1 from "react-multi-carousel";
+import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
 
 import '../index.css'
 import "animate.css"
@@ -38,17 +34,24 @@ export default function Home() {
 
     }, [])
 
-
-
-
-
     const responsive = {
-        desktop: {
-          breakpoint: { max: 1920, min: 1240 },
-          items: 3,
-          slidesToSlide: 3// optional, default to 1.
+        superLargeDesktop: {
+          // the naming can be any, depends on you.
+          breakpoint: { max: 4000, min: 3000 },
+          items: 5
         },
-       
+        desktop: {
+          breakpoint: { max: 3000, min: 1024 },
+          items: 3
+        },
+        tablet: {
+          breakpoint: { max: 1024, min: 464 },
+          items: 2
+        },
+        mobile: {
+          breakpoint: { max: 464, min: 0 },
+          items: 1
+        }
       };
     
     return (
@@ -68,45 +71,23 @@ export default function Home() {
         </div> 
             <section className="faixa2"> 
                 <div className="titulo"> Mais Populares:  </div>
-                <div class="barra"> </div>
-              
-                           <main className="pc">  <Carousel1 className="agp-jogo" 
-                               
-                               
-                               showDots={true}
-                               responsive={responsive}
-                        
-                               >
+                <div class="barra"> </div>   
+                <div className="lista-produtos">  
+                        <Carousel   responsive={responsive}
+                                    infinite={true}
+                                    showDots={true}
+                                    containerClass="carousel-container"
+                                    dotListClass="custom-dot-list-style">
 
-                        
-                        {/* Buga a Partir da sexta box!!!! */}
-
-                         {populares.map(x =>  <CaixaJogo    name={x.nm_produto != null && x.nm_produto.length >= 31 
-                                                                ? x.nm_produto.substr(0,31) + "..." 
-                                                                : x.nm_produto} 
+                            {populares.map(x =>  <CaixaJogo key={x.id_produto} name={x.nm_produto != null && x.nm_produto.length >= 31 
+                                                                    ? x.nm_produto.substr(0,31) + "..." 
+                                                                    : x.nm_produto} 
                                                             name2= {x.nm_produto}
                                                             image={x.img_produto} 
                                                             price={`R$: ${x.vl_preco}`} /> 
-                     )}   
-                    </Carousel1> </main>
-
-                <main className="cell">    <Carousel axis="horizontal" showArrows="" showIndicators="" 
-                              showThumbs="false" showStatus="true" useKeyboardArrows="true"
-                              autoPlay="true" stopOnHover="true" swipeable="true"
-                              dynamicHeight="" emulateTouch="true" infiniteLoop="">   
-                             {populares.map(x =>  <CaixaJogo    name={x.nm_produto != null && x.nm_produto.length >= 31 
-                                                                ? x.nm_produto.substr(0,31) + "..." 
-                                                                : x.nm_produto} 
-                                                            name2= {x.nm_produto}
-                                                            image={x.img_produto} 
-                                                            price={`R$: ${x.vl_preco}`} /> 
-                         )}  
-                </Carousel> </main>
-
-
-
-
-                
+                            )}   
+                        </Carousel> 
+                </div>
             </section>
 
             <section className="faixa3"> 
@@ -122,10 +103,7 @@ export default function Home() {
 
             </section>
             </main>
-            
-            
-           
-          
+
         </StyledConteudo>
         <Footer/>
         </main>
