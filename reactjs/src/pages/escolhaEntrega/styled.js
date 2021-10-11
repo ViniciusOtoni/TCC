@@ -80,7 +80,7 @@ const StyledEscolhaEntrega = styled.div `
 
     
 
-    @media(max-width:375px) {
+    @media(max-width:425px) {
         .cell {
             width: 100%;
             display: block;

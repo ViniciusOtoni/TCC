@@ -122,7 +122,7 @@ const StyledCabecalho = styled.div `
         display: ${props => props.corLetra === 'branco' ? 'none' : 'block' };
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 425px) {
 
         .pc {
             display: none;

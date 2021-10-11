@@ -39,7 +39,7 @@ const StyledPaginacao = styled.div `
         justify-content: center;
         display: flex;
     }
-        @media(max-width:375px) {
+        @media(max-width:425px) {
             
             .pc {
                 display: none;

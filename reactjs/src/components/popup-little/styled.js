@@ -58,7 +58,7 @@ header {
 }
 
 
-@media(max-width:375px) {
+@media(max-width:425px) {
     width: 100%;
    
 

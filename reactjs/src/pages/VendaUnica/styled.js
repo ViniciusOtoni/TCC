@@ -20,16 +20,17 @@ const Conteudo = styled.div`
         font-family: MontserratBold;
         font-size: 3em;
         color: white;
-
-        padding-right: 6em;
         margin-bottom: .5em;
+        display: flex;
+        align-self: flex-start;
+        padding-left: 2em;
     }
 
     .cell {
         display: none;
     }
 
-    @media(max-width:375px) {
+    @media(max-width:425px) {
         .pc {
             display: none;
         }
@@ -71,7 +72,7 @@ const Content = styled.div`
 
     background-color: #282828;
 
-    width: 50em;
+    
     height: 25em;
     border-radius: 1.5em;
 
@@ -85,35 +86,35 @@ const Content = styled.div`
         display: flex;
         justify-content: space-around;
         flex-direction: row;
-
-        width: 50em;
         height: 18em;
         padding: 2.5em;
+    }
+
+    .align-content > div {
+        margin: 0em 5em;
     }
 
     .content-images{
         display: flex;
         flex-direction: row;
-
         margin-top: 1em;
-
-        height: 15em;
     }
 
     .images{
         display: flex;
         flex-direction: column;
 
-        margin: 3em 1em 0em 0em;
+        margin: 3em 2em 0em 0em;
     }
 
-    .image-main > img{
-        width: 10em;
-        height: 10em;
+    .image-main {
+        width: 15em;
+        height: 18em;
+        
     }
-    .images > img {
-        width: 3em;
-        height: 3em;
+    .images  img {
+        width: 6em;
+        height: 5em;
         padding: 0.5em 0em;
 
     }
@@ -152,9 +153,12 @@ const Content = styled.div`
         margin: .8em 0em .3em 0em;
     }
 
-    @media(max-width:375px) {
+    @media(max-width:425px) {
 
         height: auto;
+        padding-top: 1em;
+        padding-bottom: 1em;
+
         .pc {
             display: none;
         }
@@ -181,7 +185,16 @@ const Content = styled.div`
             color: #ffffff;
             font-family: MontserratBold;
             padding-left: .4em;
+            
         }
+
+        
+
+        .align-content > div{
+            margin: 0em;
+        } 
+
+        
 
         .preco {
             color:#F0AC54;
@@ -191,6 +204,7 @@ const Content = styled.div`
         .frete {
             text-align: center;
             padding-top: 1em;
+           
         }
 
         .text {
@@ -200,8 +214,10 @@ const Content = styled.div`
         }
 
         .image-main {
-            width: auto;
+            width: 12em;
             height: 12em;
+            display: flex;
+            align-self: center;
         }
 
         .align-stars {

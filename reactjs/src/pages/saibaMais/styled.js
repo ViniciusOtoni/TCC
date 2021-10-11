@@ -38,7 +38,7 @@ const Container = styled.div`
         margin-bottom: 5em;
     }
 
-    @media(max-width: 375px) {
+    @media(max-width: 425px) {
         main {
             width: 100%;
             margin: auto;

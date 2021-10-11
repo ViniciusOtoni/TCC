@@ -66,7 +66,7 @@ td {
 
 
 
-@media(max-width:375px) {
+@media(max-width:425px) {
         .pc1 {
             display: none;
         }
@@ -140,6 +140,12 @@ td {
             background-color: #282828;
             padding: 2em;
             padding-left: 7em;
+        }
+    }
+
+    @media(min-width: 425px) {
+        .back {
+            padding-left: 9em;
         }
     }
 

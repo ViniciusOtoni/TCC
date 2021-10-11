@@ -16,7 +16,7 @@ export default function Cabecalho(props) {
             <div className="pesquisa"> <input className="input" placeholder="pesquise seu produto" /> </div>
             <Link to="/login" style={{textDecoration:"none"}}>   <div className="login"> Login </div> </Link>
            <Link to="/escolhaEntrega" style={{textDecoration:"none"}}> <div className="entrega">  Entregas  </div> </Link>
-           <Link to="/carrinho" style={{textDecoration:"none"}}> <div className="carrinho"> </div> </Link>
+           <Link to="/carrinhoItem" style={{textDecoration:"none"}}> <div className="carrinho"> </div> </Link>
             </main>
             <main className="cell"> 
             <div className="agp-direita"> 

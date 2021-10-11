@@ -100,7 +100,7 @@ header {
     padding-top:${props => props.recuSenha === 'true' ? '2em' : '0em'};
 }
 
-@media(max-width:375px) {
+@media(max-width:425px) {
     width: 100%;
    
 

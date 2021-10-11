@@ -209,7 +209,7 @@ const StyledConteudo = styled.div`
    
    
    
-        @media(max-width:375px) {
+        @media(max-width:425px) {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -350,7 +350,13 @@ const StyledConteudo = styled.div`
            
         }
 
-   
+   @media(min-width: 425px) {
+    .lista-produtos {
+                margin-right: 3.5em;
+           }
+
+           background-position-x: 9em;
+   }
     
 `
 
@@ -368,6 +374,8 @@ position: absolute;
 
 @media (max-width: 425px) {
     display: none;
+
+
 }
 
 `

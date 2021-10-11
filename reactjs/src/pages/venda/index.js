@@ -44,12 +44,7 @@ export default function Venda() {
                     </div>
                     <div className="wrap"> 
                     {produto.map (x  => 
-                     <div className="bottom">   <CaixaJogo name={x.nm_produto != null && x.nm_produto.length >= 31 
-                                                            ? x.nm_produto.substr(0,31) + "..." 
-                                                            : x.nm_produto} 
-                                                            name2= {x.nm_produto}
-                                                image={x.img_produto} 
-                                                price={`R$: ${x.vl_preco}`} /> </div>
+                     <div className="bottom">   <CaixaJogo key={x.id_produto} info={x} /> </div>
                      )}
                     </div>
                     

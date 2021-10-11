@@ -177,7 +177,7 @@ padding-bottom: 1em;
 
 
 
-@media(max-width:375px) {
+@media(max-width:425px) {
     .pc {
         display: none;
     }

@@ -81,7 +81,7 @@ const StyledCarrinho = styled.div `
     }
 
 
-    @media(max-width:375px) {
+    @media(max-width:425px) {
         main {
             width: 100%;
         }
@@ -131,6 +131,18 @@ const StyledCarrinho = styled.div `
 
         height: auto;
         
+    }
+
+    @media(min-width: 424px) {
+        .texto {
+            font-size: 1.4em;
+        }
+
+        .logo img {
+            width: auto;
+            height: 10em;
+            padding: 1em;
+        }
     }
     
 `

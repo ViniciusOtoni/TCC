@@ -84,7 +84,7 @@ const StyledCabecalhoAdm = styled.div `
  
 
 
-    @media(max-width:375px) {
+    @media(max-width:425px) {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -128,6 +128,10 @@ const StyledCabecalhoAdm = styled.div `
         margin-left: 2em;
     }
 
+    .NV {
+        display: ${props => props.nulo === 'true' ? 'none' : 'block'};
+    }
+
 
        
 
@@ -158,6 +162,10 @@ const StyledCabecalhoAdm = styled.div `
             padding: 0em;
             width: 100%;
         } 
+
+        a {
+            text-decoration:  none;
+        }
 }
 
 
