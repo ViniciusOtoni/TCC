@@ -6,11 +6,14 @@ import { Conteudo } from './styled'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router'
-import Cookie from 'js-cookie'
+import Cookie, { set } from 'js-cookie'
 
 export default function VendaUnica(props){
 
     const [ produto, setProduto ] = useState(props.location.state)
+    
+
+
     const navegation = useHistory()
 
 
@@ -42,11 +45,11 @@ export default function VendaUnica(props){
                     <div className="align-content">
                         <div className="content-images">
                             <div className="images">
-                                <img src={produto.img_secundaria} alt=""/>
-                                <img src={produto.img_terciaria} alt=""/>
-                                <img src={produto.img_quartenaria} alt=""/>
+                                <img  src={produto.img_secundaria} alt=""/>
+                                <img  src={produto.img_terciaria} alt=""/>
+                                <img  src={produto.img_quartenaria} alt=""/>
                             </div>
-                            <img className="image-main"src={produto.img_produto} alt=""/>
+                            <img className="image-main" src={produto.img_produto} alt=""/>
                         </div>
                         <div>
                             <div className="align-stars">

@@ -133,7 +133,7 @@ const StyledCarrinho = styled.div `
         
     }
 
-    @media(min-width: 424px) {
+    @media(width: 425px) {
         .texto {
             font-size: 1.4em;
         }

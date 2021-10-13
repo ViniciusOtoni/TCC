@@ -131,7 +131,7 @@ td {
            padding-left: 7em;
         }
     }
-    @media(min-width: 425px) {
+    @media(width: 425px) {
         .back {
             padding-left: 9em;
         }

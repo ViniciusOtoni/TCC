@@ -294,7 +294,7 @@ const Container = styled.div`
       height: auto;
     }
 
-    @media(min-width: 425px) {
+    @media(width: 425px) {
         .text-input {
             padding-left: 2.4em;
         }

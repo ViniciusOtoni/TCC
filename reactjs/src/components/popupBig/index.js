@@ -1,10 +1,10 @@
 import { StyledPopupBig } from "./styled";
 import { StyledInput } from "../input/styled";
 import { StyledButtonPopup } from "../botaoPopup/styled";
-import { Link } from "react-router-dom";
 import Api from '../../services/api';
 import { useState } from "react";
 import { useHistory } from "react-router";
+import Cookie from "js-cookie";
 
 
 

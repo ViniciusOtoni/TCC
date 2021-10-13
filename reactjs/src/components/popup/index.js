@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useHistory } from "react-router";
 import Api from '../../services/api';
-
+import Cookies from "js-cookie";
 
 
 
@@ -34,7 +34,7 @@ export default function Popup(props) {
 
     const [ vl1, setVl1 ] = useState('');
     const [ vl2, setVl2 ] = useState('');
-    const [ idUsu, setIdUsu] = useState(0);
+  
     
 
     
@@ -48,6 +48,7 @@ export default function Popup(props) {
         if(r.error) {
             alert(`${r.error}`)
         } else {
+            Cookies.set('usuario-logado' ,JSON.stringify(r));
             navegacao.push('/')
         }
     }
@@ -58,13 +59,12 @@ export default function Popup(props) {
         if(r.error) {
             alert(`${r.error}`)
         } else {
+            Cookies.set('usuario-logado' ,JSON.stringify(r));
             navegacao.push('/gerenteEscolha')
         }
     }
 
-   // const logarGerente = async () => {
-       // let r = await api.login
-    //}
+   
 
     const recuSenha = async () => {
      let r = await api.recuperarSenha(vl2, vl1)
@@ -77,29 +77,7 @@ export default function Popup(props) {
         }
     }
 
-    // const recuEmail = async () => {
-    //     let r = await api.recuperarEmail(vl1, vl2)
 
-    //     if( r.error ) {
-    //         alert(`${r.error}`)
-    //     } else {
-    //         navegacao.push('/redefinirEmail')
-    //     }
-    // }
-
-
-    
-
-    // const redefinirEmail = async () => {
-        
-    //    let r  = await api.redefinirEmail(vl1, vl2)
-
-    //    if(vl1 === vl2)
-    //    return navegacao.push('/')
-    //    else 
-    //    return alert('Emails devem ser Iguais! ')
-  
-    // }
 
 
     const redefinirSenha = async () => {

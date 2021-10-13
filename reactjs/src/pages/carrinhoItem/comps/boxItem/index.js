@@ -4,15 +4,16 @@ import { SelectInput } from "../../../../components/select/styled"
 import { StyledButtonVerde } from "../../../../components/botaoVerde/styled"
 import { useState } from "react"
 import { StyledButtonAdm } from "../../../../components/botaoAdm/styled"
-import { remove } from "js-cookie"
+
 
 
 export default function BoxItemCarrinho(props) {
     
     const [ produto, setProduto ]  = useState(props.info)
 
-    const [ qtd, setQtd ] = useState(0)
-    console.log(setQtd)
+    const [ qtd, setQtd ] = useState(1)
+    
+    console.log(qtd)
 
     function remover () {
         props.onRemove(produto.id_produto)
@@ -37,21 +38,21 @@ export default function BoxItemCarrinho(props) {
      
         <div className="column-valores">
             <div className="row-valores"> 
-                <div className="select">  <SelectInput  style={{width:"4em", height:"2em", fontSize:"1em", fontFamily: "MontserratBold"}}>  
-                <option value="vl1" onClick={setQtd}> 1 </option>
-                <option value="vl2" onClick={setQtd}> 2 </option>
-                <option value="vl3" onClick={setQtd}> 3 </option>
-                <option value="vl4" onClick={setQtd}> 4 </option>
-                <option value="vl4" onClick={setQtd}> 5 </option>
-                <option value="vl4" onClick={setQtd}> 6 </option>
-                <option value="vl4" onClick={setQtd}> 7 </option>
-                <option value="vl4" onClick={setQtd}> 8 </option>
-                <option value="vl4" onClick={setQtd}> 9 </option>
-                <option value="vl4" onClick={setQtd}> 10 </option>
+                <div className="select">  <SelectInput   onChange={e => setQtd(e.target.value)}   style={{width:"4em", height:"2em", fontSize:"1em", fontFamily: "MontserratBold"}}>  
+                <option value={1} > 1 </option>
+                <option value={2} > 2 </option>
+                <option value={3} > 3 </option>
+                <option value={4} > 4 </option>
+                <option value={5} > 5 </option>
+                <option value={6} > 6 </option>
+                <option value={7} > 7 </option>
+                <option value={8} > 8 </option>
+                <option value={9} > 9 </option>
+                <option value={10} > 10 </option>
 
               
                  </SelectInput> </div>
-                <div className="valores-preco"> {`R$ ${produto.vl_preco}`} </div>
+                <div className="valores-preco"> {`R$: ${Math.round(produto.vl_preco * qtd)} ` } </div>
             </div>
             <div className="excluir" onClick={remover}> Excluir </div>
             <div className="row-input"> 

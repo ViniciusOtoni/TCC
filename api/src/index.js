@@ -191,7 +191,6 @@ app.post('/cadastrar/empresa', async (req, resp) => {
             img_empresa: r.img_empresa
             // ds_codigo: '',
         })
-
         resp.send(l) } catch(e) {
             resp.send( e.toString() )
         }
@@ -207,19 +206,22 @@ app.post('/login', async (req, resp) => {
         where: {
                 ds_email: login.ds_email,
                 ds_senha: login.ds_senha
-        }
+        },
+        raw: true
     }) 
 
     let r1 = await db.infoa_gab_empresa.findOne({
         where: {
             ds_email: login.ds_email,
             ds_senha: login.ds_senha
-        }
+        },
+        raw: true
     })
     
     if(r == null && r1 == null ) 
     return resp.send( { error: 'Credenciais Inválidas'})
 
+    
     resp.send(r)
 
 

@@ -350,12 +350,12 @@ const StyledConteudo = styled.div`
            
         }
 
-   @media(min-width: 425px) {
+   @media(width: 425px) {
     .lista-produtos {
                 margin-right: 3.5em;
            }
 
-           background-position-x: 9em;
+           background-position-x: 9.4em;
    }
     
 `

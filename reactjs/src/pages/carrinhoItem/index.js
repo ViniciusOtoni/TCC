@@ -3,8 +3,7 @@ import Cabecalho from "../../components/cabecalho"
 import Footer from "../../components/rodape"
 import { StyledInput } from "../../components/input/styled"
 import { StyledButtonVerde } from "../../components/botaoVerde/styled"
-import { SelectInput } from "../../components/select/styled"
-import { StyledButtonAdm } from "../../components/botaoAdm/styled"
+
 import { Link } from "react-router-dom"
 import Cookie from 'js-cookie'
 import { useState, useEffect } from "react"
@@ -15,7 +14,7 @@ import BoxItemCarrinho from './comps/boxItem'
 export default function CarrinhoItem() {
 
     const [ produto, setProduto ] = useState([])
-    console.log(produto)
+    
 
     const navegation = useHistory()
 
@@ -94,7 +93,7 @@ export default function CarrinhoItem() {
                         <div className="total-valor-baixo"> Total: </div>
                         <div className="total-final"> R$:99,99 </div>
                     </div>
-                    <div className="botao-finalizar"> <StyledButtonVerde style={{padding: ".3em", marginBottom:"1em", marginRight: "2em", width:"14em"}}> Realizar Compra! </StyledButtonVerde> </div>
+                    <div className="botao-finalizar"> <Link to="/concluirCompra"> <StyledButtonVerde style={{padding: ".3em", marginBottom:"1em", marginRight: "2em", width:"14em"}}> Realizar Compra! </StyledButtonVerde> </Link> </div> 
                 </div>
                 </main>
 
@@ -135,7 +134,7 @@ export default function CarrinhoItem() {
                         <div className="total-valor-baixo"> Total: </div>
                         <div className="total-final"> R$:99,99 </div>
                     </div>
-                    <div className="botao-finalizar"> <Link to="/"> <StyledButtonVerde style={{padding: ".3em"}} className="green">  Realizar Compra!  </StyledButtonVerde> </Link>   </div> 
+                    <div className="botao-finalizar"> <Link to="/concluirCompra"> <StyledButtonVerde style={{padding: ".3em"}} className="green">  Realizar Compra!  </StyledButtonVerde> </Link>   </div> 
                 </div>
                 </main> 
        </StyledCarrinhoItem>
