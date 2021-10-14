@@ -26,7 +26,7 @@ export default function CarrinhoItem() {
 
     function removerProduto (id) {
 
-        let carrinho = produto.filter(x => x.id_produto !== id)
+        let carrinho = produto.filter(x => x.id_produto !== id) 
 
         Cookie.set('carrinho', JSON.stringify(carrinho))
         setProduto([...carrinho])
@@ -35,15 +35,9 @@ export default function CarrinhoItem() {
         Cookie.remove('carrinho')
         carregarCarrinho()
 
-        
-       
-        
-
-        
-
-        
-
     }
+
+
 
     function carregarCarrinho() {
         let carrinho = Cookie.get('carrinho');
@@ -60,11 +54,23 @@ export default function CarrinhoItem() {
 
         setProduto(carrinho)
     }
+
+
+   function calcVl() {
+       produto.forEach(x => {
+           let r = x.vl_preco
+           let acount = r + r;
+           return acount;
+       });
+   }
+
+   console.log(calcVl)
+
     return (
         <div style={{backgroundColor:"#333333"}}>
         <Cabecalho />
         
-        
+    
         
        <StyledCarrinhoItem> 
        <main className="pc"> 
@@ -87,7 +93,7 @@ export default function CarrinhoItem() {
                 <div className="agp-realizar">
                     <div className="row-preco"> 
                         <div className="sub-total-baixo"> Sub-Total: </div>
-                        <div className="sub-valor-final"> R$:79,99</div>
+                        <div className="sub-valor-final"> {calcVl} </div>
                     </div>
                     <div className="row-preco"> 
                         <div className="total-valor-baixo"> Total: </div>
@@ -106,7 +112,7 @@ export default function CarrinhoItem() {
                
                
                 {produto.map(x => 
-                    <BoxItemCarrinho key={x.id_produto} info={x} onRemove={removerProduto} /> 
+                    <BoxItemCarrinho key={x.id_produto} info={x} onRemove={removerProduto}  /> 
                 )}
                  <div className="row-input"> 
                             <div className="frete"> Frete: </div>

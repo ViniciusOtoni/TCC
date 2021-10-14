@@ -8,8 +8,13 @@ import { StyledButtonAdm } from "../../../../components/botaoAdm/styled"
 
 
 export default function BoxItemCarrinho(props) {
+
+    
+
     
     const [ produto, setProduto ]  = useState(props.info)
+
+    
 
     const [ qtd, setQtd ] = useState(1)
     
@@ -84,21 +89,21 @@ export default function BoxItemCarrinho(props) {
                         <div className="foto"> <img src={produto.img_produto} alt="" /> </div>
                         <div className="row-val"> 
                             <div className="titulo-val"> Preço: </div>
-                            <div className="valor-val"> {`R$ ${produto.vl_preco}`} </div>
+                            <div className="valor-val"> {`R$: ${Math.round(produto.vl_preco * qtd)} ` } </div>
                         </div>
                         <div className="row-valores"> 
                                 <div className="quantidade"> Unidades: </div>
-                                <div className="select">  <SelectInput  style={{width:"4em", height:"2em", fontSize:"1em", fontFamily: "MontserratBold"}}>  
-                                    <option value="vl1" >1 </option>
-                                    <option value="vl2"> 2 </option>
-                                    <option value="vl3"> 3 </option>
-                                    <option value="vl4"> 4 </option>
-                                    <option value="vl4"> 5 </option>
-                                    <option value="vl4"> 6 </option>
-                                    <option value="vl4"> 7 </option>
-                                    <option value="vl4"> 8 </option>
-                                    <option value="vl4"> 9 </option>
-                                    <option value="vl4"> 10 </option>
+                                <div className="select">  <SelectInput  onChange={e => setQtd(e.target.value)} style={{width:"4em", height:"2em", fontSize:"1em", fontFamily: "MontserratBold"}}>  
+                                    <option value={1} >1 </option>
+                                    <option value={2}> 2 </option>
+                                    <option value={3}> 3 </option>
+                                    <option value={4}> 4 </option>
+                                    <option value={5}> 5 </option>
+                                    <option value={6}> 6 </option>
+                                    <option value={7}> 7 </option>
+                                    <option value={8}> 8 </option>
+                                    <option value={9}> 9 </option>
+                                    <option value={10}> 10 </option>
                                 </SelectInput> </div>
                                 </div>
                     

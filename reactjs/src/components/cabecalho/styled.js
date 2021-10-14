@@ -137,6 +137,7 @@ const StyledCabecalho = styled.div `
 
     .user-image {
         padding-right: 1em;
+        display: ${props => props.corLetra === 'nulo'? 'none' : 'block' };
     }
 
     @media (max-width: 425px) {
