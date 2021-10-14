@@ -74,7 +74,7 @@ background-color: #333333;
     padding-top:0.7em;
 }
 
-@media(max-width:375px) {
+@media(max-width:425px) {
     main {
         width: 100%;
     }

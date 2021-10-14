@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useHistory } from "react-router";
 import Api from '../../services/api';
-
+import Cookies from "js-cookie";
 
 
 
@@ -34,7 +34,7 @@ export default function Popup(props) {
 
     const [ vl1, setVl1 ] = useState('');
     const [ vl2, setVl2 ] = useState('');
-    const [ idUsu, setIdUsu] = useState(0);
+  
     
 
     
@@ -48,13 +48,23 @@ export default function Popup(props) {
         if(r.error) {
             alert(`${r.error}`)
         } else {
+            Cookies.set('usuario-logado' ,JSON.stringify(r));
             navegacao.push('/')
         }
     }
 
-   // const logarGerente = async () => {
-       // let r = await api.login
-    //}
+    const logarGerente = async () => {
+        let r = await api.loginGerente(vl1, vl2)
+
+        if(r.error) {
+            alert(`${r.error}`)
+        } else {
+            Cookies.set('usuario-logado' ,JSON.stringify(r));
+            navegacao.push('/gerenteEscolha')
+        }
+    }
+
+   
 
     const recuSenha = async () => {
      let r = await api.recuperarSenha(vl2, vl1)
@@ -67,29 +77,7 @@ export default function Popup(props) {
         }
     }
 
-    const recuEmail = async () => {
-        let r = await api.recuperarEmail(vl1, vl2)
 
-        if( r.error ) {
-            alert(`${r.error}`)
-        } else {
-            navegacao.push('/redefinirEmail')
-        }
-    }
-
-    const redefinirEmail = async () => {
-        
-       
-            
-                let r  = await api.redefinirEmail(vl1)
-            
-                if(vl1 === vl2)
-                    navegacao.push('/')
-            
-            else 
-                    alert('Digite o email corretamente')
-    
-    }
 
 
     const redefinirSenha = async () => {
@@ -120,7 +108,7 @@ export default function Popup(props) {
             <div className="agp-column"> 
                 <div className="email"> {props.tituloCima} </div>
                 <div className="input"> <StyledInput style={{width:"100%", color:"#000000"}}  value={ vl1 } onChange={r => setVl1(r.target.value)}  type="text" /> </div>
-              <Link to="/recuperarEmail" style={{color:"#ffffff", textDecoration:"none"}}>   <div className="esqueceu-email"> Esqueceu seu Email? </div> </Link>
+              <Link to="/recuperarEmail" style={{color:"#ffffff", textDecoration:"none"}}>   <div className="esqueceu-email">  </div> </Link>
 
                 <div className="senha"> {props.tituloBaixo} </div>
                 <div className="input"> <StyledInput style={{width:"100%", color:"#000000"}} type={props.type} value={ vl2 } onChange={e => setVl2(e.target.value)} /> </div>
@@ -129,7 +117,7 @@ export default function Popup(props) {
                 <div className="agp-botao">
                 <div className="botao1">   <StyledButtonPopup onClick={logar}> Entrar  </StyledButtonPopup>  </div>
               <div className="botao2">  <Link to="/criarConta">  <StyledButtonPopup> Cadastrar-se </StyledButtonPopup> </Link> </div> 
-                <div className="botao3">  <StyledButtonPopup onClick={props.botao1 === '1' ? recuSenha : props.botao1 === '2' ? redefinirSenha : props.botao1 === '3' ? recuEmail : props.botao1 === '4' ? redefinirEmail : empresa }> {alterar(props.botao1)} </StyledButtonPopup>  </div>
+                <div className="botao3">  <StyledButtonPopup onClick={props.botao1 === '1' ? recuSenha : props.botao1 === '2' ? redefinirSenha  : props.botao1 === '5' ? logarGerente : empresa }> {alterar(props.botao1)} </StyledButtonPopup>  </div>
                 </div>
             </div>
 

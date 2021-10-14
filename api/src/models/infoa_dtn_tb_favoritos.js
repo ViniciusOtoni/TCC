@@ -1,38 +1,26 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infob_amz_tbreporte_denuncia extends Model {
+export default class infoa_dtn_tb_favoritos extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_reporte_denuncia: {
+    id_fav: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_usuario: {
+    id_produto: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    id_denuncia: {
+    id_cliente: {
       type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    dt_reporte: {
-      type: DataTypes.DATE,
-      allowNull: true
-    },
-    ds_motivo_reporte: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    ds_confirmado: {
-      type: DataTypes.BOOLEAN,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infob_amz_tbreporte_denuncia',
+    tableName: 'infoa_dtn_tb_favoritos',
     timestamps: false,
     indexes: [
       {
@@ -40,25 +28,25 @@ export default class infob_amz_tbreporte_denuncia extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_reporte_denuncia" },
+          { name: "id_fav" },
         ]
       },
       {
-        name: "id_usuario",
+        name: "id_produto",
         using: "BTREE",
         fields: [
-          { name: "id_usuario" },
+          { name: "id_produto" },
         ]
       },
       {
-        name: "id_denuncia",
+        name: "id_cliente",
         using: "BTREE",
         fields: [
-          { name: "id_denuncia" },
+          { name: "id_cliente" },
         ]
       },
     ]
   });
-  return infob_amz_tbreporte_denuncia;
+  return infoa_dtn_tb_favoritos;
   }
 }

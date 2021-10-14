@@ -122,7 +122,24 @@ const StyledCabecalho = styled.div `
         display: ${props => props.corLetra === 'branco' ? 'none' : 'block' };
     }
 
-    @media (max-width: 375px) {
+    .row-user {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .user-image img {
+        border-radius: 50%;
+        width: 3em;
+        height: 2.4em;
+        
+    }
+
+    .user-image {
+        padding-right: 1em;
+    }
+
+    @media (max-width: 425px) {
 
         .pc {
             display: none;

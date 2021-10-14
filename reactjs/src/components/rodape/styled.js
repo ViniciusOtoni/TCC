@@ -158,7 +158,7 @@ const RodaPe = styled.div`
         display: none;
     }
 
-    @media(max-width:375px) {
+    @media(max-width:425px) {
        .pc {
            display: none;
        }

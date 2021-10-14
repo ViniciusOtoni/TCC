@@ -25,6 +25,10 @@ export default class infoa_gab_empresa extends Model {
     ds_senha: {
       type: DataTypes.STRING(255),
       allowNull: false
+    },
+    img_empresa: {
+      type: DataTypes.STRING(255),
+      allowNull: false
     }
   }, {
     sequelize,

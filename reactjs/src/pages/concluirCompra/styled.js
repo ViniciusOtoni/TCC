@@ -215,7 +215,7 @@ const Container = styled.div`
         font-family: MontserratBold;
     }
 
-    @media(max-width:375px) {
+    @media(max-width:425px) {
       .sub-main {
         width: 100%;
         display: flex;
@@ -292,6 +292,12 @@ const Container = styled.div`
       }
 
       height: auto;
+    }
+
+    @media(width: 425px) {
+        .text-input {
+            padding-left: 2.4em;
+        }
     }
 `
 

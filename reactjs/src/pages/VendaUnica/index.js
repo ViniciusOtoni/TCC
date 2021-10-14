@@ -4,24 +4,52 @@ import { StyledButtonVerde } from '../../components/botaoVerde/styled'
 import { Content } from './styled'
 import { Conteudo } from './styled'
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useHistory } from 'react-router'
+import Cookie, { set } from 'js-cookie'
 
-export default function VendaUnica(){
-    return(
+export default function VendaUnica(props){
+
+    const [ produto, setProduto ] = useState(props.location.state)
+    
+
+
+    const navegation = useHistory()
+
+
+
+    function comprar() {
+        let carrinho = Cookie.get('carrinho')
+        carrinho = carrinho !== undefined 
+                ? JSON.parse(carrinho) 
+                : [];
+
+            if(!carrinho.some(x => x.id_produto === produto.id_produto )) {
+                carrinho.push({ ...produto });
+            }
+
+            Cookie.set('carrinho', JSON.stringify(carrinho));
+
+            navegation.push('/carrinhoItem')
+
+    }
+
+    return (
         <div style={{backgroundColor:"#333333"}}>
         <Cabecalho />
         <Conteudo> 
           
             <main className="pc"> 
-                <div className="title"> FIFA 21 para PS4 EA </div>
+                <div className="title"> {produto.nm_produto} </div>
                 <Content>
                     <div className="align-content">
                         <div className="content-images">
                             <div className="images">
-                                <img src="/assets/images/image 24.svg" alt=""/>
-                                <img src="/assets/images/image 24.svg" alt=""/>
-                                <img src="/assets/images/image 24.svg" alt=""/>
+                                <img  src={produto.img_secundaria} alt=""/>
+                                <img  src={produto.img_terciaria} alt=""/>
+                                <img  src={produto.img_quartenaria} alt=""/>
                             </div>
-                            <img className="image-main"src="/assets/images/FIFA21.svg" alt=""/>
+                            <img className="image-main" src={produto.img_produto} alt=""/>
                         </div>
                         <div>
                             <div className="align-stars">
@@ -32,11 +60,11 @@ export default function VendaUnica(){
                                 <img className="star" src="/assets/images/bi_star_black.svg" alt=""/> 
                             </div>
                             <div className="text"> Vendido e entregue por GameBud </div>
-                            <div className="preco"> por R$79,90 </div>
+                            <div className="preco"> { `Preço: R$${produto.vl_preco}`} </div>
                             <div className="text"> em 10x de R$ 39,95 sem juros </div>
                             <div className="frete"> FRETE GRATÍS !!! </div>
                             <div className="align-button">
-                            <Link to="/carrinhoItem">  <StyledButtonVerde style={{ padding:".7em 3em", margin: ".8em 0em", fontFamily: "semiBold" }}> Adicionar ao carrinho  </StyledButtonVerde> </Link>
+                              <StyledButtonVerde style={{ padding:".7em 3em", margin: ".8em 0em", fontFamily: "semiBold" }} onClick={comprar}> Adicionar ao carrinho  </StyledButtonVerde> 
                             <Link to="/concluirCompra"> <StyledButtonVerde style={{ padding:".7em 4.7em", fontFamily: "semiBold" }}> Comprar agora </StyledButtonVerde> </Link>
                             </div>    
                         </div>
@@ -47,8 +75,8 @@ export default function VendaUnica(){
             <main className="cell"> 
             <Content>
                     <div className="align-content">
-                            <div className="titulo1"> Fifa 21 </div>
-                            <img className="image-main"src="/assets/images/FIFA21.svg" alt=""/>
+                            <div className="titulo1"> {produto.nm_produto} </div>
+                            <img className="image-main"src={produto.img_produto} alt=""/>
                         
                             <div className="align-stars">
                                 <img className="star" src="/assets/images/bi_star_black.svg" alt=""/>
@@ -59,7 +87,7 @@ export default function VendaUnica(){
                             </div>
 
                             <div className="titulo"> Preco: </div>
-                            <div className="preco"> por R$79,90 </div>
+                            <div className="preco"> {`R$${produto.vl_preco}`} </div>
                             <div className="text"> em 10x de R$ 39,95 sem juros </div>
                             <div className="text"> Vendido e entregue por GameBud </div>
                           
@@ -71,7 +99,7 @@ export default function VendaUnica(){
                      
                 </Content>
                 <div className="align-button">
-                                <StyledButtonVerde style={{ padding:".7em 2em", margin: ".8em 0em", fontFamily: "semiBold" }} className="gren"> Adicionar ao carrinho  </StyledButtonVerde>
+                                <StyledButtonVerde style={{ padding:".7em 2em", margin: ".8em 0em", fontFamily: "semiBold" }} className="gren" onClick={comprar}> Adicionar ao carrinho  </StyledButtonVerde>
                                 <StyledButtonVerde style={{ padding:".7em 2em", fontFamily: "semiBold" }} className="gren"> Comprar agora! </StyledButtonVerde>
                 </div>  
             </main>

@@ -68,7 +68,7 @@ export default function Home() {
             </div>
             <div className="logo"> <img src="/assets/images/controle.svg" alt="" /> 
             </div>
-        </div> 
+          </div> 
             <section className="faixa2"> 
                 <div className="titulo"> Mais Populares:  </div>
                 <div class="barra"> </div>   
@@ -76,15 +76,14 @@ export default function Home() {
                         <Carousel   responsive={responsive}
                                     infinite={true}
                                     showDots={true}
+                                    autoPlay={true}
                                     containerClass="carousel-container"
-                                    dotListClass="custom-dot-list-style">
+                                    dotListClass="custom-dot-list-style"
+                                    
+                                    >
+                                    
 
-                            {populares.map(x =>  <CaixaJogo key={x.id_produto} name={x.nm_produto != null && x.nm_produto.length >= 31 
-                                                                    ? x.nm_produto.substr(0,31) + "..." 
-                                                                    : x.nm_produto} 
-                                                            name2= {x.nm_produto}
-                                                            image={x.img_produto} 
-                                                            price={`R$: ${x.vl_preco}`} /> 
+                            {populares.map(x =>  <CaixaJogo key={x.id_produto} info={x} /> 
                             )}   
                         </Carousel> 
                 </div>

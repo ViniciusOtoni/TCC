@@ -48,7 +48,7 @@ td {
     display: none;
 }
 
-@media(max-width:375px) {
+@media(max-width:425px) {
         .pc {
             display: none;
         }
@@ -129,6 +129,11 @@ td {
             background-color: #282828;
             padding: 2em;
            padding-left: 7em;
+        }
+    }
+    @media(width: 425px) {
+        .back {
+            padding-left: 9em;
         }
     }
 

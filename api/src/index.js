@@ -3,11 +3,6 @@ import express from "express";
 import cors from "cors";
 
 
-
-
-
-
-
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -22,10 +17,36 @@ app.get('/produto/populares', async (req,resp) => {
     }    
 })
 
+
+
+function ordenacao(criterio){
+    let ordenacao = criterio;
+    let ord;
+
+    if(ordernacao === 'menor-maior'){
+        ord = ['vl_preco', 'desc']
+    }
+
+    if(ordenacao === 'lancamento'){
+        ord = ['dt_cadastro', 'desc']
+    }
+
+    if(ordenacao === 'avaliacao'){
+        ord = ['vl_avaliacao', 'desc']
+    }
+
+    return ord;
+}
+
 app.get('/produto', async (req,resp) => {
     try{
-        let r = await db.infoa_gab_produto.findAll()
-        resp.send(r)
+        // ord = ordenacao(req.query.ordenacao);
+        
+        let r = await db.infoa_gab_produto.findAll({
+            // order: [[ord]]
+        })
+
+        resp.send(r);
     } catch (e) {
         resp.send({ erro: `${e.toString()}` })
     }    
@@ -137,6 +158,36 @@ try {
  
 })
 
+app.post('/cadastrar/gerente', async (req, resp) => {
+    try {
+    
+        let r = req.body;
+    
+        let u1 = await db.infoa_gab_usuario.findOne({ where: { ds_cpf: r.ds_cpf } })
+        if(u1 != null)
+        resp.send( { error: 'CPF já foi cadastrado!' } );
+    
+        let u2 = await db.infoa_gab_usuario.findOne({ where: { ds_email: r.ds_email  } })
+        if(u2 != null)
+        resp.send( { error: 'Email já foi cadastrado!' } )
+    
+        let l = await db.infoa_gab_usuario.create( {
+            nm_usuario: r.nm_usuario,
+            ds_cpf: r.ds_cpf,
+            ds_email: r.ds_email,
+            ds_senha: r.ds_senha,
+            img_usuario: r.img_usuario,
+            ds_codigo: '',
+            bt_gerente: true
+        })
+    
+        resp.send(l);
+    
+    } catch (error) {
+        resp.send( error.toString() )
+    }
+})
+
 //Cadastrar Empresa
 app.post('/cadastrar/empresa', async (req, resp) => {
     try {
@@ -158,8 +209,9 @@ app.post('/cadastrar/empresa', async (req, resp) => {
             ds_cnpj: r.ds_cnpj,
             ds_email: r.ds_email,
             ds_senha: r.ds_senha,
+            img_empresa: r.img_empresa
+            // ds_codigo: '',
         })
-
         resp.send(l) } catch(e) {
             resp.send( e.toString() )
         }
@@ -175,6 +227,35 @@ app.post('/login', async (req, resp) => {
         where: {
                 ds_email: login.ds_email,
                 ds_senha: login.ds_senha
+        },
+        raw: true
+    }) 
+
+    let r1 = await db.infoa_gab_empresa.findOne({
+        where: {
+            ds_email: login.ds_email,
+            ds_senha: login.ds_senha
+        },
+        raw: true
+    })
+    
+    if(r == null && r1 == null ) 
+    return resp.send( { error: 'Credenciais Inválidas'})
+
+    
+    resp.send(r)
+
+
+})
+
+app.post('/login/gerente', async (req, resp) => {
+    let login = req.body;
+
+    let r = await db.infoa_gab_usuario.findOne( {
+        where: {
+            ds_email: login.ds_email,
+            ds_senha: login.ds_senha,
+            bt_gerente: true
         }
     })
     
@@ -182,14 +263,18 @@ app.post('/login', async (req, resp) => {
     return resp.send( { error: 'Credenciais Inválidas'})
 
     resp.send(r)
-
-
 })
 
 
 
 app.get('/login', async (req, resp) => {
     let r = await db.infoa_gab_usuario.findAll()
+
+    resp.send(r)
+})
+
+app.get('/empresa', async (req, resp) => {
+    let r = await db.infoa_gab_empresa.findAll()
 
     resp.send(r)
 })
@@ -213,11 +298,11 @@ try {
     return resp.send({ error : 'Credenciais Inválidas' })
     
     let cod = await db.infoa_gab_usuario.update({
-        ds_codigo: Math.floor(Math.random() * (99999 - 100) + 99999) 
+        ds_codigo: Math.floor(Math.random() * (9999 - 1) + 9999) 
     }, { where: { id_usuario: q.id_usuario } })
     
     
-    resp.sendStatus(200) 
+    resp.send(cod) 
 
     
     } catch( error ) {
@@ -225,26 +310,27 @@ try {
     }
 })
 
+
 //recuperarEmail
-app.post('/login/email', async (req, resp) => {
+//  app.post('/login/email', async (req, resp) => {
    
 
-        let l = req.body
+//        let l = req.body
 
-        let r = await db.infoa_gab_usuario.findOne({ where: {
+//        let r = await db.infoa_gab_usuario.findOne({ where: {
             
-            nm_usuario: l.nm_usuario,
-            ds_senha: l.ds_senha
-        }}    ) 
+//             ds_cpf: l.ds_cpf,
+//           ds_senha: l.ds_senha
+//        }}    
+        
+//         )
 
-       
 
-            if(r == null)
-            return resp.send({ error: 'Credenciais Inválidas' })
+//             if(r == null)
+//             return resp.send({ error: 'Credenciais Inválidas' })
 
-            resp.send(r)  
-})  
-
+//             resp.send(r)  
+// }) 
 
 
 
@@ -262,25 +348,26 @@ app.put('/login/senha/:codigo', async (req, resp) => {
         resp.sendStatus(200)
         
     } catch(error) {
-        resp.send( { error: "sla" })
+        resp.send( { error: " XIIH " })
     }
 })
 
 
 
-//Redefinir Email
-app.put('/login/email', async (req, resp) => {
-    try {
-        let l = req.body
+ //Redefinir Email
+// app.put('/login/email/:cpf', async (req, resp) => {
+//     try {
+//         let l = req.body
 
-        let r = await db.infoa_gab_usuario.update({ ds_email: l.ds_email })
-        resp.sendStatus(200)
-    } catch (e) {
-        resp.send( e.toString() )
-    }
-})
+    
 
+//         let r = await db.infoa_gab_usuario.update({ ds_email: l.ds_email }, { where: { ds_cpf: req.params.cpf } })
+//         resp.sendStatus(200)
 
+//     } catch (e) {
+//         resp.send( { error : "O email Não está correto " } )
+//     }
+// })
 
 
 

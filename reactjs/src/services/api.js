@@ -50,13 +50,14 @@ export default class Api {
         return r.data
     }
 
-    async cadastrarEmpresa (nm_empresa, ds_cnpj, ds_email, ds_senha) {
+    async cadastrarEmpresa (nm_empresa, ds_cnpj, ds_email, ds_senha, img_empresa) {
         
         let jsonEmpresa = {
                 nm_empresa,
                 ds_cnpj,
                 ds_email,
-                ds_senha
+                ds_senha,
+                img_empresa
         }
 
         let r  = await api.post(`/cadastrar/empresa`, jsonEmpresa)
@@ -74,6 +75,16 @@ export default class Api {
         return r.data;
     }
 
+    async loginGerente(ds_email, ds_senha) {
+        let jsonLogin = {
+            ds_email,
+            ds_senha
+        }
+
+        let r = await api.post('/login/gerente', jsonLogin )
+        return r.data;
+    }
+
 
 
     async recuperarSenha(nm_usuario, ds_email) {
@@ -86,15 +97,16 @@ export default class Api {
         return r.data;
     }
 
-    async recuperarEmail(nm_usuario, ds_senha) {
-        let r = await api.post(`/login/email`, { nm_usuario, ds_senha})
-        return r.data;
-    }
+    // async recuperarEmail(ds_cpf, ds_senha) {
+    //     let r = await api.post(`/login/email`, { ds_cpf, ds_senha})
+    //     return r.data;
+    // }
 
-    async redefinirEmail( ds_email) {
-        let r = await api.put(`/login/email`, { ds_email })
-        return r.data;
-    }
+
+    // async redefinirEmail(ds_email, ds_cpf) {
+    //     let r = await api.put(`/login/email/${ds_cpf}`, { ds_email })
+    //     return r.data;
+    // }
 
 
     async listarProdutosId(id) {

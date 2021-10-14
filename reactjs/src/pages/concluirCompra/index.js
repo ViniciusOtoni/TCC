@@ -3,8 +3,31 @@ import { StyledInput } from '../../components/input/styled'
 import Cabecalho from "../../components/cabecalho"
 import { StyledButtonVerde } from "../../components/botaoVerde/styled"
 import { Link } from "react-router-dom"
+import Cookies from "js-cookie"
+import { useHistory } from 'react-router-dom'
+import { useEffect } from "react"
+
+
+
+
 
 export default function ConcluirCompra() {
+
+    const nave = useHistory()
+
+    function lerUsuarioQuelogou() {
+        let logado = Cookies.get('usuario-logado');
+            if(logado === undefined) {
+            nave.push('/')
+            alert('Loga ae')
+            
+            }
+        }
+
+        useEffect(() => {
+            lerUsuarioQuelogou()
+        })
+
     return (
         <div style={{ backgroundColor: "#333333" }}>
             <Cabecalho corLetra="nulo" />

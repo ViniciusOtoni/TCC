@@ -86,7 +86,7 @@ const Vizualizar = styled.div`
 
     
 
-    @media(max-width: 375px) {
+    @media(max-width: 425px) {
         padding: 0px;
         
         main {
@@ -155,7 +155,7 @@ const Vizualizar = styled.div`
             width: 100%;
             margin: 0em;
             padding: 0em;
-            padding-bottom: .8em;
+            padding-bottom: 0em;
         }
     }
     

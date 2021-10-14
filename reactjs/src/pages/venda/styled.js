@@ -67,7 +67,7 @@ const StyledVenada = styled.div `
        outline: none;
     }
 
-    @media(max-width:375px) {
+    @media(max-width:425px) {
         margin: 0em;
         padding: 0em;
         width: 100%;
