@@ -3,11 +3,6 @@ import express from "express";
 import cors from "cors";
 
 
-
-
-
-
-
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -22,10 +17,36 @@ app.get('/produto/populares', async (req,resp) => {
     }    
 })
 
+
+
+function ordenacao(criterio){
+    let ordenacao = criterio;
+    let ord;
+
+    if(ordernacao === 'menor-maior'){
+        ord = ['vl_preco', 'desc']
+    }
+
+    if(ordenacao === 'lancamento'){
+        ord = ['dt_cadastro', 'desc']
+    }
+
+    if(ordenacao === 'avaliacao'){
+        ord = ['vl_avaliacao', 'desc']
+    }
+
+    return ord;
+}
+
 app.get('/produto', async (req,resp) => {
     try{
-        let r = await db.infoa_gab_produto.findAll()
-        resp.send(r)
+        // ord = ordenacao(req.query.ordenacao);
+        
+        let r = await db.infoa_gab_produto.findAll({
+            // order: [[ord]]
+        })
+
+        resp.send(r);
     } catch (e) {
         resp.send({ erro: `${e.toString()}` })
     }    
@@ -313,11 +334,6 @@ try {
 
 
 
-
-
-
-
-
 //Redefinir Senha                                     
 app.put('/login/senha/:codigo', async (req, resp) => {
     try {
@@ -352,8 +368,6 @@ app.put('/login/senha/:codigo', async (req, resp) => {
 //         resp.send( { error : "O email Não está correto " } )
 //     }
 // })
-
-
 
 
 app.listen( process.env.PORT, (x) => console.log(`Servidor Subiu na Porta ${process.env.PORT} Parabéns ai (: `));

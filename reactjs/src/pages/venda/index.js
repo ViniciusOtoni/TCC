@@ -10,20 +10,20 @@ const api = new Api();
 
 export default function Venda() {
 
-    const [produto, setProduto] = useState([])
-
+    const [produto, setProduto] = useState([]);
+    const [order, setOrder] = useState('');
 
     const listar = async () => {
-        const e = await api.listarProdutos()
+        const e = await api.listarProdutos(order)
         setProduto(e);
     }
 
-    useEffect(() => {
-       
-        
-        listar()
+    // var select = document.getElementById('order');
+	// var value = select.options[select.selectedIndex].value;
+	// console.log(value);
 
-       
+    useEffect(() => {
+        listar()
     }, [])
 
     return (
@@ -35,24 +35,21 @@ export default function Venda() {
                     <div className="row-button"> 
                         <div className="ordem"> Ordenar: </div>
                         <div className="select-ordem"> 
-                            <select> 
-                                <option value="ordem" selected> Avaliação </option> 
-                                <option value="ordem">  Lançamento </option>
-                                <option value="ordem" > Melhor Preço </option>
+                            <select id="order"> 
+                                <option value="avaliacao" selected> Avaliação </option> 
+                                <option value="lancamento"> Lançamento </option>
+                                <option value="menor-maior"> Melhor Preço </option>
                             </select>
                         </div>
                     </div>
                     <div className="wrap"> 
                     {produto.map (x  => 
-                     <div className="bottom">   <CaixaJogo key={x.id_produto} info={x} /> </div>
+                     <div className="bottom">  <CaixaJogo key={x.id_produto} info={x} /> </div>
                      )}
                     </div>
-                    
-                  <div className="pag">  <Paginacao  /> </div>
+                    <div className="pag">  <Paginacao  /> </div>
                 </main>
                 </StyledVenada>
-                
-           
             <Footer />
         </div>
     )
