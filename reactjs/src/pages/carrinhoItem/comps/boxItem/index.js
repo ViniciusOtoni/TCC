@@ -5,6 +5,8 @@ import { StyledButtonVerde } from "../../../../components/botaoVerde/styled"
 import { useState } from "react"
 import { StyledButtonAdm } from "../../../../components/botaoAdm/styled"
 import { useEffect } from "react"
+import Cookies from "js-cookie"
+import { useHistory } from "react-router"
 
 
 
@@ -15,11 +17,14 @@ export default function BoxItemCarrinho(props) {
     
     const [ produto, setProduto ]  = useState(props.info)
     const [ qtd, setQtd ] = useState(1)
+    const [ total, setTotal ] = useState(produto.vl_preco)
+    const nave = useHistory()
    
 
 
     function remover () {
         props.onRemove(produto.id_produto)
+        setQtd(0)
     }
 
 
@@ -28,7 +33,18 @@ export default function BoxItemCarrinho(props) {
        return  props.respostaFilho(produto.vl_preco)
     }
 
-  
+    function  alterarQuantidadeProduto() {
+      
+    }
+
+    useEffect( () => {
+        produto.total = produto.vl_preco * qtd;
+        setTotal(produto.total)
+        if(props.respostaFilho)
+            props.respostaFilho()
+      
+    }, [qtd])
+ 
 
    
     return (
@@ -40,7 +56,7 @@ export default function BoxItemCarrinho(props) {
             <div className="row-vendido"> 
                 <div className="dono"> Vendido Por: </div>
                 <div className="nome-dono"> GameBud </div>
-                <button onClick={enviarResp}> TESTE </button>
+                
             </div>
            
             <div className="row-vendido"> 
@@ -67,7 +83,7 @@ export default function BoxItemCarrinho(props) {
 
               
                  </SelectInput> </div>
-                <div className="valores-preco"> {`R$: ${Math.round(produto.vl_preco * qtd)} ` } </div>
+                <div className="valores-preco"> {`R$: ${produto.total}` } </div>
             </div>
             <div className="excluir" onClick={remover}> Excluir </div>
             <div className="row-input"> 

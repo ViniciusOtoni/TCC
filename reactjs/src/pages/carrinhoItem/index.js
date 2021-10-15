@@ -33,7 +33,7 @@ export default function CarrinhoItem() {
         setProduto([...carrinho])
 
        
-        Cookie.remove('carrinho')
+       
         carregarCarrinho()
 
     }
@@ -59,7 +59,8 @@ export default function CarrinhoItem() {
 
 
    function respFilho(vlPreco) {
-        setVlFinal (Number(vlPreco)  + Number(vlFinal))  
+        let total = produto.reduce((a,b) => a + b.total,0)
+        setVlFinal (total)  
    }
 
  

@@ -11,15 +11,30 @@ const sender = nodemailer.createTransport({
 });
 
 
-async function enviarEmail(para, assunto, mensagem) {
+
+
+
+async function enviarEmail(para, cod) {
+  
+
   const response = await sender.sendMail({
+
+    
     from: '"Game Bud" <contatogamebud@gmail.com>',
     to: para, 
-    subject: assunto,
-    html: mensagem
-  })
+    subject: "Recuperação de senha",
+    html: `<main>  
+            <h2> <b> Olá </b> ${para} o seu pedido de alteração na senha foi bem sucedido! </h2> 
+            <h1> Segue o código para podermos confirmar a alteração: </>
+            ${cod} 
+           
+        </main>` 
+    
+    
+  }) 
   return response;
 }
+
 
 
 

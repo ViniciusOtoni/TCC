@@ -23,8 +23,6 @@ import Popup from './components/popup';
 import Login from './pages/login';
 import RecuperarSenha from './pages/recuperarSenha';
 import RedefinirSenha from './pages/redefinirSenha';
-import RecuperarEmail from './pages/recuperarEmail';
-import RedefinirEmail from './pages/redefinirEmail';
 import LoginGerente from './pages/loginGerente';
 import CriarConta from './pages/criarConta';
 import CadastrarEmpresa from './pages/cadastrarEmpresa';
@@ -57,8 +55,7 @@ export default function Rotes() {
                 <Route  path="/login" component={Login} />
                 <Route  path="/recuperarSenha" component={RecuperarSenha} />
                 <Route  path="/redefinirSenha" component={RedefinirSenha} />
-                <Route  path="/recuperarEmail" component={RecuperarEmail} />
-                <Route  path="/redefinirEmail" component={RedefinirEmail} />
+        
                 <Route  path="/loginGerente" component={LoginGerente} />
                 <Route  path="/criarConta" component={CriarConta} />
                 <Route  path="/cadastrarEmpresa" component={CadastrarEmpresa} />

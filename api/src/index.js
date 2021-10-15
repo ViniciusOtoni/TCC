@@ -193,35 +193,6 @@ app.post('/cadastrar/gerente', async (req, resp) => {
     }
 })
 
-//Cadastrar Empresa
-app.post('/cadastrar/empresa', async (req, resp) => {
-    try {
-
-        let r = req.body;
-
-        let u1 = await db.infoa_gab_empresa.findOne( { where: { ds_cnpj: r.ds_cnpj } } )
-            
-            if(u1 != null)
-            resp.send( { error: 'CNPJ já foi cadastrado!' } )
-            
-        let u2 = await db.infoa_gab_empresa.findOne( { where: { ds_email: r.ds_email } })
-            
-            if(u2 != null)
-            resp.send( { error: 'Email já foi cadastrado!' })
-
-        let l = await db.infoa_gab_empresa.create({
-            nm_empresa: r.nm_empresa,
-            ds_cnpj: r.ds_cnpj,
-            ds_email: r.ds_email,
-            ds_senha: r.ds_senha,
-            img_empresa: r.img_empresa
-            // ds_codigo: '',
-        })
-        resp.send(l) } catch(e) {
-            resp.send( e.toString() )
-        }
-})
-
 //Verificar Se o Usuario Existe
 app.post('/login', async (req, resp) => {
   
@@ -236,13 +207,7 @@ app.post('/login', async (req, resp) => {
         raw: true
     }) 
 
-    let r1 = await db.infoa_gab_empresa.findOne({
-        where: {
-            ds_email: login.ds_email,
-            ds_senha: login.ds_senha
-        },
-        raw: true
-    })
+    
     
     if(r == null && r1 == null ) 
     return resp.send( { error: 'Credenciais Inválidas'})
@@ -252,6 +217,8 @@ app.post('/login', async (req, resp) => {
 
 
 })
+
+
 
 app.post('/login/gerente', async (req, resp) => {
     let login = req.body;
@@ -285,6 +252,9 @@ app.get('/empresa', async (req, resp) => {
 })
 
 
+
+
+
 //recuperarSenha
 app.post('/login/senha', async (req, resp) => {
 
@@ -298,37 +268,40 @@ try {
         }
     })
 
+   
+
     
-    if(q == null)
+    if(q == null )
     return resp.send({ error : 'Credenciais Inválidas' })
     
+
+    let rCod =  Math.floor(Math.random() * (9999 - 1) + 9999) 
+
     let cod = await db.infoa_gab_usuario.update({
-        ds_codigo: Math.floor(Math.random() * (9999 - 1) + 9999) 
+        ds_codigo: rCod
     }, { where: { id_usuario: q.id_usuario } })
 
-    const response = await 
-    enviarEmail(login.ds_email, login.assunto, login.cod);
+   
+   
+
+
+  
+    const response = await enviarEmail(login.ds_email, rCod);
   
     resp.send(response);
     
     
-    resp.send(cod) 
 
+    
     
     
     } catch( error ) {
         resp.send({ error: " Xish "})
     }
+
+    
 })
 
-app.post('/enviar', async (req, resp) => {
-    try {
-       
-    } catch(e) {
-      resp.send(e)
-    }
-  
-  })
 
 
 

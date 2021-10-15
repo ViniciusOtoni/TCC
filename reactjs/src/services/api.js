@@ -75,6 +75,17 @@ export default class Api {
         return r.data;
     }
 
+    async loginEmpresa(ds_email, ds_senha) {
+
+        let jsonLogin = {
+            ds_email,
+            ds_senha
+        }
+
+        let r = await api.post('/login/empresa', jsonLogin )
+        return r.data;
+    }
+
     async loginGerente(ds_email, ds_senha) {
         let jsonLogin = {
             ds_email,
