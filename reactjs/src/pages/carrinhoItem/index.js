@@ -86,6 +86,7 @@ export default function CarrinhoItem() {
                 
                 {produto.map(x => 
                 <BoxItemCarrinho key={x.id_produto} info={x} onRemove={removerProduto} respostaFilho={respFilho}/> 
+                   
                 )}
                 
                 

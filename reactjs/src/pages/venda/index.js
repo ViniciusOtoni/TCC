@@ -13,14 +13,12 @@ export default function Venda() {
     const [produto, setProduto] = useState([]);
     const [order, setOrder] = useState('');
 
+    console.log(order)
+   
     const listar = async () => {
         const e = await api.listarProdutos(order)
         setProduto(e);
     }
-
-    // var select = document.getElementById('order');
-	// var value = select.options[select.selectedIndex].value;
-	// console.log(value);
 
     useEffect(() => {
         listar()
@@ -35,7 +33,7 @@ export default function Venda() {
                     <div className="row-button"> 
                         <div className="ordem"> Ordenar: </div>
                         <div className="select-ordem"> 
-                            <select id="order"> 
+                            <select id="order" onChange={e => setOrder(e.target.value)}> 
                                 <option value="avaliacao" selected> Avaliação </option> 
                                 <option value="lancamento"> Lançamento </option>
                                 <option value="menor-maior"> Melhor Preço </option>
