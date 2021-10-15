@@ -1,34 +1,34 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_enl_chat extends Model {
+export default class infoc_tdv_pedido extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_chat: {
+    id_pedido: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_usuario: {
+    id_cliente: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
-    id_chat_usuario: {
+    id_cupom: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
-    ds_mensagem: {
-      type: DataTypes.STRING(100),
-      allowNull: false
+    nr_pedido: {
+      type: DataTypes.INTEGER,
+      allowNull: true
     },
-    dt_mensagem: {
+    dt_pedido: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoa_enl_chat',
+    tableName: 'infoc_tdv_pedido',
     timestamps: false,
     indexes: [
       {
@@ -36,25 +36,25 @@ export default class infoa_enl_chat extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_chat" },
+          { name: "id_pedido" },
         ]
       },
       {
-        name: "id_usuario",
+        name: "id_cliente",
         using: "BTREE",
         fields: [
-          { name: "id_usuario" },
+          { name: "id_cliente" },
         ]
       },
       {
-        name: "id_chat_usuario",
+        name: "id_cupom",
         using: "BTREE",
         fields: [
-          { name: "id_chat_usuario" },
+          { name: "id_cupom" },
         ]
       },
     ]
   });
-  return infoa_enl_chat;
+  return infoc_tdv_pedido;
   }
 }

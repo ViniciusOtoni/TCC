@@ -29,6 +29,10 @@ export default class infoa_gab_empresa extends Model {
     img_empresa: {
       type: DataTypes.STRING(255),
       allowNull: false
+    },
+    ds_codigo: {
+      type: DataTypes.STRING(255),
+      allowNull: true
     }
   }, {
     sequelize,

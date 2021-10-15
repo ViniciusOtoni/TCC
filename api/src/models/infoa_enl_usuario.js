@@ -18,6 +18,10 @@ export default class infoa_enl_usuario extends Model {
       type: DataTypes.STRING(100),
       allowNull: false
     },
+    ds_email: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
     ds_cpf: {
       type: DataTypes.STRING(11),
       allowNull: false
