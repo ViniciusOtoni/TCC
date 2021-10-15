@@ -11,8 +11,8 @@ export default class Api {
       return r.data;
     }
 
-    async listarProdutos() {
-        let r = await api.get(`/produto`)
+    async listarProdutos(order) {
+        let r = await api.get('/produto', order)
         return r.data
     }
 

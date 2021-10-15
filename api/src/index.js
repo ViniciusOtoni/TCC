@@ -40,10 +40,9 @@ function ordenacao(criterio){
 
 app.get('/produto', async (req,resp) => {
     try{
-        // ord = ordenacao(req.query.ordenacao);
-        
-        let r = await db.infoa_gab_produto.findAll({
-            // order: [[ord]]
+            // ord = ordenacao(req.query.ordernacao);
+            let r = await db.infoa_gab_produto.findAll({
+            // order: [ord]
         })
 
         resp.send(r);
