@@ -1,11 +1,17 @@
 import db from "./db.js";
 import express from "express";
 import cors from "cors";
-
+import enviarEmail from "./email.js";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+
+
+  
+
+
 
 
 app.get('/produto/populares', async (req,resp) => {
@@ -299,37 +305,32 @@ try {
     let cod = await db.infoa_gab_usuario.update({
         ds_codigo: Math.floor(Math.random() * (9999 - 1) + 9999) 
     }, { where: { id_usuario: q.id_usuario } })
+
+    const response = await 
+    enviarEmail(login.ds_email, login.assunto, login.cod);
+  
+    resp.send(response);
     
     
     resp.send(cod) 
 
+    
     
     } catch( error ) {
         resp.send({ error: " Xish "})
     }
 })
 
-
-//recuperarEmail
-//  app.post('/login/email', async (req, resp) => {
-   
-
-//        let l = req.body
-
-//        let r = await db.infoa_gab_usuario.findOne({ where: {
-            
-//             ds_cpf: l.ds_cpf,
-//           ds_senha: l.ds_senha
-//        }}    
-        
-//         )
+app.post('/enviar', async (req, resp) => {
+    try {
+       
+    } catch(e) {
+      resp.send(e)
+    }
+  
+  })
 
 
-//             if(r == null)
-//             return resp.send({ error: 'Credenciais Inválidas' })
-
-//             resp.send(r)  
-// }) 
 
 
 
@@ -352,21 +353,15 @@ app.put('/login/senha/:codigo', async (req, resp) => {
 })
 
 
-
- //Redefinir Email
-// app.put('/login/email/:cpf', async (req, resp) => {
-//     try {
-//         let l = req.body
-
-    
-
-//         let r = await db.infoa_gab_usuario.update({ ds_email: l.ds_email }, { where: { ds_cpf: req.params.cpf } })
-//         resp.sendStatus(200)
-
-//     } catch (e) {
-//         resp.send( { error : "O email Não está correto " } )
-//     }
-// })
+//Mandar Email
+app.post('/enviar', async (req, resp) => {
+    try {
+        
+    } catch(e) {
+      resp.send(e)
+    }
+  
+  })
 
 
 

@@ -92,21 +92,13 @@ export default class Api {
         return r.data;
     }
 
+  
+
     async redefinirSenha(codigo, ds_senha) {
         let r = await api.put(`/login/senha/${codigo}`, { ds_senha })
         return r.data;
     }
 
-    // async recuperarEmail(ds_cpf, ds_senha) {
-    //     let r = await api.post(`/login/email`, { ds_cpf, ds_senha})
-    //     return r.data;
-    // }
-
-
-    // async redefinirEmail(ds_email, ds_cpf) {
-    //     let r = await api.put(`/login/email/${ds_cpf}`, { ds_email })
-    //     return r.data;
-    // }
 
 
     async listarProdutosId(id) {

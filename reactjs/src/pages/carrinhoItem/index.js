@@ -59,7 +59,7 @@ export default function CarrinhoItem() {
 
 
    function respFilho(vlPreco) {
-        setVlFinal (Number(vlPreco) + Number(vlFinal))  
+        setVlFinal (Number(vlPreco)  + Number(vlFinal))  
    }
 
  

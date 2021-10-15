@@ -28,9 +28,7 @@ export default function BoxItemCarrinho(props) {
        return  props.respostaFilho(produto.vl_preco)
     }
 
-    useEffect( () => {
-        enviarResp()
-       }, [])
+  
 
    
     return (
@@ -42,6 +40,7 @@ export default function BoxItemCarrinho(props) {
             <div className="row-vendido"> 
                 <div className="dono"> Vendido Por: </div>
                 <div className="nome-dono"> GameBud </div>
+                <button onClick={enviarResp}> TESTE </button>
             </div>
            
             <div className="row-vendido"> 
