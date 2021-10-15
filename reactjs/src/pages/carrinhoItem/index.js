@@ -14,6 +14,7 @@ import BoxItemCarrinho from './comps/boxItem'
 export default function CarrinhoItem() {
 
     const [ produto, setProduto ] = useState([])
+    const [ vlFinal, setVlFinal ] = useState(0)
     
 
     const navegation = useHistory()
@@ -56,15 +57,14 @@ export default function CarrinhoItem() {
     }
 
 
-   function calcVl() {
-       produto.forEach(x => {
-           let r = x.vl_preco
-           let acount = r + r;
-           return acount;
-       });
+
+   function respFilho(vlPreco) {
+        setVlFinal (Number(vlPreco) + Number(vlFinal))  
    }
 
-   console.log(calcVl)
+ 
+
+   
 
     return (
         <div style={{backgroundColor:"#333333"}}>
@@ -85,7 +85,7 @@ export default function CarrinhoItem() {
                
                 
                 {produto.map(x => 
-                <BoxItemCarrinho key={x.id_produto} info={x} onRemove={removerProduto} /> 
+                <BoxItemCarrinho key={x.id_produto} info={x} onRemove={removerProduto} respostaFilho={respFilho}/> 
                 )}
                 
                 
@@ -93,7 +93,7 @@ export default function CarrinhoItem() {
                 <div className="agp-realizar">
                     <div className="row-preco"> 
                         <div className="sub-total-baixo"> Sub-Total: </div>
-                        <div className="sub-valor-final"> {calcVl} </div>
+                        <div className="sub-valor-final"> {` R$: ${Math.round(vlFinal)}`} </div>
                     </div>
                     <div className="row-preco"> 
                         <div className="total-valor-baixo"> Total: </div>

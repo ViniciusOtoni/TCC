@@ -4,6 +4,7 @@ import { SelectInput } from "../../../../components/select/styled"
 import { StyledButtonVerde } from "../../../../components/botaoVerde/styled"
 import { useState } from "react"
 import { StyledButtonAdm } from "../../../../components/botaoAdm/styled"
+import { useEffect } from "react"
 
 
 
@@ -13,17 +14,25 @@ export default function BoxItemCarrinho(props) {
 
     
     const [ produto, setProduto ]  = useState(props.info)
-
-    
-
     const [ qtd, setQtd ] = useState(1)
-    
-    console.log(qtd)
+   
+
 
     function remover () {
         props.onRemove(produto.id_produto)
     }
 
+
+
+    function enviarResp () {
+       return  props.respostaFilho(produto.vl_preco)
+    }
+
+    useEffect( () => {
+        enviarResp()
+       }, [])
+
+   
     return (
         <StyledBoxItemCarrinho> 
         <main className="pc">
@@ -34,9 +43,11 @@ export default function BoxItemCarrinho(props) {
                 <div className="dono"> Vendido Por: </div>
                 <div className="nome-dono"> GameBud </div>
             </div>
+           
             <div className="row-vendido"> 
                 <div className="dono"> Entregue Por: </div>
                 <div className="nome-dono"> GameBudSedex </div>
+               
             </div>
             
         </div>
