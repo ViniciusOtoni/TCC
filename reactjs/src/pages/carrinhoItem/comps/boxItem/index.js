@@ -18,9 +18,14 @@ export default function BoxItemCarrinho(props) {
     const [ produto, setProduto ]  = useState(props.info)
     const [ qtd, setQtd ] = useState(1)
     const [ total, setTotal ] = useState(produto.vl_preco)
+    const [ cep, setCep ] = useState(false);
     const nave = useHistory()
-   
 
+    
+
+    function visible(){
+        setCep(true)
+    }
 
     function remover () {
         props.onRemove(produto.id_produto)
@@ -29,13 +34,9 @@ export default function BoxItemCarrinho(props) {
 
 
 
-    function enviarResp () {
-       return  props.respostaFilho(produto.vl_preco)
-    }
+   
 
-    function  alterarQuantidadeProduto() {
-      
-    }
+  
 
     useEffect( () => {
         produto.total = produto.vl_preco * qtd;
@@ -47,6 +48,7 @@ export default function BoxItemCarrinho(props) {
  
 
    
+  
     return (
         <StyledBoxItemCarrinho> 
         <main className="pc">
@@ -89,24 +91,25 @@ export default function BoxItemCarrinho(props) {
             <div className="row-input"> 
                 <div className="frete"> Frete: </div>
                 <div className="input-frete">  <StyledInput placeholder="Cep" style={{width:"8em"}}/> </div>
-                <div className="botao-frete"> <StyledButtonVerde style={{width: "7em", height:"1.8em", marginLeft:"2em"}}> Calcular </StyledButtonVerde> </div>
+                <div className="botao-frete"> <StyledButtonVerde onClick={visible} style={{width: "7em", height:"1.8em", marginLeft:"2em"}}> Calcular </StyledButtonVerde> </div>
             </div>
-        
-        
-            <div className="rua"> Nome da Rua Bonito  </div>
-            <div className="bairro"> Bairro com Nome Bonito  </div>
-            <div className="estado">  Cidade com Nome Bonita </div>
-        
-        <div className="row-val"> 
-            <div className="titulo-val"> Preço: </div>
-            <div className="valor-val"> R$10,99 </div>
+            {cep && <div> 
+                        <div className="rua"> Nome da Rua Bonito  </div>
+                        <div className="bairro"> Bairro com Nome Bonito  </div>
+                        <div className="estado">  Cidade com Nome Bonita </div>
+                
+                        <div className="row-val"> 
+                            <div className="titulo-val"> Preço: </div>
+                            <div className="valor-val"> R$10,99 </div>
+                        </div>
+                        <div className="row-val"> 
+                            <div className="titulo-val"> Previsão: </div>
+                            <div className="valor-val1"> 4 dias </div>
+                        </div>
+                    </div> 
+            }
+                    
         </div>
-        <div className="row-val"> 
-            <div className="titulo-val"> Previsão: </div>
-            <div className="valor-val1"> 4 dias </div>
-        </div>
-        
-    </div>
    
                 </main>
                 <main className="cell">
