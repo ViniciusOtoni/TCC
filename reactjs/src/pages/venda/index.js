@@ -11,7 +11,7 @@ const api = new Api();
 export default function Venda() {
 
     const [produto, setProduto] = useState([]);
-    const [order, setOrder] = useState('');
+    const [order, setOrder] = useState('lancamento');
 
     console.log(order)
    

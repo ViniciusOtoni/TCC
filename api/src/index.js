@@ -26,18 +26,17 @@ app.get('/produto/populares', async (req,resp) => {
 
 
 function ordenacao(criterio){
-    let ordenacao = criterio;
     let ord;
 
-    if(ordernacao === 'menor-maior'){
+    if(criterio === 'menor-maior'){
         ord = ['vl_preco', 'desc']
     }
 
-    if(ordenacao === 'lancamento'){
+    if(criterio === 'lancamento'){
         ord = ['dt_cadastro', 'desc']
     }
 
-    if(ordenacao === 'avaliacao'){
+    if(criterio === 'avaliacao'){
         ord = ['vl_avaliacao', 'desc']
     }
 
@@ -46,8 +45,8 @@ function ordenacao(criterio){
 
 app.get('/produto', async (req,resp) => {
     try{
-            // ord = ordenacao(req.query.ordernacao);
-            let r = await db.infoa_gab_produto.findAll({
+        // ord = ordenacao(req.query.criterio);
+        let r = await db.infoa_gab_produto.findAll({ 
             // order: [ord]
         })
 
@@ -966,5 +965,6 @@ app.post('/enviar', async (req, resp) => {
 
 
 
-app.listen( process.env.PORT, (x) => console.log(`Servidor Subiu na Porta ${process.env.PORT} Parabéns ai (: `));
+app.listen( process.env.PORT, (x) => 
+            console.log(`Servidor na Porta ${process.env.PORT}`));
 
