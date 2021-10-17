@@ -129,10 +129,9 @@ const StyledCabecalho = styled.div `
     }
 
     .user-image img {
-        border-radius: 50%;
+        border-radius: 2em;
         width: 3em;
-        height: 2.4em;
-        
+        height: 3em;     
     }
 
     .user-image {

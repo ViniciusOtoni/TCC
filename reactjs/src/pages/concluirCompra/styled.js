@@ -59,7 +59,7 @@ const Container = styled.div`
     .credit-card {
         display: flex;
         flex-direction: column;
-       
+        margin-bottom: .5em;
     }
 
     .credit-card button {
