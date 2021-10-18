@@ -12,8 +12,6 @@ export default function Venda() {
 
     const [produto, setProduto] = useState([]);
     const [order, setOrder] = useState('lancamento');
-
-    console.log(order)
    
     const listar = async () => {
         const e = await api.listarProdutos(order)
@@ -22,7 +20,7 @@ export default function Venda() {
 
     useEffect(() => {
         listar()
-    }, [])
+    }, [order])
 
     return (
         <div style={{backgroundColor:"#333333"}}> 

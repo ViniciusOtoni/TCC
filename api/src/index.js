@@ -37,7 +37,7 @@ function ordenacao(criterio){
     }
 
     if(criterio === 'avaliacao'){
-        ord = ['vl_avaliacao', 'desc']
+        ord = ['vl_avaliacao', 'asc']
     }
 
     return ord;
@@ -45,9 +45,11 @@ function ordenacao(criterio){
 
 app.get('/produto', async (req,resp) => {
     try{
-        // ord = ordenacao(req.query.criterio);
+        let ord = ordenacao(req.query.criterio);
+        console.log(ord);
+        console.log(req.query.criterio);
         let r = await db.infoa_gab_produto.findAll({ 
-            // order: [ord]
+            order: [ord]
         })
 
         resp.send(r);
