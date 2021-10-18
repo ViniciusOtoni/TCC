@@ -6,12 +6,13 @@ import { Conteudo } from './styled'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router'
-import Cookie, { set } from 'js-cookie'
+import Cookie from 'js-cookie'
 
 export default function VendaUnica(props){
 
     const [ produto, setProduto ] = useState(props.location.state)
-    
+    const [ img, setImg ] = useState(1)
+
 
 
     const navegation = useHistory()
@@ -34,11 +35,13 @@ export default function VendaUnica(props){
 
     }
 
+ 
+
     return (
         <div style={{backgroundColor:"#333333"}}>
         <Cabecalho />
         <Conteudo> 
-          
+            
             <main className="pc"> 
                 <div className="title"> {produto.nm_produto} </div>
                 <Content>

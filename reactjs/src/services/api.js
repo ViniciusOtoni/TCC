@@ -11,8 +11,8 @@ export default class Api {
       return r.data;
     }
 
-    async listarProdutos() {
-        let r = await api.get(`/produto`)
+    async listarProdutos(order) {
+        let r = await api.get('/produto', order)
         return r.data
     }
 
@@ -75,6 +75,17 @@ export default class Api {
         return r.data;
     }
 
+    async loginEmpresa(ds_email, ds_senha) {
+
+        let jsonLogin = {
+            ds_email,
+            ds_senha
+        }
+
+        let r = await api.post('/login/empresa', jsonLogin )
+        return r.data;
+    }
+
     async loginGerente(ds_email, ds_senha) {
         let jsonLogin = {
             ds_email,
@@ -92,21 +103,13 @@ export default class Api {
         return r.data;
     }
 
+  
+
     async redefinirSenha(codigo, ds_senha) {
         let r = await api.put(`/login/senha/${codigo}`, { ds_senha })
         return r.data;
     }
 
-    // async recuperarEmail(ds_cpf, ds_senha) {
-    //     let r = await api.post(`/login/email`, { ds_cpf, ds_senha})
-    //     return r.data;
-    // }
-
-
-    // async redefinirEmail(ds_email, ds_cpf) {
-    //     let r = await api.put(`/login/email/${ds_cpf}`, { ds_email })
-    //     return r.data;
-    // }
 
 
     async listarProdutosId(id) {

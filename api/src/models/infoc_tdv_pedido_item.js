@@ -1,34 +1,30 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_enl_chat extends Model {
+export default class infoc_tdv_pedido_item extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_chat: {
+    id_pedido_item: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_usuario: {
+    id_pedido: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
-    id_chat_usuario: {
+    qtd_itens: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
-    ds_mensagem: {
-      type: DataTypes.STRING(100),
-      allowNull: false
-    },
-    dt_mensagem: {
-      type: DataTypes.DATE,
-      allowNull: false
+    id_livro: {
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoa_enl_chat',
+    tableName: 'infoc_tdv_pedido_item',
     timestamps: false,
     indexes: [
       {
@@ -36,25 +32,25 @@ export default class infoa_enl_chat extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_chat" },
+          { name: "id_pedido_item" },
         ]
       },
       {
-        name: "id_usuario",
+        name: "id_pedido",
         using: "BTREE",
         fields: [
-          { name: "id_usuario" },
+          { name: "id_pedido" },
         ]
       },
       {
-        name: "id_chat_usuario",
+        name: "id_livro",
         using: "BTREE",
         fields: [
-          { name: "id_chat_usuario" },
+          { name: "id_livro" },
         ]
       },
     ]
   });
-  return infoa_enl_chat;
+  return infoc_tdv_pedido_item;
   }
 }

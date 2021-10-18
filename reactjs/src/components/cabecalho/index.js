@@ -3,7 +3,7 @@ import { StyledCabecalho } from "./styled"
 import { Link } from "react-router-dom"
 import Cookies from "js-cookie"
 import { useState } from "react"
-import { useHistory }  from 'react-router-dom'
+
 
 
 function lerUsuarioQuelogou() {
@@ -29,7 +29,6 @@ export default function Cabecalho(props) {
 
     const logof = () =>  {
         Cookies.remove('usuario-logado')
-
     }
 
 

@@ -1,38 +1,34 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infob_amz_tbusuario extends Model {
+export default class infoc_tdv_endereco extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_usuario: {
+    id_endereco: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    nm_usuario: {
+    id_cliente: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    nm_rua: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_email: {
-      type: DataTypes.STRING(255),
+    ds_cep: {
+      type: DataTypes.STRING(16),
       allowNull: true
     },
-    nr_telefone: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    ds_senha: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    bt_ativo: {
-      type: DataTypes.BOOLEAN,
+    ds_numero: {
+      type: DataTypes.INTEGER,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infob_amz_tbusuario',
+    tableName: 'infoc_tdv_endereco',
     timestamps: false,
     indexes: [
       {
@@ -40,11 +36,18 @@ export default class infob_amz_tbusuario extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_usuario" },
+          { name: "id_endereco" },
+        ]
+      },
+      {
+        name: "id_cliente",
+        using: "BTREE",
+        fields: [
+          { name: "id_cliente" },
         ]
       },
     ]
   });
-  return infob_amz_tbusuario;
+  return infoc_tdv_endereco;
   }
 }

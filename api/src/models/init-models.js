@@ -21,6 +21,7 @@ import _infoa_enl_usuario from  "./infoa_enl_usuario.js";
 import _infoa_gab_cartao from  "./infoa_gab_cartao.js";
 import _infoa_gab_empresa from  "./infoa_gab_empresa.js";
 import _infoa_gab_endereco from  "./infoa_gab_endereco.js";
+import _infoa_gab_entrega from  "./infoa_gab_entrega.js";
 import _infoa_gab_produto from  "./infoa_gab_produto.js";
 import _infoa_gab_usuario from  "./infoa_gab_usuario.js";
 import _infoa_gab_venda from  "./infoa_gab_venda.js";
@@ -34,6 +35,10 @@ import _infoa_sti_vendas from  "./infoa_sti_vendas.js";
 import _infob_amz_tbdenuncia from  "./infob_amz_tbdenuncia.js";
 import _infob_amz_tbreporte_denuncia from  "./infob_amz_tbreporte_denuncia.js";
 import _infob_amz_tbusuario from  "./infob_amz_tbusuario.js";
+import _infob_apn_tb_adm from  "./infob_apn_tb_adm.js";
+import _infob_apn_tb_adocao from  "./infob_apn_tb_adocao.js";
+import _infob_apn_tb_pet from  "./infob_apn_tb_pet.js";
+import _infob_apn_tb_user from  "./infob_apn_tb_user.js";
 import _infob_mw_ator from  "./infob_mw_ator.js";
 import _infob_mw_comentario from  "./infob_mw_comentario.js";
 import _infob_mw_filme from  "./infob_mw_filme.js";
@@ -48,6 +53,16 @@ import _infoc_ntc_denuncia from  "./infoc_ntc_denuncia.js";
 import _infoc_ntc_local from  "./infoc_ntc_local.js";
 import _infoc_ntc_usuario from  "./infoc_ntc_usuario.js";
 import _infoc_ntc_vestimento from  "./infoc_ntc_vestimento.js";
+import _infoc_tdv_adm from  "./infoc_tdv_adm.js";
+import _infoc_tdv_cliente from  "./infoc_tdv_cliente.js";
+import _infoc_tdv_cupom from  "./infoc_tdv_cupom.js";
+import _infoc_tdv_endereco from  "./infoc_tdv_endereco.js";
+import _infoc_tdv_favorito from  "./infoc_tdv_favorito.js";
+import _infoc_tdv_forma_pagamento from  "./infoc_tdv_forma_pagamento.js";
+import _infoc_tdv_genero from  "./infoc_tdv_genero.js";
+import _infoc_tdv_livro from  "./infoc_tdv_livro.js";
+import _infoc_tdv_pedido from  "./infoc_tdv_pedido.js";
+import _infoc_tdv_pedido_item from  "./infoc_tdv_pedido_item.js";
 import _infoc_tht_cartao from  "./infoc_tht_cartao.js";
 import _infoc_tht_chat from  "./infoc_tht_chat.js";
 import _infoc_tht_compra from  "./infoc_tht_compra.js";
@@ -101,6 +116,7 @@ export default function initModels(sequelize) {
   var infoa_gab_cartao = _infoa_gab_cartao.init(sequelize, DataTypes);
   var infoa_gab_empresa = _infoa_gab_empresa.init(sequelize, DataTypes);
   var infoa_gab_endereco = _infoa_gab_endereco.init(sequelize, DataTypes);
+  var infoa_gab_entrega = _infoa_gab_entrega.init(sequelize, DataTypes);
   var infoa_gab_produto = _infoa_gab_produto.init(sequelize, DataTypes);
   var infoa_gab_usuario = _infoa_gab_usuario.init(sequelize, DataTypes);
   var infoa_gab_venda = _infoa_gab_venda.init(sequelize, DataTypes);
@@ -114,6 +130,10 @@ export default function initModels(sequelize) {
   var infob_amz_tbdenuncia = _infob_amz_tbdenuncia.init(sequelize, DataTypes);
   var infob_amz_tbreporte_denuncia = _infob_amz_tbreporte_denuncia.init(sequelize, DataTypes);
   var infob_amz_tbusuario = _infob_amz_tbusuario.init(sequelize, DataTypes);
+  var infob_apn_tb_adm = _infob_apn_tb_adm.init(sequelize, DataTypes);
+  var infob_apn_tb_adocao = _infob_apn_tb_adocao.init(sequelize, DataTypes);
+  var infob_apn_tb_pet = _infob_apn_tb_pet.init(sequelize, DataTypes);
+  var infob_apn_tb_user = _infob_apn_tb_user.init(sequelize, DataTypes);
   var infob_mw_ator = _infob_mw_ator.init(sequelize, DataTypes);
   var infob_mw_comentario = _infob_mw_comentario.init(sequelize, DataTypes);
   var infob_mw_filme = _infob_mw_filme.init(sequelize, DataTypes);
@@ -128,6 +148,16 @@ export default function initModels(sequelize) {
   var infoc_ntc_local = _infoc_ntc_local.init(sequelize, DataTypes);
   var infoc_ntc_usuario = _infoc_ntc_usuario.init(sequelize, DataTypes);
   var infoc_ntc_vestimento = _infoc_ntc_vestimento.init(sequelize, DataTypes);
+  var infoc_tdv_adm = _infoc_tdv_adm.init(sequelize, DataTypes);
+  var infoc_tdv_cliente = _infoc_tdv_cliente.init(sequelize, DataTypes);
+  var infoc_tdv_cupom = _infoc_tdv_cupom.init(sequelize, DataTypes);
+  var infoc_tdv_endereco = _infoc_tdv_endereco.init(sequelize, DataTypes);
+  var infoc_tdv_favorito = _infoc_tdv_favorito.init(sequelize, DataTypes);
+  var infoc_tdv_forma_pagamento = _infoc_tdv_forma_pagamento.init(sequelize, DataTypes);
+  var infoc_tdv_genero = _infoc_tdv_genero.init(sequelize, DataTypes);
+  var infoc_tdv_livro = _infoc_tdv_livro.init(sequelize, DataTypes);
+  var infoc_tdv_pedido = _infoc_tdv_pedido.init(sequelize, DataTypes);
+  var infoc_tdv_pedido_item = _infoc_tdv_pedido_item.init(sequelize, DataTypes);
   var infoc_tht_cartao = _infoc_tht_cartao.init(sequelize, DataTypes);
   var infoc_tht_chat = _infoc_tht_chat.init(sequelize, DataTypes);
   var infoc_tht_compra = _infoc_tht_compra.init(sequelize, DataTypes);
@@ -182,6 +212,7 @@ export default function initModels(sequelize) {
     infoa_gab_cartao,
     infoa_gab_empresa,
     infoa_gab_endereco,
+    infoa_gab_entrega,
     infoa_gab_produto,
     infoa_gab_usuario,
     infoa_gab_venda,
@@ -195,6 +226,10 @@ export default function initModels(sequelize) {
     infob_amz_tbdenuncia,
     infob_amz_tbreporte_denuncia,
     infob_amz_tbusuario,
+    infob_apn_tb_adm,
+    infob_apn_tb_adocao,
+    infob_apn_tb_pet,
+    infob_apn_tb_user,
     infob_mw_ator,
     infob_mw_comentario,
     infob_mw_filme,
@@ -209,6 +244,16 @@ export default function initModels(sequelize) {
     infoc_ntc_local,
     infoc_ntc_usuario,
     infoc_ntc_vestimento,
+    infoc_tdv_adm,
+    infoc_tdv_cliente,
+    infoc_tdv_cupom,
+    infoc_tdv_endereco,
+    infoc_tdv_favorito,
+    infoc_tdv_forma_pagamento,
+    infoc_tdv_genero,
+    infoc_tdv_livro,
+    infoc_tdv_pedido,
+    infoc_tdv_pedido_item,
     infoc_tht_cartao,
     infoc_tht_chat,
     infoc_tht_compra,

@@ -5,7 +5,7 @@ import { StyledButtonVerde } from "../../components/botaoVerde/styled"
 import { Link } from "react-router-dom"
 import Cookies from "js-cookie"
 import { useHistory } from 'react-router-dom'
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 
 
@@ -13,7 +13,18 @@ import { useEffect } from "react"
 
 export default function ConcluirCompra() {
 
+    const [ hidden, setHidden ] = useState(false)
+
     const nave = useHistory()
+
+
+    function Visible(){
+        setHidden(true);
+    }
+
+    function Hidden(){
+        setHidden(false);
+    }
 
     function lerUsuarioQuelogou() {
         let logado = Cookies.get('usuario-logado');
@@ -56,37 +67,37 @@ export default function ConcluirCompra() {
                     <hr />
                     <div className="direita-grupo-input">
                         <div className="credit-card">
-                            <button style={{marginBottom: ".3em"}}>Cartão de Crédito <img  className="img-button" src="/assets/images/cartao.svg" alt=""/></button>
-                            <button>Cartão de Débito <img className="img-button2" src="/assets/images/cartao.svg" alt=""/></button>
+                            <button onClick={ Visible } style={{marginBottom: ".3em"}}>Cartão de Crédito <img  className="img-button" src="/assets/images/cartao.svg" alt=""/></button>
+                            <button onClick={ Visible }>Cartão de Débito <img className="img-button2" src="/assets/images/cartao.svg" alt=""/></button>
                         </div>
+                        { hidden && 
+                            <div className="cartoes">
+                                <div className="cartao">
+                                    <img src="/assets/images/VISA.svg" alt="" />
+                                    <button className="cartao-bolinha"></button>
+                                </div>
 
-                        <div className="cartoes">
-                            <div className="cartao">
-                                <img src="/assets/images/VISA.svg" alt="" />
-                                <button className="cartao-bolinha"></button>
-                            </div>
+                                <div className="cartao">
+                                    <img  className="img-cartao-2" src="/assets/images/MASTERCARD.svg" alt="" />
+                                    <button className="cartao-bolinha2"></button>
+                                </div>
 
-                            <div className="cartao">
-                                <img  className="img-cartao-2" src="/assets/images/MASTERCARD.svg" alt="" />
-                                <button className="cartao-bolinha2"></button>
-                            </div>
+                                <div className="cartao">
+                                    <img className="img-cartao-3" src="/assets/images/DINERS.svg" alt="" />
+                                    <button className="cartao-bolinha2"></button>
+                                </div>
 
-                            <div className="cartao">
-                                <img className="img-cartao-3" src="/assets/images/DINERS.svg" alt="" />
-                                <button className="cartao-bolinha2"></button>
-                            </div>
+                                <div className="cartao">
+                                    <img className="img-cartao-4" src="/assets/images/HIPERCARD.svg" alt="" />
+                                    <button className="cartao-bolinha2"></button>
+                                </div>
 
-                            <div className="cartao">
-                                <img className="img-cartao-4" src="/assets/images/HIPERCARD.svg" alt="" />
-                                <button className="cartao-bolinha2"></button>
+                                <div className="cartao">
+                                    <img className="img-cartao-5" src="/assets/images/ELO.svg" alt="" />
+                                    <button className="cartao-bolinha2"></button>
+                                </div>
                             </div>
-
-                            <div className="cartao">
-                                <img className="img-cartao-5" src="/assets/images/ELO.svg" alt="" />
-                                <button className="cartao-bolinha2"></button>
-                            </div>
-                        </div>
-                    
+                        }
                         <div className="Last-information-inputs">
                             <div className="Last-information-inputs1">
                                 <div className="last-information-text1">CV</div>

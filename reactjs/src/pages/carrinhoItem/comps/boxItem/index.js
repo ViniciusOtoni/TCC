@@ -4,21 +4,51 @@ import { SelectInput } from "../../../../components/select/styled"
 import { StyledButtonVerde } from "../../../../components/botaoVerde/styled"
 import { useState } from "react"
 import { StyledButtonAdm } from "../../../../components/botaoAdm/styled"
+import { useEffect } from "react"
+import Cookies from "js-cookie"
+import { useHistory } from "react-router"
 
 
 
 export default function BoxItemCarrinho(props) {
+
+    
+
     
     const [ produto, setProduto ]  = useState(props.info)
-
     const [ qtd, setQtd ] = useState(1)
+    const [ total, setTotal ] = useState(produto.vl_preco)
+    const [ cep, setCep ] = useState(false);
+    const nave = useHistory()
+
     
-    console.log(qtd)
+
+    function visible(){
+        setCep(true)
+    }
 
     function remover () {
         props.onRemove(produto.id_produto)
+        setQtd(0)
     }
 
+
+
+   
+
+  
+
+    useEffect( () => {
+        produto.total = produto.vl_preco * qtd;
+        setTotal(produto.total)
+        if(props.respostaFilho)
+            props.respostaFilho()
+      
+    }, [qtd])
+ 
+
+   
+  
     return (
         <StyledBoxItemCarrinho> 
         <main className="pc">
@@ -28,10 +58,13 @@ export default function BoxItemCarrinho(props) {
             <div className="row-vendido"> 
                 <div className="dono"> Vendido Por: </div>
                 <div className="nome-dono"> GameBud </div>
+                
             </div>
+           
             <div className="row-vendido"> 
                 <div className="dono"> Entregue Por: </div>
                 <div className="nome-dono"> GameBudSedex </div>
+               
             </div>
             
         </div>
@@ -52,30 +85,31 @@ export default function BoxItemCarrinho(props) {
 
               
                  </SelectInput> </div>
-                <div className="valores-preco"> {`R$: ${Math.round(produto.vl_preco * qtd)} ` } </div>
+                <div className="valores-preco"> {`R$: ${produto.total}` } </div>
             </div>
             <div className="excluir" onClick={remover}> Excluir </div>
             <div className="row-input"> 
                 <div className="frete"> Frete: </div>
                 <div className="input-frete">  <StyledInput placeholder="Cep" style={{width:"8em"}}/> </div>
-                <div className="botao-frete"> <StyledButtonVerde style={{width: "7em", height:"1.8em", marginLeft:"2em"}}> Calcular </StyledButtonVerde> </div>
+                <div className="botao-frete"> <StyledButtonVerde onClick={visible} style={{width: "7em", height:"1.8em", marginLeft:"2em"}}> Calcular </StyledButtonVerde> </div>
             </div>
-        
-        
-            <div className="rua"> Nome da Rua Bonito  </div>
-            <div className="bairro"> Bairro com Nome Bonito  </div>
-            <div className="estado">  Cidade com Nome Bonita </div>
-        
-        <div className="row-val"> 
-            <div className="titulo-val"> Preço: </div>
-            <div className="valor-val"> R$10,99 </div>
+            {cep && <div> 
+                        <div className="rua"> Nome da Rua Bonito  </div>
+                        <div className="bairro"> Bairro com Nome Bonito  </div>
+                        <div className="estado">  Cidade com Nome Bonita </div>
+                
+                        <div className="row-val"> 
+                            <div className="titulo-val"> Preço: </div>
+                            <div className="valor-val"> R$10,99 </div>
+                        </div>
+                        <div className="row-val"> 
+                            <div className="titulo-val"> Previsão: </div>
+                            <div className="valor-val1"> 4 dias </div>
+                        </div>
+                    </div> 
+            }
+                    
         </div>
-        <div className="row-val"> 
-            <div className="titulo-val"> Previsão: </div>
-            <div className="valor-val1"> 4 dias </div>
-        </div>
-        
-    </div>
    
                 </main>
                 <main className="cell">
@@ -84,21 +118,21 @@ export default function BoxItemCarrinho(props) {
                         <div className="foto"> <img src={produto.img_produto} alt="" /> </div>
                         <div className="row-val"> 
                             <div className="titulo-val"> Preço: </div>
-                            <div className="valor-val"> {`R$ ${produto.vl_preco}`} </div>
+                            <div className="valor-val"> {`R$: ${Math.round(produto.vl_preco * qtd)} ` } </div>
                         </div>
                         <div className="row-valores"> 
                                 <div className="quantidade"> Unidades: </div>
-                                <div className="select">  <SelectInput  style={{width:"4em", height:"2em", fontSize:"1em", fontFamily: "MontserratBold"}}>  
-                                    <option value="vl1" >1 </option>
-                                    <option value="vl2"> 2 </option>
-                                    <option value="vl3"> 3 </option>
-                                    <option value="vl4"> 4 </option>
-                                    <option value="vl4"> 5 </option>
-                                    <option value="vl4"> 6 </option>
-                                    <option value="vl4"> 7 </option>
-                                    <option value="vl4"> 8 </option>
-                                    <option value="vl4"> 9 </option>
-                                    <option value="vl4"> 10 </option>
+                                <div className="select">  <SelectInput  onChange={e => setQtd(e.target.value)} style={{width:"4em", height:"2em", fontSize:"1em", fontFamily: "MontserratBold"}}>  
+                                    <option value={1} >1 </option>
+                                    <option value={2}> 2 </option>
+                                    <option value={3}> 3 </option>
+                                    <option value={4}> 4 </option>
+                                    <option value={5}> 5 </option>
+                                    <option value={6}> 6 </option>
+                                    <option value={7}> 7 </option>
+                                    <option value={8}> 8 </option>
+                                    <option value={9}> 9 </option>
+                                    <option value={10}> 10 </option>
                                 </SelectInput> </div>
                                 </div>
                     

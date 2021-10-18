@@ -1,16 +1,17 @@
 import db from "./db.js";
 import express from "express";
 import cors from "cors";
-
-
-
-
-
-
+import enviarEmail from "./email.js";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+
+
+  
+
+
 
 
 app.get('/produto/populares', async (req,resp) => {
@@ -22,10 +23,34 @@ app.get('/produto/populares', async (req,resp) => {
     }    
 })
 
+
+
+function ordenacao(criterio){
+    let ord;
+
+    if(criterio === 'menor-maior'){
+        ord = ['vl_preco', 'desc']
+    }
+
+    if(criterio === 'lancamento'){
+        ord = ['dt_cadastro', 'desc']
+    }
+
+    if(criterio === 'avaliacao'){
+        ord = ['vl_avaliacao', 'desc']
+    }
+
+    return ord;
+}
+
 app.get('/produto', async (req,resp) => {
     try{
-        let r = await db.infoa_gab_produto.findAll()
-        resp.send(r)
+        // ord = ordenacao(req.query.criterio);
+        let r = await db.infoa_gab_produto.findAll({ 
+            // order: [ord]
+        })
+
+        resp.send(r);
     } catch (e) {
         resp.send({ erro: `${e.toString()}` })
     }    
@@ -167,35 +192,6 @@ app.post('/cadastrar/gerente', async (req, resp) => {
     }
 })
 
-//Cadastrar Empresa
-app.post('/cadastrar/empresa', async (req, resp) => {
-    try {
-
-        let r = req.body;
-
-        let u1 = await db.infoa_gab_empresa.findOne( { where: { ds_cnpj: r.ds_cnpj } } )
-            
-            if(u1 != null)
-            resp.send( { error: 'CNPJ já foi cadastrado!' } )
-            
-        let u2 = await db.infoa_gab_empresa.findOne( { where: { ds_email: r.ds_email } })
-            
-            if(u2 != null)
-            resp.send( { error: 'Email já foi cadastrado!' })
-
-        let l = await db.infoa_gab_empresa.create({
-            nm_empresa: r.nm_empresa,
-            ds_cnpj: r.ds_cnpj,
-            ds_email: r.ds_email,
-            ds_senha: r.ds_senha,
-            img_empresa: r.img_empresa
-            // ds_codigo: '',
-        })
-        resp.send(l) } catch(e) {
-            resp.send( e.toString() )
-        }
-})
-
 //Verificar Se o Usuario Existe
 app.post('/login', async (req, resp) => {
   
@@ -210,13 +206,7 @@ app.post('/login', async (req, resp) => {
         raw: true
     }) 
 
-    let r1 = await db.infoa_gab_empresa.findOne({
-        where: {
-            ds_email: login.ds_email,
-            ds_senha: login.ds_senha
-        },
-        raw: true
-    })
+    
     
     if(r == null && r1 == null ) 
     return resp.send( { error: 'Credenciais Inválidas'})
@@ -226,6 +216,8 @@ app.post('/login', async (req, resp) => {
 
 
 })
+
+
 
 app.post('/login/gerente', async (req, resp) => {
     let login = req.body;
@@ -259,6 +251,9 @@ app.get('/empresa', async (req, resp) => {
 })
 
 
+
+
+
 //recuperarSenha
 app.post('/login/senha', async (req, resp) => {
 
@@ -272,48 +267,39 @@ try {
         }
     })
 
+   
+
     
-    if(q == null)
+    if(q == null )
     return resp.send({ error : 'Credenciais Inválidas' })
     
-    let cod = await db.infoa_gab_usuario.update({
-        ds_codigo: Math.floor(Math.random() * (9999 - 1) + 9999) 
-    }, { where: { id_usuario: q.id_usuario } })
-    
-    
-    resp.send(cod) 
 
+    let rCod =  Math.floor(Math.random() * (9999 - 1) + 9999) 
+
+    let cod = await db.infoa_gab_usuario.update({
+        ds_codigo: rCod
+    }, { where: { id_usuario: q.id_usuario } })
+
+   
+   
+
+
+  
+    const response = await enviarEmail(login.ds_email, rCod);
+  
+    resp.send(response);
+    
+    
+
+    
+    
     
     } catch( error ) {
         resp.send({ error: " Xish "})
     }
+
+    
 })
-
-
-
-
-//recuperarEmail
-//  app.post('/login/email', async (req, resp) => {
-   
-
-//        let l = req.body
-
-//        let r = await db.infoa_gab_usuario.findOne({ where: {
-            
-//             ds_cpf: l.ds_cpf,
-//           ds_senha: l.ds_senha
-//        }}    
-        
-//         )
-
-
-//             if(r == null)
-//             return resp.send({ error: 'Credenciais Inválidas' })
-
-//             resp.send(r)  
-// }) 
-
-
 
 
 
@@ -339,23 +325,619 @@ app.put('/login/senha/:codigo', async (req, resp) => {
 })
 
 
-
- //Redefinir Email
-// app.put('/login/email/:cpf', async (req, resp) => {
-//     try {
-//         let l = req.body
-
-    
-
-//         let r = await db.infoa_gab_usuario.update({ ds_email: l.ds_email }, { where: { ds_cpf: req.params.cpf } })
-//         resp.sendStatus(200)
-
-//     } catch (e) {
-//         resp.send( { error : "O email Não está correto " } )
-//     }
-// })
+//Mandar Email
+app.post('/enviar', async (req, resp) => {
+    try {
+        
+    } catch(e) {
+      resp.send(e)
+    }
+  
+  })
 
 
 
 
-app.listen( process.env.PORT, (x) => console.log(`Servidor Subiu na Porta ${process.env.PORT} Parabéns ai (: `));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.listen( process.env.PORT, (x) => 
+            console.log(`Servidor na Porta ${process.env.PORT}`));
+

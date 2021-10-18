@@ -18,6 +18,10 @@ export default class infoa_enl_produto extends Model {
       type: DataTypes.INTEGER,
       allowNull: false
     },
+    ds_imagem: {
+      type: DataTypes.BLOB,
+      allowNull: false
+    },
     nm_produto: {
       type: DataTypes.STRING(100),
       allowNull: false

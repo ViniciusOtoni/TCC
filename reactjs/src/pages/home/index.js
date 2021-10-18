@@ -68,7 +68,7 @@ export default function Home() {
             </div>
             <div className="logo"> <img src="/assets/images/controle.svg" alt="" /> 
             </div>
-        </div> 
+          </div> 
             <section className="faixa2"> 
                 <div className="titulo"> Mais Populares:  </div>
                 <div class="barra"> </div>   
