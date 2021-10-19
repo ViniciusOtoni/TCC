@@ -34,7 +34,11 @@ export default function BoxItemCarrinho(props) {
     function remover () {
         props.onRemove(produto.id)
         setQtd(0)
+
+        
     }
+
+   
 
   
 
@@ -141,7 +145,7 @@ export default function BoxItemCarrinho(props) {
                                 </div>
                     
                         
-                            <div className="excluir"> <StyledButtonAdm cor="vermelho" className="excluirB" onClick={remover}>  Excluir </StyledButtonAdm> </div>
+                            <div className="excluir"> <StyledButtonAdm cor="vermelho" className="excluirB" onClick={ remover}>  Excluir </StyledButtonAdm> </div>
                     </div>
                 </main> 
     </StyledBoxItemCarrinho>

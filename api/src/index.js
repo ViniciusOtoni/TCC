@@ -186,6 +186,11 @@ try {
     if(u2 != null)
     resp.send( { error: 'Email já foi cadastrado!' } );
 
+    let u3 = await db.infoa_gab_usuario.findOne( { where: { nm_usuario: r.nm_usuario } })
+    if(u3 === '' )
+    resp.send({ error: 'Preencha todos os campos '})
+
+    
 
 
     let l = await db.infoa_gab_usuario.create( {
