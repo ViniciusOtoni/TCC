@@ -32,23 +32,7 @@ export default function PopupBig(props) {
 
     const cadastrarUsuario = async () => {
         
-        if(vl1 === '')
-        return alert("O Campo Nome Precisa ser Preenchido!");
-
-        if(vl2 === '')
-        return alert("O Campo Email Precisa ser Preenchido!");
-
-        if(vl3 === '')
-        return alert("O Campo Senha Precisa ser Preenchido!");
-
-        if(vl4 === '')
-        return alert("O Campo Confirmar Senha Precisa ser Preenchido!");
-
-        if(vl5 === '')
-        return alert("O Campo Imagem Precisa ser Preenchido!");
-
-        if(vl6 === '')
-        return alert("O Campo CPF Precisa ser Preenchido!");
+ 
 
         if(vl3.length < 6) {
             return alert('Senha muito fraca!')
@@ -69,40 +53,9 @@ export default function PopupBig(props) {
 
     }
 
-    const cadastrarEmpresa = async () => {
+
        
-         
-        if(vl1 === '')
-        return alert("O Campo Nome Precisa ser Preenchido!");
-
-        if(vl2 === '')
-        return alert("O Campo Email Precisa ser Preenchido!");
-
-        if(vl3 === '')
-        return alert("O Campo Senha Precisa ser Preenchido!");
-
-        if(vl4 === '')
-        return alert("O Campo Confirmar Senha Precisa ser Preenchido!");
-
-        if(vl5 === '')
-        return alert("O Campo Imagem Precisa ser Preenchido!");
-
-        if(vl6 === '')
-        return alert("O Campo CNPJ Precisa ser Preenchido!");
-       
-       
-       
-        let r = await api.cadastrarEmpresa(vl1, vl6, vl2, vl3, vl5)
-        if (!validarResposta(r)) 
-        return
-
-
-        
-        if(vl3 === vl4)  {
-            navegacao.push('/') } else {
-                alert('A senha não bateu!')
-            }
-    }
+    
 
     return (
         <StyledPopupBig empresa={props.empresa}>
@@ -131,7 +84,7 @@ export default function PopupBig(props) {
                 <div className="input"> <StyledInput value={vl5}  onChange={r => setVl5(r.target.value)}/> </div>
 
 
-              <div className="butao">  <StyledButtonPopup onClick={props.titulo5 === 'CPF:' ? cadastrarUsuario : cadastrarEmpresa}> Criar Conta! </StyledButtonPopup>   </div>
+              <div className="butao">  <StyledButtonPopup onClick={cadastrarUsuario}> Criar Conta! </StyledButtonPopup>   </div>
            </div>
 
         </StyledPopupBig> 

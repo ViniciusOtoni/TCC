@@ -43,26 +43,37 @@ const StyledCabecalho = styled.div `
     }
 
     .pesquisa input {
-        border-radius: 5em;
-        width: 100%;
-        height: 3em;
-        text-decoration: none;
-        border: 2px solid #ffffff;
-        background-color: rgba(0,0,0,0);
-        margin-right: 0em;
-        color: #ffffff;
-        background-image: url('/assets/images/lupa.svg');
-        background-repeat: no-repeat;
-        background-position: left;
-        background-position-x: 1em;
-        padding-left: 3.2em;
-        outline: none;
-        position: relative;
-        font-family: MontserratBold; 
-        cursor: pointer;
         display: ${props => props.corLetra === 'nulo'  ? 'none' : 'block' };
-       
+        position: relative;
+
+        font-family: MontserratBold; 
+        color: white;
+        
+        border-radius: 5em;
+      
+        width: 100%;
+        height: 1.5em;
+        
+        text-decoration: none;
+        outline: none;
+        cursor: text;
     }
+
+    .wrapper{
+        background-color: transparent;
+        border: 2px solid #ffffff;
+    }
+
+    .wrapper:hover, .wrapper::selection{
+        box-shadow: unset;
+    }
+
+    .search-icon, .clear-icon > svg{
+        fill: white;
+        width: auto;
+        height: 1.7em;
+    }
+
 
     .input::placeholder {
         color: white;
@@ -129,10 +140,9 @@ const StyledCabecalho = styled.div `
     }
 
     .user-image img {
-        border-radius: 50%;
+        border-radius: 2em;
         width: 3em;
-        height: 2.4em;
-        
+        height: 3em;     
     }
 
     .user-image {

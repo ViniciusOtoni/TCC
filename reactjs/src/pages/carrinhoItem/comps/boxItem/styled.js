@@ -74,6 +74,10 @@ const StyledBoxItemCarrinho = styled.div`
         flex-direction: row;
     }
 
+    option{
+        font-family: regular;
+    }
+
     .valores-preco {
         font-size: 30px;
         color: #ffffff;

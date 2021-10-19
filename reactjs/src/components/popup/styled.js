@@ -41,6 +41,7 @@ header {
     font-family: MontserratBold;
     padding-bottom: 0.4em;
     padding-top:${props => props.recuSenha === 'true' ? '2em' : '0em'} ;
+    padding-top: 1em;
 
 }
 
@@ -91,11 +92,11 @@ header {
 
 .botao2 {
     margin-top: 1em;
-    display: ${props => props.recuSenha === 'true'  ? 'none' : 'block' };
+    
    
 }
 
-.botao3 {
+.botao2 {
     margin-top: 1em;
     padding-top:${props => props.recuSenha === 'true' ? '2em' : '0em'};
 }

@@ -56,10 +56,15 @@ const Container = styled.div`
         flex-direction: column;
     }
 
+    select option {
+       font-family:  MontserratBold;
+      
+    }
+
     .credit-card {
         display: flex;
         flex-direction: column;
-       
+        margin-bottom: .5em;
     }
 
     .credit-card button {

@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import enviarEmail from "./email.js";
 
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -17,6 +18,22 @@ app.use(express.json());
 app.get('/produto/populares', async (req,resp) => {
     try{
         let r = await db.infoa_gab_produto.findAll({ where: { vl_avaliacao: 4 }})
+        
+        r = r.map(item => {
+            return {
+                id: item.id_produto,
+                produto: item.nm_produto,
+                preco: item.vl_preco,
+                avalicao: item.vl_avaliacao,
+                lancamento: item.dt_cadastro,
+                imagem: item.img_produto,
+                imagem_dois: item.img_secundaria,
+                imagem_tres: item.img_terciaria,
+                imagem_quatro: item.img_quartenaria,
+            }
+        })
+        
+        
         resp.send(r)
     } catch (e) {
         resp.send({ erro: `${e.toString()}` })
@@ -26,29 +43,37 @@ app.get('/produto/populares', async (req,resp) => {
 
 
 function ordenacao(criterio){
-    let ordenacao = criterio;
-    let ord;
+    switch (criterio){
+        case 'menor-maior' : return ['vl_preco', 'asc'];
+        case 'maior-menor' : return ['vl_preco', 'desc'];
+        case 'lancamento' : return ['dt_cadastro', 'asc'];
+        case 'avaliacao' : return ['vl_avaliacao', 'desc'];
+        case 'A-Z' : return ['nm_produto', 'asc'];
+        case 'Z-A' : return ['nm_produto', 'desc'];
 
-    if(ordernacao === 'menor-maior'){
-        ord = ['vl_preco', 'desc']
+        default: return ['vl_preco', 'desc']
     }
-
-    if(ordenacao === 'lancamento'){
-        ord = ['dt_cadastro', 'desc']
-    }
-
-    if(ordenacao === 'avaliacao'){
-        ord = ['vl_avaliacao', 'desc']
-    }
-
-    return ord;
 }
 
 app.get('/produto', async (req,resp) => {
     try{
-            // ord = ordenacao(req.query.ordernacao);
-            let r = await db.infoa_gab_produto.findAll({
-            // order: [ord]
+        let ord = ordenacao(req.query.criterio);
+        let r = await db.infoa_gab_produto.findAll({ 
+            order: [ord]
+        })
+
+        r = r.map(item => {
+            return {
+                id: item.id_produto,
+                produto: item.nm_produto,
+                preco: item.vl_preco,
+                avalicao: item.vl_avaliacao,
+                lancamento: item.dt_cadastro,
+                imagem: item.img_produto,
+                imagem_dois: item.img_secundaria,
+                imagem_tres: item.img_terciaria,
+                imagem_quatro: item.img_quartenaria,
+            }
         })
 
         resp.send(r);
@@ -77,7 +102,7 @@ app.post('/produto', async (req, resp) => {
             ds_categoria: l.ds_categoria,
             ds_codigo_barra: l.ds_codigo_barra,
             bt_situacao: l.bt_situacao,
-            vl_avaliacao: l.vl_avaliacao,
+            vl_avaliacao: '4',
             img_produto: l.img_produto,
             img_secundaria: l.img_secundaria,
             img_terciaria: l.img_terciaria,
@@ -88,6 +113,22 @@ app.post('/produto', async (req, resp) => {
     } catch (e) {
         resp.send({ erro: `${e.toString()}` })
     }    
+})
+
+//Sistema de avaliação
+app.put('/produto/avaliacao/:idProduto', async (req, resp) => {
+    try {
+        let r = req.body;
+
+        let r1 = await  db.infoa_gab_produto.update({
+            vl_avaliacao: r.vl_avaliacao
+        },{ where: { id_produto: req.params.idProduto } })
+
+        resp.sendStatus(200)
+
+    } catch( error ) {
+        resp.send( { error: " Xish " })
+    }
 })
 
 app.put('/produto/:idProduto', async (req, resp) => {
@@ -143,7 +184,14 @@ try {
 
     let u2 = await db.infoa_gab_usuario.findOne({ where: { ds_email: r.ds_email  } })
     if(u2 != null)
-    resp.send( { error: 'Email já foi cadastrado!' } )
+    resp.send( { error: 'Email já foi cadastrado!' } );
+
+    let u3 = await db.infoa_gab_usuario.findOne( { where: { nm_usuario: r.nm_usuario } })
+    if(u3 === '' )
+    resp.send({ error: 'Preencha todos os campos '})
+
+    
+
 
     let l = await db.infoa_gab_usuario.create( {
         nm_usuario: r.nm_usuario,
@@ -163,64 +211,6 @@ try {
  
 })
 
-app.post('/cadastrar/gerente', async (req, resp) => {
-    try {
-    
-        let r = req.body;
-    
-        let u1 = await db.infoa_gab_usuario.findOne({ where: { ds_cpf: r.ds_cpf } })
-        if(u1 != null)
-        resp.send( { error: 'CPF já foi cadastrado!' } );
-    
-        let u2 = await db.infoa_gab_usuario.findOne({ where: { ds_email: r.ds_email  } })
-        if(u2 != null)
-        resp.send( { error: 'Email já foi cadastrado!' } )
-    
-        let l = await db.infoa_gab_usuario.create( {
-            nm_usuario: r.nm_usuario,
-            ds_cpf: r.ds_cpf,
-            ds_email: r.ds_email,
-            ds_senha: r.ds_senha,
-            img_usuario: r.img_usuario,
-            ds_codigo: '',
-            bt_gerente: true
-        })
-    
-        resp.send(l);
-    
-    } catch (error) {
-        resp.send( error.toString() )
-    }
-})
-
-//Cadastrar Empresa
-app.post('/cadastrar/empresa', async (req, resp) => {
-    try {
-
-        let r = req.body;
-
-        let u1 = await db.infoa_gab_empresa.findOne( { where: { ds_cnpj: r.ds_cnpj } } )
-            
-            if(u1 != null)
-            resp.send( { error: 'CNPJ já foi cadastrado!' } )
-            
-        let u2 = await db.infoa_gab_empresa.findOne( { where: { ds_email: r.ds_email } })
-            
-            if(u2 != null)
-            resp.send( { error: 'Email já foi cadastrado!' })
-
-        let l = await db.infoa_gab_empresa.create({
-            nm_empresa: r.nm_empresa,
-            ds_cnpj: r.ds_cnpj,
-            ds_email: r.ds_email,
-            ds_senha: r.ds_senha,
-            img_empresa: r.img_empresa
-            // ds_codigo: '',
-        })
-        resp.send(l) } catch(e) {
-            resp.send( e.toString() )
-        }
-})
 
 //Verificar Se o Usuario Existe
 app.post('/login', async (req, resp) => {
@@ -236,15 +226,8 @@ app.post('/login', async (req, resp) => {
         raw: true
     }) 
 
-    let r1 = await db.infoa_gab_empresa.findOne({
-        where: {
-            ds_email: login.ds_email,
-            ds_senha: login.ds_senha
-        },
-        raw: true
-    })
-    
-    if(r == null && r1 == null ) 
+
+    if(r == null ) 
     return resp.send( { error: 'Credenciais Inválidas'})
 
     
@@ -252,6 +235,8 @@ app.post('/login', async (req, resp) => {
 
 
 })
+
+
 
 app.post('/login/gerente', async (req, resp) => {
     let login = req.body;
@@ -278,11 +263,10 @@ app.get('/login', async (req, resp) => {
     resp.send(r)
 })
 
-app.get('/empresa', async (req, resp) => {
-    let r = await db.infoa_gab_empresa.findAll()
 
-    resp.send(r)
-})
+
+
+
 
 
 //recuperarSenha
@@ -298,37 +282,36 @@ try {
         }
     })
 
+   
+
     
-    if(q == null)
+    if(q == null )
     return resp.send({ error : 'Credenciais Inválidas' })
     
+
+    let rCod =  Math.floor(Math.random() * (9999 - 1) + 9999) 
+
     let cod = await db.infoa_gab_usuario.update({
-        ds_codigo: Math.floor(Math.random() * (9999 - 1) + 9999) 
+        ds_codigo: rCod
     }, { where: { id_usuario: q.id_usuario } })
 
-    const response = await 
-    enviarEmail(login.ds_email, login.assunto, login.cod);
+  
+    const response = await enviarEmail(login.ds_email, rCod);
   
     resp.send(response);
     
     
-    resp.send(cod) 
 
+    
     
     
     } catch( error ) {
         resp.send({ error: " Xish "})
     }
+
+    
 })
 
-app.post('/enviar', async (req, resp) => {
-    try {
-       
-    } catch(e) {
-      resp.send(e)
-    }
-  
-  })
 
 
 
@@ -342,8 +325,8 @@ app.put('/login/senha/:codigo', async (req, resp) => {
         
         
 
-        let r = await db.infoa_gab_usuario.update( { ds_senha: l.ds_senha }, { where: {  ds_codigo: req.params.codigo } }) 
-        
+        let r = await db.infoa_gab_usuario.update( { ds_senha: l.ds_senha, ds_codigo: ' código invalido esperando a validação agr ' }, { where: {  ds_codigo: req.params.codigo } }) 
+    
         
         resp.sendStatus(200)
         
@@ -353,8 +336,7 @@ app.put('/login/senha/:codigo', async (req, resp) => {
 })
 
 
-//Mandar Email
-app.post('/enviar', async (req, resp) => {
+app.post('/validarCompra', async ( req, resp ) => {
     try {
         
     } catch(e) {
@@ -993,12 +975,43 @@ app.post('/pedido', async (req, resp) => {
 
 
 
+        let q = req.body
 
+      let r1 = await db.infoa_gab_endereco.create({
+        ds_cep: q.ds_cep,
+        nm_rua: q.nm_rua,
+        nm_bairro: q.nm_bairro,
+        ds_complemento: q.ds_complemento,
+        nr_numero_rua: q.nr_numero_rua,
+        id_usuario: q.id_usuario,
 
+      })
 
+       
 
+        let r = await db.infoa_gab_cartao.create({
+            ds_cv: q.ds_cv,
+            nm_titular: q.nm_titular,
+            nr_cartao: q.nr_cartao,
+            nr_agencia: q.nr_agencia,
+            dt_validade: q.dt_validade,
+            ds_cpf_titular: q.ds_cpf_titular,
+            id_usuario: q.id_usuario
+    })  
+        resp.send(r)
 
+       
+        
+    } catch (error) {
+        resp.send({ error: "Xish" })
+    }
+})
 
+app.get('/validarCompra', async  ( req, resp ) => {
+    let r = await db.infoa_gab_cartao.findAll()
+    resp.send(r)
+})
 
-app.listen( process.env.PORT, (x) => console.log(`Servidor Subiu na Porta ${process.env.PORT} Parabéns ai (: `));
+app.listen( process.env.PORT, (x) => 
+            console.log(`Servidor na Porta ${process.env.PORT}`));
 
