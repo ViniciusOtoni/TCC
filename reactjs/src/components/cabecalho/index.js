@@ -32,29 +32,25 @@ export default function Cabecalho(props) {
     }
 
 
-    
-
-    
- 
-
     return (
       <StyledCabecalho corLetra ={props.corLetra}> 
         <main className="pc"> 
-            <div className="logo-cabecalho"> <img onClick={logof} src="/assets/images/logo.svg" alt="" /> 
-            <Link to="/" style={{textDecoration:"none"}}>     <div className="titulo">   GameBud </div> </Link>
-            </div> 
-            
-            <div className="pesquisa"> <input className="input" placeholder="pesquise seu produto" /> </div>
-            <Link to={ Cookies.get('usuario-logado') === undefined ? '/login' : '/' } style={{textDecoration:"none"}}>  { Cookies.get('usuario-logado') === undefined ? <div className="login"> Login </div> 
-            : <div className="row-user"> 
-                <div className="user-image"> <img src={img} alt="" /> </div> 
-                <div className="login"> {nm} </div>
-            </div> }
-            </Link>
-           <Link to="/escolhaEntrega" style={{textDecoration:"none"}}> <div className="entrega">  Entregas  </div> </Link>
-           <Link to="/carrinhoItem" style={{textDecoration:"none"}}> <div className="carrinho"> </div> </Link>
-            </main>
-            <main className="cell"> 
+                <div className="logo-cabecalho"> 
+                    <Link to="/"> <img onClick={logof} src="/assets/images/logo.svg" alt="" /> </Link>
+                    <Link to="/" style={{textDecoration:"none"}}>  <div className="titulo"> GameBud </div> </Link>
+                </div> 
+                
+                <div className="pesquisa"> <input className="input" placeholder="pesquise seu produto" /> </div>
+                <Link to={ Cookies.get('usuario-logado') === undefined ? '/login' : '/' } style={{textDecoration:"none"}}>  { Cookies.get('usuario-logado') === undefined ? <div className="login"> Login </div> 
+                : <div className="row-user"> 
+                    <div className="user-image"> <img src={img} alt="" /> </div> 
+                    <div className="login"> {nm} </div>
+                </div> }
+                </Link>
+            <Link to="/escolhaEntrega" style={{textDecoration:"none"}}> <div className="entrega">  Entregas  </div> </Link>
+            <Link to="/carrinhoItem" style={{textDecoration:"none"}}> <div className="carrinho"> </div> </Link>
+        </main>
+        <main className="cell"> 
             <div className="agp-direita"> 
                 <div className="carrinho"> </div>
                 <div className="lupa">  <img src="/assets/images/lupaCell.svg" alt="" /> </div>
@@ -64,10 +60,9 @@ export default function Cabecalho(props) {
             <div className="column">
                 <div className="login"> Login </div>
                 <div className="entrega"> Entregas </div>
-                </div>
-            </main>
-            <hr />
-            
+            </div>
+        </main>
+        <hr />
         </StyledCabecalho>
     )
 }

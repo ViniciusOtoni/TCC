@@ -29,15 +29,23 @@ function ordenacao(criterio){
     let ord;
 
     if(criterio === 'menor-maior'){
-        ord = ['vl_preco', 'desc']
+        ord = ['vl_preco', 'asc']
     }
 
     if(criterio === 'lancamento'){
-        ord = ['dt_cadastro', 'desc']
+        ord = ['dt_cadastro', 'asc']
     }
 
     if(criterio === 'avaliacao'){
-        ord = ['vl_avaliacao', 'asc']
+        ord = ['vl_avaliacao', 'desc']
+    }
+
+    if(criterio === 'A-Z'){
+        ord = ['nm_produto', 'asc']
+    }
+
+    if(criterio === 'Z-A'){
+        ord = ['nm_produto', 'desc']
     }
 
     return ord;
@@ -46,8 +54,6 @@ function ordenacao(criterio){
 app.get('/produto', async (req,resp) => {
     try{
         let ord = ordenacao(req.query.criterio);
-        console.log(ord);
-        console.log(req.query.criterio);
         let r = await db.infoa_gab_produto.findAll({ 
             order: [ord]
         })

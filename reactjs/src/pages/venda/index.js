@@ -32,9 +32,12 @@ export default function Venda() {
                         <div className="ordem"> Ordenar: </div>
                         <div className="select-ordem"> 
                             <select id="order" onChange={e => setOrder(e.target.value)}> 
-                                <option value="avaliacao" selected> Avaliação </option> 
+                                <option selected style={{ display: "none" }}> Escolha </option>
+                                <option value="avaliacao"> Avaliação </option> 
                                 <option value="lancamento"> Lançamento </option>
                                 <option value="menor-maior"> Melhor Preço </option>
+                                <option value="A-Z"> A-Z </option>
+                                <option value="Z-A"> Z-A </option>
                             </select>
                         </div>
                     </div>
