@@ -19,11 +19,16 @@ export default function BoxItemCarrinho(props) {
     const [ qtd, setQtd ] = useState(1)
     const [ total, setTotal ] = useState(produto.vl_preco)
     const [ cep, setCep ] = useState(false);
+    const [ vlCep, setVlCep ] = useState('');
     const nave = useHistory()
 
     
 
     function visible(){
+        
+        let r = vlCep.length
+        
+        if(r === 8)
         setCep(true)
     }
 
@@ -32,14 +37,14 @@ export default function BoxItemCarrinho(props) {
         setQtd(0)
     }
 
-
+  
 
    
 
   
 
     useEffect( () => {
-        produto.total = produto.vl_preco * qtd;
+        produto.total = Math.round( produto.vl_preco * qtd);
         setTotal(produto.total)
         if(props.respostaFilho)
             props.respostaFilho()
@@ -90,7 +95,7 @@ export default function BoxItemCarrinho(props) {
             <div className="excluir" onClick={remover}> Excluir </div>
             <div className="row-input"> 
                 <div className="frete"> Frete: </div>
-                <div className="input-frete">  <StyledInput placeholder="Cep" style={{width:"8em"}}/> </div>
+                <div className="input-frete">  <StyledInput value={vlCep} placeholder=" Cep" style={{width:"8em"}} onChange={e => setVlCep(e.target.value)}/> </div>
                 <div className="botao-frete"> <StyledButtonVerde onClick={visible} style={{width: "7em", height:"1.8em", marginLeft:"2em"}}> Calcular </StyledButtonVerde> </div>
             </div>
             {cep && <div> 

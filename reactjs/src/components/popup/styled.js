@@ -41,6 +41,7 @@ header {
     font-family: MontserratBold;
     padding-bottom: 0.4em;
     padding-top:${props => props.recuSenha === 'true' ? '2em' : '0em'} ;
+    padding-top: 1em;
 
 }
 

@@ -106,7 +106,7 @@ export default function Popup(props) {
             <div className="agp-column"> 
                 <div className="email"> {props.tituloCima} </div>
                 <div className="input"> <StyledInput style={{width:"100%", color:"#000000"}}  value={ vl1 } onChange={r => setVl1(r.target.value)}  type="text" /> </div>
-              <Link to="/recuperarEmail" style={{color:"#ffffff", textDecoration:"none"}}>   <div className="esqueceu-email">  </div> </Link>
+              
 
                 <div className="senha"> {props.tituloBaixo} </div>
                 <div className="input"> <StyledInput style={{width:"100%", color:"#000000"}} type={props.type} value={ vl2 } onChange={e => setVl2(e.target.value)} /> </div>

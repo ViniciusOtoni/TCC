@@ -64,8 +64,8 @@ export default function VendaUnica(props){
                             </div>
                             <div className="text"> Vendido e entregue por GameBud </div>
                             <div className="preco"> { `Preço: R$${produto.vl_preco}`} </div>
-                            <div className="text"> em 10x de R$ 39,95 sem juros </div>
-                            <div className="frete"> FRETE GRATÍS !!! </div>
+                            <div className="text"> {`em 5x de R$  ${Math.round( produto.vl_preco / 5 )} sem juros`} </div>
+                            
                             <div className="align-button">
                               <StyledButtonVerde style={{ padding:".7em 3em", margin: ".8em 0em", fontFamily: "semiBold" }} onClick={comprar}> Adicionar ao carrinho  </StyledButtonVerde> 
                             <Link to="/concluirCompra"> <StyledButtonVerde style={{ padding:".7em 4.7em", fontFamily: "semiBold" }}> Comprar agora </StyledButtonVerde> </Link>
