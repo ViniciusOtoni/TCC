@@ -27,7 +27,6 @@ async function enviarEmail(para, cod) {
             <h2> <b> Olá </b> ${para} o seu pedido de alteração na senha foi bem sucedido! </h2> 
             <h1> Segue o código para podermos confirmar a alteração: </>
             ${cod} 
-           
         </main>` 
     
     

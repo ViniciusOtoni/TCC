@@ -61,7 +61,7 @@ export default class Api {
         let r = await api.post(`/produtos`, jsonProduto);
         return r.data;
     }
-
+Z
 
     async cadastrarUsuario (nm_usuario, ds_cpf, ds_email,  ds_senha, img_usuario) {
 

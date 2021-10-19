@@ -55,7 +55,6 @@ export default function Popup(props) {
 
     const recuSenha = async () => {
      let r = await api.recuperarSenha(vl2, vl1)
-    
 
         if(r.error) {
             alert(`${r.error}`)
@@ -88,11 +87,11 @@ export default function Popup(props) {
             </header>
             <div className="agp-column"> 
                 <div className="email"> {props.tituloCima} </div>
-                <div className="input"> <StyledInput style={{width:"100%", color:"#000000"}}  value={ vl1 } onChange={r => setVl1(r.target.value)}  type="text" /> </div>
-              
+                <div className="input"> <StyledInput  style={{width:"100%", color:"#000000"}}  value={ vl1 } onChange={e => setVl1(e.target.value)}  type="text" /> </div>
+            
 
                 <div className="senha"> {props.tituloBaixo} </div>
-                <div className="input"> <StyledInput placeholder="Senha" style={{width:"100%", color:"#000000"}} type={props.type} value={ vl2 } onChange={e => setVl2(e.target.value)} /> </div>
+                <div className="input"> <StyledInput  style={{width:"100%", color:"#000000"}} type={props.type} value={ vl2 } onChange={e => setVl2(e.target.value)} /> </div>
                 <Link to="/recuperarSenha" style={{color:"#ffffff", textDecoration:"none"}}> <div className="esqueceu-senha"> Esqueceu  sua Senha </div>   </Link>
 
                 <div className="agp-botao">

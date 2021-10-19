@@ -184,7 +184,9 @@ try {
 
     let u2 = await db.infoa_gab_usuario.findOne({ where: { ds_email: r.ds_email  } })
     if(u2 != null)
-    resp.send( { error: 'Email já foi cadastrado!' } )
+    resp.send( { error: 'Email já foi cadastrado!' } );
+
+
 
     let l = await db.infoa_gab_usuario.create( {
         nm_usuario: r.nm_usuario,
@@ -205,9 +207,6 @@ try {
 })
 
 
-
-
-
 //Verificar Se o Usuario Existe
 app.post('/login', async (req, resp) => {
   
@@ -222,8 +221,7 @@ app.post('/login', async (req, resp) => {
         raw: true
     }) 
 
-    
-    
+
     if(r == null ) 
     return resp.send( { error: 'Credenciais Inválidas'})
 
@@ -322,8 +320,8 @@ app.put('/login/senha/:codigo', async (req, resp) => {
         
         
 
-        let r = await db.infoa_gab_usuario.update( { ds_senha: l.ds_senha }, { where: {  ds_codigo: req.params.codigo } }) 
-        
+        let r = await db.infoa_gab_usuario.update( { ds_senha: l.ds_senha, ds_codigo: ' código invalido esperando a validação agr ' }, { where: {  ds_codigo: req.params.codigo } }) 
+    
         
         resp.sendStatus(200)
         
