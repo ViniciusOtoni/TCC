@@ -18,6 +18,22 @@ app.use(express.json());
 app.get('/produto/populares', async (req,resp) => {
     try{
         let r = await db.infoa_gab_produto.findAll({ where: { vl_avaliacao: 4 }})
+        
+        r = r.map(item => {
+            return {
+                id: item.id_produto,
+                produto: item.nm_produto,
+                preco: item.vl_preco,
+                avalicao: item.vl_avaliacao,
+                lancamento: item.dt_cadastro,
+                imagem: item.img_produto,
+                imagem_dois: item.img_secundaria,
+                imagem_tres: item.img_terciaria,
+                imagem_quatro: item.img_quartenaria,
+            }
+        })
+        
+        
         resp.send(r)
     } catch (e) {
         resp.send({ erro: `${e.toString()}` })
@@ -27,30 +43,37 @@ app.get('/produto/populares', async (req,resp) => {
 
 
 function ordenacao(criterio){
-    let ord;
+    switch (criterio){
+        case 'menor-maior' : return ['vl_preco', 'asc'];
+        case 'maior-menor' : return ['vl_preco', 'desc'];
+        case 'lancamento' : return ['dt_cadastro', 'asc'];
+        case 'avaliacao' : return ['vl_avaliacao', 'desc'];
+        case 'A-Z' : return ['nm_produto', 'asc'];
+        case 'Z-A' : return ['nm_produto', 'desc'];
 
-    if(criterio === 'menor-maior'){
-        ord = ['vl_preco', 'desc']
+        default: return ['vl_preco', 'desc']
     }
-
-    if(criterio === 'lancamento'){
-        ord = ['dt_cadastro', 'desc']
-    }
-
-    if(criterio === 'avaliacao'){
-        ord = ['vl_avaliacao', 'asc']
-    }
-
-    return ord;
 }
 
 app.get('/produto', async (req,resp) => {
     try{
         let ord = ordenacao(req.query.criterio);
-        console.log(ord);
-        console.log(req.query.criterio);
         let r = await db.infoa_gab_produto.findAll({ 
             order: [ord]
+        })
+
+        r = r.map(item => {
+            return {
+                id: item.id_produto,
+                produto: item.nm_produto,
+                preco: item.vl_preco,
+                avalicao: item.vl_avaliacao,
+                lancamento: item.dt_cadastro,
+                imagem: item.img_produto,
+                imagem_dois: item.img_secundaria,
+                imagem_tres: item.img_terciaria,
+                imagem_quatro: item.img_quartenaria,
+            }
         })
 
         resp.send(r);

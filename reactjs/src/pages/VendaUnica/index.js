@@ -25,7 +25,7 @@ export default function VendaUnica(props){
                 ? JSON.parse(carrinho) 
                 : [];
 
-            if(!carrinho.some(x => x.id_produto === produto.id_produto )) {
+            if(!carrinho.some(x => x.id === produto.id )) {
                 carrinho.push({ ...produto });
             }
 
@@ -43,16 +43,16 @@ export default function VendaUnica(props){
         <Conteudo> 
             
             <main className="pc"> 
-                <div className="title"> {produto.nm_produto} </div>
+                <div className="title"> {produto.produto} </div>
                 <Content>
                     <div className="align-content">
                         <div className="content-images">
                             <div className="images">
-                                <img  src={produto.img_secundaria} alt=""/>
-                                <img  src={produto.img_terciaria} alt=""/>
-                                <img  src={produto.img_quartenaria} alt=""/>
+                                <img  src={produto.imagem_dois} alt=""/>
+                                <img  src={produto.imagem_tres} alt=""/>
+                                <img  src={produto.imagem_quatro} alt=""/>
                             </div>
-                            <img className="image-main" src={produto.img_produto} alt=""/>
+                            <img className="image-main" src={produto.imagem} alt=""/>
                         </div>
                         <div>
                             <div className="align-stars">
@@ -63,8 +63,8 @@ export default function VendaUnica(props){
                                 <img className="star" src="/assets/images/bi_star_black.svg" alt=""/> 
                             </div>
                             <div className="text"> Vendido e entregue por GameBud </div>
-                            <div className="preco"> { `Preço: R$${produto.vl_preco}`} </div>
-                            <div className="text"> {`em 5x de R$  ${Math.round( produto.vl_preco / 5 )} sem juros`} </div>
+                            <div className="preco"> { `Preço: R$${produto.preco}`} </div>
+                            <div className="text"> {`em 5x de R$  ${Math.round( produto.preco / 5 )} sem juros`} </div>
                             
                             <div className="align-button">
                               <StyledButtonVerde style={{ padding:".7em 3em", margin: ".8em 0em", fontFamily: "semiBold" }} onClick={comprar}> Adicionar ao carrinho  </StyledButtonVerde> 
@@ -78,8 +78,8 @@ export default function VendaUnica(props){
             <main className="cell"> 
             <Content>
                     <div className="align-content">
-                            <div className="titulo1"> {produto.nm_produto} </div>
-                            <img className="image-main"src={produto.img_produto} alt=""/>
+                            <div className="titulo1"> {produto.produto} </div>
+                            <img className="image-main"src={produto.imagem} alt=""/>
                         
                             <div className="align-stars">
                                 <img className="star" src="/assets/images/bi_star_black.svg" alt=""/>
@@ -90,14 +90,9 @@ export default function VendaUnica(props){
                             </div>
 
                             <div className="titulo"> Preco: </div>
-                            <div className="preco"> {`R$${produto.vl_preco}`} </div>
+                            <div className="preco"> {`R$${produto.preco}`} </div>
                             <div className="text"> em 10x de R$ 39,95 sem juros </div>
                             <div className="text"> Vendido e entregue por GameBud </div>
-                          
-                           
-                            <div className="frete"> FRETE GRATÍS !!! </div>
-                             
-                       
                     </div>  
                      
                 </Content>
