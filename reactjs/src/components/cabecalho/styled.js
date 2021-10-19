@@ -70,6 +70,8 @@ const StyledCabecalho = styled.div `
 
     .search-icon, .clear-icon > svg{
         fill: white;
+        width: auto;
+        height: 1.7em;
     }
 
 
