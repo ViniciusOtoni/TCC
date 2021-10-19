@@ -2,6 +2,8 @@ import db from "./db.js";
 import express from "express";
 import cors from "cors";
 import enviarEmail from "./email.js";
+import Api from "../../reactjs/src/services/api.js";
+import { resolveContent } from "nodemailer/lib/shared";
 
 
 const app = express();
@@ -55,9 +57,9 @@ function ordenacao(criterio){
     }
 }
 
-app.get('/produto', async (req,resp) => {
+app.get('/produto:/criterio', async (req,resp) => {
     try{
-        let ord = ordenacao(req.query.criterio);
+        let ord = ordenacao(req.params.criterio);
         let r = await db.infoa_gab_produto.findAll({ 
             order: [ord]
         })
@@ -81,6 +83,18 @@ app.get('/produto', async (req,resp) => {
         resp.send({ erro: `${e.toString()}` })
     }    
 })
+
+app.get('/produto', async (req, resp) => {
+    try {
+        let r = await db.infoa_gab_produto.findAll();
+        resp.send(r);
+
+    } catch (error) {
+        resp.send(`erro no get produto ${error}`)
+    }
+})
+
+
 
 app.get('/produto/:idProduto', async (req, resp) =>{
     try{
@@ -972,10 +986,10 @@ app.post('/pedido', async (req, resp) => {
 
 
 
+/*
 
 
-
-        let q = req.body
+      let q = req.body
 
       let r1 = await db.infoa_gab_endereco.create({
         ds_cep: q.ds_cep,
@@ -1005,7 +1019,7 @@ app.post('/pedido', async (req, resp) => {
     } catch (error) {
         resp.send({ error: "Xish" })
     }
-})
+})*/
 
 app.get('/validarCompra', async  ( req, resp ) => {
     let r = await db.infoa_gab_cartao.findAll()
