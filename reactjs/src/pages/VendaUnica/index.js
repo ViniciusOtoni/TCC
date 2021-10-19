@@ -43,16 +43,16 @@ export default function VendaUnica(props){
         <Conteudo> 
             
             <main className="pc"> 
-                <div className="title"> {produto.nm_produto} </div>
+                <div className="title"> {produto.produto} </div>
                 <Content>
                     <div className="align-content">
                         <div className="content-images">
                             <div className="images">
-                                <img  src={produto.img_secundaria} alt=""/>
-                                <img  src={produto.img_terciaria} alt=""/>
-                                <img  src={produto.img_quartenaria} alt=""/>
+                                <img  src={produto.imagem_dois} alt=""/>
+                                <img  src={produto.imagem_tres} alt=""/>
+                                <img  src={produto.imagem_quatro} alt=""/>
                             </div>
-                            <img className="image-main" src={produto.img_produto} alt=""/>
+                            <img className="image-main" src={produto.imagem} alt=""/>
                         </div>
                         <div>
                             <div className="align-stars">
@@ -63,7 +63,7 @@ export default function VendaUnica(props){
                                 <img className="star" src="/assets/images/bi_star_black.svg" alt=""/> 
                             </div>
                             <div className="text"> Vendido e entregue por GameBud </div>
-                            <div className="preco"> { `Preço: R$${produto.vl_preco}`} </div>
+                            <div className="preco"> { `Preço: R$${produto.preco}`} </div>
                             <div className="text"> em 10x de R$ 39,95 sem juros </div>
                             <div className="frete"> FRETE GRATÍS !!! </div>
                             <div className="align-button">

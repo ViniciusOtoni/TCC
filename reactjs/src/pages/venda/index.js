@@ -35,7 +35,8 @@ export default function Venda() {
                                 <option selected style={{ display: "none" }}> Escolha </option>
                                 <option value="avaliacao"> Avaliação </option> 
                                 <option value="lancamento"> Lançamento </option>
-                                <option value="menor-maior"> Melhor Preço </option>
+                                <option value="menor-maior"> Menor Preço </option>
+                                <option value="maior-menor"> Maior Preço </option>
                                 <option value="A-Z"> A-Z </option>
                                 <option value="Z-A"> Z-A </option>
                             </select>
@@ -43,7 +44,7 @@ export default function Venda() {
                     </div>
                     <div className="wrap"> 
                     {produto.map (x  => 
-                     <div className="bottom">  <CaixaJogo key={x.id_produto} info={x} /> </div>
+                        <div className="bottom"> <CaixaJogo key={x.id_produto} info={x} /> </div>
                      )}
                     </div>
                     <div className="pag">  <Paginacao  /> </div>

@@ -22,7 +22,7 @@ export default function CarrinhoItem() {
 
 
     function removerProduto (id) {
-        let carrinho = produto.filter(x => x.id_produto !== id) 
+        let carrinho = produto.filter(x => x.id !== id) 
 
         Cookie.set('carrinho', JSON.stringify(carrinho))
         setProduto([...carrinho])
@@ -74,7 +74,7 @@ export default function CarrinhoItem() {
                
                 
                 {produto.map(x => 
-                <BoxItemCarrinho key={x.id_produto} info={x} onRemove={removerProduto} respostaFilho={respFilho}/> 
+                <BoxItemCarrinho key={x.id} info={x} onRemove={removerProduto} respostaFilho={respFilho}/> 
                    
                 )}
                 
@@ -102,7 +102,7 @@ export default function CarrinhoItem() {
                
                
                 {produto.map(x => 
-                    <BoxItemCarrinho key={x.id_produto} info={x} onRemove={removerProduto}  /> 
+                    <BoxItemCarrinho key={x.id} info={x} onRemove={removerProduto}  /> 
                 )}
                 <div className="row-input"> 
                         <div className="frete"> Frete: </div>

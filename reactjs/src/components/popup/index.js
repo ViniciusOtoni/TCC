@@ -96,9 +96,8 @@ export default function Popup(props) {
                 <Link to="/recuperarSenha" style={{color:"#ffffff", textDecoration:"none"}}> <div className="esqueceu-senha"> Esqueceu  sua Senha </div>   </Link>
 
                 <div className="agp-botao">
-                <div className="botao1">   <StyledButtonPopup onClick={logar}> Entrar  </StyledButtonPopup>  </div>
-              <div className="botao2">    <StyledButtonPopup onClick={props.botao1 === '1' ? recuSenha : props.botao1 === '2' ? redefinirSenha  : props.botao1 === '5' ? logarGerente : empresa }>  {alterar(props.botao1)} </StyledButtonPopup>  </div> 
-                
+                <div className="botao1">  <StyledButtonPopup onClick={logar}> Entrar  </StyledButtonPopup>  </div>
+                <div className="botao2">  <StyledButtonPopup onClick={props.botao1 === '1' ? recuSenha : props.botao1 === '2' ? redefinirSenha  : props.botao1 === '5' ? logarGerente : empresa }>  {alterar(props.botao1)} </StyledButtonPopup>  </div> 
                 </div>
             </div>
 

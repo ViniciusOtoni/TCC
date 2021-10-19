@@ -34,8 +34,7 @@ const StyledVenada = styled.div `
     .ordem {
         color: #ffffff;
         font: 1.2em MontserratBold;
-        padding-right: 0.7em;
-        margin: 1em 2.5em;
+        margin: 1em .5em 1em 2.5em;
     }
 
     .select-ordem select {

@@ -78,12 +78,8 @@ export default function Home() {
                                     showDots={true}
                                     autoPlay={true}
                                     containerClass="carousel-container"
-                                    dotListClass="custom-dot-list-style"
-                                    
-                                    >
-                                    
-
-                            {populares.map(x =>  <CaixaJogo key={x.id_produto} info={x} /> 
+                                    dotListClass="custom-dot-list-style">
+                            {populares.map(x =>  <CaixaJogo key={x.id} info={x} /> 
                             )}   
                         </Carousel> 
                 </div>

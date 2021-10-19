@@ -25,7 +25,6 @@ import RecuperarSenha from './pages/recuperarSenha';
 import RedefinirSenha from './pages/redefinirSenha';
 import LoginGerente from './pages/loginGerente';
 import CriarConta from './pages/criarConta';
-import CadastrarEmpresa from './pages/cadastrarEmpresa';
 import CabecalhoAdm from './components/cabecalhoAdm';
 import gerenteEscolha from './pages/gerenteEscolha'
 
@@ -58,7 +57,6 @@ export default function Rotes() {
         
                 <Route  path="/loginGerente" component={LoginGerente} />
                 <Route  path="/criarConta" component={CriarConta} />
-                <Route  path="/cadastrarEmpresa" component={CadastrarEmpresa} />
                 <Route  path="/testeADM" component={CabecalhoAdm} />
                 <Route  path="/gerenteEscolha" component={gerenteEscolha}/>
                 <Route  path="/*" component={Error} />

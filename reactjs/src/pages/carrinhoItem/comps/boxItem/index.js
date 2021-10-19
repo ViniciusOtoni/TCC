@@ -17,7 +17,7 @@ export default function BoxItemCarrinho(props) {
     
     const [ produto, setProduto ]  = useState(props.info)
     const [ qtd, setQtd ] = useState(1)
-    const [ total, setTotal ] = useState(produto.vl_preco)
+    const [ total, setTotal ] = useState(produto.preco)
     const [ cep, setCep ] = useState(false);
     const nave = useHistory()
 
@@ -28,7 +28,7 @@ export default function BoxItemCarrinho(props) {
     }
 
     function remover () {
-        props.onRemove(produto.id_produto)
+        props.onRemove(produto.id)
         setQtd(0)
     }
 
@@ -39,7 +39,7 @@ export default function BoxItemCarrinho(props) {
   
 
     useEffect( () => {
-        produto.total = produto.vl_preco * qtd;
+        produto.total = produto.preco * qtd;
         setTotal(produto.total)
         if(props.respostaFilho)
             props.respostaFilho()
@@ -52,9 +52,9 @@ export default function BoxItemCarrinho(props) {
     return (
         <StyledBoxItemCarrinho> 
         <main className="pc">
-        <div className="foto"> <img src={produto.img_produto} alt="" /> </div>
+        <div className="foto"> <img src={produto.imagem} alt="" /> </div>
         <div className="column-esp"> 
-            <div className="nome-produto">  {produto.nm_produto} </div>
+            <div className="nome-produto">  {produto.produto} </div>
             <div className="row-vendido"> 
                 <div className="dono"> Vendido Por: </div>
                 <div className="nome-dono"> GameBud </div>
@@ -114,11 +114,11 @@ export default function BoxItemCarrinho(props) {
                 </main>
                 <main className="cell">
                     <div className="box-preta">
-                    <div className="nome-produto"> {produto.nm_produto}  </div>
-                        <div className="foto"> <img src={produto.img_produto} alt="" /> </div>
+                    <div className="nome-produto"> {produto.produto}  </div>
+                        <div className="foto"> <img src={produto.imagem} alt="" /> </div>
                         <div className="row-val"> 
                             <div className="titulo-val"> Preço: </div>
-                            <div className="valor-val"> {`R$: ${Math.round(produto.vl_preco * qtd)} ` } </div>
+                            <div className="valor-val"> {`R$: ${Math.round(produto.preco * qtd)} ` } </div>
                         </div>
                         <div className="row-valores"> 
                                 <div className="quantidade"> Unidades: </div>
