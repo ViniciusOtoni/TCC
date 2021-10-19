@@ -48,7 +48,7 @@ export default function CarrinhoItem() {
     }
 
 
-   function respFilho(vlPreco) {
+   function respFilho() { //função reduce pega um item do array por vês
         let total = produto.reduce((a,b) => a + b.total,0)
         setVlFinal (total)  
    }

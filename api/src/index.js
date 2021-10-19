@@ -170,35 +170,7 @@ try {
  
 })
 
-app.post('/cadastrar/gerente', async (req, resp) => {
-    try {
-    
-        let r = req.body;
-    
-        let u1 = await db.infoa_gab_usuario.findOne({ where: { ds_cpf: r.ds_cpf } })
-        if(u1 != null)
-        resp.send( { error: 'CPF já foi cadastrado!' } );
-    
-        let u2 = await db.infoa_gab_usuario.findOne({ where: { ds_email: r.ds_email  } })
-        if(u2 != null)
-        resp.send( { error: 'Email já foi cadastrado!' } )
-    
-        let l = await db.infoa_gab_usuario.create( {
-            nm_usuario: r.nm_usuario,
-            ds_cpf: r.ds_cpf,
-            ds_email: r.ds_email,
-            ds_senha: r.ds_senha,
-            img_usuario: r.img_usuario,
-            ds_codigo: '',
-            bt_gerente: true
-        })
-    
-        resp.send(l);
-    
-    } catch (error) {
-        resp.send( error.toString() )
-    }
-})
+
 
 //Verificar Se o Usuario Existe
 app.post('/login', async (req, resp) => {
@@ -216,7 +188,7 @@ app.post('/login', async (req, resp) => {
 
     
     
-    if(r == null && r1 == null ) 
+    if(r == null ) 
     return resp.send( { error: 'Credenciais Inválidas'})
 
     
@@ -252,11 +224,7 @@ app.get('/login', async (req, resp) => {
     resp.send(r)
 })
 
-app.get('/empresa', async (req, resp) => {
-    let r = await db.infoa_gab_empresa.findAll()
 
-    resp.send(r)
-})
 
 
 
@@ -287,10 +255,6 @@ try {
     let cod = await db.infoa_gab_usuario.update({
         ds_codigo: rCod
     }, { where: { id_usuario: q.id_usuario } })
-
-   
-   
-
 
   
     const response = await enviarEmail(login.ds_email, rCod);
@@ -333,15 +297,6 @@ app.put('/login/senha/:codigo', async (req, resp) => {
 })
 
 
-//Mandar Email
-app.post('/enviar', async (req, resp) => {
-    try {
-        
-    } catch(e) {
-      resp.send(e)
-    }
-  
-  })
 
 
 
