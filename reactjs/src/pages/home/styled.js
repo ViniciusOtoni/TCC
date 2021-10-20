@@ -9,7 +9,8 @@ const StyledConteudo = styled.div`
     background-color: #333333;
     position: relative;
     & * {z-index : 11;}
-  
+    
+    min-width: 1280px;
 
     main  {
         width: 1240px;

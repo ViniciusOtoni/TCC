@@ -39,12 +39,12 @@ export default class Api {
     }
 
     async listarProdutos(order) {
-        let r = await api.get('/produto/criterio/' + order)
+        let r = await api.get(`/produto?criterio=${order}` )
         return r.data
     }
 
     async listarProdutos2() {
-        let r = await api.get('/produto');
+        let r = await api.get('/produtos');
         return r.data;
     }
 
