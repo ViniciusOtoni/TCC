@@ -20,21 +20,25 @@ export default function CarrinhoItem() {
     
     const navegation = useHistory()
 
+  
+
+    
     useEffect(carregarCarrinho, [])
 
 
     function removerProduto (id) {
-        let carrinho = produto.filter(x => x.id !== id) 
+        
+        let carrinho = produto.filter( x => x.id !== id ) 
+       
 
         Cookie.set('carrinho', JSON.stringify(carrinho))
         setProduto([...carrinho])
 
-       
-       
-        
+      
         carregarCarrinho()
     }
 
+    console.log(Cookie.get('carrinho'))
     
     function visible(){
         
@@ -52,7 +56,7 @@ export default function CarrinhoItem() {
             ? JSON.parse(carrinho)
             : [];
 
-            if(Cookie.get('carrinho') === undefined)
+            if(carrinho.length === 0 )
             
             navegation.push('/carrinho')
 
@@ -95,7 +99,7 @@ export default function CarrinhoItem() {
                 <div className="agp-realizar">
                     <div className="row-preco"> 
                         <div className="sub-total-baixo"> Sub-Total: </div>
-                        <div className="sub-valor-final"> {` R$: ${Math.round(vlFinal)}`} </div>
+                        <div className="sub-valor-final"> {`R$: ${Math.round(vlFinal)}`} </div>
                     </div>
                     <div className="row-preco"> 
                         <div className="total-valor-baixo"> Total: </div>
