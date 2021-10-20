@@ -13,10 +13,11 @@ export default function VendaUnica(props){
     const [ produto, setProduto ] = useState(props.location.state)
     const [ img, setImg ] = useState(1)
 
-
+    
 
     const navegation = useHistory()
-
+    
+  
 
 
     function comprar() {

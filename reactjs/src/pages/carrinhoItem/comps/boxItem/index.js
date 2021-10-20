@@ -6,6 +6,7 @@ import { useState } from "react"
 import { StyledButtonAdm } from "../../../../components/botaoAdm/styled"
 import { useEffect } from "react"
 import { useHistory } from "react-router"
+import Cookies from "js-cookie"
 
 
 
@@ -42,17 +43,18 @@ export default function BoxItemCarrinho(props) {
 
   
 
-   
+
 
   
 
     useEffect( () => {
-        produto.total = Math.round( produto.preco * qtd);
+       produto.total = Math.round( produto.preco * qtd);
         setTotal(produto.total)
         if(props.respostaFilho)
             props.respostaFilho()
+            
       
-    }, [qtd])
+    }, [qtd] )
  
 
    
