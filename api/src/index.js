@@ -2,6 +2,8 @@ import db from "./db.js";
 import express from "express";
 import cors from "cors";
 import enviarEmail from "./email.js";
+import Api from "../../reactjs/src/services/api.js";
+import { resolveContent } from "nodemailer/lib/shared";
 
 
 const app = express();
@@ -55,9 +57,9 @@ function ordenacao(criterio){
     }
 }
 
-app.get('/produto', async (req,resp) => {
+app.get('/produto:/criterio', async (req,resp) => {
     try{
-        let ord = ordenacao(req.query.criterio);
+        let ord = ordenacao(req.params.criterio);
         let r = await db.infoa_gab_produto.findAll({ 
             order: [ord]
         })
@@ -81,6 +83,18 @@ app.get('/produto', async (req,resp) => {
         resp.send({ erro: `${e.toString()}` })
     }    
 })
+
+app.get('/produto', async (req, resp) => {
+    try {
+        let r = await db.infoa_gab_produto.findAll();
+        resp.send(r);
+
+    } catch (error) {
+        resp.send(`erro no get produto ${error}`)
+    }
+})
+
+
 
 app.get('/produto/:idProduto', async (req, resp) =>{
     try{
@@ -338,8 +352,644 @@ app.put('/login/senha/:codigo', async (req, resp) => {
 
 app.post('/validarCompra', async ( req, resp ) => {
     try {
+        
+    } catch(e) {
+      resp.send(e)
+    }
+  
+  })
 
-        let q = req.body
+
+
+
+
+
+
+app.get('/pedido', async (req, resp) => {
+    try {
+        let x = await db.infoa_gab_entrega.findAll();
+        resp.send(x);
+
+    } catch (error) {
+        resp.send(`Erro no get da rota /pedido ${error}`)
+    }
+})
+
+/*
+app.post('/pedido', async (req, resp) => {
+    try {
+        let corpo = req.body;
+
+        let usuario = await db.infoa_gab_usuario.findOne({ where: { nm_usuario: corpo.usuario } });
+        
+        let quantidade = await db.infoa_gab_venda_item.findOne({ where: { qtd_items: qtd_items, id_venda: total.id_venda }});
+        let total = await db.infoa_gab_venda.findOne({ where: { id_venda: quantidade.id_venda } });
+
+        let r = await db.infoa_gab_entrega.create({
+            id_venda_item: ...,
+            dt_saida: Date.now(),
+            qtd_items: quantidade.qtd_items,
+            total: total.ds_pagamento,
+            ds_situacao: corpo.ds_situacao,
+            usuario: usuario.nm_usuario,
+        })
+
+        resp.send(r);
+
+    } catch (error) {
+        
+    }
+})*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+      let q = req.body
 
       let r1 = await db.infoa_gab_endereco.create({
         ds_cep: q.ds_cep,
@@ -369,7 +1019,7 @@ app.post('/validarCompra', async ( req, resp ) => {
     } catch (error) {
         resp.send({ error: "Xish" })
     }
-})
+})*/
 
 app.get('/validarCompra', async  ( req, resp ) => {
     let r = await db.infoa_gab_cartao.findAll()

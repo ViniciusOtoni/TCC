@@ -1,13 +1,41 @@
 import { StyledButtonAdm } from "../../components/botaoAdm/styled";
 import CabecalhoAdm from "../../components/cabecalhoAdm";
+import { Link } from "react-router-dom";
 
 import Paginacao from "../../components/paginacao";
 import { StyledGerenteCadastrados } from "./styled";
+import { useState, useEffect } from "react";
 
-import { Link } from "react-router-dom";
+import Api from "../../services/api";
+const api = new Api();
+
+
 
 
 export default function GerenteProdutosCadastrados() {
+
+    const [produtos, SetProdutos] = useState ([]);
+
+    async function Listar() {
+        let e = await api.listarProdutos();
+        SetProdutos(e);
+        console.log(produtos);
+    }
+
+
+    
+    useEffect(() => {
+       
+        Listar()
+
+    }, [])
+
+    const [id, setid] = useState('');
+    const [nome, setNome] = useState('');
+    const [codBarra, setCodBarra] = useState('');
+    const [categoria, setCategoria] = useState('');
+    const [preco, setPreco] = useState(0);
+
     return (
         <div style={{backgroundColor:"#333333", minHeight:"100vh"}}> 
       <CabecalhoAdm />
@@ -26,27 +54,19 @@ export default function GerenteProdutosCadastrados() {
                             <th> </th>
                         </thead>
                         <tbody> 
-                            <tr> 
-                                <td style={{paddingLeft:"1em"}}> 1 </td>
-                                <td> Grand theft Auto 5 </td>
-                                <td style={{paddingLeft: "3.8em"}}> 12345678911 </td>
-                                <td style={{paddingLeft:"4em"}}> Xbox </td>
-                                <td>  R$ 999,00 </td>
-                                <td className="botao"  texto="true"> <Link to="/gerenteVizualizar"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </Link> </td>
-                                <td className="botao"> <Link to="/gerenteAlterar">  <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </Link> </td>
-                                <td className="botao">  <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho">  Excluir </StyledButtonAdm>  </td>
-                            </tr>
-                            <tr> 
-                                <td style={{paddingLeft:"1em"}}> 1 </td>
-                                <td> Grand theft Auto 5 </td>
-                                <td style={{paddingLeft: "3.8em"}}> 12345678911 </td>
-                                <td style={{paddingLeft:"4em"}}> Xbox </td>
-                                <td>  R$ 999,00 </td>
-                                <td className="botao1"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </td>
-                                <td className="botao2"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </td>
-                                <td className="botao3"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho">  Excluir </StyledButtonAdm> </td>
-                            </tr>
-                            <tr> 
+                            {produtos.map(info => 
+                                <tr> 
+                                    <td style={{paddingLeft:"1em"}}> {info.id_produto} </td>
+                                    <td> Grand theft Auto 5 </td>
+                                    <td style={{paddingLeft: "3.8em"}}> 12345678911 </td>
+                                    <td style={{paddingLeft:"4em"}}> Xbox </td>
+                                    <td>  R$ 999,00 </td>
+                                    <td className="botao"  texto="true"> <Link to="/gerenteVizualizar"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </Link> </td>
+                                    <td className="botao"> <Link to="/gerenteAlterar">  <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </Link> </td>
+                                    <td className="botao">  <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho">  Excluir </StyledButtonAdm>  </td>
+                                </tr>
+                            )};
+                            {/* <tr> 
                                 <td style={{paddingLeft:"1em"}}> 1 </td>
                                 <td> Grand theft Auto 5 </td>
                                 <td style={{paddingLeft: "3.8em"}}> 12345678911 </td>
@@ -126,6 +146,16 @@ export default function GerenteProdutosCadastrados() {
                                 <td className="botao2"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </td>
                                 <td className="botao3"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho">  Excluir </StyledButtonAdm> </td>
                             </tr>
+                            <tr> 
+                                <td style={{paddingLeft:"1em"}}> 1 </td>
+                                <td> Grand theft Auto 5 </td>
+                                <td style={{paddingLeft: "3.8em"}}> 12345678911 </td>
+                                <td style={{paddingLeft:"4em"}}> Xbox </td>
+                                <td>  R$ 999,00 </td>
+                                <td className="botao1"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </td>
+                                <td className="botao2"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </td>
+                                <td className="botao3"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho">  Excluir </StyledButtonAdm> </td>
+                            </tr> */}
                         </tbody>
                     </table>
                     <div className="footer"> 

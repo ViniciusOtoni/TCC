@@ -1,12 +1,19 @@
 import React from "react"
 
-import { StyledButtonAdm } from "../../components/botaoAdm/styled"
-import CabecalhoAdm from "../../components/cabecalhoAdm"
-import Paginacao from "../../components/paginacao"
+import { StyledButtonAdm } from "../../components/botaoAdm/styled";
+import CabecalhoAdm from "../../components/cabecalhoAdm";
+import Paginacao from "../../components/paginacao";
 
-import { Vizualizar } from "./styled"
+import { Vizualizar } from "./styled";
+import { useState, useEffect } from "react";
+import Api from "../../services/api";
+const api = new Api();
  
 export default function GerenteVizualizar(){
+   
+    
+
+
      return(
          <div style={{ backgroundColor:"#333333" }}>
              <CabecalhoAdm nulob={true}/>

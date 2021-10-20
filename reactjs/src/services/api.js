@@ -43,6 +43,8 @@ export default class Api {
         return r.data
     }
 
+
+    
     async cadastrarProduto( nm_produto, vl_preco, ds_categoria, ds_codigo_barra, bt_situacao, vl_avaliacao, img_produto, img_secundaria, img_terciaria, img_quartenaria) {
         
         let jsonProduto = {
