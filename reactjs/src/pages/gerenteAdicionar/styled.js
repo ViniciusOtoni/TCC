@@ -91,10 +91,10 @@ const StyledGerenteAlterar = styled.div`
         padding-right: 6.5em;
     }
     .topico7 {
-        padding-right: 6.5em;
+        padding-right: 8em;
     }
     .topico8 {
-        padding-right: 6.5em;
+        padding-right: 6.1em;
     }
     .topico9 {
         padding-right: 6.7em;

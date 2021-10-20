@@ -39,28 +39,46 @@ export default class Api {
     }
 
     async listarProdutos(order) {
-        let r = await api.get('/produto?criterio=' + order)
+        let r = await api.get('/produto/criterio/' + order)
         return r.data
     }
 
+    async listarProdutos2() {
+        let r = await api.get('/produto');
+        return r.data;
+    }
 
-    
-    async cadastrarProduto( nm_produto, vl_preco, ds_categoria, ds_codigo_barra, bt_situacao, vl_avaliacao, img_produto, img_secundaria, img_terciaria, img_quartenaria) {
+    async AlterarProduto( nm_produto, vl_preco, ds_categoria, ds_codigo_barra, img_produto, img_secundaria, img_terciaria, img_quartenaria, idProduto) {
         
         let jsonProduto = {
             nm_produto,
             vl_preco,
             ds_categoria,
             ds_codigo_barra,
-            bt_situacao,
-            vl_avaliacao,
             img_produto,
             img_secundaria,
             img_terciaria,
             img_quartenaria
         }
 
-        let r = await api.post(`/produtos`, jsonProduto);
+        let r = await api.put(`/produto/${idProduto}`, jsonProduto);
+        return r.data;
+    }
+    
+    async cadastrarProduto( nm_produto, vl_preco, ds_categoria, ds_codigo_barra, img_produto, img_secundaria, img_terciaria, img_quartenaria) {
+        
+        let jsonProduto = {
+            nm_produto,
+            vl_preco,
+            ds_categoria,
+            ds_codigo_barra,
+            img_produto,
+            img_secundaria,
+            img_terciaria,
+            img_quartenaria
+        }
+
+        let r = await api.post(`/produto`, jsonProduto);
         return r.data;
     }
 Z
@@ -151,8 +169,8 @@ Z
         return r.data;
     }
 
-    async removerProduto(id) {
-        let r = await api.delete(`/produto/${id}`);
+    async removerProduto(idProduto) {
+        let r = await api.delete(`/produto/${idProduto}`);
         return r.data;
     }
 

@@ -14,12 +14,23 @@ const api = new Api();
 
 export default function GerenteProdutosCadastrados() {
 
-    const [produtos, SetProdutos] = useState ([]);
+    const [produtos, SetProdutos] = useState([]);
+  
+
 
     async function Listar() {
-        let e = await api.listarProdutos();
+        let e = await api.listarProdutos2();
         SetProdutos(e);
-        console.log(produtos);
+        console.log(produtos.id_produto);
+
+
+    }
+
+    async function Remover(info) {
+        let r = await api.removerProduto(info.id_produto)
+        alert('Produto removido')
+        Listar();
+        return r;
     }
 
 
@@ -30,12 +41,7 @@ export default function GerenteProdutosCadastrados() {
 
     }, [])
 
-    const [id, setid] = useState('');
-    const [nome, setNome] = useState('');
-    const [codBarra, setCodBarra] = useState('');
-    const [categoria, setCategoria] = useState('');
-    const [preco, setPreco] = useState(0);
-
+    
     return (
         <div style={{backgroundColor:"#333333", minHeight:"100vh"}}> 
       <CabecalhoAdm />
@@ -57,105 +63,15 @@ export default function GerenteProdutosCadastrados() {
                             {produtos.map(info => 
                                 <tr> 
                                     <td style={{paddingLeft:"1em"}}> {info.id_produto} </td>
-                                    <td> Grand theft Auto 5 </td>
-                                    <td style={{paddingLeft: "3.8em"}}> 12345678911 </td>
-                                    <td style={{paddingLeft:"4em"}}> Xbox </td>
-                                    <td>  R$ 999,00 </td>
-                                    <td className="botao"  texto="true"> <Link to="/gerenteVizualizar"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </Link> </td>
-                                    <td className="botao"> <Link to="/gerenteAlterar">  <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </Link> </td>
-                                    <td className="botao">  <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho">  Excluir </StyledButtonAdm>  </td>
+                                    <td> {info.nm_produto} </td>
+                                    <td style={{paddingLeft: "3.8em"}}> {info.ds_codigo_barra}</td>
+                                    <td style={{paddingLeft:"4em"}}> {info.ds_categoria} </td>
+                                    <td>  {info.vl_preco} </td>
+                                    <td className="botao"  texto="true"> <Link to={{pathname: "/gerenteVizualizar", state: info}}> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </Link> </td>
+                                    <td className="botao">  <Link to={{pathname: "/gerenteAlterar", state: info.id_produto}}>  <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </Link> </td>
+                                    <td className="botao">  <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho" onClick={() => Remover(info)}>  Excluir </StyledButtonAdm>  </td>
                                 </tr>
                             )};
-                            {/* <tr> 
-                                <td style={{paddingLeft:"1em"}}> 1 </td>
-                                <td> Grand theft Auto 5 </td>
-                                <td style={{paddingLeft: "3.8em"}}> 12345678911 </td>
-                                <td style={{paddingLeft:"4em"}}> Xbox </td>
-                                <td>  R$ 999,00 </td>
-                                <td className="botao1"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </td>
-                                <td className="botao2"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </td>
-                                <td className="botao3"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho">  Excluir </StyledButtonAdm> </td>
-                            </tr>
-                            <tr> 
-                                <td style={{paddingLeft:"1em"}}> 1 </td>
-                                <td> Grand theft Auto 5 </td>
-                                <td style={{paddingLeft: "3.8em"}}> 12345678911 </td>
-                                <td style={{paddingLeft:"4em"}}> Xbox </td>
-                                <td>  R$ 999,00 </td>
-                                <td className="botao1"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </td>
-                                <td className="botao2"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </td>
-                                <td className="botao3"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho">  Excluir </StyledButtonAdm> </td>
-                            </tr>
-                            <tr> 
-                                <td style={{paddingLeft:"1em"}}> 1 </td>
-                                <td> Grand theft Auto 5 </td>
-                                <td style={{paddingLeft: "3.8em"}}> 12345678911 </td>
-                                <td style={{paddingLeft:"4em"}}> Xbox </td>
-                                <td>  R$ 999,00 </td>
-                                <td className="botao1"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </td>
-                                <td className="botao2"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </td>
-                                <td className="botao3"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho">  Excluir </StyledButtonAdm> </td>
-                            </tr>
-                            <tr> 
-                                <td style={{paddingLeft:"1em"}}> 1 </td>
-                                <td> Grand theft Auto 5 </td>
-                                <td style={{paddingLeft: "3.8em"}}> 12345678911 </td>
-                                <td style={{paddingLeft:"4em"}}> Xbox </td>
-                                <td>  R$ 999,00 </td>
-                                <td className="botao1"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </td>
-                                <td className="botao2"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </td>
-                                <td className="botao3"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho">  Excluir </StyledButtonAdm> </td>
-                            </tr>
-                            <tr> 
-                                <td style={{paddingLeft:"1em"}}> 1 </td>
-                                <td> Grand theft Auto 5 </td>
-                                <td style={{paddingLeft: "3.8em"}}> 12345678911 </td>
-                                <td style={{paddingLeft:"4em"}}> Xbox </td>
-                                <td>  R$ 999,00 </td>
-                                <td className="botao1"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </td>
-                                <td className="botao2"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </td>
-                                <td className="botao3"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho">  Excluir </StyledButtonAdm> </td>
-                            </tr>
-                            <tr> 
-                                <td style={{paddingLeft:"1em"}}> 1 </td>
-                                <td> Grand theft Auto 5 </td>
-                                <td style={{paddingLeft: "3.8em"}}> 12345678911 </td>
-                                <td style={{paddingLeft:"4em"}}> Xbox </td>
-                                <td>  R$ 999,00 </td>
-                                <td className="botao1"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </td>
-                                <td className="botao2"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </td>
-                                <td className="botao3"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho">  Excluir </StyledButtonAdm> </td>
-                            </tr>
-                            <tr> 
-                                <td style={{paddingLeft:"1em"}}> 1 </td>
-                                <td> Grand theft Auto 5 </td>
-                                <td style={{paddingLeft: "3.8em"}}> 12345678911 </td>
-                                <td style={{paddingLeft:"4em"}}> Xbox </td>
-                                <td>  R$ 999,00 </td>
-                                <td className="botao1"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </td>
-                                <td className="botao2"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </td>
-                                <td className="botao3"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho">  Excluir </StyledButtonAdm> </td>
-                            </tr>
-                            <tr> 
-                                <td style={{paddingLeft:"1em"}}> 1 </td>
-                                <td> Grand theft Auto 5 </td>
-                                <td style={{paddingLeft: "3.8em"}}> 12345678911 </td>
-                                <td style={{paddingLeft:"4em"}}> Xbox </td>
-                                <td>  R$ 999,00 </td>
-                                <td className="botao1"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </td>
-                                <td className="botao2"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </td>
-                                <td className="botao3"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho">  Excluir </StyledButtonAdm> </td>
-                            </tr>
-                            <tr> 
-                                <td style={{paddingLeft:"1em"}}> 1 </td>
-                                <td> Grand theft Auto 5 </td>
-                                <td style={{paddingLeft: "3.8em"}}> 12345678911 </td>
-                                <td style={{paddingLeft:"4em"}}> Xbox </td>
-                                <td>  R$ 999,00 </td>
-                                <td className="botao1"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </td>
-                                <td className="botao2"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </td>
-                                <td className="botao3"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho">  Excluir </StyledButtonAdm> </td>
-                            </tr> */}
                         </tbody>
                     </table>
                     <div className="footer"> 
@@ -197,7 +113,7 @@ export default function GerenteProdutosCadastrados() {
                             <div className="valor-coluna"> <StyledButtonAdm cor='vermelho' className="styled3"> Excluir </StyledButtonAdm> </div>
                         </div>
                        <div className="pag"> <Paginacao /> </div>
-                       <div className="back"> <StyledButtonAdm cor="vermelho" style={{width:"10em"}}> Voltar </StyledButtonAdm> </div>
+                       <div className="back"> <Link to="/gerenteEscolha"><StyledButtonAdm cor="vermelho" style={{width:"10em"}} > Voltar </StyledButtonAdm></Link> </div>
                     </main>
                     
             </StyledGerenteCadastrados>

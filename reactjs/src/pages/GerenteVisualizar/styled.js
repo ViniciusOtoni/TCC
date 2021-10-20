@@ -70,6 +70,11 @@ const Vizualizar = styled.div`
         padding: .7em 2.5em;
     }
 
+    .footer .voltar {
+        margin-right: 18em;
+        width: 10em;
+    }
+
     .footer {
         displaY: flex;
         flex-direction: row;
@@ -79,10 +84,7 @@ const Vizualizar = styled.div`
        
     }
 
-    .voltar {
-        margin-right: 20%;
-        width: 10em;
-    }
+    
 
     
 

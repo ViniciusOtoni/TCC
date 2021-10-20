@@ -5,14 +5,21 @@ import CabecalhoAdm from "../../components/cabecalhoAdm";
 import Paginacao from "../../components/paginacao";
 
 import { Vizualizar } from "./styled";
-import { useState, useEffect } from "react";
+import { useState} from "react";
+import { Link } from "react-router-dom";
 import Api from "../../services/api";
+
 const api = new Api();
  
-export default function GerenteVizualizar(){
-   
+export default function GerenteVizualizar(props){
+    const [infoProduto, setInfoProduto] = useState(props.location.state);
+
     
 
+   
+
+    
+    console.log(infoProduto);
 
      return(
          <div style={{ backgroundColor:"#333333" }}>
@@ -22,7 +29,7 @@ export default function GerenteVizualizar(){
                         <div className="content">
                             <div className="line alternating">
                                 <div> Nome: </div>
-                                <div className="line-value"> GTA </div>
+                                <div className="line-value"> {infoProduto.nm_produto} </div>
                             </div>
                             <div className="line">
                                 <div> CNPJ: </div>
@@ -30,7 +37,7 @@ export default function GerenteVizualizar(){
                             </div>
                             <div className="line alternating">
                                 <div className="line-topic"> Cadastro-em: </div>
-                                <div className="line-value"> 2021/10/11 </div>
+                                <div className="line-value"> {infoProduto.dt_cadastro} </div>
                             </div>
                             <div className="line">
                                 <div className="line-topic"> Cadastro-por: </div>
@@ -42,23 +49,23 @@ export default function GerenteVizualizar(){
                             </div>
                             <div className="line">
                                 <div className="line-topic"> ID do Produto: </div>
-                                <div className="line-value"> #5 </div>
+                                <div className="line-value"> #{infoProduto.id_produto} </div>
                             </div>
                             <div className="line alternating">
                                 <div> Preço: </div>
-                                <div className="line-value"> R$ 999,00 </div>
+                                <div className="line-value"> {infoProduto.vl_preco} </div>
                             </div>
                             <div className="line">
                                 <div> Categoria: </div>
-                                <div className="line-value"> Game </div>
+                                <div className="line-value"> {infoProduto.ds_categoria} </div>
                             </div>
                             <div className="line alternating">
                                 <div className="line-topic"> Códido de Barra: </div>
-                                <div className="line-value">  12345678911 </div>
+                                <div className="line-value">  {infoProduto.ds_codigo_barra} </div>
                             </div>
                         </div>
                         <div className="footer"> 
-                        <StyledButtonAdm cor="vermelho" className="voltar"> Voltar </StyledButtonAdm>
+                        <Link to="/gerenteCadastrar"><StyledButtonAdm cor="vermelho" className="voltar"> Voltar </StyledButtonAdm></Link>
                         <div className="pag"> <Paginacao /> </div>
                     </div>
                         
