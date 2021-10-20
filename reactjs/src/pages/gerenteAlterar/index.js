@@ -1,7 +1,7 @@
 import { StyledGerenteAlterar } from "./styled";
 import { StyledInput, StyledSelect } from "../../components/input/styled";
 import { StyledButtonAdm } from "../../components/botaoAdm/styled";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import CabecalhoAdm from "../../components/cabecalhoAdm";
 import { Link, useHistory } from "react-router-dom";
@@ -11,16 +11,16 @@ const api = new Api();
 
 
 export default function GerenteAlterar(props) {
-
-    const [nome, setNome] = useState('');
+    const [infoProduto, setInfoProduto] = useState(props.location.state)
+    const [nome, setNome] = useState();
     const [codBarra, setCodBarra] = useState('');
     const [categoria, setCategoria] = useState('');
-    const [preco, setPreco] = useState(0);
+    const [preco, setPreco] = useState();
     const [imagemPrincipal, setImagemPrincipal] = useState('');
     const [imagemSecundaria, setImagemSecundaria] = useState('');
     const [imagemTerciaria, setImagemTerciaria] = useState('');
     const [imagemQuartenaria, setImagemQuartenaria] = useState('');
-    const [id, setId] = useState(props.location.state)
+    
     const navigation = useHistory();
 
 
@@ -34,13 +34,31 @@ export default function GerenteAlterar(props) {
             imagemSecundaria,
             imagemTerciaria,
             imagemQuartenaria,
-            id
+            infoProduto.id_produto
         )
         alert("Produto alterado")
         navigation.push('/gerenteCadastrar');
     }
 
-   
+    function SetVar() {
+        setNome(infoProduto.nm_produto);
+        setCodBarra(infoProduto.ds_codigo_barra);
+        setCategoria(infoProduto.ds_categoria);
+        setPreco(infoProduto.vl_preco);
+        setImagemPrincipal(infoProduto.img_produto);
+        setImagemSecundaria(infoProduto.img_secundaria);
+        setImagemTerciaria(infoProduto.img_terciaria);
+        setImagemQuartenaria(infoProduto.img_quartenaria);
+    }
+
+    useEffect(() => {
+       
+        SetVar()
+
+    }, [])
+
+
+   console.log(infoProduto.id_produto)
 
     return (
         <div style={{backgroundColor:"#333333"}}> 

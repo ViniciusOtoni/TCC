@@ -59,8 +59,10 @@ td {
 }
 
 .buttonADM {
-    margin-right: 30%;
+    margin-right: 20em;
 }
+
+
 
 
 
