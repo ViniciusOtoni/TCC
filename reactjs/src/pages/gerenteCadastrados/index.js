@@ -67,15 +67,15 @@ export default function GerenteProdutosCadastrados() {
                                     <td style={{paddingLeft: "3.8em"}}> {info.ds_codigo_barra}</td>
                                     <td style={{paddingLeft:"4em"}}> {info.ds_categoria} </td>
                                     <td>  {info.vl_preco} </td>
-                                    <td className="botao"  texto="true"> <Link to={{pathname: "/gerenteVizualizar", state: info}}> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em"}}> Visualizar </StyledButtonAdm> </Link> </td>
-                                    <td className="botao">  <Link to={{pathname: "/gerenteAlterar", state: info.id_produto}}>  <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </Link> </td>
+                                    <td className="botaoVerde"  texto="true"> <Link to={{pathname: "/gerenteVizualizar", state: info}}> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em", marginRight: ".3em"}}> Visualizar </StyledButtonAdm> </Link> </td>
+                                    <td className="botao">  <Link to={{pathname: "/gerenteAlterar", state: info}}>  <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </Link> </td>
                                     <td className="botao">  <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}}  cor="vermelho" onClick={() => Remover(info)}>  Excluir </StyledButtonAdm>  </td>
                                 </tr>
                             )};
                         </tbody>
                     </table>
                     <div className="footer"> 
-                        <StyledButtonAdm cor="vermelho"  className='buttonADM'> Voltar </StyledButtonAdm>
+                       <Link to="/gerenteEscolha"> <StyledButtonAdm cor="vermelho"  className='buttonADM'> Voltar </StyledButtonAdm> </Link>
                         <Paginacao/>  
                     </div>
                     </main>
