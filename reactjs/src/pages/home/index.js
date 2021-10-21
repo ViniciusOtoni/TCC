@@ -75,7 +75,7 @@ export default function Home() {
                 <div className="lista-produtos">  
                         <Carousel   responsive={responsive}
                                     infinite={true}
-                                    showDots={true}
+                                    showDots={false}
                                     autoPlay={true}
                                     containerClass="carousel-container"
                                     dotListClass="custom-dot-list-style">

@@ -9,6 +9,7 @@ const StyledGerenteAlterar = styled.div`
     flex-direction: column;
     padding: 2em;
    
+   
 
     main {
         width: 1240px;

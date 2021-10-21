@@ -1,38 +1,42 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infod_ssc_endereco extends Model {
+export default class insf_tb_produto extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_endereco: {
+    id_produto: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    ds_endereco: {
-      type: DataTypes.STRING(255),
+    nm_produto: {
+      type: DataTypes.STRING(100),
       allowNull: true
     },
-    nr_endereco: {
-      type: DataTypes.INTEGER,
+    ds_produto: {
+      type: DataTypes.STRING(800),
       allowNull: true
     },
-    ds_cep: {
-      type: DataTypes.STRING(255),
+    vl_preco: {
+      type: DataTypes.DECIMAL(15,2),
       allowNull: true
     },
-    nm_cidade: {
-      type: DataTypes.STRING(255),
+    img_produto: {
+      type: DataTypes.STRING(400),
       allowNull: true
     },
-    ds_complemeno: {
-      type: DataTypes.STRING(255),
+    dt_lancamento: {
+      type: DataTypes.DATEONLY,
+      allowNull: true
+    },
+    bt_ativo: {
+      type: DataTypes.BOOLEAN,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infod_ssc_endereco',
+    tableName: 'insf_tb_produto',
     timestamps: false,
     indexes: [
       {
@@ -40,11 +44,11 @@ export default class infod_ssc_endereco extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_endereco" },
+          { name: "id_produto" },
         ]
       },
     ]
   });
-  return infod_ssc_endereco;
+  return insf_tb_produto;
   }
 }

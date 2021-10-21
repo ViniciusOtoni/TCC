@@ -12,11 +12,15 @@ export default class infoa_gab_entrega extends Model {
     },
     id_endereco: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'infoa_gab_endereco',
+        key: 'id_endereco'
+      }
     },
-        ds_situacao: {
-          type: DataTypes.STRING(255),
-          allowNull: true
+    ds_situacao: {
+      type: DataTypes.STRING(255),
+      allowNull: true
     },
     dt_saida: {
       type: DataTypes.DATE,
@@ -28,7 +32,11 @@ export default class infoa_gab_entrega extends Model {
     },
     id_venda_item: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'infoa_gab_venda_item',
+        key: 'id_venda_item'
+      }
     }
   }, {
     sequelize,
@@ -45,7 +53,7 @@ export default class infoa_gab_entrega extends Model {
       },
       {
         name: "id_endereco",
-        using: "BTREE", 
+        using: "BTREE",
         fields: [
           { name: "id_endereco" },
         ]

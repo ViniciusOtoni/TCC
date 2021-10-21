@@ -1,26 +1,22 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infod_ssc_estoque extends Model {
+export default class infoc_nws_tb_categoria extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_estoque: {
+    id_categoria: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_produto: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    qtd_disponivel: {
-      type: DataTypes.INTEGER,
+    ds_tema: {
+      type: DataTypes.STRING(255),
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infod_ssc_estoque',
+    tableName: 'infoc_nws_tb_categoria',
     timestamps: false,
     indexes: [
       {
@@ -28,18 +24,11 @@ export default class infod_ssc_estoque extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_estoque" },
-        ]
-      },
-      {
-        name: "id_produto",
-        using: "BTREE",
-        fields: [
-          { name: "id_produto" },
+          { name: "id_categoria" },
         ]
       },
     ]
   });
-  return infod_ssc_estoque;
+  return infoc_nws_tb_categoria;
   }
 }

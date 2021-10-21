@@ -4,6 +4,8 @@ import cors from "cors";
 import enviarEmail from "./email.js";
 
 
+import  Sequelize from "sequelize";
+const { Op } = Sequelize;
 
 const app = express();
 app.use(cors());
@@ -14,11 +16,11 @@ app.use(express.json());
   
 
 
-
-
 app.get('/produto/populares', async (req,resp) => {
     try{
-        let r = await db.infoa_gab_produto.findAll({ where: { vl_avaliacao: 4 }})
+        let r = await db.infoa_gab_produto.findAll({ where: 
+            { vl_avaliacao:  
+                 { [Op.gte]: '4' } } })
         
         r = r.map(item => {
             return {
@@ -48,7 +50,7 @@ function ordenacao(criterio){
         case 'menor-maior' : return ['vl_preco', 'asc'];
         case 'maior-menor' : return ['vl_preco', 'desc'];
         case 'lancamento' : return ['dt_cadastro', 'asc'];
-        case 'avaliacao' : return ['vl_avaliacao', 'desc'];
+        case 'avaliacao'  : return ['vl_avaliacao', 'desc'];
         case 'A-Z' : return ['nm_produto', 'asc'];
         case 'Z-A' : return ['nm_produto', 'desc'];
 
@@ -56,9 +58,9 @@ function ordenacao(criterio){
     }
 }
 
-app.get('/produto:/criterio', async (req,resp) => {
+app.get('/produto', async (req,resp) => {
     try{
-        let ord = ordenacao(req.params.criterio);
+        let ord = ordenacao(req.query.criterio);
         let r = await db.infoa_gab_produto.findAll({ 
             order: [ord]
         })
@@ -83,11 +85,10 @@ app.get('/produto:/criterio', async (req,resp) => {
     }    
 })
 
-app.get('/produto', async (req, resp) => {
+app.get('/produtos', async (req, resp) => {
     try {
         let r = await db.infoa_gab_produto.findAll();
         resp.send(r);
-
     } catch (error) {
         resp.send(`erro no get produto ${error}`)
     }
@@ -99,6 +100,7 @@ app.get('/produto/:idProduto', async (req, resp) =>{
     try{
         let r = await db.infoa_gab_produto.findOne({ where: { id_produto: req.params.idProduto }})
         resp.send(r);
+
     } catch (e){
         resp.send({ erro: `${e.toString()}` })
     }    
@@ -107,7 +109,7 @@ app.get('/produto/:idProduto', async (req, resp) =>{
 app.post('/produto', async (req, resp) => {
     try{
         let l = req.body
-
+   
         let r = await db.infoa_gab_produto.create({
             nm_produto: l.nm_produto, 
             vl_preco: l.vl_preco,
@@ -115,7 +117,7 @@ app.post('/produto', async (req, resp) => {
             ds_categoria: l.ds_categoria,
             ds_codigo_barra: l.ds_codigo_barra,
             bt_situacao: true,
-            vl_avaliacao: '4',
+            vl_avaliacao:  5,
             img_produto: l.img_produto,
             img_secundaria: l.img_secundaria,
             img_terciaria: l.img_terciaria,
@@ -141,7 +143,7 @@ app.put('/produto/:idProduto', async (req, resp) => {
             ds_categoria: l.ds_categoria,
             ds_codigo_barra: l.ds_codigo_barra,
             bt_situacao: true,
-            vl_avaliacao: '4',
+            vl_avaliacao: [ l.vl_avaliacao ],
             img_produto: l.img_produto,
             img_secundaria: l.img_secundaria,
             img_terciaria: l.img_terciaria,
@@ -161,11 +163,23 @@ app.put('/produto/:idProduto', async (req, resp) => {
 //Sistema de avaliação
 app.put('/produto/avaliacao/:idProduto', async (req, resp) => {
     try {
+        
         let r = req.body;
 
+        let r3 = await db.infoa_gab_produto.findOne({
+            where: {
+                id_produto: req.params.idProduto
+            }   
+        })
+
+      
+       let avaliacao = (r3.vl_avaliacao + r.vl_avaliacao) / 2
+
         let r1 = await  db.infoa_gab_produto.update({
-            vl_avaliacao: r.vl_avaliacao
-        },{ where: { id_produto: req.params.idProduto } })
+            vl_avaliacao: avaliacao
+        }, { where: { id_produto: req.params.idProduto } })
+
+        
 
         resp.sendStatus(200)
 
@@ -180,6 +194,9 @@ app.put('/produto/avaliacao/:idProduto', async (req, resp) => {
 app.delete('/produto/:idProduto', async (req, resp) => {
     
     try {
+
+
+        
     let r = await db.infoa_gab_produto.destroy({
        where: {
            id_produto : req.params.idProduto
@@ -188,6 +205,30 @@ app.delete('/produto/:idProduto', async (req, resp) => {
     resp.sendStatus(200); } catch (e) {
         resp.send( e.toString() )
     }
+})
+
+app.post('/cadastrarGerente', async ( req, resp ) => {
+    let r = req.body;
+
+    let u1 = await db.infoa_gab_usuario.findOne({ where: { ds_cpf: r.ds_cpf } })
+    if(u1 != null)
+    resp.send( { error: 'CPF já foi cadastrado!' } );
+
+    let u2 = await db.infoa_gab_usuario.findOne({ where: { ds_email: r.ds_email  } })
+    if(u2 != null)
+    resp.send( { error: 'Email já foi cadastrado!' } );
+
+    let l = await db.infoa_gab_usuario.create( {
+        nm_usuario: r.nm_usuario,
+        ds_cpf: r.ds_cpf,
+        ds_email: r.ds_email,
+        ds_senha: r.ds_senha,
+        img_usuario: r.img_usuario,
+        ds_codigo: 'sanidjasnasdasda',
+        bt_gerente: true
+    })
+
+    resp.send(l);
 })
 
 
@@ -218,7 +259,7 @@ try {
         ds_email: r.ds_email,
         ds_senha: r.ds_senha,
         img_usuario: r.img_usuario,
-        ds_codigo: '',
+        ds_codigo: 'sanidjasnasdasda',
         bt_gerente: false
     })
 

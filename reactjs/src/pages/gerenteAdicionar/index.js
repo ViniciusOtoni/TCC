@@ -45,7 +45,7 @@ export default function GerenteAlterar() {
    
 
     return (
-        <div style={{backgroundColor:"#333333"}}> 
+        <div style={{backgroundColor:"#333333", minHeight:"100vh"}}> 
         <CabecalhoAdm nulo='true' />
             
                 <StyledGerenteAlterar> 

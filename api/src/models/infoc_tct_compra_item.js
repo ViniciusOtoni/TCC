@@ -1,10 +1,10 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infod_ssc_item_venda extends Model {
+export default class infoc_tct_compra_item extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_item_venda: {
+    id_pedido: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -12,15 +12,23 @@ export default class infod_ssc_item_venda extends Model {
     },
     id_produto: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'infoc_tct_produto',
+        key: 'id_produto'
+      }
     },
-    id_venda: {
+    id_compra: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'infoc_tct_compra',
+        key: 'id_compra'
+      }
     }
   }, {
     sequelize,
-    tableName: 'infod_ssc_item_venda',
+    tableName: 'infoc_tct_compra_item',
     timestamps: false,
     indexes: [
       {
@@ -28,7 +36,7 @@ export default class infod_ssc_item_venda extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_item_venda" },
+          { name: "id_pedido" },
         ]
       },
       {
@@ -39,14 +47,14 @@ export default class infod_ssc_item_venda extends Model {
         ]
       },
       {
-        name: "id_venda",
+        name: "id_compra",
         using: "BTREE",
         fields: [
-          { name: "id_venda" },
+          { name: "id_compra" },
         ]
       },
     ]
   });
-  return infod_ssc_item_venda;
+  return infoc_tct_compra_item;
   }
 }
