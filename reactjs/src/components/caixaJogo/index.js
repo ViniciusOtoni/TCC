@@ -12,8 +12,8 @@ const api = new Api()
 export default function CaixaJogo(props) {
 
 
-    const [ vlAvaliacao, setVlAvaliacao ] = useState(0)
-    const [ id, setId ] = useState(1)
+    const [ vlAvaliacao, setVlAvaliacao ] = useState(4)
+    const [ id, setId ] = useState(4)
 
     const atualizarAvaliacao = async () => {
         const e = api.alterarAvaliacao(id, vlAvaliacao )

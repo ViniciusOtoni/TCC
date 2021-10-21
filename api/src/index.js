@@ -4,6 +4,8 @@ import cors from "cors";
 import enviarEmail from "./email.js";
 
 
+import  Sequelize from "sequelize";
+const { Op } = Sequelize;
 
 const app = express();
 app.use(cors());
@@ -14,11 +16,11 @@ app.use(express.json());
   
 
 
-
-
 app.get('/produto/populares', async (req,resp) => {
     try{
-        let r = await db.infoa_gab_produto.findAll({ where: { vl_avaliacao: 2 }})
+        let r = await db.infoa_gab_produto.findAll({ where: 
+            { vl_avaliacao:  
+                 { [Op.gte]: '4' } } })
         
         r = r.map(item => {
             return {
@@ -115,7 +117,7 @@ app.post('/produto', async (req, resp) => {
             ds_categoria: l.ds_categoria,
             ds_codigo_barra: l.ds_codigo_barra,
             bt_situacao: true,
-            vl_avaliacao:  4,
+            vl_avaliacao:  5,
             img_produto: l.img_produto,
             img_secundaria: l.img_secundaria,
             img_terciaria: l.img_terciaria,
