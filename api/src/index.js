@@ -139,16 +139,13 @@ app.put('/produto/:idProduto', async (req, resp) => {
         let r = await db.infoa_gab_produto.update({
             nm_produto: l.nm_produto, 
             vl_preco: l.vl_preco,
-            dt_cadastro: Date.now(),
             ds_categoria: l.ds_categoria,
             ds_codigo_barra: l.ds_codigo_barra,
-            bt_situacao: true,
-            vl_avaliacao: [ l.vl_avaliacao ],
             img_produto: l.img_produto,
             img_secundaria: l.img_secundaria,
             img_terciaria: l.img_terciaria,
             img_quartenaria: l.img_quartenaria,
-            qtd_parcelas: 0
+            
         },
         {
             where: { id_produto: req.params.idProduto }
@@ -398,7 +395,36 @@ app.put('/login/senha/:codigo', async (req, resp) => {
 
 app.post('/validarCompra', async ( req, resp ) => {
     try {
-        
+        const r = req.body;
+
+        const usuarioLogado = await db.infoa_gab_usuario.findOne({
+            where: {
+                ds_email: r.ds_email,
+                ds_senha: r.ds_senha,
+                nm_usuario: r.nm_usuario
+            }
+        })
+
+        const cartaoUsuario = await db.infoa_gab_cartao.create({
+            id_usuario: usuarioLogado.id_usuario,
+            ds_cv: r.ds_cv,
+            nr_agencia: r.nr_agencia,
+            nm_titular: r.nm_titular,
+            dt_validade: r.dt_validade,
+            nr_cartao: r.nr_cartao,
+            ds_cpf_titular: r.ds_cpf_titular
+        })
+
+        const enderecoUsuario = await db.infoa_gab_endereco.create({
+            id_usuario: usuarioLogado.id_usuario,
+            nm_bairro: r.nm_bairro,
+            nm_rua: r.nm_rua,
+            nr_numero_rua: r.nr_numero_rua,
+            ds_cep: r.ds_cep,
+            ds_complemento: r.ds_complemento
+        })
+
+
     } catch(e) {
       resp.send(e)
     }

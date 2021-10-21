@@ -101,7 +101,7 @@ const StyledCabecalho = styled.div `
 
     .user-login {
         color: ${props => props.corLetra === 'branco' ? '#ffffff' : '#F0AC54'};
-        display: ${props => props.corLetra === 'nulo'  ? 'block' : 'block' };
+        display: ${props => props.corLetra === 'nulo'  ? 'none' : 'block' };
         font-family: MontserratBold;
         font-size: 1.5em;
         width: 12em;
