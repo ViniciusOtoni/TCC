@@ -113,7 +113,7 @@ export default function Cabecalho(props) {
                 
                 <img src={img} alt="" />
               </div>
-              <div className="login"> {nm} </div>
+              <div className="user-login"> {nm} </div>
             </div>
           )}
         </Link>

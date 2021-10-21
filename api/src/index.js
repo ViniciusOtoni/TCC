@@ -205,6 +205,30 @@ app.delete('/produto/:idProduto', async (req, resp) => {
     }
 })
 
+app.post('/cadastrarGerente', async ( req, resp ) => {
+    let r = req.body;
+
+    let u1 = await db.infoa_gab_usuario.findOne({ where: { ds_cpf: r.ds_cpf } })
+    if(u1 != null)
+    resp.send( { error: 'CPF já foi cadastrado!' } );
+
+    let u2 = await db.infoa_gab_usuario.findOne({ where: { ds_email: r.ds_email  } })
+    if(u2 != null)
+    resp.send( { error: 'Email já foi cadastrado!' } );
+
+    let l = await db.infoa_gab_usuario.create( {
+        nm_usuario: r.nm_usuario,
+        ds_cpf: r.ds_cpf,
+        ds_email: r.ds_email,
+        ds_senha: r.ds_senha,
+        img_usuario: r.img_usuario,
+        ds_codigo: 'sanidjasnasdasda',
+        bt_gerente: true
+    })
+
+    resp.send(l);
+})
+
 
 // Cadastrar Usuario
 app.post('/cadastrar', async (req, resp) => {
@@ -233,7 +257,7 @@ try {
         ds_email: r.ds_email,
         ds_senha: r.ds_senha,
         img_usuario: r.img_usuario,
-        ds_codigo: '',
+        ds_codigo: 'sanidjasnasdasda',
         bt_gerente: false
     })
 

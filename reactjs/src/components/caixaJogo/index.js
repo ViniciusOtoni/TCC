@@ -23,7 +23,9 @@ export default function CaixaJogo(props) {
     return (
        <StyledJogo> 
         <div className="imagem-jogo"> <img src={props.info.imagem} alt="" /> </div>
-        <div className="nome-jogo" title={props.info.produto}> {props.info.produto}  </div> 
+        <div className="nome-jogo" title={props.info.produto}> {props.info.produto != null && props.info.produto.length >= 27
+                                                                                                        ? props.info.produto.substr(0, 27) + "..."
+                                                                                                        : props.info.produto}  </div> 
         <div class="row1"> 
             <div class="avaliacao"> <img onClick={() =>  atualizarAvaliacao()}  src="/assets/images/bi_star.svg" alt="" /></div>
             <div class="avaliacao"> <img onClick={() =>  atualizarAvaliacao()} src="/assets/images/bi_star.svg" alt="" /> </div>

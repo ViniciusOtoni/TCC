@@ -58,10 +58,10 @@ export default function GerenteAlterar(props) {
     }, [])
 
 
-   console.log(infoProduto.id_produto)
+    
 
     return (
-        <div style={{backgroundColor:"#333333"}}> 
+        <div style={{backgroundColor:"#333333", minHeight:"100vh"}}> 
         <CabecalhoAdm nulob={true} />
             
                 <StyledGerenteAlterar> 

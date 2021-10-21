@@ -51,6 +51,21 @@ const StyledJogo = styled.div`
         left: 2.3em;
         bottom: 1em;
     }
+
+    .avaliacao:hover {
+        content: url('/assets/images/estrelaPreenchida.svg');
+        
+    }
+
+    .avaliacao:hover  {
+        padding: 0em;
+        margin: 0em;
+    }
+
+    .avaliacao:hover content {
+        height: 1px;
+    }
+
     @media (max-width: 375px){
         margin: 0em;
     }
