@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.get('/produto/populares', async (req,resp) => {
     try{
-        let r = await db.infoa_gab_produto.findAll({ where: { vl_avaliacao: 4 }})
+        let r = await db.infoa_gab_produto.findAll({ where: { vl_avaliacao: 2 }})
         
         r = r.map(item => {
             return {

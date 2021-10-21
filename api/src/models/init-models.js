@@ -13,7 +13,6 @@ import _infoa_enl_rank from  "./infoa_enl_rank.js";
 import _infoa_enl_reg_plano from  "./infoa_enl_reg_plano.js";
 import _infoa_enl_usuario from  "./infoa_enl_usuario.js";
 import _infoa_gab_cartao from  "./infoa_gab_cartao.js";
-import _infoa_gab_empresa from  "./infoa_gab_empresa.js";
 import _infoa_gab_endereco from  "./infoa_gab_endereco.js";
 import _infoa_gab_entrega from  "./infoa_gab_entrega.js";
 import _infoa_gab_produto from  "./infoa_gab_produto.js";
@@ -88,12 +87,6 @@ import _infod_leo_cliente from  "./infod_leo_cliente.js";
 import _infod_leo_funcionario from  "./infod_leo_funcionario.js";
 import _infod_leo_servico from  "./infod_leo_servico.js";
 import _infod_leo_servico_imagem from  "./infod_leo_servico_imagem.js";
-import _infod_ssc_cliente from  "./infod_ssc_cliente.js";
-import _infod_ssc_endereco from  "./infod_ssc_endereco.js";
-import _infod_ssc_estoque from  "./infod_ssc_estoque.js";
-import _infod_ssc_item_venda from  "./infod_ssc_item_venda.js";
-import _infod_ssc_produto from  "./infod_ssc_produto.js";
-import _infod_ssc_venda from  "./infod_ssc_venda.js";
 import _infod_tif_acessos from  "./infod_tif_acessos.js";
 import _infod_tif_amigos from  "./infod_tif_amigos.js";
 import _infod_tif_animes from  "./infod_tif_animes.js";
@@ -126,7 +119,6 @@ export default function initModels(sequelize) {
   var infoa_enl_reg_plano = _infoa_enl_reg_plano.init(sequelize, DataTypes);
   var infoa_enl_usuario = _infoa_enl_usuario.init(sequelize, DataTypes);
   var infoa_gab_cartao = _infoa_gab_cartao.init(sequelize, DataTypes);
-  var infoa_gab_empresa = _infoa_gab_empresa.init(sequelize, DataTypes);
   var infoa_gab_endereco = _infoa_gab_endereco.init(sequelize, DataTypes);
   var infoa_gab_entrega = _infoa_gab_entrega.init(sequelize, DataTypes);
   var infoa_gab_produto = _infoa_gab_produto.init(sequelize, DataTypes);
@@ -201,12 +193,6 @@ export default function initModels(sequelize) {
   var infod_leo_funcionario = _infod_leo_funcionario.init(sequelize, DataTypes);
   var infod_leo_servico = _infod_leo_servico.init(sequelize, DataTypes);
   var infod_leo_servico_imagem = _infod_leo_servico_imagem.init(sequelize, DataTypes);
-  var infod_ssc_cliente = _infod_ssc_cliente.init(sequelize, DataTypes);
-  var infod_ssc_endereco = _infod_ssc_endereco.init(sequelize, DataTypes);
-  var infod_ssc_estoque = _infod_ssc_estoque.init(sequelize, DataTypes);
-  var infod_ssc_item_venda = _infod_ssc_item_venda.init(sequelize, DataTypes);
-  var infod_ssc_produto = _infod_ssc_produto.init(sequelize, DataTypes);
-  var infod_ssc_venda = _infod_ssc_venda.init(sequelize, DataTypes);
   var infod_tif_acessos = _infod_tif_acessos.init(sequelize, DataTypes);
   var infod_tif_amigos = _infod_tif_amigos.init(sequelize, DataTypes);
   var infod_tif_animes = _infod_tif_animes.init(sequelize, DataTypes);
@@ -255,6 +241,20 @@ export default function initModels(sequelize) {
   infoa_enl_usuario.hasMany(infoa_enl_produto, { as: "infoa_enl_produtos", foreignKey: "id_usuario"});
   infoa_enl_reg_plano.belongsTo(infoa_enl_usuario, { as: "id_usuario_infoa_enl_usuario", foreignKey: "id_usuario"});
   infoa_enl_usuario.hasMany(infoa_enl_reg_plano, { as: "infoa_enl_reg_planos", foreignKey: "id_usuario"});
+  infoa_gab_entrega.belongsTo(infoa_gab_endereco, { as: "id_endereco_infoa_gab_endereco", foreignKey: "id_endereco"});
+  infoa_gab_endereco.hasMany(infoa_gab_entrega, { as: "infoa_gab_entregas", foreignKey: "id_endereco"});
+  infoa_gab_venda_item.belongsTo(infoa_gab_produto, { as: "id_produto_infoa_gab_produto", foreignKey: "id_produto"});
+  infoa_gab_produto.hasMany(infoa_gab_venda_item, { as: "infoa_gab_venda_items", foreignKey: "id_produto"});
+  infoa_gab_cartao.belongsTo(infoa_gab_usuario, { as: "id_usuario_infoa_gab_usuario", foreignKey: "id_usuario"});
+  infoa_gab_usuario.hasMany(infoa_gab_cartao, { as: "infoa_gab_cartaos", foreignKey: "id_usuario"});
+  infoa_gab_endereco.belongsTo(infoa_gab_usuario, { as: "id_usuario_infoa_gab_usuario", foreignKey: "id_usuario"});
+  infoa_gab_usuario.hasMany(infoa_gab_endereco, { as: "infoa_gab_enderecos", foreignKey: "id_usuario"});
+  infoa_gab_venda.belongsTo(infoa_gab_usuario, { as: "id_usuario_infoa_gab_usuario", foreignKey: "id_usuario"});
+  infoa_gab_usuario.hasMany(infoa_gab_venda, { as: "infoa_gab_vendas", foreignKey: "id_usuario"});
+  infoa_gab_venda_item.belongsTo(infoa_gab_venda, { as: "id_venda_infoa_gab_venda", foreignKey: "id_venda"});
+  infoa_gab_venda.hasMany(infoa_gab_venda_item, { as: "infoa_gab_venda_items", foreignKey: "id_venda"});
+  infoa_gab_entrega.belongsTo(infoa_gab_venda_item, { as: "id_venda_item_infoa_gab_venda_item", foreignKey: "id_venda_item"});
+  infoa_gab_venda_item.hasMany(infoa_gab_entrega, { as: "infoa_gab_entregas", foreignKey: "id_venda_item"});
   infoc_ntc_denuncia.belongsTo(infoc_ntc_caracteristica_fisica, { as: "id_fisico_infoc_ntc_caracteristica_fisica", foreignKey: "id_fisico"});
   infoc_ntc_caracteristica_fisica.hasMany(infoc_ntc_denuncia, { as: "infoc_ntc_denuncia", foreignKey: "id_fisico"});
   infoc_ntc_denuncia.belongsTo(infoc_ntc_local, { as: "id_local_infoc_ntc_local", foreignKey: "id_local"});
@@ -313,6 +313,14 @@ export default function initModels(sequelize) {
   infoc_tdv_livro.hasMany(infoc_tdv_pedido_item, { as: "infoc_tdv_pedido_items", foreignKey: "id_livro"});
   infoc_tdv_pedido_item.belongsTo(infoc_tdv_pedido, { as: "id_pedido_infoc_tdv_pedido", foreignKey: "id_pedido"});
   infoc_tdv_pedido.hasMany(infoc_tdv_pedido_item, { as: "infoc_tdv_pedido_items", foreignKey: "id_pedido"});
+  infod_leo_agendamento.belongsTo(infod_leo_cliente, { as: "id_cliente_infod_leo_cliente", foreignKey: "id_cliente"});
+  infod_leo_cliente.hasMany(infod_leo_agendamento, { as: "infod_leo_agendamentos", foreignKey: "id_cliente"});
+  infod_leo_agendamento.belongsTo(infod_leo_funcionario, { as: "id_funcionario_infod_leo_funcionario", foreignKey: "id_funcionario"});
+  infod_leo_funcionario.hasMany(infod_leo_agendamento, { as: "infod_leo_agendamentos", foreignKey: "id_funcionario"});
+  infod_leo_agendamento.belongsTo(infod_leo_servico, { as: "id_servico_infod_leo_servico", foreignKey: "id_servico"});
+  infod_leo_servico.hasMany(infod_leo_agendamento, { as: "infod_leo_agendamentos", foreignKey: "id_servico"});
+  infod_leo_servico_imagem.belongsTo(infod_leo_servico, { as: "id_servico_infod_leo_servico", foreignKey: "id_servico"});
+  infod_leo_servico.hasMany(infod_leo_servico_imagem, { as: "infod_leo_servico_imagems", foreignKey: "id_servico"});
   insf_tb_usuario_endereco.belongsTo(insf_tb_usuario, { as: "id_usuario_insf_tb_usuario", foreignKey: "id_usuario"});
   insf_tb_usuario.hasMany(insf_tb_usuario_endereco, { as: "insf_tb_usuario_enderecos", foreignKey: "id_usuario"});
   insf_tb_usuario_endereco_uf.belongsTo(insf_tb_usuario_endereco, { as: "id_usuario_endereco_insf_tb_usuario_endereco", foreignKey: "id_usuario_endereco"});
@@ -332,7 +340,6 @@ export default function initModels(sequelize) {
     infoa_enl_reg_plano,
     infoa_enl_usuario,
     infoa_gab_cartao,
-    infoa_gab_empresa,
     infoa_gab_endereco,
     infoa_gab_entrega,
     infoa_gab_produto,
@@ -407,12 +414,6 @@ export default function initModels(sequelize) {
     infod_leo_funcionario,
     infod_leo_servico,
     infod_leo_servico_imagem,
-    infod_ssc_cliente,
-    infod_ssc_endereco,
-    infod_ssc_estoque,
-    infod_ssc_item_venda,
-    infod_ssc_produto,
-    infod_ssc_venda,
     infod_tif_acessos,
     infod_tif_amigos,
     infod_tif_animes,

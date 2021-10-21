@@ -12,13 +12,14 @@ const api = new Api()
 export default function CaixaJogo(props) {
 
 
-    const [ vlAvaliacao, setVlAvaliacao ] = useState(2)
+    const [ vlAvaliacao, setVlAvaliacao ] = useState(0)
+    const [ id, setId ] = useState(1)
 
     const atualizarAvaliacao = async () => {
-        const e = api.alterarAvaliacao(props.info.id_prooduto, vlAvaliacao )
+        const e = api.alterarAvaliacao(id, vlAvaliacao )
     }
 
-    console.log(props.info.id_prooduto)
+    console.log(id)
 
     return (
        <StyledJogo> 
@@ -27,13 +28,13 @@ export default function CaixaJogo(props) {
                                                                                                         ? props.info.produto.substr(0, 27) + "..."
                                                                                                         : props.info.produto}  </div> 
         <div class="row1"> 
-            <div class="avaliacao"> <img onClick={() =>  atualizarAvaliacao()}  src="/assets/images/bi_star.svg" alt="" /></div>
-            <div class="avaliacao"> <img onClick={() =>  atualizarAvaliacao()} src="/assets/images/bi_star.svg" alt="" /> </div>
-            <div class="avaliacao"> <img onClick={() =>  atualizarAvaliacao()} src="/assets/images/bi_star.svg" alt="" /> </div>
-            <div class="avaliacao"> <img onClick={() =>  atualizarAvaliacao()} src="/assets/images/bi_star.svg" alt="" /> </div>
-            <div class="avaliacao"> <img onClick={() =>  atualizarAvaliacao()} src="/assets/images/bi_star.svg" alt="" /> </div>
+            <div class="avaliacao"> <img onClick={atualizarAvaliacao()}  src="/assets/images/bi_star.svg" alt="" />  </div>
+            <div class="avaliacao"> <img onClick={atualizarAvaliacao()}  src="/assets/images/bi_star.svg" alt="" /> </div>
+            <div class="avaliacao"> <img onClick={atualizarAvaliacao()}  src="/assets/images/bi_star.svg" alt="" /> </div>
+            <div class="avaliacao"> <img onClick={atualizarAvaliacao()}  src="/assets/images/bi_star.svg" alt="" /> </div>
+            <div class="avaliacao"> <img onClick={atualizarAvaliacao()}  src="/assets/images/bi_star.svg" alt="" /> </div>
         </div>
-        <div className="preco">{props.info.preco} </div>
+        <div className="preco">{` R$: ${props.info.preco}`} </div>
         <Link to={{ pathname:"/vendaUnica", state: props.info }} style={{textDecoration:"none"}}> <StyledButtonHome style={{paddingTop: "0.2em"}} className="absolute"> Comprar </StyledButtonHome> </Link>
     </StyledJogo>
     )
