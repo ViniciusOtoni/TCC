@@ -48,7 +48,7 @@ function ordenacao(criterio){
         case 'menor-maior' : return ['vl_preco', 'asc'];
         case 'maior-menor' : return ['vl_preco', 'desc'];
         case 'lancamento' : return ['dt_cadastro', 'asc'];
-        case 'avaliacao' : return ['vl_avaliacao', 'desc'];
+        case 'avaliacao'  : return ['vl_avaliacao', 'desc'];
         case 'A-Z' : return ['nm_produto', 'asc'];
         case 'Z-A' : return ['nm_produto', 'desc'];
 
@@ -115,7 +115,7 @@ app.post('/produto', async (req, resp) => {
             ds_categoria: l.ds_categoria,
             ds_codigo_barra: l.ds_codigo_barra,
             bt_situacao: true,
-            vl_avaliacao:  0,
+            vl_avaliacao:  4,
             img_produto: l.img_produto,
             img_secundaria: l.img_secundaria,
             img_terciaria: l.img_terciaria,
