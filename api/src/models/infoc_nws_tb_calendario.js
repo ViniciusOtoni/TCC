@@ -1,38 +1,30 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoc_tdv_endereco extends Model {
+export default class infoc_nws_tb_calendario extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_endereco: {
+    id_calendario: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_cliente: {
+    id_evento: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'infoc_tdv_cliente',
-        key: 'id_cliente'
+        model: 'infoc_nws_tb_evento',
+        key: 'id_evento'
       }
     },
-    nm_rua: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    ds_cep: {
-      type: DataTypes.STRING(16),
-      allowNull: true
-    },
-    ds_numero: {
-      type: DataTypes.INTEGER,
+    dt_evento: {
+      type: DataTypes.DATE,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoc_tdv_endereco',
+    tableName: 'infoc_nws_tb_calendario',
     timestamps: false,
     indexes: [
       {
@@ -40,18 +32,18 @@ export default class infoc_tdv_endereco extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_endereco" },
+          { name: "id_calendario" },
         ]
       },
       {
-        name: "id_cliente",
+        name: "id_evento",
         using: "BTREE",
         fields: [
-          { name: "id_cliente" },
+          { name: "id_evento" },
         ]
       },
     ]
   });
-  return infoc_tdv_endereco;
+  return infoc_nws_tb_calendario;
   }
 }

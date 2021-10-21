@@ -1,7 +1,7 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoc_tdv_endereco extends Model {
+export default class infoc_tct_endereco extends Model {
   static init(sequelize, DataTypes) {
   super.init({
     id_endereco: {
@@ -10,29 +10,37 @@ export default class infoc_tdv_endereco extends Model {
       allowNull: false,
       primaryKey: true
     },
-    id_cliente: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'infoc_tdv_cliente',
-        key: 'id_cliente'
-      }
-    },
-    nm_rua: {
-      type: DataTypes.STRING(255),
+    ds_cep: {
+      type: DataTypes.STRING(9),
       allowNull: true
     },
-    ds_cep: {
-      type: DataTypes.STRING(16),
+    ds_estado: {
+      type: DataTypes.STRING(20),
+      allowNull: true
+    },
+    nm_cidade: {
+      type: DataTypes.STRING(40),
+      allowNull: true
+    },
+    nm_rua: {
+      type: DataTypes.STRING(60),
       allowNull: true
     },
     ds_numero: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(5),
+      allowNull: true
+    },
+    ds_complemento: {
+      type: DataTypes.STRING(100),
+      allowNull: true
+    },
+    nm_ponto_referencia: {
+      type: DataTypes.STRING(40),
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoc_tdv_endereco',
+    tableName: 'infoc_tct_endereco',
     timestamps: false,
     indexes: [
       {
@@ -43,15 +51,8 @@ export default class infoc_tdv_endereco extends Model {
           { name: "id_endereco" },
         ]
       },
-      {
-        name: "id_cliente",
-        using: "BTREE",
-        fields: [
-          { name: "id_cliente" },
-        ]
-      },
     ]
   });
-  return infoc_tdv_endereco;
+  return infoc_tct_endereco;
   }
 }

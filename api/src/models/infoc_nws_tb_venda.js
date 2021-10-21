@@ -1,26 +1,34 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_dtn_tb_avaliacao extends Model {
+export default class infoc_nws_tb_venda extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_avaliacao: {
+    id_venda: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_produto: {
+    id_usuario: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true,
+      references: {
+        model: 'infoc_nws_tb_usuario',
+        key: 'id_usuario'
+      }
     },
-    id_cliente: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+    ds_situacao: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    tp_pagamento: {
+      type: DataTypes.STRING(255),
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoa_dtn_tb_avaliacao',
+    tableName: 'infoc_nws_tb_venda',
     timestamps: false,
     indexes: [
       {
@@ -28,25 +36,18 @@ export default class infoa_dtn_tb_avaliacao extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_avaliacao" },
+          { name: "id_venda" },
         ]
       },
       {
-        name: "id_produto",
+        name: "id_usuario",
         using: "BTREE",
         fields: [
-          { name: "id_produto" },
-        ]
-      },
-      {
-        name: "id_cliente",
-        using: "BTREE",
-        fields: [
-          { name: "id_cliente" },
+          { name: "id_usuario" },
         ]
       },
     ]
   });
-  return infoa_dtn_tb_avaliacao;
+  return infoc_nws_tb_venda;
   }
 }

@@ -14,9 +14,9 @@ export default class infoa_gab_entrega extends Model {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-        ds_situacao: {
-          type: DataTypes.STRING(255),
-          allowNull: true
+    ds_situacao: {
+      type: DataTypes.STRING(255),
+      allowNull: true
     },
     dt_saida: {
       type: DataTypes.DATE,
@@ -45,7 +45,7 @@ export default class infoa_gab_entrega extends Model {
       },
       {
         name: "id_endereco",
-        using: "BTREE", 
+        using: "BTREE",
         fields: [
           { name: "id_endereco" },
         ]

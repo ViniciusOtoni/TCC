@@ -1,46 +1,30 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_dtn_tb_endereco extends Model {
+export default class infoc_atn_tb_curriculo extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_endereco: {
+    id_curriculo: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_cliente: {
+    id_pessoal: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    nm_cidade: {
-      type: DataTypes.STRING(200),
-      allowNull: false
-    },
-    ds_uf: {
-      type: DataTypes.STRING(5),
-      allowNull: false
-    },
-    ds_cep: {
-      type: DataTypes.STRING(10),
-      allowNull: false
-    },
-    ds_logradouro: {
-      type: DataTypes.STRING(200),
-      allowNull: false
-    },
-    nr_numero: {
+    id_vaga: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
-    ds_complemento: {
+    ds_curriculo: {
       type: DataTypes.STRING(100),
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoa_dtn_tb_endereco',
+    tableName: 'infoc_atn_tb_curriculo',
     timestamps: false,
     indexes: [
       {
@@ -48,18 +32,25 @@ export default class infoa_dtn_tb_endereco extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_endereco" },
+          { name: "id_curriculo" },
         ]
       },
       {
-        name: "id_cliente",
+        name: "id_pessoal",
         using: "BTREE",
         fields: [
-          { name: "id_cliente" },
+          { name: "id_pessoal" },
+        ]
+      },
+      {
+        name: "id_vaga",
+        using: "BTREE",
+        fields: [
+          { name: "id_vaga" },
         ]
       },
     ]
   });
-  return infoa_dtn_tb_endereco;
+  return infoc_atn_tb_curriculo;
   }
 }

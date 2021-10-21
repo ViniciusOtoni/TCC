@@ -1,21 +1,22 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_sti_categoria extends Model {
+export default class infoc_nws_tb_categoria extends Model {
   static init(sequelize, DataTypes) {
   super.init({
     id_categoria: {
+      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    nm_sabor: {
-      type: DataTypes.STRING(200),
+    ds_tema: {
+      type: DataTypes.STRING(255),
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoa_sti_categoria',
+    tableName: 'infoc_nws_tb_categoria',
     timestamps: false,
     indexes: [
       {
@@ -28,6 +29,6 @@ export default class infoa_sti_categoria extends Model {
       },
     ]
   });
-  return infoa_sti_categoria;
+  return infoc_nws_tb_categoria;
   }
 }

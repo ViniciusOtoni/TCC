@@ -1,7 +1,7 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_sti_produto extends Model {
+export default class insf_tb_produto extends Model {
   static init(sequelize, DataTypes) {
   super.init({
     id_produto: {
@@ -11,40 +11,32 @@ export default class infoa_sti_produto extends Model {
       primaryKey: true
     },
     nm_produto: {
-      type: DataTypes.STRING(200),
+      type: DataTypes.STRING(100),
       allowNull: true
     },
-    ds_codigo_interno: {
-      type: DataTypes.STRING(200),
+    ds_produto: {
+      type: DataTypes.STRING(800),
       allowNull: true
     },
-    id_categoria: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    ds_descricao: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    vl_valor: {
+    vl_preco: {
       type: DataTypes.DECIMAL(15,2),
       allowNull: true
     },
-    nr_estoque_minimo: {
-      type: DataTypes.INTEGER,
+    img_produto: {
+      type: DataTypes.STRING(400),
       allowNull: true
     },
-    nr_estoque_maximo: {
-      type: DataTypes.INTEGER,
+    dt_lancamento: {
+      type: DataTypes.DATEONLY,
       allowNull: true
     },
-    nr_estoque_atual: {
-      type: DataTypes.INTEGER,
+    bt_ativo: {
+      type: DataTypes.BOOLEAN,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoa_sti_produto',
+    tableName: 'insf_tb_produto',
     timestamps: false,
     indexes: [
       {
@@ -55,15 +47,8 @@ export default class infoa_sti_produto extends Model {
           { name: "id_produto" },
         ]
       },
-      {
-        name: "id_categoria",
-        using: "BTREE",
-        fields: [
-          { name: "id_categoria" },
-        ]
-      },
     ]
   });
-  return infoa_sti_produto;
+  return insf_tb_produto;
   }
 }
