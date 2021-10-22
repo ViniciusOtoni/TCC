@@ -7,10 +7,10 @@ const StyledCabecalho = styled.div `
 
      .pc {
         display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333333;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #333333;
     
 
     margin: auto;
@@ -39,42 +39,31 @@ const StyledCabecalho = styled.div `
     }
 
     .pesquisa{
-        width: 40%;
+        width: 30%;
+        margin-bottom: 1em;
     }
 
     .pesquisa input {
         display: ${props => props.corLetra === 'nulo'  ? 'none' : 'block' };
         position: relative;
 
+        background-color: transparent;
         font-family: MontserratBold; 
         color: white;
         
         border-radius: 5em;
+        border: 2px solid #ffffff;
       
         width: 100%;
-        height: 1.5em;
+        height: 2.5em;
+
+        padding: 0em 2.5em;
         
         text-decoration: none;
         outline: none;
         cursor: text;
     }
-
-    .wrapper{
-        background-color: transparent;
-        border: 2px solid #ffffff;
-    }
-
-    .wrapper:hover, .wrapper::selection{
-        box-shadow: unset;
-    }
-
-    .search-icon, .clear-icon > svg{
-        fill: white;
-        width: auto;
-        height: 1.7em;
-    }
-
-
+ 
     .input::placeholder {
         color: white;
        
@@ -84,6 +73,17 @@ const StyledCabecalho = styled.div `
 
     .input:focus::-webkit-input-placeholder {
         color: transparent;
+     }
+
+     .lupa {
+         display: ${props => props.corLetra === 'nulo'  ? 'none' : 'block' };
+         position: relative;
+         top: 1.5em;
+         left: .8em;
+         width: 1em;
+         height: 1em;
+
+         z-index: 12;
      }
 
     .login {
@@ -101,7 +101,7 @@ const StyledCabecalho = styled.div `
 
     .user-login {
         color: ${props => props.corLetra === 'branco' ? '#ffffff' : '#F0AC54'};
-        display: ${props => props.corLetra === 'nulo'  ? 'block' : 'block' };
+        display: ${props => props.corLetra === 'nulo'  ? 'none' : 'block' };
         font-family: MontserratBold;
         font-size: 1.5em;
         width: 12em;
@@ -230,11 +230,11 @@ const StyledCabecalho = styled.div `
 
     @media(max-width: 1440px) {
         .user-login {
-            font-size: 1em;
+            font-size: 1.2em;
         }
 
         .entrega {
-            font-size: 1em;
+            font-size: 1.4em;
         }
     }
 

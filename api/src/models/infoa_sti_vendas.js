@@ -1,26 +1,34 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infod_ssc_estoque extends Model {
+export default class infoa_sti_vendas extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_estoque: {
+    id_vendas: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
+    id_cliente: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
     id_produto: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    qtd_disponivel: {
-      type: DataTypes.INTEGER,
+    ds_codigo: {
+      type: DataTypes.STRING(100),
+      allowNull: true
+    },
+    dt_venda: {
+      type: DataTypes.DATEONLY,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infod_ssc_estoque',
+    tableName: 'infoa_sti_vendas',
     timestamps: false,
     indexes: [
       {
@@ -28,7 +36,14 @@ export default class infod_ssc_estoque extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_estoque" },
+          { name: "id_vendas" },
+        ]
+      },
+      {
+        name: "id_cliente",
+        using: "BTREE",
+        fields: [
+          { name: "id_cliente" },
         ]
       },
       {
@@ -40,6 +55,6 @@ export default class infod_ssc_estoque extends Model {
       },
     ]
   });
-  return infod_ssc_estoque;
+  return infoa_sti_vendas;
   }
 }

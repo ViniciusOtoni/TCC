@@ -1,38 +1,54 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoc_atn_tb_configuracoes_empresa extends Model {
+export default class infoa_sti_cliente extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_empresa: {
+    id_cliente: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    ds_site: {
+    nm_nome: {
       type: DataTypes.STRING(100),
       allowNull: true
     },
-    ds_descricao_empresa: {
+    nm_sobrenome: {
       type: DataTypes.STRING(100),
       allowNull: true
     },
-    ds_instagram_empresa: {
+    ds_sexo: {
       type: DataTypes.STRING(100),
       allowNull: true
     },
-    ds_twiter_empresa: {
+    ds_cpf: {
       type: DataTypes.STRING(100),
       allowNull: true
     },
-    ds_link_imagem: {
+    dt_nascimento: {
+      type: DataTypes.DATEONLY,
+      allowNull: true
+    },
+    ds_email: {
       type: DataTypes.STRING(100),
       allowNull: true
+    },
+    ds_senha: {
+      type: DataTypes.STRING(100),
+      allowNull: true
+    },
+    id_endereco: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'infoa_sti_endereco',
+        key: 'id_endereco'
+      }
     }
   }, {
     sequelize,
-    tableName: 'infoc_atn_tb_configuracoes_empresa',
+    tableName: 'infoa_sti_cliente',
     timestamps: false,
     indexes: [
       {
@@ -40,11 +56,18 @@ export default class infoc_atn_tb_configuracoes_empresa extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_empresa" },
+          { name: "id_cliente" },
+        ]
+      },
+      {
+        name: "id_endereco",
+        using: "BTREE",
+        fields: [
+          { name: "id_endereco" },
         ]
       },
     ]
   });
-  return infoc_atn_tb_configuracoes_empresa;
+  return infoa_sti_cliente;
   }
 }
