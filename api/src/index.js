@@ -487,10 +487,10 @@ app.post('/validarCompra', async ( req, resp ) => {
             id_venda_item: gerarVendaItem.id_venda_item,
             ds_situacao: true,
             dt_saida: Date.now(),
-            dt_entrega: '2021-01-01'
+            dt_entrega: '0000-01-01'
         });
 
-        resp.send(gerarVendaItem) } catch( error ) {
+        resp.send(entrega) } catch( error ) {
             resp.send( { error: "DEU ERRO NA API MONSTRA, duvido que não seja a primeira vez..."})
         }
   })
