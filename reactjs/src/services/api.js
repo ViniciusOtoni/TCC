@@ -33,10 +33,14 @@ export default class Api {
 
     }
 
+ 
+
     async alterarAvaliacao (idProduto, vl_avaliacao) {
         let r = await api.put(`/produto/avaliacao/${idProduto}`, { vl_avaliacao } )
         return r.data;
     }
+
+    
 
     async listarProdutos(order) {
         let r = await api.get(`/produto?criterio=${order}` )
