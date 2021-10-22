@@ -10,12 +10,9 @@ const StyledConteudo = styled.div`
     position: relative;
     & * {z-index : 11;}
     
-    min-width: 1280px;
-
     main  {
         width: 1240px;
         margin: auto;
-
     }
 
     .bolota {
@@ -28,7 +25,6 @@ const StyledConteudo = styled.div`
      color: white;
      font-size: 3.4em;
      text-align: center;
-
     }
 
     .saiba-mais {

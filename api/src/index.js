@@ -58,7 +58,19 @@ function ordenacao(criterio){
 app.get('/produto', async (req,resp) => {
     try{
         let ord = ordenacao(req.query.criterio);
+        let filtro = req.query.filtro;
+        let categoria = req.query.categoria;
+
+        console.log(filtro)
+        console.log(categoria)
+
         let r = await db.infoa_gab_produto.findAll({ 
+            where: {
+                [Op.or]: [
+                    { nm_produto: { [Op.like]: filtro }},
+                    { ds_plataforma: categoria }
+                ]
+            },
             order: [ord]
         })
 
@@ -79,6 +91,22 @@ app.get('/produto', async (req,resp) => {
         resp.send(r);
     } catch (e) {
         resp.send({ erro: `${e.toString()}` })
+    }    
+})
+
+app.get('/produtosPesquisa', async (req, resp) => {
+    try{
+            let ord = req.query.filtro;
+
+            console.log('ord:'+ord);
+
+            let r = await db.infoa_gab_produto.findAll({
+                where: { nm_produto: ord }
+            })
+
+            resp.send(r);
+    } catch (error){
+            resp.send(`erro no get produtosPesquisa ${error}`)
     }    
 })
 

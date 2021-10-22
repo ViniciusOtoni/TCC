@@ -1,34 +1,22 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoc_ntc_caracteristica_fisica extends Model {
+export default class infoa_sti_categoria extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_fisico: {
+    id_categoria: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    ds_pele: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    ds_cabelo: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    ds_cor_cabelo: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    ds_complemento: {
+    nm_sabor: {
       type: DataTypes.STRING(255),
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoc_ntc_caracteristica_fisica',
+    tableName: 'infoa_sti_categoria',
     timestamps: false,
     indexes: [
       {
@@ -36,11 +24,11 @@ export default class infoc_ntc_caracteristica_fisica extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_fisico" },
+          { name: "id_categoria" },
         ]
       },
     ]
   });
-  return infoc_ntc_caracteristica_fisica;
+  return infoa_sti_categoria;
   }
 }
