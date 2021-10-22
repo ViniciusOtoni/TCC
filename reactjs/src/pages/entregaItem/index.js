@@ -1,5 +1,7 @@
 import { StyledEntregaItem } from "./styled";
 import Cabecalho from "../../components/cabecalho";
+import { Link } from 'react-router-dom'
+
 
 export default function EntregaItem() {
     return (
@@ -94,7 +96,7 @@ export default function EntregaItem() {
                                 <div className="horario-status"> (2021-03-01) </div>
                             </div>
                         </div>
-                        <div className="voltar"> <button> Voltar </button> </div>
+                         <button> <Link to="/" style={{textDecoration: 'none'}} > Voltar </Link> </button> 
                     </div>
                     </main>
                 </StyledEntregaItem>
