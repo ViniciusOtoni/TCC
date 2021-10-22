@@ -5,29 +5,47 @@ import Paginacao from "../../components/paginacao";
 import { StyledVenada } from "./styled";
 import { useState, useEffect } from "react";
 import Api from "../../services/api";
+import { set } from "js-cookie";
 const api = new Api();
 
 
 export default function Venda(props) {
-    const [pesquisa, setPesquisa] = useState(props.location.state)
+    const [pesquisa, setPesquisa] = useState(props.location.state || '')
     const [produto, setProduto] = useState([]);
     const [order, setOrder] = useState('lancamento');
     
-    console.log(pesquisa) 
+    //console.log(pesquisa) 
+    console.log('cat=');
+    console.log(getCategory());
+
+    function getCategory() {
+        const query = '?categoria=';
+        let search = props.location.search;
+        if(!search.includes(query))
+            return '';
+        return search.substr(search.indexOf(query) + query.length);
+    }
+
+
+    const listarPesquisa = async () => {
+        const e = await api.produtosPesquisa(pesquisa)
+        setPesquisa(e);
+    }
 
     const listar = async () => {
-        const e = await api.listarProdutos(order)
+        let categoria = getCategory();
+        const e = await api.listarProdutos(order, pesquisa, categoria)
         setProduto(e);
     }
 
     useEffect(() => {
         listar()
-    }, [order])
+       // listarPesquisa()
+    }, [order, pesquisa])
 
     return (
         <div style={{backgroundColor:"#333333"}}> 
         <Cabecalho />
-        
                 <StyledVenada> 
                 <main className='a'> 
                     <div className="row-button"> 

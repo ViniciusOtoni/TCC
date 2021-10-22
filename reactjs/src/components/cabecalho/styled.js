@@ -76,8 +76,9 @@ const StyledCabecalho = styled.div `
      }
 
      .lupa {
+         display: ${props => props.corLetra === 'nulo'  ? 'none' : 'block' };
          position: relative;
-         top: 1.8em;
+         top: 1.5em;
          left: .8em;
          width: 1em;
          height: 1em;
