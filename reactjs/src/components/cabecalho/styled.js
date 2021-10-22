@@ -99,6 +99,14 @@ const StyledCabecalho = styled.div `
         cursor: pointer;
     }
 
+    .user-login {
+        color: ${props => props.corLetra === 'branco' ? '#ffffff' : '#F0AC54'};
+        display: ${props => props.corLetra === 'nulo'  ? 'none' : 'block' };
+        font-family: MontserratBold;
+        font-size: 1.5em;
+        width: 12em;
+      }
+
     
     .carrinho {
         padding-top: 0.4em;
@@ -206,6 +214,8 @@ const StyledCabecalho = styled.div `
         color: #F0AC54;
         display: ${props => props.corLetra === 'nulo'  ? 'block' : 'block' };
       }
+
+     
       .logo-cabecalho {
         padding-right: 3em;
       }
@@ -216,6 +226,16 @@ const StyledCabecalho = styled.div `
           margin: 0em;
           display: ${props => props.corLetra === 'branco' ? 'block' : 'block' };
       }
+    }
+
+    @media(max-width: 1440px) {
+        .user-login {
+            font-size: 1em;
+        }
+
+        .entrega {
+            font-size: 1em;
+        }
     }
 
  

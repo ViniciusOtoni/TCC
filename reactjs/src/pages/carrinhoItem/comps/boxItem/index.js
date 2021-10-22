@@ -6,13 +6,12 @@ import { useState } from "react"
 import { StyledButtonAdm } from "../../../../components/botaoAdm/styled"
 import { useEffect } from "react"
 import { useHistory } from "react-router"
-import Cookies from "js-cookie"
+import Api from "../../../../services/api"
+const api = new Api();
 
 
 
 export default function BoxItemCarrinho(props) {
-
-    
 
     
     const [ produto, setProduto ]  = useState(props.info)
@@ -23,14 +22,15 @@ export default function BoxItemCarrinho(props) {
     const nave = useHistory()
 
     
+    function calcularFrete() {
+        let r = api.cep(vlCep)
 
-    function visible(){
+        let r1 = vlCep.length
         
-        let r = vlCep.length
-        
-        if(r === 8)
+        if(r1 === 8)
         setCep(true)
     }
+
 
     function remover () {
         props.onRemove(produto.id)
@@ -101,7 +101,7 @@ export default function BoxItemCarrinho(props) {
             <div className="row-input"> 
                 <div className="frete"> Frete: </div>
                 <div className="input-frete">  <StyledInput value={vlCep} placeholder=" Cep" style={{width:"8em"}} onChange={e => setVlCep(e.target.value)}/> </div>
-                <div className="botao-frete"> <StyledButtonVerde onClick={visible} style={{width: "7em", height:"1.8em", marginLeft:"2em"}}> Calcular </StyledButtonVerde> </div>
+                <div className="botao-frete"> <StyledButtonVerde onClick={calcularFrete} style={{width: "7em", height:"1.8em", marginLeft:"2em"}}> Calcular </StyledButtonVerde> </div>
             </div>
             {cep && <div> 
                         <div className="rua"> Nome da Rua Bonito  </div>

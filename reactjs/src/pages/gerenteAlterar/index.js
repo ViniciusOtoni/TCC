@@ -12,10 +12,10 @@ const api = new Api();
 
 export default function GerenteAlterar(props) {
     const [infoProduto, setInfoProduto] = useState(props.location.state)
-    const [nome, setNome] = useState();
+    const [nome, setNome] = useState('');
     const [codBarra, setCodBarra] = useState('');
     const [categoria, setCategoria] = useState('');
-    const [preco, setPreco] = useState();
+    const [preco, setPreco] = useState(0);
     const [imagemPrincipal, setImagemPrincipal] = useState('');
     const [imagemSecundaria, setImagemSecundaria] = useState('');
     const [imagemTerciaria, setImagemTerciaria] = useState('');
@@ -58,10 +58,10 @@ export default function GerenteAlterar(props) {
     }, [])
 
 
-   console.log(infoProduto.id_produto)
+    
 
     return (
-        <div style={{backgroundColor:"#333333"}}> 
+        <div style={{backgroundColor:"#333333", minHeight:"100vh"}}> 
         <CabecalhoAdm nulob={true} />
             
                 <StyledGerenteAlterar> 
@@ -79,7 +79,7 @@ export default function GerenteAlterar(props) {
                         <div className="alternating">
                             <div className="topico3"> Categoria: </div>
                             <div className="input">
-                                <StyledSelect className="input-input" value={ categoria }onChange={e => setCategoria(e.target.value)}>
+                                <StyledSelect className="input-input" value={ categoria } onChange={e => setCategoria(e.target.value)}>
                                     <option  value="Xbox">  Xbox </option>
                                     <option  value="Ps4">  Ps4 </option>
                                     <option  value="Canecas">  Canecas </option>

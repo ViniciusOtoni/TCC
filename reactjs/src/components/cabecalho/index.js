@@ -93,7 +93,7 @@ export default function Cabecalho(props) {
         </div>
 
         <div className="pesquisa">
-            <ReactSearchAutocomplete items={movieItems} className="input" placeholder="pesquise seu produto"
+            <ReactSearchAutocomplete items={movieItems} className="pesquisa input" placeholder="pesquise seu produto"
                                      onSearch={handleOnSearch}
                                      onHover={handleOnHover}
                                      onSelect={handleOnSelect}
@@ -113,7 +113,7 @@ export default function Cabecalho(props) {
                 
                 <img src={img} alt="" />
               </div>
-              <div className="login"> {nm} </div>
+              <div className="user-login"> {nm} </div>
             </div>
           )}
         </Link>

@@ -5,20 +5,19 @@ import enviarEmail from "./email.js";
 
 
 
+import  Sequelize from "sequelize";
+const { Op } = Sequelize;
+
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 
-
-  
-
-
-
-
 app.get('/produto/populares', async (req,resp) => {
     try{
-        let r = await db.infoa_gab_produto.findAll({ where: { vl_avaliacao: 4 }})
+        let r = await db.infoa_gab_produto.findAll({ where: 
+            { vl_avaliacao:  
+                 { [Op.gte]: '4' } } })
         
         r = r.map(item => {
             return {
@@ -48,7 +47,7 @@ function ordenacao(criterio){
         case 'menor-maior' : return ['vl_preco', 'asc'];
         case 'maior-menor' : return ['vl_preco', 'desc'];
         case 'lancamento' : return ['dt_cadastro', 'asc'];
-        case 'avaliacao' : return ['vl_avaliacao', 'desc'];
+        case 'avaliacao'  : return ['vl_avaliacao', 'desc'];
         case 'A-Z' : return ['nm_produto', 'asc'];
         case 'Z-A' : return ['nm_produto', 'desc'];
 
@@ -115,7 +114,7 @@ app.post('/produto', async (req, resp) => {
             ds_categoria: l.ds_categoria,
             ds_codigo_barra: l.ds_codigo_barra,
             bt_situacao: true,
-            vl_avaliacao:  0,
+            vl_avaliacao:  5,
             img_produto: l.img_produto,
             img_secundaria: l.img_secundaria,
             img_terciaria: l.img_terciaria,
@@ -137,16 +136,13 @@ app.put('/produto/:idProduto', async (req, resp) => {
         let r = await db.infoa_gab_produto.update({
             nm_produto: l.nm_produto, 
             vl_preco: l.vl_preco,
-            dt_cadastro: Date.now(),
             ds_categoria: l.ds_categoria,
             ds_codigo_barra: l.ds_codigo_barra,
-            bt_situacao: true,
-            vl_avaliacao: [ l.vl_avaliacao ],
             img_produto: l.img_produto,
             img_secundaria: l.img_secundaria,
             img_terciaria: l.img_terciaria,
             img_quartenaria: l.img_quartenaria,
-            qtd_parcelas: 0
+            
         },
         {
             where: { id_produto: req.params.idProduto }
@@ -205,6 +201,30 @@ app.delete('/produto/:idProduto', async (req, resp) => {
     }
 })
 
+app.post('/cadastrarGerente', async ( req, resp ) => {
+    let r = req.body;
+
+    let u1 = await db.infoa_gab_usuario.findOne({ where: { ds_cpf: r.ds_cpf } })
+    if(u1 != null)
+    resp.send( { error: 'CPF já foi cadastrado!' } );
+
+    let u2 = await db.infoa_gab_usuario.findOne({ where: { ds_email: r.ds_email  } })
+    if(u2 != null)
+    resp.send( { error: 'Email já foi cadastrado!' } );
+
+    let l = await db.infoa_gab_usuario.create( {
+        nm_usuario: r.nm_usuario,
+        ds_cpf: r.ds_cpf,
+        ds_email: r.ds_email,
+        ds_senha: r.ds_senha,
+        img_usuario: r.img_usuario,
+        ds_codigo: 'sanidjasnasdasda',
+        bt_gerente: true
+    })
+
+    resp.send(l);
+})
+
 
 // Cadastrar Usuario
 app.post('/cadastrar', async (req, resp) => {
@@ -233,7 +253,7 @@ try {
         ds_email: r.ds_email,
         ds_senha: r.ds_senha,
         img_usuario: r.img_usuario,
-        ds_codigo: '',
+        ds_codigo: 'sanidjasnasdasda',
         bt_gerente: false
     })
 
@@ -340,7 +360,7 @@ try {
     
     
     } catch( error ) {
-        resp.send({ error: " Xish "})
+        resp.send({ error: " Isso não é um email "})
     }
 
     
@@ -372,7 +392,40 @@ app.put('/login/senha/:codigo', async (req, resp) => {
 
 app.post('/validarCompra', async ( req, resp ) => {
     try {
-        
+        const r = req.body;
+
+        const usuarioLogado = await db.infoa_gab_usuario.findOne({
+            where: {
+                ds_email: r.ds_email,
+                ds_senha: r.ds_senha,
+                nm_usuario: r.nm_usuario
+            }
+        })
+
+        const cartaoUsuario = await db.infoa_gab_cartao.create({
+            id_usuario: usuarioLogado.id_usuario,
+            ds_cv: r.ds_cv,
+            nr_agencia: r.nr_agencia,
+            nm_titular: r.nm_titular,
+            dt_validade: r.dt_validade,
+            nr_cartao: r.nr_cartao,
+            ds_cpf_titular: r.ds_cpf_titular
+        })
+
+        const enderecoUsuario = await db.infoa_gab_endereco.create({
+            id_usuario: usuarioLogado.id_usuario,
+            nm_bairro: r.nm_bairro,
+            nm_rua: r.nm_rua,
+            nr_numero_rua: r.nr_numero_rua,
+            ds_cep: r.ds_cep,
+            ds_complemento: r.ds_complemento
+        })
+
+        const produtoUsu = await db.infoa_gab_produto.findAll()
+
+
+
+
     } catch(e) {
       resp.send(e)
     }
@@ -421,630 +474,20 @@ app.post('/pedido', async (req, resp) => {
     }
 })*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-      let q = req.body
-
-      let r1 = await db.infoa_gab_endereco.create({
-        ds_cep: q.ds_cep,
-        nm_rua: q.nm_rua,
-        nm_bairro: q.nm_bairro,
-        ds_complemento: q.ds_complemento,
-        nr_numero_rua: q.nr_numero_rua,
-        id_usuario: q.id_usuario,
-
-      })
-
-       
-
-        let r = await db.infoa_gab_cartao.create({
-            ds_cv: q.ds_cv,
-            nm_titular: q.nm_titular,
-            nr_cartao: q.nr_cartao,
-            nr_agencia: q.nr_agencia,
-            dt_validade: q.dt_validade,
-            ds_cpf_titular: q.ds_cpf_titular,
-            id_usuario: q.id_usuario
-    })  
-        resp.send(r)
-
-       
-        
-    } catch (error) {
-        resp.send({ error: "Xish" })
+app.get('/buscarBairro', async (req, resp) => {
+    try {
+      const api_key = 'b866c3722fa645f9acb1da4674663672';
+      const { lat, lon } = req.query;
+  
+     resp.send(req.query);
+      
+  
+    } catch(e) {
+      resp.send(e);
     }
-})*/
+  })
 
-app.get('/validarCompra', async  ( req, resp ) => {
-    let r = await db.infoa_gab_cartao.findAll()
-    resp.send(r)
-})
+
 
 app.listen( process.env.PORT, (x) => 
             console.log(`Servidor na Porta ${process.env.PORT}`));

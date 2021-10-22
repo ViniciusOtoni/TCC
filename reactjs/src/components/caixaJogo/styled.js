@@ -51,6 +51,15 @@ const StyledJogo = styled.div`
         left: 2.3em;
         bottom: 1em;
     }
+
+    .avaliacao:hover {
+        
+    }
+
+ 
+
+    
+
     @media (max-width: 375px){
         margin: 0em;
     }
