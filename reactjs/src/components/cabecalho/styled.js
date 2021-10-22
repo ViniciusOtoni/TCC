@@ -81,6 +81,8 @@ const StyledCabecalho = styled.div `
          left: .8em;
          width: 1em;
          height: 1em;
+
+         z-index: 12;
      }
 
     .login {
@@ -227,11 +229,11 @@ const StyledCabecalho = styled.div `
 
     @media(max-width: 1440px) {
         .user-login {
-            font-size: 1.1em;
+            font-size: 1.2em;
         }
 
         .entrega {
-            font-size: 1.1em;
+            font-size: 1.4em;
         }
     }
 

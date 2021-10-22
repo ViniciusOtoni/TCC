@@ -96,7 +96,7 @@ export default function EntregaItem() {
                                 <div className="horario-status"> (2021-03-01) </div>
                             </div>
                         </div>
-                        <Link to={"/"} style={{textDecoration: 'none'}} > <button> Voltar </button> </Link>
+                         <button> <Link to="/" style={{textDecoration: 'none'}} > Voltar </Link> </button> 
                     </div>
                     </main>
                 </StyledEntregaItem>
