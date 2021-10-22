@@ -18,7 +18,7 @@ function lerUsuarioQuelogou() {
   return usuarioLogado;
 }
 
-
+  
 
 export default function Cabecalho(props) {
   let usuarioLogado = lerUsuarioQuelogou() || {};

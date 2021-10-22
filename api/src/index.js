@@ -82,7 +82,7 @@ app.get('/produto', async (req,resp) => {
                 avalicao: item.vl_avaliacao,
                 lancamento: item.dt_cadastro,
                 imagem: item.img_produto,
-                imagem_dois: item.img_secundaria,
+                imagem_dois: fitem.img_secundaria,
                 imagem_tres: item.img_terciaria,
                 imagem_quatro: item.img_quartenaria,
             }
@@ -460,7 +460,7 @@ app.post('/validarCompra', async ( req, resp ) => {
       resp.send(e)
     }
   
-  })
+})
 
 
 
@@ -482,7 +482,80 @@ app.get('/buscarBairro', async (req, resp) => {
     } catch(e) {
       resp.send(e);
     }
-  })
+})
+
+
+app.get('/endereco', async (req, resp) => {
+    let get = await db.infoa_gab_endereco.findAll({
+        include: [
+                
+        ]
+    });
+
+    resp.send(get);
+})
+
+
+app.post('/endereco', async (req, resp) => {
+    try {
+        let r = req.body;
+        let usuario = await db.infoa_gab_usuario.findOne({
+            where: {
+                ds_email: r.ds_email,
+                ds_senha: r.ds_senha
+            }
+        })
+
+
+        let l = await db.infoa_gab_endereco.create({
+            id_usuario: usuario.id_usuario,
+            nm_bairro: r.nm_bairro,
+            nm_rua: r.nm_rua,
+            nr_numero_rua: r.nr_numero_rua,
+            ds_cep: r.ds_cep,
+            ds_complemento: r.ds_cep
+        })
+
+        resp.send(l)
+    } catch (error) {
+        resp.send({erro: `${error.toString()}`})
+    }    
+})
+
+
+
+
+app.post('/pedido', async (req, resp) => {
+    try {
+        let l = req.body;
+
+        let r = await db.infoa_gab_entrega.create({
+            id_venda_item: l.id_venda_item,
+            id_endereco: l.id_endereco,
+            ds_situacao: l.ds_situacao,
+            dt_saida: Date.now(),
+            dt_entrega: new Date('2021-11-1')
+
+        })
+
+        resp.send(r);
+    } catch (error) {
+        resp.send({erro: `${error.toString()}`})
+    }
+} )
+
+
+
+    app.get('/pedido', async (req, resp) => {
+        try {
+            let x = await db.infoa_gab_entrega.findAll();
+            resp.send(x);
+
+        } catch (error) {
+            resp.send(`Erro no get da rota /pedido ${error}`)
+        }
+    })
+
 
 
 
