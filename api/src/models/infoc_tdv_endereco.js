@@ -12,7 +12,11 @@ export default class infoc_tdv_endereco extends Model {
     },
     id_cliente: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'infoc_tdv_cliente',
+        key: 'id_cliente'
+      }
     },
     nm_rua: {
       type: DataTypes.STRING(255),

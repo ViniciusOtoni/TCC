@@ -1,10 +1,10 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infod_ssc_estoque extends Model {
+export default class infoc_tct_compra_item extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_estoque: {
+    id_pedido: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -12,15 +12,23 @@ export default class infod_ssc_estoque extends Model {
     },
     id_produto: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'infoc_tct_produto',
+        key: 'id_produto'
+      }
     },
-    qtd_disponivel: {
+    id_compra: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'infoc_tct_compra',
+        key: 'id_compra'
+      }
     }
   }, {
     sequelize,
-    tableName: 'infod_ssc_estoque',
+    tableName: 'infoc_tct_compra_item',
     timestamps: false,
     indexes: [
       {
@@ -28,7 +36,7 @@ export default class infod_ssc_estoque extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_estoque" },
+          { name: "id_pedido" },
         ]
       },
       {
@@ -38,8 +46,15 @@ export default class infod_ssc_estoque extends Model {
           { name: "id_produto" },
         ]
       },
+      {
+        name: "id_compra",
+        using: "BTREE",
+        fields: [
+          { name: "id_compra" },
+        ]
+      },
     ]
   });
-  return infod_ssc_estoque;
+  return infoc_tct_compra_item;
   }
 }

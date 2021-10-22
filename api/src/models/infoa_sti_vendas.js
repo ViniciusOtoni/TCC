@@ -19,11 +19,11 @@ export default class infoa_sti_vendas extends Model {
       allowNull: true
     },
     ds_codigo: {
-      type: DataTypes.STRING(200),
+      type: DataTypes.STRING(100),
       allowNull: true
     },
     dt_venda: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: true
     }
   }, {

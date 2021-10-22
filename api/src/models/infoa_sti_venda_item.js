@@ -1,26 +1,22 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_dtn_tb_favoritos extends Model {
+export default class infoa_sti_venda_item extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_fav: {
+    id_venda_produto: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_produto: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    id_cliente: {
+    id_vendas: {
       type: DataTypes.INTEGER,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoa_dtn_tb_favoritos',
+    tableName: 'infoa_sti_venda_item',
     timestamps: false,
     indexes: [
       {
@@ -28,25 +24,18 @@ export default class infoa_dtn_tb_favoritos extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_fav" },
+          { name: "id_venda_produto" },
         ]
       },
       {
-        name: "id_produto",
+        name: "id_vendas",
         using: "BTREE",
         fields: [
-          { name: "id_produto" },
-        ]
-      },
-      {
-        name: "id_cliente",
-        using: "BTREE",
-        fields: [
-          { name: "id_cliente" },
+          { name: "id_vendas" },
         ]
       },
     ]
   });
-  return infoa_dtn_tb_favoritos;
+  return infoa_sti_venda_item;
   }
 }
