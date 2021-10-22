@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router'
 import Cookie from 'js-cookie'
 import Api from '../../services/api'
+import Cookies from 'js-cookie'
 const api = new Api()
 
 export default function VendaUnica(props){
@@ -18,6 +19,8 @@ export default function VendaUnica(props){
     const [ vlAvaliacao, setVlAvaliacao ] = useState(0)
     const [ idProduto, setIdProduto ] = useState(0)
 
+   
+ // Cookies.remove('carrinho')
     
     const atualizarAvaliacao = async (num, id) => {
         setVlAvaliacao(num)

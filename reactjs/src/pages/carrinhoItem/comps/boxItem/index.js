@@ -6,30 +6,24 @@ import { useState } from "react"
 import { StyledButtonAdm } from "../../../../components/botaoAdm/styled"
 import { useEffect } from "react"
 import { useHistory } from "react-router"
-import Api from "../../../../services/api"
-const api = new Api();
+import Cookies from "js-cookie"
+
+
 
 
 
 export default function BoxItemCarrinho(props) {
 
+ // Cookies.remove('carrinho')
     
     const [ produto, setProduto ]  = useState(props.info)
     const [ qtd, setQtd ] = useState(1)
     const [ total, setTotal ] = useState(produto.preco)
-    const [ cep, setCep ] = useState(false);
-    const [ vlCep, setVlCep ] = useState('');
     const nave = useHistory()
-
     
-    function calcularFrete() {
-        let r = api.cep(vlCep)
-
-        let r1 = vlCep.length
         
-        if(r1 === 8)
-        setCep(true)
-    }
+  
+  
 
 
     function remover () {
@@ -39,22 +33,23 @@ export default function BoxItemCarrinho(props) {
         
     }
 
-   
-
-  
-
-
-
-  
-
-    useEffect( () => {
-       produto.total = Math.round( produto.preco * qtd);
+    function alterar() {
+         produto.total = Math.round( produto.preco * qtd);
         setTotal(produto.total)
         if(props.respostaFilho)
             props.respostaFilho()
-            
-      
+               
+    }
+
+   
+
+
+    useEffect( () => {
+       alterar()
     }, [qtd] )
+
+
+   
  
 
    
@@ -98,26 +93,7 @@ export default function BoxItemCarrinho(props) {
                 <div className="valores-preco"> {`R$: ${produto.total}` } </div>
             </div>
             <div className="excluir" onClick={remover}> Excluir </div>
-            <div className="row-input"> 
-                <div className="frete"> Frete: </div>
-                <div className="input-frete">  <StyledInput value={vlCep} placeholder=" Cep" style={{width:"8em"}} onChange={e => setVlCep(e.target.value)}/> </div>
-                <div className="botao-frete"> <StyledButtonVerde onClick={calcularFrete} style={{width: "7em", height:"1.8em", marginLeft:"2em"}}> Calcular </StyledButtonVerde> </div>
-            </div>
-            {cep && <div> 
-                        <div className="rua"> Nome da Rua Bonito  </div>
-                        <div className="bairro"> Bairro com Nome Bonito  </div>
-                        <div className="estado">  Cidade com Nome Bonita </div>
-                
-                        <div className="row-val"> 
-                            <div className="titulo-val"> Preço: </div>
-                            <div className="valor-val"> R$10,99 </div>
-                        </div>
-                        <div className="row-val"> 
-                            <div className="titulo-val"> Previsão: </div>
-                            <div className="valor-val1"> 4 dias </div>
-                        </div>
-                    </div> 
-            }
+            
                     
         </div>
    
