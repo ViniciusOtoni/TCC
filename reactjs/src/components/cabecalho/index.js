@@ -1,10 +1,12 @@
 import { StyledCabecalho } from "./styled";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
 import Api from "../../services/api"
 const api = new Api();
+
+
 
 function lerUsuarioQuelogou() {
   let logado = Cookies.get("usuario-logado");
@@ -16,23 +18,20 @@ function lerUsuarioQuelogou() {
   return usuarioLogado;
 }
 
+
+
 export default function Cabecalho(props) {
   let usuarioLogado = lerUsuarioQuelogou() || {};
   const [nm] = useState(usuarioLogado.nm_usuario);
   const [img] = useState(usuarioLogado.img_usuario);
+  const [pesquisa, setPesquisa] = useState('');
+
+  const navigation = useHistory();
 
   const logof = () => {
     Cookies.remove("usuario-logado");
   };
-
-  async function autocomplete(){
-      let resp = await api.listarProdutos();
-      console.log(resp)
-  }
-
-//   useEffect(() => {
-    
-// }, [])
+  
 
   return (
     <StyledCabecalho corLetra={props.corLetra}>
@@ -47,8 +46,13 @@ export default function Cabecalho(props) {
         </div>
 
         <div className="pesquisa">
-           <img className="lupa" src="./assets/images/lupa.svg"/>
-           <input />
+              <Link to={{
+                pathname:"/venda",
+                state:{pesquisa}
+              }}> 
+                  <img className="lupa" src="./assets/images/lupa.svg"/> 
+              </Link>
+              <input onChange={e => setPesquisa(e.target.value)}/> 
         </div>
 
         <Link to={Cookies.get("usuario-logado") === undefined ? "/login" : "/"}

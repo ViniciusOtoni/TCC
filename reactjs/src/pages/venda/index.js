@@ -8,11 +8,13 @@ import Api from "../../services/api";
 const api = new Api();
 
 
-export default function Venda() {
-
+export default function Venda(props) {
+    const [pesquisa, setPesquisa] = useState(props.location.state)
     const [produto, setProduto] = useState([]);
     const [order, setOrder] = useState('lancamento');
-   
+    
+    console.log(pesquisa) 
+
     const listar = async () => {
         const e = await api.listarProdutos(order)
         setProduto(e);

@@ -81,6 +81,8 @@ const StyledCabecalho = styled.div `
          left: .8em;
          width: 1em;
          height: 1em;
+
+         z-index: 12;
      }
 
     .login {
