@@ -21,7 +21,7 @@ const StyledEscolha = styled.div`
         color: #F0AC54;
         background-color: #333333;
         font-size: 25px;
-        width: 140px;
+        width: 170px;
         text-align: center;
         margin-bottom: 2em;
         margin-top: 0.4em;
@@ -35,6 +35,7 @@ const StyledEscolha = styled.div`
         font-size: 1.3em;
         margin-bottom: 2em;
         width: 7em;
+        padding-left: 1em;
         text-align: center;
         font-family: MontserratBold;
     }

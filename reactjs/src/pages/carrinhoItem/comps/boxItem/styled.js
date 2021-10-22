@@ -133,31 +133,6 @@ const StyledBoxItemCarrinho = styled.div`
         margin-left: 3em;
     }
 
-    .bairro {
-        font-family: MontserratBold;
-        font-size: 18px;
-        color:white;
-        margin-top: .8em;
-        margin-left: 6.5em;
-    }
-
-    .rua {
-        font-family: MontserratBold;
-        font-size: 18px;
-        color:white;
-        margin-top: .8em;
-        margin-left: 6.5em;
-    }
-
-    .estado {
-        font-family: MontserratBold;
-        font-size: 18px;
-        margin-right: .8em;
-        margin-top: .8em;
-        margin-bottom: 2em;
-        color:white;
-        margin-left: 6.5em;
-    }
 
     
 
@@ -171,13 +146,7 @@ const StyledBoxItemCarrinho = styled.div`
         cursor: pointer;
     }
 
-    .frete {
-        margin-right: 1em;
-    }
-
-    .titulo-val {
-    margin-left: 1.4em;
-    }
+   
 
     .cell {
         display: none;

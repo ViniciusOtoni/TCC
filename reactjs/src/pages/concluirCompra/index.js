@@ -13,7 +13,7 @@ const api = new Api()
 
 
 
-export default function ConcluirCompra() {
+export default function ConcluirCompra(props) {
 
   
 
@@ -21,9 +21,11 @@ export default function ConcluirCompra() {
     const [ hidden, setHidden ] = useState(false)
     const nave = useHistory()
     let usuarioLogado = lerUsuarioQuelogou() || {}
-    const [ teste, setTeste ] = useState(usuarioLogado.id_usuario)
+    const [ email, setEmail ] = useState(usuarioLogado.ds_email)
+    const [ senha, setSenha ] = useState(usuarioLogado.ds_senha)
+    const [ infoProduto, setInfoProduto ] = useState(props.location.state)
 
-    console.log(teste)
+      
 
     const [ vl1, setVl1 ] = useState('')
     const [ vl2, setVl2 ] = useState('')
@@ -31,6 +33,7 @@ export default function ConcluirCompra() {
     const [ vl4, setVl4 ] = useState('')
     const [ vl5, setVl5 ] = useState('')
 
+    const [ formaPagamento, setFormaPagamento ]= useState('')
     const [ vl11, setVl11 ] = useState('')
     const [ vl22, setVl22 ] = useState('')
     const [ vl33, setVl33 ] = useState('')
@@ -41,21 +44,15 @@ export default function ConcluirCompra() {
    
    
 
-    function confirmarDados() {
-        let r = api.confimarCompra(vl1, vl2, vl3, vl4, vl5, vl11, vl22, vl33, vl44, vl55, vl66, teste )
-    }
     
-   
-   
- 
-
-
-
     
 
-
-    function Visible(){
+    function Visible() {
         setHidden(true);
+    }
+
+    const confirmarDados =  async () => {
+        let r = api.confirmarCompra(email, senha, vl11,  vl44, vl22, vl55,  vl33, vl66, vl3, vl2, vl5, vl1, vl4, vl77, infoProduto.nm_produto,  1, infoProduto.vl_preco )
     }
 
    
@@ -107,6 +104,25 @@ export default function ConcluirCompra() {
                     </div>
                     <hr />
                     <div className="direita-grupo-input">
+
+                    <div className="titulo-produto"> Informaçõe do Produto </div>
+                    {infoProduto.map(x => 
+                    <div>
+                    <div className="row-produto"> 
+                        <div className="total-compra"> Valor Total da Compra:  </div>
+                        <div className="preço-compra"> { x.preco } </div>
+                    </div>
+                    <div className="row-produto"> 
+                        <div className="total-compra"> Quantidade Total De produtos Adquiridos:  </div>
+                        <div className="preço-compra"> { x.produto } </div>
+                    </div> 
+                    </div>)}
+                    <div className="row-produto"> 
+                        <div className="total-compra"> Entregue Por:  </div>
+                        <div className="preço-compra"> GameBudSedex </div>
+                    </div>
+
+
                         <div className="credit-card">
                             <button onClick={ Visible } style={{marginBottom: ".3em"}}>Cartão de Crédito <img  className="img-button" src="/assets/images/cartao.svg" alt=""/></button>
                             <button onClick={ Visible }>Cartão de Débito <img className="img-button2" src="/assets/images/cartao.svg" alt=""/></button>
@@ -151,11 +167,11 @@ export default function ConcluirCompra() {
                                 <StyledInput value={vl33} onChange={e => setVl33(e.target.value)} className="input-lastInfo-text1" />
                                 
                                 <div className="last-information-text1-last">Percelas:</div>
-                                    <select className="parcelas-section" >
-                                        <option> 2x </option>
-                                        <option> 3x </option>
-                                        <option> 4x </option>
-                                        <option> 5x </option>
+                                    <select className="parcelas-section" value={vl77} onChange={e => setVl77(e.target.value)} >
+                                        <option value="2x"> 2x </option>
+                                        <option value="3x"> 3x </option>
+                                        <option value="4x"> 4x </option>
+                                        <option value="5x"> 5x </option>
                                     </select>
                             </div>
 
@@ -172,7 +188,7 @@ export default function ConcluirCompra() {
                                   
                                 
                             
-                                <Link to="/">  <div className="bottom">  <StyledButtonVerde onClick={confirmarDados} style={{marginTop:"4.8em", height:"2em", width:"17em"}} className="botao-buttom"> Concluir Compra! </StyledButtonVerde> </div> </Link>
+                                <Link to="/">  <div className="bottom">  <StyledButtonVerde onClick={confirmarDados} style={{marginTop:"4.8em", height:"2em", width:"17em", marginBottom:"5em"}} className="botao-buttom"> Concluir Compra! </StyledButtonVerde> </div> </Link>
                             </div>
                         </div>
                     </div>

@@ -180,7 +180,52 @@ Z
         return r.data;
     }
 
+    async confirmarCompra(email, senha, 
+                        cv, agencia, titular, dt_validade, num_cartao, cpf_titular, 
+                        bairro, rua, numero_rua, cep, complemento, 
+                        parcelas, forma_pagamento, 
+                        nm_produto, 
+                        qtd_produtos, preco) {
 
-    
+                            let jsonLogin = {
+                                    ds_email: email,
+                                    ds_senha: senha
+                                }
+
+                            let jsonCartao = {
+                                ds_cv: cv,
+                                nr_agencia: agencia,
+                                nm_titular: titular,
+                                dt_validade: dt_validade,
+                                nr_cartao: num_cartao,
+                                ds_cpf_titular: cpf_titular
+                            }
+
+                            let jsonEndereco = {
+                                nm_bairro: bairro,
+                                nm_rua: rua,
+                                nr_numero_rua: numero_rua,
+                                ds_cep: cep,
+                                ds_complemento: complemento
+                            }
+
+                            let jsonVenda = {
+                                qtd_parcelas: parcelas,
+                                ds_pagamento: forma_pagamento,
+
+                            }
+
+                            let jsonProduto = {
+                                nm_produto: nm_produto
+                            }
+
+                            let jsonVendaItem = {
+                                qtd_produtos: qtd_produtos,
+                                vl_preco: preco
+                            }
+
+                                let r = await api.post(`/validarCompra`, jsonLogin, jsonCartao, jsonEndereco, jsonVenda, jsonProduto, jsonVendaItem )
+                                return r.data;
+            }
 }
 

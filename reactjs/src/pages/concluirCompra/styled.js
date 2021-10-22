@@ -4,9 +4,13 @@ const Container = styled.div`
 
     display: flex;
     flex-direction: column;
-
+    min-height: 100vh;
     background-color: #333333;
-    height: 100vh;
+    
+ .sub-main {
+        padding-top: 3em;
+    }
+    
 
     .cabecalho {
         display: flex;
@@ -47,8 +51,9 @@ const Container = styled.div`
     }
 
     hr {
-        margin: 0em 2em;
-        height: 36em;
+        margin: 0em 3em;
+        max-height: 60%;
+      
     }
 
     .direita-grupo-input {
@@ -65,6 +70,7 @@ const Container = styled.div`
         display: flex;
         flex-direction: column;
         margin-bottom: .5em;
+        padding-top: 7em;
     }
 
     .credit-card button {
@@ -220,6 +226,33 @@ const Container = styled.div`
         font-family: MontserratBold;
     }
 
+    .titulo-produto {
+        color: #ffffff;
+        font-size: 2em;
+        font-family: MontserratBold;
+    }
+
+    .row-produto {
+        display: flex;
+        flex-direction: row;
+        padding-top: .6em;
+        padding-bottom: .5em;
+        align-items: center;
+    }
+
+    .total-compra {
+        font-size: 1.2em;
+        color: #F0AC54;
+        font-family: MontserratBold;
+    }
+
+    .preço-compra {
+        font-size: 1.2em;
+        color: #FFFFFF;
+        font-family: MontserratBold;
+        padding-left: 1em;
+    }
+
     @media(max-width:425px) {
       .sub-main {
         width: 100%;
@@ -292,11 +325,8 @@ const Container = styled.div`
           width: 100%;
       }
 
-      .botao-buttom {
-        width: 100%;
-      }
 
-      height: auto;
+      
     }
 
     @media(width: 425px) {
