@@ -30,10 +30,6 @@ export default function Cabecalho(props) {
       console.log(resp)
   }
 
-//   useEffect(() => {
-    
-// }, [])
-
   return (
     <StyledCabecalho corLetra={props.corLetra}>
       <main className="pc">
