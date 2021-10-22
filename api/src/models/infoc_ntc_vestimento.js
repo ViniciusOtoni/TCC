@@ -10,12 +10,16 @@ export default class infoc_ntc_vestimento extends Model {
       allowNull: false,
       primaryKey: true
     },
-    tp_vestimento: {
+    ds_inferior: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_valor: {
-      type: DataTypes.BOOLEAN,
+    ds_superior: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    ds_calcado: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
     ds_complemento: {

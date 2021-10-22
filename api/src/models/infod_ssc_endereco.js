@@ -1,38 +1,38 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoc_atn_tb_configuracoes_empresa extends Model {
+export default class infod_ssc_endereco extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_empresa: {
+    id_endereco: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    ds_site: {
-      type: DataTypes.STRING(100),
+    ds_endereco: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_descricao_empresa: {
-      type: DataTypes.STRING(100),
+    nr_endereco: {
+      type: DataTypes.INTEGER,
       allowNull: true
     },
-    ds_instagram_empresa: {
-      type: DataTypes.STRING(100),
+    ds_cep: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_twiter_empresa: {
-      type: DataTypes.STRING(100),
+    nm_cidade: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_link_imagem: {
-      type: DataTypes.STRING(100),
+    ds_complemento: {
+      type: DataTypes.STRING(255),
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoc_atn_tb_configuracoes_empresa',
+    tableName: 'infod_ssc_endereco',
     timestamps: false,
     indexes: [
       {
@@ -40,11 +40,11 @@ export default class infoc_atn_tb_configuracoes_empresa extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_empresa" },
+          { name: "id_endereco" },
         ]
       },
     ]
   });
-  return infoc_atn_tb_configuracoes_empresa;
+  return infod_ssc_endereco;
   }
 }
