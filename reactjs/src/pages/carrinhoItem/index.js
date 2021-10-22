@@ -113,9 +113,9 @@ export default function CarrinhoItem() {
                     <div className="botao-frete"> <StyledButtonVerde onClick={buscarCep} style={{width: "7em", height:"1.8em", marginLeft:"2em"}}> Calcular </StyledButtonVerde> </div>
                 </div>
                 {cep && <div> 
-                        <div className="rua"> {loc.logradouro}  </div>
-                        <div className="bairro"> {loc.bairro}  </div>
-                        <div className="estado">  {loc.localidade} </div>
+                        <div className="rua"> {` - ${loc.logradouro},`}  </div>
+                        <div className="bairro"> {` - ${loc.bairro},`}  </div>
+                        <div className="estado">  {` - ${loc.localidade}`} </div>
                 
                         <div className="row-val"> 
                             <div className="titulo-val"> Preço: </div>
@@ -139,7 +139,7 @@ export default function CarrinhoItem() {
                         <div className="total-valor-baixo"> Total: </div>
                         <div className="total-final"> {`R$: ${Math.round(vlFinal + (loc.uf === 'SP' ? 50 : loc.uf === 'RJ'  ? 130 : 0))}`} </div>
                     </div>
-                    <div className="botao-finalizar"> <Link to={{pathname:"concluirCompra", state: produto.info}}> <StyledButtonVerde style={{padding: ".3em", marginBottom:"1em", marginRight: "2em", width:"14em"}}> Realizar Compra! </StyledButtonVerde> </Link> </div> 
+                    <div className="botao-finalizar"> <Link to={{pathname:"concluirCompra", state: produto }}> <StyledButtonVerde style={{padding: ".3em", marginBottom:"1em", marginRight: "2em", width:"14em"}}> Realizar Compra! </StyledButtonVerde> </Link> </div> 
                 </div>
                 </main>
 

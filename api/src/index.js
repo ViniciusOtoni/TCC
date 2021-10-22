@@ -61,8 +61,7 @@ app.get('/produto', async (req,resp) => {
         let filtro = req.query.filtro;
         let categoria = req.query.categoria;
 
-        console.log(filtro)
-        console.log(categoria)
+        
 
         let r = await db.infoa_gab_produto.findAll({ 
             where: {
@@ -134,6 +133,15 @@ app.get('/produto/:idProduto', async (req, resp) =>{
 app.post('/produto', async (req, resp) => {
     try{
         let l = req.body
+
+        let r1 = await db.infoa_gab_produto.findOne({
+            where: {
+                nm_produto: l.nm_produto
+            }
+        })
+
+        if(r1 != null)
+        return resp.send('Produto já foi cadastrado!')
    
         let r = await db.infoa_gab_produto.create({
             nm_produto: l.nm_produto, 
@@ -268,9 +276,6 @@ try {
     if(u2 != null)
     resp.send( { error: 'Email já foi cadastrado!' } );
 
-    let u3 = await db.infoa_gab_usuario.findOne( { where: { nm_usuario: r.nm_usuario } })
-    if(u3 === '' )
-    resp.send({ error: 'Preencha todos os campos '})
 
     
 
@@ -419,45 +424,75 @@ app.put('/login/senha/:codigo', async (req, resp) => {
 
 
 app.post('/validarCompra', async ( req, resp ) => {
+    
     try {
-        const r = req.body;
+        
+        let r = req.body;
 
         const usuarioLogado = await db.infoa_gab_usuario.findOne({
             where: {
                 ds_email: r.ds_email,
-                ds_senha: r.ds_senha,
-                nm_usuario: r.nm_usuario
-            }
-        })
+                ds_senha: r.ds_senha
+            }}); 
+
+       
 
         const cartaoUsuario = await db.infoa_gab_cartao.create({
+            
             id_usuario: usuarioLogado.id_usuario,
-            ds_cv: r.ds_cv,
-            nr_agencia: r.nr_agencia,
-            nm_titular: r.nm_titular,
+            ds_cv: r.cv,
+            nr_agencia: r.agencia,
+            nm_titular: r.titular,
             dt_validade: r.dt_validade,
-            nr_cartao: r.nr_cartao,
-            ds_cpf_titular: r.ds_cpf_titular
-        })
+            nr_cartao: r.num_cartao,
+            ds_cpf_titular: r.cpf_titular
+        });
 
         const enderecoUsuario = await db.infoa_gab_endereco.create({
+            
             id_usuario: usuarioLogado.id_usuario,
-            nm_bairro: r.nm_bairro,
-            nm_rua: r.nm_rua,
-            nr_numero_rua: r.nr_numero_rua,
-            ds_cep: r.ds_cep,
-            ds_complemento: r.ds_complemento
-        })
+            nm_bairro: r.bairro,
+            nm_rua: r.rua,
+            nr_numero_rua: r.numero_rua,
+            ds_cep: r.cep,
+            ds_complemento: r.complemento
+        });
 
-        const produtoUsu = await db.infoa_gab_produto.findAll()
+        
 
+        const gerarVenda = await db.infoa_gab_venda.create({
+            
+            id_usuario: usuarioLogado.id_usuario,
+            dt_venda : Date.now(),
+            qtd_parcelas: r.parcelas,
+            bt_situacao: true,
+            ds_pagamento: r.forma_pagamento
+        });
+        
+        const produtoUsu = await db.infoa_gab_produto.findOne({
+            where: {
+                nm_produto: r.nm_produto,
+            }
+        });
 
+        const gerarVendaItem = await db.infoa_gab_venda_item.create({
+            id_produto: produtoUsu.id_produto,
+            id_venda: gerarVenda.id_venda,
+            qtd_produtos: r.qtd_produtos,
+            vl_preco: r.preco
+        });
 
+        const entrega = await db.infoa_gab_entrega.create({
+            id_endereco: enderecoUsuario.id_endereco,
+            id_venda_item: gerarVendaItem.id_venda_item,
+            ds_situacao: true,
+            dt_saida: Date.now(),
+            dt_entrega: '2021-01-01'
+        });
 
-    } catch(e) {
-      resp.send(e)
-    }
-  
+        resp.send(gerarVendaItem) } catch( error ) {
+            resp.send( { error: "DEU ERRO NA API MONSTRA, duvido que não seja a primeira vez..."})
+        }
   })
 
 
@@ -502,18 +537,7 @@ app.post('/pedido', async (req, resp) => {
     }
 })*/
 
-app.get('/buscarBairro', async (req, resp) => {
-    try {
-      const api_key = 'b866c3722fa645f9acb1da4674663672';
-      const { lat, lon } = req.query;
-  
-     resp.send(req.query);
-      
-  
-    } catch(e) {
-      resp.send(e);
-    }
-  })
+
 
 
 

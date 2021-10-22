@@ -34,7 +34,7 @@ export default function BoxItemCarrinho(props) {
     }
 
     function alterar() {
-         produto.total = Math.round( produto.preco * qtd);
+         produto.total = Math.round( produto.preco * qtd );
         setTotal(produto.total)
         if(props.respostaFilho)
             props.respostaFilho()
@@ -77,18 +77,16 @@ export default function BoxItemCarrinho(props) {
         <div className="column-valores">
             <div className="row-valores"> 
                 <div className="select">  <SelectInput   onChange={e => setQtd(e.target.value)}   style={{width:"4em", height:"2em", fontSize:"1em", fontFamily: "MontserratBold"}}>  
-                <option value={1} > 1 </option>
-                <option value={2} > 2 </option>
-                <option value={3} > 3 </option>
-                <option value={4} > 4 </option>
-                <option value={5} > 5 </option>
-                <option value={6} > 6 </option>
-                <option value={7} > 7 </option>
-                <option value={8} > 8 </option>
-                <option value={9} > 9 </option>
-                <option value={10} > 10 </option>
-
-              
+                    <option value={1} > 1 </option>
+                    <option value={2} > 2 </option>
+                    <option value={3} > 3 </option>
+                    <option value={4} > 4 </option>
+                    <option value={5} > 5 </option>
+                    <option value={6} > 6 </option>
+                    <option value={7} > 7 </option>
+                    <option value={8} > 8 </option>
+                    <option value={9} > 9 </option>
+                    <option value={10} > 10 </option>
                  </SelectInput> </div>
                 <div className="valores-preco"> {`R$: ${produto.total}` } </div>
             </div>

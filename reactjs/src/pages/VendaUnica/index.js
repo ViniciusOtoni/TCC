@@ -14,6 +14,7 @@ const api = new Api()
 export default function VendaUnica(props){
 
     const [ produto, setProduto ] = useState(props.location.state)
+    const [ mandar, setMandar ] = useState([produto])
     const [ img, setImg ] = useState(0)
     
     const [ vlAvaliacao, setVlAvaliacao ] = useState(0)
@@ -87,7 +88,7 @@ export default function VendaUnica(props){
                             
                             <div className="align-button">
                               <StyledButtonVerde style={{ padding:".7em 3em", margin: ".8em 0em", fontFamily: "semiBold" }} onClick={comprar}> Adicionar ao carrinho  </StyledButtonVerde> 
-                            <Link to="/concluirCompra"> <StyledButtonVerde style={{ padding:".7em 4.7em", fontFamily: "semiBold" }}> Comprar agora </StyledButtonVerde> </Link>
+                            <Link to={{ pathname:"concluirCompra", state: mandar }}> <StyledButtonVerde style={{ padding:".7em 4.7em", fontFamily: "semiBold" }}> Comprar agora </StyledButtonVerde> </Link>
                             </div>    
                         </div>
                     </div>  
