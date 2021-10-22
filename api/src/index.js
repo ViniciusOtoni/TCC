@@ -129,6 +129,8 @@ app.post('/produto', async (req, resp) => {
     }    
 })
 
+
+
 app.put('/produto/:idProduto', async (req, resp) => {
     try{    
         let l = req.body;
@@ -409,41 +411,8 @@ app.post('/validarCompra', async ( req, resp ) => {
 
 
 
-app.get('/pedido', async (req, resp) => {
-    try {
-        let x = await db.infoa_gab_entrega.findAll();
-        resp.send(x);
 
-    } catch (error) {
-        resp.send(`Erro no get da rota /pedido ${error}`)
-    }
-})
 
-/*
-app.post('/pedido', async (req, resp) => {
-    try {
-        let corpo = req.body;
-
-        let usuario = await db.infoa_gab_usuario.findOne({ where: { nm_usuario: corpo.usuario } });
-        
-        let quantidade = await db.infoa_gab_venda_item.findOne({ where: { qtd_items: qtd_items, id_venda: total.id_venda }});
-        let total = await db.infoa_gab_venda.findOne({ where: { id_venda: quantidade.id_venda } });
-
-        let r = await db.infoa_gab_entrega.create({
-            id_venda_item: ...,
-            dt_saida: Date.now(),
-            qtd_items: quantidade.qtd_items,
-            total: total.ds_pagamento,
-            ds_situacao: corpo.ds_situacao,
-            usuario: usuario.nm_usuario,
-        })
-
-        resp.send(r);
-
-    } catch (error) {
-        
-    }
-})*/
 
 
 
