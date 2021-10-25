@@ -11,11 +11,6 @@ export default class Api {
       return r.data;
     }
 
-    async produtosPesquisa (pesquisa) {
-        let r = await api.get(`/produtosPesquisa?filtro=${pesquisa}`)
-        return r.data;
-    }
-
     async confimarCompra( ds_cpf, nm_rua, nm_bairro, ds_complemento, nr_numero_rua, ds_cv, nm_titular, nr_cartao, nr_agencia, dt_validade, ds_cpf_titular, id_usuario) {
         let jsonCompra = {
             ds_cpf, nm_rua, 
@@ -44,8 +39,8 @@ export default class Api {
 
     
 
-    async listarProdutos(order, filtro, categoria) {
-        let r = await api.get(`/produto?criterio=${order}&filtro=${filtro}&categoria=${categoria}`)
+    async listarProdutos(order, pesquisa, categoria) {
+        let r = await api.get(`/produto?criterio=${order}&filtro=${pesquisa}&categoria=${categoria}`)
         return r.data
     }
 
