@@ -1,10 +1,12 @@
 import { StyledGerenteAlterar } from "./styled";
 import { StyledInput, StyledSelect } from "../../components/input/styled";
 import { StyledButtonAdm } from "../../components/botaoAdm/styled";
-import { useState, useEffect } from "react";
-
 import CabecalhoAdm from "../../components/cabecalhoAdm";
+
+import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Api from "../../services/api";
 const api = new Api();
@@ -36,7 +38,7 @@ export default function GerenteAlterar(props) {
             imagemQuartenaria,
             infoProduto.id_produto
         )
-        alert("Produto alterado")
+        toast.dark("Produto alterado")
         navigation.push('/gerenteCadastrar');
     }
 
@@ -63,7 +65,7 @@ export default function GerenteAlterar(props) {
     return (
         <div style={{backgroundColor:"#333333", minHeight:"100vh"}}> 
         <CabecalhoAdm nulob={true} />
-            
+            <ToastContainer />
                 <StyledGerenteAlterar> 
                 <main> 
                

@@ -1,9 +1,13 @@
 import { StyledPopup } from "./styled";
 import { StyledInput } from "../input/styled";
 import { StyledButtonPopup } from "../botaoPopup/styled";
+
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useHistory } from "react-router";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Api from '../../services/api';
 import Cookies from "js-cookie";
 
@@ -33,7 +37,7 @@ export default function Popup(props) {
         let r = await api.login(vl1, vl2)
 
         if(r.error) {
-            alert(`${r.error}`)
+            toast.error(`${r.error}`)
         } else {
             Cookies.set('usuario-logado' ,JSON.stringify(r));
             navegacao.push('/')
@@ -45,7 +49,7 @@ export default function Popup(props) {
         let r = await api.loginGerente(vl1, vl2)
 
         if(r.error) {
-            alert(`${r.error}`)
+            toast.error(`${r.error}`)
         } else {
             Cookies.set('usuario-logado' ,JSON.stringify(r));
             navegacao.push('/gerenteEscolha')
@@ -57,7 +61,7 @@ export default function Popup(props) {
      let r = await api.recuperarSenha(vl2, vl1)
 
         if(r.error) {
-            alert(`${r.error}`)
+            toast.error(`${r.error}`)
         } else {
             navegacao.push('/redefinirSenha')
         }
@@ -67,7 +71,7 @@ export default function Popup(props) {
         let r = await api.redefinirSenha(vl1,vl2)
 
         if( r.error ) {
-            alert(`${r.error}`)
+            toast.error(`${r.error}`)
         } else {
             navegacao.push('/')
         }
@@ -81,6 +85,7 @@ export default function Popup(props) {
 
     return (
         <StyledPopup recuSenha={props.recuSenha}>
+            <ToastContainer />
             <header> 
                 <div className="logo"> <img src="/assets/images/logo.svg" alt="" /> </div>
                 <div className="titulo"> GameBud </div>
