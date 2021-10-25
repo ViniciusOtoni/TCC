@@ -21,8 +21,7 @@ export default function BoxItemCarrinho(props) {
     const [ total, setTotal ] = useState(produto.preco)
     const nave = useHistory()
     
-        
-  
+
   
 
 
