@@ -51,7 +51,7 @@ export default function EntregaItem() {
                                 <div className="horario-status"> (2021-03-01) </div>
                             </div>
                         </div>
-                        <div className="voltar"> <button> Voltar </button> </div>
+                     <Link to="/">   <div className="voltar"> <button> Voltar </button> </div> </Link>
                     </div>
                     </main>
                     <main className="cell"> 
@@ -96,7 +96,7 @@ export default function EntregaItem() {
                                 <div className="horario-status"> (2021-03-01) </div>
                             </div>
                         </div>
-                         <button> <Link to="/" style={{textDecoration: 'none'}} > Voltar </Link> </button> 
+                        <Link to="/" style={{textDecoration: 'none'}} >    <button>  Voltar  </button> </Link>
                     </div>
                     </main>
                 </StyledEntregaItem>

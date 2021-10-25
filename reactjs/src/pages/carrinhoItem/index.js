@@ -80,8 +80,7 @@ export default function CarrinhoItem() {
                
                 
                 {produto.map(x => 
-                <BoxItemCarrinho key={x.id} info={x} onRemove={removerProduto} respostaFilho={respFilho}/> 
-                   
+                <BoxItemCarrinho key={x.id} info={x} onRemove={removerProduto} respostaFilho={respFilho}/>   
                 )}
                 
                 <div className="main-cep">

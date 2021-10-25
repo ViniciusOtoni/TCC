@@ -28,27 +28,35 @@ export default function ConcluirCompra(props) {
     const [ senha, setSenha ] = useState(usuarioLogado.ds_senha)
     const [ infoProduto, setInfoProduto ] = useState(props.location.state)
 
-    const [ vl1, setVl1 ] = useState('')
-    const [ vl2, setVl2 ] = useState('')
-    const [ vl3, setVl3 ] = useState('')
-    const [ vl4, setVl4 ] = useState('')
-    const [ vl5, setVl5 ] = useState('')
+      
 
-    const [ formaPagamento, setFormaPagamento ]= useState('')
-    const [ vl11, setVl11 ] = useState('')
-    const [ vl22, setVl22 ] = useState('')
-    const [ vl33, setVl33 ] = useState('')
-    const [ vl44, setVl44 ] = useState('')
-    const [ vl55, setVl55 ] = useState('')
-    const [ vl66, setVl66 ] = useState('')
-    const [ vl77, setVl77 ] = useState('')
+    const [ cep, setCep ] = useState('')
+    const [ nmRua, setNmRua ] = useState('')
+    const [ nmBairro, setNmBairro ] = useState('')
+    const [ complemento, setComplemento ] = useState('')
+    const [ nrRua, setNrRua ] = useState('')
+
+    const [ formaPagamento, setFormaPagamento ] = useState('')
+    
+    const [ cv, setCv ] = useState('')
+    const [ nmTitular, setNmTitular ] = useState('')
+    const [ nrCartao, setNrCartao ] = useState('')
+    const [ nrAgencia, setNrAgencia ] = useState('')
+    const [ dtValidade, setDtValidade ] = useState('')
+    const [ cpf, setCpf ] = useState('')
+    const [ parcelas, setParcelas ] = useState('')
+   
+   
+
+    
+    
 
     function Visible() {
         setHidden(true);
     }
 
     const confirmarDados =  async () => {
-        let r = api.confirmarCompra(email, senha, vl11,  vl44, vl22, vl55,  vl33, vl66, vl3, vl2, vl5, vl1, vl4, vl77, infoProduto.nm_produto,  1, infoProduto.vl_preco )
+        let r = api.confirmarCompra(email, senha, cv, nrAgencia, nmTitular, dtValidade, nrCartao, cpf, nmBairro, nmRua, nrRua, cep, complemento, parcelas, formaPagamento)
     }
    
     function lerUsuarioQuelogou() {
@@ -80,19 +88,19 @@ export default function ConcluirCompra(props) {
                 <main className="sub-main">
                     <div className="esquerda-grupo-input">
                         <div className="text-input">Inserir Cep</div>
-                        <StyledInput value={vl1} onChange={e => setVl1(e.target.value)} placeholder="CEP" className="input-esquerda-grupo"/>
+                        <StyledInput value={cep} onChange={e => setCep(e.target.value)} placeholder="CEP" className="input-esquerda-grupo"/>
 
                         <div className="text-input">Inserir Nome da Rua</div>
-                        <StyledInput value={vl2} onChange={e => setVl2(e.target.value)} placeholder="Nome da Rua" className="input-esquerda-grupo"/>
+                        <StyledInput value={nmRua} onChange={e => setNmRua(e.target.value)} placeholder="Nome da Rua" className="input-esquerda-grupo"/>
 
                         <div className="text-input">Inserir Nome do Bairro:</div>
-                        <StyledInput value={vl3} onChange={e => setVl3(e.target.value)} placeholder="Nome do Bairro" className="input-esquerda-grupo"/>
+                        <StyledInput value={nmBairro} onChange={e => setNmBairro(e.target.value)} placeholder="Nome do Bairro" className="input-esquerda-grupo"/>
                         
                         <div className="text-input">Complemento</div>
-                        <StyledInput value={vl4} onChange={e => setVl4(e.target.value)} placeholder="" className="input-esquerda-grupo"/>
+                        <StyledInput value={complemento} onChange={e => setComplemento(e.target.value)} placeholder="" className="input-esquerda-grupo"/>
                         
                         <div className="text-input">Inserir Número da Rua:</div>
-                        <StyledInput  value={vl5} onChange={e => setVl5(e.target.value)} placeholder="Número da rua" className="input-esquerda-grupo"/>
+                        <StyledInput  value={nrRua} onChange={e => setNrRua(e.target.value)} placeholder="Número da rua" className="input-esquerda-grupo"/>
                     </div>
                     <hr />
                     <div className="direita-grupo-input">
@@ -116,8 +124,8 @@ export default function ConcluirCompra(props) {
 
 
                         <div className="credit-card">
-                            <button onClick={ Visible } style={{marginBottom: ".3em"}}>Cartão de Crédito <img  className="img-button" src="/assets/images/cartao.svg" alt=""/></button>
-                            <button onClick={ Visible }>Cartão de Débito <img className="img-button2" src="/assets/images/cartao.svg" alt=""/></button>
+                            <button   value={formaPagamento}      onClick={ Visible } style={{marginBottom: ".3em"}}>Cartão de Crédito <img  className="img-button" src="/assets/images/cartao.svg" alt=""/></button>
+                            <button   value={formaPagamento}      onClick={ Visible }>Cartão de Débito <img className="img-button2" src="/assets/images/cartao.svg" alt=""/></button>
                         </div>
                         { hidden && 
                             <div className="cartoes">
@@ -150,16 +158,16 @@ export default function ConcluirCompra(props) {
                         <div className="Last-information-inputs">
                             <div className="Last-information-inputs1">
                                 <div className="last-information-text1">CV</div>
-                                <StyledInput value={vl11} onChange={e => setVl11(e.target.value)} className="input-lastInfo-text1"/>
+                                <StyledInput value={cv} onChange={e => setCv(e.target.value)} className="input-lastInfo-text1"/>
 
                                 <div className="last-information-text1">Nome do Titular</div>
-                                <StyledInput value={vl22} onChange={e => setVl22(e.target.value)} className="input-lastInfo-text1"/>
+                                <StyledInput value={nmTitular} onChange={e => setNmTitular(e.target.value)} className="input-lastInfo-text1"/>
 
                                 <div className="last-information-text1">Número do cartão</div>
-                                <StyledInput value={vl33} onChange={e => setVl33(e.target.value)} className="input-lastInfo-text1" />
+                                <StyledInput value={nrCartao} onChange={e => setNrCartao(e.target.value)} className="input-lastInfo-text1" />
                                 
                                 <div className="last-information-text1-last">Percelas:</div>
-                                    <select className="parcelas-section" value={vl77} onChange={e => setVl77(e.target.value)} >
+                                    <select className="parcelas-section" value={parcelas} onChange={e => setParcelas(e.target.value)} >
                                         <option value="2x"> 2x </option>
                                         <option value="3x"> 3x </option>
                                         <option value="4x"> 4x </option>
@@ -169,13 +177,13 @@ export default function ConcluirCompra(props) {
 
                             <div className="Last-information-inputs2">
                                     <div className="last-information-text1">Número da Agência</div>
-                                <StyledInput value={vl44} onChange={e => setVl44(e.target.value)} className="input-lastInfo-text1"/>
+                                <StyledInput value={nrAgencia} onChange={e => setNrAgencia(e.target.value)} className="input-lastInfo-text1"/>
 
                                 <div className="last-information-text1"> Data de Validade </div>
-                                <StyledInput value={vl55} onChange={e => setVl55(e.target.value)} className="input-lastInfo-text1"/>
+                                <StyledInput value={dtValidade} onChange={e => setDtValidade(e.target.value)} className="input-lastInfo-text1"/>
 
                                 <div className="last-information-text1"> CPF do Titular </div>
-                                <StyledInput value={vl66} onChange={e => setVl66(e.target.value)} className="input-lastInfo-text1" />
+                                <StyledInput value={cpf} onChange={e => setCpf(e.target.value)} className="input-lastInfo-text1" />
                             
                                 <Link to="/">  <div className="bottom">  <StyledButtonVerde onClick={confirmarDados} style={{marginTop:"4.8em", height:"2em", width:"17em", marginBottom:"5em"}} className="botao-buttom"> Concluir Compra! </StyledButtonVerde> </div> </Link>
                             </div>
