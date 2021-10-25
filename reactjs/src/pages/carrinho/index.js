@@ -1,7 +1,8 @@
 import Cabecalho from "../../components/cabecalho";
-import { StyledCarrinho } from "./styled";
 import Footer from "../../components/rodape";
+import { StyledCarrinho } from "./styled";
 import { StyledButtonHome } from "../../components/botaoHome/styled";
+
 import { Link } from "react-router-dom";
 
 

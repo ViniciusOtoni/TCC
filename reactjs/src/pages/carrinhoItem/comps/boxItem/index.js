@@ -2,56 +2,34 @@ import { StyledBoxItemCarrinho } from "./styled"
 import { StyledInput } from "../../../../components/input/styled"
 import { SelectInput } from "../../../../components/select/styled"
 import { StyledButtonVerde } from "../../../../components/botaoVerde/styled"
-import { useState } from "react"
 import { StyledButtonAdm } from "../../../../components/botaoAdm/styled"
+
+import { useState } from "react"
 import { useEffect } from "react"
 import { useHistory } from "react-router"
 import Cookies from "js-cookie"
 
-
-
-
-
 export default function BoxItemCarrinho(props) {
-
- // Cookies.remove('carrinho')
-    
     const [ produto, setProduto ]  = useState(props.info)
     const [ qtd, setQtd ] = useState(1)
     const [ total, setTotal ] = useState(produto.preco)
     const nave = useHistory()
     
-
-  
-
-
     function remover () {
         props.onRemove(produto.id)
         setQtd(0)
-
-        
     }
 
     function alterar() {
-         produto.total = Math.round( produto.preco * qtd );
+        produto.total = Math.round( produto.preco * qtd );
         setTotal(produto.total)
         if(props.respostaFilho)
             props.respostaFilho()
-               
     }
-
-   
-
 
     useEffect( () => {
        alterar()
     }, [qtd] )
-
-
-   
- 
-
-   
   
     return (
         <StyledBoxItemCarrinho> 
@@ -62,15 +40,13 @@ export default function BoxItemCarrinho(props) {
             <div className="row-vendido"> 
                 <div className="dono"> Vendido Por: </div>
                 <div className="nome-dono"> GameBud </div>
-                
             </div>
-           
+
             <div className="row-vendido"> 
                 <div className="dono"> Entregue Por: </div>
                 <div className="nome-dono"> GameBudSedex </div>
-               
             </div>
-            
+
         </div>
      
         <div className="column-valores">
@@ -89,9 +65,7 @@ export default function BoxItemCarrinho(props) {
                  </SelectInput> </div>
                 <div className="valores-preco"> {`R$: ${produto.total}` } </div>
             </div>
-            <div className="excluir" onClick={remover}> Excluir </div>
-            
-                    
+            <div className="excluir" onClick={remover}> Excluir </div>        
         </div>
    
                 </main>
