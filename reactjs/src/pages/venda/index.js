@@ -31,7 +31,7 @@ export default function Venda(props) {
     }
 
     useEffect(() => {
-        listar()
+        listar();
     }, [order, pesquisa])
 
     return (

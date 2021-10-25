@@ -15,17 +15,12 @@ const api = new Api()
 
 export default function ConcluirCompra(props) {
 
-  
-
-
-    const [ hidden, setHidden ] = useState(false)
     const nave = useHistory()
     let usuarioLogado = lerUsuarioQuelogou() || {}
+    const [ hidden, setHidden ] = useState(false)
     const [ email, setEmail ] = useState(usuarioLogado.ds_email)
     const [ senha, setSenha ] = useState(usuarioLogado.ds_senha)
     const [ infoProduto, setInfoProduto ] = useState(props.location.state)
-
-      
 
     const [ vl1, setVl1 ] = useState('')
     const [ vl2, setVl2 ] = useState('')
@@ -41,11 +36,6 @@ export default function ConcluirCompra(props) {
     const [ vl55, setVl55 ] = useState('')
     const [ vl66, setVl66 ] = useState('')
     const [ vl77, setVl77 ] = useState('')
-   
-   
-
-    
-    
 
     function Visible() {
         setHidden(true);
@@ -54,16 +44,13 @@ export default function ConcluirCompra(props) {
     const confirmarDados =  async () => {
         let r = api.confirmarCompra(email, senha, vl11,  vl44, vl22, vl55,  vl33, vl66, vl3, vl2, vl5, vl1, vl4, vl77, infoProduto.nm_produto,  1, infoProduto.vl_preco )
     }
-
-   
    
     function lerUsuarioQuelogou() {
         let logado = Cookies.get('usuario-logado');
-    
+
             if(logado === undefined) {
-            
             alert('Loga ae')
-            nave.push('/')
+            nave.push('/carrinhoItem')
             } else {
                 let usuarioLogado = JSON.parse(logado);
                 return usuarioLogado;
@@ -73,8 +60,6 @@ export default function ConcluirCompra(props) {
         useEffect(() => {
             lerUsuarioQuelogou()
         })
-
-      
 
     return (
 
