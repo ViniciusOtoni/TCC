@@ -12,10 +12,10 @@ const api = new Api();
 
 export default function GerenteAlterar(props) {
     const [infoProduto, setInfoProduto] = useState(props.location.state)
-    const [nome, setNome] = useState();
+    const [nome, setNome] = useState('');
     const [codBarra, setCodBarra] = useState('');
     const [categoria, setCategoria] = useState('');
-    const [preco, setPreco] = useState();
+    const [preco, setPreco] = useState(0);
     const [imagemPrincipal, setImagemPrincipal] = useState('');
     const [imagemSecundaria, setImagemSecundaria] = useState('');
     const [imagemTerciaria, setImagemTerciaria] = useState('');

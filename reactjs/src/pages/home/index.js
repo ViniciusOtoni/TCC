@@ -92,8 +92,8 @@ export default function Home() {
                   <div className="a3">  <Categoria cat="Roupas"desc="Feitas Para Você!" img="/assets/images/camiseta.svg"/> </div>
                 </div>
                 <div class="row2"> 
-                  <div className="a4">  <Categoria cat="Ps4" desc="Todos Os Jogos!" img="/assets/images/Ps4.svg"/> </div>
-                  <div className="a5">  <Categoria cat="Outros" desc="Feitas Para Você!" img="/assets/images/personalizado.svg"/> </div>
+                <div className="a4">   <Categoria cat="PlayStation" desc="Todos Os Jogos!" img="/assets/images/Ps4.svg"/> </div>
+                <div className="a5">   <Categoria cat="Outros" desc="Feitas Para Você!" img="/assets/images/personalizado.svg"/> </div>
                </div>
 
             </section>

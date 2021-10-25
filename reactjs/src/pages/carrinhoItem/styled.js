@@ -102,6 +102,79 @@ const StyledCarrinhoItem = styled.div `
    .cep {
        width: 8em;
    }
+
+   .row-input {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .frete {
+        font-size: 28px;
+        color: #ffffff;
+        font-family: MontserratBold;
+        padding-right: 1em;
+    }
+
+    .row-val {
+        display: flex;
+        flex-direction: row;
+        font-family: MontserratBold;
+        padding-right: 7em;
+    }
+
+    .titulo-val {
+        color: #ffffff;
+        font-family: MontserratBold;
+        font-size: 18px;
+    }
+
+    .valor-val {
+        color: #34D231;
+        font-size: 18px;
+        padding-left: 2em;
+        font-family: MontserratBold;
+    }
+
+    .valor-val1 {
+        color: #34D231;
+        font-size: 18px;
+        padding-left: 0.8em;
+        font-family: MontserratBold;
+    }
+
+    .bairro {
+        font-family: MontserratBold;
+        font-size: 18px;
+        color:white;
+        margin-top: .8em;
+
+    }
+
+    .rua {
+        font-family: MontserratBold;
+        font-size: 18px;
+        color:white;
+        margin-top: .8em;
+
+    }
+
+    .estado {
+        font-family: MontserratBold;
+        font-size: 18px;
+        margin-right: .8em;
+        margin-top: .8em;
+        margin-bottom: 2em;
+        color:white;
+    }
+
+    .main-cep {
+        display: flex;
+        flex-direction: column;
+       align-items: flex-end;
+       margin-top: 2em;
+       margin-bottom: 2em;
+    }
+
     
    @media(max-width:425px) {
        .cell {
@@ -200,6 +273,8 @@ const StyledCarrinhoItem = styled.div `
         color: #ffffff;
         font-family: MontserratBold;
     }
+
+   
 
 
    .excluir {

@@ -16,7 +16,7 @@ const api = new Api();
 export default function GerenteAlterar() {
     const [nome, setNome] = useState('');
     const [codBarra, setCodBarra] = useState('');
-    const [categoria, setCategoria] = useState('');
+    const [categoria, setCategoria] = useState('Xbox');
     const [preco, setPreco] = useState(0);
     const [imagemPrincipal, setImagemPrincipal] = useState('');
     const [imagemSecundaria, setImagemSecundaria] = useState('');

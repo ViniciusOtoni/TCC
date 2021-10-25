@@ -7,7 +7,7 @@ const sequelize = new Sequelize(
     'nsf@tcc', {
     host: 'my01.winhost.com',
     dialect: 'mysql',
-    logging: false
+    logging: console.log()
 });
 
 const db = initdb(sequelize);

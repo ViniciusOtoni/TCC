@@ -11,8 +11,12 @@ export default class Api {
       return r.data;
     }
 
+    async produtosPesquisa (pesquisa) {
+        let r = await api.get(`/produtosPesquisa?filtro=${pesquisa}`)
+        return r.data;
+    }
+
     async confimarCompra( ds_cpf, nm_rua, nm_bairro, ds_complemento, nr_numero_rua, ds_cv, nm_titular, nr_cartao, nr_agencia, dt_validade, ds_cpf_titular, id_usuario) {
-        
         let jsonCompra = {
             ds_cpf, nm_rua, 
             nm_bairro, 
@@ -27,19 +31,21 @@ export default class Api {
             id_usuario
         }
         
-        
         let r = await api.post(`/validarCompra`, jsonCompra)
         return r.data;
-
     }
+
+ 
 
     async alterarAvaliacao (idProduto, vl_avaliacao) {
         let r = await api.put(`/produto/avaliacao/${idProduto}`, { vl_avaliacao } )
         return r.data;
     }
 
-    async listarProdutos(order) {
-        let r = await api.get(`/produto?criterio=${order}` )
+    
+
+    async listarProdutos(order, filtro, categoria) {
+        let r = await api.get(`/produto?criterio=${order}&filtro=${filtro}&categoria=${categoria}`)
         return r.data
     }
 
@@ -174,7 +180,52 @@ Z
         return r.data;
     }
 
+    async confirmarCompra(email, senha, 
+                        cv, agencia, titular, dt_validade, num_cartao, cpf_titular, 
+                        bairro, rua, numero_rua, cep, complemento, 
+                        parcelas, forma_pagamento, 
+                        nm_produto, 
+                        qtd_produtos, preco) {
 
-    
+                            let jsonLogin = {
+                                    ds_email: email,
+                                    ds_senha: senha
+                                }
+
+                            let jsonCartao = {
+                                ds_cv: cv,
+                                nr_agencia: agencia,
+                                nm_titular: titular,
+                                dt_validade: dt_validade,
+                                nr_cartao: num_cartao,
+                                ds_cpf_titular: cpf_titular
+                            }
+
+                            let jsonEndereco = {
+                                nm_bairro: bairro,
+                                nm_rua: rua,
+                                nr_numero_rua: numero_rua,
+                                ds_cep: cep,
+                                ds_complemento: complemento
+                            }
+
+                            let jsonVenda = {
+                                qtd_parcelas: parcelas,
+                                ds_pagamento: forma_pagamento,
+
+                            }
+
+                            let jsonProduto = {
+                                nm_produto: nm_produto
+                            }
+
+                            let jsonVendaItem = {
+                                qtd_produtos: qtd_produtos,
+                                vl_preco: preco
+                            }
+
+                                let r = await api.post(`/validarCompra`, jsonLogin, jsonCartao, jsonEndereco, jsonVenda, jsonProduto, jsonVendaItem )
+                                return r.data;
+            }
 }
 

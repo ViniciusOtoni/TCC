@@ -4,16 +4,13 @@ import cors from "cors";
 import enviarEmail from "./email.js";
 
 
+
 import  Sequelize from "sequelize";
 const { Op } = Sequelize;
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-
-
-
-  
 
 
 app.get('/produto/populares', async (req,resp) => {
@@ -61,7 +58,18 @@ function ordenacao(criterio){
 app.get('/produto', async (req,resp) => {
     try{
         let ord = ordenacao(req.query.criterio);
+        let filtro = req.query.filtro;
+        let categoria = req.query.categoria;
+
+        
+
         let r = await db.infoa_gab_produto.findAll({ 
+            where: {
+                [Op.or]: [
+                    { nm_produto: { [Op.like]: filtro }},
+                    { ds_plataforma: categoria }
+                ]
+            },
             order: [ord]
         })
 
@@ -82,6 +90,22 @@ app.get('/produto', async (req,resp) => {
         resp.send(r);
     } catch (e) {
         resp.send({ erro: `${e.toString()}` })
+    }    
+})
+
+app.get('/produtosPesquisa', async (req, resp) => {
+    try{
+            let ord = req.query.filtro;
+
+            console.log('ord:'+ord);
+
+            let r = await db.infoa_gab_produto.findAll({
+                where: { nm_produto: ord }
+            })
+
+            resp.send(r);
+    } catch (error){
+            resp.send(`erro no get produtosPesquisa ${error}`)
     }    
 })
 
@@ -109,6 +133,15 @@ app.get('/produto/:idProduto', async (req, resp) =>{
 app.post('/produto', async (req, resp) => {
     try{
         let l = req.body
+
+        let r1 = await db.infoa_gab_produto.findOne({
+            where: {
+                nm_produto: l.nm_produto
+            }
+        })
+
+        if(r1 != null)
+        return resp.send('Produto já foi cadastrado!')
    
         let r = await db.infoa_gab_produto.create({
             nm_produto: l.nm_produto, 
@@ -139,16 +172,13 @@ app.put('/produto/:idProduto', async (req, resp) => {
         let r = await db.infoa_gab_produto.update({
             nm_produto: l.nm_produto, 
             vl_preco: l.vl_preco,
-            dt_cadastro: Date.now(),
             ds_categoria: l.ds_categoria,
             ds_codigo_barra: l.ds_codigo_barra,
-            bt_situacao: true,
-            vl_avaliacao: [ l.vl_avaliacao ],
             img_produto: l.img_produto,
             img_secundaria: l.img_secundaria,
             img_terciaria: l.img_terciaria,
             img_quartenaria: l.img_quartenaria,
-            qtd_parcelas: 0
+            
         },
         {
             where: { id_produto: req.params.idProduto }
@@ -246,9 +276,6 @@ try {
     if(u2 != null)
     resp.send( { error: 'Email já foi cadastrado!' } );
 
-    let u3 = await db.infoa_gab_usuario.findOne( { where: { nm_usuario: r.nm_usuario } })
-    if(u3 === '' )
-    resp.send({ error: 'Preencha todos os campos '})
 
     
 
@@ -366,7 +393,7 @@ try {
     
     
     } catch( error ) {
-        resp.send({ error: " Xish "})
+        resp.send({ error: " Isso não é um email "})
     }
 
     
@@ -397,12 +424,75 @@ app.put('/login/senha/:codigo', async (req, resp) => {
 
 
 app.post('/validarCompra', async ( req, resp ) => {
+    
     try {
         
-    } catch(e) {
-      resp.send(e)
-    }
-  
+        let r = req.body;
+
+        const usuarioLogado = await db.infoa_gab_usuario.findOne({
+            where: {
+                ds_email: r.ds_email,
+                ds_senha: r.ds_senha
+            }}); 
+
+       
+
+        const cartaoUsuario = await db.infoa_gab_cartao.create({
+            
+            id_usuario: usuarioLogado.id_usuario,
+            ds_cv: r.cv,
+            nr_agencia: r.agencia,
+            nm_titular: r.titular,
+            dt_validade: r.dt_validade,
+            nr_cartao: r.num_cartao,
+            ds_cpf_titular: r.cpf_titular
+        });
+
+        const enderecoUsuario = await db.infoa_gab_endereco.create({
+            
+            id_usuario: usuarioLogado.id_usuario,
+            nm_bairro: r.bairro,
+            nm_rua: r.rua,
+            nr_numero_rua: r.numero_rua,
+            ds_cep: r.cep,
+            ds_complemento: r.complemento
+        });
+
+        
+
+        const gerarVenda = await db.infoa_gab_venda.create({
+            
+            id_usuario: usuarioLogado.id_usuario,
+            dt_venda : Date.now(),
+            qtd_parcelas: r.parcelas,
+            bt_situacao: true,
+            ds_pagamento: r.forma_pagamento
+        });
+        
+        const produtoUsu = await db.infoa_gab_produto.findOne({
+            where: {
+                nm_produto: r.nm_produto,
+            }
+        });
+
+        const gerarVendaItem = await db.infoa_gab_venda_item.create({
+            id_produto: produtoUsu.id_produto,
+            id_venda: gerarVenda.id_venda,
+            qtd_produtos: r.qtd_produtos,
+            vl_preco: r.preco
+        });
+
+        const entrega = await db.infoa_gab_entrega.create({
+            id_endereco: enderecoUsuario.id_endereco,
+            id_venda_item: gerarVendaItem.id_venda_item,
+            ds_situacao: true,
+            dt_saida: Date.now(),
+            dt_entrega: '0000-01-01'
+        });
+
+        resp.send(entrega) } catch( error ) {
+            resp.send( { error: "DEU ERRO NA API MONSTRA, duvido que não seja a primeira vez..."})
+        }
   })
 
 
@@ -450,627 +540,6 @@ app.post('/pedido', async (req, resp) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-      let q = req.body
-
-      let r1 = await db.infoa_gab_endereco.create({
-        ds_cep: q.ds_cep,
-        nm_rua: q.nm_rua,
-        nm_bairro: q.nm_bairro,
-        ds_complemento: q.ds_complemento,
-        nr_numero_rua: q.nr_numero_rua,
-        id_usuario: q.id_usuario,
-
-      })
-
-       
-
-        let r = await db.infoa_gab_cartao.create({
-            ds_cv: q.ds_cv,
-            nm_titular: q.nm_titular,
-            nr_cartao: q.nr_cartao,
-            nr_agencia: q.nr_agencia,
-            dt_validade: q.dt_validade,
-            ds_cpf_titular: q.ds_cpf_titular,
-            id_usuario: q.id_usuario
-    })  
-        resp.send(r)
-
-       
-        
-    } catch (error) {
-        resp.send({ error: "Xish" })
-    }
-})*/
-
-app.get('/validarCompra', async  ( req, resp ) => {
-    let r = await db.infoa_gab_cartao.findAll()
-    resp.send(r)
-})
 
 app.listen( process.env.PORT, (x) => 
             console.log(`Servidor na Porta ${process.env.PORT}`));
