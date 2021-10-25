@@ -1,12 +1,18 @@
+import Cabecalho from "../../components/cabecalho"
 import { Container } from "./styled"
 import { StyledInput } from '../../components/input/styled'
-import Cabecalho from "../../components/cabecalho"
 import { StyledButtonVerde } from "../../components/botaoVerde/styled"
+
 import { Link } from "react-router-dom"
-import Cookies from "js-cookie"
 import { useHistory } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Cookies from "js-cookie"
+
 import { useEffect, useState } from "react"
+
 import Api from "../../services/api"
+
 const api = new Api()
 
 
@@ -15,12 +21,9 @@ const api = new Api()
 
 export default function ConcluirCompra(props) {
 
-  
-
-
-    const [ hidden, setHidden ] = useState(false)
     const nave = useHistory()
     let usuarioLogado = lerUsuarioQuelogou() || {}
+    const [ hidden, setHidden ] = useState(false)
     const [ email, setEmail ] = useState(usuarioLogado.ds_email)
     const [ senha, setSenha ] = useState(usuarioLogado.ds_senha)
     const [ infoProduto, setInfoProduto ] = useState(props.location.state)
@@ -55,16 +58,13 @@ export default function ConcluirCompra(props) {
     const confirmarDados =  async () => {
         let r = api.confirmarCompra(email, senha, cv, nrAgencia, nmTitular, dtValidade, nrCartao, cpf, nmBairro, nmRua, nrRua, cep, complemento, parcelas, formaPagamento)
     }
-
-   
    
     function lerUsuarioQuelogou() {
         let logado = Cookies.get('usuario-logado');
-    
+
             if(logado === undefined) {
-            
             alert('Loga ae')
-            nave.push('/')
+            nave.push('/carrinhoItem')
             } else {
                 let usuarioLogado = JSON.parse(logado);
                 return usuarioLogado;
@@ -74,8 +74,6 @@ export default function ConcluirCompra(props) {
         useEffect(() => {
             lerUsuarioQuelogou()
         })
-
-      
 
     return (
 

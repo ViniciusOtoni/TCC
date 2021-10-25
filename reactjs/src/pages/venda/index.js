@@ -31,12 +31,12 @@ export default function Venda(props) {
     }
 
     useEffect(() => {
-        listar()
+        listar();
     }, [order, pesquisa])
 
     return (
         <div style={{backgroundColor:"#333333"}}> 
-        <Cabecalho />
+        <Cabecalho search={pesquisa}/>
                 <StyledVenada> 
                 <main className='a'> 
                     <div className="row-button"> 

@@ -87,15 +87,34 @@ export default function Home() {
 
             <section className="faixa3"> 
                 <div className="row2"> 
-                  <div className="a1"> <Categoria  cat="Caneca" desc="Feitas Para Você!" img="/assets/images/caneca.svg"/> </div>
-                  <div className="a2"> <Categoria cat="Xbox" desc="Todos Os Jogos!" img="/assets/images/xbox.svg"/> </div>
-                  <div className="a3"> <Categoria cat="Roupa"desc="Feitas Para Você!" img="/assets/images/camiseta.svg"/> </div>
+                      <div className="a1">
+                          <Link to='/venda?categoria=Caneca' style={{textDecoration:"none"}}>   
+                              <Categoria  cat="Caneca" desc="Feitas Para Você!" img="/assets/images/caneca.svg"/> 
+                          </Link>
+                      </div>
+                      <div className="a2">
+                          <Link to='/venda?categoria=Xbox' style={{textDecoration:"none"}}>
+                              <Categoria cat="Xbox" desc="Todos Os Jogos!" img="/assets/images/xbox.svg"/>
+                          </Link>     
+                      </div>
+                      <div className="a3">
+                          <Link to='/venda?categoria=Roupa' style={{textDecoration:"none"}}> 
+                              <Categoria cat="Roupa"desc="Feitas Para Você!" img="/assets/images/camiseta.svg"/> 
+                          </Link>    
+                      </div>
                 </div>
                 <div class="row2"> 
-                <div className="a4"> <Categoria cat="PlayStation" desc="Todos Os Jogos!" img="/assets/images/Ps4.svg"/> </div>
-                <div className="a5"> <Categoria cat="Outros" desc="Feitas Para Você!" img="/assets/images/personalizado.svg"/> </div>
-               </div>
-
+                    <div className="a4">
+                          <Link to='/venda?categoria=Ps4' style={{textDecoration:"none"}}>          
+                              <Categoria cat="PlayStation" desc="Todos Os Jogos!" img="/assets/images/Ps4.svg"/> 
+                          </Link>        
+                    </div>
+                    <div className="a5">
+                          <Link to='/venda?categoria=Outros' style={{textDecoration:"none"}}>
+                              <Categoria cat="Outros" desc="Feitas Para Você!" img="/assets/images/personalizado.svg"/>
+                          </Link>     
+                    </div>
+                </div>
             </section>
             </main>
 

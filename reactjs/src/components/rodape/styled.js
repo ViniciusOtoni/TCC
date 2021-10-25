@@ -24,7 +24,6 @@ const RodaPe = styled.div`
     .section1{
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
         align-items: center;
 
         background-color: #DFA04E;
@@ -78,24 +77,12 @@ const RodaPe = styled.div`
         justify-content: space-around;
 
     }
-
-    .align-header{
-        display: flex; 
-        flex-direction: row;
-
-        margin-left: 2em;
-    }
-
-    .align-items{
-        
-    }
     
     .align-title{
         display: flex;
         flex-direction: row;
-
-        justify-content: center;
         align-items: center;
+        margin-left: 3em;
     }
 
     .align-title > div{
