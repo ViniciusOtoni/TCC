@@ -1,12 +1,18 @@
+import Cabecalho from "../../components/cabecalho"
 import { Container } from "./styled"
 import { StyledInput } from '../../components/input/styled'
-import Cabecalho from "../../components/cabecalho"
 import { StyledButtonVerde } from "../../components/botaoVerde/styled"
+
 import { Link } from "react-router-dom"
-import Cookies from "js-cookie"
 import { useHistory } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Cookies from "js-cookie"
+
 import { useEffect, useState } from "react"
+
 import Api from "../../services/api"
+
 const api = new Api()
 
 
