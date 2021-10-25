@@ -65,7 +65,7 @@ app.get('/produto', async (req,resp) => {
         let r = await db.infoa_gab_produto.findAll({ 
             where: {
                 [Op.or]: [
-                    { nm_produto: {[Op.like]: filtro }},
+                    { nm_produto: {[Op.like]: '%filtro%' }},
                     { ds_plataforma: categoria },
                     { ds_categoria: categoria }
                 ]
