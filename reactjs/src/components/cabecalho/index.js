@@ -24,7 +24,7 @@ export default function Cabecalho(props) {
   let usuarioLogado = lerUsuarioQuelogou() || {};
   const [nm] = useState(usuarioLogado.nm_usuario);
   const [img] = useState(usuarioLogado.img_usuario);
-  const [pesquisa, setPesquisa] = useState('');
+  const [pesquisa, setPesquisa] = useState(props.search);
 
   const navigation = useHistory();
 
