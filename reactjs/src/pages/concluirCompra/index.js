@@ -23,10 +23,15 @@ export default function ConcluirCompra(props) {
 
     const nave = useHistory()
     let usuarioLogado = lerUsuarioQuelogou() || {}
+    const [ infoProduto, setInfoProduto ] = useState(props.location.state)
     const [ hidden, setHidden ] = useState(false)
     const [ email, setEmail ] = useState(usuarioLogado.ds_email)
     const [ senha, setSenha ] = useState(usuarioLogado.ds_senha)
-    const [ infoProduto, setInfoProduto ] = useState(props.location.state)
+
+  
+    
+    
+    
 
       
 
@@ -36,7 +41,7 @@ export default function ConcluirCompra(props) {
     const [ complemento, setComplemento ] = useState('')
     const [ nrRua, setNrRua ] = useState('')
 
-    const [ formaPagamento, setFormaPagamento ] = useState('')
+    const [ formaPagamento, setFormaPagamento ] = useState('Crédito')
     
     const [ cv, setCv ] = useState('')
     const [ nmTitular, setNmTitular ] = useState('')
@@ -46,17 +51,16 @@ export default function ConcluirCompra(props) {
     const [ cpf, setCpf ] = useState('')
     const [ parcelas, setParcelas ] = useState('')
    
+    
    
 
     
-    
-
     function Visible() {
         setHidden(true);
     }
 
     const confirmarDados =  async () => {
-        let r = api.confirmarCompra(email, senha, cv, nrAgencia, nmTitular, dtValidade, nrCartao, cpf, nmBairro, nmRua, nrRua, cep, complemento, parcelas, formaPagamento)
+        let r = api.confirmarCompra(email, senha, cv, nrAgencia, nmTitular, dtValidade, nrCartao, cpf, nmBairro, nmRua, nrRua, cep, complemento, parcelas, formaPagamento, infoProduto.id, )
     }
    
     function lerUsuarioQuelogou() {
@@ -70,6 +74,10 @@ export default function ConcluirCompra(props) {
                 return usuarioLogado;
             }
         }
+
+   
+       
+        
 
         useEffect(() => {
             lerUsuarioQuelogou()
@@ -123,8 +131,8 @@ export default function ConcluirCompra(props) {
 
 
                         <div className="credit-card">
-                            <button   value={formaPagamento}      onClick={ Visible } style={{marginBottom: ".3em"}}>Cartão de Crédito <img  className="img-button" src="/assets/images/cartao.svg" alt=""/></button>
-                            <button   value={formaPagamento}      onClick={ Visible }>Cartão de Débito <img className="img-button2" src="/assets/images/cartao.svg" alt=""/></button>
+                            <button   value={formaPagamento}   onChange={e => setFormaPagamento(e.target.value)}   onClick={ Visible } style={{marginBottom: ".3em"}}>Cartão de Crédito <img  className="img-button" src="/assets/images/cartao.svg" alt=""/></button>
+                            <button   value={formaPagamento}   onBlur={e => setFormaPagamento(e.target.value)}    onClick={ Visible }>Cartão de Débito <img className="img-button2" src="/assets/images/cartao.svg" alt=""/></button>
                         </div>
                         { hidden && 
                             <div className="cartoes">
