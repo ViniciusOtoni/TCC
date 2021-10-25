@@ -25,7 +25,6 @@ export default function GerenteAlterar(props) {
     
     const navigation = useHistory();
 
-
     async function Alterar() {
         let x = await api.AlterarProduto(
             nome,
@@ -54,13 +53,8 @@ export default function GerenteAlterar(props) {
     }
 
     useEffect(() => {
-       
         SetVar()
-
     }, [])
-
-
-    
 
     return (
         <div style={{backgroundColor:"#333333", minHeight:"100vh"}}> 

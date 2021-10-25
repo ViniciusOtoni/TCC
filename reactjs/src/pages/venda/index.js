@@ -1,8 +1,9 @@
 import Cabecalho from "../../components/cabecalho";
 import CaixaJogo from "../../components/caixaJogo";
-import Footer from "../../components/rodape";
+import Footer    from "../../components/rodape";
 import Paginacao from "../../components/paginacao";
 import { StyledVenada } from "./styled";
+
 import { useState, useEffect } from "react";
 
 import Api from "../../services/api";

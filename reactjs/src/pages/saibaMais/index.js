@@ -1,7 +1,6 @@
-
-import { Container } from "./styled"
 import Cabecalho from "../../components/cabecalho"
-import Footer from "../../components/rodape"
+import Footer    from "../../components/rodape"
+import { Container } from "./styled"
 
 export default function Venda() {
     return (
