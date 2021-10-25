@@ -55,7 +55,7 @@ export default function ConcluirCompra(props) {
         let logado = Cookies.get('usuario-logado');
 
             if(logado === undefined) {
-            alert('Loga ae')
+            toast.dark('Loga ae');
             nave.push('/carrinhoItem')
             } else {
                 let usuarioLogado = JSON.parse(logado);
@@ -70,11 +70,12 @@ export default function ConcluirCompra(props) {
     return (
 
         <div style={{ backgroundColor: "#333333" }}>
+            
             <Cabecalho corLetra="nulo" />
            
            
                 <Container>
-                
+                <ToastContainer/>
                
                 <main className="sub-main">
                     <div className="esquerda-grupo-input">
@@ -175,9 +176,6 @@ export default function ConcluirCompra(props) {
 
                                 <div className="last-information-text1"> CPF do Titular </div>
                                 <StyledInput value={vl66} onChange={e => setVl66(e.target.value)} className="input-lastInfo-text1" />
-
-                                  
-                                
                             
                                 <Link to="/">  <div className="bottom">  <StyledButtonVerde onClick={confirmarDados} style={{marginTop:"4.8em", height:"2em", width:"17em", marginBottom:"5em"}} className="botao-buttom"> Concluir Compra! </StyledButtonVerde> </div> </Link>
                             </div>
@@ -185,7 +183,6 @@ export default function ConcluirCompra(props) {
                     </div>
                 </main>
             </Container>
-            
         </div>
     )
 }

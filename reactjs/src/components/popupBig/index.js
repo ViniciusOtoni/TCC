@@ -1,12 +1,14 @@
 import { StyledPopupBig } from "./styled";
 import { StyledInput } from "../input/styled";
 import { StyledButtonPopup } from "../botaoPopup/styled";
-import Api from '../../services/api';
+
 import { useState } from "react";
 import { useHistory } from "react-router";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Cookie from "js-cookie";
 
-
+import Api from '../../services/api';
 
 const api = new Api();
 export default function PopupBig(props) {
@@ -26,7 +28,7 @@ export default function PopupBig(props) {
 
         if (!resp.error)
             return true;
-            alert(`${resp.error}`);
+            toast.error(`${resp.error}`);
         return false;
     }
 
@@ -35,7 +37,7 @@ export default function PopupBig(props) {
  
 
         if(vl3.length < 6) {
-            return alert('Senha muito fraca!')
+            return toast.dark('Senha muito fraca!')
         }
 
 
@@ -48,7 +50,7 @@ export default function PopupBig(props) {
 
         if(vl3 === vl4)  {
         navegacao.push('/') } else {
-            alert('A senha não bateu!')
+            toast.dark('A senha não bateu!')
         }
 
     }
@@ -59,6 +61,7 @@ export default function PopupBig(props) {
 
     return (
         <StyledPopupBig empresa={props.empresa}>
+            <ToastContainer />
             <header> 
                 <div className="logo"> <img src="/assets/images/logo.svg" alt="" /> </div>
                 <div className="titulo"> GameBud </div>

@@ -1,10 +1,12 @@
 import { StyledButtonAdm } from "../../components/botaoAdm/styled";
-import CabecalhoAdm from "../../components/cabecalhoAdm";
-import { Link } from "react-router-dom";
-
-import Paginacao from "../../components/paginacao";
 import { StyledGerenteCadastrados } from "./styled";
+import CabecalhoAdm from "../../components/cabecalhoAdm";
+import Paginacao from "../../components/paginacao";
+
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Api from "../../services/api";
 const api = new Api();
@@ -28,7 +30,7 @@ export default function GerenteProdutosCadastrados() {
 
     async function Remover(info) {
         let r = await api.removerProduto(info.id_produto)
-        alert('Produto removido')
+        toast.dark('Produto removido')
         Listar();
         return r;
     }
@@ -45,7 +47,7 @@ export default function GerenteProdutosCadastrados() {
     return (
         <div style={{backgroundColor:"#333333", minHeight:"100vh"}}> 
       <CabecalhoAdm />
-            
+            <ToastContainer />
                <StyledGerenteCadastrados> 
                 <main className="pc1"> 
                     <table> 
