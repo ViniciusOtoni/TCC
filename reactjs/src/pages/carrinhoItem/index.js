@@ -13,10 +13,6 @@ import BoxItemCarrinho from './comps/boxItem'
 import Cookies from "js-cookie"
 
 export default function CarrinhoItem() {
-
-    
- // Cookies.remove('carrinho')
-
     const [ produto, setProduto ] = useState([])
     const [ vlFinal, setVlFinal ] = useState(0);
     const [ cep, setCep ] = useState(false);
@@ -26,24 +22,17 @@ export default function CarrinhoItem() {
     const navegation = useHistory()
     
     useEffect(carregarCarrinho, [])
-
+    
+    // Cookies.remove('carrinho')
 
     function removerProduto (id) {
-        
         let carrinho = produto.filter( x => x.id !== id ) 
-       
 
         Cookie.set('carrinho', JSON.stringify(carrinho))
         setProduto([...carrinho])
-
       
         carregarCarrinho()
     }
-
-    console.log(Cookie.get('carrinho'))
-    
-   
-
 
 
     function carregarCarrinho() {
@@ -53,7 +42,6 @@ export default function CarrinhoItem() {
             : [];
 
             if(carrinho.length === 0 )
-            
             navegation.push('/carrinho')
 
         setProduto(carrinho)
@@ -63,14 +51,9 @@ export default function CarrinhoItem() {
    function respFilho() { //função reduce pega um item do array por vês
         let total = produto.reduce((a,b) => a + b.total,0) 
         setVlFinal (total) 
-        
-   
    }
 
-   
-
    async function buscarCep() {
-        
     let r1 = vlCep.length
     
     if(r1 === 8)
@@ -80,14 +63,9 @@ export default function CarrinhoItem() {
     setLoc(resp.data);
   }
 
-
- 
-
     return (
         <div style={{backgroundColor:"#333333"}}>
         <Cabecalho />
-        
-    
         
        <StyledCarrinhoItem> 
        <main className="pc"> 
