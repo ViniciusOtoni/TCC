@@ -59,7 +59,7 @@ export default function Venda(props) {
                         <div className="bottom"> <CaixaJogo key={x.id_produto} info={x} /> </div>
                      )}
                     </div>
-                    <div className="pag">  <Paginacao  /> </div>
+                    <div className="pag">  <Paginacao  />  </div>
                 </main>
                 </StyledVenada>
             <Footer />
