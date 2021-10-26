@@ -1,5 +1,5 @@
 import { StyledPaginacao } from "./styled";
-import { useState} from "react";
+import { useState, useEffect } from "react";
 
 import Api from "../../services/api";
 const api = new Api();
@@ -24,6 +24,8 @@ export default function Paginacao() {
         const x = api.listarProdutos(page);
         return(x);
     }
+
+
 
     return (
         <StyledPaginacao>
