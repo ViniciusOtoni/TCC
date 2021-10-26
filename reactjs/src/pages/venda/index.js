@@ -37,7 +37,7 @@ export default function Venda(props) {
 
     return (
         <div style={{backgroundColor:"#333333"}}> 
-        <Cabecalho search={pesquisa}/>
+        <Cabecalho />
                 <StyledVenada> 
                 <main className='a'> 
                     <div className="row-button"> 

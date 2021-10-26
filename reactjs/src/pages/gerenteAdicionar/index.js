@@ -66,13 +66,13 @@ export default function GerenteAlterar() {
                                 <StyledSelect className="input-input" value={ categoria }onChange={e => setCategoria(e.target.value)}>
                                     <option  value="Xbox">  Xbox </option>
                                     <option  value="Ps4">  Ps4 </option>
-                                    <option  value="Canecas">  Canecas </option>
-                                    <option  value="Roupas">  Roupas </option>
+                                    <option  value="Caneca">  Caneca </option>
+                                    <option  value="Roupa">  Roupa </option>
                                 </StyledSelect> </div>
                         </div>
                         <div className="line">
                             <div className="topico4"> Preco </div>
-                            <div  className="input"> <StyledInput className="input-input topico4-input" value={preco} onChange={e => setPreco(e.target.value)}/> </div>
+                            <div  className="input"> <StyledInput className="input-input topico4-input" value={preco} onChange={e => setPreco(e.target.value)} /> </div>
                         </div>
                         <div className="alternating">
                             <div className="topico5">  Imagem Principal: </div>

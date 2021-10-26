@@ -78,9 +78,10 @@ export default function GerenteAlterar(props) {
                                 <StyledSelect className="input-input" value={ categoria } onChange={e => setCategoria(e.target.value)}>
                                     <option  value="Xbox">  Xbox </option>
                                     <option  value="Ps4">  Ps4 </option>
-                                    <option  value="Canecas">  Canecas </option>
-                                    <option  value="Roupas">  Roupas </option>
-                                </StyledSelect> </div>
+                                    <option  value="Caneca">  Caneca </option>
+                                    <option  value="Roupa">  Roupa </option>
+                                </StyledSelect> 
+                            </div>
                         </div>
                         <div className="line">
                             <div className="topico4"> Preco </div>
