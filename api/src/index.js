@@ -481,6 +481,7 @@ app.post('/validarCompra', async ( req, resp ) => {
         const produtoUsu = await db.infoa_gab_produto.findAll({
             where: {
                  'nm_produto': { [Op.in]: r.nm_produto }
+                 
             }
         })
 
@@ -492,7 +493,7 @@ app.post('/validarCompra', async ( req, resp ) => {
                 id_produto:  produto.id_produto,
                 id_venda: gerarVenda.id_venda,
                 qtd_produtos: r.qtd_produtos,
-                vl_preco: r.preco
+                vl_preco: produto.preco
             });
 
         }
@@ -513,7 +514,7 @@ app.post('/validarCompra', async ( req, resp ) => {
     } catch( error ) {
            resp.send( { error: "DEU ERRO NA API MONSTRA, duvido que não seja a primeira vez..."})  
         }
-  }) //API FINALIZADA COM SUCESSO! 100%!!!
+  }) //API FINALIZADA COM SUCESSO! 95%!!!
 
 
 app.get('/pedido', async (req, resp) => {

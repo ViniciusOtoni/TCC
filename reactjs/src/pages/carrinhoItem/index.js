@@ -8,27 +8,28 @@ import { Link } from "react-router-dom"
 import Cookie from 'js-cookie'
 import { useState, useEffect } from "react"
 import { useHistory } from "react-router"
-
 import BoxItemCarrinho from './comps/boxItem'
-import Cookies from "js-cookie"
+
 
 
 export default function CarrinhoItem() {
     const [ produto, setProduto ] = useState([])
     const [ vlFinal, setVlFinal ] = useState(0);
+    const [loc, setLoc] = useState({});
+    const [ teste, setTeste ] = useState(calcularFinalFrete())
     const [ cep, setCep ] = useState(false);
     const [ vlCep, setVlCep ] = useState('');
-    const [loc, setLoc] = useState({});
     const navegation = useHistory()
 
-    console.log(produto)
+   console.log(produto)
+    
 
-   
+ 
     
     useEffect(carregarCarrinho, [])
     
  
-  
+   
     
 
     function removerProduto (id) {
@@ -63,7 +64,7 @@ export default function CarrinhoItem() {
    }
 
    function calcularFinalFrete() {
-    return   Math.round(vlFinal + (loc.uf === 'SP' ? 50 : loc.uf === 'RJ'  ? 130 : 0))
+        produto.frete = Math.round(vlFinal + (loc.uf === 'SP' ? 50 : loc.uf === 'RJ'  ? 130 : 0))
     }
 
    async function buscarCep() {
@@ -129,9 +130,9 @@ export default function CarrinhoItem() {
                     </div>
                     <div className="row-preco"> 
                         <div className="total-valor-baixo"> Total: </div>
-                        <div className="total-final"> {`R$: ${calcularFinalFrete()}`} </div>
+                        <div className="total-final"> {`R$: ${produto.frete}`} </div>
                     </div>
-                    <div className="botao-finalizar"> <Link to={{pathname:"concluirCompra", state: produto }}> <StyledButtonVerde style={{padding: ".3em", marginBottom:"1em", marginRight: "2em", width:"14em"}}> Realizar Compra! </StyledButtonVerde> </Link> </div> 
+                    <div className="botao-finalizar"> <Link to={{pathname:"concluirCompra", state:  produto }}> <StyledButtonVerde style={{padding: ".3em", marginBottom:"1em", marginRight: "2em", width:"14em"}}> Realizar Compra! </StyledButtonVerde> </Link> </div> 
                 </div>
                 </main>
 

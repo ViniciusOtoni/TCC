@@ -118,14 +118,28 @@ export default function ConcluirCompra(props) {
                     <div className="titulo-produto"> Informaçõe do Produto </div>
                    
                     <div>
-                    <div className="row-produto"> 
-                        <div className="total-compra"> Valore Total da Compra  </div>
-                        {infoProduto.map(x =>   
-                        <div className="preço-compra"> { (x.total) } </div> )}
-                    </div>
+                   
                     <div className="row-produto"> 
                         <div className="total-compra"> Produtos Adquiridos:  </div>
-                        {infoProduto.map(x => <div className="preço-compra"> { x.produto   } </div> )}
+                        {infoProduto.map(x => <div className="preço-compra"> { x.produto } </div> )}
+                    </div>
+                    <div className="row-produto"> 
+                        <div className="total-compra"> Valor Total:  </div>
+                        {infoProduto.length > 1 ? <div className="preço-compra"> {infoProduto.frete} </div> : 
+                        infoProduto.map(x => 
+                            <div className="preço-compra"> { (x.preco)  } </div> )}
+
+
+
+
+
+                            
+                        
+                    </div>
+                    
+                    <div className="row-produto"> 
+                        <div className="total-compra"> Quantidade De Itens:  </div>
+                        <div className="preço-compra"> { ( infoProduto.length  ) } </div> 
                     </div> 
                     </div>
                     <div className="row-produto"> 
