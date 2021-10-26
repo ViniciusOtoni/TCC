@@ -1,7 +1,7 @@
 import { Container } from "./styled.js"
-import CabecalhoAdm from "../../components/cabecalhoAdm/index.js"
-import Paginacao from "../../components/paginacao/index.js"
 import { StyledButtonAdm } from "../../components/botaoAdm/styled.js"
+import Paginacao from "../../components/paginacao/index.js"
+import CabecalhoAdm from "../../components/cabecalhoAdm/index.js"
 
 export default function GerenteNaosei() {
     return (
@@ -11,9 +11,7 @@ export default function GerenteNaosei() {
                 <Container >
                 <main className="pc">
                     <div className="principal">
-                       
-                   
-                        <table>
+                         <table>
                             <thead>
                                 <th>ID Produto:</th>
                                 <th>Nome Do Produto:</th>

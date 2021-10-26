@@ -1,19 +1,18 @@
-import { Container } from './styled'
-import Footer from "../../components/rodape"
+import Footer    from "../../components/rodape"
 import Cabecalho from '../../components/cabecalho'
+import { Container } from './styled'
 
 export default function Termos() {
     return (
         <div style={{backgroundColor: "#333333"}}> 
         <Cabecalho corLetra="nulo"/>
-   
-       
             <Container>
             <main>
                 <div className="textos">
                     <h1>Termos e Serviços :</h1>
                     <div>Bem vindo à família de website do<br/>
-                        GameBud, não se esqueça que você está legalmente sujeito <br /> a esses termos e serviços.</div>
+                        GameBud, não se esqueça que você está legalmente sujeito <br/> 
+                        a esses termos e serviços.</div>
                     <div className="barra"></div>
                     <h1>1. Usuários com ou sem conta:</h1>
                     <div className="Secondh2">Não é nescessário criar uma conta, para utilizar o nosso site, mas acreditamos para que o usuario possua uma melhor experiência e possua acesso à mais benefícios que crie uma conta em nosso site.</div>
@@ -25,11 +24,11 @@ export default function Termos() {
                         Todo Conteúdo Gerado pelo Usuário disponibilizado nos nossos Sites é da inteira responsabilidade da pessoa que o forneceu.
                     </div>
                     <h1>4. O seu trabalho protegido por direitos autorais:</h1>
-                    <div className="fifthh2">Assim como a SIE LLC exige que os usuários dos nossos Sites respeitem os nossos direitos autorais e os das nossas <br />afiliadas, licenciadores e parceiros comerciais, respeitamos os direitos autorais das outras pessoas. Para isso, adotamos esta política de direitos autorais de acordo com a Digital Millennium Copyright Act (Lei dos Direitos Autorais 17 U.S.C. 512 et seq. do código civil norte-americano). Se, de boa-fé, você acredita que seu material protegido por direitos autorais foi reproduzido nos nossos Sites sem autorização, de modo que constitua uma violação de direitos autorais, ou se você é o fornecedor de conteúdo e acredita que uma notificação de violação de direitos autorais foi enviada erroneamente a você em virtude de engano ou falha na identificação do conteúdo supostamente protegido por direitos autorais.</div>
+                    <div className="fifthh2">Assim como a SIE LLC exige que os usuários dos nossos Sites respeitem os nossos direitos autorais e os das nossas  <br/>
+                                             afiliadas, licenciadores e parceiros comerciais, respeitamos os direitos autorais das outras pessoas. Para isso, adotamos esta política de direitos autorais de acordo com a Digital Millennium Copyright Act (Lei dos Direitos Autorais 17 U.S.C. 512 et seq. do código civil norte-americano). Se, de boa-fé, você acredita que seu material protegido por direitos autorais foi reproduzido nos nossos Sites sem autorização, de modo que constitua uma violação de direitos autorais, ou se você é o fornecedor de conteúdo e acredita que uma notificação de violação de direitos autorais foi enviada erroneamente a você em virtude de engano ou falha na identificação do conteúdo supostamente protegido por direitos autorais.</div>
                 </div>
                 </main>
         </Container>
-       
        <Footer />
        </div> 
     )

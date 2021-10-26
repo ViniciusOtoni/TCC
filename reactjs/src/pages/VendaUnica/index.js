@@ -19,7 +19,6 @@ export default function VendaUnica(props){
     
     const [ vlAvaliacao, setVlAvaliacao ] = useState(0)
     const [ idProduto, setIdProduto ] = useState(0)
-
    
   //Cookies.remove('carrinho')
     
@@ -29,13 +28,7 @@ export default function VendaUnica(props){
         
         let r = await api.alterarAvaliacao(idProduto, vlAvaliacao)
      }
-
-    
-
     const navegation = useHistory()
-    
-  
-
 
     function comprar() {
         let carrinho = Cookie.get('carrinho')
@@ -50,16 +43,12 @@ export default function VendaUnica(props){
             Cookie.set('carrinho', JSON.stringify(carrinho));
 
             navegation.push('/carrinhoItem')
-
     }
-
- 
 
     return (
         <div style={{backgroundColor:"#333333"}}>
         <Cabecalho />
         <Conteudo> 
-            
             <main className="pc"> 
                 <div className="title"> {produto.produto} </div>
                 <Content>
@@ -71,8 +60,9 @@ export default function VendaUnica(props){
                                 <img onClick={() => setImg(3)} src={img === 3 ? produto.imagem : produto.imagem_quatro} alt=""/>
                             </div>
                             <img onClick={() => setImg(0)} className="image-main" src={img === 1 ? produto.imagem_dois 
-                                                                        : img === 2 ? produto.imagem_tres : 
-                                                                        img === 3 ? produto.imagem_quatro : produto.imagem} alt=""/>
+                                                                        : img === 2 ? produto.imagem_tres 
+                                                                        : img === 3 ? produto.imagem_quatro 
+                                                                        : produto.imagem} alt=""/>
                         </div>
                         <div>
                             <div className="align-stars">
@@ -113,9 +103,8 @@ export default function VendaUnica(props){
                             <div className="preco"> {`R$${produto.preco}`} </div>
                             <div className="text"> {`em 5x de R$  ${Math.round( produto.preco / 5 )} sem juros`} </div>
                             <div className="text"> Vendido e entregue por GameBud </div>
-                    </div>  
-                     
-                </Content>
+                    </div>      
+            </Content>
                 <div className="align-button">
                                 <StyledButtonVerde style={{ padding:".7em 2em", margin: ".8em 0em", fontFamily: "semiBold" }} className="gren" onClick={comprar}> Adicionar ao carrinho  </StyledButtonVerde>
                                 <StyledButtonVerde style={{ padding:".7em 2em", fontFamily: "semiBold" }} className="gren"> Comprar agora! </StyledButtonVerde>

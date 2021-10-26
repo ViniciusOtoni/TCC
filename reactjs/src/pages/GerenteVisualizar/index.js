@@ -14,13 +14,6 @@ const api = new Api();
 export default function GerenteVizualizar(props){
     const [infoProduto, setInfoProduto] = useState(props.location.state);
 
-    
-
-   
-
-    
-    console.log(infoProduto);
-
      return(
          <div style={{ backgroundColor:"#333333" }}>
              <CabecalhoAdm nulob={true}/>
@@ -65,9 +58,9 @@ export default function GerenteVizualizar(props){
                             </div>
                         </div>
                         <div className="footer"> 
-                        <Link to="/gerenteCadastrar"><StyledButtonAdm cor="vermelho" className="voltar"> Voltar </StyledButtonAdm></Link>
-                        <div className="pag"> <Paginacao /> </div>
-                    </div>
+                            <Link to="/gerenteCadastrar"><StyledButtonAdm cor="vermelho" className="voltar"> Voltar </StyledButtonAdm></Link>
+                            <div className="pag"> <Paginacao /> </div>
+                        </div>
                         
                     </main>
                 </Vizualizar>    

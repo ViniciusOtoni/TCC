@@ -1,8 +1,9 @@
 import Cabecalho from "../../components/cabecalho";
 import CaixaJogo from "../../components/caixaJogo";
-import Footer from "../../components/rodape";
+import Footer    from "../../components/rodape";
 import Paginacao from "../../components/paginacao";
 import { StyledVenada } from "./styled";
+
 import { useState, useEffect } from "react";
 
 import Api from "../../services/api";
@@ -36,7 +37,7 @@ export default function Venda(props) {
 
     return (
         <div style={{backgroundColor:"#333333"}}> 
-        <Cabecalho search={pesquisa}/>
+        <Cabecalho />
                 <StyledVenada> 
                 <main className='a'> 
                     <div className="row-button"> 
@@ -58,7 +59,7 @@ export default function Venda(props) {
                         <div className="bottom"> <CaixaJogo key={x.id_produto} info={x} /> </div>
                      )}
                     </div>
-                    <div className="pag">  <Paginacao  /> </div>
+                    <div className="pag">  <Paginacao  />  </div>
                 </main>
                 </StyledVenada>
             <Footer />

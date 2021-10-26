@@ -60,8 +60,12 @@ app.get('/produto', async (req,resp) => {
         let ord = ordenacao(req.query.criterio);
         let filtro = req.query.filtro;
         let categoria = req.query.categoria;
+        let page = req.query.page;
 
-        
+        // console.log('type ' + typeof(page))
+        // console.log('page ' + page)
+
+        const itensPerPage = 2;
 
         let r = await db.infoa_gab_produto.findAll({ 
             where: {
@@ -71,7 +75,9 @@ app.get('/produto', async (req,resp) => {
                     { ds_categoria: categoria }
                 ]
             },
-            order: [ord]
+            order: [ord],
+            offset: 0,
+            limit: itensPerPage
         })
 
         r = r.map(item => {
