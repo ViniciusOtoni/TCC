@@ -384,7 +384,7 @@ try {
     }, { where: { id_usuario: q.id_usuario } })
 
   
-    const response = await enviarEmail(login.ds_email, rCod);
+    const response = await enviarEmail(login.ds_email, rCod, login.nm_usuario);
   
     resp.send(response);
     
@@ -470,36 +470,44 @@ app.post('/validarCompra', async ( req, resp ) => {
             ds_pagamento: r.forma_pagamento
         });
         
-        const produtoUsu = await db.infoa_gab_produto.findOne({
+        
+        
+        const produtoUsu = await db.infoa_gab_produto.findAll({
             where: {
-                nm_produto: r.nm_produto,
+                 'nm_produto': { [Op.in]: r.nm_produto }
             }
-        });
+        })
 
-        const gerarVendaItem = await db.infoa_gab_venda_item.create({
-            id_produto: produtoUsu.id_produto,
-            id_venda: gerarVenda.id_venda,
-            qtd_produtos: r.qtd_produtos,
-            vl_preco: r.preco
-        });
+        
+        
 
+        for (let produto of produtoUsu) {
+            const gerarVendaItem = await db.infoa_gab_venda_item.create({
+                id_produto:  produto.id_produto,
+                id_venda: gerarVenda.id_venda,
+                qtd_produtos: r.qtd_produtos,
+                vl_preco: r.preco
+            });
+
+        }
+
+        
+        
         const entrega = await db.infoa_gab_entrega.create({
             id_endereco: enderecoUsuario.id_endereco,
-            id_venda_item: gerarVendaItem.id_venda_item,
+            id_venda: gerarVenda.id_venda,
             ds_situacao: true,
             dt_saida: Date.now(),
             dt_entrega: '0000-01-01'
         });
+        
 
-        resp.send(entrega) } catch( error ) {
-            resp.send( { error: "DEU ERRO NA API MONSTRA, duvido que não seja a primeira vez..."})
+        resp.send(entrega) 
+
+    } catch( error ) {
+           resp.send( { error: "DEU ERRO NA API MONSTRA, duvido que não seja a primeira vez..."})  
         }
-  })
-
-
-
-
-
+  }) //API FINALIZADA COM SUCESSO! 100%!!!
 
 
 app.get('/pedido', async (req, resp) => {

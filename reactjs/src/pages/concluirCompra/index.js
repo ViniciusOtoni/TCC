@@ -51,6 +51,7 @@ export default function ConcluirCompra(props) {
     const [ cpf, setCpf ] = useState('')
     const [ parcelas, setParcelas ] = useState('')
    
+    console.log(infoProduto)
     
    
 
@@ -60,7 +61,7 @@ export default function ConcluirCompra(props) {
     }
 
     const confirmarDados =  async () => {
-        let r = api.confirmarCompra(email, senha, cv, nrAgencia, nmTitular, dtValidade, nrCartao, cpf, nmBairro, nmRua, nrRua, cep, complemento, parcelas, formaPagamento, infoProduto.id, )
+        let r = api.confirmarCompra(email, senha, cv, nrAgencia, nmTitular, dtValidade, nrCartao, cpf, nmBairro, nmRua, nrRua, cep, complemento, parcelas, formaPagamento, infoProduto, )
     }
    
     function lerUsuarioQuelogou() {
@@ -82,6 +83,7 @@ export default function ConcluirCompra(props) {
         useEffect(() => {
             lerUsuarioQuelogou()
         })
+
 
     return (
 
@@ -114,17 +116,18 @@ export default function ConcluirCompra(props) {
                     <div className="direita-grupo-input">
 
                     <div className="titulo-produto"> Informaçõe do Produto </div>
-                    {infoProduto.map(x => 
+                   
                     <div>
                     <div className="row-produto"> 
-                        <div className="total-compra"> Valor Total da Compra:  </div>
-                        <div className="preço-compra"> { x.preco } </div>
+                        <div className="total-compra"> Valore Total da Compra  </div>
+                        {infoProduto.map(x =>   
+                        <div className="preço-compra"> { (x.total) } </div> )}
                     </div>
                     <div className="row-produto"> 
-                        <div className="total-compra"> Quantidade Total De produtos Adquiridos:  </div>
-                        <div className="preço-compra"> { x.produto } </div>
+                        <div className="total-compra"> Produtos Adquiridos:  </div>
+                        {infoProduto.map(x => <div className="preço-compra"> { x.produto   } </div> )}
                     </div> 
-                    </div>)}
+                    </div>
                     <div className="row-produto"> 
                         <div className="total-compra"> Entregue Por:  </div>
                         <div className="preço-compra"> GameBudSedex </div>

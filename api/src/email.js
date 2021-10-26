@@ -14,7 +14,7 @@ const sender = nodemailer.createTransport({
 
 
 
-async function enviarEmail(para, cod) {
+async function enviarEmail(para, cod, nm) {
   
 
   const response = await sender.sendMail({
@@ -24,8 +24,8 @@ async function enviarEmail(para, cod) {
     to: para, 
     subject: "Recuperação de senha",
     html: `<main>  
-            <h2> <b> Olá </b> ${para} o seu pedido de alteração na senha foi bem sucedido! </h2> 
-            <h1> Segue o código para podermos confirmar a alteração: </>
+            <h2> Olá  <b> ${nm} </b> o seu pedido de alteração na senha foi bem sucedido! </h2> 
+            <h1> Segue o código para podermos confirmar a alteração: </h1>
             ${cod} 
         </main>` 
     

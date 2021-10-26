@@ -1,10 +1,10 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_sti_vendas extends Model {
+export default class infoa_dtn_tb_endereco extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_vendas: {
+    id_endereco: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -14,29 +14,37 @@ export default class infoa_sti_vendas extends Model {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'infoa_sti_cliente',
+        model: 'infoa_dtn_tb_cliente',
         key: 'id_cliente'
       }
     },
-    id_produto: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'infoa_sti_produto',
-        key: 'id_produto'
-      }
+    nm_cidade: {
+      type: DataTypes.STRING(200),
+      allowNull: true
     },
-    ds_codigo: {
+    ds_uf: {
+      type: DataTypes.STRING(5),
+      allowNull: true
+    },
+    ds_cep: {
       type: DataTypes.STRING(10),
       allowNull: true
     },
-    dt_vendas: {
-      type: DataTypes.DATEONLY,
+    ds_logradouro: {
+      type: DataTypes.STRING(300),
+      allowNull: true
+    },
+    ds_numero: {
+      type: DataTypes.STRING(10),
+      allowNull: true
+    },
+    ds_complemento: {
+      type: DataTypes.STRING(100),
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoa_sti_vendas',
+    tableName: 'infoa_dtn_tb_endereco',
     timestamps: false,
     indexes: [
       {
@@ -44,7 +52,7 @@ export default class infoa_sti_vendas extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_vendas" },
+          { name: "id_endereco" },
         ]
       },
       {
@@ -54,15 +62,8 @@ export default class infoa_sti_vendas extends Model {
           { name: "id_cliente" },
         ]
       },
-      {
-        name: "id_produto",
-        using: "BTREE",
-        fields: [
-          { name: "id_produto" },
-        ]
-      },
     ]
   });
-  return infoa_sti_vendas;
+  return infoa_dtn_tb_endereco;
   }
 }

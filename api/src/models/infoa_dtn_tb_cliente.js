@@ -1,7 +1,7 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoc_tdv_cliente extends Model {
+export default class infoa_dtn_tb_cliente extends Model {
   static init(sequelize, DataTypes) {
   super.init({
     id_cliente: {
@@ -11,36 +11,32 @@ export default class infoc_tdv_cliente extends Model {
       primaryKey: true
     },
     nm_cliente: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    ds_cpf: {
-      type: DataTypes.STRING(15),
+      type: DataTypes.STRING(200),
       allowNull: true
     },
     ds_email: {
-      type: DataTypes.STRING(250),
-      allowNull: true
-    },
-    nr_contato: {
-      type: DataTypes.STRING(15),
+      type: DataTypes.STRING(100),
       allowNull: true
     },
     ds_senha: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING(20),
+      allowNull: true
+    },
+    ds_cpf: {
+      type: DataTypes.STRING(20),
+      allowNull: true
+    },
+    ds_telefone: {
+      type: DataTypes.STRING(25),
       allowNull: true
     },
     dt_nascimento: {
-      type: DataTypes.DATE,
-      allowNull: true
-    },
-    ds_codigo_rec: {
-      type: DataTypes.STRING(200),
+      type: DataTypes.DATEONLY,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoc_tdv_cliente',
+    tableName: 'infoa_dtn_tb_cliente',
     timestamps: false,
     indexes: [
       {
@@ -53,6 +49,6 @@ export default class infoc_tdv_cliente extends Model {
       },
     ]
   });
-  return infoc_tdv_cliente;
+  return infoa_dtn_tb_cliente;
   }
 }

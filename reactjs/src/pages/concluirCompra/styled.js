@@ -238,12 +238,15 @@ const Container = styled.div`
         padding-top: .6em;
         padding-bottom: .5em;
         align-items: center;
+       
+        
     }
 
     .total-compra {
         font-size: 1.2em;
         color: #F0AC54;
         font-family: MontserratBold;
+        
     }
 
     .preço-compra {
@@ -251,6 +254,7 @@ const Container = styled.div`
         color: #FFFFFF;
         font-family: MontserratBold;
         padding-left: 1em;
+     
     }
 
     @media(max-width:425px) {

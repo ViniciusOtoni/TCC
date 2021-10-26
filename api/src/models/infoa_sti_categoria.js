@@ -11,7 +11,7 @@ export default class infoa_sti_categoria extends Model {
       primaryKey: true
     },
     nm_sabor: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING(100),
       allowNull: true
     }
   }, {

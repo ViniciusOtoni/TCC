@@ -1,46 +1,34 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_gab_entrega extends Model {
+export default class infoa_dtn_tb_favoritos extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_entrega: {
+    id_fav: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_endereco: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'infoa_gab_endereco',
-        key: 'id_endereco'
-      }
-    },
-    ds_situacao: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    dt_saida: {
-      type: DataTypes.DATE,
-      allowNull: true
-    },
-    dt_entrega: {
-      type: DataTypes.DATE,
-      allowNull: true
-    },
-    id_venda: {
+    id_produto: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'infoa_gab_venda',
-        key: 'id_venda'
+        model: 'infoa_dtn_tb_produto',
+        key: 'id_produto'
+      }
+    },
+    id_cliente: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'infoa_dtn_tb_cliente',
+        key: 'id_cliente'
       }
     }
   }, {
     sequelize,
-    tableName: 'infoa_gab_entrega',
+    tableName: 'infoa_dtn_tb_favoritos',
     timestamps: false,
     indexes: [
       {
@@ -48,25 +36,25 @@ export default class infoa_gab_entrega extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_entrega" },
+          { name: "id_fav" },
         ]
       },
       {
-        name: "id_endereco",
+        name: "id_produto",
         using: "BTREE",
         fields: [
-          { name: "id_endereco" },
+          { name: "id_produto" },
         ]
       },
       {
-        name: "id_venda",
+        name: "id_cliente",
         using: "BTREE",
         fields: [
-          { name: "id_venda" },
+          { name: "id_cliente" },
         ]
       },
     ]
   });
-  return infoa_gab_entrega;
+  return infoa_dtn_tb_favoritos;
   }
 }

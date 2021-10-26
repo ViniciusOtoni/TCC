@@ -14,22 +14,19 @@ import Cookies from "js-cookie"
 
 export default function BoxItemCarrinho(props) {
 
- // Cookies.remove('carrinho')
+   
     
     const [ produto, setProduto ]  = useState(props.info)
     const [ qtd, setQtd ] = useState(1)
     const [ total, setTotal ] = useState(produto.preco)
     const nave = useHistory()
     
-
   
 
 
     function remover () {
         props.onRemove(produto.id)
         setQtd(0)
-
-        
     }
 
     function alterar() {
@@ -37,7 +34,7 @@ export default function BoxItemCarrinho(props) {
         setTotal(produto.total)
         if(props.respostaFilho)
             props.respostaFilho()
-               
+           
     }
 
    

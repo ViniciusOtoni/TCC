@@ -12,18 +12,24 @@ import { useHistory } from "react-router"
 import BoxItemCarrinho from './comps/boxItem'
 import Cookies from "js-cookie"
 
+
 export default function CarrinhoItem() {
     const [ produto, setProduto ] = useState([])
     const [ vlFinal, setVlFinal ] = useState(0);
     const [ cep, setCep ] = useState(false);
     const [ vlCep, setVlCep ] = useState('');
     const [loc, setLoc] = useState({});
-    
     const navegation = useHistory()
+
+    console.log(produto)
+
+   
     
     useEffect(carregarCarrinho, [])
     
-    // Cookies.remove('carrinho')
+ 
+  
+    
 
     function removerProduto (id) {
         let carrinho = produto.filter( x => x.id !== id ) 
@@ -44,14 +50,21 @@ export default function CarrinhoItem() {
             if(carrinho.length === 0 )
             navegation.push('/carrinho')
 
+        
         setProduto(carrinho)
     }
 
 
+
+
    function respFilho() { //função reduce pega um item do array por vês
         let total = produto.reduce((a,b) => a + b.total,0) 
-        setVlFinal (total) 
+        setVlFinal(total) 
    }
+
+   function calcularFinalFrete() {
+    return   Math.round(vlFinal + (loc.uf === 'SP' ? 50 : loc.uf === 'RJ'  ? 130 : 0))
+    }
 
    async function buscarCep() {
     let r1 = vlCep.length
@@ -62,6 +75,8 @@ export default function CarrinhoItem() {
     const resp = await axios.get(`https://viacep.com.br/ws/${vlCep}/json/`);
     setLoc(resp.data);
   }
+
+  
 
     return (
         <div style={{backgroundColor:"#333333"}}>
@@ -114,7 +129,7 @@ export default function CarrinhoItem() {
                     </div>
                     <div className="row-preco"> 
                         <div className="total-valor-baixo"> Total: </div>
-                        <div className="total-final"> {`R$: ${Math.round(vlFinal + (loc.uf === 'SP' ? 50 : loc.uf === 'RJ'  ? 130 : 0))}`} </div>
+                        <div className="total-final"> {`R$: ${calcularFinalFrete()}`} </div>
                     </div>
                     <div className="botao-finalizar"> <Link to={{pathname:"concluirCompra", state: produto }}> <StyledButtonVerde style={{padding: ".3em", marginBottom:"1em", marginRight: "2em", width:"14em"}}> Realizar Compra! </StyledButtonVerde> </Link> </div> 
                 </div>

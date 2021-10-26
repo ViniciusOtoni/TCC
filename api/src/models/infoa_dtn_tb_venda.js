@@ -1,10 +1,10 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_sti_vendas extends Model {
+export default class infoa_dtn_tb_venda extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_vendas: {
+    id_venda: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -14,29 +14,33 @@ export default class infoa_sti_vendas extends Model {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'infoa_sti_cliente',
+        model: 'infoa_dtn_tb_cliente',
         key: 'id_cliente'
       }
     },
-    id_produto: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'infoa_sti_produto',
-        key: 'id_produto'
-      }
-    },
-    ds_codigo: {
-      type: DataTypes.STRING(10),
+    ds_nota_fiscal: {
+      type: DataTypes.STRING(100),
       allowNull: true
     },
-    dt_vendas: {
+    tp_pagamento: {
+      type: DataTypes.STRING(150),
+      allowNull: true
+    },
+    qtd_parcelas: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    bt_presente: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true
+    },
+    dt_venda: {
       type: DataTypes.DATEONLY,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoa_sti_vendas',
+    tableName: 'infoa_dtn_tb_venda',
     timestamps: false,
     indexes: [
       {
@@ -44,7 +48,7 @@ export default class infoa_sti_vendas extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_vendas" },
+          { name: "id_venda" },
         ]
       },
       {
@@ -54,15 +58,8 @@ export default class infoa_sti_vendas extends Model {
           { name: "id_cliente" },
         ]
       },
-      {
-        name: "id_produto",
-        using: "BTREE",
-        fields: [
-          { name: "id_produto" },
-        ]
-      },
     ]
   });
-  return infoa_sti_vendas;
+  return infoa_dtn_tb_venda;
   }
 }
