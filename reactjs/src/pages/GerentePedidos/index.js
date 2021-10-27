@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import Api from "../../services/api";
 const api = new Api();
 
+import { Link } from "react-router-dom";
 
 export default function GerentePedidos() {
     const [infoGeral, setInfoGeral] = useState([]);
@@ -27,7 +28,6 @@ export default function GerentePedidos() {
     return (
         <div style={{backgroundColor:"#333333", minHeight:"100vh"}}> 
         <CabecalhoAdm bNulo={true} />
-              
                   <StyledGerentePedidos> 
                   <main className="pc"> 
                       <table> 
@@ -104,10 +104,7 @@ export default function GerentePedidos() {
                        <div className="pag"> <Paginacao /> </div>
                        <div className="back"> <StyledButtonAdm cor="vermelho" style={{width:"10em"}}> Voltar </StyledButtonAdm> </div>
                     </main>
-                     
-                     
                   </StyledGerentePedidos>
-            
           </div>
     )
 }

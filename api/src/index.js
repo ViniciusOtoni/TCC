@@ -60,17 +60,24 @@ app.get('/produto', async (req,resp) => {
         let ord = ordenacao(req.query.criterio);
         let filtro = req.query.filtro;
         let categoria = req.query.categoria;
+        let page = req.query.page;
 
-        
+        // console.log('type ' + typeof(page))
+        // console.log('page ' + page)
+
+        const itensPerPage = 2;
 
         let r = await db.infoa_gab_produto.findAll({ 
             where: {
                 [Op.or]: [
-                    { nm_produto: { [Op.like]: filtro }},
-                    { ds_plataforma: categoria }
+                    { nm_produto: {[Op.substring]: filtro }},
+                    { ds_plataforma: categoria },
+                    { ds_categoria: categoria }
                 ]
             },
-            order: [ord]
+            order: [ord],
+            offset: 0,
+            limit: itensPerPage
         })
 
         r = r.map(item => {
@@ -385,7 +392,7 @@ try {
     }, { where: { id_usuario: q.id_usuario } })
 
   
-    const response = await enviarEmail(login.ds_email, rCod);
+    const response = await enviarEmail(login.ds_email, rCod, login.nm_usuario);
   
     resp.send(response);
     
@@ -471,26 +478,38 @@ app.post('/validarCompra', async ( req, resp ) => {
             ds_pagamento: r.forma_pagamento
         });
         
-        const produtoUsu = await db.infoa_gab_produto.findOne({
+        
+        
+        const produtoUsu = await db.infoa_gab_produto.findAll({
             where: {
-                nm_produto: r.nm_produto,
+                 'nm_produto': { [Op.in]: r.nm_produto }
+                 
             }
-        });
+        })
 
-        const gerarVendaItem = await db.infoa_gab_venda_item.create({
-            id_produto: produtoUsu.id_produto,
-            id_venda: gerarVenda.id_venda,
-            qtd_produtos: r.qtd_produtos,
-            vl_preco: r.preco
-        });
+        
+        
 
+        for (let produto of produtoUsu) {
+            const gerarVendaItem = await db.infoa_gab_venda_item.create({
+                id_produto:  produto.id_produto,
+                id_venda: gerarVenda.id_venda,
+                qtd_produtos: r.qtd_produtos,
+                vl_preco: produto.preco
+            });
+
+        }
+
+        
+        
         const entrega = await db.infoa_gab_entrega.create({
             id_endereco: enderecoUsuario.id_endereco,
-            id_venda_item: gerarVendaItem.id_venda_item,
+            id_venda: gerarVenda.id_venda,
             ds_situacao: true,
             dt_saida: Date.now(),
             dt_entrega: '0000-01-01'
         });
+        
 
     } catch(e) {
       resp.send(e)
@@ -502,6 +521,10 @@ app.post('/validarCompra', async ( req, resp ) => {
 
 
 
+    } catch( error ) {
+           resp.send( { error: "DEU ERRO NA API MONSTRA, duvido que não seja a primeira vez..."})  
+        }
+  }) //API FINALIZADA COM SUCESSO! 95%!!!
 
 
 

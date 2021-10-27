@@ -1,10 +1,12 @@
 import { StyledGerenteAlterar } from "./styled";
 import { StyledInput, StyledSelect } from "../../components/input/styled";
 import { StyledButtonAdm } from "../../components/botaoAdm/styled";
-import { useState, useEffect } from "react";
-
 import CabecalhoAdm from "../../components/cabecalhoAdm";
+
+import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Api from "../../services/api";
 const api = new Api();
@@ -23,7 +25,6 @@ export default function GerenteAlterar(props) {
     
     const navigation = useHistory();
 
-
     async function Alterar() {
         let x = await api.AlterarProduto(
             nome,
@@ -36,7 +37,7 @@ export default function GerenteAlterar(props) {
             imagemQuartenaria,
             infoProduto.id_produto
         )
-        alert("Produto alterado")
+        toast.dark("Produto alterado")
         navigation.push('/gerenteCadastrar');
     }
 
@@ -52,18 +53,13 @@ export default function GerenteAlterar(props) {
     }
 
     useEffect(() => {
-       
         SetVar()
-
     }, [])
-
-
-    
 
     return (
         <div style={{backgroundColor:"#333333", minHeight:"100vh"}}> 
         <CabecalhoAdm nulob={true} />
-            
+            <ToastContainer />
                 <StyledGerenteAlterar> 
                 <main> 
                
@@ -82,9 +78,10 @@ export default function GerenteAlterar(props) {
                                 <StyledSelect className="input-input" value={ categoria } onChange={e => setCategoria(e.target.value)}>
                                     <option  value="Xbox">  Xbox </option>
                                     <option  value="Ps4">  Ps4 </option>
-                                    <option  value="Canecas">  Canecas </option>
-                                    <option  value="Roupas">  Roupas </option>
-                                </StyledSelect> </div>
+                                    <option  value="Caneca">  Caneca </option>
+                                    <option  value="Roupa">  Roupa </option>
+                                </StyledSelect> 
+                            </div>
                         </div>
                         <div className="line">
                             <div className="topico4"> Preco </div>

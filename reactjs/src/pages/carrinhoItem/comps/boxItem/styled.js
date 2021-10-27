@@ -9,7 +9,7 @@ const StyledBoxItemCarrinho = styled.div`
        
         background-color: #282828;
         border-radius: .6em;
-        margin: 2em;
+        margin: 2em 0em;
         padding: 2em;
 }
 

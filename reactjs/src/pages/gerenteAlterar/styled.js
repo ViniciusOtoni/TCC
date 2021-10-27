@@ -59,6 +59,11 @@ const StyledGerenteAlterar = styled.div`
        width: 22em;
    }
 
+   option{
+       font-family: Medio;
+       font-size: 1em;
+   }
+
     .footer{
         display: flex;
         flex-direction: row;

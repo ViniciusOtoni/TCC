@@ -8,42 +8,38 @@ import { Link } from "react-router-dom"
 import Cookie from 'js-cookie'
 import { useState, useEffect } from "react"
 import { useHistory } from "react-router"
-
 import BoxItemCarrinho from './comps/boxItem'
-import Cookies from "js-cookie"
+
+
 
 export default function CarrinhoItem() {
-
-    
- // Cookies.remove('carrinho')
-
     const [ produto, setProduto ] = useState([])
     const [ vlFinal, setVlFinal ] = useState(0);
+    const [loc, setLoc] = useState({});
+    const [ teste, setTeste ] = useState(calcularFinalFrete())
     const [ cep, setCep ] = useState(false);
     const [ vlCep, setVlCep ] = useState('');
-    const [loc, setLoc] = useState({});
-    
     const navegation = useHistory()
+
+   console.log(produto)
+    
+
+ 
     
     useEffect(carregarCarrinho, [])
-
+    
+ 
+   
+    
 
     function removerProduto (id) {
-        
         let carrinho = produto.filter( x => x.id !== id ) 
-       
 
         Cookie.set('carrinho', JSON.stringify(carrinho))
         setProduto([...carrinho])
-
       
         carregarCarrinho()
     }
-
-    console.log(Cookie.get('carrinho'))
-    
-   
-
 
 
     function carregarCarrinho() {
@@ -53,24 +49,25 @@ export default function CarrinhoItem() {
             : [];
 
             if(carrinho.length === 0 )
-            
             navegation.push('/carrinho')
 
+        
         setProduto(carrinho)
     }
 
 
+
+
    function respFilho() { //função reduce pega um item do array por vês
         let total = produto.reduce((a,b) => a + b.total,0) 
-        setVlFinal (total) 
-        
-   
+        setVlFinal(total) 
    }
 
-   
+   function calcularFinalFrete() {
+        produto.frete = Math.round(vlFinal + (loc.uf === 'SP' ? 50 : loc.uf === 'RJ'  ? 130 : 0))
+    }
 
    async function buscarCep() {
-        
     let r1 = vlCep.length
     
     if(r1 === 8)
@@ -80,14 +77,11 @@ export default function CarrinhoItem() {
     setLoc(resp.data);
   }
 
-
- 
+  
 
     return (
         <div style={{backgroundColor:"#333333"}}>
         <Cabecalho />
-        
-    
         
        <StyledCarrinhoItem> 
        <main className="pc"> 
@@ -102,8 +96,7 @@ export default function CarrinhoItem() {
                
                 
                 {produto.map(x => 
-                <BoxItemCarrinho key={x.id} info={x} onRemove={removerProduto} respostaFilho={respFilho}/> 
-                   
+                <BoxItemCarrinho key={x.id} info={x} onRemove={removerProduto} respostaFilho={respFilho}/>   
                 )}
                 
                 <div className="main-cep">
@@ -137,9 +130,9 @@ export default function CarrinhoItem() {
                     </div>
                     <div className="row-preco"> 
                         <div className="total-valor-baixo"> Total: </div>
-                        <div className="total-final"> {`R$: ${Math.round(vlFinal + (loc.uf === 'SP' ? 50 : loc.uf === 'RJ'  ? 130 : 0))}`} </div>
+                        <div className="total-final"> {`R$: ${produto.frete}`} </div>
                     </div>
-                    <div className="botao-finalizar"> <Link to={{pathname:"concluirCompra", state: produto }}> <StyledButtonVerde style={{padding: ".3em", marginBottom:"1em", marginRight: "2em", width:"14em"}}> Realizar Compra! </StyledButtonVerde> </Link> </div> 
+                    <div className="botao-finalizar"> <Link to={{pathname:"concluirCompra", state:  produto }}> <StyledButtonVerde style={{padding: ".3em", marginBottom:"1em", marginRight: "2em", width:"14em"}}> Realizar Compra! </StyledButtonVerde> </Link> </div> 
                 </div>
                 </main>
 

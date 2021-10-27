@@ -1,13 +1,12 @@
 import { StyledGerenteAlterar } from "./styled";
-
 import { StyledInput, StyledSelect } from "../../components/input/styled";
 import { StyledButtonAdm } from "../../components/botaoAdm/styled";
-import { useState } from "react";
-
-
 import CabecalhoAdm from "../../components/cabecalhoAdm";
-import { Link, useHistory } from "react-router-dom";
 
+import { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Api from "../../services/api";
 const api = new Api();
@@ -39,7 +38,7 @@ export default function GerenteAlterar() {
             imagemTerciaria,
             imagemQuartenaria
         )
-        alert("produto cadastrado");
+        toast.dark("produto cadastrado");
         navigation.push('/gerenteCadastrar');
     }
    
@@ -47,6 +46,7 @@ export default function GerenteAlterar() {
     return (
         <div style={{backgroundColor:"#333333", minHeight:"100vh"}}> 
         <CabecalhoAdm nulo='true' />
+            <ToastContainer />
             
                 <StyledGerenteAlterar> 
                 <main> 
@@ -66,13 +66,13 @@ export default function GerenteAlterar() {
                                 <StyledSelect className="input-input" value={ categoria }onChange={e => setCategoria(e.target.value)}>
                                     <option  value="Xbox">  Xbox </option>
                                     <option  value="Ps4">  Ps4 </option>
-                                    <option  value="Canecas">  Canecas </option>
-                                    <option  value="Roupas">  Roupas </option>
+                                    <option  value="Caneca">  Caneca </option>
+                                    <option  value="Roupa">  Roupa </option>
                                 </StyledSelect> </div>
                         </div>
                         <div className="line">
                             <div className="topico4"> Preco </div>
-                            <div  className="input"> <StyledInput className="input-input topico4-input" value={preco} onChange={e => setPreco(e.target.value)}/> </div>
+                            <div  className="input"> <StyledInput className="input-input topico4-input" value={preco} onChange={e => setPreco(e.target.value)} /> </div>
                         </div>
                         <div className="alternating">
                             <div className="topico5">  Imagem Principal: </div>

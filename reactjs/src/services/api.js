@@ -3,17 +3,11 @@ const api = axios.create({
 baseURL: 'http://localhost:3030'
 })
 
-
 export default class Api {
     
     async listarProdutosPopulares () {
       let r =  await api.get(`/produto/populares`)
       return r.data;
-    }
-
-    async produtosPesquisa (pesquisa) {
-        let r = await api.get(`/produtosPesquisa?filtro=${pesquisa}`)
-        return r.data;
     }
 
     async confimarCompra( ds_cpf, nm_rua, nm_bairro, ds_complemento, nr_numero_rua, ds_cv, nm_titular, nr_cartao, nr_agencia, dt_validade, ds_cpf_titular, id_usuario) {
@@ -35,17 +29,13 @@ export default class Api {
         return r.data;
     }
 
- 
-
     async alterarAvaliacao (idProduto, vl_avaliacao) {
         let r = await api.put(`/produto/avaliacao/${idProduto}`, { vl_avaliacao } )
         return r.data;
     }
 
-    
-
-    async listarProdutos(order, filtro, categoria) {
-        let r = await api.get(`/produto?criterio=${order}&filtro=${filtro}&categoria=${categoria}`)
+    async listarProdutos(order, pesquisa, categoria, page) {
+        let r = await api.get(`/produto?criterio=${order}&filtro=${pesquisa}&categoria=${categoria}&page=${page}`)
         return r.data
     }
 
@@ -87,7 +77,6 @@ export default class Api {
         let r = await api.post(`/produto`, jsonProduto);
         return r.data;
     }
-Z
 
     async cadastrarUsuario (nm_usuario, ds_cpf, ds_email,  ds_senha, img_usuario) {
 
@@ -156,14 +145,10 @@ Z
         return r.data;
     }
 
-  
-
     async redefinirSenha(codigo, ds_senha) {
         let r = await api.put(`/login/senha/${codigo}`, { ds_senha })
         return r.data;
     }
-
-
 
     async listarProdutosId(id) {
         let r = await api.get(`/produto/${id}`);
@@ -181,11 +166,11 @@ Z
     }
 
     async confirmarCompra(email, senha, 
-                        cv, agencia, titular, dt_validade, num_cartao, cpf_titular, 
-                        bairro, rua, numero_rua, cep, complemento, 
-                        parcelas, forma_pagamento, 
-                        nm_produto, 
-                        qtd_produtos, preco) {
+                          cv, agencia, titular, dt_validade, num_cartao, cpf_titular, 
+                          bairro, rua, numero_rua, cep, complemento, 
+                          parcelas, forma_pagamento, 
+                          nm_produto, 
+                          qtd_produtos, preco) {
 
                             let jsonLogin = {
                                     ds_email: email,

@@ -12,14 +12,18 @@ export default class infob_amz_tbdenuncia extends Model {
     },
     id_usuario: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'infob_amz_tbusuario',
+        key: 'id_usuario'
+      }
     },
     ds_longitude: {
-      type: DataTypes.DECIMAL(10,0),
+      type: DataTypes.DECIMAL(15,15),
       allowNull: true
     },
     ds_latitude: {
-      type: DataTypes.DECIMAL(10,0),
+      type: DataTypes.DECIMAL(15,15),
       allowNull: true
     },
     dt_denuncia: {
@@ -28,10 +32,6 @@ export default class infob_amz_tbdenuncia extends Model {
     },
     ds_ocorrencia: {
       type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    qtd_reporte_recebido: {
-      type: DataTypes.INTEGER,
       allowNull: true
     },
     ds_rua: {

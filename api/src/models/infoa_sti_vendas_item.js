@@ -1,10 +1,10 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_sti_venda_item extends Model {
+export default class infoa_sti_vendas_item extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_venda_produto: {
+    id_vendas_item: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -12,11 +12,15 @@ export default class infoa_sti_venda_item extends Model {
     },
     id_vendas: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'infoa_sti_vendas',
+        key: 'id_vendas'
+      }
     }
   }, {
     sequelize,
-    tableName: 'infoa_sti_venda_item',
+    tableName: 'infoa_sti_vendas_item',
     timestamps: false,
     indexes: [
       {
@@ -24,7 +28,7 @@ export default class infoa_sti_venda_item extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_venda_produto" },
+          { name: "id_vendas_item" },
         ]
       },
       {
@@ -36,6 +40,6 @@ export default class infoa_sti_venda_item extends Model {
       },
     ]
   });
-  return infoa_sti_venda_item;
+  return infoa_sti_vendas_item;
   }
 }
