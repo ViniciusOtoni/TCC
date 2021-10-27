@@ -437,6 +437,7 @@ app.post('/validarCompra', async ( req, resp ) => {
     try {
         
         let r = req.body;
+        console.log(r);
 
         const usuarioLogado = await db.infoa_gab_usuario.findOne({
             where: {
@@ -484,20 +485,21 @@ app.post('/validarCompra', async ( req, resp ) => {
         
         const produtoUsu = await db.infoa_gab_produto.findAll({
             where: {
-                'nm_produto': { [Op.in]: r.nm_produto }
-                 
+                'nm_produto': { [Op.in]: Object.keys(r.produtos)}   
             }
         })
 
         
-        
+        console.log(r.produtos);
 
         for (let produto of produtoUsu) {
+            console.log(produto.nm_produto)
+            console.log(r.produtos[produto.nm_produto])
             const gerarVendaItem = await db.infoa_gab_venda_item.create({
                 id_produto:  produto.id_produto,
                 id_venda: gerarVenda.id_venda,
-                qtd_produtos: r.qtd_produtos,
-                vl_preco: r.preco
+                qtd_produtos: r.produtos[produto.nm_produto],
+                vl_preco: produto.vl_preco
             });
 
         }
@@ -512,26 +514,15 @@ app.post('/validarCompra', async ( req, resp ) => {
             dt_entrega: '0000-01-01'
         });
         
+        resp.send(entrega)
 
     } catch(e) {
+        console.log({ error: "DEU ERRO NA API MOSTRA... creio que não seja a primeira vez..."});
       resp.send(e)
-    }
-  
-})
+    }}) // 100% FEITA!!
 
 
-app.get('/buscarBairro', async (req, resp) => {
-    try {
-      const api_key = 'b866c3722fa645f9acb1da4674663672';
-      const { lat, lon } = req.query;
-  
-     resp.send(req.query);
-      
-  
-    } catch(e) {
-      resp.send(e);
-    }
-})
+
 
 
 app.get('/endereco', async (req, resp) => {

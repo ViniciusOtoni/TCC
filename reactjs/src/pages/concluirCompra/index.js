@@ -49,8 +49,9 @@ export default function ConcluirCompra(props) {
     const [ parcelas, setParcelas ] = useState('')
 
 
- 
-   
+    
+    
+
     useEffect(() => {
         lerUsuarioQuelogou()
     })
@@ -64,10 +65,15 @@ export default function ConcluirCompra(props) {
         return x.preco
     })
 
+    
+
     const Quantidade = infoProduto.map(x => {
         return x.quantidade
     })
 
+
+
+    
     
 
     
@@ -98,7 +104,8 @@ export default function ConcluirCompra(props) {
     console.log(formaPagamento)
 
     const confirmarDados =  async () => {
-        let r = api.confirmarCompra(email, senha, cv, nrAgencia, nmTitular, dtValidade, nrCartao, cpf, nmBairro, nmRua, nrRua, cep, complemento, parcelas, formaPagamento, validarPreco(), infoProduto.length, nmProduto, validarQuantidadeProduto(), Preco)
+        let r = await api.confirmarCompra(email, senha, cv, nrAgencia, nmTitular, dtValidade, nrCartao, cpf, nmBairro, nmRua, nrRua, cep, complemento, parcelas, formaPagamento, validarPreco(), infoProduto.length, nmProduto, validarQuantidadeProduto(), Preco)
+        alert(r);
     }
    
     function lerUsuarioQuelogou() {
@@ -219,10 +226,10 @@ export default function ConcluirCompra(props) {
                                 
                                 <div className="last-information-text1-last">Percelas:</div>
                                     <select className="parcelas-section" value={parcelas} onChange={e => setParcelas(e.target.value)} >
-                                        <option value="2x"> 2x </option>
-                                        <option value="3x"> 3x </option>
-                                        <option value="4x"> 4x </option>
-                                        <option value="5x"> 5x </option>
+                                        <option value={2}> 2x </option>
+                                        <option value={3}> 3x </option>
+                                        <option value={4}> 4x </option>
+                                        <option value={5}> 5x </option>
                                     </select>
                             </div>
 
@@ -236,7 +243,7 @@ export default function ConcluirCompra(props) {
                                 <div className="last-information-text1"> CPF do Titular </div>
                                 <StyledInput value={cpf} onChange={e => setCpf(e.target.value)} className="input-lastInfo-text1" />
                             
-                                <Link to="/">  <div className="bottom">  <StyledButtonVerde onClick={confirmarDados} style={{marginTop:"4.8em", height:"2em", width:"17em", marginBottom:"5em"}} className="botao-buttom"> Concluir Compra! </StyledButtonVerde> </div> </Link>
+                                 <div className="bottom">  <StyledButtonVerde onClick={confirmarDados} style={{marginTop:"4.8em", height:"2em", width:"17em", marginBottom:"5em"}} className="botao-buttom"> Concluir Compra! </StyledButtonVerde> </div>
                             </div>
                         </div>
                     </div>
