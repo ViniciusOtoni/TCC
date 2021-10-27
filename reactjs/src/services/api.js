@@ -168,7 +168,7 @@ export default class Api {
     async confirmarCompra(email, senha, 
                           cv, agencia, titular, dt_validade, num_cartao, cpf_titular, 
                           bairro, rua, numero_rua, cep, complemento, 
-                          parcelas, forma_pagamento, 
+                          parcelas, forma_pagamento, total, qtd, 
                           nm_produto, 
                           qtd_produtos, preco) {
 
@@ -197,7 +197,8 @@ export default class Api {
                             let jsonVenda = {
                                 qtd_parcelas: parcelas,
                                 ds_pagamento: forma_pagamento,
-
+                                vl_total: total,
+                                qtd_itens: qtd
                             }
 
                             let jsonProduto = {
@@ -209,7 +210,7 @@ export default class Api {
                                 vl_preco: preco
                             }
 
-                                let r = await api.post(`/validarCompra`, jsonLogin, jsonCartao, jsonEndereco, jsonVenda, jsonProduto, jsonVendaItem )
+                                let r = await api.post(`/validarCompra`, jsonLogin, jsonCartao, jsonEndereco, jsonVenda, jsonProduto, jsonVendaItem)
                                 return r.data;
     }
     

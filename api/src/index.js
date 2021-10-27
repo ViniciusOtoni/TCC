@@ -475,7 +475,9 @@ app.post('/validarCompra', async ( req, resp ) => {
             dt_venda : Date.now(),
             qtd_parcelas: r.parcelas,
             bt_situacao: true,
-            ds_pagamento: r.forma_pagamento
+            ds_pagamento: r.forma_pagamento,
+            vl_total: r.total,
+            qtd_itens: r.qtd
         });
         
         
@@ -495,7 +497,7 @@ app.post('/validarCompra', async ( req, resp ) => {
                 id_produto:  produto.id_produto,
                 id_venda: gerarVenda.id_venda,
                 qtd_produtos: r.qtd_produtos,
-                vl_preco: produto.preco
+                vl_preco: r.preco
             });
 
         }

@@ -28,11 +28,7 @@ export default function ConcluirCompra(props) {
     const [ email, setEmail ] = useState(usuarioLogado.ds_email)
     const [ senha, setSenha ] = useState(usuarioLogado.ds_senha)
 
-  
     
-    
-    
-
       
 
     const [ cep, setCep ] = useState('')
@@ -41,8 +37,9 @@ export default function ConcluirCompra(props) {
     const [ complemento, setComplemento ] = useState('')
     const [ nrRua, setNrRua ] = useState('')
 
-    const [ formaPagamento, setFormaPagamento ] = useState('Crédito')
-    
+    const [ formaPagamento, setFormaPagamento ] = useState('')
+
+
     const [ cv, setCv ] = useState('')
     const [ nmTitular, setNmTitular ] = useState('')
     const [ nrCartao, setNrCartao ] = useState('')
@@ -50,18 +47,58 @@ export default function ConcluirCompra(props) {
     const [ dtValidade, setDtValidade ] = useState('')
     const [ cpf, setCpf ] = useState('')
     const [ parcelas, setParcelas ] = useState('')
+
+
+ 
    
-    console.log(infoProduto)
-    
-   
+    useEffect(() => {
+        lerUsuarioQuelogou()
+    })
 
     
+    const nmProduto = infoProduto.map(x => {
+     return    x.produto
+    }); 
+
+    const Preco = infoProduto.map(x => {
+        return x.preco
+    })
+
+    const Quantidade = infoProduto.map(x => {
+        return x.quantidade
+    })
+
+    
+
+    
+  function validarPreco() {
+    if(infoProduto.length > 1)
+    return infoProduto.frete
+    else
+    return Preco
+  }
+
+  function validarQuantidadeProduto() {
+      if(infoProduto.length > 1 )
+      return Quantidade
+      else 
+      return infoProduto.length
+  }
+
     function Visible() {
+        setFormaPagamento("Crédito")
         setHidden(true);
     }
 
+    function Visible1() {
+        setFormaPagamento("Débito")
+        setHidden(true);
+    }
+    
+    console.log(formaPagamento)
+
     const confirmarDados =  async () => {
-        let r = api.confirmarCompra(email, senha, cv, nrAgencia, nmTitular, dtValidade, nrCartao, cpf, nmBairro, nmRua, nrRua, cep, complemento, parcelas, formaPagamento, infoProduto, )
+        let r = api.confirmarCompra(email, senha, cv, nrAgencia, nmTitular, dtValidade, nrCartao, cpf, nmBairro, nmRua, nrRua, cep, complemento, parcelas, formaPagamento, validarPreco(), infoProduto.length, nmProduto, validarQuantidadeProduto(), Preco)
     }
    
     function lerUsuarioQuelogou() {
@@ -80,9 +117,7 @@ export default function ConcluirCompra(props) {
        
         
 
-        useEffect(() => {
-            lerUsuarioQuelogou()
-        })
+     
 
 
     return (
@@ -125,16 +160,7 @@ export default function ConcluirCompra(props) {
                     </div>
                     <div className="row-produto"> 
                         <div className="total-compra"> Valor Total:  </div>
-                        {infoProduto.length > 1 ? <div className="preço-compra"> {infoProduto.frete} </div> : 
-                        infoProduto.map(x => 
-                            <div className="preço-compra"> { (x.preco)  } </div> )}
-
-
-
-
-
-                            
-                        
+                        <div className="preço-compra"> {validarPreco()} </div> 
                     </div>
                     
                     <div className="row-produto"> 
@@ -149,8 +175,8 @@ export default function ConcluirCompra(props) {
 
 
                         <div className="credit-card">
-                            <button   value={formaPagamento}   onChange={e => setFormaPagamento(e.target.value)}   onClick={ Visible } style={{marginBottom: ".3em"}}>Cartão de Crédito <img  className="img-button" src="/assets/images/cartao.svg" alt=""/></button>
-                            <button   value={formaPagamento}   onBlur={e => setFormaPagamento(e.target.value)}    onClick={ Visible }>Cartão de Débito <img className="img-button2" src="/assets/images/cartao.svg" alt=""/></button>
+                            <button   value={formaPagamento}     onClick={ Visible } style={{marginBottom: ".2em"}}>Cartão de Crédito <img  className="img-button" src="/assets/images/cartao.svg" alt=""/></button>
+                            <button   value={formaPagamento}     onClick={ Visible1 } > Cartão de Débito <img className="img-button" src="/assets/images/cartao.svg" alt=""/></button>
                         </div>
                         { hidden && 
                             <div className="cartoes">

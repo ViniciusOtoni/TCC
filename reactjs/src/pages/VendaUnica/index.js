@@ -27,6 +27,8 @@ export default function VendaUnica(props){
         setIdProduto(id)
         
         let r = await api.alterarAvaliacao(idProduto, vlAvaliacao)
+
+        produto.quantidade = 1;
      }
     const navegation = useHistory()
 
@@ -41,6 +43,8 @@ export default function VendaUnica(props){
             }
 
             Cookie.set('carrinho', JSON.stringify(carrinho));
+
+            
 
             navegation.push('/carrinhoItem')
     }
