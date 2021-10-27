@@ -37,6 +37,8 @@ td {
     padding: 1em 0em;
 }
 
+
+
 .footer {
    displaY: flex;
    flex-direction: row;

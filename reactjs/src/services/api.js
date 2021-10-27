@@ -217,5 +217,10 @@ export default class Api {
         let r = await api.get('/pedido');
         return r.data;
     }
+
+    async alterarSituacaoPedido(id, situacao) {
+        let r = await api.put(`/pedido/${id}`, { situacao });
+        return r.data;
+    }
 }
 

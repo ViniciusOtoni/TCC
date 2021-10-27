@@ -482,7 +482,7 @@ app.post('/validarCompra', async ( req, resp ) => {
         
         const produtoUsu = await db.infoa_gab_produto.findAll({
             where: {
-                 'nm_produto': { [Op.in]: r.nm_produto }
+                'nm_produto': { [Op.in]: r.nm_produto }
                  
             }
         })
@@ -516,18 +516,6 @@ app.post('/validarCompra', async ( req, resp ) => {
     }
   
 })
-
-
-
-
-
-    } catch( error ) {
-           resp.send( { error: "DEU ERRO NA API MONSTRA, duvido que não seja a primeira vez..."})  
-        }
-  }) //API FINALIZADA COM SUCESSO! 95%!!!
-
-
-
 
 
 app.get('/buscarBairro', async (req, resp) => {
@@ -610,16 +598,9 @@ app.get('/pedido', async (req, resp) => {
         let x = await db.infoa_gab_entrega.findAll({
             include: [
                 {
-                    model: db.infoa_gab_venda_item,
-                    as: 'id_venda_item_infoa_gab_venda_item',
+                    model: db.infoa_gab_venda,
+                    as: 'id_venda_infoa_gab_venda',
                     required: true,
-                    include: [
-                        {
-                            model: db.infoa_gab_venda,
-                            as: 'id_venda_infoa_gab_venda',
-                            requred: true
-                        }
-                    ]
                 },
                 {
                     model: db.infoa_gab_endereco,
@@ -644,6 +625,19 @@ app.get('/pedido', async (req, resp) => {
     }
 })
 
+
+app.put('/pedido/:idEntrega', async (req, resp) => {
+    try {
+        let r = req.body;
+        let alterar = await db.infoa_gab_entrega.update(
+            { ds_situacao: r.situacao }, { where: { id_entrega: req.params.idEntrega } }
+        )
+
+        resp.send(alterar)
+    } catch (error) {
+        resp.send(`Erro put entrega ${error.toString()}`)
+    }
+})
 
 
 

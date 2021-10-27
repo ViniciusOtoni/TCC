@@ -23,7 +23,7 @@ export default function GerenteProdutosCadastrados() {
     async function Listar() {
         let e = await api.listarProdutos2();
         SetProdutos(e);
-        console.log(produtos.id_produto);
+       
 
 
     }
