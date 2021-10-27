@@ -226,6 +226,11 @@ Z
 
                                 let r = await api.post(`/validarCompra`, jsonLogin, jsonCartao, jsonEndereco, jsonVenda, jsonProduto, jsonVendaItem )
                                 return r.data;
-            }
+    }
+    
+    async listarPedidos() {
+        let r = await api.get('/pedido');
+        return r.data;
+    }
 }
 

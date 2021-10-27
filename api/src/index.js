@@ -582,19 +582,49 @@ app.post('/pedido', async (req, resp) => {
 
 
 
-    app.get('/pedido', async (req, resp) => {
-        try {
-            let x = await db.infoa_gab_entrega.findAll();
-            resp.send(x);
+app.get('/pedido', async (req, resp) => {
+    try {
+        let x = await db.infoa_gab_entrega.findAll({
+            include: [
+                {
+                    model: db.infoa_gab_venda_item,
+                    as: 'id_venda_item_infoa_gab_venda_item',
+                    required: true,
+                    include: [
+                        {
+                            model: db.infoa_gab_venda,
+                            as: 'id_venda_infoa_gab_venda',
+                            requred: true
+                        }
+                    ]
+                },
+                {
+                    model: db.infoa_gab_endereco,
+                    as: 'id_endereco_infoa_gab_endereco',
+                    required: true,
+                    include: [
+                        {
+                            model: db.infoa_gab_usuario,
+                            as: 'id_usuario_infoa_gab_usuario',
+                            required: true
+                        }
+                    ]
+                }
+                
+            ]
+        });
 
-        } catch (error) {
-            resp.send(`Erro no get da rota /pedido ${error}`)
-        }
-    })
+        resp.send(x);
+
+    } catch (error) {
+        resp.send(`Erro no get da rota /pedido ${error}`)
+    }
+})
 
 
 
 
 app.listen( process.env.PORT, (x) => 
             console.log(`Servidor na Porta ${process.env.PORT}`));
+
 
