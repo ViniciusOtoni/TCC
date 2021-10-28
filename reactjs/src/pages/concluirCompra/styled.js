@@ -76,30 +76,32 @@ const Container = styled.div`
     .credit-card button {
         width: 300px;
         height: 30px;
-        font-family: MontserratBold;
+        font-family: Medio;
         font-size: 0.8em;
         background: #F3F3F3;
-
+        background-color: #ffffff;
         border: none;
         text-align: left;
         align-items: center;
+        position: relative;
 
+    }
+
+    .credit-card button:hover {
+       background-color: #F3F3F3;
+       font-family: MontserratBold;
     }
 
     .img-button {
         width: 1.5em;
         height: 1em;
-
-       margin-left: 10.6em;
+        position: absolute;
+        right: 1em;
+       
         
     }
 
-    .img-button2 {
-        width: 1.5em;
-        height: 1em;
-
-        margin-left: 11em;
-    }
+   
 
     .cartoes {
         display: flex;

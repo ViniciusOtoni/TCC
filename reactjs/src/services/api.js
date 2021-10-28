@@ -168,49 +168,44 @@ export default class Api {
     async confirmarCompra(email, senha, 
                           cv, agencia, titular, dt_validade, num_cartao, cpf_titular, 
                           bairro, rua, numero_rua, cep, complemento, 
-                          parcelas, forma_pagamento, 
+                          parcelas, forma_pagamento, total, qtd, 
                           nm_produto, 
-                          qtd_produtos, preco) {
+                          qtd_produtos) {
 
-                            let jsonLogin = {
-                                    ds_email: email,
-                                    ds_senha: senha
-                                }
 
-                            let jsonCartao = {
-                                ds_cv: cv,
-                                nr_agencia: agencia,
-                                nm_titular: titular,
-                                dt_validade: dt_validade,
-                                nr_cartao: num_cartao,
-                                ds_cpf_titular: cpf_titular
-                            }
+        let produtos = {};
+        for (let i=0; i<nm_produto.length;i++) {
+            produtos[nm_produto[i]] = Number(qtd_produtos[i])
+        }
 
-                            let jsonEndereco = {
-                                nm_bairro: bairro,
-                                nm_rua: rua,
-                                nr_numero_rua: numero_rua,
-                                ds_cep: cep,
-                                ds_complemento: complemento
-                            }
 
-                            let jsonVenda = {
-                                qtd_parcelas: parcelas,
-                                ds_pagamento: forma_pagamento,
+        let json = {
+          ds_email: email,
+          ds_senha: senha,
+          
+          cv: cv,
+          agencia: agencia,
+          titular: titular,
+          dt_validade:  dt_validade,
+          num_cartao: num_cartao,
+          cpf_titular: cpf_titular,
 
-                            }
+          bairro: bairro,
+          rua: rua,
+          numero_rua: numero_rua,
+          cep: cep,
+          complemento: complemento,
+          parcelas: parcelas,
+          forma_pagamento: forma_pagamento,
+          total: total,
+          qtd: qtd,
+          produtos: produtos
+        }
 
-                            let jsonProduto = {
-                                nm_produto: nm_produto
-                            }
-
-                            let jsonVendaItem = {
-                                qtd_produtos: qtd_produtos,
-                                vl_preco: preco
-                            }
-
-                                let r = await api.post(`/validarCompra`, jsonLogin, jsonCartao, jsonEndereco, jsonVenda, jsonProduto, jsonVendaItem )
-                                return r.data;
+        console.log(json);
+        
+        let r = await api.post(`/validarCompra`, json)
+        return r.data;
     }
     
     async listarPedidos() {
