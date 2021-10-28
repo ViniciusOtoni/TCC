@@ -26,8 +26,6 @@ export default function Cabecalho(props) {
   const [img] = useState(usuarioLogado.img_usuario);
   const [pesquisa, setPesquisa] = useState('');
 
-  console.log(pesquisa)
-
   const navigation = useHistory();
 
   const logof = () => {

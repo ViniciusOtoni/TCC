@@ -4,38 +4,48 @@ import { useState, useEffect } from "react";
 import Api from "../../services/api";
 const api = new Api();
 
-export default function Paginacao() {
-    const [page, setPage] = useState(0);
+export default function Paginacao(props) {
 
-    function skipPage() {
-        let pagina = page + 1;
-        console.log(page);
-        setPage(pagina);
+    console.log("total pagina: " + props.totalPaginas)
+    console.log("pagina: " + props.pagina)
+    console.log("onPageChange: " + props.onPageChange())
+
+
+    function getPages(){
+        let paginas = []
+
+        for(let i = 1; i <= props.totalPaginas; i++){
+            paginas.push(i)
+        }
+
+        return paginas;
     }
 
-    function returnPage() {
-        let pagina = page - 1;
-        console.log(page);
-        setPage(pagina);
-    }
-    
-    function listarNext() {
-        skipPage();
-        const x = api.listarProdutos(page);
-        return(x);
+    function irPara(pagina){
+        props.onPageChange(pagina)
     }
 
+    function anterior(){
+        if(props.pagina === 1)
+            return 
+        props.onPageChange(props.pagina-1)
+    }
 
+    function proximo(){
+        if(props.pagina === props.totalPaginas)
+        props.onPageChange(props.pagina+1)
+    }
 
     return (
-        <StyledPaginacao>
+        <StyledPaginacao paginaAtual={props.pagina}>
             <main className="pc"> 
-                <div className="button-mudar"> <button onClick={returnPage}> <img src="/assets/images/voltar.svg" alt="" /> Anterior  </button> </div>
-                <div className="numero-pagina"> 1 </div>
-                <div className="numero-pagina"> 2 </div>
-                <div className="numero-pagina"> 3 </div>
-                <div className="numero-pagina"> 4 </div>
-                <div className="button-mudar"> <button onClick={listarNext}> Próximo <img src="/assets/images/avancar.svg" alt="" /> </button></div> 
+                <div className="button-mudar"> <button onClick={anterior}> <img src="/assets/images/voltar.svg" alt="" />  </button> </div>
+                
+                {getPages().map(p => 
+                    <div className="numero-pagina" onClick={() => irPara(p)}> {p} </div>
+                )}
+
+                <div className="button-mudar"> <button onClick={proximo}> <img src="/assets/images/avancar.svg" alt="" /> </button></div> 
             </main>
 
             
@@ -46,8 +56,8 @@ export default function Paginacao() {
                 <div className="numero-pagina"> 3 </div>
             </div>
             <div className="row"> 
-                <div className="button-mudar"> <button onClick={returnPage}> <img src="/assets/images/voltar.svg" alt="" /> Anterior  </button> </div>
-                <div className="button-mudar"> <button onClick={skipPage}> Próximo <img src="/assets/images/avancar.svg" alt="" /> </button></div> 
+                <div className="button-mudar"> <button onClick={''}> <img src="/assets/images/voltar.svg" alt="" /> Anterior  </button> </div>
+                <div className="button-mudar"> <button onClick={''}> Próximo <img src="/assets/images/avancar.svg" alt="" /> </button></div> 
             </div>
             </main>
         </StyledPaginacao> 

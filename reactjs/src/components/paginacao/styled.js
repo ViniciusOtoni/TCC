@@ -9,8 +9,6 @@ const StyledPaginacao = styled.div `
     width: auto;
     }
 
-   
-
     .button-mudar button {
         background-color: #282828;
         color: #F0AC54;
@@ -19,7 +17,14 @@ const StyledPaginacao = styled.div `
         border-radius: 0.2em;
         padding: 0.5em;
         margin: 0em .8em;
+        cursor: pointer;
+        user-select: none;
     }
+
+    .button-mudar > button:hover {
+        background-color: #202020;
+    }
+
 
     .cell {
             display: none;
@@ -29,8 +34,8 @@ const StyledPaginacao = styled.div `
 
     .numero-pagina {
         background-color: #282828;
-        color: #F0AC54;
-        font: 1em MontserratBold;
+        color: #f1b262;
+        font: 1em Medio;
         border-radius: 0.2em;
         width: 2em;
         height: 2em;
@@ -38,8 +43,19 @@ const StyledPaginacao = styled.div `
         align-items: center;
         justify-content: center;
         display: flex;
+        cursor: pointer;
+        user-select: none;
     }
-        @media(max-width:425px) {
+
+    .numero-pagina:nth-child(${props => props.paginaAtual + 1}){
+        font-weight: bold;
+    }
+
+    .numero-pagina:hover{
+        background-color: #202020;
+    }
+
+    @media(max-width:425px) {
             
             .pc {
                 display: none;
