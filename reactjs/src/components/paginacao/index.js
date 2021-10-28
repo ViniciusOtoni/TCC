@@ -5,7 +5,7 @@ import Api from "../../services/api";
 const api = new Api();
 
 export default function Paginacao() {
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(0);
 
     function skipPage() {
         let pagina = page + 1;
@@ -18,8 +18,8 @@ export default function Paginacao() {
         console.log(page);
         setPage(pagina);
     }
-
-    function listarPlus() {
+    
+    function listarNext() {
         skipPage();
         const x = api.listarProdutos(page);
         return(x);
@@ -35,7 +35,7 @@ export default function Paginacao() {
                 <div className="numero-pagina"> 2 </div>
                 <div className="numero-pagina"> 3 </div>
                 <div className="numero-pagina"> 4 </div>
-                <div className="button-mudar"> <button onClick={skipPage}> Próximo <img src="/assets/images/avancar.svg" alt="" /> </button></div> 
+                <div className="button-mudar"> <button onClick={listarNext}> Próximo <img src="/assets/images/avancar.svg" alt="" /> </button></div> 
             </main>
 
             

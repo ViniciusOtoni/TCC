@@ -35,7 +35,7 @@ export default class Api {
     }
 
     async listarProdutos(order, pesquisa, categoria, page) {
-        let r = await api.get(`/produto?criterio=${order}&filtro=${pesquisa}&categoria=${categoria}&page=${page}`)
+        let r = await api.get(`/produto?criterio=${order}&filtro=${pesquisa}&categoria=${categoria}&=${page}`)
         return r.data
     }
 
