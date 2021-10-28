@@ -60,11 +60,12 @@ app.get('/produto', async (req,resp) => {
         let ord = ordenacao(req.query.criterio);
         let filtro = req.query.filtro;
         let categoria = req.query.categoria;
-        let page = req.query.page || 0 // perguntar pro Bruno o pq desse 'ou||';
-        if(page <= 0) page = 1;
+        let page = req.query.page;
 
-        const itensPerPage = 9;
-        const skipItens = (page - 1) * itensPerPage;
+        // console.log('type ' + typeof(page))
+        // console.log('page ' + page)
+
+        const itensPerPage = 2;
 
         let r = await db.infoa_gab_produto.findAll({ 
             where: {
@@ -75,7 +76,7 @@ app.get('/produto', async (req,resp) => {
                 ]
             },
             order: [ord],
-            offset: skipItens,
+            offset: 0,
             limit: itensPerPage
         })
 
@@ -87,7 +88,7 @@ app.get('/produto', async (req,resp) => {
                 avalicao: item.vl_avaliacao,
                 lancamento: item.dt_cadastro,
                 imagem: item.img_produto,
-                imagem_dois: item.img_secundaria,
+                imagem_dois: fitem.img_secundaria,
                 imagem_tres: item.img_terciaria,
                 imagem_quatro: item.img_quartenaria,
             }
@@ -492,8 +493,6 @@ app.post('/validarCompra', async ( req, resp ) => {
         console.log(r.produtos);
 
         for (let produto of produtoUsu) {
-            console.log(produto.nm_produto)
-            console.log(r.produtos[produto.nm_produto])
             const gerarVendaItem = await db.infoa_gab_venda_item.create({
                 id_produto:  produto.id_produto,
                 id_venda: gerarVenda.id_venda,
