@@ -15,8 +15,6 @@ export default function Venda(props) {
     const [produto, setProduto] = useState([]);
     const [order, setOrder] = useState('');
 
-    console.log(pesquisa)
-
     function getCategory() {
         const query = '?categoria=';
         let search = props.location.search;
@@ -44,7 +42,7 @@ export default function Venda(props) {
                         <div className="ordem"> Ordenar: </div>
                         <div className="select-ordem"> 
                             <select id="order" onChange={e => setOrder(e.target.value)}> 
-                                <option selected style={{ display: "none" }}> Escolha </option>
+                                <option defaultValue style={{ display: "none" }}> Escolha </option>
                                 <option value="avaliacao"> Avaliação </option> 
                                 <option value="lancamento"> Lançamento </option>
                                 <option value="menor-maior"> Menor Preço </option>

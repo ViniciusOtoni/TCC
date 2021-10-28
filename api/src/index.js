@@ -62,9 +62,6 @@ app.get('/produto', async (req,resp) => {
         let categoria = req.query.categoria;
         let page = req.query.page;
 
-        // console.log('type ' + typeof(page))
-        // console.log('page ' + page)
-
         const itensPerPage = 2;
 
         let r = await db.infoa_gab_produto.findAll({ 
@@ -75,9 +72,9 @@ app.get('/produto', async (req,resp) => {
                     { ds_categoria: categoria }
                 ]
             },
-            order: [ord],
-            offset: 0,
-            limit: itensPerPage
+            order: [ord]
+            // offset: 0,
+            // limit: 2
         })
 
         r = r.map(item => {
@@ -88,7 +85,7 @@ app.get('/produto', async (req,resp) => {
                 avalicao: item.vl_avaliacao,
                 lancamento: item.dt_cadastro,
                 imagem: item.img_produto,
-                imagem_dois: fitem.img_secundaria,
+                imagem_dois: item.img_secundaria,
                 imagem_tres: item.img_terciaria,
                 imagem_quatro: item.img_quartenaria,
             }
