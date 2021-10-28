@@ -52,9 +52,11 @@ const RodaPe = styled.div`
         align-items: center;
     }
 
-    .item{
+    .item,a,a:visited{
         font-family: Medio;
-        margin: .8em 5em;
+        margin: 0em 3em;
+        text-decoration: none;
+        color: #000;
     }
 
     .item-header{
