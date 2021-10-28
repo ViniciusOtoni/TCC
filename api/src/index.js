@@ -88,7 +88,7 @@ app.get('/produto', async (req,resp) => {
                 avalicao: item.vl_avaliacao,
                 lancamento: item.dt_cadastro,
                 imagem: item.img_produto,
-                imagem_dois: fitem.img_secundaria,
+                imagem_dois: item.img_secundaria,
                 imagem_tres: item.img_terciaria,
                 imagem_quatro: item.img_quartenaria,
             }
