@@ -27,13 +27,16 @@ export default function Paginacao(props) {
 
     function anterior(){
         if(props.pagina === 1)
-            return 
-        props.onPageChange(props.pagina-1)
+            props.onPageChange(props.totalPaginas)
+        else    
+            props.onPageChange(props.pagina - 1)
     }
 
     function proximo(){
         if(props.pagina === props.totalPaginas)
-        props.onPageChange(props.pagina+1)
+            props.onPageChange(1);
+        else
+            props.onPageChange(props.pagina + 1)    
     }
 
     return (

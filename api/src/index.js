@@ -64,8 +64,6 @@ app.get('/produto', async (req,resp) => {
 
         if(page <= 0) page = 1
 
-        if(categoria === undefined) categoria = ""
-
         const itensPerPage = 9;
         const skipItems    = (page - 1) * itensPerPage;
 

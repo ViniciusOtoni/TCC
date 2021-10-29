@@ -14,6 +14,7 @@ export default function Venda(props) {
     const [pesquisa, setPesquisa] = useState(props.location.state || '');
     const [produto, setProduto] = useState([]);
     const [order, setOrder] = useState('');
+
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
 
@@ -71,7 +72,7 @@ export default function Venda(props) {
                             totalPaginas={totalPages}
                             pagina={page}
                             onPageChange={irPara}
-                            />  
+                        />  
                     </div>
                 </main>
                 </StyledVenada>
