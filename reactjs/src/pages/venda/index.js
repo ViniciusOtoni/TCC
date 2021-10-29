@@ -14,11 +14,8 @@ export default function Venda(props) {
     const [pesquisa, setPesquisa] = useState(props.location.state || '');
     const [produto, setProduto] = useState([]);
     const [order, setOrder] = useState('');
-
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-
-    console.log(page);
 
     function getCategory() {
         const query = '?categoria=';
@@ -30,7 +27,9 @@ export default function Venda(props) {
 
     const listar = async () => {
         let categoria = getCategory();
+        
         const e = await api.listarProdutos(order, pesquisa.pesquisa, categoria, page)
+
         setProduto([...e.items]);
         setTotalPages(e.totalPaginas)
     }
@@ -40,6 +39,7 @@ export default function Venda(props) {
     }
 
     useEffect(() => {
+        
         listar();
     }, [order, pesquisa, page])
 
