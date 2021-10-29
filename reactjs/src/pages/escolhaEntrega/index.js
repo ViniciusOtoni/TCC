@@ -3,12 +3,25 @@ import { StyledEscolhaEntrega } from "./styled"
 import Cabecalho from "../../components/cabecalho"
 import Paginacao from "../../components/paginacao"
 import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
 
 export default function EscolhaEntrega() {
+
+    const [page, setPage] = useState(1)
+    const [totalPage, setTotalPage] = useState(0)
+
+    function irPara(pagina){
+        setPage(pagina)
+    }
+
+    useEffect(() => {
+
+    }, [page])
+
     return (
         <div style={{backgroundColor:"#333333"}}> 
-            <Cabecalho corLetra="nulo"  />
-          
+            <Cabecalho  />
+
                  <StyledEscolhaEntrega>
                  <main className="pc"> 
                     <div className="titulo"> Seus Pedidos </div>
@@ -35,7 +48,13 @@ export default function EscolhaEntrega() {
                         </div> 
                         
                     </div>
-                    <div className="pag">  <Paginacao  /> </div>
+                    <div className="pag">  
+                        <Paginacao  
+                            totalPaginas={totalPage}
+                            pagina={page}
+                            onPageChange={irPara}                        
+                        /> 
+                    </div>
                     </main>
                     <main className="cell">
                         <div className="titulo"> Seus Pedidos </div>

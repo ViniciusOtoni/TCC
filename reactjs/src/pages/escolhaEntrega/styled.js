@@ -4,7 +4,7 @@ const StyledEscolhaEntrega = styled.div `
 
     display: flex;
     flex-direction: column;
-    height: 89.93vh;
+    height: calc(100vh - 6.4em);
 
         .pc {
         width: 1240px;
