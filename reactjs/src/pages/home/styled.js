@@ -241,8 +241,8 @@ const StyledConteudo = styled.div`
       margin: 4em;
     }
 
-    .ecrYg{
-        margin-left: 5em;
+    .ecrYg {
+      margin-left: 5em;
     } // class box carousel cell
 
     .teste {

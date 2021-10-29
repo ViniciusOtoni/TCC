@@ -143,7 +143,7 @@ const StyledCabecalho = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width:20em;
+    width: 20em;
   }
 
   .user-image img {

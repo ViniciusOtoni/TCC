@@ -1,23 +1,21 @@
 import styled from "styled-components";
 
-const StyledButtonPopup = styled.button `
+const StyledButtonPopup = styled.button`
+  text-align: center;
+  color: #f0ac54;
+  border: 3px solid #f0ac54;
+  background-color: rgba(0, 0, 0, 0);
+  width: 15em;
+  height: 2.5em;
+  border-radius: 0.6em;
+  font: 1.2em MontserratBold;
 
-text-align: center;
-    color: #F0AC54;
-    border: 3px solid #F0AC54;
-    background-color: rgba(0,0,0,0);
-    width: 15em;
-    height: 2.5em;
-    border-radius: .6em;
-    font: 1.2em MontserratBold;
-    
-    &:hover{
-        background-color: #F0AC54;
-        color: white;
-        transition: .5s;
-        cursor: pointer;
-    }
+  &:hover {
+    background-color: #f0ac54;
+    color: white;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+`;
 
-`
-
-export { StyledButtonPopup  }
+export { StyledButtonPopup };
