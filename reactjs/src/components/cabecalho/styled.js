@@ -142,6 +142,8 @@ const StyledCabecalho = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    width:20em;
   }
 
   .user-image img {
@@ -221,7 +223,7 @@ const StyledCabecalho = styled.div`
 
   @media (max-width: 1440px) {
     .user-login {
-      font-size: 1.2em;
+      font-size: 1.1em;
     }
 
     .entrega {

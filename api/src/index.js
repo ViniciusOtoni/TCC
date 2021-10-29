@@ -299,11 +299,11 @@ try {
 
     let u1 = await db.infoa_gab_usuario.findOne({ where: { ds_cpf: r.ds_cpf } })
     if(u1 != null)
-    resp.send( { error: 'CPF já foi cadastrado!' } );
+        return resp.send( { error: 'CPF já foi cadastrado!' } );
 
     let u2 = await db.infoa_gab_usuario.findOne({ where: { ds_email: r.ds_email  } })
     if(u2 != null)
-    resp.send( { error: 'Email já foi cadastrado!' } );
+        return resp.send( { error: 'Email já foi cadastrado!' } );
 
 
     

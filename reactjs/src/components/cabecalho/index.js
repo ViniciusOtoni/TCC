@@ -56,7 +56,7 @@ export default function Cabecalho(props) {
               <input onChange={e => setPesquisa(e.target.value)}/> 
         </div>
 
-        <Link to={Cookies.get("usuario-logado") === undefined ? "/login" : "/"}
+        <Link to={Cookies.get("usuario-logado") === undefined ? "/login" : ""} // arrumar o usuario mandar pra home
               style={{ textDecoration: "none" }}>
           
           {Cookies.get("usuario-logado") === undefined ? (
@@ -67,7 +67,7 @@ export default function Cabecalho(props) {
                 
                 <img src={img} alt="" />
               </div>
-              <div className="user-login"> {nm} </div>
+              <div className="user-login" title={nm}> {nm != null && nm.length >= 20 ? nm.substr(0, 20) + "..." : nm} </div>
             </div>
           )}
         </Link>
