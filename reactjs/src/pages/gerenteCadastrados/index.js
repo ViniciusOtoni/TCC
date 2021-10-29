@@ -19,13 +19,9 @@ export default function GerenteProdutosCadastrados() {
     const [produtos, SetProdutos] = useState([]);
   
 
-
     async function Listar() {
         let e = await api.listarProdutos2();
         SetProdutos(e);
-       
-
-
     }
 
     async function Remover(info) {
@@ -72,7 +68,9 @@ export default function GerenteProdutosCadastrados() {
                             </tbody>
                         </table>
                         <div className="footer"> 
-                        <Link to="/gerenteEscolha"> <StyledButtonAdm cor="vermelho"  className='buttonADM'> Voltar </StyledButtonAdm> </Link>
+                            <Link to="/gerenteEscolha"> 
+                                <StyledButtonAdm cor="vermelho"  className='buttonADM'> Voltar </StyledButtonAdm> 
+                            </Link>
                             <Paginacao/>  
                         </div>
                         </main>

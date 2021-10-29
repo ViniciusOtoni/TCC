@@ -52,7 +52,7 @@ const Container = styled.div`
         font-size: 19px;
         width: 1150px;
         font-family: Medio;
-        margin-bottom: 5em;
+        margin-bottom: 2em;
     }
 
     .Thirdh2 {
