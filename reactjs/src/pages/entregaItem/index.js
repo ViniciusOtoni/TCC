@@ -7,9 +7,9 @@ export default function EntregaItem(props) {
 
     function hiddenCheck() {
         if (
-            props.location.state === 'Saiu para entrega' ||
-            props.location.state === 'A caminho' ||
-            props.location.state === 'Entregue'
+            props.location.state === 'saiu para entrega' ||
+            props.location.state === 'a caminho' ||
+            props.location.state === 'entregue'
         )
         {
             return true

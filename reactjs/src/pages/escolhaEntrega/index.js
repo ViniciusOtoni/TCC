@@ -26,18 +26,35 @@ export default function EscolhaEntrega() {
 
     console.log(infoPedido)
 
+    
+
+
     function irPara(pagina){
         setPage(pagina)
     }
 
     useEffect(() => {
+        
+
+        
         pedidosUsu()
+
+        if(infoPedido.length === 0 )
+            nave.push('/entregas')
     }, [])
 
+
+
+
+    
     
     const pedidosUsu =  async () => {
         let r = await api.listarPedidosDoUsuario(id)
         setInfoPedido(r)
+
+        
+     
+          
     }
 
 
@@ -51,6 +68,8 @@ export default function EscolhaEntrega() {
                 let usuarioLogado = JSON.parse(logado);
                 return usuarioLogado;
             }
+
+              
         }
 
     return (
@@ -64,7 +83,7 @@ export default function EscolhaEntrega() {
                     <div className="column">
                             <div className="title-column"> Data Do Pedido: </div>
                            {infoPedido.map(x => 
-                                <div className="pedido"> {x.id_venda_infoa_gab_venda.dt_venda} </div> 
+                                <div className="pedido"> {x.id_venda_infoa_gab_venda.dt_venda.replace('Z', '')} </div> 
                            )}
                         </div>
                         <div className="column">

@@ -46,7 +46,7 @@ export default function ConcluirCompra(props) {
     const [ nrAgencia, setNrAgencia ] = useState('')
     const [ dtValidade, setDtValidade ] = useState('')
     const [ cpf, setCpf ] = useState('')
-    const [ parcelas, setParcelas ] = useState('')
+    const [ parcelas, setParcelas ] = useState(2)
 
 
     
