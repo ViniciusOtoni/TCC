@@ -4,6 +4,8 @@ import Paginacao from "../../components/paginacao/index.js"
 import CabecalhoAdm from "../../components/cabecalhoAdm/index.js"
 
 export default function GerenteNaosei() {
+    
+
     return (
         <div style={{ backgroundColor: "#333333" }}>
             <CabecalhoAdm  nulo='true'/>
@@ -25,50 +27,6 @@ export default function GerenteNaosei() {
                                     <td>R$99,00</td>
                                     <td className="last-item">1</td>
                                 </tr>
-
-                                <tr className="linha-2">
-                                    <td>1</td>
-                                    <td>Grand theft auto 5</td>
-                                    <td>R$99,00</td>
-                                    <td className="last-item">1</td>
-                                </tr>
-
-                                <tr className="linha-1">
-                                    <td>1</td>
-                                    <td>Grand theft auto 5</td>
-                                    <td>R$99,00</td>
-                                    <td className="last-item">1</td>
-                                </tr>
-
-                                <tr className="linha-2">
-                                    <td>1</td>
-                                    <td>Grand theft auto 5</td>
-                                    <td>R$99,00</td>
-                                    <td className="last-item">1</td>
-                                </tr>
-
-                                <tr className="linha-1">
-                                    <td>1</td>
-                                    <td>Grand theft auto 5</td>
-                                    <td>R$99,00</td>
-                                    <td className="last-item">1</td>
-                                </tr>
-
-                                <tr className="linha-2">
-                                    <td>1</td>
-                                    <td>Grand theft auto 5</td>
-                                    <td>R$99,00</td>
-                                    <td className="last-item">1</td>
-                                </tr>
-
-                                <tr className="linha-1">
-                                    <td>1</td>
-                                    <td>Grand theft auto 5</td>
-                                    <td>R$99,00</td>
-                                    <td className="last-item">1</td>
-                                </tr>
-
-
                             </tbody>
                        </table>
                         <div className="bottom-menu">
