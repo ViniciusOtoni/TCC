@@ -3,10 +3,23 @@ import Cabecalho from "../../components/cabecalho";
 import { Link } from 'react-router-dom';
 
 
-export default function EntregaItem() {
+export default function EntregaItem(props) {
 
+    function hiddenCheck() {
+        if (
+            props.location.state === 'Saiu para entrega' ||
+            props.location.state === 'A caminho' ||
+            props.location.state === 'Entregue'
+        )
+        {
+            return true
+        } else
+            return false
+    }
+    
+    const a = hiddenCheck();
+    console.log(a);
 
-   
     return (
         <div style={{backgroundColor:"#333333"}}> 
         <Cabecalho corLetra="nulo" />
@@ -16,7 +29,7 @@ export default function EntregaItem() {
                     <div className="agp-cima">
                      <div className="row-cima">  
                         <div className="column"> 
-                            <div className="icon"> <img src="/assets/images/lanchonete.svg" alt="" /> </div>
+                            <div className="icon"> { <img src="/assets/images/lanchonete.svg" alt="" /> } </div>
                             <div className="definicao1"> Indo Para O Correio </div>
                         </div>
                         <div className="column"> 
@@ -30,7 +43,7 @@ export default function EntregaItem() {
                         </div>
                         <div className="load-bar">  </div>
                         <div className="carregamento"> 
-                                <div className="limite1"> <img src="/assets/images/box-check.svg" alt="" />  </div>
+                                <div className="limite1"> {hiddenCheck() ? <img src="/assets/images/box-check.svg" alt="" /> : <img src="/assets/images/box-check-green.svg" alt="" />}  </div>
                                 <div className="limite2"> <img src="/assets/images/box-check.svg" alt="" />  </div>
                                 <div className="limite3"> <img src="/assets/images/box-check.svg" alt="" />  </div>
                         </div>
@@ -94,7 +107,7 @@ export default function EntregaItem() {
                                 <div className="horario-status">  (2021-02-01) </div>
                             </div>
                             <div className="row-status"> 
-                                <div className="botao-check"> <button> </button> </div>
+                                <div className="botao-check" hidden={hiddenCheck}> <button>  </button> </div>
                                 <div className="texto-status"> Produto Entregue </div>
                                 <div className="horario-status"> (2021-03-01) </div>
                             </div>

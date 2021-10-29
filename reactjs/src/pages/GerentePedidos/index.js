@@ -6,6 +6,7 @@ import Paginacao from "../../components/paginacao";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from "react-router-dom";
 
 import Api from "../../services/api";
 
@@ -27,8 +28,9 @@ export default function GerentePedidos() {
         
        
         let r = await api.alterarSituacaoPedido(item.id_entrega, situacao);
-        toast.dark('Produto Alterado')
+        alert('Situacao')
         listar();
+        return r;
     }
 
     useEffect(() => {
@@ -59,19 +61,20 @@ export default function GerentePedidos() {
                                     <td style={{paddingLeft:"1em"}}> {item.id_entrega} </td>
                                     <td > {item.id_endereco_infoa_gab_endereco.id_usuario_infoa_gab_usuario.nm_usuario} </td>
                                     <td style={{paddingLeft: "3.8em"}}> {item.id_venda_infoa_gab_venda.ds_pagamento} </td>
-                                    <td style={{paddingLeft:"1em"}}> Xbox </td>
+                                    <td style={{paddingLeft:"1em"}}> {item.id_venda_infoa_gab_venda.vl_total} </td>
                                     <td>  {item.ds_situacao} </td>
                                     <td className="botao1"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"8.5em", fontSize:".7em"}} cor="vermelho" onClick={() => alterarSituacao(item, "Saiu para entrega")}> Saiu Para Entrega </StyledButtonAdm> </td>
                                     <td className="botao2"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"10.5em", padding: "1em 0em"}} cor="laranja" onClick={() => alterarSituacao(item, "A Caminho")}> A Caminho </StyledButtonAdm> </td>
                                     <td className="botao3"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em", padding: "1em 0em"}} onClick={() => alterarSituacao(item, 'Entregue')}>  Entregue </StyledButtonAdm> </td>
-                                    <td className="botao4"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em", fontSize:".7em"}}  cor="preto"> Ver Itens </StyledButtonAdm> </td>
+                                    <td className="botao4"> <Link to={{ pathname: "/gerenteListar", state: item.id_venda_infoa_gab_venda.id_venda }}><StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "7.5em", fontSize: ".7em" }} cor="preto"> Ver Itens </StyledButtonAdm> </Link></td>
+                                    {console.log(item)}
                                 </tr>    
                             )}
                              
                           </tbody>
                       </table>
                       <div className="footer"> 
-                          <StyledButtonAdm cor="vermelho" style={{marginRight:"30%", width:"10em"}}> Voltarr </StyledButtonAdm>
+                          <Link to="/gerenteCadastrar"><StyledButtonAdm cor="vermelho" style={{marginRight:"18em", width:"10em"}}> Voltarr </StyledButtonAdm></Link>
                          <Paginacao /> 
                       </div>
                       </main>

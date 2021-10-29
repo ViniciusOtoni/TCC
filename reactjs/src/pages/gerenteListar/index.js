@@ -2,8 +2,30 @@ import { Container } from "./styled.js"
 import { StyledButtonAdm } from "../../components/botaoAdm/styled.js"
 import Paginacao from "../../components/paginacao/index.js"
 import CabecalhoAdm from "../../components/cabecalhoAdm/index.js"
+import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
+import Api from "../../services/api";
 
-export default function GerenteNaosei() {
+const api = new Api();
+
+export default function GerenteNaosei(props) {
+    const [info, setInfo] = useState(props.location.state);
+    const [produtos, setProdutos] = useState([])
+    
+    async function listarProduto() {
+        let data = await api.listarPedidoPorVenda(info);
+        setProdutos(data);
+        
+    }
+
+    console.log(produtos)
+
+
+    useEffect(() => {
+        listarProduto()
+
+    }, [])
+
     return (
         <div style={{ backgroundColor: "#333333" }}>
             <CabecalhoAdm  nulo='true'/>
@@ -19,60 +41,18 @@ export default function GerenteNaosei() {
                                 <th className="quantidade">Quantidade:</th>
                             </thead>
                             <tbody>
-                                <tr className="linha-1">
-                                    <td>1</td>
-                                    <td>Grand theft auto 5</td>
-                                    <td>R$99,00</td>
-                                    <td className="last-item">1</td>
-                                </tr>
-
-                                <tr className="linha-2">
-                                    <td>1</td>
-                                    <td>Grand theft auto 5</td>
-                                    <td>R$99,00</td>
-                                    <td className="last-item">1</td>
-                                </tr>
-
-                                <tr className="linha-1">
-                                    <td>1</td>
-                                    <td>Grand theft auto 5</td>
-                                    <td>R$99,00</td>
-                                    <td className="last-item">1</td>
-                                </tr>
-
-                                <tr className="linha-2">
-                                    <td>1</td>
-                                    <td>Grand theft auto 5</td>
-                                    <td>R$99,00</td>
-                                    <td className="last-item">1</td>
-                                </tr>
-
-                                <tr className="linha-1">
-                                    <td>1</td>
-                                    <td>Grand theft auto 5</td>
-                                    <td>R$99,00</td>
-                                    <td className="last-item">1</td>
-                                </tr>
-
-                                <tr className="linha-2">
-                                    <td>1</td>
-                                    <td>Grand theft auto 5</td>
-                                    <td>R$99,00</td>
-                                    <td className="last-item">1</td>
-                                </tr>
-
-                                <tr className="linha-1">
-                                    <td>1</td>
-                                    <td>Grand theft auto 5</td>
-                                    <td>R$99,00</td>
-                                    <td className="last-item">1</td>
-                                </tr>
-
-
+                                {produtos.map(item =>
+                                    <tr className="linha-1">
+                                        <td>{ item.id_produto }</td>
+                                        <td> { item.id_produto_infoa_gab_produto.nm_produto}</td>
+                                        <td>{ item.id_produto_infoa_gab_produto.vl_preco}</td>
+                                        <td className="last-item">{ item.qtd_produtos}</td>
+                                    </tr>
+                                )}
                             </tbody>
                        </table>
                         <div className="bottom-menu">
-                            <StyledButtonAdm cor="vermelho" className="voltar" style={{marginRight:"20%", width:"10em"}}>Voltar</StyledButtonAdm>
+                            <Link to="/gerentePedidos"><StyledButtonAdm cor="vermelho" className="voltar" style={{marginRight:"20%", width:"10em"}}>Voltar</StyledButtonAdm></Link>
                            <Paginacao />
                        </div>
                        

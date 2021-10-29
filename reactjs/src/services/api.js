@@ -257,18 +257,14 @@ export default class Api {
   }
 
 
-
-
-
-
-
-
-
-
-
-
   async listarPedidosDoUsuario(id) {
     let r = await api.get(`/pedido/${id}`)
     return r.data;
   }
+  
+    async listarPedidoPorVenda(id) {
+      let r = await api.get(`/listarPedido/${id}`);
+      return r.data;
+  }
 }
+
