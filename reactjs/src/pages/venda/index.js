@@ -11,11 +11,11 @@ const api = new Api();
 
 
 export default function Venda(props) {
-    const [pesquisa, setPesquisa] = useState(props.location.state || '')
+    const [pesquisa, setPesquisa] = useState(props.location.state || '');
     const [produto, setProduto] = useState([]);
     const [order, setOrder] = useState('');
-
-    console.log(pesquisa)
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
 
     function getCategory() {
         const query = '?categoria=';
@@ -27,13 +27,21 @@ export default function Venda(props) {
 
     const listar = async () => {
         let categoria = getCategory();
-        const e = await api.listarProdutos(order, pesquisa.pesquisa, categoria)
-        setProduto(e);
+        
+        const e = await api.listarProdutos(order, pesquisa.pesquisa, categoria, page)
+
+        setProduto([...e.items]);
+        setTotalPages(e.totalPaginas)
+    }
+
+    function irPara(pagina){
+        setPage(pagina)
     }
 
     useEffect(() => {
+        
         listar();
-    }, [order, pesquisa])
+    }, [order, pesquisa, page])
 
     return (
         <div style={{backgroundColor:"#333333"}}> 
@@ -44,7 +52,7 @@ export default function Venda(props) {
                         <div className="ordem"> Ordenar: </div>
                         <div className="select-ordem"> 
                             <select id="order" onChange={e => setOrder(e.target.value)}> 
-                                <option selected style={{ display: "none" }}> Escolha </option>
+                                <option defaultValue style={{ display: "none" }}> Escolha </option>
                                 <option value="avaliacao"> Avaliação </option> 
                                 <option value="lancamento"> Lançamento </option>
                                 <option value="menor-maior"> Menor Preço </option>
@@ -59,7 +67,13 @@ export default function Venda(props) {
                         <div className="bottom"> <CaixaJogo key={x.id_produto} info={x} /> </div>
                      )}
                     </div>
-                    <div className="pag">  <Paginacao  />  </div>
+                    <div className="pag">  
+                        <Paginacao  
+                            totalPaginas={totalPages}
+                            pagina={page}
+                            onPageChange={irPara}
+                        />  
+                    </div>
                 </main>
                 </StyledVenada>
             <Footer />

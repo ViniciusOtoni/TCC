@@ -6,7 +6,7 @@ import enviarEmail from "./email.js";
 
 
 import  Sequelize from "sequelize";
-const { Op } = Sequelize;
+const { Op, fn } = Sequelize;
 
 const app = express();
 app.use(cors());
@@ -60,23 +60,23 @@ app.get('/produto', async (req,resp) => {
         let ord = ordenacao(req.query.criterio);
         let filtro = req.query.filtro;
         let categoria = req.query.categoria;
-        let page = req.query.page;
+        let page = req.query.page || 0;
 
-        // console.log('type ' + typeof(page))
-        // console.log('page ' + page)
+        if(page <= 0) page = 1
 
-        const itensPerPage = 2;
+        const itensPerPage = 9;
+        const skipItems    = (page - 1) * itensPerPage;
 
         let r = await db.infoa_gab_produto.findAll({ 
             where: {
                 [Op.or]: [
                     { nm_produto: {[Op.substring]: filtro }},
+                    { ds_categoria: categoria },
                     { ds_plataforma: categoria },
-                    { ds_categoria: categoria }
                 ]
             },
             order: [ord],
-            offset: 0,
+            offset: skipItems,
             limit: itensPerPage
         })
 
@@ -88,13 +88,33 @@ app.get('/produto', async (req,resp) => {
                 avalicao: item.vl_avaliacao,
                 lancamento: item.dt_cadastro,
                 imagem: item.img_produto,
-                imagem_dois: fitem.img_secundaria,
+                imagem_dois: item.img_secundaria,
                 imagem_tres: item.img_terciaria,
                 imagem_quatro: item.img_quartenaria,
             }
         })
 
-        resp.send(r);
+        let total = await db.infoa_gab_produto.findOne({
+            raw: true,
+            where: {
+                [Op.or]: [
+                    { nm_produto: {[Op.substring]: filtro }},
+                    { ds_categoria: categoria },
+                    { ds_plataforma: categoria },
+                ]
+            },
+            order: [ord],
+            attributes: [
+                [fn('count', 1), 'qtd']
+            ]
+        })
+
+        resp.send({
+            items: r,
+            total: total.qtd,
+            totalPaginas: Math.ceil(total.qtd / 9),
+            pagina: Number(page)
+        });
     } catch (e) {
         resp.send({ erro: `${e.toString()}` })
     }    
@@ -279,11 +299,11 @@ try {
 
     let u1 = await db.infoa_gab_usuario.findOne({ where: { ds_cpf: r.ds_cpf } })
     if(u1 != null)
-    resp.send( { error: 'CPF já foi cadastrado!' } );
+        return resp.send( { error: 'CPF já foi cadastrado!' } );
 
     let u2 = await db.infoa_gab_usuario.findOne({ where: { ds_email: r.ds_email  } })
     if(u2 != null)
-    resp.send( { error: 'Email já foi cadastrado!' } );
+        return resp.send( { error: 'Email já foi cadastrado!' } );
 
 
     
@@ -493,8 +513,6 @@ app.post('/validarCompra', async ( req, resp ) => {
         console.log(r.produtos);
 
         for (let produto of produtoUsu) {
-            console.log(produto.nm_produto)
-            console.log(r.produtos[produto.nm_produto])
             const gerarVendaItem = await db.infoa_gab_venda_item.create({
                 id_produto:  produto.id_produto,
                 id_venda: gerarVenda.id_venda,

@@ -26,15 +26,19 @@ export default function Cabecalho(props) {
   const [img] = useState(usuarioLogado.img_usuario);
   const [pesquisa, setPesquisa] = useState('');
 
-  console.log(pesquisa)
-
   const navigation = useHistory();
 
   const logof = () => {
     Cookies.remove("usuario-logado");
   };
-  
 
+  const exemplo = () => {
+      navigation.push({
+        pathname: '/venda',
+        state: {pesquisa}
+      })
+  }
+  
   return (
     <StyledCabecalho corLetra={props.corLetra}>
       <main className="pc">
@@ -48,16 +52,11 @@ export default function Cabecalho(props) {
         </div>
 
         <div className="pesquisa">
-              <Link to={{
-                pathname:"/venda",
-                state:{pesquisa}
-              }}> 
-                  <img className="lupa" src="./assets/images/lupa.svg"/> 
-              </Link>
+              <img onClick={exemplo} className="lupa" src="./assets/images/lupa.svg"/> 
               <input onChange={e => setPesquisa(e.target.value)}/> 
         </div>
 
-        <Link to={Cookies.get("usuario-logado") === undefined ? "/login" : "/"}
+        <Link to={Cookies.get("usuario-logado") === undefined ? "/login" : ""} // arrumar o usuario mandar pra home
               style={{ textDecoration: "none" }}>
           
           {Cookies.get("usuario-logado") === undefined ? (
@@ -68,7 +67,7 @@ export default function Cabecalho(props) {
                 
                 <img src={img} alt="" />
               </div>
-              <div className="user-login"> {nm} </div>
+              <div className="user-login" title={nm}> {nm != null && nm.length >= 20 ? nm.substr(0, 20) + "..." : nm} </div>
             </div>
           )}
         </Link>

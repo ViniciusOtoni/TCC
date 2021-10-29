@@ -1,17 +1,14 @@
 import styled from "styled-components";
 
 const StyledPopup = styled.div`
+  background-color: #333333;
+  width: 400px;
+  color: #ffffff;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
 
-background-color: #333333;
-width: 400px;
-color: #ffffff;
-border-radius: 1em;
-display: flex;
-flex-direction: column;
-
-
-
-header {
+  header {
     display: flex;
     flex-direction: row;
     background-color: #000000;
@@ -20,95 +17,88 @@ header {
     align-items: center;
     border-radius: 1em 1em 0em 0em;
     border-bottom: none;
-}
+  }
 
-.logo {
+  .logo {
     padding-top: 1em;
-}
+  }
 
-.titulo {
+  .titulo {
     font-family: MontserratBold;
     font-size: 2em;
-}
+  }
 
-.email {
+  .email {
     font-family: MontserratBold;
     padding-bottom: 0.4em;
-}
+  }
 
-
-.senha {
+  .senha {
     font-family: MontserratBold;
     padding-bottom: 0.4em;
-    padding-top:${props => props.recuSenha === 'true' ? '2em' : '0em'} ;
+    padding-top: ${(props) => (props.recuSenha === "true" ? "2em" : "0em")};
     padding-top: 1em;
+  }
 
-}
-
-.esqueceu-email {
+  .esqueceu-email {
     font-family: Medio;
     font-size: 0.8em;
     text-align: right;
     padding-top: 0.7em;
-    display: ${props => props.recuSenha === 'true'  ? 'none' : 'block' };
-   
-}
+    display: ${(props) => (props.recuSenha === "true" ? "none" : "block")};
+  }
 
-.esqueceu-email:hover {
+  .esqueceu-email:hover {
     text-decoration: underline;
     cursor: pointer;
-}
+  }
 
-.esqueceu-senha {
+  .esqueceu-senha {
     font-family: Medio;
     font-size: 0.8em;
     text-align: right;
     padding-top: 0.7em;
-    display: ${props => props.recuSenha === 'true'  ? 'none' : 'block' };
-   
-}
-.esqueceu-senha:hover {
+    display: ${(props) => (props.recuSenha === "true" ? "none" : "block")};
+  }
+  .esqueceu-senha:hover {
     text-decoration: underline;
     cursor: pointer;
-}
+  }
 
-.agp-column {
+  .agp-column {
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 2em;
-}
+  }
 
-.agp-botao {
+  .agp-botao {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+  }
 
-.botao1 {
+  .botao1 {
     margin-top: 2em;
-    display: ${props => props.recuSenha === 'true'  ? 'none' : 'block' };
-}
+    display: ${(props) => (props.recuSenha === "true" ? "none" : "block")};
+  }
 
-.botao2 {
+  .botao2 {
     margin-top: 1em;
-    
-   
-}
+  }
 
-.botao2 {
+  .botao2 {
     margin-top: 1em;
-    padding-top:${props => props.recuSenha === 'true' ? '2em' : '0em'};
-}
+    padding-top: ${(props) => (props.recuSenha === "true" ? "2em" : "0em")};
+  }
 
-@media(max-width:425px) {
+  @media (max-width: 425px) {
     width: 100%;
-   
 
     header {
-        width: 100%;
+      width: 100%;
     }
-}
-`
+  }
+`;
 
-export { StyledPopup }
+export { StyledPopup };

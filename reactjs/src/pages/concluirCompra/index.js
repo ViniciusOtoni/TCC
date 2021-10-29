@@ -88,7 +88,7 @@ export default function ConcluirCompra(props) {
       if(infoProduto.length > 1 )
       return Quantidade
       else 
-      return infoProduto.length
+      return  [ infoProduto.length ]
   }
 
     function Visible() {

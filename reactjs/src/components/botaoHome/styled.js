@@ -1,30 +1,26 @@
 import styled from "styled-components";
 
-const StyledButtonHome = styled.div `
+const StyledButtonHome = styled.div`
+  text-align: center;
+  color: #f0ac54;
+  border: 4px solid #f0ac54;
+  background-color: rgba(0, 0, 0, 0);
+  width: 7.8em;
+  height: 2em;
+  border-radius: 1.7em;
+  font: 1.2em MontserratBold;
 
-    text-align: center;
-    color: #F0AC54;
-    border: 4px solid #F0AC54;
-    background-color: rgba(0,0,0,0);
+  &:hover {
+    background-color: #f0ac54;
+    color: white;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+
+  @media (max-width: 425px) {
     width: 7.8em;
-    height: 2em;
-    border-radius: 1.7em;
-    font: 1.2em MontserratBold;
- 
-    
-    &:hover{
-        background-color: #F0AC54;
-        color: white;
-        transition: .5s;
-        cursor: pointer;
-    }
+    height: 2.1em;
+  }
+`;
 
-  
-
-    @media(max-width: 425px) {
-        width: 7.8em;
-        height: 2.1em;
-    }
-`
-
-export { StyledButtonHome }
+export { StyledButtonHome };

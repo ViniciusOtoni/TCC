@@ -26,37 +26,29 @@ export default function Footer(){
                 </div>
                 <div className="align">
                     <div className="align-items">
-                       <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
+                        <Link to="/*"><div className="item"> Suporte </div></Link>
+                        <Link to="/*"><div className="item"> Política de privacidade </div></Link>
                         <Link to="/termos" style={{textDecoration:"none", color:"#000000"}}>  <div className="item">  Termos   </div> </Link> 
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
+                        <Link to="/termos"><div className="item"> Termos de servico </div></Link>
+                        <Link to="/*"><div className="item"> Game Bud Studios </div></Link>
+                        <Link to="/termos"><div className="item"> Termos de serviço </div></Link>
+                        <Link to="/termos"><div className="item"> Sobre a GameBud </div></Link>
                     </div>
                     <div className="align-items">
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
+                        <Link to="/termos"><div className="item"> Termos de Serviço e contrato do usuário</div></Link>
+                        <Link to="/*"><div className="item"> Avisos sobre saúde</div></Link>
+                        <Link to="/*"><div className="item"> Classificação </div></Link>
+                        <Link to="/*"><div className="item"> Carreiras </div></Link>
+                        <Link to="/*"><div className="item"> Desenvolvedores </div></Link>
+                        <Link to="/*"><div className="item"> Mapa do Site </div></Link>
                     </div>
                     <div className="align-items">
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                    </div>
-                    <div className="align-items">
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
-                        <div className="item"> Exemplo </div>
+                        <Link to="/*"><div className="item"> GameBude e o meio ambiente </div></Link>
+                        <Link to="/*"><div className="item"> Facebook </div></Link>
+                        <Link to="/*"><div className="item"> twitter </div></Link>
+                        <Link to="/*"><div className="item"> YouTube </div></Link>
+                        <Link to="/*"><div className="item"> Instagram </div></Link>
+                        <Link to="/*"><div className="item"> Twitch </div></Link>
                     </div>
                 </div>   
             </div>

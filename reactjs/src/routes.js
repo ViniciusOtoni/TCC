@@ -1,4 +1,4 @@
-import {  BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Principal from './pages';
 import Caixa from './pages/carrinho';

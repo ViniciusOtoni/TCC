@@ -1,299 +1,272 @@
 import styled from "styled-components";
 
-const StyledEntregaItem = styled.div `
-
-    
-.pc {
+const StyledEntregaItem = styled.div`
+  .pc {
     width: 1240px;
     margin: auto;
-}
+  }
 
-.cell {
+  .cell {
     display: none;
-}
+  }
 
-.agp-cima  {
+  .agp-cima {
     display: flex;
     flex-direction: column;
     margin-top: 7em;
-}
+  }
 
-.row-cima {
+  .row-cima {
     display: flex;
     flex-direction: row;
-    justify-content: space-around
-}
+    justify-content: space-around;
+  }
 
-.column {
+  .column {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
- 
-}
+  }
 
-.carregamento {
+  .carregamento {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-top: 2em;
     margin-right: 1em;
-}
+  }
 
-.definicao1 {
-text-align: center;
-color: #ffffff;
-font-family: MontserratBold;
-width: 9em;
-padding-top: 0.4em;
-padding-bottom: 1em;
+  .definicao1 {
+    text-align: center;
+    color: #ffffff;
+    font-family: MontserratBold;
+    width: 9em;
+    padding-top: 0.4em;
+    padding-bottom: 1em;
+  }
 
-}
+  .definicao2 {
+    text-align: center;
+    color: #ffffff;
+    font-family: MontserratBold;
+    padding-top: 0.4em;
+    padding-bottom: 1em;
+  }
 
-.definicao2 {
-text-align: center;
-color: #ffffff;
-font-family: MontserratBold;
-padding-top: 0.4em;
-padding-bottom: 1em;
-}
+  .definicao3 {
+    text-align: center;
+    color: #ffffff;
+    font-family: MontserratBold;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
 
-
-.definicao3 {
-text-align: center;
-color: #ffffff;
-font-family: MontserratBold;  
-padding-top: 1em;
-padding-bottom: 1em;
-}
-
-.limite1 {
-    background-image: url('/assets/images/icon-check.svg');
+  .limite1 {
+    background-image: url("/assets/images/icon-check.svg");
     background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: center;
-}
+  }
 
-.limite2 {
-    background-image: url('/assets/images/icon-check.svg');
+  .limite2 {
+    background-image: url("/assets/images/icon-check.svg");
     background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: center;
-}
+  }
 
-
-.limite3 {
-    background-image: url('/assets/images/icon-check.svg');
+  .limite3 {
+    background-image: url("/assets/images/icon-check.svg");
     background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: center;
-}
+  }
 
-.load-bar {
+  .load-bar {
     background-color: #ffffff;
     border-radius: 2em;
     width: auto;
     height: 2em;
-   
-  
+  }
 
- 
-  
-}
-
-.icon img {
+  .icon img {
     width: 8em;
     height: 8em;
-}
+  }
 
-
-.agp-baixo {
+  .agp-baixo {
     display: flex;
     flex-direction: column;
-}
+  }
 
-.status {
+  .status {
     display: flex;
     flex-direction: column;
     margin-top: 5em;
-}
+  }
 
-.row-status {
+  .row-status {
     display: flex;
     flex-direction: row;
     align-items: center;
-}
-.titulo {
+  }
+  .titulo {
     font-size: 29px;
     color: #ffffff;
-    font-family:  MontserratBold;
+    font-family: MontserratBold;
     padding-bottom: 1em;
-}
+  }
 
-.botao-check button {
+  .botao-check button {
     border-radius: 50%;
     width: 2em;
     height: 2em;
     text-decoration: none;
     border: none;
     background-color: #ffffff;
-    background-image: url('/assets/images/check.svg');
+    background-image: url("/assets/images/check.svg");
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
-}
+  }
 
-.texto-status {
+  .texto-status {
     color: #ffffff;
     font-size: 16px;
     font-family: MontserratBold;
     width: 12em;
     padding-left: 1em;
+  }
 
-}
-
-.horario-status {
+  .horario-status {
     color: #ffffff;
     font-size: 16px;
     font-family: MontserratBold;
-}
+  }
 
-.voltar button {
-  background-color: #D9534F;
-  color: #ffffff;
-  border: none;
-  font-size: 15px;
-  font-family: MontserratBold;
-  width: 9em;
-  height: 2em;
-  border-radius: .3em;
-  text-align: center;
-}
+  .voltar button {
+    background-color: #d9534f;
+    color: #ffffff;
+    border: none;
+    font-size: 15px;
+    font-family: MontserratBold;
+    width: 9em;
+    height: 2em;
+    border-radius: 0.3em;
+    text-align: center;
+  }
 
-.voltar {
+  .voltar {
     margin-top: 7em;
     padding-bottom: 2.84em;
-}
+  }
 
-
-
-@media(max-width:425px) {
+  @media (max-width: 425px) {
     .pc {
-        display: none;
+      display: none;
     }
     .cell {
-        display: block;
+      display: block;
     }
 
     .row {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: space-evenly;
-        position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-evenly;
+      position: relative;
     }
 
     .column {
-        display: flex;
-        flex-direction: column;
-        margin-top: 2em;
+      display: flex;
+      flex-direction: column;
+      margin-top: 2em;
     }
 
-    .icon1 img{
-        width:4.3em;
-        height: 5em; 
-        padding-bottom:1em;
+    .icon1 img {
+      width: 4.3em;
+      height: 5em;
+      padding-bottom: 1em;
     }
 
-   
-
-    .icon2 img{
-        width:4.3;
-        height: 5em; 
-        padding-bottom:1em;
+    .icon2 img {
+      width: 4.3;
+      height: 5em;
+      padding-bottom: 1em;
     }
 
-    .icon3 img{
-        width:4.3;
-        height: 5em; 
-        padding-bottom:1em;
-        padding-right: 1em;
+    .icon3 img {
+      width: 4.3;
+      height: 5em;
+      padding-bottom: 1em;
+      padding-right: 1em;
     }
 
-   
-
-    .limite1 img{
-        width:auto;
-        height: 3em; 
-        
+    .limite1 img {
+      width: auto;
+      height: 3em;
     }
 
     .limite1 {
-        position: absolute;
-        right: 3em
+      position: absolute;
+      right: 3em;
     }
 
-    .limite2 img{
-        width:auto;
-        height: 3em; 
-       
+    .limite2 img {
+      width: auto;
+      height: 3em;
     }
 
     .limite2 {
-        position: absolute;
-        right: 3em;
+      position: absolute;
+      right: 3em;
     }
 
-    
-
     .limite3 {
-        position: absolute;
-        right: 3em
+      position: absolute;
+      right: 3em;
     }
 
     .limite3 img {
-        width: auto;
-        height: 3em;
+      width: auto;
+      height: 3em;
     }
 
     .limite1 {
-        background-size: auto 1.3em;
-        margin-top: 2.8em;
-       
+      background-size: auto 1.3em;
+      margin-top: 2.8em;
     }
 
     .limite2 {
-        background-size: auto 1.3em;
-        margin-top: 2.8em;
-        
+      background-size: auto 1.3em;
+      margin-top: 2.8em;
     }
 
     .limite3 {
-        background-size: auto 1.3em;
-        margin-top: 2.8em;
+      background-size: auto 1.3em;
+      margin-top: 2.8em;
     }
 
     .load-bar {
-        width: 70%;
-       margin-left: 4em;
-       
+      width: 70%;
+      margin-left: 4em;
     }
 
     .agp-baixo {
-        padding: .9em;
+      padding: 0.9em;
     }
 
     .voltar {
-        width: 100%;
-        display: flex;
+      width: 100%;
+      display: flex;
     }
 
     .voltar button {
-        width: 100%;
-        height: 3.2em;
+      width: 100%;
+      height: 3.2em;
     }
-}
+  }
+`;
 
-`
-
-export { StyledEntregaItem }
+export { StyledEntregaItem };
