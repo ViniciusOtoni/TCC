@@ -66,7 +66,8 @@ export default function GerentePedidos() {
                                     <td className="botao1"> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"8.5em", fontSize:".7em"}} cor="vermelho" onClick={() => alterarSituacao(item, "Saiu para entrega")}> Saiu Para Entrega </StyledButtonAdm> </td>
                                     <td className="botao2"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"10.5em", padding: "1em 0em"}} cor="laranja" onClick={() => alterarSituacao(item, "A Caminho")}> A Caminho </StyledButtonAdm> </td>
                                     <td className="botao3"> <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em", padding: "1em 0em"}} onClick={() => alterarSituacao(item, 'Entregue')}>  Entregue </StyledButtonAdm> </td>
-                                    <td className="botao4"> <Link to={{pathname: "/gerenteVisuPedido", state: item}}><StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em", fontSize:".7em"}}  cor="preto"> Ver Itens </StyledButtonAdm> </Link></td>
+                                    <td className="botao4"> <Link to={{ pathname: "/gerenteListar", state: item.id_venda_infoa_gab_venda.id_venda }}><StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "7.5em", fontSize: ".7em" }} cor="preto"> Ver Itens </StyledButtonAdm> </Link></td>
+                                    {console.log(item)}
                                 </tr>    
                             )}
                              

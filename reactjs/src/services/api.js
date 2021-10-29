@@ -255,4 +255,9 @@ export default class Api {
     let r = await api.put(`/pedido/${id}`, { situacao });
     return r.data;
   }
+
+  async listarPedidoPorVenda(id) {
+    let r = await api.get(`/listarPedido/${id}`);
+    return r.data;
+  }
 }

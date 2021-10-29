@@ -125,7 +125,8 @@ const StyledEntregaItem = styled.div`
     text-decoration: none;
     border: none;
     background-color: #ffffff;
-    background-image: url("/assets/images/check.svg");
+    background-image: url(${props => props.hidden === true ? "/assets/images/check.svg" : "/assets/images/check.svg"});
+  
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -188,6 +189,7 @@ const StyledEntregaItem = styled.div`
       width: 4.3em;
       height: 5em;
       padding-bottom: 1em;
+  
     }
 
     .icon2 img {

@@ -651,6 +651,25 @@ app.put('/pedido/:idEntrega', async (req, resp) => {
 })
 
 
+app.get('/listarPedido/:idVenda', async (req, resp) => {
+    const id = req.params.idVenda;
+    console.log(id);
+
+    const r = await db.infoa_gab_venda_item.findAll({
+        where: { 'id_venda': id },
+        include: [
+            {
+                model: db.infoa_gab_produto,
+                as: 'id_produto_infoa_gab_produto',
+                required: true
+           }
+        ]
+    });
+
+    resp.send(r);
+})
+
+
 
 app.listen( process.env.PORT, (x) => 
             console.log(`Servidor na Porta ${process.env.PORT}`));
