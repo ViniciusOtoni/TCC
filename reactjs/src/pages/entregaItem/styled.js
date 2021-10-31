@@ -39,7 +39,7 @@ const StyledEntregaItem = styled.div`
 
   .definicao1 {
     text-align: center;
-    color: #ffffff;
+    color: ${props => props.corLetra  ? "#008000" :"#ffffff"};
     font-family: MontserratBold;
     width: 9em;
     padding-top: 0.4em;
@@ -56,7 +56,7 @@ const StyledEntregaItem = styled.div`
 
   .definicao3 {
     text-align: center;
-    color: #ffffff;
+    color: ${oi => oi.corLetra === false ? "white" : "green"};
     font-family: MontserratBold;
     padding-top: 1em;
     padding-bottom: 1em;
@@ -125,7 +125,7 @@ const StyledEntregaItem = styled.div`
     text-decoration: none;
     border: none;
     background-color: #ffffff;
-    background-image: url(${props => props.hidden === true ? "/assets/images/check-.svg" : "/assets/images/check.svg"});
+    background-image: url(${props => props.hidden === true ? "/assets/images/HIPERCARD.svg" : ""});
   
     background-repeat: no-repeat;
     background-position-x: center;

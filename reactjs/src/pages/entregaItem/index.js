@@ -5,21 +5,34 @@ import { Link } from 'react-router-dom';
 
 export default function EntregaItem(props) {
 
-    function hiddenCheck() {
-        if (
-            props.location.state === 'saiu para entrega' ||
-            props.location.state === 'a caminho' ||
-            props.location.state === 'entregue'
-        )
-        {
+    const teste = 'saiu para entrega'
+
+    function hiddenCheck(a, b) {
+        
+        if (a === 'saiu para entrega' && b === 1)
             return true
-        } else
+        else if (a === 'saiu para entrega' && b === 2)
             return false
+        else if (a === 'saiu pra entrega' && b === 3)
+            return false
+
+
+        if(a === 'a caminho' && b === 1)
+            return true;
+        else if (a === 'a caminho' && b === 2)
+            return true;
+        else if (a === 'a caminho' && b === 3)
+            return false
+
+        if (a === 'entregue') 
+            return true
+        
     }
+
     
-    const a = hiddenCheck();
-    console.log(props.location.state)
-    console.log(a);
+    const a = hiddenCheck(teste, 3);
+    console.log(a)
+   
 
     return (
         <div style={{backgroundColor:"#333333"}}> 
@@ -30,21 +43,30 @@ export default function EntregaItem(props) {
                     <div className="agp-cima">
                      <div className="row-cima">  
                         <div className="column"> 
-                            <div className="icon"> { <img src="/assets/images/lanchonete.svg" alt="" /> } </div>
-                            <div className="definicao1"> Indo Para O Correio </div>
+                                <div className="icon"> {hiddenCheck(teste, 1)
+                                    ? <img src="/assets/images/lanchonete-verde.svg" alt="" />
+                                    : <img src="/assets/images/lanchonete.svg" alt="" />}
+                                </div>
+                            <div className="definicao1" > Indo Para O Correio </div>
                         </div>
                         <div className="column"> 
-                            <div className="icon"> <img src="/assets/images/Caminhao1.svg" alt="" /> </div>
-                            <div className="definicao2">  A Caminho </div>
+                                <div className="icon"> {hiddenCheck(teste, 2)
+                                    ? <img src="assets/images/caminhao1-verde.svg" alt="" />
+                                    : <img src="/assets/images/Caminhao1.svg" alt="" />}
+                                </div>
+                            <div className="definicao2" >  A Caminho </div>
                         </div>
                         <div className="column"> 
-                            <div className="icon"> <img style={{width:"7em", height:"7em", paddingBottom:"1em"}} src="/assets/images/Casa.svg" alt="" /> </div>
-                            <div className="definicao3"> Produto Entregue </div>
+                                <div className="icon"> {hiddenCheck(teste, 3)
+                                    ? <img style={{ width: "7em", height: "7em", paddingBottom: "1em" }} src="/assets/images/Casa-verde.svg" alt="" /> 
+                                    : <img style={{ width: "7em", height: "7em", paddingBottom: "1em" }} src="/assets/images/Casa.svg" alt="" /> }
+                                </div>
+                            <div className="definicao3"  corLetra={hiddenCheck(teste, 3)}> Produto Entregue </div>
                         </div>
                         </div>
                         <div className="load-bar">  </div>
                         <div className="carregamento"> 
-                                <div className="limite1"> {hiddenCheck() ? <img src="/assets/images/box-check.svg" alt="" /> : <img src="/assets/images/box-check-green.svg" alt="" />}  </div>
+                                <div className="limite1"> {hiddenCheck ? <img src="/assets/images/box-check.svg" alt="" /> : <img src="/assets/images/box-check-green.svg" alt="" />}  </div>
                                 <div className="limite2"> <img src="/assets/images/box-check.svg" alt="" />  </div>
                                 <div className="limite3"> <img src="/assets/images/box-check.svg" alt="" />  </div>
                         </div>
@@ -53,17 +75,17 @@ export default function EntregaItem(props) {
                         <div className="status"> 
                         <div className="titulo"> Situação: </div>
                             <div className="row-status"> 
-                                <div className="botao-check"> <button> </button> </div>
+                                <div className="botao-check" hidden={hiddenCheck}> <button> </button> </div>
                                 <div className="texto-status"> Indo para o Correio </div>
                                 <div className="horario-status"> (2021-01-01) </div>
                             </div>
                             <div className="row-status"> 
-                                <div className="botao-check"> <button> </button> </div>
+                                <div className="botao-check" hidden={hiddenCheck}> <button> </button> </div>
                                 <div className="texto-status"> A Caminho </div>
                                 <div className="horario-status">  (2021-02-01) </div>
                             </div>
                             <div className="row-status"> 
-                                <div className="botao-check"> <button> </button> </div>
+                                <div className="botao-check" hidden={hiddenCheck}> <button> </button> </div>
                                 <div className="texto-status"> Produto Entregue </div>
                                 <div className="horario-status"> (2021-03-01) </div>
                             </div>
@@ -108,7 +130,7 @@ export default function EntregaItem(props) {
                                 <div className="horario-status">  (2021-02-01) </div>
                             </div>
                             <div className="row-status"> 
-                                <div className="botao-check" hidden={hiddenCheck}> <button>  </button> </div>
+                                <div className="botao-check"> <button>  </button> </div>
                                 <div className="texto-status"> Produto Entregue </div>
                                 <div className="horario-status"> (2021-03-01) </div>
                             </div>
