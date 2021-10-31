@@ -18,7 +18,7 @@ const StyledGerenteCadastrados = styled.div`
 
   th {
     color: #ffffff;
-    font-size: 2em;
+    font-size: 1.5em;
     font-family: MontserratBold;
     text-align: left;
     padding-bottom: 1em;
@@ -41,17 +41,13 @@ const StyledGerenteCadastrados = styled.div`
     align-self: center;
     align-items: center;
     justify-content: space-between;
-    width: 55%;
+    width: 62%;
 
     margin-top: 4em;
   }
 
   .cell {
     display: none;
-  }
-
-  .buttonADM {
-    margin-right: 20em;
   }
 
   @media (max-width: 425px) {

@@ -1,6 +1,6 @@
 import { StyledEntregaItem } from "./styled";
 import Cabecalho from "../../components/cabecalho";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 
 export default function EntregaItem(props) {

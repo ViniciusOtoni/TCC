@@ -120,26 +120,34 @@ app.get('/produto', async (req,resp) => {
     }    
 })
 
-app.get('/produtosPesquisa', async (req, resp) => {
-    try{
-            let ord = req.query.filtro;
-
-            console.log('ord:'+ord);
-
-            let r = await db.infoa_gab_produto.findAll({
-                where: { nm_produto: ord }
-            })
-
-            resp.send(r);
-    } catch (error){
-            resp.send(`erro no get produtosPesquisa ${error}`)
-    }    
-})
-
 app.get('/produtos', async (req, resp) => {
     try {
-        let r = await db.infoa_gab_produto.findAll();
-        resp.send(r);
+        let page = req.query.page || 0;
+
+        if(page <= 0) page = 1
+
+        const itensPerPage = 9;
+        const skipItems = (page - 1) * itensPerPage; 
+
+        let r = await db.infoa_gab_produto.findAll({
+            where: { bt_situacao: true },
+            offset: skipItems,
+            limit: itensPerPage
+        });
+
+        let total = await db.infoa_gab_produto.findOne({
+            raw: true,
+            attributes: [
+                [fn('count', 1), 'qtd']
+            ]
+        })
+
+        resp.send({
+            items: r,
+            total: total.qtd,
+            totalPaginas: Math.ceil(total.qtd / 9),
+            page: Number(page)
+        });
     } catch (error) {
         resp.send(`erro no get produto ${error}`)
     }
@@ -353,7 +361,7 @@ app.post('/login', async (req, resp) => {
 })
 
 
-
+// Verifica se O gerente Existe
 app.post('/login/gerente', async (req, resp) => {
     let login = req.body;
 
@@ -415,11 +423,7 @@ try {
     const response = await enviarEmail(login.ds_email, rCod, login.nm_usuario);
   
     resp.send(response);
-    
-    
 
-    
-    
     
     } catch( error ) {
         resp.send({ error: " Isso não é um email "})
@@ -670,6 +674,37 @@ app.get('/listarPedido/:idVenda', async (req, resp) => {
 })
 
 
+
+//Listar Pedidos Do Usuário
+app.get('/pedido/:idUsuario', async (req, resp ) => {
+
+    let r1 = await db.infoa_gab_entrega.findAll({
+
+        attributes: [[ "id_entrega", "id_entrega" ], ["ds_situacao", "ds_situacao"]],
+        
+         include: [{
+            model: db.infoa_gab_venda,
+            as: 'id_venda_infoa_gab_venda',
+            required: false,
+            include: [{
+                model: db.infoa_gab_usuario,
+                as: 'id_usuario_infoa_gab_usuario',
+                required: true,
+                attributes: []
+            }]
+        }],
+        
+       
+
+        where: {
+            '$id_venda_infoa_gab_venda.id_usuario_infoa_gab_usuario.id_usuario$': req.params.idUsuario
+        }
+
+     
+    })
+    
+    resp.send(r1)
+})
 
 app.listen( process.env.PORT, (x) => 
             console.log(`Servidor na Porta ${process.env.PORT}`));

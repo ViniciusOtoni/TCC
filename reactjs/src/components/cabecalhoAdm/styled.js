@@ -79,6 +79,10 @@ const StyledCabecalhoAdm = styled.div`
         : "block"};
   }
 
+  .pesquisar > button > img {
+    width: 2em;
+  }
+
   .game {
     color: #f0ac54;
     font-family: MontserratBold;

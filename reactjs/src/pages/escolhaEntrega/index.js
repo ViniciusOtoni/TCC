@@ -4,19 +4,73 @@ import Cabecalho from "../../components/cabecalho"
 import Paginacao from "../../components/paginacao"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useHistory } from 'react-router-dom'
+
+import Cookies from "js-cookie";
+
+import Api from "../../services/api"
+const api = new Api()
+
 
 export default function EscolhaEntrega() {
+    
+    const nave = useHistory()
+    let usuarioLogado = lerUsuarioQuelogou() || {}
 
+    const [ infoPedido, setInfoPedido ] = useState([])
     const [page, setPage] = useState(1)
     const [totalPage, setTotalPage] = useState(0)
+    const [ id, setId ] = useState(usuarioLogado.id_usuario)
+
+    console.log(infoPedido)
+
+    
+
 
     function irPara(pagina){
         setPage(pagina)
     }
 
     useEffect(() => {
+        
 
-    }, [page])
+        
+        pedidosUsu()
+
+        if(infoPedido.length === 0 )
+            nave.push('/entregas')
+    }, [])
+
+
+
+
+    
+    
+    const pedidosUsu =  async () => {
+        let r = await api.listarPedidosDoUsuario(id)
+        setInfoPedido(r)
+
+        
+     
+          
+    }
+
+
+    function lerUsuarioQuelogou() {
+        let logado = Cookies.get('usuario-logado');
+
+            if(logado === undefined) {
+            toast.dark('Loga ae');
+            nave.push('/carrinhoItem')
+            } else {
+                let usuarioLogado = JSON.parse(logado);
+                return usuarioLogado;
+            }
+
+              
+        }
 
     return (
         <div style={{backgroundColor:"#333333"}}> 
@@ -24,27 +78,29 @@ export default function EscolhaEntrega() {
 
                  <StyledEscolhaEntrega>
                  <main className="pc"> 
-                    <div className="titulo"> Seus Pedidos </div>
+                    <div className="titulo"> Seus Pedidos: </div>
                     <div className="row"> 
                     <div className="column">
                             <div className="title-column"> Data Do Pedido: </div>
-                            <div className="pedido"> 2021-01-01 </div>
-                            <div className="pedido"> 2021-01-02 </div>
+                           {infoPedido.map(x => 
+                                <div className="pedido"> {x.id_venda_infoa_gab_venda.dt_venda.replace('Z', '')} </div> 
+                           )}
                         </div>
                         <div className="column">
                             <div className="title-column"> Quantidade De Itens: </div>
-                            <div className="pedido"> 1 </div>
-                            <div className="pedido"> 4 </div>
+                            {infoPedido.map( x => 
+                                <div className="pedido"> {x.id_venda_infoa_gab_venda.qtd_itens} </div>
+                           )}
                         </div> 
                         <div className="column">
                             <div className="title-column"> Valor Total: </div>
-                            <div className="pedido"> R$199,00 </div>
-                            <div className="pedido"> R$2099,00  </div>
+                            {infoPedido.map( x => 
+                                <div className="pedido"> {x.id_venda_infoa_gab_venda.vl_total} </div>
+                           )}
                         </div> 
                         <div className="column-acao">
                             <div className="title-column"> Inspecionar: </div>
-                          <Link to="/entregas">  <div className="verificar-botao"> <button> Verificar </button> </div> </Link>
-                          <Link to="/entregaItem">  <div className="verificar-botao"> <button> Verificar  </button> </div> </Link>
+                         {infoPedido.map(x =>  <Link to={{pathname:"/entregaItem", state: x.ds_situacao}}>  <div className="verificar-botao"> <button> Verificar  </button> </div> </Link> )}
                         </div> 
                         
                     </div>

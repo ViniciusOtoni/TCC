@@ -3,7 +3,8 @@ import styled from "styled-components";
 const StyledEscolhaEntrega = styled.div`
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 6.4em);
+  min-height: calc(100vh - 6.4em);
+  
 
   .pc {
     width: 1240px;
@@ -35,7 +36,7 @@ const StyledEscolhaEntrega = styled.div`
     font-size: 1.5em;
     font-family: MontserratBold;
     padding-top: 1.4em;
-    padding-left: 3em;
+    padding-left: 3.7em;
     margin-bottom: 2em;
   }
 

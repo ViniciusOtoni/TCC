@@ -54,8 +54,8 @@ export default class Api {
     return r.data;
   }
 
-  async listarProdutos2() {
-    let r = await api.get("/produtos");
+  async listarProdutos2(page) {
+    let r = await api.get(`/produtos?page=${page}`);
     return r.data;
   }
 
@@ -256,8 +256,15 @@ export default class Api {
     return r.data;
   }
 
-  async listarPedidoPorVenda(id) {
-    let r = await api.get(`/listarPedido/${id}`);
+
+  async listarPedidosDoUsuario(id) {
+    let r = await api.get(`/pedido/${id}`)
     return r.data;
   }
+  
+    async listarPedidoPorVenda(id) {
+      let r = await api.get(`/listarPedido/${id}`);
+      return r.data;
+  }
 }
+
