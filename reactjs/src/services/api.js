@@ -54,8 +54,8 @@ export default class Api {
     return r.data;
   }
 
-  async listarProdutos2() {
-    let r = await api.get("/produtos");
+  async listarProdutos2(page) {
+    let r = await api.get(`/produtos?page=${page}`);
     return r.data;
   }
 

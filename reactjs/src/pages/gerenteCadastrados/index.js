@@ -17,11 +17,16 @@ const api = new Api();
 export default function GerenteProdutosCadastrados() {
 
     const [produtos, SetProdutos] = useState([]);
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
   
+    console.log("total: " + totalPages)
+    console.log("produtos: " + produtos)
 
     async function Listar() {
-        let e = await api.listarProdutos2();
-        SetProdutos(e);
+        const e = await api.listarProdutos2(page);
+        SetProdutos([...e.items]);
+        setTotalPages(e.totalPaginas);
     }
 
     async function Remover(info) {
@@ -31,9 +36,13 @@ export default function GerenteProdutosCadastrados() {
         return r;
     }
 
+    function irPara(pagina){
+        setPage(pagina)
+    }
+
     useEffect(() => {       
         Listar()
-    }, [])
+    }, [page])
 
     return (
         <div style={{backgroundColor:"#333333", minHeight:"100vh"}}> 
@@ -58,7 +67,7 @@ export default function GerenteProdutosCadastrados() {
                                         <td style={{paddingLeft:"1em"}}> {info.id_produto} </td>
                                         <td> {info.nm_produto} </td>
                                         <td style={{paddingLeft: "3.8em"}}> {info.ds_codigo_barra}</td>
-                                        <td style={{paddingLeft:"4em"}}> {info.ds_categoria} </td>
+                                        <td style={{textAlign: "center"}}> {info.ds_categoria} </td>
                                         <td>  {info.vl_preco} </td>
                                         <td className="botaoVerde"  texto="true"> <Link to={{pathname: "/gerenteVizualizar", state: info}}> <StyledButtonAdm style={{fontFamily:"MontserratBold", width:"7.5em", marginRight: ".3em"}}> Visualizar </StyledButtonAdm> </Link> </td>
                                         <td className="botao">  <Link to={{pathname: "/gerenteAlterar", state: info}}>  <StyledButtonAdm style={{ fontFamily:"MontserratBold", width:"7.5em"}} cor="laranja"> Editar </StyledButtonAdm> </Link> </td>
@@ -71,7 +80,11 @@ export default function GerenteProdutosCadastrados() {
                             <Link to="/gerenteEscolha"> 
                                 <StyledButtonAdm cor="vermelho"  className='buttonADM'> Voltar </StyledButtonAdm> 
                             </Link>
-                            <Paginacao/>  
+                            <Paginacao
+                                totalPaginas={totalPages}
+                                pagina={page}
+                                onPageChange={irPara}
+                            />  
                         </div>
                         </main>
                         <main className="cell"> 

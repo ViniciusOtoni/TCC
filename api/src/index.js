@@ -120,26 +120,34 @@ app.get('/produto', async (req,resp) => {
     }    
 })
 
-app.get('/produtosPesquisa', async (req, resp) => {
-    try{
-            let ord = req.query.filtro;
-
-            console.log('ord:'+ord);
-
-            let r = await db.infoa_gab_produto.findAll({
-                where: { nm_produto: ord }
-            })
-
-            resp.send(r);
-    } catch (error){
-            resp.send(`erro no get produtosPesquisa ${error}`)
-    }    
-})
-
 app.get('/produtos', async (req, resp) => {
     try {
-        let r = await db.infoa_gab_produto.findAll();
-        resp.send(r);
+        let page = req.query.page || 0;
+
+        if(page <= 0) page = 1
+
+        const itensPerPage = 9;
+        const skipItems = (page - 1) * itensPerPage; 
+
+        let r = await db.infoa_gab_produto.findAll({
+            where: { bt_situacao: true },
+            offset: skipItems,
+            limit: itensPerPage
+        });
+
+        let total = await db.infoa_gab_produto.findOne({
+            raw: true,
+            attributes: [
+                [fn('count', 1), 'qtd']
+            ]
+        })
+
+        resp.send({
+            items: r,
+            total: total.qtd,
+            totalPaginas: Math.ceil(total.qtd / 9),
+            page: Number(page)
+        });
     } catch (error) {
         resp.send(`erro no get produto ${error}`)
     }
