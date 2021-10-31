@@ -18,6 +18,7 @@ export default function EntregaItem(props) {
     }
     
     const a = hiddenCheck();
+    console.log(props.location.state)
     console.log(a);
 
     return (

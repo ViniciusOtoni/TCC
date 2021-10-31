@@ -125,7 +125,7 @@ const StyledEntregaItem = styled.div`
     text-decoration: none;
     border: none;
     background-color: #ffffff;
-    background-image: url(${props => props.hidden === true ? "/assets/images/check.svg" : "/assets/images/check.svg"});
+    background-image: url(${props => props.hidden === true ? "/assets/images/check-.svg" : "/assets/images/check.svg"});
   
     background-repeat: no-repeat;
     background-position-x: center;
