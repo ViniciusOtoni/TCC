@@ -16,11 +16,19 @@ const api = new Api();
 
 export default function GerentePedidos() {
     const [infoGeral, setInfoGeral] = useState([]);
+    const [page, setPage] = useState(1)
+    const [totalPage, setTotalPage] = useState(0)
+
+
+    function irPara(pagina){
+        setPage(pagina)
+    }
 
     async function listar() {
-        let r = await api.listarPedidos();
+        let r = await api.listarPedidos(page);
 
-        setInfoGeral(r);
+        setInfoGeral([...r.items]);
+        setTotalPage(r.totalPaginas)
     
     }
 
@@ -36,7 +44,7 @@ export default function GerentePedidos() {
     useEffect(() => {
         listar()
 
-    }, [])
+    }, [ page ])
 
     return (
         <div style={{backgroundColor:"#333333", minHeight:"100vh"}}> 
@@ -56,8 +64,8 @@ export default function GerentePedidos() {
                           </thead>
                           <tbody> 
                               
-                            {infoGeral.map(item => 
-                                <tr style={{backgroundColor:"#282828"}}> 
+                            {infoGeral.map((item, i) => 
+                                <tr className={i % 2 === 0 ? "teste" : "" }> 
                                     <td style={{paddingLeft:"1em"}}> {item.id_entrega} </td>
                                     <td > {item.id_endereco_infoa_gab_endereco.id_usuario_infoa_gab_usuario.nm_usuario} </td>
                                     <td style={{paddingLeft: "3.8em"}}> {item.id_venda_infoa_gab_venda.ds_pagamento} </td>
@@ -74,8 +82,11 @@ export default function GerentePedidos() {
                           </tbody>
                       </table>
                       <div className="footer"> 
-                          <Link to="/gerenteCadastrar"><StyledButtonAdm cor="vermelho" style={{marginRight:"18em", width:"10em"}}> Voltarr </StyledButtonAdm></Link>
-                         <Paginacao /> 
+                          <Link to="/gerenteCadastrar"><StyledButtonAdm cor="vermelho" style={{marginRight:"18em", width:"10em"}}> Voltar </StyledButtonAdm></Link>
+                         <Paginacao totalPaginas={totalPage}
+                                    pagina={page}
+                                    onPageChange={irPara}
+                                                            /> 
                       </div>
                       </main>
                       <main className="cell"> 
@@ -115,7 +126,12 @@ export default function GerentePedidos() {
                             <div className="coluna"> Ver Itens: </div>
                             <div className="valor-coluna"> <StyledButtonAdm cor='preto' className="styled"> A Caminho </StyledButtonAdm> </div>
                         </div>
-                       <div className="pag"> <Paginacao /> </div>
+                       <div className="pag"> <Paginacao
+                                                totalPaginas={totalPage}
+                                                pagina={page}
+                                                onPageChange={irPara}
+                                                                        /> 
+                        </div>
                        <div className="back"> <StyledButtonAdm cor="vermelho" style={{width:"10em"}}> Voltar </StyledButtonAdm> </div>
                     </main>
                   </StyledGerentePedidos>

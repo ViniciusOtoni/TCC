@@ -45,7 +45,7 @@ export default function Rotes() {
                 <Route  path="/saibaMais" component={SaibaMais} />
                 <Route  path="/termos" component={Termos} />
                 <Route  path="/concluirCompra" component={ConcluirCompra} />
-                <Route  path="/gerenteVizualizar" component={GerenteVizualizar} />
+                <Route  path="/gerenteVisualizar" component={GerenteVizualizar} />
                 <Route  path="/gerenteAdicionar" component={GerenteAdicionar} />
                 <Route  path="/gerenteAlterar" component={GerenteAlterar} />
                 <Route  path="/gerenteListar" component={GerenteListar} />

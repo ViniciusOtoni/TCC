@@ -53,7 +53,7 @@ export default function GerenteNaosei(props) {
                        </table>
                         <div className="bottom-menu">
                             <Link to="/gerentePedidos"><StyledButtonAdm cor="vermelho" className="voltar" style={{marginRight:"20%", width:"10em"}}>Voltar</StyledButtonAdm></Link>
-                           <Paginacao />
+                           
                        </div>
                        
                     </div>

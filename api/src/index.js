@@ -610,7 +610,22 @@ app.post('/pedido', async (req, resp) => {
 
 app.get('/pedido', async (req, resp) => {
     try {
+
+
+        let page = req.query.page || 0;
+
+        if(page <= 0) page = 1
+
+        const itensPerPage = 10;
+        const skipItems = (page - 1) * itensPerPage; 
+
+
+
         let x = await db.infoa_gab_entrega.findAll({
+           
+            limit: itensPerPage,
+            offset: skipItems,
+           
             include: [
                 {
                     model: db.infoa_gab_venda,
@@ -633,7 +648,19 @@ app.get('/pedido', async (req, resp) => {
             ]
         });
 
-        resp.send(x);
+        let total = await db.infoa_gab_entrega.findOne({
+            raw: true,
+            attributes: [
+                [fn('count', 1), 'qtd']
+            ]
+        })
+
+        resp.send({
+            items: x,
+            total: total.qtd,
+            totalPaginas: Math.ceil(total.qtd / 10),
+            page: Number(page)
+        });
 
     } catch (error) {
         resp.send(`Erro no get da rota /pedido ${error}`)
@@ -678,7 +705,18 @@ app.get('/listarPedido/:idVenda', async (req, resp) => {
 //Listar Pedidos Do Usuário
 app.get('/pedido/:idUsuario', async (req, resp ) => {
 
+
+    let page = req.query.page || 0;
+
+        if(page <= 0) page = 1
+
+        const itensPerPage = 5;
+        const skipItems = (page - 1) * itensPerPage; 
+
     let r1 = await db.infoa_gab_entrega.findAll({
+
+        limit: itensPerPage,
+        offset: skipItems,
 
         attributes: [[ "id_entrega", "id_entrega" ], ["ds_situacao", "ds_situacao"]],
         
@@ -693,17 +731,26 @@ app.get('/pedido/:idUsuario', async (req, resp ) => {
                 attributes: []
             }]
         }],
-        
-       
 
         where: {
             '$id_venda_infoa_gab_venda.id_usuario_infoa_gab_usuario.id_usuario$': req.params.idUsuario
         }
 
-     
+    });
+
+    let total = await db.infoa_gab_entrega.findOne({
+        raw: true,
+        attributes: [
+            [fn('count', 1), 'qtd']
+        ]
     })
     
-    resp.send(r1)
+    resp.send({   
+        items: r1,
+        total: total.qtd,
+        totalPaginas: Math.ceil(total.qtd / 5),
+        page: Number(page)
+    })
 })
 
 app.listen( process.env.PORT, (x) => 

@@ -39,9 +39,8 @@ export default function EscolhaEntrega() {
         
         pedidosUsu()
 
-        if(infoPedido.length === 0 )
-            nave.push('/entregas')
-    }, [])
+        
+    }, [ page ])
 
 
 
@@ -49,12 +48,9 @@ export default function EscolhaEntrega() {
     
     
     const pedidosUsu =  async () => {
-        let r = await api.listarPedidosDoUsuario(id)
-        setInfoPedido(r)
-
-        
-     
-          
+        let r = await api.listarPedidosDoUsuario(id, page)
+        setInfoPedido([...r.items])
+        setTotalPage(r.totalPaginas)        
     }
 
 
@@ -75,7 +71,6 @@ export default function EscolhaEntrega() {
     return (
         <div style={{backgroundColor:"#333333"}}> 
             <Cabecalho  />
-
                  <StyledEscolhaEntrega>
                  <main className="pc"> 
                     <div className="titulo"> Seus Pedidos: </div>
@@ -110,6 +105,7 @@ export default function EscolhaEntrega() {
                             pagina={page}
                             onPageChange={irPara}                        
                         /> 
+
                     </div>
                     </main>
                     <main className="cell">
@@ -129,7 +125,10 @@ export default function EscolhaEntrega() {
                         <div className="column-acao">
                             <div className="verificar-botao"> <button> Verificar </button> </div>
                         </div> 
-                        <Paginacao />
+                        <Paginacao totalPaginas={totalPage}
+                            pagina={page}
+                            onPageChange={irPara}
+                            />
 
                     </main>
                  </StyledEscolhaEntrega> 
