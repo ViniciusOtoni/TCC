@@ -1,6 +1,7 @@
 import { StyledEntregaItem } from "./styled";
 import Cabecalho from "../../components/cabecalho";
 import { Link } from 'react-router-dom';
+import ProgressBar from "@ramonak/react-progress-bar";
 
 
 export default function EntregaItem(props) {
@@ -30,7 +31,13 @@ export default function EntregaItem(props) {
         
     }
 
-    function textColors() {
+    function sizeBar(a) {
+        if (a === 'Saiu para entrega')
+            return 15
+        else if (a === 'A Caminho')
+            return 50
+        else
+            return 100
         
     }
 
@@ -44,6 +51,17 @@ export default function EntregaItem(props) {
         }
     }
 
+
+    function texts(a) {
+        if (a === 'Saiu para entrega')
+            return 'Saiu para entrega'
+        else if (a === "A Caminho")
+            return "A caminho"
+        else
+            return 'Entregue'
+    }
+    
+
     
 
 
@@ -56,7 +74,7 @@ export default function EntregaItem(props) {
         <div style={{backgroundColor:"#333333"}}> 
         <Cabecalho corLetra="nulo" />
            
-            <StyledEntregaItem check={checkfunction(props.location.state)}>
+            <StyledEntregaItem check={checkfunction(props.location.state)} textos={texts(props.location.state)}>
                 <main className="pc"> 
                     <div className="agp-cima">
                      <div className="row-cima">  
@@ -82,11 +100,11 @@ export default function EntregaItem(props) {
                             <div className="definicao3"  corLetra={hiddenCheck(props.location.state, 3)}> Produto Entregue </div>
                         </div>
                         </div>
-                        <div className="load-bar">  </div>
+                        <ProgressBar width="90%" completed={sizeBar(props.location.state)} maxCompleted={100} bgColor="#008000" margin="10px 50px"  padding="20px 20px 40px 20px" isLabelVisible={false} baseBgColor="white"	 />
                         <div className="carregamento"> 
-                                <div className="limite1"> {hiddenCheck ? <img src="/assets/images/box-check.svg" alt="" /> : <img src="/assets/images/box-check-green.svg" alt="" />}  </div>
-                                <div className="limite2"> <img src="/assets/images/box-check.svg" alt="" />  </div>
-                                <div className="limite3"> <img src="/assets/images/box-check.svg" alt="" />  </div>
+                                <div className="limite1"> {hiddenCheck(props.location.state, 1) ? <img src="/assets/images/box-check-green.svg" alt="" /> : <img src="/assets/images/box-check.svg" alt="" />}  </div>
+                            <div className="limite2"> {hiddenCheck(props.location.state, 2) ? <img src="/assets/images/box-check-green.svg" alt="" /> : <img src="/assets/images/box-check.svg" alt="" />} </div>
+                            <div className="limite3"> {hiddenCheck(props.location.state, 3) ? <img src="/assets/images/box-check-green.svg" alt="" /> : <img src="/assets/images/box-check.svg" alt="" />} </div>
                         </div>
                     </div>
                     <div className="agp-baixo">

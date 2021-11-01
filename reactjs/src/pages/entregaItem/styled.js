@@ -39,7 +39,7 @@ const StyledEntregaItem = styled.div`
 
   .definicao1 {
     text-align: center;
-    color: ${props => props.corLetra ? "black" : "green"};
+    color: ${props => props.textos === "Saiu para entrega" || props.textos === 'Entregue' || props.textos === 'A caminho'  ? "green" : "white"};
     font-family: MontserratBold;
     width: 9em;
     padding-top: 0.4em;
@@ -48,7 +48,7 @@ const StyledEntregaItem = styled.div`
 
   .definicao2 {
     text-align: center;
-    color: ${props => props.corLetra ? "black" : "green"};
+    color: ${props => props.textos  === 'A caminho' || props.textos === "Entregue" ? "green" : "white"};
     font-family: MontserratBold;
     padding-top: 0.4em;
     padding-bottom: 1em;
@@ -56,28 +56,28 @@ const StyledEntregaItem = styled.div`
 
   .definicao3 {
     text-align: center;
-    color: ${props => props.corLetra ? "black" : "green"};
+    color: ${props => props.textos === 'Entregue' ? "green" : "white"};
     font-family: MontserratBold;
     padding-top: 1em;
     padding-bottom: 1em;
   }
 
   .limite1 {
-    background-image: url("/assets/images/icon-check.svg");
+    background-image: url(${props => props.textos === 'Saiu para entrega' || props.textos === 'Entregue' || props.textos === 'A caminho' ? '/assets/images/icon-check-green.svg' : '/assets/images/icon-check.svg'});
     background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: center;
   }
 
   .limite2 {
-    background-image: url("/assets/images/icon-check.svg");
+    background-image: url(${props => props.textos === 'A caminho' || props.textos === 'Entregue' ? '/assets/images/icon-check-green.svg' : '/assets/images/icon-check.svg'});
     background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: center;
   }
 
   .limite3 {
-    background-image: url("/assets/images/icon-check.svg");
+    background-image: url(${props =>  props.textos === 'Entregue' ? '/assets/images/icon-check-green.svg' : '/assets/images/icon-check.svg'});
     background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: center;
@@ -110,6 +110,8 @@ const StyledEntregaItem = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    margin: .5em 0em;
   }
   .titulo {
     font-size: 29px;
@@ -120,6 +122,13 @@ const StyledEntregaItem = styled.div`
 
   .botao-check1, .botao-check2, .botao-check3, button  {
     border-radius: 50%;
+   
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+
     width: 2em;
     height: 2em;
     text-decoration: none;
@@ -133,17 +142,17 @@ const StyledEntregaItem = styled.div`
   }
 
   .botao-check1 button {
-    background-image: url(${props => props.check === 'b' ? "/assets/images/check.svg" : props.check  === 'a' ? "/assets/images/check.svg" : props.check === 'c' ? "/assets/images/check.svg" : "" });
+    background-image: url(${props => props.check === 'b' ? "/assets/images/checkzinho.svg" : props.check  === 'a' ? "/assets/images/checkzinho.svg" : props.check === 'c' ? "/assets/images/checkzinho.svg" : "" });
   }
 
   
   .botao-check2 button {
-    background-image: url(${props => props.check === 'b' ? "" : props.check === 'c' ? "/assets/images/check.svg" : props.check === 'a' ? "/assets/images/check.svg" : ""});
+    background-image: url(${props => props.check === 'b' ? "" : props.check === 'c' ? "/assets/images/checkzinho.svg" : props.check === 'a' ? "/assets/images/checkzinho.svg" : ""});
   }
 
   
   .botao-check3 button {
-    background-image: url(${props => props.check === 'b' ? "" : props.check === 'a' ? "/assets/images/check.svg" : ""});
+    background-image: url(${props => props.check === 'b' ? "" : props.check === 'a' ? "/assets/images/checkzinho.svg" : ""});
   }
 
   .texto-status {
