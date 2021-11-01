@@ -531,7 +531,7 @@ app.post('/validarCompra', async ( req, resp ) => {
         const entrega = await db.infoa_gab_entrega.create({
             id_endereco: enderecoUsuario.id_endereco,
             id_venda: gerarVenda.id_venda,
-            ds_situacao: true,
+            ds_situacao: 'aguardando',
             dt_saida: Date.now(),
             dt_entrega: '0000-01-01'
         });

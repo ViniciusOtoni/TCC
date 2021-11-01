@@ -41,8 +41,8 @@ export default function GerenteNaosei(props) {
                                 <th className="quantidade">Quantidade:</th>
                             </thead>
                             <tbody>
-                                {produtos.map(item =>
-                                    <tr className="linha-1">
+                                {produtos.map((item,i) =>
+                                    <tr className={i % 2 === 0 ? "linha-1" : "" }>
                                         <td>{ item.id_produto }</td>
                                         <td> { item.id_produto_infoa_gab_produto.nm_produto}</td>
                                         <td>{ item.id_produto_infoa_gab_produto.vl_preco}</td>
