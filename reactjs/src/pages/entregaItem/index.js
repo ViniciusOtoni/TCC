@@ -41,18 +41,10 @@ export default function EntregaItem(props) {
         
     }
 
-    function checkfunction(a) {
-        if (a === 'Entregue') {
-            return 'a'
-        } else if (a === 'Saiu para entrega') {
-            return 'b'
-        } else {
-            return 'c'
-        }
-    }
+   
 
 
-    function texts(a) {
+    function conditions(a) {
         if (a === 'Saiu para entrega')
             return 'Saiu para entrega'
         else if (a === "A Caminho")
@@ -74,7 +66,7 @@ export default function EntregaItem(props) {
         <div style={{backgroundColor:"#333333"}}> 
         <Cabecalho corLetra="nulo" />
            
-            <StyledEntregaItem check={checkfunction(props.location.state)} textos={texts(props.location.state)}>
+            <StyledEntregaItem conditions={conditions(props.location.state)}>
                 <main className="pc"> 
                     <div className="agp-cima">
                      <div className="row-cima">  
