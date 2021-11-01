@@ -39,7 +39,7 @@ const StyledEntregaItem = styled.div`
 
   .definicao1 {
     text-align: center;
-    color: ${props => props.corLetra  ? "#008000" :"#ffffff"};
+    color: ${props => props.corLetra ? "black" : "green"};
     font-family: MontserratBold;
     width: 9em;
     padding-top: 0.4em;
@@ -48,7 +48,7 @@ const StyledEntregaItem = styled.div`
 
   .definicao2 {
     text-align: center;
-    color: #ffffff;
+    color: ${props => props.corLetra ? "black" : "green"};
     font-family: MontserratBold;
     padding-top: 0.4em;
     padding-bottom: 1em;
@@ -56,7 +56,7 @@ const StyledEntregaItem = styled.div`
 
   .definicao3 {
     text-align: center;
-    color: ${oi => oi.corLetra === false ? "white" : "green"};
+    color: ${props => props.corLetra ? "black" : "green"};
     font-family: MontserratBold;
     padding-top: 1em;
     padding-bottom: 1em;
@@ -118,18 +118,32 @@ const StyledEntregaItem = styled.div`
     padding-bottom: 1em;
   }
 
-  .botao-check button {
+  .botao-check1, .botao-check2, .botao-check3, button  {
     border-radius: 50%;
     width: 2em;
     height: 2em;
     text-decoration: none;
     border: none;
     background-color: #ffffff;
-    background-image: url(${props => props.hidden === true ? "/assets/images/HIPERCARD.svg" : ""});
+    
   
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
+  }
+
+  .botao-check1 button {
+    background-image: url(${props => props.check === 'b' ? "/assets/images/check.svg" : props.check  === 'a' ? "/assets/images/check.svg" : props.check === 'c' ? "/assets/images/check.svg" : "" });
+  }
+
+  
+  .botao-check2 button {
+    background-image: url(${props => props.check === 'b' ? "" : props.check === 'c' ? "/assets/images/check.svg" : props.check === 'a' ? "/assets/images/check.svg" : ""});
+  }
+
+  
+  .botao-check3 button {
+    background-image: url(${props => props.check === 'b' ? "" : props.check === 'a' ? "/assets/images/check.svg" : ""});
   }
 
   .texto-status {

@@ -34,13 +34,8 @@ export default function EscolhaEntrega() {
     }
 
     useEffect(() => {
-        
 
-        
         pedidosUsu()
-
-        if(infoPedido.length === 0 )
-            nave.push('/entregas')
     }, [])
 
 
