@@ -34,9 +34,7 @@ export default function EscolhaEntrega() {
     }
 
     useEffect(() => {
-        
 
-        
         pedidosUsu()
 
         

@@ -67,7 +67,7 @@ export default function Cabecalho(props) {
                 
                 <img src={img} alt="" />
               </div>
-              <div className="user-login" title={nm}> {nm != null && nm.length >= 20 ? nm.substr(0, 20) + "..." : nm} </div>
+              <div className="user-login" title={nm}> {nm != null && nm.length >= 25 ? nm.substr(0, 25) + "..." : nm} </div>
             </div>
           )}
         </Link>
