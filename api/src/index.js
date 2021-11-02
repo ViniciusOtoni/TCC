@@ -602,7 +602,7 @@ app.post('/pedido', async (req, resp) => {
 
         resp.send(r);
     } catch (error) {
-        resp.send({erro: `${error.toString()}`})
+        resp.send({erro: `${error.toString()}`}) 
     }
 } )
 

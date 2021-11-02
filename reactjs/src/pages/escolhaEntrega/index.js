@@ -15,21 +15,21 @@ const api = new Api()
 
 
 export default function EscolhaEntrega() {
-    
+
     const nave = useHistory()
     let usuarioLogado = lerUsuarioQuelogou() || {}
 
-    const [ infoPedido, setInfoPedido ] = useState([])
+    const [infoPedido, setInfoPedido] = useState([])
     const [page, setPage] = useState(1)
     const [totalPage, setTotalPage] = useState(0)
-    const [ id, setId ] = useState(usuarioLogado.id_usuario)
+    const [id, setId] = useState(usuarioLogado.id_usuario)
 
     console.log(infoPedido)
 
-    
 
 
-    function irPara(pagina){
+
+    function irPara(pagina) {
         setPage(pagina)
     }
 
@@ -38,98 +38,88 @@ export default function EscolhaEntrega() {
         pedidosUsu()
     }, [])
 
-
-
-
-    
-    
-    const pedidosUsu =  async () => {
+    const pedidosUsu = async () => {
         let r = await api.listarPedidosDoUsuario(id)
         setInfoPedido(r)
-
-        
-     
-          
     }
 
 
     function lerUsuarioQuelogou() {
         let logado = Cookies.get('usuario-logado');
 
-            if(logado === undefined) {
+        if (logado === undefined) {
             toast.dark('Loga ae');
             nave.push('/carrinhoItem')
-            } else {
-                let usuarioLogado = JSON.parse(logado);
-                return usuarioLogado;
-            }
-
-              
+        } else {
+            let usuarioLogado = JSON.parse(logado);
+            return usuarioLogado;
         }
 
-    return (
-        <div style={{backgroundColor:"#333333"}}> 
-            <Cabecalho  />
 
-                 <StyledEscolhaEntrega>
-                 <main className="pc"> 
+    }
+
+    return (
+        <div style={{ backgroundColor: "#333333" }}>
+            <Cabecalho />
+
+            <StyledEscolhaEntrega>
+                <main className="pc">
                     <div className="titulo"> Seus Pedidos: </div>
-                    <div className="row"> 
-                    <div className="column">
+                    <div className="row">
+                        <div className="column">
                             <div className="title-column"> Data Do Pedido: </div>
-                           {infoPedido.map(x => 
-                                <div className="pedido"> {x.id_venda_infoa_gab_venda.dt_venda.replace('Z', '')} </div> 
-                           )}
+                            {infoPedido.map(x =>
+                                <div className="pedido"> {x.id_venda_infoa_gab_venda.dt_venda.replace('Z', '')} </div>
+                            )}
                         </div>
                         <div className="column">
                             <div className="title-column"> Quantidade De Itens: </div>
-                            {infoPedido.map( x => 
+                            {infoPedido.map(x =>
                                 <div className="pedido"> {x.id_venda_infoa_gab_venda.qtd_itens} </div>
-                           )}
-                        </div> 
+                            )}
+                        </div>
                         <div className="column">
                             <div className="title-column"> Valor Total: </div>
-                            {infoPedido.map( x => 
+                            {infoPedido.map(x =>
                                 <div className="pedido"> {x.id_venda_infoa_gab_venda.vl_total} </div>
-                           )}
-                        </div> 
+                            )}
+                        </div>
                         <div className="column-acao">
                             <div className="title-column"> Inspecionar: </div>
-                         {infoPedido.map(x =>  <Link to={{pathname:"/entregaItem", state: x.ds_situacao}}>  <div className="verificar-botao"> <button> Verificar  </button> </div> </Link> )}
-                        </div> 
-                        
+                            {infoPedido.map(x => <Link to={{ pathname: "/entregaItem", state: x.ds_situacao }}>  <div className="verificar-botao"> <button> Verificar  </button> </div> </Link>)}
+                        </div>
+
                     </div>
-                    <div className="pag">  
-                        <Paginacao  
+                    <div className="pag">
+                        <Paginacao
                             totalPaginas={totalPage}
                             pagina={page}
-                            onPageChange={irPara}                        
-                        /> 
+                            onPageChange={irPara}
+                        />
                     </div>
-                    </main>
-                    <main className="cell">
-                        <div className="titulo"> Seus Pedidos </div>
-                        <div className="column">
-                            <div className="title-column"> Data Do Pedido: </div>
-                            <div className="pedido"> 2021-01-01 </div>
-                        </div>
-                        <div className="column">
-                            <div className="title-column"> Quantidade De Itens: </div>
-                            <div className="pedido"> 1 </div>
-                        </div> 
-                        <div className="column">
-                            <div className="title-column"> Valor Total: </div>
-                            <div className="pedido"> R$199,00 </div>
-                        </div> 
-                        <div className="column-acao">
-                            <div className="verificar-botao"> <button> Verificar </button> </div>
-                        </div> 
-                        <Paginacao />
+                </main>
+                <main className="cell">
+                    <div className="titulo"> Seus Pedidos </div>
+                    <div className="column">
+                        <div className="title-column"> Data Do Pedido: </div>
+                        <div className="pedido"> 2021-01-01 </div>
+                    </div>
+                    <div className="column">
+                        <div className="title-column"> Quantidade De Itens: </div>
+                        <div className="pedido"> 1 </div>
+                    </div>
+                    <div className="column">
+                        <div className="title-column"> Valor Total: </div>
+                        <div className="pedido"> R$199,00 </div>
+                    </div>
+                    <div className="column-acao">
+                        <div className="verificar-botao"> <button> Verificar </button> </div>
+                    </div>
+                    <Paginacao />
+                </main>
+            </StyledEscolhaEntrega>
 
-                    </main>
-                 </StyledEscolhaEntrega> 
-           
         </div>
-        
+
     )
 }
