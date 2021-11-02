@@ -15,6 +15,13 @@ const api = new Api();
 
 export default function GerentePedidos() {
     const [infoGeral, setInfoGeral] = useState([]);
+    const [page, setPage] = useState(1)
+    const [totalPage, setTotalPage] = useState(0)
+
+
+    function irPara(pagina){
+        setPage(pagina)
+    }
 
     async function listar() {
         let r = await api.listarPedidos();
@@ -33,7 +40,7 @@ export default function GerentePedidos() {
     useEffect(() => {
         listar()
 
-    }, [])
+    }, [ page ])
 
     return (
         <div style={{ backgroundColor: "#333333", minHeight: "100vh" }}>

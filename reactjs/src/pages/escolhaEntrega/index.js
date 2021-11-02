@@ -36,7 +36,9 @@ export default function EscolhaEntrega() {
     useEffect(() => {
 
         pedidosUsu()
-    }, [])
+
+        
+    }, [ page ])
 
     const pedidosUsu = async () => {
         let r = await api.listarPedidosDoUsuario(id)

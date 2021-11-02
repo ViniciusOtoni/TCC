@@ -42,6 +42,10 @@ const StyledGerentePedidos = styled.div`
     display: none;
   }
 
+  .teste {
+    background-color: #282828;
+  }
+
   @media (max-width: 425px) {
     .pc {
       display: none;
