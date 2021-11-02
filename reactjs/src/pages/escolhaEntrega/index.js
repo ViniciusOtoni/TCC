@@ -24,25 +24,20 @@ export default function EscolhaEntrega() {
     const [totalPage, setTotalPage] = useState(0)
     const [id, setId] = useState(usuarioLogado.id_usuario)
 
-    console.log(infoPedido)
-
-
-
+    // console.log(infoPedido)
 
     function irPara(pagina) {
         setPage(pagina)
     }
 
     useEffect(() => {
-
         pedidosUsu()
-
-        
     }, [ page ])
 
     const pedidosUsu = async () => {
-        let r = await api.listarPedidosDoUsuario(id)
-        setInfoPedido(r)
+        let r = await api.listarPedidosDoUsuario(id, page)
+        setInfoPedido([...r.items])
+        setTotalPage(r.totalPaginas)
     }
 
 
@@ -94,6 +89,7 @@ export default function EscolhaEntrega() {
                     </div>
                     <div className="pag">
                         <Paginacao
+                            style={{ justifyContent: "center" }}
                             totalPaginas={totalPage}
                             pagina={page}
                             onPageChange={irPara}
