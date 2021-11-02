@@ -33,7 +33,7 @@ export default function GerenteProdutosCadastrados() {
         let r = await api.removerProduto(info.id_produto)
         toast.dark('Produto removido')
         Listar();
-        return r;
+        
     }
 
     function irPara(pagina) {
@@ -88,40 +88,51 @@ export default function GerenteProdutosCadastrados() {
                     </div>
                 </main>
                 <main className="cell">
-                    <div className="line-black">
-                        <div className="coluna"> ID: </div>
-                        <div className="valor-coluna"> 2345678 </div>
+                    {produtos.map(info =>
+                        <div>
+                            <div className="line-black">  
+                            <div className="coluna"> ID: </div>
+                            <div className="valor-coluna"> {info.id_produto} </div>
+                        </div>
+                        <div className="line-gray">
+                            <div className="coluna"> Nome: </div>
+                            <div className="valor-coluna"> {info.nm_produto} </div>
+                        </div>
+                        <div className="line-black">
+                            <div className="coluna"> Código de Barra: </div>
+                            <div className="valor-coluna"> {info.ds_codigo_barra} </div>
+                        </div>
+                        <div className="line-gray">
+                            <div className="coluna"> Categoria  </div>
+                            <div className="valor-coluna"> {info.ds_categoria}  </div>
+                        </div>
+                        <div className="line-black">
+                            <div className="coluna"> Preço </div>
+                            <div className="valor-coluna"> {info.vl_preco} </div>
+                        </div>
+                        <div className="line-gray">
+                            <div className="coluna"> Vizualizar  </div>
+                            <div className="valor-coluna"> <Link to={{ pathname: "/gerenteVizualizar", state: info }}> <StyledButtonAdm className="styled">  Vizualizar </StyledButtonAdm> </Link></div>
+                        </div>
+                        <div className="line-black">
+                            <div className="coluna"> Editar </div>
+                            <div className="valor-coluna"> <Link to={{ pathname: "/gerenteAlterar", state: info }}> <StyledButtonAdm cor='laranja' className="styled2"> Editar </StyledButtonAdm> </Link> </div>
+                        </div>
+                        <div className="line-gray">
+                            <div className="coluna"> Excluir: </div>
+                            <div className="valor-coluna"> <StyledButtonAdm cor='vermelho' className="styled3" onClick={() => Remover(info)}> Excluir </StyledButtonAdm> </div>
+                        </div>
+                       
+                        </div>    
+                    )}
+                    <div className="pag">
+                        <Paginacao
+                            totalPaginas={totalPages}
+                            pagina={page}
+                            onPageChange={irPara}
+                        />
                     </div>
-                    <div className="line-gray">
-                        <div className="coluna"> Nome: </div>
-                        <div className="valor-coluna"> nome grandao p testar o flex wrap só mais um pouco </div>
-                    </div>
-                    <div className="line-black">
-                        <div className="coluna"> Código de Barra: </div>
-                        <div className="valor-coluna"> 12345678901 </div>
-                    </div>
-                    <div className="line-gray">
-                        <div className="coluna"> Categoria  </div>
-                        <div className="valor-coluna"> Xbox  </div>
-                    </div>
-                    <div className="line-black">
-                        <div className="coluna"> Preço </div>
-                        <div className="valor-coluna"> R$ 99,00 </div>
-                    </div>
-                    <div className="line-gray">
-                        <div className="coluna"> Vizualizar  </div>
-                        <div className="valor-coluna"> <StyledButtonAdm className="styled">  Vizualizar </StyledButtonAdm> </div>
-                    </div>
-                    <div className="line-black">
-                        <div className="coluna"> Editar </div>
-                        <div className="valor-coluna"> <StyledButtonAdm cor='laranja' className="styled2"> Editar </StyledButtonAdm> </div>
-                    </div>
-                    <div className="line-gray">
-                        <div className="coluna"> Excluir: </div>
-                        <div className="valor-coluna"> <StyledButtonAdm cor='vermelho' className="styled3"> Excluir </StyledButtonAdm> </div>
-                    </div>
-                    <div className="pag"> <Paginacao /> </div>
-                    <div className="back"> <Link to="/gerenteEscolha"><StyledButtonAdm cor="vermelho" style={{ width: "10em" }} > Voltar </StyledButtonAdm></Link> </div>
+                     <div className="back"> <Link to="/gerenteEscolha"><StyledButtonAdm cor="vermelho" style={{ width: "10em" }} > Voltar </StyledButtonAdm></Link> </div>
                 </main>
 
             </StyledGerenteCadastrados>

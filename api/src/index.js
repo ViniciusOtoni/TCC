@@ -258,21 +258,26 @@ app.put('/produto/avaliacao/:idProduto', async (req, resp) => {
 
 
 
+
 app.delete('/produto/:idProduto', async (req, resp) => {
     
     try {
 
+        let a = await db.infoa_gab_venda_item.destroy({
+            where: { 'id_produto': req.params.idProduto}
+        })
 
-        
-    let r = await db.infoa_gab_produto.destroy({
-       where: {
-           id_produto : req.params.idProduto
-       } 
-    })
-    resp.sendStatus(200); } catch (e) {
+        let r = await db.infoa_gab_produto.destroy({
+        where: {
+            'id_produto' : req.params.idProduto
+        } 
+        })
+        resp.sendStatus(200); } catch (e) {
         resp.send( e.toString() )
     }
 })
+
+
 
 app.post('/cadastrarGerente', async ( req, resp ) => {
     let r = req.body;
@@ -614,7 +619,7 @@ app.get('/pedido', async (req, resp) => {
 
         let page = req.query.page || 0;
 
-        if(page <= 0) page = 1
+        if (page <= 0) page = 1
 
         const itensPerPage = 10;
         const skipItems = (page - 1) * itensPerPage; 

@@ -118,7 +118,7 @@ const StyledGerenteCadastrados = styled.div`
 
     .back {
       margin-top: 2em;
-      background-color: #282828;
+      
       padding: 2em;
       padding-left: 7em;
     }

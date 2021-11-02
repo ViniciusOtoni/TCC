@@ -37,7 +37,7 @@ export default function GerenteAlterar(props) {
             imagemQuartenaria,
             infoProduto.id_produto
         )
-        toast.dark("Produto alterado")
+        toast.success("Produto alterado")
         navigation.push('/gerenteCadastrar');
     }
 
