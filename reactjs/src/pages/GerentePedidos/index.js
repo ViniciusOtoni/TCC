@@ -15,19 +15,13 @@ const api = new Api();
 
 export default function GerentePedidos() {
     const [infoGeral, setInfoGeral] = useState([]);
-    const [page, setPage] = useState(1)
-    const [totalPage, setTotalPage] = useState(0)
-
-
-    function irPara(pagina){
-        setPage(pagina)
-    }
+    const [page, setPage] = useState(1);
+    const [totalPage, setTotalPage] = useState(0);
 
     async function listar() {
-        let r = await api.listarPedidos();
-        setInfoGeral(r);
-        return r;
-
+        const r = await api.listarPedidos(page);
+        setInfoGeral([...r.items]);
+        setTotalPage(r.totalPaginas)
     }
 
     async function alterarSituacao(item, situacao) {
@@ -37,10 +31,13 @@ export default function GerentePedidos() {
         return r;
     }
 
+    function irPara(pagina){
+        setPage(pagina)
+    }
+
     useEffect(() => {
         listar()
-
-    }, [ page ])
+    }, [page])
 
     return (
         <div style={{ backgroundColor: "#333333", minHeight: "100vh" }}>
@@ -62,7 +59,7 @@ export default function GerentePedidos() {
                             {infoGeral.map(item =>
                                 <tr style={{ backgroundColor: "#282828" }}>
                                     <td style={{ paddingLeft: "1em" }}> {item.id_entrega} </td>
-                                    <td > {item.id_endereco_infoa_gab_endereco.id_usuario_infoa_gab_usuario.nm_usuario} </td>
+                                    <td> {item.id_endereco_infoa_gab_endereco.id_usuario_infoa_gab_usuario.nm_usuario} </td>
                                     <td style={{ paddingLeft: "3.8em" }}> {item.id_venda_infoa_gab_venda.ds_pagamento} </td>
                                     <td style={{ paddingLeft: "1em" }}> {item.id_venda_infoa_gab_venda.vl_total} </td>
                                     <td>  {item.ds_situacao} </td>
@@ -78,7 +75,11 @@ export default function GerentePedidos() {
                     </table>
                     <div className="footer">
                         <Link to="/gerenteCadastrar"><StyledButtonAdm cor="vermelho" style={{ marginRight: "18em", width: "10em" }}> Voltarr </StyledButtonAdm></Link>
-                        <Paginacao />
+                        <Paginacao 
+                            totalPaginas={totalPage}
+                            pagina={page}
+                            onPageChange={irPara}
+                        />
                     </div>
                 </main>
                 <main className="cell">
