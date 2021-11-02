@@ -59,6 +59,11 @@ export default class Api {
     return r.data;
   }
 
+  async listarPedidos(page) {
+    let r = await api.get(`/pedido?page=${page}`);
+    return r.data;
+  }
+
   async AlterarProduto(
     nm_produto,
     vl_preco,
@@ -243,11 +248,6 @@ export default class Api {
     console.log(json);
 
     let r = await api.post(`/validarCompra`, json);
-    return r.data;
-  }
-
-  async listarPedidos(page) {
-    let r = await api.get(`/pedido?page=${page}`);
     return r.data;
   }
 

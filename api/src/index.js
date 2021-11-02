@@ -615,16 +615,12 @@ app.post('/pedido', async (req, resp) => {
 
 app.get('/pedido', async (req, resp) => {
     try {
-
-
         let page = req.query.page || 0;
 
         if (page <= 0) page = 1
 
         const itensPerPage = 10;
         const skipItems = (page - 1) * itensPerPage; 
-
-
 
         let x = await db.infoa_gab_entrega.findAll({
            
@@ -648,8 +644,7 @@ app.get('/pedido', async (req, resp) => {
                             required: true
                         }
                     ]
-                }
-                
+                } 
             ]
         });
 
