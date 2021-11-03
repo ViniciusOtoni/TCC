@@ -26,6 +26,8 @@ export default function GerenteAlterar(props) {
     const navigation = useHistory();
 
     async function Alterar() {
+       
+
         let x = await api.AlterarProduto(
             nome,
             preco,
@@ -37,8 +39,12 @@ export default function GerenteAlterar(props) {
             imagemQuartenaria,
             infoProduto.id_produto
         )
-        toast.success("Produto alterado")
+
         navigation.push('/gerenteCadastrar');
+        
+        
+
+        
     }
 
     function SetVar() {

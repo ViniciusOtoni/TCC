@@ -59,8 +59,13 @@ export default class Api {
     return r.data;
   }
 
-  async listarPedidos(page) {
-    let r = await api.get(`/pedido?page=${page}`);
+  async listarPedidos(page, id) {
+    let r = await api.get(`/pedido?page=${page}`, {id});
+    return r.data;
+  }
+
+  async listarPedidos2(id) {
+    let r = await api.get(`/pedidoTeste`, id);
     return r.data;
   }
 
@@ -251,8 +256,8 @@ export default class Api {
     return r.data;
   }
 
-  async alterarSituacaoPedido(id, situacao) {
-    let r = await api.put(`/pedido/${id}`, { situacao });
+  async alterarSituacaoPedido(id, situacao, data) {
+    let r = await api.put(`/pedido/${id}`, { situacao, data });
     return r.data;
   }
 

@@ -615,17 +615,23 @@ app.post('/pedido', async (req, resp) => {
 
 app.get('/pedido', async (req, resp) => {
     try {
-        let page = req.query.page || 0;
 
+
+        let page = req.query.page || 0;
+      
+        
         if (page <= 0) page = 1
 
         const itensPerPage = 10;
         const skipItems = (page - 1) * itensPerPage; 
 
+
+
         let x = await db.infoa_gab_entrega.findAll({
            
             limit: itensPerPage,
             offset: skipItems,
+           
            
             include: [
                 {
@@ -644,7 +650,8 @@ app.get('/pedido', async (req, resp) => {
                             required: true
                         }
                     ]
-                } 
+                }
+                
             ]
         });
 
@@ -663,6 +670,19 @@ app.get('/pedido', async (req, resp) => {
         });
 
     } catch (error) {
+        resp.send(`Erro no get da rota /pedido ${corpo.id}`)
+    }
+})
+
+app.get('/pedidoTeste', async (req, resp) => {
+    try {
+        let corpo = req.body;
+        let x = await db.infoa_gab_entrega.findOne({where: {id_entrega: corpo.id}});
+
+
+        resp.send(x);
+
+    } catch (error) {
         resp.send(`Erro no get da rota /pedido ${error}`)
     }
 })
@@ -672,7 +692,11 @@ app.put('/pedido/:idEntrega', async (req, resp) => {
     try {
         let r = req.body;
         let alterar = await db.infoa_gab_entrega.update(
-            { ds_situacao: r.situacao }, { where: { id_entrega: req.params.idEntrega } }
+            {
+                ds_situacao: r.situacao,
+                dt_saida: data
+            },
+            { where: { id_entrega: req.params.idEntrega } }
         )
 
         resp.send(alterar)

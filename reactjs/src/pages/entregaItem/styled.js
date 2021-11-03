@@ -216,14 +216,14 @@ const StyledEntregaItem = styled.div`
     }
 
     .icon2 img {
-      width: 4.3;
+      width: 4.3em;
       height: 5em;
       padding-bottom: 1em;
     }
 
     .icon3 img {
-      width: 4.3;
-      height: 5em;
+      width: 5em;
+      height: 5.4em;
       padding-bottom: 1em;
       padding-right: 1em;
     }

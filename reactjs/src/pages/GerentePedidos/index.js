@@ -24,8 +24,8 @@ export default function GerentePedidos() {
         setTotalPage(r.totalPaginas)
     }
 
-    async function alterarSituacao(item, situacao) {
-        let r = await api.alterarSituacaoPedido(item.id_entrega, situacao);
+    async function alterarSituacao(item, situacao, data) {
+        let r = await api.alterarSituacaoPedido(item.id_entrega, situacao, data);
         alert('Situacao')
         listar();
         return r;
@@ -63,9 +63,9 @@ export default function GerentePedidos() {
                                     <td style={{ paddingLeft: "3.8em" }}> {item.id_venda_infoa_gab_venda.ds_pagamento} </td>
                                     <td style={{ paddingLeft: "1em" }}> {item.id_venda_infoa_gab_venda.vl_total} </td>
                                     <td>  {item.ds_situacao} </td>
-                                    <td className="botao1"> <StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "8.5em", fontSize: ".7em" }} cor="vermelho" onClick={() => alterarSituacao(item, "Saiu para entrega")}> Saiu Para Entrega </StyledButtonAdm> </td>
-                                    <td className="botao2"> <StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "10.5em", padding: "1em 0em" }} cor="laranja" onClick={() => alterarSituacao(item, "A Caminho")}> A Caminho </StyledButtonAdm> </td>
-                                    <td className="botao3"> <StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "7.5em", padding: "1em 0em" }} onClick={() => alterarSituacao(item, 'Entregue')}>  Entregue </StyledButtonAdm> </td>
+                                    <td className="botao1"> <StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "8.5em", fontSize: ".7em" }} cor="vermelho" onClick={() => alterarSituacao(item, "Saiu para entrega", new Date())}> Saiu Para Entrega </StyledButtonAdm> </td>
+                                    <td className="botao2"> <StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "10.5em", padding: "1em 0em" }} cor="laranja" onClick={() => alterarSituacao(item, "A Caminho", new Date())}> A Caminho </StyledButtonAdm> </td>
+                                    <td className="botao3"> <StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "7.5em", padding: "1em 0em" }} onClick={() => alterarSituacao(item, 'Entregue', new Date())}>  Entregue </StyledButtonAdm> </td>
                                     <td className="botao4"> <Link to={{ pathname: "/gerenteListar", state: item.id_venda_infoa_gab_venda.id_venda }}><StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "7.5em", fontSize: ".7em" }} cor="preto"> Ver Itens </StyledButtonAdm> </Link></td>
                                     {console.log(item)}
                                 </tr>

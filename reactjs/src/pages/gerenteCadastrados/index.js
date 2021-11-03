@@ -31,7 +31,7 @@ export default function GerenteProdutosCadastrados() {
 
     async function Remover(info) {
         let r = await api.removerProduto(info.id_produto)
-        toast.dark('Produto removido')
+        toast.sucess('Produto removido')
         Listar();
         
     }

@@ -83,7 +83,7 @@ export default function EscolhaEntrega() {
                         </div>
                         <div className="column-acao">
                             <div className="title-column"> Inspecionar: </div>
-                            {infoPedido.map(x => <Link to={{ pathname: "/entregaItem", state: x.ds_situacao }}>  <div className="verificar-botao"> <button> Verificar  </button> </div> </Link>)}
+                            {infoPedido.map(x => <Link to={{ pathname: "/entregaItem", state: x }}> {console.log(x)}  <div className="verificar-botao"> <button> Verificar  </button> </div> </Link>)}
                         </div>
 
                     </div>
