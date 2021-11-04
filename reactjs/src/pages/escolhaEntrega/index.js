@@ -24,8 +24,6 @@ export default function EscolhaEntrega() {
     const [totalPage, setTotalPage] = useState(0)
     const [id, setId] = useState(usuarioLogado.id_usuario)
 
-    // console.log(infoPedido)
-
     function irPara(pagina) {
         setPage(pagina)
     }
@@ -36,6 +34,12 @@ export default function EscolhaEntrega() {
 
     const pedidosUsu = async () => {
         let r = await api.listarPedidosDoUsuario(id, page)
+
+
+        if (r.items.length === 0 ) {
+            nave.push('/carrinho')
+        }
+
         setInfoPedido([...r.items])
         setTotalPage(r.totalPaginas)
     }

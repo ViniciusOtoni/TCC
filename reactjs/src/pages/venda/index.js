@@ -11,7 +11,7 @@ const api = new Api();
 
 
 export default function Venda(props) {
-    const [pesquisa, setPesquisa] = useState(props.location.state || '');
+    const pesquisa = props.location.state || '';
     const [produto, setProduto] = useState([]);
     const [order, setOrder] = useState('');
     const [page, setPage] = useState(1);

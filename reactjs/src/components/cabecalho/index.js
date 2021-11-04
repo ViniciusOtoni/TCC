@@ -32,12 +32,15 @@ export default function Cabecalho(props) {
     Cookies.remove("usuario-logado");
   };
 
-  const exemplo = () => {
-      navigation.push({
-        pathname: '/venda',
-        state: {pesquisa}
-      })
+  const search = () => {
+        navigation.push({
+          pathname: '/venda',
+          state: {pesquisa}
+        })
   }
+
+  useEffect(() => {
+  }, [pesquisa])
   
   return (
     <StyledCabecalho corLetra={props.corLetra}>
@@ -52,7 +55,7 @@ export default function Cabecalho(props) {
         </div>
 
         <div className="pesquisa">
-              <img onClick={exemplo} className="lupa" src="./assets/images/lupa.svg"/> 
+              <img onClick={search} className="lupa" src="./assets/images/lupa.svg"/> 
               <input onChange={e => setPesquisa(e.target.value)}/> 
         </div>
 
