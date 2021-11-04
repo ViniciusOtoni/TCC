@@ -26,14 +26,7 @@ export default function BoxItemCarrinho(props) {
 
 
 
-    function alterar() {
-        produto.total = Math.round(produto.preco * qtd);
-        setTotal(produto.total)
-        if (props.respostaFilho)
-            props.respostaFilho()
 
-        produto.quantidade = qtd;
-    }
 
 
 
@@ -41,8 +34,18 @@ export default function BoxItemCarrinho(props) {
 
 
     useEffect(() => {
+        
+        function alterar() {
+            produto.total = Math.round(produto.preco * qtd);
+            setTotal(produto.total)
+            if (props.respostaFilho)
+                props.respostaFilho()
+    
+            produto.quantidade = qtd;
+        }
+        
         alterar()
-    }, [qtd])
+    }, [qtd, produto, props])
 
 
 

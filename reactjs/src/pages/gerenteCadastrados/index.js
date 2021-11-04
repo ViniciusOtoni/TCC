@@ -5,7 +5,7 @@ import Paginacao from "../../components/paginacao";
 
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Api from "../../services/api";
@@ -38,6 +38,12 @@ export default function GerenteProdutosCadastrados() {
     }
 
     useEffect(() => {
+        async function Listar() {
+            const e = await api.listarProdutos2(page);
+            SetProdutos([...e.items]);
+            setTotalPages(e.totalPaginas);
+        }
+
         Listar()
     }, [page])
 

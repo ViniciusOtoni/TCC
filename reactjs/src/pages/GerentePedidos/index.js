@@ -18,6 +18,7 @@ export default function GerentePedidos() {
     const [page, setPage] = useState(1);
     const [totalPage, setTotalPage] = useState(0);
 
+    
     async function listar() {
         const r = await api.listarPedidos(page);
         console.log(r)
@@ -37,9 +38,16 @@ export default function GerentePedidos() {
     }
 
     useEffect(() => {
+        async function listar() {
+            const r = await api.listarPedidos(page);
+            console.log(r)
+            setInfoGeral([...r.items]);
+            setTotalPage(r.totalPaginas)
+        }
         listar()
     }, [page])
 
+    
     return (
         <div style={{ backgroundColor: "#333333", minHeight: "100vh" }}>
             <CabecalhoAdm bNulo={true} />

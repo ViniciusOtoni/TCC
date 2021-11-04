@@ -14,16 +14,19 @@ export default function GerenteNaosei(props) {
 
     console.log(setInfo)
 
-    async function listarProduto() {
-        let data = await api.listarPedidoPorVenda(info);
-        setProdutos(data);
-        return data;
-    }
+   
 
     useEffect(() => {
+        
+        async function listarProduto() {
+            let data = await api.listarPedidoPorVenda(info);
+            setProdutos(data);
+            return data;
+        }
+        
         listarProduto()
 
-    }, [])
+    }, [info])
 
     return (
         <div style={{ backgroundColor: "#333333" }}>

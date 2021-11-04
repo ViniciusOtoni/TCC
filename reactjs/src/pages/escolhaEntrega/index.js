@@ -31,20 +31,23 @@ export default function EscolhaEntrega() {
     }
 
     useEffect(() => {
-        pedidosUsu()
-    }, [ page ])
-
-    const pedidosUsu = async () => {
-        let r = await api.listarPedidosDoUsuario(id, page)
-
-
-        if (r.items.length === 0 ) {
-            nave.push('/carrinho')
+        
+        const pedidosUsu = async () => {
+            let r = await api.listarPedidosDoUsuario(id, page)
+    
+    
+            if (r.items.length === 0 ) {
+                nave.push('/carrinho')
+            }
+    
+            setInfoPedido([...r.items])
+            setTotalPage(r.totalPaginas)
         }
 
-        setInfoPedido([...r.items])
-        setTotalPage(r.totalPaginas)
-    }
+        pedidosUsu()
+    }, [ page, id, nave ])
+
+   
 
 
     function lerUsuarioQuelogou() {
