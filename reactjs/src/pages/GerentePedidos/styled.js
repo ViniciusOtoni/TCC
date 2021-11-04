@@ -42,7 +42,7 @@ const StyledGerentePedidos = styled.div`
     display: none;
   }
 
-  .teste {
+  .linha-1 {
     background-color: #282828;
   }
 

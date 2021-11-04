@@ -536,8 +536,9 @@ app.post('/validarCompra', async ( req, resp ) => {
             id_endereco: enderecoUsuario.id_endereco,
             id_venda: gerarVenda.id_venda,
             ds_situacao: 'aguardando',
+            dt_situacao: Date.now(),
             dt_saida: Date.now(),
-            dt_entrega: '0000-01-01'
+            dt_entrega: Date.now() 
         });
         
         resp.send(entrega)
@@ -548,67 +549,6 @@ app.post('/validarCompra', async ( req, resp ) => {
     }}) // 100% FEITA!!
 
 
-
-
-
-app.get('/endereco', async (req, resp) => {
-    let get = await db.infoa_gab_endereco.findAll({
-        include: [
-                
-        ]
-    });
-
-    resp.send(get);
-})
-
-
-app.post('/endereco', async (req, resp) => {
-    try {
-        let r = req.body;
-        let usuario = await db.infoa_gab_usuario.findOne({
-            where: {
-                ds_email: r.ds_email,
-                ds_senha: r.ds_senha
-            }
-        })
-
-
-        let l = await db.infoa_gab_endereco.create({
-            id_usuario: usuario.id_usuario,
-            nm_bairro: r.nm_bairro,
-            nm_rua: r.nm_rua,
-            nr_numero_rua: r.nr_numero_rua,
-            ds_cep: r.ds_cep,
-            ds_complemento: r.ds_cep
-        })
-
-        resp.send(l)
-    } catch (error) {
-        resp.send({erro: `${error.toString()}`})
-    }    
-})
-
-
-
-
-app.post('/pedido', async (req, resp) => {
-    try {
-        let l = req.body;
-
-        let r = await db.infoa_gab_entrega.create({
-            id_venda_item: l.id_venda_item,
-            id_endereco: l.id_endereco,
-            ds_situacao: l.ds_situacao,
-            dt_saida: Date.now(),
-            dt_entrega: new Date('2021-11-1')
-
-        })
-
-        resp.send(r);
-    } catch (error) {
-        resp.send({erro: `${error.toString()}`}) 
-    }
-} )
 
 
 
@@ -669,7 +609,7 @@ app.get('/pedido', async (req, resp) => {
         });
 
     } catch (error) {
-        resp.send(`Erro no get da rota /pedido ${corpo.id}`)
+        resp.send(`Erro no get da rota /pedido ${ error }`)
     }
 })
 
@@ -691,7 +631,7 @@ app.put('/pedido/:idEntrega', async (req, resp) => {
         let alterar = await db.infoa_gab_entrega.update(
             {
                 ds_situacao: r.situacao,
-                dt_saida: r.data
+                dt_situacao: r.data
             },
             { where: { id_entrega: req.params.idEntrega } }
         )
