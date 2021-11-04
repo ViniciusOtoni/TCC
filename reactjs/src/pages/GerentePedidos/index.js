@@ -20,6 +20,7 @@ export default function GerentePedidos() {
 
     async function listar() {
         const r = await api.listarPedidos(page);
+        console.log(r)
         setInfoGeral([...r.items]);
         setTotalPage(r.totalPaginas)
     }
@@ -56,8 +57,8 @@ export default function GerentePedidos() {
                             <th>  </th>
                         </thead>
                         <tbody>
-                            {infoGeral.map(item =>
-                                <tr style={{ backgroundColor: "#282828" }}>
+                            {infoGeral.map((item, i) =>
+                                <tr className={i % 2 === 1 ? "linha-1" : ""}>
                                     <td style={{ paddingLeft: "1em" }}> {item.id_entrega} </td>
                                     <td> {item.id_endereco_infoa_gab_endereco.id_usuario_infoa_gab_usuario.nm_usuario} </td>
                                     <td style={{ paddingLeft: "3.8em" }}> {item.id_venda_infoa_gab_venda.ds_pagamento} </td>

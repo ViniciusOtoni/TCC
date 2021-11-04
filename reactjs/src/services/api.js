@@ -59,8 +59,8 @@ export default class Api {
     return r.data;
   }
 
-  async listarPedidos(page, id) {
-    let r = await api.get(`/pedido?page=${page}`, {id});
+  async listarPedidos(page) {
+    let r = await api.get(`/pedido?page=${page}`);
     return r.data;
   }
 
