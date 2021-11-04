@@ -256,8 +256,8 @@ export default class Api {
     return r.data;
   }
 
-  async alterarSituacaoPedido(id, situacao ) {
-    let r = await api.put(`/pedido/${id}`, { situacao });
+  async alterarSituacaoPedido(id, situacao, data ) {
+    let r = await api.put(`/pedido/${id}`, { situacao, data });
     return r.data;
   }
 

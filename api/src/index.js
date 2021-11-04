@@ -690,7 +690,8 @@ app.put('/pedido/:idEntrega', async (req, resp) => {
         let r = req.body;
         let alterar = await db.infoa_gab_entrega.update(
             {
-                ds_situacao: r.situacao
+                ds_situacao: r.situacao,
+                dt_saida: r.data
             },
             { where: { id_entrega: req.params.idEntrega } }
         )
@@ -739,6 +740,7 @@ app.get('/pedido/:idUsuario', async (req, resp ) => {
 
         attributes: [[ "id_entrega", "id_entrega" ], ["ds_situacao", "ds_situacao"]],
         
+
          include: [{
             model: db.infoa_gab_venda,
             as: 'id_venda_infoa_gab_venda',
