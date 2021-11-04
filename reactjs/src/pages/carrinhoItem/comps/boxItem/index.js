@@ -45,7 +45,7 @@ export default function BoxItemCarrinho(props) {
         }
         
         alterar()
-    }, [qtd, produto, props])
+    }, [qtd, produto])
 
 
 
