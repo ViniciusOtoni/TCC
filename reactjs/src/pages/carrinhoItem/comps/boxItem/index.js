@@ -29,7 +29,7 @@ export default function BoxItemCarrinho(props) {
 
 
 
-
+    console.log( props)
 
 
 
@@ -45,7 +45,11 @@ export default function BoxItemCarrinho(props) {
         }
         
         alterar()
-    }, [qtd, produto])
+    }, [qtd, produto, props ])
+
+    useEffect(() => {
+
+    }, [])
 
 
 

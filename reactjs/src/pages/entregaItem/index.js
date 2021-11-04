@@ -73,7 +73,7 @@ export default function EntregaItem(props) {
     }, [recebido])
 
     return (
-        <div style={{ backgroundColor: "#333333" }}>
+        <div style={{ backgroundColor: "#333333", minHeight:"100vh"}}>
             <Cabecalho corLetra="nulo" />
 
             <StyledEntregaItem conditions={conditions(recebido.ds_situacao)}>
