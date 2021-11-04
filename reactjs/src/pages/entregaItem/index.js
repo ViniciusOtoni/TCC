@@ -1,14 +1,15 @@
-import { StyledEntregaItem } from "./styled";
-import Cabecalho from "../../components/cabecalho";
-import { Link } from 'react-router-dom';
 import ProgressBar from "@ramonak/react-progress-bar";
-import { useEffect, useState } from "react";
+import Cabecalho from "../../components/cabecalho";
 import Api from "../../services/api"
+import { Link } from 'react-router-dom';
+import { StyledEntregaItem } from "./styled";
+import { useEffect, useState } from "react";
 const api = new Api()
 
 
 
 export default function EntregaItem(props) {
+
 
     const [recebido, setRecebido] = useState(props.location.state)
     const [info, setInfo] = useState({})
@@ -46,7 +47,6 @@ export default function EntregaItem(props) {
             return 50
         else
             return 100
-
     }
 
     function conditions(a) {
@@ -60,15 +60,12 @@ export default function EntregaItem(props) {
 
     async function puxarSituacao() {
         const r = await api.listarPedidos2(recebido.id_entrega);
-        console.log(r)
-      
+        setInfo(r)
     }
 
     useEffect(() => {
         puxarSituacao()
     }, [])
-
-    console.log(info)
 
     return (
         <div style={{ backgroundColor: "#333333" }}>
@@ -111,25 +108,8 @@ export default function EntregaItem(props) {
                         </div>
                     </div>
                     <div className="agp-baixo">
-                        <div className="status">
-                            <div className="titulo"> Situação: </div>
-                            <div className="row-status">
-                                <div className="botao-check1" > <button> </button> </div>
-                                <div className="texto-status"> Indo para o Correio </div>
-                                <div className="horario-status"> {saiuEntrega} </div>
-                            </div>
-                            <div className="row-status">
-                                <div className="botao-check2" > <button> </button> </div>
-                                <div className="texto-status"> A Caminho </div>
-                                <div className="horario-status">  {aCaminho} </div>
-                            </div>
-                            <div className="row-status">
-                                <div className="botao-check3"> <button> </button> </div>
-                                <div className="texto-status"> Produto Entregue </div>
-                                <div className="horario-status"> {entregue} </div>
-                            </div>
-                        </div>
-                        <Link to="/">   <div className="voltar"> <button> Voltar </button> </div> </Link>
+                       
+                        <Link to="/" style={{ textDecoration: "none" }}>   <div className="voltar"> <button> Voltar </button> </div> </Link>
                     </div>
                 </main>
                 <main className="cell">
