@@ -1,9 +1,9 @@
-import { StyledEntregaItem } from "./styled";
-import Cabecalho from "../../components/cabecalho";
-import { Link } from 'react-router-dom';
 import ProgressBar from "@ramonak/react-progress-bar";
-import { useEffect, useState } from "react";
+import Cabecalho from "../../components/cabecalho";
 import Api from "../../services/api"
+import { Link } from 'react-router-dom';
+import { StyledEntregaItem } from "./styled";
+import { useEffect, useState } from "react";
 const api = new Api()
 
 
@@ -60,16 +60,13 @@ export default function EntregaItem(props) {
 
     async function puxarSituacao() {
         const r = await api.listarPedidos2(recebido.id_entrega);
-        console.log(r)
-      
+        setInfo(r)
     }
 
     useEffect(() => {
         puxarSituacao()
     }, [])
-
-    console.log(info)
-
+    
     return (
         <div style={{ backgroundColor: "#333333" }}>
             <Cabecalho corLetra="nulo" />

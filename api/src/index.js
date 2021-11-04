@@ -466,7 +466,6 @@ app.post('/validarCompra', async ( req, resp ) => {
     try {
         
         let r = req.body;
-        console.log(r);
 
         const usuarioLogado = await db.infoa_gab_usuario.findOne({
             where: {
@@ -674,14 +673,12 @@ app.get('/pedido', async (req, resp) => {
     }
 })
 
-app.get('/pedidoTeste', async (req, resp) => {
+app.get('/pedidoTeste/:id', async (req, resp) => {
     try {
-        let corpo = req.body;
+        let corpo = req.params;
         let x = await db.infoa_gab_entrega.findOne({where: {id_entrega: corpo.id}});
-
-
+        
         resp.send(x);
-
     } catch (error) {
         resp.send(`Erro no get da rota /pedido ${error}`)
     }
@@ -693,13 +690,12 @@ app.put('/pedido/:idEntrega', async (req, resp) => {
         let r = req.body;
         let alterar = await db.infoa_gab_entrega.update(
             {
-                ds_situacao: r.situacao,
-                dt_saida: data
+                ds_situacao: r.situacao
             },
             { where: { id_entrega: req.params.idEntrega } }
         )
 
-        resp.send(alterar)
+        resp.sendStatus(200)
     } catch (error) {
         resp.send(`Erro put entrega ${error.toString()}`)
     }
@@ -708,7 +704,6 @@ app.put('/pedido/:idEntrega', async (req, resp) => {
 
 app.get('/listarPedido/:idVenda', async (req, resp) => {
     const id = req.params.idVenda;
-    console.log(id);
 
     const r = await db.infoa_gab_venda_item.findAll({
         where: { 'id_venda': id },
