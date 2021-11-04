@@ -1,23 +1,23 @@
 import { StyledCabecalhoAdm } from "./styled";
 import { StyledButtonAdm } from "../botaoAdm/styled";
 import { StyledInput } from "../input/styled";
-import { Link, useHistory } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+// import { useEffect, useState } from "react";
 
 
 export default function CabecalhoAdm(props) {
-    const [pesquisa, setPesquisa] = useState('');
+    // const [pesquisa, setPesquisa] = useState('');
 
-    const navigation = useHistory();
+    // const navigation = useHistory();
 
-    const search = () => {
+    // const search = () => {
        
-    }
+    // }
 
     return (
         <StyledCabecalhoAdm  nulob={props.nulob} nulo={props.nulo} bNulo={props.bNulo} > 
             <div className="agp"> 
-                <div className="logo"> <img onClick={search} src="/assets/images/logo.svg" alt="" /> </div>
+                <div className="logo"> <img onClick={""} src="/assets/images/logo.svg" alt="" /> </div>
                 <div className="game"> GameBud </div>
             </div>
             <div className="agp-input"> 

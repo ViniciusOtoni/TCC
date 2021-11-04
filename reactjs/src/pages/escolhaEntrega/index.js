@@ -4,7 +4,7 @@ import Cabecalho from "../../components/cabecalho"
 import Paginacao from "../../components/paginacao"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from 'react-router-dom'
 
@@ -23,6 +23,8 @@ export default function EscolhaEntrega() {
     const [page, setPage] = useState(1)
     const [totalPage, setTotalPage] = useState(0)
     const [id, setId] = useState(usuarioLogado.id_usuario)
+
+    console.log(setId)
 
     function irPara(pagina) {
         setPage(pagina)

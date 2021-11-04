@@ -1,5 +1,3 @@
-
-// teste github
 import Cabecalho from "../../components/cabecalho"
 import Footer from "../../components/rodape/index"
 import CaixaJogo from "../../components/caixaJogo"

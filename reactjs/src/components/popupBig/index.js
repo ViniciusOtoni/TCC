@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useHistory } from "react-router";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Cookie from "js-cookie";
+// import Cookie from "js-cookie";
 
 import Api from '../../services/api';
 

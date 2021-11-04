@@ -19,7 +19,7 @@ export default function CaixaJogo(props) {
        setVlAvaliacao(num)
        setIdProduto(id)
        
-       let r = await api.alterarAvaliacao(idProduto, vlAvaliacao)
+       await api.alterarAvaliacao(idProduto, vlAvaliacao)
     }
 
     

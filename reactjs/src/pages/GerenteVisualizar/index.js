@@ -7,13 +7,14 @@ import Paginacao from "../../components/paginacao";
 import { Vizualizar } from "./styled";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Api from "../../services/api";
-
-const api = new Api();
+// import Api from "../../services/api";
+// const api = new Api();
 
 export default function GerenteVizualizar(props) {
     const [infoProduto, setInfoProduto] = useState(props.location.state);
+    
     console.log(infoProduto)
+    console.log(setInfoProduto)
 
     return (
         <div style={{ backgroundColor: "#333333" }}>

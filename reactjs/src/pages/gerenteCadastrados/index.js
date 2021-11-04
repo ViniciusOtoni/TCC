@@ -20,9 +20,6 @@ export default function GerenteProdutosCadastrados() {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
 
-    console.log("total: " + totalPages)
-    console.log("produtos: " + produtos)
-
     async function Listar() {
         const e = await api.listarProdutos2(page);
         SetProdutos([...e.items]);
@@ -30,8 +27,8 @@ export default function GerenteProdutosCadastrados() {
     }
 
     async function Remover(info) {
-        let r = await api.removerProduto(info.id_produto)
-        toast.sucess('Produto removido')
+        await api.removerProduto(info.id_produto)
+        alert('Produto removido')
         Listar();
         
     }

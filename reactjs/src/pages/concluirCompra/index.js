@@ -3,7 +3,7 @@ import { Container } from "./styled"
 import { StyledInput } from '../../components/input/styled'
 import { StyledButtonVerde } from "../../components/botaoVerde/styled"
 
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import { useHistory } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -28,8 +28,9 @@ export default function ConcluirCompra(props) {
     const [email, setEmail] = useState(usuarioLogado.ds_email)
     const [senha, setSenha] = useState(usuarioLogado.ds_senha)
 
-
-
+    console.log(setInfoProduto)
+    console.log(setEmail)
+    console.log(setSenha)
 
     const [cep, setCep] = useState('')
     const [nmRua, setNmRua] = useState('')
@@ -61,7 +62,6 @@ export default function ConcluirCompra(props) {
     const Preco = infoProduto.map(x => {
         return x.preco
     })
-
 
 
     const Quantidade = infoProduto.map(x => {

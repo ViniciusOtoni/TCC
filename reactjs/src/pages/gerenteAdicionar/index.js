@@ -24,7 +24,7 @@ export default function GerenteAlterar() {
     const navigation = useHistory();
 
     async function Cadastrar() {
-        let r = await api.cadastrarProduto(
+        await api.cadastrarProduto(
             nome,
             preco,
             categoria,

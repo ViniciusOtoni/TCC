@@ -4,13 +4,15 @@ import Paginacao from "../../components/paginacao/index.js"
 import CabecalhoAdm from "../../components/cabecalhoAdm/index.js"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import Api from "../../services/api";
 
+import Api from "../../services/api";
 const api = new Api();
 
 export default function GerenteNaosei(props) {
     const [info, setInfo] = useState(props.location.state);
     const [produtos, setProdutos] = useState([])
+
+    console.log(setInfo)
 
     async function listarProduto() {
         let data = await api.listarPedidoPorVenda(info);

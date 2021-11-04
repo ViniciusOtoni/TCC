@@ -3,9 +3,8 @@ import { Link, useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
-import Api from "../../services/api"
-const api = new Api();
-
+// import Api from "../../services/api"
+// const api = new Api();
 
 
 function lerUsuarioQuelogou() {
@@ -55,7 +54,7 @@ export default function Cabecalho(props) {
         </div>
 
         <div className="pesquisa">
-              <img onClick={search} className="lupa" src="./assets/images/lupa.svg"/> 
+              <img onClick={search} className="lupa" src="./assets/images/lupa.svg" alt=""/> 
               <input onChange={e => setPesquisa(e.target.value)}/> 
         </div>
 

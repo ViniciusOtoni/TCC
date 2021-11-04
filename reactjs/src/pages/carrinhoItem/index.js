@@ -22,9 +22,9 @@ export default function CarrinhoItem() {
     const navegation = useHistory()
 
     console.log(produto)
-
-
-
+    console.log(teste)
+    console.log(setTeste)
+    
 
     useEffect(carregarCarrinho, [])
 

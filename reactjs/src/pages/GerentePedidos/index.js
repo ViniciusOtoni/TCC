@@ -4,7 +4,7 @@ import CabecalhoAdm from "../../components/cabecalhoAdm";
 
 import Paginacao from "../../components/paginacao";
 import { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 
