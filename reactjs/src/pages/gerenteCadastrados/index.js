@@ -19,6 +19,7 @@ export default function GerenteProdutosCadastrados() {
     const [produtos, SetProdutos] = useState([]);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    const [pesquisa, setPesquisa] = useState('');
 
     async function Listar() {
         const e = await api.listarProdutos2(page);
@@ -29,27 +30,34 @@ export default function GerenteProdutosCadastrados() {
     async function Remover(info) {
         await api.removerProduto(info.id_produto)
         alert('Produto removido')
-        Listar();
-        
+        Listar(); 
     }
 
     function irPara(pagina) {
         setPage(pagina)
     }
 
+
+    function search(x) {
+        console.log("x: " + x)
+        setPesquisa(x)
+    }
+
     useEffect(() => {
         async function Listar() {
-            const e = await api.listarProdutos2(page);
+            const e = await api.listarProdutos2(page, pesquisa);
+            console.log("pesquisa gerente: " + pesquisa)
+            console.log(e)
             SetProdutos([...e.items]);
             setTotalPages(e.totalPaginas);
         }
 
         Listar()
-    }, [page])
+    }, [page, pesquisa, produtos])
 
     return (
         <div style={{ backgroundColor: "#333333", minHeight: "100vh" }}>
-            <CabecalhoAdm />
+            <CabecalhoAdm search={search}/>
             <ToastContainer />
             <StyledGerenteCadastrados>
                 <main className="pc1">
@@ -68,11 +76,13 @@ export default function GerenteProdutosCadastrados() {
                             {produtos.map(info =>
                                 <tr>
                                     <td style={{ paddingLeft: "1em" }}> {info.id_produto} </td>
-                                    <td> {info.nm_produto} </td>
+                                    <td title={info.nm_produto}> {info.nm_produto != null && info.nm_produto.length >= 27
+                                                                ? info.nm_produto.substr(0, 27) + "..."
+                                                                : info.nm_produto} </td>
                                     <td style={{ paddingLeft: "3.8em" }}> {info.ds_codigo_barra}</td>
                                     <td style={{ textAlign: "center" }}> {info.ds_categoria} </td>
                                     <td>  {info.vl_preco} </td>
-                                    <td className="botaoVerde" texto="true"> <Link to={{ pathname: "/gerenteVizualizar", state: info }}> <StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "7.5em", marginRight: ".3em" }}> Visualizar </StyledButtonAdm> </Link> </td>
+                                    <td className="botaoVerde" texto="true"> <Link to={{ pathname: "/gerenteVizualizar", state: info }}> <StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "7.5em"}}> Visualizar </StyledButtonAdm> </Link> </td>
                                     <td className="botao">  <Link to={{ pathname: "/gerenteAlterar", state: info }}>  <StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "7.5em" }} cor="laranja"> Editar </StyledButtonAdm> </Link> </td>
                                     <td className="botao">  <StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "7.5em" }} cor="vermelho" onClick={() => Remover(info)}>  Excluir </StyledButtonAdm>  </td>
                                 </tr>

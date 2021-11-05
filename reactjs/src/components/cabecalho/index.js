@@ -26,7 +26,7 @@ export default function Cabecalho(props) {
   const [pesquisa, setPesquisa] = useState('');
 
   const navigation = useHistory();
-
+ 
   const logof = () => {
     Cookies.remove("usuario-logado");
   };
