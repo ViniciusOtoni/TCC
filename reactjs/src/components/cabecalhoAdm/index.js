@@ -20,7 +20,8 @@ export default function CabecalhoAdm(props) {
     return (
         <StyledCabecalhoAdm  nulob={props.nulob} nulo={props.nulo} bNulo={props.bNulo} > 
             <div className="agp"> 
-                <div className="logo"> <img onClick={""} src="/assets/images/logo.svg" alt="" /> </div>
+                <Link to="" > <div className="logo"> <img onClick={""} src="/assets/images/logo.svg" alt="" /> </div>
+                </Link>
                 <div className="game"> GameBud </div>
             </div>
             <div className="agp-input"> 
