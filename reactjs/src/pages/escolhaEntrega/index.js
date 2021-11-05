@@ -4,7 +4,7 @@ import Cabecalho from "../../components/cabecalho"
 import Paginacao from "../../components/paginacao"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { toast } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from 'react-router-dom'
 
@@ -37,7 +37,7 @@ export default function EscolhaEntrega() {
     
     
             if (r.items.length === 0 ) {
-                nave.push('/carrinho')
+                nave.push('/entregas')
             }
     
             setInfoPedido([...r.items])
@@ -54,8 +54,6 @@ export default function EscolhaEntrega() {
         let logado = Cookies.get('usuario-logado');
 
         if (logado === undefined) {
-            toast.dark('Loga ae');
-            nave.push('/carrinhoItem')
         } else {
             let usuarioLogado = JSON.parse(logado);
             return usuarioLogado;
