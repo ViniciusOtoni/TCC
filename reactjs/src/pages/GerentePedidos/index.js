@@ -83,7 +83,7 @@ export default function GerentePedidos() {
                         </tbody>
                     </table>
                     <div className="footer">
-                        <Link to="/gerenteCadastrar"><StyledButtonAdm cor="vermelho" style={{ marginRight: "18em", width: "10em" }}> Voltarr </StyledButtonAdm></Link>
+                        <Link to="/gerenteCadastrar"><StyledButtonAdm cor="vermelho" style={{ marginRight: "18em", width: "10em" }}> Voltar </StyledButtonAdm></Link>
                         <Paginacao 
                             totalPaginas={totalPage}
                             pagina={page}
