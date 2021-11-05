@@ -14,7 +14,7 @@ export default function CabecalhoAdm(props) {
        
     // }
 
-    return (
+    return ( 
         <StyledCabecalhoAdm  nulob={props.nulob} nulo={props.nulo} bNulo={props.bNulo} > 
             <div className="agp"> 
                 <Link to="" > <div className="logo"> <img onClick={""} src="/assets/images/logo.svg" alt="" /> </div>
