@@ -122,6 +122,7 @@ app.get('/produto', async (req,resp) => {
 
 app.get('/produtos', async (req, resp) => {
     try {
+        let pesquisa = req.query.pesquisa;
         let page = req.query.page || 0;
 
         if(page <= 0) page = 1
@@ -130,7 +131,12 @@ app.get('/produtos', async (req, resp) => {
         const skipItems = (page - 1) * itensPerPage; 
 
         let r = await db.infoa_gab_produto.findAll({
-            where: { bt_situacao: true },
+            where: {
+                [Op.and]: [
+                    {bt_situacao: true},
+                    {nm_produto: {[Op.substring]: pesquisa}}
+                ]  
+            },
             offset: skipItems,
             limit: itensPerPage
         });
