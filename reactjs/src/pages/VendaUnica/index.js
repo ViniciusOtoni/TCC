@@ -4,11 +4,11 @@ import { StyledButtonVerde } from '../../components/botaoVerde/styled'
 import { Content } from './styled'
 import { Conteudo } from './styled'
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useHistory } from 'react-router'
 import Cookie from 'js-cookie'
 import Api from '../../services/api'
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 const api = new Api()
 
 export default function VendaUnica(props) {
@@ -16,9 +16,11 @@ export default function VendaUnica(props) {
     const [produto, setProduto] = useState(props.location.state)
     const [mandar, setMandar] = useState([produto])
     const [img, setImg] = useState(0)
-
     const [vlAvaliacao, setVlAvaliacao] = useState(0)
     const [idProduto, setIdProduto] = useState(0)
+
+    console.log(setProduto)
+    console.log(setMandar)
 
     //Cookies.remove('carrinho')
 
@@ -26,7 +28,7 @@ export default function VendaUnica(props) {
         setVlAvaliacao(num)
         setIdProduto(id)
 
-        let r = await api.alterarAvaliacao(idProduto, vlAvaliacao)
+        await api.alterarAvaliacao(idProduto, vlAvaliacao)
 
         produto.quantidade = 1;
     }

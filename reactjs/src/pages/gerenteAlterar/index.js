@@ -5,7 +5,7 @@ import CabecalhoAdm from "../../components/cabecalhoAdm";
 
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Api from "../../services/api";
@@ -25,10 +25,11 @@ export default function GerenteAlterar(props) {
 
     const navigation = useHistory();
 
+    console.log(setInfoProduto)
+
     async function Alterar() {
        
-
-        let x = await api.AlterarProduto(
+        await api.AlterarProduto(
             nome,
             preco,
             categoria,
@@ -41,26 +42,25 @@ export default function GerenteAlterar(props) {
         )
 
         navigation.push('/gerenteCadastrar');
-        
-        
-
-        
     }
 
-    function SetVar() {
-        setNome(infoProduto.nm_produto);
-        setCodBarra(infoProduto.ds_codigo_barra);
-        setCategoria(infoProduto.ds_categoria);
-        setPreco(infoProduto.vl_preco);
-        setImagemPrincipal(infoProduto.img_produto);
-        setImagemSecundaria(infoProduto.img_secundaria);
-        setImagemTerciaria(infoProduto.img_terciaria);
-        setImagemQuartenaria(infoProduto.img_quartenaria);
-    }
+   
 
     useEffect(() => {
+        
+        function SetVar() {
+            setNome(infoProduto.nm_produto);
+            setCodBarra(infoProduto.ds_codigo_barra);
+            setCategoria(infoProduto.ds_categoria);
+            setPreco(infoProduto.vl_preco);
+            setImagemPrincipal(infoProduto.img_produto);
+            setImagemSecundaria(infoProduto.img_secundaria);
+            setImagemTerciaria(infoProduto.img_terciaria);
+            setImagemQuartenaria(infoProduto.img_quartenaria);
+        }
+        
         SetVar()
-    }, [])
+    }, [infoProduto])
 
     return (
         <div style={{ backgroundColor: "#333333", minHeight: "100vh" }}>

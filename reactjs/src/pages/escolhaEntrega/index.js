@@ -4,7 +4,7 @@ import Cabecalho from "../../components/cabecalho"
 import Paginacao from "../../components/paginacao"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { ToastContainer, toast } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from 'react-router-dom'
 
@@ -24,29 +24,36 @@ export default function EscolhaEntrega() {
     const [totalPage, setTotalPage] = useState(0)
     const [id, setId] = useState(usuarioLogado.id_usuario)
 
-    // console.log(infoPedido)
+    console.log(setId)
 
     function irPara(pagina) {
         setPage(pagina)
     }
 
     useEffect(() => {
-        pedidosUsu()
-    }, [ page ])
+        
+        const pedidosUsu = async () => {
+            let r = await api.listarPedidosDoUsuario(id, page)
+    
+    
+            if (r.items.length === 0 ) {
+                nave.push('/entregas')
+            }
+    
+            setInfoPedido([...r.items])
+            setTotalPage(r.totalPaginas)
+        }
 
-    const pedidosUsu = async () => {
-        let r = await api.listarPedidosDoUsuario(id, page)
-        setInfoPedido([...r.items])
-        setTotalPage(r.totalPaginas)
-    }
+        pedidosUsu()
+    }, [ page, id, nave ])
+
+   
 
 
     function lerUsuarioQuelogou() {
         let logado = Cookies.get('usuario-logado');
 
         if (logado === undefined) {
-            toast.dark('Loga ae');
-            nave.push('/carrinhoItem')
         } else {
             let usuarioLogado = JSON.parse(logado);
             return usuarioLogado;

@@ -4,7 +4,7 @@ import CabecalhoAdm from "../../components/cabecalhoAdm";
 
 import Paginacao from "../../components/paginacao";
 import { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 
@@ -18,8 +18,10 @@ export default function GerentePedidos() {
     const [page, setPage] = useState(1);
     const [totalPage, setTotalPage] = useState(0);
 
+    
     async function listar() {
         const r = await api.listarPedidos(page);
+        console.log(r)
         setInfoGeral([...r.items]);
         setTotalPage(r.totalPaginas)
     }
@@ -36,9 +38,16 @@ export default function GerentePedidos() {
     }
 
     useEffect(() => {
+        async function listar() {
+            const r = await api.listarPedidos(page);
+            console.log(r)
+            setInfoGeral([...r.items]);
+            setTotalPage(r.totalPaginas)
+        }
         listar()
     }, [page])
 
+    
     return (
         <div style={{ backgroundColor: "#333333", minHeight: "100vh" }}>
             <CabecalhoAdm bNulo={true} />
@@ -56,16 +65,16 @@ export default function GerentePedidos() {
                             <th>  </th>
                         </thead>
                         <tbody>
-                            {infoGeral.map(item =>
-                                <tr style={{ backgroundColor: "#282828" }}>
+                            {infoGeral.map((item, i) =>
+                                <tr className={i % 2 === 1 ? "linha-1" : ""}>
                                     <td style={{ paddingLeft: "1em" }}> {item.id_entrega} </td>
                                     <td> {item.id_endereco_infoa_gab_endereco.id_usuario_infoa_gab_usuario.nm_usuario} </td>
                                     <td style={{ paddingLeft: "3.8em" }}> {item.id_venda_infoa_gab_venda.ds_pagamento} </td>
                                     <td style={{ paddingLeft: "1em" }}> {item.id_venda_infoa_gab_venda.vl_total} </td>
                                     <td>  {item.ds_situacao} </td>
-                                    <td className="botao1"> <StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "8.5em", fontSize: ".7em" }} cor="vermelho" onClick={() => alterarSituacao(item, "Saiu para entrega", new Date())}> Saiu Para Entrega </StyledButtonAdm> </td>
-                                    <td className="botao2"> <StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "10.5em", padding: "1em 0em" }} cor="laranja" onClick={() => alterarSituacao(item, "A Caminho", new Date())}> A Caminho </StyledButtonAdm> </td>
-                                    <td className="botao3"> <StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "7.5em", padding: "1em 0em" }} onClick={() => alterarSituacao(item, 'Entregue', new Date())}>  Entregue </StyledButtonAdm> </td>
+                                    <td className="botao1"> <StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "8.5em", fontSize: ".7em" }} cor="vermelho" onClick={() => alterarSituacao(item, "Saiu para entrega", new Date('2050-10-05') )}> Saiu Para Entrega </StyledButtonAdm> </td>
+                                    <td className="botao2"> <StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "10.5em", padding: "1em 0em" }} cor="laranja" onClick={() => alterarSituacao(item, "A Caminho" )}> A Caminho </StyledButtonAdm> </td>
+                                    <td className="botao3"> <StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "7.5em", padding: "1em 0em" }} onClick={() => alterarSituacao(item, 'Entregue' )}>  Entregue </StyledButtonAdm> </td>
                                     <td className="botao4"> <Link to={{ pathname: "/gerenteListar", state: item.id_venda_infoa_gab_venda.id_venda }}><StyledButtonAdm style={{ fontFamily: "MontserratBold", width: "7.5em", fontSize: ".7em" }} cor="preto"> Ver Itens </StyledButtonAdm> </Link></td>
                                     {console.log(item)}
                                 </tr>
@@ -74,7 +83,7 @@ export default function GerentePedidos() {
                         </tbody>
                     </table>
                     <div className="footer">
-                        <Link to="/gerenteCadastrar"><StyledButtonAdm cor="vermelho" style={{ marginRight: "18em", width: "10em" }}> Voltarr </StyledButtonAdm></Link>
+                        <Link to="/gerenteEscolha"><StyledButtonAdm cor="vermelho" style={{ marginRight: "18em", width: "10em" }}> Voltar </StyledButtonAdm></Link>
                         <Paginacao 
                             totalPaginas={totalPage}
                             pagina={page}

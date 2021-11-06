@@ -22,13 +22,27 @@ export default function CarrinhoItem() {
     const navegation = useHistory()
 
     console.log(produto)
+    console.log(teste)
+    console.log(setTeste)
+    
+
+    useEffect(  
+        function carregarCarrinho() {
+        let carrinho = Cookie.get('carrinho');
+        carrinho = carrinho !== undefined
+            ? JSON.parse(carrinho)
+            : [];
+
+        if (carrinho.length === 0)
+            navegation.push('/carrinho')
 
 
+        setProduto(carrinho)
+        
+    }
+, [ navegation ])
 
-
-    useEffect(carregarCarrinho, [])
-
-
+    
 
 
 

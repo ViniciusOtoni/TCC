@@ -1,6 +1,6 @@
 import axios from "axios";
 const api = axios.create({
-  baseURL: "http://localhost:3030",
+  baseURL: "https://gamebudheroko.herokuapp.com/",
 });
 
 export default class Api {
@@ -54,18 +54,18 @@ export default class Api {
     return r.data;
   }
 
-  async listarProdutos2(page) {
-    let r = await api.get(`/produtos?page=${page}`);
+  async listarProdutos2(page, pesquisa) {
+    let r = await api.get(`/produtos?page=${page}&pesquisa=${pesquisa}`);
     return r.data;
   }
 
-  async listarPedidos(page, id) {
-    let r = await api.get(`/pedido?page=${page}`, {id});
+  async listarPedidos(page) {
+    let r = await api.get(`/pedido?page=${page}`);
     return r.data;
   }
 
   async listarPedidos2(id) {
-    let r = await api.get(`/pedidoTeste`, id);
+    let r = await api.get(`/pedidoTeste/${id}`);
     return r.data;
   }
 
@@ -256,7 +256,7 @@ export default class Api {
     return r.data;
   }
 
-  async alterarSituacaoPedido(id, situacao, data) {
+  async alterarSituacaoPedido(id, situacao, data ) {
     let r = await api.put(`/pedido/${id}`, { situacao, data });
     return r.data;
   }

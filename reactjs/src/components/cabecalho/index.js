@@ -3,9 +3,8 @@ import { Link, useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
-import Api from "../../services/api"
-const api = new Api();
-
+// import Api from "../../services/api"
+// const api = new Api();
 
 
 function lerUsuarioQuelogou() {
@@ -27,17 +26,20 @@ export default function Cabecalho(props) {
   const [pesquisa, setPesquisa] = useState('');
 
   const navigation = useHistory();
-
+ 
   const logof = () => {
     Cookies.remove("usuario-logado");
   };
 
-  const exemplo = () => {
-      navigation.push({
-        pathname: '/venda',
-        state: {pesquisa}
-      })
+  const search = () => {
+        navigation.push({
+          pathname: '/venda',
+          state: {pesquisa}
+        })
   }
+
+  useEffect(() => {
+  }, [pesquisa])
   
   return (
     <StyledCabecalho corLetra={props.corLetra}>
@@ -52,7 +54,7 @@ export default function Cabecalho(props) {
         </div>
 
         <div className="pesquisa">
-              <img onClick={exemplo} className="lupa" src="./assets/images/lupa.svg"/> 
+              <img onClick={search} className="lupa" src="./assets/images/lupa.svg" alt=""/> 
               <input onChange={e => setPesquisa(e.target.value)}/> 
         </div>
 
