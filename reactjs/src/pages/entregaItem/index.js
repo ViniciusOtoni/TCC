@@ -77,7 +77,7 @@ export default function EntregaItem(props) {
             <StyledEntregaItem conditions={conditions(recebido.ds_situacao)}>
                 <main className="pc">
                     <div className="agp-cima">
-                        <div className="row-cima">
+                        <div className="row-cima">  
                             <div className="column">
                                 <div className="icon">
                                     {hiddenCheck(recebido.ds_situacao, 1)
