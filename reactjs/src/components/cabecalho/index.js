@@ -3,9 +3,6 @@ import { Link, useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
-// import Api from "../../services/api"
-// const api = new Api();
-
 
 function lerUsuarioQuelogou() {
   let logado = Cookies.get("usuario-logado");
@@ -66,7 +63,6 @@ export default function Cabecalho(props) {
           ) : (
             <div className="row-user">
               <div className="user-image">
-                
                 <img src={img} alt="" />
               </div>
               <div className="user-login" title={nm}> {nm != null && nm.length >= 25 ? nm.substr(0, 25) + "..." : nm} </div>

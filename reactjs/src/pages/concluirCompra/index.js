@@ -12,10 +12,9 @@ import Cookies from "js-cookie"
 import { useEffect, useState } from "react"
 
 import Api from "../../services/api"
+import MaskedInput from "../../components/mask/input.js"
 
 const api = new Api()
-
-
 
 
 
@@ -221,7 +220,7 @@ export default function ConcluirCompra(props) {
                                 <StyledInput value={dtValidade} onChange={e => setDtValidade(e.target.value)} className="input-lastInfo-text1" />
 
                                 <div className="last-information-text1"> CPF do Titular </div>
-                                <StyledInput value={cpf} onChange={e => setCpf(e.target.value)} className="input-lastInfo-text1" />
+                                <MaskedInput value={cpf} onChange={e => setCpf(e.target.value)} className="input-lastInfo-text1" />
 
                                 <div className="bottom">  <StyledButtonVerde onClick={confirmarDados} style={{ marginTop: "4.8em", height: "2em", width: "17em", marginBottom: "5em" }} className="botao-buttom"> Concluir Compra! </StyledButtonVerde> </div>
                             </div>
