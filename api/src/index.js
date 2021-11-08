@@ -455,7 +455,7 @@ try {
 app.put('/login/senha/:codigo', async (req, resp) => {
     try {
 
-        let l = req.body
+        let l = req.body;
         
         
 
