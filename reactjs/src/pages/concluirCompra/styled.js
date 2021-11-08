@@ -180,9 +180,9 @@ const Container = styled.div`
   }
 
   .input-lastInfo-text1 {
-    width: 300px;
+    width: 320px;
     height: 40px;
-    border-radius: 1em;
+    border-radius: .5em;
   }
 
   .last-input-lastInfo-text1 {

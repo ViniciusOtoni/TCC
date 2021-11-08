@@ -11,7 +11,7 @@ const Mask = styled.div`
   outline: none;
   font-family: MontserratBold;
   cursor: pointer;
-  width: 25em;
+  width: 24em;
 }
 
   .input::placeholder {

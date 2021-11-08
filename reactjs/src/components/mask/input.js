@@ -4,7 +4,7 @@ import { Mask } from './styled.js'
 
 const onlyNumbers = (str) => str.replace(/[^0-9]/g, '');
 
-const MaskedInput = ({ value, onChange, name, mask }) => {
+const MaskedInput = ({ value, onChange, name, mask, placeholder }) => {
   function handleChange(event) {
     onChange({
       ...event,
@@ -18,9 +18,9 @@ const MaskedInput = ({ value, onChange, name, mask }) => {
 
   return (
     <Mask>
-        <InputMask className="input" placeholder="Insira o seu CPF"
+        <InputMask className="input" placeholder={placeholder}
             name={name}
-            mask="999.999.999-99"
+            mask={mask}
             value={value}
             onChange={handleChange}
         />

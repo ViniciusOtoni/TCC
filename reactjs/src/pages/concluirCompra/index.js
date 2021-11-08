@@ -123,7 +123,7 @@ export default function ConcluirCompra(props) {
                 <main className="sub-main">
                     <div className="esquerda-grupo-input">
                         <div className="text-input">Inserir Cep</div>
-                        <StyledInput value={cep} onChange={e => setCep(e.target.value)} placeholder="CEP" className="input-esquerda-grupo" />
+                        <MaskedInput mask="99999-999" value={cep} onChange={e => setCep(e.target.value)} placeholder="Insira o CEP" className="input-esquerda-grupo" />
 
                         <div className="text-input">Inserir Nome da Rua</div>
                         <StyledInput value={nmRua} onChange={e => setNmRua(e.target.value)} placeholder="Nome da Rua" className="input-esquerda-grupo" />
@@ -215,13 +215,13 @@ export default function ConcluirCompra(props) {
 
                             <div className="Last-information-inputs2">
                                 <div className="last-information-text1">Número da Agência</div>
-                                <StyledInput value={nrAgencia} onChange={e => setNrAgencia(e.target.value)} className="input-lastInfo-text1" />
+                                <StyledInput value={nrAgencia} onChange={e => setNrAgencia(e.target.value)} className="input-lastInfo-text1"/>
 
                                 <div className="last-information-text1"> Data de Validade </div>
-                                <StyledInput value={dtValidade} onChange={e => setDtValidade(e.target.value)} className="input-lastInfo-text1" />
+                                <MaskedInput mask="99/99/9999" placeholder="Insira a data" value={dtValidade} onChange={e => setDtValidade(e.target.value)} />
 
                                 <div className="last-information-text1"> CPF do Titular </div>
-                                <MaskedInput value={cpf} onChange={e => setCpf(e.target.value)} className="input-lastInfo-text1" />
+                                <MaskedInput mask="999.999.999-99" placeholder="Insira o CPF" value={cpf} onChange={e => setCpf(e.target.value)} />
 
                                 <div className="bottom">  <StyledButtonVerde onClick={confirmarDados} style={{ marginTop: "4.8em", height: "2em", width: "17em", marginBottom: "5em" }} className="botao-buttom"> Concluir Compra! </StyledButtonVerde> </div>
                             </div>

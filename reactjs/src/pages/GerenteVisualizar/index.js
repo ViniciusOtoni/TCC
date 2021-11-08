@@ -61,7 +61,6 @@ export default function GerenteVizualizar(props) {
                     </div>
                     <div className="footer">
                         <Link to="/gerenteCadastrar"><StyledButtonAdm cor="vermelho" className="voltar"> Voltar </StyledButtonAdm></Link>
-                        <div className="pag"> <Paginacao /> </div>
                     </div>
                 </main>
             </Vizualizar>
