@@ -71,7 +71,7 @@ export default function Cabecalho(props) {
         </Link>
 
         <Link to="/escolhaEntrega" style={{ textDecoration: "none" }}>
-          <div className="entrega"> Entregas </div>
+          <div className="entrega"> Pedidos </div>
         </Link>
         <Link to="/carrinhoItem" style={{ textDecoration: "none" }}>
           <div className="carrinho"> </div>

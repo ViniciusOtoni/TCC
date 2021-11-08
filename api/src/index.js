@@ -319,6 +319,9 @@ try {
     
     let r = req.body;
 
+    if(r.nm_usuario == undefined)
+       return resp.send({ error: 'O campo do email precisa sem preenchido'})
+
     let u1 = await db.infoa_gab_usuario.findOne({ where: { ds_cpf: r.ds_cpf } })
     if(u1 != null)
         return resp.send( { error: 'CPF já foi cadastrado!' } );
@@ -355,6 +358,8 @@ app.post('/login', async (req, resp) => {
   
     
     let login = req.body;
+
+    
 
     let r = await db.infoa_gab_usuario.findOne({
         where: {
