@@ -4,7 +4,7 @@ import Cabecalho from "../../components/cabecalho"
 import Paginacao from "../../components/paginacao"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { toast } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from 'react-router-dom'
 
@@ -31,28 +31,29 @@ export default function EscolhaEntrega() {
     }
 
     useEffect(() => {
-        pedidosUsu()
-    }, [ page ])
-
-    const pedidosUsu = async () => {
-        let r = await api.listarPedidosDoUsuario(id, page)
-
-
-        if (r.items.length === 0 ) {
-            nave.push('/carrinho')
+        
+        const pedidosUsu = async () => {
+            let r = await api.listarPedidosDoUsuario(id, page)
+    
+    
+            if (r.items.length === 0 ) {
+                nave.push('/entregas')
+            }
+    
+            setInfoPedido([...r.items])
+            setTotalPage(r.totalPaginas)
         }
 
-        setInfoPedido([...r.items])
-        setTotalPage(r.totalPaginas)
-    }
+        pedidosUsu()
+    }, [ page, id, nave ])
+
+   
 
 
     function lerUsuarioQuelogou() {
         let logado = Cookies.get('usuario-logado');
 
         if (logado === undefined) {
-            toast.dark('Loga ae');
-            nave.push('/carrinhoItem')
         } else {
             let usuarioLogado = JSON.parse(logado);
             return usuarioLogado;

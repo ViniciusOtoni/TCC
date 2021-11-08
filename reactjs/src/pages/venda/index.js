@@ -17,30 +17,35 @@ export default function Venda(props) {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
 
-    function getCategory() {
-        const query = '?categoria=';
-        let search = props.location.search;
-        if (!search.includes(query))
-            return '';
-        return search.substr(search.indexOf(query) + query.length);
-    }
+   
 
-    const listar = async () => {
-        let categoria = getCategory();
-
-        const e = await api.listarProdutos(order, pesquisa.pesquisa, categoria, page)
-
-        setProduto([...e.items]);
-        setTotalPages(e.totalPaginas)
-    }
+    
 
     function irPara(pagina) {
         setPage(pagina)
     }
 
     useEffect(() => {
+
+        function getCategory() {
+            const query = '?categoria=';
+            let search = props.location.search;
+            if (!search.includes(query))
+                return '';
+            return search.substr(search.indexOf(query) + query.length);
+        }
+        
+        const listar = async () => {
+            let categoria = getCategory();
+    
+            const e = await api.listarProdutos(order, pesquisa.pesquisa, categoria, page)
+    
+            setProduto([...e.items]);
+            setTotalPages(e.totalPaginas)
+        }
+
         listar();
-    }, [order, pesquisa, page])
+    }, [order, pesquisa, page, props.location.search])
 
     return (
         <div style={{ backgroundColor: "#333333" }}>

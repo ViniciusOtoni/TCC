@@ -40,7 +40,7 @@ export default function Footer(){
                         <Link to="/*"><div className="item"> Classificação </div></Link>
                         <Link to="/*"><div className="item"> Carreiras </div></Link>
                         <Link to="/*"><div className="item"> Desenvolvedores </div></Link>
-                        <Link to="/*"><div className="item"> Mapa do Site </div></Link>
+                        <Link to="/loginGerente"><div className="item"> Mapa do Site </div></Link>
                     </div>
                     <div className="align-items">
                         <Link to="/*"><div className="item"> GameBude e o meio ambiente </div></Link>

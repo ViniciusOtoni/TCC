@@ -1,6 +1,6 @@
 import axios from "axios";
 const api = axios.create({
-  baseURL: "http://localhost:3030",
+  baseURL: "https://gamebudheroko.herokuapp.com/",
 });
 
 export default class Api {
@@ -54,8 +54,8 @@ export default class Api {
     return r.data;
   }
 
-  async listarProdutos2(page) {
-    let r = await api.get(`/produtos?page=${page}`);
+  async listarProdutos2(page, pesquisa) {
+    let r = await api.get(`/produtos?page=${page}&pesquisa=${pesquisa}`);
     return r.data;
   }
 

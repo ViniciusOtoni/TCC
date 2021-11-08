@@ -61,17 +61,19 @@ export default function EntregaItem(props) {
             return 'Entregue'
     }
 
-    async function puxarSituacao() {
-        const r = await api.listarPedidos2(recebido.id_entrega);
-        setInfo(r)
-    }
+    
 
     useEffect(() => {
+        async function puxarSituacao() {
+            const r = await api.listarPedidos2(recebido.id_entrega);
+            setInfo(r)
+        }
+
         puxarSituacao()
-    }, [])
+    }, [recebido])
 
     return (
-        <div style={{ backgroundColor: "#333333" }}>
+        <div style={{ backgroundColor: "#333333", minHeight:"100vh"}}>
             <Cabecalho corLetra="nulo" />
 
             <StyledEntregaItem conditions={conditions(recebido.ds_situacao)}>
