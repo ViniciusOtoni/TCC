@@ -86,6 +86,12 @@ const Container = styled.div`
     font-family: MontserratBold;
   }
 
+  .credit-card .selecionado {
+    background-color: #f3f3f3;
+    font-family: MontserratBold;
+    margin-left: -1em;
+  }
+
   .img-button {
     width: 1.5em;
     height: 1em;
