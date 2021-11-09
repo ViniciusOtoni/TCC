@@ -24,25 +24,18 @@ export default function BoxItemCarrinho(props) {
         setQtd(0)
     }
 
-    useEffect(() => {  
-        alterar()
-    }, //[ qtd ] WARN POR CAUSA DE MACACO AQ
-    )
-
-    function alterar() {
-        produto.total = Math.round(produto.preco * qtd);
-        setTotal(produto.total)
-        if (props.respostaFilho)
-            props.respostaFilho()
-
-        produto.quantidade = qtd;
-    }
-
-
-
+    useEffect(() => { 
+        function alterar() {
+            produto.total = Math.round(produto.preco * qtd);
+            setTotal(produto.total)
+            if (props.respostaFilho)
+                props.respostaFilho()
     
-
-
+            produto.quantidade = qtd;
+        }
+        
+        alterar()
+    }, [qtd, produto])
 
 
 

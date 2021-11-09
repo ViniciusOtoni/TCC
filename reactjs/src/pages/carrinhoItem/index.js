@@ -9,6 +9,7 @@ import Cookie from 'js-cookie'
 import { useState, useEffect } from "react"
 import { useHistory } from "react-router"
 import BoxItemCarrinho from './comps/boxItem'
+import MaskedInput from "../../components/mask/input"
 
 
 
@@ -21,11 +22,10 @@ export default function CarrinhoItem() {
     const [vlCep, setVlCep] = useState('');
     const navegation = useHistory()
 
-    console.log(produto)
-    console.log(teste)
-    console.log(setTeste)
+    // console.log(produto)
+    // console.log(teste)
+    // console.log(setTeste)
     
-
     useEffect(  
         function carregarCarrinho() {
         let carrinho = Cookie.get('carrinho');
@@ -43,9 +43,6 @@ export default function CarrinhoItem() {
 , [ navegation ])
 
     
-
-
-
     function removerProduto(id) {
         let carrinho = produto.filter(x => x.id !== id)
 
@@ -116,7 +113,7 @@ export default function CarrinhoItem() {
                     <div className="main-cep">
                         <div className="row-input">
                             <div className="frete"> Frete: </div>
-                            <div className="input-frete">  <StyledInput value={vlCep} placeholder=" Cep" style={{ width: "8em" }} onChange={e => setVlCep(e.target.value)} /> </div>
+                            <div className="input-frete">  <MaskedInput mask="99999-999" value={vlCep} placeholder="Cep" style={{ width: "8em" }} onChange={e => setVlCep(e.target.value)} /> </div>
                             <div className="botao-frete"> <StyledButtonVerde onClick={buscarCep} style={{ width: "7em", height: "1.8em", marginLeft: "2em" }}> Calcular </StyledButtonVerde> </div>
                         </div>
                         {cep && <div>

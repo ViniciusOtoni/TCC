@@ -8,6 +8,8 @@ import { Link, useHistory } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { reconvert } from "../../utils/convertCurrency";
+
 import Api from "../../services/api";
 const api = new Api();
 
@@ -16,17 +18,20 @@ export default function GerenteAlterar() {
     const [nome, setNome] = useState('');
     const [codBarra, setCodBarra] = useState('');
     const [categoria, setCategoria] = useState('Xbox');
-    const [preco, setPreco] = useState(0);
+    const [preco, setPreco] = useState('');
     const [imagemPrincipal, setImagemPrincipal] = useState('');
     const [imagemSecundaria, setImagemSecundaria] = useState('');
     const [imagemTerciaria, setImagemTerciaria] = useState('');
     const [imagemQuartenaria, setImagemQuartenaria] = useState('');
     const navigation = useHistory();
 
+
     async function Cadastrar() {
+       
+
         await api.cadastrarProduto(
             nome,
-            preco,
+            reconvert(preco),
             categoria,
             codBarra,
             imagemPrincipal,
@@ -35,7 +40,7 @@ export default function GerenteAlterar() {
             imagemQuartenaria
         )
         toast.dark("produto cadastrado");
-        navigation.push('/gerenteCadastrar');
+        // navigation.push('/gerenteCadastrar');
     }
 
 

@@ -6,9 +6,10 @@ import { useState } from "react";
 import { useHistory } from "react-router";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import Cookie from "js-cookie";
+import Cookies from "js-cookie";
 
 import Api from '../../services/api';
+import MaskedInput from "../mask/input";
 
 const api = new Api();
 export default function PopupBig(props) {
@@ -24,72 +25,89 @@ export default function PopupBig(props) {
     const navegacao = useHistory();
 
     const validarResposta = (resp) => {
-       
+
 
         if (!resp.error)
             return true;
-            toast.error(`${resp.error}`);
+        toast.error(`${resp.error}`);
         return false;
     }
 
-    const cadastrarUsuario = async () => {
-        
- 
+    const logar = async () => {
 
-        if(vl3.length < 6) {
+        let r = await api.login(vl2, vl3)
+
+        if (r.error) {
+            toast.error(`${r.error}`)
+        } else {
+            Cookies.set('usuario-logado', JSON.stringify(r));
+            navegacao.push('/')
+        }
+    }
+
+    const cadastrarUsuario = async () => {
+
+
+
+        if (vl3.length < 6) {
             return toast.dark('Senha muito fraca!')
         }
 
 
-
-        let r = await api.cadastrarUsuario(vl1, vl6, vl2, vl3, vl5)
-        if (!validarResposta(r)) 
-        return
-
-
-
-        if(vl3 === vl4)  {
-        navegacao.push('/') } else {
+        if (vl3 !== vl4) {
             toast.dark('A senha não bateu!')
         }
+
+
+        let r = await api.cadastrarUsuario(vl1, vl6, vl2, vl3, vl5)
+        if (!validarResposta(r))
+            return
+
+
+        await logar()
+
 
     }
 
 
-       
-    
+
+
+
+
+
+
 
     return (
         <StyledPopupBig empresa={props.empresa}>
             <ToastContainer />
-            <header> 
+            <header>
                 <div className="logo"> <img src="/assets/images/logo.svg" alt="" /> </div>
                 <div className="titulo"> GameBud </div>
             </header>
-                <div className="column"> 
-                
+            <div className="column">
+
                 <div className="nome"> {(props.titulo1)} </div>
-                <div className="input"> <StyledInput value={vl1}   onChange={r => setVl1(r.target.value)} /> </div> 
-               
-                <div className="email"> {(props.titulo2)} </div>   
-                <div className="input">  <StyledInput value={vl2}  onChange={r => setVl2(r.target.value)}/> </div> 
+                <div className="input"> <StyledInput value={vl1} onChange={r => setVl1(r.target.value)} /> </div>
+
+                <div className="email"> {(props.titulo2)} </div>
+                <div className="input">  <StyledInput value={vl2} onChange={r => setVl2(r.target.value)} /> </div>
 
                 <div className="email"> {(props.titulo5)} </div>
-                <div className="input"> <StyledInput value={vl6}  onChange={r => setVl6(r.target.value)}/> </div> 
+                <MaskedInput mask="999.999.999-99" className="mask" value={vl6} onChange={r => setVl6(r.target.value)} />
 
                 <div className="senha"> {(props.titulo3)}</div>
-                <div className="input"> <StyledInput placeholder={props.titulo3 === '1' ? null : 'Minimo 6 caracteres!'} value={vl3}  onChange={r => setVl3(r.target.value)} /> </div> 
+                <div className="input"> <StyledInput placeholder={props.titulo3 === '1' ? null : 'Minimo 6 caracteres!'} value={vl3} onChange={r => setVl3(r.target.value)} /> </div>
 
                 <div className="repita"> {(props.titulo4)}</div>
-                <div className="input"> <StyledInput value={vl4}   onChange={r => setVl4(r.target.value)}/> </div>
+                <div className="input"> <StyledInput value={vl4} onChange={r => setVl4(r.target.value)} /> </div>
 
                 <div className="img"> Imagem de Perfil: </div>
-                <div className="input"> <StyledInput value={vl5}  onChange={r => setVl5(r.target.value)}/> </div>
+                <div className="input"> <StyledInput value={vl5} onChange={r => setVl5(r.target.value)} /> </div>
 
 
-              <div className="butao">  <StyledButtonPopup onClick={cadastrarUsuario}> Criar Conta! </StyledButtonPopup>   </div>
-           </div>
+                <div className="butao">  <StyledButtonPopup onClick={cadastrarUsuario}> Criar Conta! </StyledButtonPopup>   </div>
+            </div>
 
-        </StyledPopupBig> 
+        </StyledPopupBig>
     )
 }

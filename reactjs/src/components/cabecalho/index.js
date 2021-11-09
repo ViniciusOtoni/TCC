@@ -3,9 +3,6 @@ import { Link, useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
-// import Api from "../../services/api"
-// const api = new Api();
-
 
 function lerUsuarioQuelogou() {
   let logado = Cookies.get("usuario-logado");
@@ -25,17 +22,23 @@ export default function Cabecalho(props) {
   const [img] = useState(usuarioLogado.img_usuario);
   const [pesquisa, setPesquisa] = useState('');
 
+  console.log("NM = " + nm)
+  console.log("IMG" + img)
+
   const navigation = useHistory();
  
   const logof = () => {
     Cookies.remove("usuario-logado");
   };
 
-  const search = () => {
+  const search = (event) => {
+
+    if(event.key === 'Enter' || event.type === "click"){
         navigation.push({
           pathname: '/venda',
           state: {pesquisa}
-        })
+        })        
+    }
   }
 
   useEffect(() => {
@@ -55,7 +58,7 @@ export default function Cabecalho(props) {
 
         <div className="pesquisa">
               <img onClick={search} className="lupa" src="./assets/images/lupa.svg" alt=""/> 
-              <input onChange={e => setPesquisa(e.target.value)}/> 
+              <input id="button" onKeyPress={search} onChange={e => setPesquisa(e.target.value)}/> 
         </div>
 
         <Link to={Cookies.get("usuario-logado") === undefined ? "/login" : ""} // arrumar o usuario mandar pra home
@@ -66,7 +69,6 @@ export default function Cabecalho(props) {
           ) : (
             <div className="row-user">
               <div className="user-image">
-                
                 <img src={img} alt="" />
               </div>
               <div className="user-login" title={nm}> {nm != null && nm.length >= 25 ? nm.substr(0, 25) + "..." : nm} </div>
@@ -75,7 +77,7 @@ export default function Cabecalho(props) {
         </Link>
 
         <Link to="/escolhaEntrega" style={{ textDecoration: "none" }}>
-          <div className="entrega"> Entregas </div>
+          <div className="entrega"> Pedidos </div>
         </Link>
         <Link to="/carrinhoItem" style={{ textDecoration: "none" }}>
           <div className="carrinho"> </div>

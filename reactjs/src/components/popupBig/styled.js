@@ -71,6 +71,10 @@ const StyledPopupBig = styled.div`
     margin-top: 2em;
     text-align: center;
   }
+
+  .mask{
+    
+  }
 `;
 
 export { StyledPopupBig };

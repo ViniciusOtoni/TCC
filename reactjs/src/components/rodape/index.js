@@ -29,10 +29,10 @@ export default function Footer(){
                         <Link to="/*"><div className="item"> Suporte </div></Link>
                         <Link to="/*"><div className="item"> Política de privacidade </div></Link>
                         <Link to="/termos" style={{textDecoration:"none", color:"#000000"}}>  <div className="item">  Termos   </div> </Link> 
-                        <Link to="/termos"><div className="item"> Termos de servico </div></Link>
+                        <Link to="/*"><div className="item"> Termos de servico </div></Link>
                         <Link to="/*"><div className="item"> Game Bud Studios </div></Link>
-                        <Link to="/termos"><div className="item"> Termos de serviço </div></Link>
-                        <Link to="/termos"><div className="item"> Sobre a GameBud </div></Link>
+                        <Link to="/*"><div className="item"> Termos de serviço </div></Link>
+                        <Link to="/*"><div className="item"> Sobre a GameBud </div></Link>
                     </div>
                     <div className="align-items">
                         <Link to="/termos"><div className="item"> Termos de Serviço e contrato do usuário</div></Link>

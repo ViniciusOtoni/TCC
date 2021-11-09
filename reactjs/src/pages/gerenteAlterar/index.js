@@ -5,7 +5,7 @@ import CabecalhoAdm from "../../components/cabecalhoAdm";
 
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Api from "../../services/api";
@@ -25,11 +25,11 @@ export default function GerenteAlterar(props) {
 
     const navigation = useHistory();
 
-    console.log(setInfoProduto)
+  console.log(nome)
 
     async function Alterar() {
        
-        await api.AlterarProduto(
+        let retorno = await api.AlterarProduto(
             nome,
             preco,
             categoria,
@@ -39,9 +39,16 @@ export default function GerenteAlterar(props) {
             imagemTerciaria,
             imagemQuartenaria,
             infoProduto.id_produto
-        )
+        );
+      
+            console.log("Retorno = " + retorno.erro)
 
-        navigation.push('/gerenteCadastrar');
+        if(retorno.erro)
+           toast.error(retorno.erro)
+        
+        return navigation.push('/gerenteCadastrar')
+        
+       
     }
 
    

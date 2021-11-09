@@ -31,8 +31,7 @@ app.get('/produto/populares', async (req,resp) => {
                 imagem_tres: item.img_terciaria,
                 imagem_quatro: item.img_quartenaria,
             }
-        })
-        
+        }) 
         
         resp.send(r)
     } catch (e) {
@@ -209,25 +208,30 @@ app.post('/produto', async (req, resp) => {
 
 app.put('/produto/:idProduto', async (req, resp) => {
     try{    
-        let l = req.body;
-        
+   
+
+        let {nm_produto, vl_preco, ds_categoria, ds_codigo_barra, img_produto, img_secundaria, 
+            img_terciaria, img_quartenaria} = req.body;
+            
+        if(nm_produto == "")
+            resp.send( { erro: "O Campo nome não pode ser nulo" } )
 
         let r = await db.infoa_gab_produto.update({
-            nm_produto: l.nm_produto, 
-            vl_preco: l.vl_preco,
-            ds_categoria: l.ds_categoria,
-            ds_codigo_barra: l.ds_codigo_barra,
-            img_produto: l.img_produto,
-            img_secundaria: l.img_secundaria,
-            img_terciaria: l.img_terciaria,
-            img_quartenaria: l.img_quartenaria,
-            
+            nm_produto: nm_produto, 
+            vl_preco: vl_preco,
+            ds_categoria: ds_categoria,
+            ds_codigo_barra: ds_codigo_barra,
+            img_produto: img_produto,
+            img_secundaria: img_secundaria,
+            img_terciaria: img_terciaria,
+            img_quartenaria: img_quartenaria,
         },
         {
             where: { id_produto: req.params.idProduto }
         })     
 
         resp.sendStatus(200);
+    
     } catch (e) {
         resp.send({ erro: `${e.toString()}` })
     }    
@@ -316,6 +320,9 @@ try {
     
     let r = req.body;
 
+    if(r.nm_usuario == undefined)
+       return resp.send({ error: 'O campo do email precisa sem preenchido'})
+
     let u1 = await db.infoa_gab_usuario.findOne({ where: { ds_cpf: r.ds_cpf } })
     if(u1 != null)
         return resp.send( { error: 'CPF já foi cadastrado!' } );
@@ -352,6 +359,8 @@ app.post('/login', async (req, resp) => {
   
     
     let login = req.body;
+
+    
 
     let r = await db.infoa_gab_usuario.findOne({
         where: {
