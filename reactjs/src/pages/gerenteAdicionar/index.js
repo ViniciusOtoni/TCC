@@ -29,7 +29,7 @@ export default function GerenteAlterar() {
     async function Cadastrar() {
        
 
-        await api.cadastrarProduto(
+        let retorno = await api.cadastrarProduto(
             nome,
             reconvert(preco),
             categoria,
@@ -39,8 +39,12 @@ export default function GerenteAlterar() {
             imagemTerciaria,
             imagemQuartenaria
         )
+        
+        if (retorno.erro)
+            return toast.error(retorno.erro)
+
         toast.dark("produto cadastrado");
-        // navigation.push('/gerenteCadastrar');
+        navigation.push('/gerenteCadastrar');
     }
 
 

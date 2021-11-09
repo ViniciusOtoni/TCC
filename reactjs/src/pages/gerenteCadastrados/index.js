@@ -5,7 +5,7 @@ import Paginacao from "../../components/paginacao";
 
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { convert, reconvert } from "../../utils/convertCurrency";
 
@@ -29,8 +29,13 @@ export default function GerenteProdutosCadastrados() {
     }
 
     async function Remover(info) {
-        await api.removerProduto(info.id_produto)
-        alert('Produto removido')
+        let retorno = await api.removerProduto(info.id_produto, info.nm_produto);
+       
+        if (retorno.erro)
+            return toast.error(retorno.erro)
+        
+        
+        toast.success('Produto removido')
         Listar(); 
     }
 

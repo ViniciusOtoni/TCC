@@ -196,8 +196,8 @@ export default class Api {
     return r.data;
   }
 
-  async removerProduto(idProduto) {
-    let r = await api.delete(`/produto/${idProduto}`);
+  async removerProduto(idProduto, nm_produto) {
+    let r = await api.delete(`/produto/${idProduto}`, nm_produto);
     return r.data;
   }
 

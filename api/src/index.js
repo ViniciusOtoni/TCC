@@ -174,6 +174,19 @@ app.post('/produto', async (req, resp) => {
     try{
         let l = req.body
 
+        if (
+            l.nm_produto == "" || l.vl_preco == '' ||
+            l.ds_categoria == '' || l.ds_codigo_barra == '' ||
+            l.img_produto == '' || l.mg_secundaria == '' ||
+            l.img_terciaria == '' || l.img_quartenaria == ''
+        ) resp.send({ erro: "Há campos nulos!" })
+        
+        if (l.ds_codigo_barra < 0 || l.vl_preco < 0)
+            resp.send({erro: "Campo de preço ou código de barra menores que 0!"})
+            
+        if (l.ds_codigo_barra.length < 12)
+            resp.send({erro: "Código de barra deve conter 12 caracteres"})
+            
         let r1 = await db.infoa_gab_produto.findOne({
             where: {
                 nm_produto: l.nm_produto
@@ -213,8 +226,18 @@ app.put('/produto/:idProduto', async (req, resp) => {
         let {nm_produto, vl_preco, ds_categoria, ds_codigo_barra, img_produto, img_secundaria, 
             img_terciaria, img_quartenaria} = req.body;
             
-        if(nm_produto == "")
-            resp.send( { erro: "O Campo nome não pode ser nulo" } )
+        if (
+            nm_produto == "" || vl_preco == '' ||
+            ds_categoria == '' || ds_codigo_barra == '' ||
+            img_produto == '' || img_secundaria == '' ||
+            img_terciaria == '' || img_quartenaria == ''
+        )   resp.send( { erro: "Há campos nulos!" } )
+
+        if (vl_preco < 0 || ds_codigo_barra < 0)
+            resp.send({erro: "Campo de preço ou código de barra nulos!"})
+
+        if (ds_codigo_barra.length < 12)
+            resp.send({erro: "Código de barra deve conter 12 caracteres"})
 
         let r = await db.infoa_gab_produto.update({
             nm_produto: nm_produto, 
@@ -272,6 +295,18 @@ app.put('/produto/avaliacao/:idProduto', async (req, resp) => {
 app.delete('/produto/:idProduto', async (req, resp) => {
     
     try {
+        let corpo = req.body;
+        console.log(corpo)
+
+        let produto = await db.infoa_gab_produto.findAll({
+            where: { nm_produto: corpo.nm_produto }
+        })
+
+        console.log(corpo)
+
+        if (produto.length == 1 )
+            resp.send({erro: "Não é possível deletar este produto pois só existe 1"})
+        
 
         let a = await db.infoa_gab_venda_item.destroy({
             where: { 'id_produto': req.params.idProduto}

@@ -41,10 +41,10 @@ export default function GerenteAlterar(props) {
             infoProduto.id_produto
         );
       
-            console.log("Retorno = " + retorno.erro)
+       
 
         if(retorno.erro)
-           toast.error(retorno.erro)
+           return toast.error(retorno.erro)
         
         return navigation.push('/gerenteCadastrar')
         
