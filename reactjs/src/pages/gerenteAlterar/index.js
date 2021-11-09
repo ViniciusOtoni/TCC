@@ -41,7 +41,7 @@ export default function GerenteAlterar(props) {
             infoProduto.id_produto
         );
       
-            console.log("AAAAAAAAAAAAAAAAAAAAAAA = " + retorno.erro)
+            console.log("Retorno = " + retorno.erro)
 
         if(retorno.erro){
            alert("oi")

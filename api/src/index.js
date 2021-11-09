@@ -210,10 +210,11 @@ app.post('/produto', async (req, resp) => {
 app.put('/produto/:idProduto', async (req, resp) => {
     try{    
         let {nm_produto, vl_preco, ds_categoria, ds_codigo_barra, img_produto, img_secundaria, img_terciaria, img_quartenaria} = req.body;
-        console.log("NOME AAA = " + nm_produto)
-        if(nm_produto == ""){
+       
+        if(nm_produto == "")
             resp.send( { erro: "O Campo nome não pode ser nulo" } )
-        } else {
+            
+         
         let r = await db.infoa_gab_produto.update({
             nm_produto: nm_produto, 
             vl_preco: vl_preco,
@@ -230,7 +231,7 @@ app.put('/produto/:idProduto', async (req, resp) => {
         })     
 
         resp.sendStatus(200);
-    }
+    
     } catch (e) {
         resp.send({ erro: `${e.toString()}` })
     }    
