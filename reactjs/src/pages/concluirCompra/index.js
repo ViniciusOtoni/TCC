@@ -162,8 +162,8 @@ export default function ConcluirCompra(props) {
                         </div>
 
                         <div className="credit-card">
-                            <button value={formaPagamento} onClick={Visible} style={{ marginBottom: ".2em" }}>Cartão de Crédito <img className="img-button" src="/assets/images/cartao.svg" alt="" /></button>
-                            <button value={formaPagamento} onClick={Visible1} > Cartão de Débito <img className="img-button" src="/assets/images/cartao.svg" alt="" /></button>
+                            <button className={formaPagamento === 'Crédito' ? "selecionado" :  "img-button"} value={formaPagamento} onClick={Visible} style={{ marginBottom: ".2em" }}>Cartão de Crédito <img  className="img-button" src="/assets/images/cartao.svg" alt="" /></button>
+                            <button className={formaPagamento === 'Débito' ? "selecionado" :  "img-button"} value={formaPagamento} onClick={Visible1} > Cartão de Débito <img  className="img-button"  src="/assets/images/cartao.svg" alt="" /></button>
                         </div>
                         {hidden &&
                             <div className="cartoes">
