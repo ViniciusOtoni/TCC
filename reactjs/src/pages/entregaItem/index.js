@@ -41,6 +41,7 @@ export default function EntregaItem(props) {
         if (a === 'Entregue')
             return true
 
+        
     }
 
     function sizeBar(a) {
@@ -48,8 +49,10 @@ export default function EntregaItem(props) {
             return 15
         else if (a === 'A Caminho')
             return 50
-        else
+        else if (a === 'Entregue')
             return 100
+
+            return 0
     }
 
     function conditions(a) {
@@ -57,8 +60,10 @@ export default function EntregaItem(props) {
             return 'Saiu para entrega'
         else if (a === "A Caminho")
             return "A caminho"
-        else
+        else if ( a === 'Entregue')
             return 'Entregue'
+        else 
+            return 'aguardando'
     }
 
     

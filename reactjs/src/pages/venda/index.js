@@ -3,6 +3,7 @@ import CaixaJogo from "../../components/caixaJogo";
 import Footer from "../../components/rodape";
 import Paginacao from "../../components/paginacao";
 import { StyledVenada } from "./styled";
+import { useHistory } from "react-router";
 
 import { useState, useEffect } from "react";
 
@@ -11,14 +12,17 @@ const api = new Api();
 
 
 export default function Venda(props) {
+    const nave = useHistory();
     const pesquisa = props.location.state || '';
     const [produto, setProduto] = useState([]);
     const [order, setOrder] = useState('');
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
 
-   
+    
 
+   
+ 
     
 
     function irPara(pagina) {
@@ -26,6 +30,7 @@ export default function Venda(props) {
     }
 
     useEffect(() => {
+
 
         function getCategory() {
             const query = '?categoria=';
@@ -45,6 +50,9 @@ export default function Venda(props) {
         }
 
         listar();
+
+      
+
     }, [order, pesquisa, page, props.location.search])
 
     return (
