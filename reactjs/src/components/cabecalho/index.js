@@ -31,11 +31,14 @@ export default function Cabecalho(props) {
     Cookies.remove("usuario-logado");
   };
 
-  const search = () => {
+  const search = (event) => {
+
+    if(event.key === 'Enter' || event.type === "click"){
         navigation.push({
           pathname: '/venda',
           state: {pesquisa}
-        })
+        })        
+    }
   }
 
   useEffect(() => {
@@ -55,7 +58,7 @@ export default function Cabecalho(props) {
 
         <div className="pesquisa">
               <img onClick={search} className="lupa" src="./assets/images/lupa.svg" alt=""/> 
-              <input onChange={e => setPesquisa(e.target.value)}/> 
+              <input id="button" onKeyPress={search} onChange={e => setPesquisa(e.target.value)}/> 
         </div>
 
         <Link to={Cookies.get("usuario-logado") === undefined ? "/login" : ""} // arrumar o usuario mandar pra home

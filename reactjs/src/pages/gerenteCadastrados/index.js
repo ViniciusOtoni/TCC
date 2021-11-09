@@ -37,9 +37,9 @@ export default function GerenteProdutosCadastrados() {
         setPage(pagina)
     }
 
+   
 
     function search(x) {
-        console.log("x: " + x)
         setPesquisa(x)
     }
 

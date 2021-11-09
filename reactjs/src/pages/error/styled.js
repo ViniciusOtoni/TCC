@@ -10,8 +10,8 @@ const Container = styled.div`
   }
 
   .image {
-    min-height: 100vh;
     min-width: 100%;
+    min-height: 91vh;
   }
 
   .header {
