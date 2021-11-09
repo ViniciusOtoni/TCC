@@ -5,7 +5,7 @@ import { StyledButtonVerde } from "../../components/botaoVerde/styled"
 
 // import { Link } from "react-router-dom"
 import { useHistory } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from "js-cookie"
 
@@ -44,7 +44,7 @@ export default function ConcluirCompra(props) {
     const [nmTitular, setNmTitular] = useState('')
     const [nrCartao, setNrCartao] = useState('')
     const [nrAgencia, setNrAgencia] = useState('')
-    const [dtValidade, setDtValidade] = useState('')
+    const [dtValidade, setDtValidade] = useState('2021-01-01')
     const [cpf, setCpf] = useState('')
     const [parcelas, setParcelas] = useState(2)
 
@@ -97,8 +97,10 @@ export default function ConcluirCompra(props) {
 
     const confirmarDados = async () => {
         let r = await api.confirmarCompra(email, senha, cv, nrAgencia, nmTitular, dtValidade, nrCartao, cpf, nmBairro, nmRua, nrRua, cep, complemento, parcelas, formaPagamento, validarPreco(), infoProduto.length, nmProduto, validarQuantidadeProduto(), Preco)
-        console.log(r)
-        nave.push('/escolhaEntrega')
+        if(r.error) {
+            return toast.error(r.error)
+        }
+       nave.push('/escolhaEntrega')
     }
 
     function lerUsuarioQuelogou() {
@@ -144,7 +146,7 @@ export default function ConcluirCompra(props) {
 
                             <div className="row-produto">
                                 <div className="total-compra"> Produtos Adquiridos:  </div>
-                                {infoProduto.map(x => <div className="preço-compra"> {x.produto} </div>)}
+                                {infoProduto.map(x => <div className="preço-compra1"> {x.produto} </div>)}
                             </div>
                             <div className="row-produto">
                                 <div className="total-compra"> Valor Total:  </div>
@@ -218,7 +220,7 @@ export default function ConcluirCompra(props) {
                                 <StyledInput value={nrAgencia} onChange={e => setNrAgencia(e.target.value)} className="input-lastInfo-text1"/>
 
                                 <div className="last-information-text1"> Data de Validade </div>
-                                <MaskedInput mask="99/99/9999" placeholder="Insira a data" value={dtValidade} onChange={e => setDtValidade(e.target.value)} />
+                                <MaskedInput mask="9999-99-99" placeholder="Insira a data" value={dtValidade} onChange={e => setDtValidade(e.target.value)} />
 
                                 <div className="last-information-text1"> CPF do Titular </div>
                                 <MaskedInput mask="999.999.999-99" placeholder="Insira o CPF" value={cpf} onChange={e => setCpf(e.target.value)} />

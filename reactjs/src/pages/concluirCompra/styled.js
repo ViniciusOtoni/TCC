@@ -247,6 +247,13 @@ const Container = styled.div`
     padding-left: 1em;
   }
 
+  .preço-compra1 {
+    font-size: .9em;
+    color: #ffffff;
+    font-family: MontserratBold;
+    padding-left: 1em;
+  }
+
   @media (max-width: 425px) {
     .sub-main {
       width: 100%;

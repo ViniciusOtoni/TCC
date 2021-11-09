@@ -355,8 +355,20 @@ try {
     
     let r = req.body;
 
-    if(r.nm_usuario == undefined)
-       return resp.send({ error: 'O campo do email precisa sem preenchido'})
+    if(r.nm_usuario  === '')
+       return resp.send({ error: 'O campo do nome precisa sem preenchido'})
+    
+    if(r.ds_cpf  === '')
+       return resp.send({ error: 'O campo do cpf precisa sem preenchido'})
+
+    if(r.ds_email  === '')
+        return resp.send({ error: 'O campo do email precisa sem preenchido'})
+
+    if(r.ds_senha  === '')
+        return resp.send({ error: 'O campo da senha precisa sem preenchido'})
+
+    if(r.img_usuario  === '')
+        return resp.send({ error: 'O campo da imagem precisa sem preenchido'})
 
     let u1 = await db.infoa_gab_usuario.findOne({ where: { ds_cpf: r.ds_cpf } })
     if(u1 != null)
@@ -517,13 +529,21 @@ app.post('/validarCompra', async ( req, resp ) => {
         
         let r = req.body;
 
+
+       
+        
+       
+
+        
+
         const usuarioLogado = await db.infoa_gab_usuario.findOne({
             where: {
                 ds_email: r.ds_email,
                 ds_senha: r.ds_senha
             }}); 
 
-       
+       // if(r.cv || r.agencia || r.titular || r.dt_validade || r.num_cartao || r.cpf_titular == '')
+           // return resp.send({ error : "Preencha todos os campos"})
 
         const cartaoUsuario = await db.infoa_gab_cartao.create({
             
@@ -536,6 +556,10 @@ app.post('/validarCompra', async ( req, resp ) => {
             ds_cpf_titular: r.cpf_titular
         });
 
+
+        //if(r.nm_bairro || r.nm_rua || r.nr_numero_rua || r.ds_cep || r.ds_complemento == '')
+          //  return resp.send({ error: "Preencha todos os campos "})
+
         const enderecoUsuario = await db.infoa_gab_endereco.create({
             
             id_usuario: usuarioLogado.id_usuario,
@@ -546,7 +570,8 @@ app.post('/validarCompra', async ( req, resp ) => {
             ds_complemento: r.complemento
         });
 
-        
+        //if(r.ds_pagamento == '')
+            //return resp.send({ error: "Selecione uma forma de pagamento"})
 
         const gerarVenda = await db.infoa_gab_venda.create({
             
@@ -580,8 +605,6 @@ app.post('/validarCompra', async ( req, resp ) => {
 
         }
 
-        
-        
         const entrega = await db.infoa_gab_entrega.create({
             id_endereco: enderecoUsuario.id_endereco,
             id_venda: gerarVenda.id_venda,
@@ -594,7 +617,7 @@ app.post('/validarCompra', async ( req, resp ) => {
         resp.send(entrega)
 
     } catch(e) {
-        console.log({ error: "DEU ERRO NA API MOSTRA... creio que não seja a primeira vez..."});
+        console.log({ error: e.toString() });
       resp.send(e)
     }}) // 100% FEITA!!
 
