@@ -31,8 +31,7 @@ app.get('/produto/populares', async (req,resp) => {
                 imagem_tres: item.img_terciaria,
                 imagem_quatro: item.img_quartenaria,
             }
-        })
-        
+        }) 
         
         resp.send(r)
     } catch (e) {
@@ -209,12 +208,14 @@ app.post('/produto', async (req, resp) => {
 
 app.put('/produto/:idProduto', async (req, resp) => {
     try{    
-        let {nm_produto, vl_preco, ds_categoria, ds_codigo_barra, img_produto, img_secundaria, img_terciaria, img_quartenaria} = req.body;
-       
+   
+
+        let {nm_produto, vl_preco, ds_categoria, ds_codigo_barra, img_produto, img_secundaria, 
+            img_terciaria, img_quartenaria} = req.body;
+            
         if(nm_produto == "")
             resp.send( { erro: "O Campo nome não pode ser nulo" } )
-            
-         
+
         let r = await db.infoa_gab_produto.update({
             nm_produto: nm_produto, 
             vl_preco: vl_preco,
@@ -224,7 +225,6 @@ app.put('/produto/:idProduto', async (req, resp) => {
             img_secundaria: img_secundaria,
             img_terciaria: img_terciaria,
             img_quartenaria: img_quartenaria,
-            
         },
         {
             where: { id_produto: req.params.idProduto }

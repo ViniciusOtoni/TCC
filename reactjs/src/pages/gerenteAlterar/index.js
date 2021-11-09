@@ -43,11 +43,11 @@ export default function GerenteAlterar(props) {
       
             console.log("Retorno = " + retorno.erro)
 
-        if(retorno.erro){
-           alert("oi")
-        }else{
-            // return navigation.push('/gerenteCadastrar')
-        }
+        if(retorno.erro)
+           toast.error(retorno.erro)
+        
+        return navigation.push('/gerenteCadastrar')
+        
        
     }
 
