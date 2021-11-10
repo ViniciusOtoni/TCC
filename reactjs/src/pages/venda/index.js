@@ -47,6 +47,10 @@ export default function Venda(props) {
     
             setProduto([...e.items]);
             setTotalPages(e.totalPaginas)
+
+            if(e.items.length === 0) {
+                nave.push('/vendaSemItem')
+            }
         }
 
         listar();
@@ -54,6 +58,8 @@ export default function Venda(props) {
       
 
     }, [order, pesquisa, page, props.location.search])
+
+    
 
     return (
         <div style={{ backgroundColor: "#333333" }}>

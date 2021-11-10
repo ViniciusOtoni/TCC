@@ -105,7 +105,7 @@ export default function VendaUnica(props) {
 
                             <div className="titulo"> Preco: </div>
                             <div className="preco"> {`R$${produto.preco}`} </div>
-                            <div className="text"> {`em 5x de R$  ${Math.round(produto.preco / 5)} sem juros`} </div>
+                            <div className="text"> {`em 5x de R$  ${(produto.preco / 5)} sem juros`} </div>
                             <div className="text"> Vendido e entregue por GameBud </div>
                         </div>
                     </Content>

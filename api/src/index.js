@@ -141,6 +141,13 @@ app.get('/produtos', async (req, resp) => {
         });
 
         let total = await db.infoa_gab_produto.findOne({
+            
+            where: {
+                [Op.and]: [
+                    {bt_situacao: true},
+                    {nm_produto: {[Op.substring]: pesquisa}}
+                ]  
+            },
             raw: true,
             attributes: [
                 [fn('count', 1), 'qtd']
@@ -528,12 +535,12 @@ app.post('/validarCompra', async ( req, resp ) => {
     try {
         
         let r = req.body;
-
-
+    
+        if(r.cv === ''|| r.agencia === '' || r.titular === '' || r.dt_validade  === '' || r.num_cartao === '' || r.cpf_titular === '' || r.bairro === '' || r.rua === ''  || r.numero_rua === '' || r.cep === '' || r.complemento === '' )
+            return resp.send({ error : "Preencha todos os campos"})   
        
-        
-       
-
+        if(r.forma_pagamento === '')
+            return resp.send({ error: "Selecione uma forma de pagamento"})
         
 
         const usuarioLogado = await db.infoa_gab_usuario.findOne({
@@ -542,8 +549,7 @@ app.post('/validarCompra', async ( req, resp ) => {
                 ds_senha: r.ds_senha
             }}); 
 
-       // if(r.cv || r.agencia || r.titular || r.dt_validade || r.num_cartao || r.cpf_titular == '')
-           // return resp.send({ error : "Preencha todos os campos"})
+       
 
         const cartaoUsuario = await db.infoa_gab_cartao.create({
             
@@ -557,8 +563,7 @@ app.post('/validarCompra', async ( req, resp ) => {
         });
 
 
-        //if(r.nm_bairro || r.nm_rua || r.nr_numero_rua || r.ds_cep || r.ds_complemento == '')
-          //  return resp.send({ error: "Preencha todos os campos "})
+        
 
         const enderecoUsuario = await db.infoa_gab_endereco.create({
             
@@ -570,8 +575,7 @@ app.post('/validarCompra', async ( req, resp ) => {
             ds_complemento: r.complemento
         });
 
-        //if(r.ds_pagamento == '')
-            //return resp.send({ error: "Selecione uma forma de pagamento"})
+      
 
         const gerarVenda = await db.infoa_gab_venda.create({
             
@@ -617,8 +621,8 @@ app.post('/validarCompra', async ( req, resp ) => {
         resp.send(entrega)
 
     } catch(e) {
-        console.log({ error: e.toString() });
-      resp.send(e)
+        console.log( e.toString() );
+      resp.send({ error: "Preencha todos os campos corretamente" })
     }}) // 100% FEITA!!
 
 
@@ -628,7 +632,7 @@ app.post('/validarCompra', async ( req, resp ) => {
 app.get('/pedido', async (req, resp) => {
     try {
 
-
+        
         let page = req.query.page || 0;
       
         
@@ -773,6 +777,23 @@ app.get('/pedido/:idUsuario', async (req, resp ) => {
     });
 
     let total = await db.infoa_gab_entrega.findOne({
+        
+        include: [{
+            model: db.infoa_gab_venda,
+            as: 'id_venda_infoa_gab_venda',
+            required: false,
+            include: [{
+                model: db.infoa_gab_usuario,
+                as: 'id_usuario_infoa_gab_usuario',
+                required: true,
+                attributes: []
+            }]
+        }],
+
+        where: {
+            '$id_venda_infoa_gab_venda.id_usuario_infoa_gab_usuario.id_usuario$': req.params.idUsuario
+        },
+
         raw: true,
         attributes: [
             [fn('count', 1), 'qtd']
@@ -782,9 +803,12 @@ app.get('/pedido/:idUsuario', async (req, resp ) => {
     resp.send({   
         items: r1,
         total: total.qtd,
+        
         totalPaginas: Math.ceil(total.qtd / 5),
         page: Number(page)
     })
+
+    console.log(total.qtd)
 })
 
 app.listen( process.env.PORT, (x) => 

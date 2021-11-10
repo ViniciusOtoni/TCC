@@ -26,7 +26,7 @@ export default function BoxItemCarrinho(props) {
 
     useEffect(() => { 
         function alterar() {
-            produto.total = Math.round(produto.preco * qtd);
+            produto.total = (produto.preco * qtd);
             setTotal(produto.total)
             if (props.respostaFilho)
                 props.respostaFilho()
@@ -83,7 +83,7 @@ export default function BoxItemCarrinho(props) {
                     <div className="foto"> <img src={produto.imagem} alt="" /> </div>
                     <div className="row-val">
                         <div className="titulo-val"> Preço: </div>
-                        <div className="valor-val"> {`R$: ${Math.round(produto.preco * qtd)} `} </div>
+                        <div className="valor-val"> {`R$: ${(produto.preco * qtd)} `} </div>
                     </div>
                     <div className="row-valores">
                         <div className="quantidade"> Unidades: </div>

@@ -75,7 +75,7 @@ export default function CarrinhoItem() {
     }
 
     function calcularFinalFrete() {
-        produto.frete = Math.round(vlFinal + (loc.uf === 'SP' ? 50 : loc.uf === 'RJ' ? 130 : 0))
+        produto.frete = (vlFinal + (loc.uf === 'SP' ? 50 : loc.uf === 'RJ' ? 130 : 0))
     }
 
     async function buscarCep() {
@@ -137,7 +137,7 @@ export default function CarrinhoItem() {
 
                         <div className="row-preco">
                             <div className="sub-total-baixo"> Sub-Total: </div>
-                            <div className="sub-valor-final"> {`R$: ${Math.round(vlFinal)}`} </div>
+                            <div className="sub-valor-final"> {`R$: ${(vlFinal)}`} </div>
                         </div>
                         <div className="row-preco">
                             <div className="total-valor-baixo"> Total: </div>
@@ -185,7 +185,7 @@ export default function CarrinhoItem() {
                     <div className="agp-realizar">
                         <div className="row-preco">
                             <div className="sub-total-baixo"> Sub-Total: </div>
-                            <div className="sub-valor-final"> {` R$: ${Math.round(vlFinal)}`} </div>
+                            <div className="sub-valor-final"> {` R$: ${(vlFinal)}`} </div>
                         </div>
                         <div className="row-preco">
                             <div className="total-valor-baixo"> Total: </div>

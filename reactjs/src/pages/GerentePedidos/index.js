@@ -17,10 +17,11 @@ export default function GerentePedidos() {
     const [infoGeral, setInfoGeral] = useState([]);
     const [page, setPage] = useState(1);
     const [totalPage, setTotalPage] = useState(0);
+    const [ pesquisa, setPesquisa ] = useState('');
 
     
     async function listar() {
-        const r = await api.listarPedidos(page);
+        const r = await api.listarPedidos(page, pesquisa);
         console.log(r)
         setInfoGeral([...r.items]);
         setTotalPage(r.totalPaginas)
@@ -37,20 +38,18 @@ export default function GerentePedidos() {
         setPage(pagina)
     }
 
+    function search(x) {
+        setPesquisa(x)
+    }
+
     useEffect(() => {
-        async function listar() {
-            const r = await api.listarPedidos(page);
-            console.log(r)
-            setInfoGeral([...r.items]);
-            setTotalPage(r.totalPaginas)
-        }
         listar()
-    }, [page])
+    }, [page, pesquisa])
 
     
     return (
         <div style={{ backgroundColor: "#333333", minHeight: "100vh" }}>
-            <CabecalhoAdm bNulo={true} />
+            <CabecalhoAdm bNulo={true} search={search}/>
             <StyledGerentePedidos>
                 <main className="pc">
                     <table>

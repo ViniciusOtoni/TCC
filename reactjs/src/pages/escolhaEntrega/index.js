@@ -24,7 +24,8 @@ export default function EscolhaEntrega() {
     const [totalPage, setTotalPage] = useState(0)
     const [id, setId] = useState(usuarioLogado.id_usuario)
 
-    console.log(setId)
+    console.log(" aa " + totalPage)
+ 
 
     function irPara(pagina) {
         setPage(pagina)
