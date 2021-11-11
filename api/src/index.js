@@ -854,20 +854,25 @@ app.get('/pedido/:idUsuario', async (req, resp ) => {
 })
 
 app.put('/usuario', async (req, resp) => {
-    let corpo = req.body;
+   
+    try {
+        let corpo = req.body;
 
-    let r = await db.infoa_gab_usuario.update({
-        nm_usuario: corpo.nome,
-        ds_cpf: corpo.cpf,
-        ds_email: corpo.email,
-        ds_senha: corpo.senha
-    },
-    {
-        where: {id_usuario: corpo.id}
-    }        
-    );
+        let r = await db.infoa_gab_usuario.update({
+            nm_usuario: corpo.nome,
+            ds_cpf: corpo.cpf,
+            ds_email: corpo.email,
+            ds_senha: corpo.senha
+        },
+        {
+            where: {id_usuario: corpo.id}
+        }        
+        );
+    } catch (error) {
+        resp.send(`${error}`)
+    }
 
-    console.log(corpo)
+   
 
     resp.sendStatus(r)
 
