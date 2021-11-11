@@ -30,6 +30,7 @@ app.get('/produto/populares', async (req,resp) => {
                 imagem_dois: item.img_secundaria,
                 imagem_tres: item.img_terciaria,
                 imagem_quatro: item.img_quartenaria,
+                ds_produto: item.ds_produto
             }
         }) 
         
@@ -90,6 +91,7 @@ app.get('/produto', async (req,resp) => {
                 imagem_dois: item.img_secundaria,
                 imagem_tres: item.img_terciaria,
                 imagem_quatro: item.img_quartenaria,
+                ds_produto: item.ds_produto
             }
         })
 
@@ -185,7 +187,7 @@ app.post('/produto', async (req, resp) => {
             l.nm_produto == "" || l.vl_preco == '' ||
             l.ds_categoria == '' || l.ds_codigo_barra == '' ||
             l.img_produto == '' || l.mg_secundaria == '' ||
-            l.img_terciaria == '' || l.img_quartenaria == ''
+            l.img_terciaria == '' || l.img_quartenaria == '' || l.ds_produto == ''
         ) resp.send({ erro: "Há campos nulos!" })
         
         if (l.ds_codigo_barra < 0 || l.vl_preco < 0)
@@ -215,7 +217,8 @@ app.post('/produto', async (req, resp) => {
             img_secundaria: l.img_secundaria,
             img_terciaria: l.img_terciaria,
             img_quartenaria: l.img_quartenaria,
-            qtd_parcelas: 0
+            qtd_parcelas: 0,
+            ds_produto: l.ds_produto
         })
 
         resp.send(r)
@@ -231,14 +234,18 @@ app.put('/produto/:idProduto', async (req, resp) => {
    
 
         let {nm_produto, vl_preco, ds_categoria, ds_codigo_barra, img_produto, img_secundaria, 
-            img_terciaria, img_quartenaria} = req.body;
+            img_terciaria, img_quartenaria, ds_produto} = req.body;
             
         if (
             nm_produto == "" || vl_preco == '' ||
             ds_categoria == '' || ds_codigo_barra == '' ||
             img_produto == '' || img_secundaria == '' ||
-            img_terciaria == '' || img_quartenaria == ''
+            img_terciaria == '' || img_quartenaria == '' || ds_produto == ''
         )   resp.send( { erro: "Há campos nulos!" } )
+
+
+        if(ds_produto.length > 200)
+            resp.send({ erro: "Muito Grande a sua descrição!"})
 
         if (vl_preco < 0 || ds_codigo_barra < 0)
             resp.send({erro: "Campo de preço ou código de barra nulos!"})
@@ -255,6 +262,7 @@ app.put('/produto/:idProduto', async (req, resp) => {
             img_secundaria: img_secundaria,
             img_terciaria: img_terciaria,
             img_quartenaria: img_quartenaria,
+            ds_produto: ds_produto
         },
         {
             where: { id_produto: req.params.idProduto }

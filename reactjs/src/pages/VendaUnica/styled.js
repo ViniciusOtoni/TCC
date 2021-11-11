@@ -67,7 +67,7 @@ const Content = styled.div`
   hr {
     border: 1px solid white;
     width: 90%;
-    margin-bottom: 2em;
+    margin-bottom: -2em;
   }
 
   .align-content {
@@ -131,6 +131,21 @@ const Content = styled.div`
     color: white;
     margin: 0.3em 0em;
   }
+
+  .descProduto {
+    
+    padding-left: 3em;
+    padding-bottom: 1em;
+  }
+
+  .descProduto p  {
+    width: 10em;
+    font-family: Medio;
+    font-size: 1em;
+    color: white;
+  }
+
+ 
 
   .frete {
     font-family: MontserratBold;

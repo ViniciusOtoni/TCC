@@ -19,8 +19,7 @@ export default function VendaUnica(props) {
     const [vlAvaliacao, setVlAvaliacao] = useState(0)
     const [idProduto, setIdProduto] = useState(0)
 
-    console.log(setProduto)
-    console.log(setMandar)
+   console.log(produto)
 
     //Cookies.remove('carrinho')
 
@@ -86,7 +85,10 @@ export default function VendaUnica(props) {
                                 </div>
                             </div>
                         </div>
-                        <hr />
+                        
+                            <hr />
+                            <div className="descProduto"> <p> {produto.ds_produto} </p> </div>
+                      
                     </Content>
                 </main>
                 <main className="cell">

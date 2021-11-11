@@ -23,6 +23,7 @@ export default function GerenteAlterar() {
     const [imagemSecundaria, setImagemSecundaria] = useState('');
     const [imagemTerciaria, setImagemTerciaria] = useState('');
     const [imagemQuartenaria, setImagemQuartenaria] = useState('');
+    const [dsProduto, setDsProduto ] = useState('');
     const navigation = useHistory();
 
 
@@ -37,7 +38,8 @@ export default function GerenteAlterar() {
             imagemPrincipal,
             imagemSecundaria,
             imagemTerciaria,
-            imagemQuartenaria
+            imagemQuartenaria,
+            dsProduto
         )
         
         if (retorno.erro)
@@ -94,6 +96,10 @@ export default function GerenteAlterar() {
                         <div className="line">
                             <div className="topico8">   Imagem Quartenária:</div>
                             <div className="input"> <StyledInput className="input-input" placeholder="URl da Imagem" value={imagemQuartenaria} onChange={e => setImagemQuartenaria(e.target.value)} /> </div>
+                        </div>
+                        <div className="alternating">
+                            <div className="topico7" style={{paddingRight:"5.8em"}}> Descrição Do Produto: </div>
+                            <div className="input"> <StyledInput className="input-input"  value={dsProduto} onChange={e => setDsProduto(e.target.value)} />  </div>
                         </div>
                     </div>
                     <div className="footer">
