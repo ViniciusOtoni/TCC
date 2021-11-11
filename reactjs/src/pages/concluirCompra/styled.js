@@ -147,11 +147,15 @@ const Container = styled.div`
   }
 
   .img-cartao-3 {
-    margin-bottom: 1em;
+    margin-bottom: 1.2em;
+  }
+
+  .img-cartao-4 {
+    margin-bottom: .7em;
   }
 
   .img-cartao-5 {
-    margin-bottom: 0.5em;
+    margin-bottom: 0.75em;
   }
 
   .Last-information-inputs {
@@ -252,6 +256,74 @@ const Container = styled.div`
     color: #ffffff;
     font-family: MontserratBold;
     padding-left: 1em;
+  }
+
+
+  
+.radio-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+  }
+  
+  /* Hide the browser's default radio button */
+  .radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    margin-top: 1em;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #EBEBEB;;
+    box-shadow: 0px 0px 5px 1px rgba(141, 141, 141, 0.25);
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .radio-container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .radio-container input:checked ~ .checkmark {
+    background-color: #EBEBEB;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .radio-container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .radio-container .checkmark:after {
+    top: 5px;
+    left: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #282828;
   }
 
   @media (max-width: 425px) {
