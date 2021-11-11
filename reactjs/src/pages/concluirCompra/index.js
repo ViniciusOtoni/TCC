@@ -173,27 +173,42 @@ export default function ConcluirCompra(props) {
                             <div className="cartoes">
                                 <div className="cartao">
                                     <img src="/assets/images/VISA.svg" alt="" />
-                                    <button className="cartao-bolinha"></button>
+                                    <label class="radio-container"> 
+                                        <input type="radio" name="questao" />
+                                        <span class="checkmark"></span>
+                                    </label>
                                 </div>
 
                                 <div className="cartao">
                                     <img className="img-cartao-2" src="/assets/images/MASTERCARD.svg" alt="" />
-                                    <button className="cartao-bolinha2"></button>
+                                    <label class="radio-container"> 
+                                        <input type="radio" name="questao" />
+                                        <span class="checkmark"></span>
+                                    </label>
                                 </div>
 
                                 <div className="cartao">
                                     <img className="img-cartao-3" src="/assets/images/DINERS.svg" alt="" />
-                                    <button className="cartao-bolinha2"></button>
+                                    <label class="radio-container"> 
+                                        <input type="radio" name="questao" />
+                                        <span class="checkmark"></span>
+                                    </label>
                                 </div>
 
                                 <div className="cartao">
                                     <img className="img-cartao-4" src="/assets/images/HIPERCARD.svg" alt="" />
-                                    <button className="cartao-bolinha2"></button>
+                                    <label class="radio-container"> 
+                                        <input type="radio" name="questao" />
+                                        <span class="checkmark"></span>
+                                    </label>
                                 </div>
 
                                 <div className="cartao">
                                     <img className="img-cartao-5" src="/assets/images/ELO.svg" alt="" />
-                                    <button className="cartao-bolinha2"></button>
+                                    <label class="radio-container"> 
+                                        <input type="radio" name="questao" />
+                                        <span class="checkmark"></span>
+                                    </label>
                                 </div>
                             </div>
                         }
