@@ -863,7 +863,7 @@ app.put('/usuario', async (req, resp) => {
         ds_senha: corpo.senha
     },
     {
-        where: {'id_usuario': corpo.id}
+        where: {id_usuario: corpo.id}
     }        
     );
 
@@ -874,10 +874,10 @@ app.put('/usuario', async (req, resp) => {
 });
 
 app.get('/usuario/:id', async (req, resp) => {
-    let data = await db.infoa_gab_usuario.findAll({
-        where: { 'id_usuario': req.params.id }
+    let data = await db.infoa_gab_usuario.findOne({
+        where: { id_usuario: req.params.id }
     });
-    console.log(data)
+   
     resp.send(data)
 })
 
