@@ -875,26 +875,10 @@ app.put('/usuario', async (req, resp) => {
             where: {id_usuario: corpo.id}
         }        
         );
+
+        resp.send(r)
     } catch (error) {
         resp.send(`${error}`)
-    }
-
-   
-
-        let r = await db.infoa_gab_usuario.update({
-            nm_usuario: corpo.nome,
-            ds_cpf: corpo.cpf,
-            ds_email: corpo.email,
-            ds_senha: corpo.senha
-        },
-            {
-                where: { id_usuario: corpo.id }
-            }
-        );
-
-        resp.sendStatus(r)
-    } catch (error) {
-        resp.send({ erro: "Erro PUT /usuario" })
     }
 });
 
