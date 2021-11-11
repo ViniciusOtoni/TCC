@@ -1,6 +1,7 @@
+import { reconvert, convert } from "../../utils/convertCurrency";
+import { StyledButtonAdm } from "../../components/botaoAdm/styled";
 import { StyledGerenteAlterar } from "./styled";
 import { StyledInput, StyledSelect } from "../../components/input/styled";
-import { StyledButtonAdm } from "../../components/botaoAdm/styled";
 import CabecalhoAdm from "../../components/cabecalhoAdm";
 
 import { useState, useEffect } from "react";
@@ -29,10 +30,10 @@ export default function GerenteAlterar(props) {
 
 
     async function Alterar() {
-       
+
         let retorno = await api.AlterarProduto(
             nome,
-            preco,
+            reconvert(preco),
             categoria,
             codBarra,
             imagemPrincipal,
@@ -42,21 +43,21 @@ export default function GerenteAlterar(props) {
             dsProduto,
             infoProduto.id_produto
         );
-      
-       
 
-        if(retorno.erro)
-           return toast.error(retorno.erro)
-        
+
+
+        if (retorno.erro)
+            return toast.error(retorno.erro)
+
         return navigation.push('/gerenteCadastrar')
-        
-       
+
+
     }
 
-   
+
 
     useEffect(() => {
-        
+
         function SetVar() {
             setNome(infoProduto.nm_produto);
             setCodBarra(infoProduto.ds_codigo_barra);
@@ -68,7 +69,7 @@ export default function GerenteAlterar(props) {
             setImagemQuartenaria(infoProduto.img_quartenaria);
             setDsProduto(infoProduto.ds_produto);
         }
-        
+
         SetVar()
     }, [infoProduto])
 
@@ -101,7 +102,7 @@ export default function GerenteAlterar(props) {
                         </div>
                         <div className="line">
                             <div className="topico4"> Preco </div>
-                            <div className="input"> <StyledInput className="input-input topico4-input" value={preco} onChange={e => setPreco(e.target.value)} /> </div>
+                            <div className="input"> <StyledInput className="input-input topico4-input" value={convert(preco)} onChange={e => setPreco(e.target.value)} /> </div>
                         </div>
                         <div className="alternating">
                             <div className="topico5">  Imagem Principal: </div>
