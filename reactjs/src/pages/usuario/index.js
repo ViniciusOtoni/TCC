@@ -4,7 +4,13 @@ import { useHistory } from 'react-router-dom';
 import Cabecalho from "../../components/cabecalho";
 import Footer from "../../components/rodape";
 import { Container } from "./styled";
+import { toast } from 'react-toastify';
 
+
+
+import Api from "../../services/api";
+
+const api = new Api();
 
 
 
@@ -15,8 +21,7 @@ import { Container } from "./styled";
 
 
 function UsuarioIndex() {
-    const imagem = "https://pbs.twimg.com/profile_images/1411412715155996677/3R-cX35__400x400.jpg"
-
+   
     const nave = useHistory();
     let usuarioLogado = lerUsuarioQuelogou() || {}
 
@@ -24,6 +29,8 @@ function UsuarioIndex() {
     const [cpf, setCpf] = useState(usuarioLogado.ds_cpf);
     const [email, setEmail] = useState(usuarioLogado.ds_email);
     const [nome, setNome] = useState(usuarioLogado.nm_usuario);
+    const [imagem, setImagem] = useState(usuarioLogado.img_usuario)
+    const [all, setAll] = useState({})
 
     function lerUsuarioQuelogou() {
         let logado = Cookies.get('usuario-logado');
@@ -37,12 +44,32 @@ function UsuarioIndex() {
         }
     }
 
-  
    
-    
+
+    async function alterar() {
+        let put = await api.alterarUsuario(usuarioLogado.id_usuario, nome, cpf, senha, email);
+    }
+
+    async function lerUsuario() {
+        let get = await api.listarUsuario(usuarioLogado.id_usuario)
+        setAll(get)
+        
+        setarVariavel(all);
+    }
+
+    function setarVariavel(retornoAPI) {
+        setNome(retornoAPI.nm_usuario);
+        setEmail(retornoAPI.ds_email);
+        setSenha(retornoAPI.ds_senha);
+        setCpf(retornoAPI.ds_cpf)
+    }
+  
     useEffect(() => {
         lerUsuarioQuelogou()
-    })
+        lerUsuario()
+    }, [])
+
+   
 
         
     return (
@@ -77,7 +104,7 @@ function UsuarioIndex() {
 
 
                         <div className="change-information">
-                            <button>Alterar Informações</button>
+                            <button onClick={alterar}>Alterar Informações</button>
                         </div>
                     </div>
 

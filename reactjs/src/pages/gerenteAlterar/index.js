@@ -26,7 +26,7 @@ export default function GerenteAlterar(props) {
 
     const navigation = useHistory();
 
-  console.log(nome)
+
 
     async function Alterar() {
        

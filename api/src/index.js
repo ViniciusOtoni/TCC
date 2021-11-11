@@ -853,6 +853,35 @@ app.get('/pedido/:idUsuario', async (req, resp ) => {
 
 })
 
+app.put('/usuario', async (req, resp) => {
+    let corpo = req.body;
+
+    let r = await db.infoa_gab_usuario.update({
+        nm_usuario: corpo.nome,
+        ds_cpf: corpo.cpf,
+        ds_email: corpo.email,
+        ds_senha: corpo.senha
+    },
+    {
+        where: {'id_usuario': corpo.id}
+    }        
+    );
+
+    console.log(corpo)
+
+    resp.sendStatus(r)
+
+});
+
+app.get('/usuario/:id', async (req, resp) => {
+    let data = await db.infoa_gab_usuario.findAll({
+        where: { 'id_usuario': req.params.id }
+    });
+    console.log(data)
+    resp.send(data)
+})
+
+
 
 
 app.listen( process.env.PORT, (x) => 

@@ -275,5 +275,22 @@ export default class Api {
       let r = await api.get(`/listarPedido/${id}`);
       return r.data;
   }
+
+  async alterarUsuario(id, nome, cpf, senha, email) {
+    let json = {
+      id,
+      nome,
+      cpf,
+      senha,
+      email
+    }
+
+    let r = await api.put(`/usuario`, json)
+    return r.data;
+  }
+
+  async listarUsuario(id) {
+    let r = await api.get(`/usuario/${id}`)
+  }
 }
 
