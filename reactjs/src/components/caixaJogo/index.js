@@ -14,6 +14,7 @@ export default function CaixaJogo(props) {
     const [ vlAvaliacao, setVlAvaliacao ] = useState(props.info.avalicao)
     console.log(setVlAvaliacao)
 
+    console.log(props.info)
 
     return (
        <StyledJogo> 

@@ -78,6 +78,7 @@ export default class Api {
     img_secundaria,
     img_terciaria,
     img_quartenaria,
+    ds_produto,
     idProduto
   ) {
     let jsonProduto = {
@@ -89,6 +90,7 @@ export default class Api {
       img_secundaria,
       img_terciaria,
       img_quartenaria,
+      ds_produto
     };
 
     let r = await api.put(`/produto/${idProduto}`, jsonProduto);
@@ -103,7 +105,8 @@ export default class Api {
     img_produto,
     img_secundaria,
     img_terciaria,
-    img_quartenaria
+    img_quartenaria,
+    ds_produto
   ) {
     let jsonProduto = {
       nm_produto,
@@ -114,6 +117,7 @@ export default class Api {
       img_secundaria,
       img_terciaria,
       img_quartenaria,
+      ds_produto
     };
 
     let r = await api.post(`/produto`, jsonProduto);
