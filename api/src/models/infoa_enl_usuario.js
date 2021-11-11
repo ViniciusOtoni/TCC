@@ -80,7 +80,7 @@ export default class infoa_enl_usuario extends Model {
     },
     dt_ult_login: {
       type: DataTypes.DATE,
-      allowNull: true
+      allowNull: false
     }
   }, {
     sequelize,

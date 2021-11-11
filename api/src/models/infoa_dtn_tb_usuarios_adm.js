@@ -4,18 +4,18 @@ const { Model, Sequelize } = _sequelize;
 export default class infoa_dtn_tb_usuarios_adm extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_adm: {
+    id_usuarios_adm: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
     nm_adm: {
-      type: DataTypes.STRING(250),
+      type: DataTypes.STRING(200),
       allowNull: true
     },
     ds_email: {
-      type: DataTypes.STRING(150),
+      type: DataTypes.STRING(30),
       allowNull: true
     },
     ds_senha: {
@@ -32,7 +32,7 @@ export default class infoa_dtn_tb_usuarios_adm extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_adm" },
+          { name: "id_usuarios_adm" },
         ]
       },
     ]

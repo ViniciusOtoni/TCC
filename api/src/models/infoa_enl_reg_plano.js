@@ -1,42 +1,42 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_dtn_tb_venda extends Model {
+export default class infoa_enl_reg_plano extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_venda: {
+    id_reg_plano: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_cliente: {
+    id_plano: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
-        model: 'infoa_dtn_tb_cliente',
-        key: 'id_cliente'
+        model: 'infoa_enl_plano',
+        key: 'id_plano'
       }
     },
-    tp_pagamento: {
-      type: DataTypes.STRING(150),
-      allowNull: true
-    },
-    dt_venda: {
-      type: DataTypes.DATEONLY,
-      allowNull: true
-    },
-    id_venda_item: {
+    id_usuario: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
-        model: 'infoa_dtn_tb_venda_item',
-        key: 'id_venda_item'
+        model: 'infoa_enl_usuario',
+        key: 'id_usuario'
       }
+    },
+    dt_aquisicao: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    dt_expiracao: {
+      type: DataTypes.DATE,
+      allowNull: false
     }
   }, {
     sequelize,
-    tableName: 'infoa_dtn_tb_venda',
+    tableName: 'infoa_enl_reg_plano',
     timestamps: false,
     indexes: [
       {
@@ -44,25 +44,25 @@ export default class infoa_dtn_tb_venda extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_venda" },
+          { name: "id_reg_plano" },
         ]
       },
       {
-        name: "id_cliente",
+        name: "id_plano",
         using: "BTREE",
         fields: [
-          { name: "id_cliente" },
+          { name: "id_plano" },
         ]
       },
       {
-        name: "id_venda_item",
+        name: "id_usuario",
         using: "BTREE",
         fields: [
-          { name: "id_venda_item" },
+          { name: "id_usuario" },
         ]
       },
     ]
   });
-  return infoa_dtn_tb_venda;
+  return infoa_enl_reg_plano;
   }
 }

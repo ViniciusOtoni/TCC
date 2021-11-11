@@ -1,10 +1,10 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_enl_rank extends Model {
+export default class infoa_dtn_tb_venda_item extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_rank: {
+    id_venda_item: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -12,23 +12,27 @@ export default class infoa_enl_rank extends Model {
     },
     id_produto: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
-        model: 'infoa_enl_produto',
+        model: 'infoa_dtn_tb_produto',
         key: 'id_produto'
       }
     },
-    qtd_clique: {
-      type: DataTypes.DECIMAL(6,2),
-      allowNull: false
+    qtd_quantidade: {
+      type: DataTypes.INTEGER,
+      allowNull: true
     },
-    dt_clique: {
-      type: DataTypes.DATE,
-      allowNull: false
+    ds_tamanho: {
+      type: DataTypes.STRING(5),
+      allowNull: true
+    },
+    vl_valor: {
+      type: DataTypes.DECIMAL(15,2),
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoa_enl_rank',
+    tableName: 'infoa_dtn_tb_venda_item',
     timestamps: false,
     indexes: [
       {
@@ -36,7 +40,7 @@ export default class infoa_enl_rank extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_rank" },
+          { name: "id_venda_item" },
         ]
       },
       {
@@ -48,6 +52,6 @@ export default class infoa_enl_rank extends Model {
       },
     ]
   });
-  return infoa_enl_rank;
+  return infoa_dtn_tb_venda_item;
   }
 }

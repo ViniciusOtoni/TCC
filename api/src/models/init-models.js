@@ -13,13 +13,17 @@ import _infoa_dtn_tb_produto from  "./infoa_dtn_tb_produto.js";
 import _infoa_dtn_tb_tamanhos from  "./infoa_dtn_tb_tamanhos.js";
 import _infoa_dtn_tb_usuarios_adm from  "./infoa_dtn_tb_usuarios_adm.js";
 import _infoa_dtn_tb_venda from  "./infoa_dtn_tb_venda.js";
+import _infoa_dtn_tb_venda_item from  "./infoa_dtn_tb_venda_item.js";
 import _infoa_enl_cartao_credito from  "./infoa_enl_cartao_credito.js";
 import _infoa_enl_categoria from  "./infoa_enl_categoria.js";
+import _infoa_enl_chat from  "./infoa_enl_chat.js";
 import _infoa_enl_chat_usuario from  "./infoa_enl_chat_usuario.js";
 import _infoa_enl_pedido from  "./infoa_enl_pedido.js";
+import _infoa_enl_pedido_compra_e_venda from  "./infoa_enl_pedido_compra_e_venda.js";
 import _infoa_enl_plano from  "./infoa_enl_plano.js";
 import _infoa_enl_produto from  "./infoa_enl_produto.js";
 import _infoa_enl_rank from  "./infoa_enl_rank.js";
+import _infoa_enl_reg_plano from  "./infoa_enl_reg_plano.js";
 import _infoa_enl_usuario from  "./infoa_enl_usuario.js";
 import _infoa_enl_visto_recentemente from  "./infoa_enl_visto_recentemente.js";
 import _infoa_gab_cartao from  "./infoa_gab_cartao.js";
@@ -174,13 +178,17 @@ export default function initModels(sequelize) {
   var infoa_dtn_tb_tamanhos = _infoa_dtn_tb_tamanhos.init(sequelize, DataTypes);
   var infoa_dtn_tb_usuarios_adm = _infoa_dtn_tb_usuarios_adm.init(sequelize, DataTypes);
   var infoa_dtn_tb_venda = _infoa_dtn_tb_venda.init(sequelize, DataTypes);
+  var infoa_dtn_tb_venda_item = _infoa_dtn_tb_venda_item.init(sequelize, DataTypes);
   var infoa_enl_cartao_credito = _infoa_enl_cartao_credito.init(sequelize, DataTypes);
   var infoa_enl_categoria = _infoa_enl_categoria.init(sequelize, DataTypes);
+  var infoa_enl_chat = _infoa_enl_chat.init(sequelize, DataTypes);
   var infoa_enl_chat_usuario = _infoa_enl_chat_usuario.init(sequelize, DataTypes);
   var infoa_enl_pedido = _infoa_enl_pedido.init(sequelize, DataTypes);
+  var infoa_enl_pedido_compra_e_venda = _infoa_enl_pedido_compra_e_venda.init(sequelize, DataTypes);
   var infoa_enl_plano = _infoa_enl_plano.init(sequelize, DataTypes);
   var infoa_enl_produto = _infoa_enl_produto.init(sequelize, DataTypes);
   var infoa_enl_rank = _infoa_enl_rank.init(sequelize, DataTypes);
+  var infoa_enl_reg_plano = _infoa_enl_reg_plano.init(sequelize, DataTypes);
   var infoa_enl_usuario = _infoa_enl_usuario.init(sequelize, DataTypes);
   var infoa_enl_visto_recentemente = _infoa_enl_visto_recentemente.init(sequelize, DataTypes);
   var infoa_gab_cartao = _infoa_gab_cartao.init(sequelize, DataTypes);
@@ -343,8 +351,44 @@ export default function initModels(sequelize) {
   infoa_dtn_tb_produto.hasMany(infoa_dtn_tb_avaliacao, { as: "infoa_dtn_tb_avaliacaos", foreignKey: "id_produto"});
   infoa_dtn_tb_favoritos.belongsTo(infoa_dtn_tb_produto, { as: "id_produto_infoa_dtn_tb_produto", foreignKey: "id_produto"});
   infoa_dtn_tb_produto.hasMany(infoa_dtn_tb_favoritos, { as: "infoa_dtn_tb_favoritos", foreignKey: "id_produto"});
+  infoa_dtn_tb_venda_item.belongsTo(infoa_dtn_tb_produto, { as: "id_produto_infoa_dtn_tb_produto", foreignKey: "id_produto"});
+  infoa_dtn_tb_produto.hasMany(infoa_dtn_tb_venda_item, { as: "infoa_dtn_tb_venda_items", foreignKey: "id_produto"});
   infoa_dtn_tb_produto.belongsTo(infoa_dtn_tb_tamanhos, { as: "id_tamanho_infoa_dtn_tb_tamanho", foreignKey: "id_tamanho"});
   infoa_dtn_tb_tamanhos.hasMany(infoa_dtn_tb_produto, { as: "infoa_dtn_tb_produtos", foreignKey: "id_tamanho"});
+  infoa_dtn_tb_venda.belongsTo(infoa_dtn_tb_venda_item, { as: "id_venda_item_infoa_dtn_tb_venda_item", foreignKey: "id_venda_item"});
+  infoa_dtn_tb_venda_item.hasMany(infoa_dtn_tb_venda, { as: "infoa_dtn_tb_vendas", foreignKey: "id_venda_item"});
+  infoa_enl_produto.belongsTo(infoa_enl_categoria, { as: "id_categoria_infoa_enl_categorium", foreignKey: "id_categoria"});
+  infoa_enl_categoria.hasMany(infoa_enl_produto, { as: "infoa_enl_produtos", foreignKey: "id_categoria"});
+  infoa_enl_chat.belongsTo(infoa_enl_chat_usuario, { as: "id_chat_usuario_infoa_enl_chat_usuario", foreignKey: "id_chat_usuario"});
+  infoa_enl_chat_usuario.hasMany(infoa_enl_chat, { as: "infoa_enl_chats", foreignKey: "id_chat_usuario"});
+  infoa_enl_pedido_compra_e_venda.belongsTo(infoa_enl_pedido, { as: "id_pedido_infoa_enl_pedido", foreignKey: "id_pedido"});
+  infoa_enl_pedido.hasMany(infoa_enl_pedido_compra_e_venda, { as: "infoa_enl_pedido_compra_e_vendas", foreignKey: "id_pedido"});
+  infoa_enl_reg_plano.belongsTo(infoa_enl_plano, { as: "id_plano_infoa_enl_plano", foreignKey: "id_plano"});
+  infoa_enl_plano.hasMany(infoa_enl_reg_plano, { as: "infoa_enl_reg_planos", foreignKey: "id_plano"});
+  infoa_enl_pedido_compra_e_venda.belongsTo(infoa_enl_produto, { as: "id_produto_infoa_enl_produto", foreignKey: "id_produto"});
+  infoa_enl_produto.hasMany(infoa_enl_pedido_compra_e_venda, { as: "infoa_enl_pedido_compra_e_vendas", foreignKey: "id_produto"});
+  infoa_enl_rank.belongsTo(infoa_enl_produto, { as: "id_produto_infoa_enl_produto", foreignKey: "id_produto"});
+  infoa_enl_produto.hasMany(infoa_enl_rank, { as: "infoa_enl_ranks", foreignKey: "id_produto"});
+  infoa_enl_visto_recentemente.belongsTo(infoa_enl_produto, { as: "id_produto_infoa_enl_produto", foreignKey: "id_produto"});
+  infoa_enl_produto.hasMany(infoa_enl_visto_recentemente, { as: "infoa_enl_visto_recentementes", foreignKey: "id_produto"});
+  infoa_enl_cartao_credito.belongsTo(infoa_enl_usuario, { as: "id_usuario_infoa_enl_usuario", foreignKey: "id_usuario"});
+  infoa_enl_usuario.hasMany(infoa_enl_cartao_credito, { as: "infoa_enl_cartao_creditos", foreignKey: "id_usuario"});
+  infoa_enl_chat.belongsTo(infoa_enl_usuario, { as: "id_usuario_infoa_enl_usuario", foreignKey: "id_usuario"});
+  infoa_enl_usuario.hasMany(infoa_enl_chat, { as: "infoa_enl_chats", foreignKey: "id_usuario"});
+  infoa_enl_chat_usuario.belongsTo(infoa_enl_usuario, { as: "id_usuario_comprador_infoa_enl_usuario", foreignKey: "id_usuario_comprador"});
+  infoa_enl_usuario.hasMany(infoa_enl_chat_usuario, { as: "infoa_enl_chat_usuarios", foreignKey: "id_usuario_comprador"});
+  infoa_enl_chat_usuario.belongsTo(infoa_enl_usuario, { as: "id_usuario_vendedor_infoa_enl_usuario", foreignKey: "id_usuario_vendedor"});
+  infoa_enl_usuario.hasMany(infoa_enl_chat_usuario, { as: "id_usuario_vendedor_infoa_enl_chat_usuarios", foreignKey: "id_usuario_vendedor"});
+  infoa_enl_pedido.belongsTo(infoa_enl_usuario, { as: "id_usuario_comprador_infoa_enl_usuario", foreignKey: "id_usuario_comprador"});
+  infoa_enl_usuario.hasMany(infoa_enl_pedido, { as: "infoa_enl_pedidos", foreignKey: "id_usuario_comprador"});
+  infoa_enl_pedido.belongsTo(infoa_enl_usuario, { as: "id_usuario_vendedor_infoa_enl_usuario", foreignKey: "id_usuario_vendedor"});
+  infoa_enl_usuario.hasMany(infoa_enl_pedido, { as: "id_usuario_vendedor_infoa_enl_pedidos", foreignKey: "id_usuario_vendedor"});
+  infoa_enl_produto.belongsTo(infoa_enl_usuario, { as: "id_usuario_infoa_enl_usuario", foreignKey: "id_usuario"});
+  infoa_enl_usuario.hasMany(infoa_enl_produto, { as: "infoa_enl_produtos", foreignKey: "id_usuario"});
+  infoa_enl_reg_plano.belongsTo(infoa_enl_usuario, { as: "id_usuario_infoa_enl_usuario", foreignKey: "id_usuario"});
+  infoa_enl_usuario.hasMany(infoa_enl_reg_plano, { as: "infoa_enl_reg_planos", foreignKey: "id_usuario"});
+  infoa_enl_visto_recentemente.belongsTo(infoa_enl_usuario, { as: "id_usuario_infoa_enl_usuario", foreignKey: "id_usuario"});
+  infoa_enl_usuario.hasMany(infoa_enl_visto_recentemente, { as: "infoa_enl_visto_recentementes", foreignKey: "id_usuario"});
   infoa_gab_entrega.belongsTo(infoa_gab_endereco, { as: "id_endereco_infoa_gab_endereco", foreignKey: "id_endereco"});
   infoa_gab_endereco.hasMany(infoa_gab_entrega, { as: "infoa_gab_entregas", foreignKey: "id_endereco"});
   infoa_gab_venda_item.belongsTo(infoa_gab_produto, { as: "id_produto_infoa_gab_produto", foreignKey: "id_produto"});
@@ -506,13 +550,17 @@ export default function initModels(sequelize) {
     infoa_dtn_tb_tamanhos,
     infoa_dtn_tb_usuarios_adm,
     infoa_dtn_tb_venda,
+    infoa_dtn_tb_venda_item,
     infoa_enl_cartao_credito,
     infoa_enl_categoria,
+    infoa_enl_chat,
     infoa_enl_chat_usuario,
     infoa_enl_pedido,
+    infoa_enl_pedido_compra_e_venda,
     infoa_enl_plano,
     infoa_enl_produto,
     infoa_enl_rank,
+    infoa_enl_reg_plano,
     infoa_enl_usuario,
     infoa_enl_visto_recentemente,
     infoa_gab_cartao,
