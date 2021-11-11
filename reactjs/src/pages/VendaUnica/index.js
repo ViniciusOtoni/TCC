@@ -87,7 +87,7 @@ export default function VendaUnica(props) {
                         </div>
                         
                             <hr />
-                            <div className="descProduto"> <p> {produto.ds_produto} </p> </div>
+                            <div className="descProduto">  {produto.ds_produto} </div>
                       
                     </Content>
                 </main>

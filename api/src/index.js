@@ -244,7 +244,7 @@ app.put('/produto/:idProduto', async (req, resp) => {
         )   resp.send( { erro: "Há campos nulos!" } )
 
 
-        if(ds_produto.length > 200)
+        if(ds_produto.length > 170)
             resp.send({ erro: "Muito Grande a sua descrição!"})
 
         if (vl_preco < 0 || ds_codigo_barra < 0)
