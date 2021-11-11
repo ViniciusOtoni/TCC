@@ -303,13 +303,10 @@ app.delete('/produto/:idProduto', async (req, resp) => {
     
     try {
         let corpo = req.body;
-        console.log(corpo)
 
         let produto = await db.infoa_gab_produto.findAll({
             where: { nm_produto: corpo.nm_produto }
         })
-
-        console.log(corpo)
 
         if (produto.length == 1 )
             resp.send({erro: "Não é possível deletar este produto pois só existe 1"})
@@ -596,8 +593,6 @@ app.post('/validarCompra', async ( req, resp ) => {
             }
         })
 
-        
-        console.log(r.produtos);
 
         for (let produto of produtoUsu) {
             const gerarVendaItem = await db.infoa_gab_venda_item.create({
@@ -621,8 +616,7 @@ app.post('/validarCompra', async ( req, resp ) => {
         resp.send(entrega)
 
     } catch(e) {
-        console.log( e.toString() );
-      resp.send({ error: "Preencha todos os campos corretamente" })
+        resp.send({ error: "Preencha todos os campos corretamente" })
     }}) // 100% FEITA!!
 
 
@@ -631,8 +625,7 @@ app.post('/validarCompra', async ( req, resp ) => {
 
 app.get('/pedido', async (req, resp) => {
     try {
-
-        
+        let pesquisa = req.query.pesquisa;
         let page = req.query.page || 0;
       
         
@@ -644,7 +637,9 @@ app.get('/pedido', async (req, resp) => {
 
 
         let x = await db.infoa_gab_entrega.findAll({
+            
            
+            
             limit: itensPerPage,
             offset: skipItems,
            
@@ -668,10 +663,50 @@ app.get('/pedido', async (req, resp) => {
                     ]
                 }
                 
-            ]
+            ],
+
+            where: {
+                [Op.and]: [
+                    {'$id_endereco_infoa_gab_endereco.id_usuario_infoa_gab_usuario.nm_usuario$': {[Op.substring]: pesquisa}}
+                ]
+
+            },
+         
+
+          
+               
         });
 
         let total = await db.infoa_gab_entrega.findOne({
+            
+            include: [
+                {
+                    model: db.infoa_gab_venda,
+                    as: 'id_venda_infoa_gab_venda',
+                    required: true,
+                },
+                {
+                    model: db.infoa_gab_endereco,
+                    as: 'id_endereco_infoa_gab_endereco',
+                    required: true,
+                    include: [
+                        {
+                            model: db.infoa_gab_usuario,
+                            as: 'id_usuario_infoa_gab_usuario',
+                            required: true
+                        }
+                    ]
+                }
+                
+            ],
+
+            where: {
+                [Op.and]: [
+                    {'$id_endereco_infoa_gab_endereco.id_usuario_infoa_gab_usuario.nm_usuario$': {[Op.substring]: pesquisa}}
+                ]
+
+            },
+
             raw: true,
             attributes: [
                 [fn('count', 1), 'qtd']
@@ -808,7 +843,6 @@ app.get('/pedido/:idUsuario', async (req, resp ) => {
         page: Number(page)
     })
 
-    console.log(total.qtd)
 })
 
 app.listen( process.env.PORT, (x) => 
