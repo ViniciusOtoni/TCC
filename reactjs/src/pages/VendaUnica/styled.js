@@ -133,18 +133,15 @@ const Content = styled.div`
   }
 
   .descProduto {
-    
+    width: 90% !important;
+    font-family: Medio;
+    font-size: 1em;
+    color: white;
     padding-left: 3em;
     padding-bottom: 1em;
   }
 
-  .descProduto p  {
-    width: 10em;
-    font-family: Medio;
-    font-size: 1em;
-    color: white;
-  }
-
+  
  
 
   .frete {
