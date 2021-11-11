@@ -52,6 +52,8 @@ export default function ConcluirCompra(props) {
         lerUsuarioQuelogou()
     })
 
+    console.log(usuarioLogado)
+
 
     const nmProduto = infoProduto.map(x => {
         return x.produto
