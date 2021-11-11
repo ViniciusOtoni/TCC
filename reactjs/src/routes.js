@@ -30,7 +30,6 @@ import gerenteEscolha from './pages/gerenteEscolha';
 import VendaSemItem from "./pages/vendaSemItem";
 import Usuario from './pages/usuario'
 
-
 export default function Rotes() {
   return (
     <BrowserRouter>
