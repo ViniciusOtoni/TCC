@@ -1,26 +1,38 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infob_mw_ator extends Model {
+export default class infoc_jdf_chat extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_ator: {
+    id_chat: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_filme: {
+    id_pedido: {
       type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'infoc_jdf_pedido',
+        key: 'id_pedido'
+      }
+    },
+    ds_mensagem: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    nm_ator: {
-      type: DataTypes.STRING(255),
+    dt_mensagem: {
+      type: DataTypes.DATE,
+      allowNull: true
+    },
+    bt_enviadoAdm: {
+      type: DataTypes.BOOLEAN,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infob_mw_ator',
+    tableName: 'infoc_jdf_chat',
     timestamps: false,
     indexes: [
       {
@@ -28,18 +40,18 @@ export default class infob_mw_ator extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_ator" },
+          { name: "id_chat" },
         ]
       },
       {
-        name: "id_filme",
+        name: "id_pedido",
         using: "BTREE",
         fields: [
-          { name: "id_filme" },
+          { name: "id_pedido" },
         ]
       },
     ]
   });
-  return infob_mw_ator;
+  return infoc_jdf_chat;
   }
 }

@@ -29,24 +29,7 @@ export default class infoa_enl_rank extends Model {
   }, {
     sequelize,
     tableName: 'infoa_enl_rank',
-    timestamps: false,
-    indexes: [
-      {
-        name: "PRIMARY",
-        unique: true,
-        using: "BTREE",
-        fields: [
-          { name: "id_rank" },
-        ]
-      },
-      {
-        name: "id_produto",
-        using: "BTREE",
-        fields: [
-          { name: "id_produto" },
-        ]
-      },
-    ]
+    timestamps: false
   });
   return infoa_enl_rank;
   }

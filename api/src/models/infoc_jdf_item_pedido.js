@@ -1,42 +1,34 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_enl_pedido_compra_e_venda extends Model {
+export default class infoc_jdf_item_pedido extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_pedido_compra_e_venda: {
+    id_itemPedido: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_produto: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'infoa_enl_produto',
-        key: 'id_produto'
-      }
-    },
     id_pedido: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
-        model: 'infoa_enl_pedido',
+        model: 'infoc_jdf_pedido',
         key: 'id_pedido'
       }
     },
-    qtd_produto: {
+    id_produto: {
       type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    vl_pedido_compra_e_venda: {
-      type: DataTypes.DECIMAL(6,2),
-      allowNull: false
+      allowNull: true,
+      references: {
+        model: 'infoc_jdf_produto',
+        key: 'id_produto'
+      }
     }
   }, {
     sequelize,
-    tableName: 'infoa_enl_pedido_compra_e_venda',
+    tableName: 'infoc_jdf_item_pedido',
     timestamps: false,
     indexes: [
       {
@@ -44,7 +36,7 @@ export default class infoa_enl_pedido_compra_e_venda extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_pedido_compra_e_venda" },
+          { name: "id_itemPedido" },
         ]
       },
       {
@@ -63,6 +55,6 @@ export default class infoa_enl_pedido_compra_e_venda extends Model {
       },
     ]
   });
-  return infoa_enl_pedido_compra_e_venda;
+  return infoc_jdf_item_pedido;
   }
 }

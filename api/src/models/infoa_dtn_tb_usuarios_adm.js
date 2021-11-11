@@ -1,26 +1,30 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infod_tif_acessos extends Model {
+export default class infoa_dtn_tb_usuarios_adm extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_acesso: {
+    id_adm: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    nm_tela: {
-      type: DataTypes.STRING(255),
-      allowNull: false
+    nm_adm: {
+      type: DataTypes.STRING(250),
+      allowNull: true
     },
-    qtd_acessos: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+    ds_email: {
+      type: DataTypes.STRING(150),
+      allowNull: true
+    },
+    ds_senha: {
+      type: DataTypes.STRING(10),
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infod_tif_acessos',
+    tableName: 'infoa_dtn_tb_usuarios_adm',
     timestamps: false,
     indexes: [
       {
@@ -28,11 +32,11 @@ export default class infod_tif_acessos extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_acesso" },
+          { name: "id_adm" },
         ]
       },
     ]
   });
-  return infod_tif_acessos;
+  return infoa_dtn_tb_usuarios_adm;
   }
 }

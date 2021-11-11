@@ -74,7 +74,7 @@ export default function EscolhaEntrega() {
                         <div className="column">
                             <div className="title-column"> Data Do Pedido: </div>
                             {infoPedido.map(x =>
-                                <div className="pedido"> {x.id_venda_infoa_gab_venda.dt_venda.replace('Z', '')} </div>
+                                <div className="pedido"> {(x.id_venda_infoa_gab_venda.dt_venda.replace('Z', '')).toLocaleTimeString()} </div>
                             )}
                         </div>
                         <div className="column">

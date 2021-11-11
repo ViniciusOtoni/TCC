@@ -1,34 +1,30 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_enl_login extends Model {
+export default class infoa_sti_cupom extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_login: {
+    id_cupom: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    ds_email: {
-      type: DataTypes.STRING(100),
-      allowNull: false
+    ds_nome_desconto: {
+      type: DataTypes.STRING(255),
+      allowNull: true
     },
-    ds_senha: {
-      type: DataTypes.STRING(100),
-      allowNull: false
+    vl_cupom: {
+      type: DataTypes.DECIMAL(15,2),
+      allowNull: true
     },
-    dt_ult_login: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
-    dt_registro: {
-      type: DataTypes.DATE,
-      allowNull: false
+    bt_ativo: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoa_enl_login',
+    tableName: 'infoa_sti_cupom',
     timestamps: false,
     indexes: [
       {
@@ -36,11 +32,11 @@ export default class infoa_enl_login extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_login" },
+          { name: "id_cupom" },
         ]
       },
     ]
   });
-  return infoa_enl_login;
+  return infoa_sti_cupom;
   }
 }

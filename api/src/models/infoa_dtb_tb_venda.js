@@ -1,54 +1,46 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoc_tht_usuario extends Model {
+export default class infoa_dtb_tb_venda extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_usuario: {
+    ID_VENDA: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_login: {
+    ID_VENDA_ITEM: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'infoc_tht_login',
-        key: 'id_login'
+        model: 'infoa_dtb_tb_venda_item',
+        key: 'ID_VENDA_ITEM'
       }
     },
-    id_cartao: {
+    ID_CLIENTE: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'infoc_tht_cartao',
-        key: 'id_cartao'
+        model: 'infoa_dtb_tb_cliente',
+        key: 'ID_CLIENTE'
       }
     },
-    nm_usuario: {
-      type: DataTypes.STRING(30),
+    VL_VENDA: {
+      type: DataTypes.DECIMAL(15,2),
       allowNull: true
     },
-    ds_email: {
-      type: DataTypes.STRING(20),
-      allowNull: true
-    },
-    nr_celular: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    dt_nascimento: {
-      type: DataTypes.DATEONLY,
-      allowNull: true
-    },
-    ds_senha: {
+    DS_PAGAMENTO: {
       type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    DT_VENDA: {
+      type: DataTypes.DATEONLY,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoc_tht_usuario',
+    tableName: 'infoa_dtb_tb_venda',
     timestamps: false,
     indexes: [
       {
@@ -56,25 +48,25 @@ export default class infoc_tht_usuario extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_usuario" },
+          { name: "ID_VENDA" },
         ]
       },
       {
-        name: "id_login",
+        name: "ID_VENDA_ITEM",
         using: "BTREE",
         fields: [
-          { name: "id_login" },
+          { name: "ID_VENDA_ITEM" },
         ]
       },
       {
-        name: "id_cartao",
+        name: "ID_CLIENTE",
         using: "BTREE",
         fields: [
-          { name: "id_cartao" },
+          { name: "ID_CLIENTE" },
         ]
       },
     ]
   });
-  return infoc_tht_usuario;
+  return infoa_dtb_tb_venda;
   }
 }

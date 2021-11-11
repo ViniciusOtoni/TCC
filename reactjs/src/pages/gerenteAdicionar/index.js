@@ -17,7 +17,7 @@ const api = new Api();
 export default function GerenteAlterar() {
     const [nome, setNome] = useState('');
     const [codBarra, setCodBarra] = useState('');
-    const [categoria, setCategoria] = useState('Xbox');
+    const [categoria, setCategoria] = useState('');
     const [preco, setPreco] = useState('');
     const [imagemPrincipal, setImagemPrincipal] = useState('');
     const [imagemSecundaria, setImagemSecundaria] = useState('');
@@ -67,10 +67,12 @@ export default function GerenteAlterar() {
                             <div className="topico3"> Categoria: </div>
                             <div className="input">
                                 <StyledSelect className="input-input" value={categoria} onChange={e => setCategoria(e.target.value)}>
-                                    <option value="Xbox">  Xbox </option>
-                                    <option value="Ps4">  Ps4 </option>
-                                    <option value="Caneca">  Caneca </option>
-                                    <option value="Roupa">  Roupa </option>
+                                    <option style={{ display: "none" }} selected> Selecione </option>
+                                    <option value="Xbox"> Xbox </option>
+                                    <option value="Ps4"> PlayStation </option>
+                                    <option value="Caneca"> Canecas </option>
+                                    <option value="Roupa"> Roupas </option>
+                                    <option value="Outros"> Outros </option>
                                 </StyledSelect> </div>
                         </div>
                         <div className="line">

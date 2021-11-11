@@ -1,34 +1,38 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoc_atn_tb_chat extends Model {
+export default class infod_ecm_td_roupas_femi extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_chat: {
+    id_roupa_femi: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_sala: {
+    id_categoria: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: false
     },
-    ds_mensagem: {
+    nm_roupa: {
       type: DataTypes.STRING(255),
-      allowNull: true
+      allowNull: false
     },
-    dt_mensagem: {
-      type: DataTypes.DATE,
-      allowNull: true
+    ds_tamanho: {
+      type: DataTypes.STRING(5),
+      allowNull: false
     },
-    tp_enviado_por: {
-      type: DataTypes.STRING(100),
+    valor: {
+      type: DataTypes.DECIMAL(10,2),
+      allowNull: false
+    },
+    nm_fornecedor: {
+      type: DataTypes.INTEGER,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoc_atn_tb_chat',
+    tableName: 'infod_ecm_td_roupas_femi',
     timestamps: false,
     indexes: [
       {
@@ -36,18 +40,18 @@ export default class infoc_atn_tb_chat extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_chat" },
+          { name: "id_roupa_femi" },
         ]
       },
       {
-        name: "id_sala",
+        name: "id_categoria",
         using: "BTREE",
         fields: [
-          { name: "id_sala" },
+          { name: "id_categoria" },
         ]
       },
     ]
   });
-  return infoc_atn_tb_chat;
+  return infod_ecm_td_roupas_femi;
   }
 }

@@ -37,6 +37,10 @@ export default class infoc_atn_tb_empresa extends Model {
     ds_senha: {
       type: DataTypes.STRING(100),
       allowNull: true
+    },
+    ds_codigo_rec: {
+      type: DataTypes.STRING(100),
+      allowNull: true
     }
   }, {
     sequelize,

@@ -18,25 +18,17 @@ export default class infoa_dtn_tb_venda extends Model {
         key: 'id_cliente'
       }
     },
-    ds_nota_fiscal: {
-      type: DataTypes.STRING(100),
-      allowNull: true
-    },
     tp_pagamento: {
       type: DataTypes.STRING(150),
-      allowNull: true
-    },
-    qtd_parcelas: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    bt_presente: {
-      type: DataTypes.BOOLEAN,
       allowNull: true
     },
     dt_venda: {
       type: DataTypes.DATEONLY,
       allowNull: true
+    },
+    id_venda_item: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   }, {
     sequelize,

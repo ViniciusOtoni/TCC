@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Vizualizar = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2em;
+  
   height: 100vh;
 
   main {

@@ -1,58 +1,46 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infob_mw_filme extends Model {
+export default class infoa_dtb_tb_cliente extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_filme: {
+    ID_CLIENTE: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    nm_filme: {
+    NM_CLIENTE: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_genero: {
+    NR_CONTATO: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    ano_lancamento: {
+    NR_CPF: {
+      type: DataTypes.STRING(11),
+      allowNull: true
+    },
+    DS_ENDERECO: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    nm_diretor: {
+    DS_EMAIL: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_sinopse: {
-      type: DataTypes.STRING(800),
+    BT_ATIVO: {
+      type: DataTypes.BOOLEAN,
       allowNull: true
     },
-    ds_avaliacao: {
-      type: DataTypes.DECIMAL(10,2),
-      allowNull: true
-    },
-    ds_descricao: {
-      type: DataTypes.STRING(800),
-      allowNull: true
-    },
-    ds_plataforma: {
-      type: DataTypes.STRING(500),
-      allowNull: true
-    },
-    img_capa_maior: {
-      type: DataTypes.STRING(1000),
-      allowNull: true
-    },
-    img_capa_menor: {
-      type: DataTypes.STRING(1000),
-      allowNull: true
+    DS_SENHA: {
+      type: DataTypes.STRING(30),
+      allowNull: false
     }
   }, {
     sequelize,
-    tableName: 'infob_mw_filme',
+    tableName: 'infoa_dtb_tb_cliente',
     timestamps: false,
     indexes: [
       {
@@ -60,11 +48,11 @@ export default class infob_mw_filme extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_filme" },
+          { name: "ID_CLIENTE" },
         ]
       },
     ]
   });
-  return infob_mw_filme;
+  return infoa_dtb_tb_cliente;
   }
 }

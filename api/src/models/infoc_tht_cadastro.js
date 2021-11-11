@@ -1,26 +1,34 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infod_tif_like extends Model {
+export default class infoc_tht_cadastro extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_like: {
+    id_cadastro: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    nm_like: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+    ds_email: {
+      type: DataTypes.STRING(20),
+      allowNull: true
     },
-    nm_deslike: {
+    ds_senha: {
+      type: DataTypes.STRING(20),
+      allowNull: true
+    },
+    nr_celular: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
+    },
+    nm_nome: {
+      type: DataTypes.STRING(15),
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infod_tif_like',
+    tableName: 'infoc_tht_cadastro',
     timestamps: false,
     indexes: [
       {
@@ -28,11 +36,11 @@ export default class infod_tif_like extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_like" },
+          { name: "id_cadastro" },
         ]
       },
     ]
   });
-  return infod_tif_like;
+  return infoc_tht_cadastro;
   }
 }

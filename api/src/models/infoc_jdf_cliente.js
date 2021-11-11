@@ -1,50 +1,54 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_sti_endereco extends Model {
+export default class infoc_jdf_cliente extends Model {
   static init(sequelize, DataTypes) {
   super.init({
     id_cliente: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'infoa_sti_cliente',
-        key: 'id_cliente'
-      }
-    },
-    id_endereco: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
+    id_cartao: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'infoc_jdf_cartao',
+        key: 'id_cartao'
+      }
+    },
+    nm_cliente: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    nr_telefone: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    ds_email: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    ds_senhaEmail: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
     ds_endereco: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_cep: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    nr_numero: {
+    nr_endereco: {
       type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    ds_cpf: {
-      type: DataTypes.STRING(255),
       allowNull: true
     },
     ds_complemento: {
       type: DataTypes.STRING(255),
       allowNull: true
-    },
-    ds_cidade: {
-      type: DataTypes.STRING(255),
-      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoa_sti_endereco',
+    tableName: 'infoc_jdf_cliente',
     timestamps: false,
     indexes: [
       {
@@ -52,18 +56,18 @@ export default class infoa_sti_endereco extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_endereco" },
+          { name: "id_cliente" },
         ]
       },
       {
-        name: "id_cliente",
+        name: "id_cartao",
         using: "BTREE",
         fields: [
-          { name: "id_cliente" },
+          { name: "id_cartao" },
         ]
       },
     ]
   });
-  return infoa_sti_endereco;
+  return infoc_jdf_cliente;
   }
 }

@@ -1,50 +1,62 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infod_omn_empresa extends Model {
+export default class infob_mw_filmes extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_empresa: {
+    id_filme: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    nm_empresa: {
+    nm_filme: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_email: {
+    ds_genero: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_senha: {
+    ano_lancamento: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_cnpj: {
+    nm_diretor: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_localidade: {
-      type: DataTypes.STRING(255),
+    ds_sinopse: {
+      type: DataTypes.STRING(800),
       allowNull: true
     },
-    ds_area_atuacao: {
-      type: DataTypes.STRING(255),
+    ds_avaliacao: {
+      type: DataTypes.DECIMAL(10,2),
       allowNull: true
     },
-    ds_porte: {
-      type: DataTypes.STRING(255),
+    ds_descricao: {
+      type: DataTypes.STRING(800),
       allowNull: true
     },
-    ds_imagem: {
-      type: DataTypes.STRING(255),
+    ds_plataforma: {
+      type: DataTypes.STRING(500),
+      allowNull: true
+    },
+    img_capa_maior: {
+      type: DataTypes.STRING(1000),
+      allowNull: true
+    },
+    img_capa_menor: {
+      type: DataTypes.STRING(1000),
+      allowNull: true
+    },
+    qtd_likes: {
+      type: DataTypes.TEXT,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infod_omn_empresa',
+    tableName: 'infob_mw_filmes',
     timestamps: false,
     indexes: [
       {
@@ -52,11 +64,11 @@ export default class infod_omn_empresa extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_empresa" },
+          { name: "id_filme" },
         ]
       },
     ]
   });
-  return infod_omn_empresa;
+  return infob_mw_filmes;
   }
 }

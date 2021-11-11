@@ -1,34 +1,34 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infod_tif_comentario extends Model {
+export default class infoa_dtb_tb_venda_item extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_comentario: {
+    ID_VENDA_ITEM: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_usuario: {
+    ID_CLIENTE: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true,
+      references: {
+        model: 'infoa_dtb_tb_cliente',
+        key: 'ID_CLIENTE'
+      }
     },
-    id_anime: {
+    ID_LIVRO: {
       type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    ds_comentario: {
-      type: DataTypes.STRING(255),
-      allowNull: false
-    },
-    dt_comentario: {
-      type: DataTypes.DATE,
-      allowNull: false
+      allowNull: true,
+      references: {
+        model: 'infoa_dtb_tb_livro',
+        key: 'ID_LIVRO'
+      }
     }
   }, {
     sequelize,
-    tableName: 'infod_tif_comentario',
+    tableName: 'infoa_dtb_tb_venda_item',
     timestamps: false,
     indexes: [
       {
@@ -36,25 +36,25 @@ export default class infod_tif_comentario extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_comentario" },
+          { name: "ID_VENDA_ITEM" },
         ]
       },
       {
-        name: "id_usuario",
+        name: "ID_CLIENTE",
         using: "BTREE",
         fields: [
-          { name: "id_usuario" },
+          { name: "ID_CLIENTE" },
         ]
       },
       {
-        name: "id_anime",
+        name: "ID_LIVRO",
         using: "BTREE",
         fields: [
-          { name: "id_anime" },
+          { name: "ID_LIVRO" },
         ]
       },
     ]
   });
-  return infod_tif_comentario;
+  return infoa_dtb_tb_venda_item;
   }
 }

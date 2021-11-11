@@ -1,10 +1,10 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infod_tif_comentario_post extends Model {
+export default class infod_tif_favoritos extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_comentario_post: {
+    id_favoritos: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -12,27 +12,15 @@ export default class infod_tif_comentario_post extends Model {
     },
     id_usuario: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
-    id_comunidade: {
+    id_anime: {
       type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    ds_comentario: {
-      type: DataTypes.STRING(255),
-      allowNull: false
-    },
-    dt_comentario: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
-    id_like: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infod_tif_comentario_post',
+    tableName: 'infod_tif_favoritos',
     timestamps: false,
     indexes: [
       {
@@ -40,7 +28,7 @@ export default class infod_tif_comentario_post extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_comentario_post" },
+          { name: "id_favoritos" },
         ]
       },
       {
@@ -51,21 +39,14 @@ export default class infod_tif_comentario_post extends Model {
         ]
       },
       {
-        name: "id_comunidade",
+        name: "id_anime",
         using: "BTREE",
         fields: [
-          { name: "id_comunidade" },
-        ]
-      },
-      {
-        name: "id_like",
-        using: "BTREE",
-        fields: [
-          { name: "id_like" },
+          { name: "id_anime" },
         ]
       },
     ]
   });
-  return infod_tif_comentario_post;
+  return infod_tif_favoritos;
   }
 }

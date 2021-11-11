@@ -10,16 +10,16 @@ export default class infoa_dtn_tb_cliente extends Model {
       allowNull: false,
       primaryKey: true
     },
-    nm_cliente: {
-      type: DataTypes.STRING(200),
-      allowNull: true
-    },
     ds_email: {
       type: DataTypes.STRING(100),
       allowNull: true
     },
     ds_senha: {
       type: DataTypes.STRING(20),
+      allowNull: true
+    },
+    nm_cliente: {
+      type: DataTypes.STRING(200),
       allowNull: true
     },
     ds_cpf: {
@@ -32,6 +32,10 @@ export default class infoa_dtn_tb_cliente extends Model {
     },
     dt_nascimento: {
       type: DataTypes.DATEONLY,
+      allowNull: true
+    },
+    ds_codigo_rec: {
+      type: DataTypes.STRING(100),
       allowNull: true
     }
   }, {

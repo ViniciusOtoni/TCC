@@ -1,42 +1,38 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoa_enl_reg_plano extends Model {
+export default class infoa_enl_visto_recentemente extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_reg_plano: {
+    id_visto_recentemente: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    id_plano: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'infoa_enl_plano',
-        key: 'id_plano'
-      }
-    },
     id_usuario: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'infoa_enl_usuario',
         key: 'id_usuario'
       }
     },
-    dt_aquisicao: {
-      type: DataTypes.DATE,
-      allowNull: false
+    id_produto: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'infoa_enl_produto',
+        key: 'id_produto'
+      }
     },
-    dt_expiracao: {
+    dt_visualizacao: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoa_enl_reg_plano',
+    tableName: 'infoa_enl_visto_recentemente',
     timestamps: false,
     indexes: [
       {
@@ -44,14 +40,7 @@ export default class infoa_enl_reg_plano extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_reg_plano" },
-        ]
-      },
-      {
-        name: "id_plano",
-        using: "BTREE",
-        fields: [
-          { name: "id_plano" },
+          { name: "id_visto_recentemente" },
         ]
       },
       {
@@ -61,8 +50,15 @@ export default class infoa_enl_reg_plano extends Model {
           { name: "id_usuario" },
         ]
       },
+      {
+        name: "id_produto",
+        using: "BTREE",
+        fields: [
+          { name: "id_produto" },
+        ]
+      },
     ]
   });
-  return infoa_enl_reg_plano;
+  return infoa_enl_visto_recentemente;
   }
 }

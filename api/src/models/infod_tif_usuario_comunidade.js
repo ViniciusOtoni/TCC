@@ -1,10 +1,10 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infod_tif_chat_usuario extends Model {
+export default class infod_tif_usuario_comunidade extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_chat_usuario: {
+    id_usuario_comunidade: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -12,11 +12,15 @@ export default class infod_tif_chat_usuario extends Model {
     },
     id_usuario: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
+    },
+    id_comunidade: {
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infod_tif_chat_usuario',
+    tableName: 'infod_tif_usuario_comunidade',
     timestamps: false,
     indexes: [
       {
@@ -24,7 +28,7 @@ export default class infod_tif_chat_usuario extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_chat_usuario" },
+          { name: "id_usuario_comunidade" },
         ]
       },
       {
@@ -34,8 +38,15 @@ export default class infod_tif_chat_usuario extends Model {
           { name: "id_usuario" },
         ]
       },
+      {
+        name: "id_comunidade",
+        using: "BTREE",
+        fields: [
+          { name: "id_comunidade" },
+        ]
+      },
     ]
   });
-  return infod_tif_chat_usuario;
+  return infod_tif_usuario_comunidade;
   }
 }

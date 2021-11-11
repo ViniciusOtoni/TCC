@@ -38,8 +38,12 @@ export default class infoc_atn_tb_pessoal extends Model {
       type: DataTypes.STRING(100),
       allowNull: true
     },
+    ds_codigo_rec: {
+      type: DataTypes.STRING(100),
+      allowNull: true
+    },
     bl_assinatura: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.TINYINT,
       allowNull: true
     }
   }, {

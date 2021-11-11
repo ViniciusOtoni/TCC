@@ -15,7 +15,7 @@ export default class infoc_tht_pacote extends Model {
       allowNull: true
     },
     dt_data: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: true
     },
     ds_ingresso: {
@@ -23,27 +23,23 @@ export default class infoc_tht_pacote extends Model {
       allowNull: true
     },
     vl_preco: {
-      type: DataTypes.DECIMAL(10,0),
+      type: DataTypes.STRING(30),
       allowNull: true
     },
     ds_horario: {
-      type: DataTypes.DATE,
-      allowNull: true
-    },
-    ds_refeicao: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING(10),
       allowNull: true
     },
     ds_cancelamento: {
-      type: DataTypes.STRING(115),
+      type: DataTypes.STRING(255),
       allowNull: true
     },
     ds_endereco: {
-      type: DataTypes.STRING(115),
+      type: DataTypes.STRING(255),
       allowNull: true
     },
     ds_acesso: {
-      type: DataTypes.STRING(115),
+      type: DataTypes.STRING(255),
       allowNull: true
     },
     ds_imagem: {

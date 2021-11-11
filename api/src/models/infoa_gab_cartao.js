@@ -31,7 +31,7 @@ export default class infoa_gab_cartao extends Model {
       allowNull: false
     },
     dt_validade: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING(255),
       allowNull: false
     },
     nr_cartao: {
