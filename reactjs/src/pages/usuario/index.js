@@ -4,17 +4,17 @@ import { useHistory } from 'react-router-dom';
 import Cabecalho from "../../components/cabecalho";
 import Footer from "../../components/rodape";
 import { Container } from "./styled";
-import {  toast, ToastContainer } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 
 
 import Api from "../../services/api";
 const api = new Api();
 
 function UsuarioIndex() {
-   
+
     const nave = useHistory();
     const [all, setAll] = useState({})
-   
+
     let usuarioLogado = lerUsuarioQuelogou() || {}
 
     const [senha, setSenha] = useState('');
@@ -22,11 +22,11 @@ function UsuarioIndex() {
     const [email, setEmail] = useState('');
     const [nome, setNome] = useState('');
     const [imagem, setImagem] = useState('')
-    
+
 
     function lerUsuarioQuelogou() {
         let logado = Cookies.get('usuario-logado');
-    
+
         if (logado === undefined) {
             alert('Você deve estar logado para acessar essa página');
             nave.push('/login')
@@ -39,36 +39,42 @@ function UsuarioIndex() {
     async function lerUsuario() {
         let get = await api.listarUsuario(usuarioLogado.id_usuario)
         
+        if(get.erro)
+            alert(get.erro)
+
+            console.log(get)
+
         setarVariavel(get);
     }
 
 
     async function alterar() {
         let put = await api.alterarUsuario(usuarioLogado.id_usuario, nome, cpf, senha, email);
+        
+        if(put.erro)
+            alert(put.erro)
     }
 
-   
-   async function setarVariavel(retornoAPI) {
+
+    async function setarVariavel(retornoAPI) {
         setNome(retornoAPI.nm_usuario);
         setEmail(retornoAPI.ds_email);
         setSenha(retornoAPI.ds_senha);
         setCpf(retornoAPI.ds_cpf)
         setImagem(retornoAPI.img_usuario)
-
-       
     }
-  
+
     useEffect(() => {
         lerUsuarioQuelogou()
         lerUsuario()
     }, [])
 
-   
 
-        
+
+
     return (
-       
-    
+
+
 
         <div style={{ backgroundColor: "#333333" }}>
             <ToastContainer />
@@ -77,7 +83,7 @@ function UsuarioIndex() {
                 <article class="my-account">
                     <div className="user-picture">
                         <div className="img-user">
-                            <img src={imagem} alt="" style={{marginRight: "3em"}}/>
+                            <img src={imagem} alt="" style={{ marginRight: "3em" }} />
                         </div>
                         <div className="camera">
                             <button>
@@ -94,7 +100,7 @@ function UsuarioIndex() {
 
                         <div className="sub-group-input">
                             <label> E-MAIL </label>
-                            <input type="text" value={email} onChange={e => setEmail(e.target.value)}  />
+                            <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
                         </div>
 
 
@@ -106,12 +112,12 @@ function UsuarioIndex() {
                     <div className="personal-information">
                         <div className="sub-group-input">
                             <label> CPF </label>
-                            <input type="text" value={cpf} onChange={e => setCpf(e.target.value)}  />
+                            <input type="text" value={cpf} onChange={e => setCpf(e.target.value)} />
                         </div>
 
                         <div className="sub-group-input">
                             <label> SENHA</label>
-                            <input type="text" value={senha} onChange={e => setSenha(e.target.value)}   />
+                            <input type="text" value={senha} onChange={e => setSenha(e.target.value)} />
                         </div>
                     </div>
 
