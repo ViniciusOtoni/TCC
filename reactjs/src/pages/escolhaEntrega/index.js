@@ -63,6 +63,8 @@ export default function EscolhaEntrega() {
 
     }
 
+   
+
     return (
         <div style={{ backgroundColor: "#333333" }}>
             <Cabecalho />
@@ -74,7 +76,7 @@ export default function EscolhaEntrega() {
                         <div className="column">
                             <div className="title-column"> Data Do Pedido: </div>
                             {infoPedido.map(x =>
-                                <div className="pedido"> {(x.id_venda_infoa_gab_venda.dt_venda.replace('Z', '')).toLocaleTimeString()} </div>
+                                <div className="pedido"> {new Date(x.id_venda_infoa_gab_venda.dt_venda.replace('Z', '')).toLocaleTimeString()} </div>
                             )}
                         </div>
                         <div className="column">
