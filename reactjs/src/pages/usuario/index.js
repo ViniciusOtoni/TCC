@@ -4,33 +4,25 @@ import { useHistory } from 'react-router-dom';
 import Cabecalho from "../../components/cabecalho";
 import Footer from "../../components/rodape";
 import { Container } from "./styled";
-import { toast } from 'react-toastify';
-
+import {  toast, ToastContainer } from 'react-toastify'
 
 
 import Api from "../../services/api";
-
 const api = new Api();
-
-
-
-
-
-
-
-
 
 function UsuarioIndex() {
    
     const nave = useHistory();
+    const [all, setAll] = useState({})
+   
     let usuarioLogado = lerUsuarioQuelogou() || {}
 
-    const [senha, setSenha] = useState(usuarioLogado.ds_senha);
-    const [cpf, setCpf] = useState(usuarioLogado.ds_cpf);
-    const [email, setEmail] = useState(usuarioLogado.ds_email);
-    const [nome, setNome] = useState(usuarioLogado.nm_usuario);
-    const [imagem, setImagem] = useState(usuarioLogado.img_usuario)
-    const [all, setAll] = useState({})
+    const [senha, setSenha] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [email, setEmail] = useState('');
+    const [nome, setNome] = useState('');
+    const [imagem, setImagem] = useState('')
+    
 
     function lerUsuarioQuelogou() {
         let logado = Cookies.get('usuario-logado');
@@ -44,24 +36,26 @@ function UsuarioIndex() {
         }
     }
 
-   
+    async function lerUsuario() {
+        let get = await api.listarUsuario(usuarioLogado.id_usuario)
+        
+        setarVariavel(get);
+    }
+
 
     async function alterar() {
         let put = await api.alterarUsuario(usuarioLogado.id_usuario, nome, cpf, senha, email);
     }
 
-    async function lerUsuario() {
-        let get = await api.listarUsuario(usuarioLogado.id_usuario)
-        setAll(get)
-        
-        setarVariavel(all);
-    }
-
-    function setarVariavel(retornoAPI) {
+   
+   async function setarVariavel(retornoAPI) {
         setNome(retornoAPI.nm_usuario);
         setEmail(retornoAPI.ds_email);
         setSenha(retornoAPI.ds_senha);
         setCpf(retornoAPI.ds_cpf)
+        setImagem(retornoAPI.img_usuario)
+
+       
     }
   
     useEffect(() => {
@@ -77,6 +71,7 @@ function UsuarioIndex() {
     
 
         <div style={{ backgroundColor: "#333333" }}>
+            <ToastContainer />
             <Cabecalho corLetra="nulo" />
             <Container>
                 <article class="my-account">

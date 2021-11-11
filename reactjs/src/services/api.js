@@ -291,6 +291,7 @@ export default class Api {
 
   async listarUsuario(id) {
     let r = await api.get(`/usuario/${id}`)
+    return r.data;
   }
 }
 
