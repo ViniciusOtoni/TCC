@@ -859,7 +859,7 @@ app.put('/usuario', async (req, resp) => {
     try {
         let corpo = req.body;
 
-        if(corpo.nome == '' || corpo.cpf  == '' || corpo.email == '' || corpo.senha) {
+        if(corpo.nome == '' || corpo.cpf  == '' || corpo.email == '' || corpo.senha == '') {
             return resp.send({ erro: "Não Pode inserir campo Nulo"})
         }
 

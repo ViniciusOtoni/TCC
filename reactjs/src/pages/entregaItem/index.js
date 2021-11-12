@@ -3,6 +3,7 @@ import Cabecalho from "../../components/cabecalho";
 import Api from "../../services/api"
 import { Link } from 'react-router-dom';
 import { StyledEntregaItem } from "./styled";
+
 import { useEffect, useState } from "react";
 const api = new Api()
 
@@ -14,7 +15,8 @@ export default function EntregaItem(props) {
     const [recebido, setRecebido] = useState(props.location.state)
     const [info, setInfo] = useState({})
 
-  
+ 
+
 
     function hiddenCheck(a, b) {
 
@@ -61,16 +63,22 @@ export default function EntregaItem(props) {
             return 'aguardando'
     }
 
+    setInterval(() => {
+        let r = recebido
+    }, 4000)
     
+    async function puxarSituacao() {
+        const r = await api.listarPedidos2(recebido.id_entrega);
+        setInfo(r)
+    }
+
 
     useEffect(() => {
-        async function puxarSituacao() {
-            const r = await api.listarPedidos2(recebido.id_entrega);
-            setInfo(r)
-        }
-
         puxarSituacao()
     }, [recebido])
+
+
+     
 
     return (
         <div style={{ backgroundColor: "#333333", minHeight:"100vh"}}>

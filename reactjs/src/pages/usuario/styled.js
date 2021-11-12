@@ -44,6 +44,7 @@ const Container = styled.div`
   .img-user img {
     margin: 0px;
     height: 133px;
+    width: 133px;
     border-radius: 50%;
   }
 

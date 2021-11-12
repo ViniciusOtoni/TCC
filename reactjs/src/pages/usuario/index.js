@@ -83,8 +83,10 @@ function UsuarioIndex() {
 
 
         <div style={{ backgroundColor: "#333333" }}>
+            
             <ToastContainer />
             <Cabecalho corLetra="nulo" />
+            <div style={{maxWidth:"1240px", margin:"auto"}}> 
             <Container>
                 <article class="my-account">
                     <div className="user-picture">
@@ -135,7 +137,9 @@ function UsuarioIndex() {
 
                 </article>
             </Container>
+            </div>
             <Footer />
+            
         </div>
     )
 }
