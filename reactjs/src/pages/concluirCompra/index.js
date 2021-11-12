@@ -2,7 +2,7 @@ import Cabecalho from "../../components/cabecalho"
 import { Container } from "./styled"
 import { StyledInput } from '../../components/input/styled'
 import { StyledButtonVerde } from "../../components/botaoVerde/styled"
-
+import { convert } from "../../utils/convertCurrency"
 // import { Link } from "react-router-dom"
 import { useHistory } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
@@ -72,9 +72,9 @@ export default function ConcluirCompra(props) {
 
     function validarPreco() {
         if (infoProduto.length > 1)
-            return infoProduto.frete
+            return convert(infoProduto.frete)
         else
-            return Preco
+            return convert(Preco)
     }
 
     function validarQuantidadeProduto() {

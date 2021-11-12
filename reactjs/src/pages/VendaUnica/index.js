@@ -8,6 +8,8 @@ import { useState } from 'react'
 import { useHistory } from 'react-router'
 import Cookie from 'js-cookie'
 import Api from '../../services/api'
+import { convert } from "../../utils/convertCurrency";
+
 // import Cookies from 'js-cookie'
 const api = new Api()
 
@@ -76,7 +78,7 @@ export default function VendaUnica(props) {
                                     <img onClick={() => atualizarAvaliacao(5, produto.id)} className="star" src={vlAvaliacao === 5 ? "/assets/images/estrelaPreenchidaDark.svg" : "/assets/images/bi_star_black.svg"} alt="" />
                                 </div>
                                 <div className="text"> Vendido e entregue por GameBud </div>
-                                <div className="preco"> {`Preço: R$${produto.preco}`} </div>
+                                <div className="preco"> {`Preço: R$${convert(produto.preco)}`} </div>
                                 <div className="text"> {`em 5x de R$  ${Math.round(produto.preco / 5)} sem juros`} </div>
 
                                 <div className="align-button">

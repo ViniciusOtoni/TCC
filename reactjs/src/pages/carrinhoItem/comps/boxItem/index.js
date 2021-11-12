@@ -4,6 +4,7 @@ import { SelectInput } from "../../../../components/select/styled"
 
 import { StyledButtonAdm } from "../../../../components/botaoAdm/styled"
 
+import { convert } from "../../../../utils/convertCurrency"
 import { useState } from "react"
 import { useEffect } from "react"
 import { useHistory } from "react-router"
@@ -32,8 +33,7 @@ export default function BoxItemCarrinho(props) {
                 props.respostaFilho()
     
             produto.quantidade = qtd;
-        }
-        
+        }        
         alterar()
     }, [qtd, produto])
 
@@ -71,7 +71,7 @@ export default function BoxItemCarrinho(props) {
                             <option value={9} > 9 </option>
                             <option value={10} > 10 </option>
                         </SelectInput> </div>
-                        <div className="valores-preco"> {`R$: ${Math.round(produto.total)}`} </div>
+                        <div className="valores-preco"> {`R$: ${convert(Number( produto.total ))}`} </div>
                     </div>
                     <div className="excluir" onClick={remover}> Excluir </div>
                 </div>
