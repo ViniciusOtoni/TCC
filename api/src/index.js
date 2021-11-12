@@ -624,7 +624,7 @@ app.post('/validarCompra', async (req, resp) => {
         resp.send(entrega)
 
     } catch (e) {
-        resp.send({ error: "Preencha todos os campos corretamente" })
+        resp.send({ error: e.toString() })
     }
 }) // 100% FEITA!!
 

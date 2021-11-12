@@ -83,12 +83,12 @@ export default function BoxItemCarrinho(props) {
                     <div className="foto"> <img src={produto.imagem} alt="" /> </div>
                     <div className="row-val">
                         <div className="titulo-val"> Preço: </div>
-                        <div className="valor-val"> {`R$: ${Math.round(produto.preco * qtd)} `} </div>
+                        <div className="valor-val"> {`R$: ${convert((produto.preco * qtd).toFixed(2))} `} </div>
                     </div>
                     <div className="row-valores">
                         <div className="quantidade"> Unidades: </div>
                         <div className="select">  <SelectInput onChange={e => setQtd(e.target.value)} style={{ width: "4em", height: "2em", fontSize: "1em", fontFamily: "MontserratBold" }}>
-                            <option value={1} >1 </option>
+                            <option value={1}> 1 </option>
                             <option value={2}> 2 </option>
                             <option value={3}> 3 </option>
                             <option value={4}> 4 </option>

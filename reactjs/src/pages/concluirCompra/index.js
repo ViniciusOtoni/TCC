@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from "js-cookie"
+import axios from "axios"
 
 import { useEffect, useState } from "react"
 
@@ -26,6 +27,7 @@ export default function ConcluirCompra(props) {
     const [hidden, setHidden] = useState(false)
     const [email, setEmail] = useState(usuarioLogado.ds_email)
     const [senha, setSenha] = useState(usuarioLogado.ds_senha)
+    const [ loc, setLoc ] = useState({})
 
    
     const [cep, setCep] = useState('')
@@ -47,6 +49,10 @@ export default function ConcluirCompra(props) {
 
     console.log(dtValidade)
 
+async function CalcularCep() {
+        const r = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
+            setLoc(r.data); 
+}
 
     useEffect(() => {
         lerUsuarioQuelogou()
@@ -72,9 +78,9 @@ export default function ConcluirCompra(props) {
 
     function validarPreco() {
         if (infoProduto.length > 1)
-            return convert(infoProduto.frete)
+            return infoProduto.frete
         else
-            return convert(Preco)
+            return Preco
     }
 
     function validarQuantidadeProduto() {
@@ -127,13 +133,13 @@ export default function ConcluirCompra(props) {
                 <main className="sub-main">
                     <div className="esquerda-grupo-input">
                         <div className="text-input">Inserir Cep</div>
-                        <MaskedInput mask="99999-999" value={cep} onChange={e => setCep(e.target.value)} placeholder="Insira o CEP" className="input-esquerda-grupo" />
+                        <MaskedInput mask="99999-999" value={cep} onChange={e => setCep(e.target.value)} onKeyPress={CalcularCep()} onBlur={CalcularCep()} placeholder="Insira o CEP" className="input-esquerda-grupo"  />
 
                         <div className="text-input">Inserir Nome da Rua</div>
-                        <StyledInput value={nmRua} onChange={e => setNmRua(e.target.value)} placeholder="Nome da Rua" className="input-esquerda-grupo" />
+                        <StyledInput value={loc.logradouro} onChange={e => setNmRua(e.target.value)} placeholder="Nome da Rua" className="input-esquerda-grupo" />
 
                         <div className="text-input">Inserir Nome do Bairro:</div>
-                        <StyledInput value={nmBairro} onChange={e => setNmBairro(e.target.value)} placeholder="Nome do Bairro" className="input-esquerda-grupo" />
+                        <StyledInput value={loc.bairro} onChange={e => setNmBairro(e.target.value)} placeholder="Nome do Bairro" className="input-esquerda-grupo" />
 
                         <div className="text-input">Complemento</div>
                         <StyledInput value={complemento} onChange={e => setComplemento(e.target.value)} placeholder="" className="input-esquerda-grupo" />
@@ -152,7 +158,7 @@ export default function ConcluirCompra(props) {
                             </div>
                             <div className="row-produto">
                                 <div className="total-compra"> Valor Total:  </div>
-                                <div className="preço-compra"> {validarPreco()} </div>
+                                <div className="preço-compra"> {convert(validarPreco())} </div>
                             </div>
 
                             <div className="row-produto">

@@ -1,16 +1,16 @@
-import { StyledCarrinhoItem } from "./styled"
-import Cabecalho from "../../components/cabecalho"
+import axios from "axios"
+import Cookie from 'js-cookie'
 import Footer from "../../components/rodape"
+import Cabecalho from "../../components/cabecalho"
+import MaskedInput from "../../components/mask/input"
+import BoxItemCarrinho from './comps/boxItem'
+import { Link } from "react-router-dom"
+import { convert } from "../../utils/convertCurrency"
+import { useHistory } from "react-router"
 import { StyledInput } from "../../components/input/styled"
 import { StyledButtonVerde } from "../../components/botaoVerde/styled"
-import axios from "axios"
-import { Link } from "react-router-dom"
-import Cookie from 'js-cookie'
+import { StyledCarrinhoItem } from "./styled"
 import { useState, useEffect } from "react"
-import { useHistory } from "react-router"
-import BoxItemCarrinho from './comps/boxItem'
-import MaskedInput from "../../components/mask/input"
-
 
 
 export default function CarrinhoItem() {
@@ -137,11 +137,11 @@ export default function CarrinhoItem() {
 
                         <div className="row-preco">
                             <div className="sub-total-baixo"> Sub-Total: </div>
-                            <div className="sub-valor-final"> {`R$: ${Math.round(vlFinal)}`} </div>
+                            <div className="sub-valor-final"> {`R$: ${convert((vlFinal).toFixed(2))}`} </div>
                         </div>
                         <div className="row-preco">
                             <div className="total-valor-baixo"> Total: </div>
-                            <div className="total-final"> {`R$: ${Math.round(produto.frete)}`} </div>
+                            <div className="total-final"> {`R$: ${convert((produto.frete).toFixed(2))}`} </div>
                         </div>
                         <div className="botao-finalizar"> <Link to={{ pathname: "concluirCompra", state: produto }}> <StyledButtonVerde style={{ padding: ".3em", marginBottom: "1em", marginRight: "2em", width: "14em" }}> Realizar Compra! </StyledButtonVerde> </Link> </div>
                     </div>
