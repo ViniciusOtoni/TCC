@@ -23,6 +23,7 @@ function UsuarioIndex() {
     const [nome, setNome] = useState('');
     const [imagem, setImagem] = useState('')
 
+    
 
     function lerUsuarioQuelogou() {
         let logado = Cookies.get('usuario-logado');
@@ -38,7 +39,6 @@ function UsuarioIndex() {
 
     const logof = () => {
         Cookies.remove("usuario-logado");
-
         nave.push('/')
       };
 
@@ -46,9 +46,7 @@ function UsuarioIndex() {
         let get = await api.listarUsuario(usuarioLogado.id_usuario)
         
         if(get.erro)
-            alert(get.erro)
-
-            console.log(get)
+            toast.error(get.erro)
 
         setarVariavel(get);
     }
@@ -58,14 +56,16 @@ function UsuarioIndex() {
         let put = await api.alterarUsuario(usuarioLogado.id_usuario, nome, cpf, senha, email);
         
         if(put.erro)
-            alert(put.erro)
+            toast.error(put.erro)
+
+            toast.dark('Usúario Alterado')
     }
 
 
     async function setarVariavel(retornoAPI) {
-        setNome(retornoAPI.nm_usuario);
-        setEmail(retornoAPI.ds_email);
-        setSenha(retornoAPI.ds_senha);
+        setNome(retornoAPI.nm_usuario)
+        setEmail(retornoAPI.ds_email)
+        setSenha(retornoAPI.ds_senha)
         setCpf(retornoAPI.ds_cpf)
         setImagem(retornoAPI.img_usuario)
     }
@@ -75,12 +75,7 @@ function UsuarioIndex() {
         lerUsuario()
     }, [])
 
-
-
-
     return (
-
-
 
         <div style={{ backgroundColor: "#333333" }}>
             

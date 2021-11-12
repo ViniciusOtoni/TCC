@@ -22,8 +22,7 @@ export default function Cabecalho(props) {
   const [img] = useState(usuarioLogado.img_usuario);
   const [pesquisa, setPesquisa] = useState('');
 
-  console.log("NM = " + nm)
-  console.log("IMG" + img)
+
 
   const navigation = useHistory();
  

@@ -4,6 +4,7 @@ import Cabecalho from "../../components/cabecalho"
 import Paginacao from "../../components/paginacao"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
+import { convert } from "../../utils/convertCurrency"
 
 import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from 'react-router-dom'
@@ -88,7 +89,7 @@ export default function EscolhaEntrega() {
                         <div className="column">
                             <div className="title-column"> Valor Total: </div>
                             {infoPedido.map(x =>
-                                <div className="pedido"> {x.id_venda_infoa_gab_venda.vl_total} </div>
+                                <div className="pedido"> {convert(x.id_venda_infoa_gab_venda.vl_total)} </div>
                             )}
                         </div>
                         <div className="column-acao">
