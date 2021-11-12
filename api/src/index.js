@@ -190,8 +190,8 @@ app.post('/produto', async (req, resp) => {
         if (
             l.nm_produto == "" || l.vl_preco == '' ||
             l.ds_categoria == '' || l.ds_codigo_barra == '' ||
-            l.img_produto == '' || l.mg_secundaria == '' ||
-            l.img_terciaria == '' || l.img_quartenaria == '' || l.ds_produto == ''
+            l.img_produto == '' || 
+            l.ds_produto == ''
         ) resp.send({ erro: "Há campos nulos!" })
 
         if (l.ds_codigo_barra < 0 || l.vl_preco < 0)
