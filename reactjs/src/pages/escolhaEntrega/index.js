@@ -25,7 +25,6 @@ export default function EscolhaEntrega() {
     const [totalPage, setTotalPage] = useState(0)
     const [id, setId] = useState(usuarioLogado.id_usuario)
 
-    console.log(" aa " + totalPage)
  
 
     function irPara(pagina) {
@@ -48,6 +47,8 @@ export default function EscolhaEntrega() {
 
         pedidosUsu()
     }, [ page, id, nave ])
+
+    console.log(infoPedido)
 
    
 

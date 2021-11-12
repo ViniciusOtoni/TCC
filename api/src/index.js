@@ -892,7 +892,19 @@ app.get('/usuario/:id', async (req, resp) => {
     }
 })
 
+/*
+app.get('/entrega/:id', async (req, resp) => {
+    try {
+        let data = await db.infoa_gab_entrega(
+            {where: {'id_entrega': req.params.id}}
+        )
 
+        resp.send(data)
+    } catch (error) {
+    resp.send({error: "ERRO GET ENTREGA/ID"})
+    }
+})
+*/
 
 
 app.listen(process.env.PORT, (x) =>
