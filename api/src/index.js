@@ -316,21 +316,15 @@ app.delete('/produto/:idProduto', async (req, resp) => {
     try {
         let corpo = req.body;
 
-        let produto = await db.infoa_gab_produto.findAll({
-            where: { nm_produto: corpo.nm_produto }
-        })
-
-        if (produto.length == 1)
-            resp.send({ erro: "Não é possível deletar este produto pois só existe 1" })
-
-
+     
+    
         let a = await db.infoa_gab_venda_item.destroy({
             where: { 'id_produto': req.params.idProduto }
         })
 
         let r = await db.infoa_gab_produto.destroy({
             where: {
-                'id_produto': req.params.idProduto
+                id_produto: req.params.idProduto
             }
         })
         resp.sendStatus(200);

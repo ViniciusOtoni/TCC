@@ -29,7 +29,7 @@ export default function GerenteProdutosCadastrados() {
     }
 
     async function Remover(info) {
-        let retorno = await api.removerProduto(info.id_produto, info.nm_produto);
+        let retorno = await api.removerProduto(info.id_produto);
        
         if (retorno.erro)
             return toast.error(retorno.erro)
