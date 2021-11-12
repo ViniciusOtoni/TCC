@@ -13,8 +13,7 @@ import { Link } from "react-router-dom";
 export default function GerenteVizualizar(props) {
     const [infoProduto, setInfoProduto] = useState(props.location.state);
     
-    console.log(infoProduto)
-    console.log(setInfoProduto)
+   
 
     return (
         <div style={{ backgroundColor: "#333333" }}>

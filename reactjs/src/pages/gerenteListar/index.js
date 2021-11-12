@@ -12,7 +12,7 @@ export default function GerenteNaosei(props) {
     const [info, setInfo] = useState(props.location.state);
     const [produtos, setProdutos] = useState([])
 
-    console.log(setInfo)
+
 
    
 

@@ -14,12 +14,7 @@ export default function EntregaItem(props) {
     const [recebido, setRecebido] = useState(props.location.state)
     const [info, setInfo] = useState({})
 
-    console.log(info)
-    console.log(setRecebido)
-
-    // const [aCaminho, setACaminho] = useState('');
-    // const [saiuEntrega, setSaiuEntrega] = useState('');
-    // const [entregue, setEntregue] = useState('');
+  
 
     function hiddenCheck(a, b) {
 
