@@ -15,7 +15,7 @@ export default class infoa_dtn_tb_usuarios_adm extends Model {
       allowNull: true
     },
     ds_email: {
-      type: DataTypes.STRING(30),
+      type: DataTypes.STRING(150),
       allowNull: true
     },
     ds_senha: {

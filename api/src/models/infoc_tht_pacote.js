@@ -42,7 +42,19 @@ export default class infoc_tht_pacote extends Model {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_imagem: {
+    ds_imagem1: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    ds_imagem2: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    ds_imagem3: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    ds_imagem4: {
       type: DataTypes.STRING(255),
       allowNull: true
     },

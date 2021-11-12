@@ -11,7 +11,7 @@ export default class infoc_tht_lugar extends Model {
       primaryKey: true
     },
     nm_lugar: {
-      type: DataTypes.STRING(80),
+      type: DataTypes.STRING(100),
       allowNull: true
     },
     ds_avaliacao: {
@@ -19,7 +19,7 @@ export default class infoc_tht_lugar extends Model {
       allowNull: true
     },
     ds_endereco: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.STRING(200),
       allowNull: true
     },
     ds_imagem: {
@@ -30,12 +30,16 @@ export default class infoc_tht_lugar extends Model {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_dias: {
-      type: DataTypes.STRING(255),
+    ds_horario_fds: {
+      type: DataTypes.DATE,
       allowNull: true
     },
-    dt_horario: {
-      type: DataTypes.STRING(40),
+    ds_horario_dds: {
+      type: DataTypes.DATE,
+      allowNull: true
+    },
+    ds_categoria: {
+      type: DataTypes.STRING(50),
       allowNull: true
     }
   }, {

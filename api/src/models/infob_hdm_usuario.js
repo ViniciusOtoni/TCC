@@ -11,19 +11,23 @@ export default class infob_hdm_usuario extends Model {
       primaryKey: true
     },
     nm_HDM_nome: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(100),
       allowNull: true
     },
     nm_HDM_sobrenome: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(100),
       allowNull: true
     },
     nm_HDM_email: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(100),
       allowNull: true
     },
-    nm_HDM_senha: {
-      type: DataTypes.INTEGER,
+    ds_HDM_senha: {
+      type: DataTypes.STRING(100),
+      allowNull: true
+    },
+    ds_HDM_cogidoRec: {
+      type: DataTypes.STRING(100),
       allowNull: true
     }
   }, {
@@ -54,10 +58,10 @@ export default class infob_hdm_usuario extends Model {
         ]
       },
       {
-        name: "nm_HDM_senha",
+        name: "ds_HDM_senha",
         using: "BTREE",
         fields: [
-          { name: "nm_HDM_senha" },
+          { name: "ds_HDM_senha" },
         ]
       },
     ]

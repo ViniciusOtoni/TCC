@@ -18,16 +18,16 @@ export default class infoa_dtn_tb_venda_item extends Model {
         key: 'id_produto'
       }
     },
-    qtd_quantidade: {
+    id_venda: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'infoa_dtn_tb_venda',
+        key: 'id_venda'
+      }
     },
-    ds_tamanho: {
-      type: DataTypes.STRING(5),
-      allowNull: true
-    },
-    vl_valor: {
-      type: DataTypes.DECIMAL(15,2),
+    qtd_qtd: {
+      type: DataTypes.INTEGER,
       allowNull: true
     }
   }, {
@@ -41,6 +41,13 @@ export default class infoa_dtn_tb_venda_item extends Model {
         using: "BTREE",
         fields: [
           { name: "id_venda_item" },
+        ]
+      },
+      {
+        name: "id_venda",
+        using: "BTREE",
+        fields: [
+          { name: "id_venda" },
         ]
       },
       {
