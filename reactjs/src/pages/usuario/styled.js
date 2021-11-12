@@ -16,6 +16,11 @@ const Container = styled.div`
     margin: 8em 0em;
   }
 
+  .agp-botao {
+    display: flex;
+    flex-direction: row;
+  }
+
   .user-picture {
     position: relative;
   }
@@ -89,14 +94,15 @@ const Container = styled.div`
   }
 
   .change-information button {
-    width: 500px;
+    width: 300px;
     color: #F0AC54;
     background-color: #333333;
     padding: 1em 0em;
     border-radius: 20px;
     border: 4px solid #F0AC54;
     font-family: MontSerratBold;
-    margin: 2em 0em 4em 10em;
+    margin-top: 2em;
+    margin-left: 4em;
 
     cursor: pointer;
   }

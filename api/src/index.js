@@ -865,6 +865,10 @@ app.put('/usuario', async (req, resp) => {
     try {
         let corpo = req.body;
 
+        if(corpo.nome == '' || corpo.cpf  == '' || corpo.email == '' || corpo.senha) {
+            return resp.send({ erro: "Não Pode inserir campo Nulo"})
+        }
+
         let r = await db.infoa_gab_usuario.update({
             nm_usuario: corpo.nome,
             ds_cpf: corpo.cpf,

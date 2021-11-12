@@ -71,7 +71,7 @@ export default function BoxItemCarrinho(props) {
                             <option value={9} > 9 </option>
                             <option value={10} > 10 </option>
                         </SelectInput> </div>
-                        <div className="valores-preco"> {`R$: ${produto.total}`} </div>
+                        <div className="valores-preco"> {`R$: ${Math.round(produto.total)}`} </div>
                     </div>
                     <div className="excluir" onClick={remover}> Excluir </div>
                 </div>
@@ -83,7 +83,7 @@ export default function BoxItemCarrinho(props) {
                     <div className="foto"> <img src={produto.imagem} alt="" /> </div>
                     <div className="row-val">
                         <div className="titulo-val"> Preço: </div>
-                        <div className="valor-val"> {`R$: ${(produto.preco * qtd)} `} </div>
+                        <div className="valor-val"> {`R$: ${Math.round(produto.preco * qtd)} `} </div>
                     </div>
                     <div className="row-valores">
                         <div className="quantidade"> Unidades: </div>

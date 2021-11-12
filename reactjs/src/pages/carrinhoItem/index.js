@@ -137,11 +137,11 @@ export default function CarrinhoItem() {
 
                         <div className="row-preco">
                             <div className="sub-total-baixo"> Sub-Total: </div>
-                            <div className="sub-valor-final"> {`R$: ${(vlFinal)}`} </div>
+                            <div className="sub-valor-final"> {`R$: ${Math.round(vlFinal)}`} </div>
                         </div>
                         <div className="row-preco">
                             <div className="total-valor-baixo"> Total: </div>
-                            <div className="total-final"> {`R$: ${produto.frete}`} </div>
+                            <div className="total-final"> {`R$: ${Math.round(produto.frete)}`} </div>
                         </div>
                         <div className="botao-finalizar"> <Link to={{ pathname: "concluirCompra", state: produto }}> <StyledButtonVerde style={{ padding: ".3em", marginBottom: "1em", marginRight: "2em", width: "14em" }}> Realizar Compra! </StyledButtonVerde> </Link> </div>
                     </div>

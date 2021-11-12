@@ -27,9 +27,7 @@ export default function Cabecalho(props) {
 
   const navigation = useHistory();
  
-  const logof = () => {
-    Cookies.remove("usuario-logado");
-  };
+  
 
   const search = (event) => {
 
@@ -49,7 +47,7 @@ export default function Cabecalho(props) {
       <main className="pc">
         <div className="logo-cabecalho">
             <Link to="/">  
-                <img onClick={logof} src="/assets/images/logo.svg" alt="" />
+                <img  src="/assets/images/logo.svg" alt="" />
             </Link>
             <Link to="/" style={{ textDecoration: "none" }}>
                 <div className="titulo"> GameBud </div>
@@ -61,7 +59,7 @@ export default function Cabecalho(props) {
               <input id="button" onKeyPress={search} onChange={e => setPesquisa(e.target.value)}/> 
         </div>
 
-        <Link to={Cookies.get("usuario-logado") === undefined ? "/login" : ""} // arrumar o usuario mandar pra home
+        <Link to={Cookies.get("usuario-logado") === undefined ? "/login" : "/usuario"} // arrumar o usuario mandar pra home
               style={{ textDecoration: "none" }}>
           
           {Cookies.get("usuario-logado") === undefined ? (

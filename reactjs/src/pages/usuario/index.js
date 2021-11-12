@@ -36,6 +36,12 @@ function UsuarioIndex() {
         }
     }
 
+    const logof = () => {
+        Cookies.remove("usuario-logado");
+
+        nave.push('/')
+      };
+
     async function lerUsuario() {
         let get = await api.listarUsuario(usuarioLogado.id_usuario)
         
@@ -103,9 +109,13 @@ function UsuarioIndex() {
                             <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
                         </div>
 
-
+                    <div className="agp-botao">
                         <div className="change-information">
                             <button onClick={alterar}>Alterar Informações</button>
+                        </div>
+                        <div className="change-information">
+                            <button onClick={logof}> Fazer Logof </button>
+                        </div>
                         </div>
                     </div>
 
@@ -119,6 +129,7 @@ function UsuarioIndex() {
                             <label> SENHA</label>
                             <input type="text" value={senha} onChange={e => setSenha(e.target.value)} />
                         </div>
+
                     </div>
 
 
