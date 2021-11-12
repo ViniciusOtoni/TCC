@@ -21,7 +21,8 @@ function UsuarioIndex() {
     const [cpf, setCpf] = useState('');
     const [email, setEmail] = useState('');
     const [nome, setNome] = useState('');
-    const [imagem, setImagem] = useState('')
+    const [imagem, setImagem] = useState('');
+    const [estadoSenha, setEstadoSenha] = useState(0);
 
     
 
@@ -61,6 +62,16 @@ function UsuarioIndex() {
             toast.dark('Usúario Alterado')
     }
 
+    function estadoDaSenha(senha) {
+     
+        if (senha === 0)
+            return 'password'
+        else if (senha === 1)
+            return 'text'
+       
+    }
+
+    
 
     async function setarVariavel(retornoAPI) {
         setNome(retornoAPI.nm_usuario)
@@ -75,6 +86,7 @@ function UsuarioIndex() {
         lerUsuario()
     }, [])
 
+    console.log(estadoDaSenha(estadoSenha))
     return (
 
         <div style={{ backgroundColor: "#333333" }}>
@@ -124,7 +136,8 @@ function UsuarioIndex() {
 
                         <div className="sub-group-input">
                             <label> SENHA</label>
-                            <input type="text" value={senha} onChange={e => setSenha(e.target.value)} />
+                            <div className="inputSenha"><input type={estadoDaSenha(estadoSenha)} value={senha} onChange={e => setSenha(e.target.value)}></input> <img src="/assets/images/iconSenha.svg" onClick={ e =>  estadoSenha === 0 ? setEstadoSenha(1) : setEstadoSenha(0)}/> </div>
+                            
                         </div>
 
                     </div>

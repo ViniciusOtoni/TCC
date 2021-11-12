@@ -48,6 +48,21 @@ const Container = styled.div`
     border-radius: 50%;
   }
 
+  .inputSenha {
+    position: relative;
+  }
+
+  .inputSenha img {
+    position: absolute;
+    right: 2%;
+    top: 20%;
+
+    cursor: pointer;
+
+    width: 20px;
+    height: 20px;
+  }
+
   .camera img {
     width: 20px;
     height: 20px;
@@ -82,6 +97,8 @@ const Container = styled.div`
     font-size: 12px;
     letter-spacing: .1em;
     outline: none;
+
+    cursor: text;
 
     
     padding: 0.8em 0.6em;
