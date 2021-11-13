@@ -4,10 +4,11 @@ import CabecalhoAdm from "../../components/cabecalhoAdm";
 import Paginacao from "../../components/paginacao";
 
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { convert, reconvert } from "../../utils/convertCurrency";
+import { convert } from "../../utils/convertCurrency";
+import LoadingBar from 'react-top-loading-bar';
 
 import Api from "../../services/api";
 const api = new Api();
@@ -21,11 +22,16 @@ export default function GerenteProdutosCadastrados() {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [pesquisa, setPesquisa] = useState('');
+    const barraCarregamento = useRef(null);
 
     async function Listar() {
+
+        barraCarregamento.current.continuousStart();
         const e = await api.listarProdutos2(page);
         SetProdutos([...e.items]);
         setTotalPages(e.totalPaginas);
+
+        barraCarregamento.current.complete();
     }
 
     async function Remover(info) {
@@ -35,7 +41,15 @@ export default function GerenteProdutosCadastrados() {
             return toast.error(retorno.erro)
         
         
-        toast.success('Produto removido')
+        const situacao2 = new Promise(resolve => setTimeout(resolve, 1000));
+
+        const a = toast.promise(situacao2, {
+            pending: "Remover Produto",
+            success: "Produto Removido",
+            theme: 'light'
+               
+        })
+           
         Listar(); 
     }
 
@@ -51,11 +65,14 @@ export default function GerenteProdutosCadastrados() {
 
     useEffect(() => {
         async function Listar() {
+            
             const e = await api.listarProdutos2(page, pesquisa);
+           
             console.log("pesquisa gerente: " + pesquisa)
             console.log(e)
             SetProdutos([...e.items]);
             setTotalPages(e.totalPaginas);
+            
         }
 
         Listar()
@@ -63,8 +80,10 @@ export default function GerenteProdutosCadastrados() {
 
     return (
         <div style={{ backgroundColor: "#333333", minHeight: "100vh" }}>
-            <CabecalhoAdm search={search}/>
             <ToastContainer />
+            <LoadingBar color="orange" ref={ barraCarregamento } />
+            <CabecalhoAdm search={search}/>
+            
             <StyledGerenteCadastrados>
                 <main className="pc1">
                     <table>

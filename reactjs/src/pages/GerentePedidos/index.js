@@ -3,10 +3,12 @@ import { StyledButtonAdm } from "../../components/botaoAdm/styled";
 import CabecalhoAdm from "../../components/cabecalhoAdm";
 
 import Paginacao from "../../components/paginacao";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 // import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
+import { toast, ToastContainer } from 'react-toastify'
+import LoadingBar from 'react-top-loading-bar'
 
 import Api from "../../services/api";
 const api = new Api();
@@ -18,20 +20,42 @@ export default function GerentePedidos() {
     const [page, setPage] = useState(1);
     const [totalPage, setTotalPage] = useState(0);
     const [ pesquisa, setPesquisa ] = useState('');
+    const barraCarregamento = useRef(null);
 
     
     async function listar() {
+        barraCarregamento.current.continuousStart();
         const r = await api.listarPedidos(page, pesquisa);
+        
         console.log(r)
         setInfoGeral([...r.items]);
         setTotalPage(r.totalPaginas)
     }
 
+
+
     async function alterarSituacao(item, situacao, data) {
+        barraCarregamento.current.continuousStart();
+        
+
+        const situacao2 = new Promise(resolve => setTimeout(resolve, 1000));
+
+        toast.promise(situacao2, {
+            pending: "Alterando Produto...",
+            success: "Produto Alterado",
+            theme: 'light'
+           
+        })
+       
+
         let r = await api.alterarSituacaoPedido(item.id_entrega, situacao, data);
-        alert('Situacao')
+        
+        
+
+        barraCarregamento.current.complete();
         listar();
         return r;
+        
     }
 
     function irPara(pagina){
@@ -49,6 +73,8 @@ export default function GerentePedidos() {
     
     return (
         <div style={{ backgroundColor: "#333333", minHeight: "100vh" }}>
+            <ToastContainer />
+            <LoadingBar color="orange" ref={ barraCarregamento } />
             <CabecalhoAdm bNulo={true} search={search}/>
             <StyledGerentePedidos>
                 <main className="pc">
