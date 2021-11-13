@@ -14,4 +14,4 @@ function reconvert(number){
     return r;
 }
 
-export {convert, reconvert}
+export {convert, reconvert }

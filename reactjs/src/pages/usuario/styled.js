@@ -28,7 +28,7 @@ const Container = styled.div`
   .camera {
     position: absolute;
     left: 5.5em;
-    bottom: -0.5em;
+    bottom: -1.3em;
   }
 
   .camera button {
@@ -64,8 +64,7 @@ const Container = styled.div`
   }
 
   .camera img {
-    width: 20px;
-    height: 20px;
+    
     cursor: pointer;
   }
 
@@ -124,6 +123,49 @@ const Container = styled.div`
 
     cursor: pointer;
   }
+
+  .upload {
+        display: flex;
+        color: transparent !important;
+
+
+       background-size: 125px;
+       width: 2em;
+       height: 2.2em;
+     
+
+
+
+
+      background: #282828;
+      border-radius: 10px;
+    }
+
+
+    .upload::-webkit-file-upload-button {
+        visibility: hidden;
+      }
+      .upload::before {
+        content: url('/assets/images/cameraUSU.svg');
+        display: inline-block;
+        
+        border: hidden;
+        border-radius: 3px;
+
+
+        outline: none;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        cursor: pointer;
+        text-shadow: 1px 1px #fff;
+        font-weight: 700;
+        font-size: 10pt;
+        z-index: 1;
+      }
+      .upload:hover::before {
+       border: none;
+      }
+      
 
   
 

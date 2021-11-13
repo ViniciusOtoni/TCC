@@ -131,7 +131,7 @@ function UsuarioIndex() {
                         </div>
                         <div className="camera">
                             <button>
-                                <img src="/assets/images/cameraUSU.svg" alt="" />
+                               <input type="file" className="upload" />
                             </button>
                         </div>
                     </div>
