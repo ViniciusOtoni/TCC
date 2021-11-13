@@ -144,6 +144,7 @@ const StyledCabecalho = styled.div`
     align-items: center;
     justify-content: center;
     width: 20em;
+    cursor: pointer;
   }
 
   .user-image img {
