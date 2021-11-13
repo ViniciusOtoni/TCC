@@ -66,6 +66,7 @@ export default function EntregaItem(props) {
      setInterval(() => {
         setSituacao(info.ds_situacao)
         
+        puxarSituacao()
     }, 4000)
     
 
