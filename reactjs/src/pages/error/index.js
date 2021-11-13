@@ -5,7 +5,7 @@ export default function Error() {
     return (
         <Container>
             <Cabecalho className="header"/>
-            <img className="image" src="/assets/images/comingSoon.jpg"alt="" style={{backgroundSize: "cover", height: "80vh", width: "100%"}}/>
+            <img className="image" src="/assets/images/comingSoon.jpg"alt=""/>
         </Container>
     )
 }

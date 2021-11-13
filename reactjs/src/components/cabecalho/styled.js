@@ -14,6 +14,10 @@ const StyledCabecalho = styled.div`
     }
   }
 
+  .user-login {
+    cursor: pointer;
+  }
+
   .logo-cabecalho img {
     width: 6em;
     height: 5em;
@@ -151,6 +155,8 @@ const StyledCabecalho = styled.div`
     border-radius: 2em;
     width: 3em;
     height: 3em;
+
+    cursor: pointer;
   }
 
   .user-image {
@@ -214,6 +220,10 @@ const StyledCabecalho = styled.div`
       padding-right: 3em;
     }
 
+    .user-login {
+      cursor: pointer;
+    }
+
     hr {
       width: 100%;
       border-color: #f0ac54;
@@ -225,6 +235,7 @@ const StyledCabecalho = styled.div`
   @media (max-width: 1440px) {
     .user-login {
       font-size: 1.1em;
+      cursor: pointer;
     }
 
     .entrega {

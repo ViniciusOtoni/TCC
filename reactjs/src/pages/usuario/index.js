@@ -68,6 +68,7 @@ function UsuarioIndex() {
 
     }
 
+  
 
     async function alterar() {
        
@@ -84,6 +85,8 @@ function UsuarioIndex() {
             theme: 'light'
            
         })
+
+        lerUsuario()
        
     }
 
