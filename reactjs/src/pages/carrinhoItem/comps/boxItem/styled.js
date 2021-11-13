@@ -1,13 +1,16 @@
 import styled from "styled-components";
 
 const StyledBoxItemCarrinho = styled.div`
+  
+  margin: 2em 0em;
+  
   .pc {
     display: flex;
     flex-direction: row;
 
     background-color: #282828;
     border-radius: 0.6em;
-    margin: 2em 0em;
+    
     padding: 2em;
   }
 
