@@ -42,7 +42,17 @@ function UsuarioIndex() {
 
     const logof = () => {
         Cookies.remove("usuario-logado");
+        const situacao = new Promise(resolve => setTimeout(resolve, 2000));
+
+        toast.promise(situacao, {
+            pending: "Saindo",
+            success: "Logoff",
+            theme: 'light'
+           
+        })
+
         nave.push('/')
+      
       };
 
     async function lerUsuario() {
