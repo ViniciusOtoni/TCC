@@ -9,9 +9,13 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import '../index.css'
 import "animate.css"
+import LoadingBar from 'react-top-loading-bar'
 
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
+
+
+
 
 import Api from "../../services/api"
 const api = new Api();
@@ -19,10 +23,15 @@ const api = new Api();
 export default function Home() {
 
     const [populares, setPopulares] = useState([]);
+    const barraCarregamento = useRef(null);
 
     const listarPopulares = async () => {
+        barraCarregamento.current.continuousStart();
+
         const e = await api.listarProdutosPopulares()
         setPopulares(e);
+
+        barraCarregamento.current.complete();  
     }
 
     useEffect(() => {
@@ -51,6 +60,7 @@ export default function Home() {
 
     return (
         <main style={{ backgroundColor: "#333333", margin: "auto", position: "relative" }}>
+            <LoadingBar color="orange" ref={ barraCarregamento } />
             <Bolota> <img src="/assets/images/Koko Caramel 3.svg" alt="" /> </Bolota>
             <Cabecalho corLetra="branco" />
             <StyledConteudo>

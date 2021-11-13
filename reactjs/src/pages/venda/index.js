@@ -5,7 +5,9 @@ import Paginacao from "../../components/paginacao";
 import { StyledVenada } from "./styled";
 import { useHistory } from "react-router";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import LoadingBar from 'react-top-loading-bar'
+
 
 import Api from "../../services/api";
 const api = new Api();
@@ -18,6 +20,7 @@ export default function Venda(props) {
     const [order, setOrder] = useState('');
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    const barraCarregamento = useRef(null);
 
     
 
@@ -41,6 +44,7 @@ export default function Venda(props) {
         }
         
         const listar = async () => {
+            barraCarregamento.current.continuousStart()
             let categoria = getCategory();
     
             const e = await api.listarProdutos(order, pesquisa.pesquisa, categoria, page)
@@ -51,6 +55,7 @@ export default function Venda(props) {
             if(e.items.length === 0) {
                 nave.push('/vendaSemItem')
             }
+            barraCarregamento.current.complete()
         }
 
         listar();
@@ -63,6 +68,7 @@ export default function Venda(props) {
 
     return (
         <div style={{ backgroundColor: "#333333" }}>
+            <LoadingBar color="orange" ref={ barraCarregamento } />
             <Cabecalho />
             <StyledVenada>
                 <main className='a'>

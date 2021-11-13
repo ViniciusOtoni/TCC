@@ -1,10 +1,11 @@
 import Cookies from 'js-cookie';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import Cabecalho from "../../components/cabecalho";
 import Footer from "../../components/rodape";
 import { Container } from "./styled";
 import { toast, ToastContainer } from 'react-toastify'
+import LoadingBar from 'react-top-loading-bar'
 
 
 import Api from "../../services/api";
@@ -23,6 +24,7 @@ function UsuarioIndex() {
     const [nome, setNome] = useState('');
     const [imagem, setImagem] = useState('');
     const [estadoSenha, setEstadoSenha] = useState(0);
+    const barraCarregamento = useRef(null);
 
     
 
@@ -44,22 +46,35 @@ function UsuarioIndex() {
       };
 
     async function lerUsuario() {
+        barraCarregamento.current.continuousStart();
         let get = await api.listarUsuario(usuarioLogado.id_usuario)
         
         if(get.erro)
             toast.error(get.erro)
 
         setarVariavel(get);
+
+        barraCarregamento.current.complete();  
+
     }
 
 
     async function alterar() {
+       
         let put = await api.alterarUsuario(usuarioLogado.id_usuario, nome, cpf, senha, email);
+
+        const situacao = new Promise(resolve => setTimeout(resolve, 2000));
         
         if(put.erro)
             toast.error(put.erro)
-
-            toast.dark('Usúario Alterado')
+              
+        toast.promise(situacao, {
+            pending: "Alterando informações...",
+            success: "Usuário alterado 👌",
+            theme: 'light'
+           
+        })
+       
     }
 
     function estadoDaSenha(senha) {
@@ -92,6 +107,7 @@ function UsuarioIndex() {
         <div style={{ backgroundColor: "#333333" }}>
             
             <ToastContainer />
+            <LoadingBar color="orange" ref={ barraCarregamento } />
             <Cabecalho corLetra="nulo" />
             <div style={{maxWidth:"1240px", margin:"auto"}}> 
             <Container>

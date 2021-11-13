@@ -103,11 +103,21 @@ async function CalcularCep() {
     console.log(formaPagamento)
 
     const confirmarDados = async () => {
+     
 
         let r = await api.confirmarCompra(email, senha, cv, nrAgencia, nmTitular, dtValidade, nrCartao, cpf, nmBairro, nmRua, nrRua, cep, complemento, parcelas, formaPagamento, validarPreco(), infoProduto.length, nmProduto, validarQuantidadeProduto(), Preco)
-        if(r.error) {
+        const situacao = new Promise(resolve => setTimeout(resolve, 2000));
+
+        if (r.error) {
             return toast.error(r.error)
         }
+
+        toast.promise(situacao, {
+            pending: "Confirmando Pedido...",
+            success: "Pedido Feito 👌",
+            theme: 'light'
+        })
+
        nave.push('/escolhaEntrega')
     }
 
