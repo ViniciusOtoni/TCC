@@ -27,9 +27,9 @@ export default function ConcluirCompra(props) {
     const [hidden, setHidden] = useState(false)
     const [email, setEmail] = useState(usuarioLogado.ds_email)
     const [senha, setSenha] = useState(usuarioLogado.ds_senha)
-    const [ loc, setLoc ] = useState({})
+    const [loc, setLoc] = useState({})
 
-   
+
     const [cep, setCep] = useState('')
     const [nmRua, setNmRua] = useState('')
     const [nmBairro, setNmBairro] = useState('')
@@ -49,10 +49,10 @@ export default function ConcluirCompra(props) {
 
     console.log(dtValidade)
 
-async function CalcularCep() {
+    async function CalcularCep() {
         const r = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
-            setLoc(r.data); 
-}
+        setLoc(r.data);
+    }
 
     useEffect(() => {
         lerUsuarioQuelogou()
@@ -103,7 +103,7 @@ async function CalcularCep() {
     console.log(formaPagamento)
 
     const confirmarDados = async () => {
-     
+
 
         let r = await api.confirmarCompra(email, senha, cv, nrAgencia, nmTitular, dtValidade, nrCartao, cpf, nmBairro, nmRua, nrRua, cep, complemento, parcelas, formaPagamento, validarPreco(), infoProduto.length, nmProduto, validarQuantidadeProduto(), Preco)
         const situacao = new Promise(resolve => setTimeout(resolve, 2000));
@@ -118,7 +118,7 @@ async function CalcularCep() {
             theme: 'light'
         })
 
-       nave.push('/escolhaEntrega')
+        nave.push('/escolhaEntrega')
     }
 
     function lerUsuarioQuelogou() {
@@ -143,7 +143,7 @@ async function CalcularCep() {
                 <main className="sub-main">
                     <div className="esquerda-grupo-input">
                         <div className="text-input">Inserir Cep</div>
-                        <MaskedInput mask="99999-999" value={cep} onChange={e => setCep(e.target.value)} onKeyPress={CalcularCep()} onBlur={CalcularCep()} placeholder="Insira o CEP" className="input-esquerda-grupo"  />
+                        <MaskedInput mask="99999-999" value={cep} onChange={e => setCep(e.target.value)} onKeyPress={CalcularCep()} onBlur={CalcularCep()} placeholder="Insira o CEP" className="input-esquerda-grupo" />
 
                         <div className="text-input">Inserir Nome da Rua</div>
                         <StyledInput value={loc.logradouro} onChange={e => setNmRua(e.target.value)} placeholder="Nome da Rua" className="input-esquerda-grupo" />
@@ -182,14 +182,14 @@ async function CalcularCep() {
                         </div>
 
                         <div className="credit-card">
-                            <button className={formaPagamento === 'Crédito' ? "selecionado" :  "img-button"} value={formaPagamento} onClick={Visible} style={{ marginBottom: ".2em" }}>Cartão de Crédito <img  className="img-button" src="/assets/images/cartao.svg" alt="" /></button>
-                            <button className={formaPagamento === 'Débito' ? "selecionado" :  "img-button"} value={formaPagamento} onClick={Visible1} > Cartão de Débito <img  className="img-button"  src="/assets/images/cartao.svg" alt="" /></button>
+                            <button className={formaPagamento === 'Crédito' ? "selecionado" : "img-button"} value={formaPagamento} onClick={Visible} style={{ marginBottom: ".2em" }}>Cartão de Crédito <img className="img-button" src="/assets/images/cartao.svg" alt="" /></button>
+                            <button className={formaPagamento === 'Débito' ? "selecionado" : "img-button"} value={formaPagamento} onClick={Visible1} > Cartão de Débito <img className="img-button" src="/assets/images/cartao.svg" alt="" /></button>
                         </div>
                         {hidden &&
                             <div className="cartoes">
                                 <div className="cartao">
                                     <img src="/assets/images/VISA.svg" alt="" />
-                                    <label class="radio-container"> 
+                                    <label class="radio-container">
                                         <input type="radio" name="questao" />
                                         <span class="checkmark"></span>
                                     </label>
@@ -197,7 +197,7 @@ async function CalcularCep() {
 
                                 <div className="cartao">
                                     <img className="img-cartao-2" src="/assets/images/MASTERCARD.svg" alt="" />
-                                    <label class="radio-container"> 
+                                    <label class="radio-container">
                                         <input type="radio" name="questao" />
                                         <span class="checkmark"></span>
                                     </label>
@@ -205,7 +205,7 @@ async function CalcularCep() {
 
                                 <div className="cartao">
                                     <img className="img-cartao-3" src="/assets/images/DINERS.svg" alt="" />
-                                    <label class="radio-container"> 
+                                    <label class="radio-container">
                                         <input type="radio" name="questao" />
                                         <span class="checkmark"></span>
                                     </label>
@@ -213,7 +213,7 @@ async function CalcularCep() {
 
                                 <div className="cartao">
                                     <img className="img-cartao-4" src="/assets/images/HIPERCARD.svg" alt="" />
-                                    <label class="radio-container"> 
+                                    <label class="radio-container">
                                         <input type="radio" name="questao" />
                                         <span class="checkmark"></span>
                                     </label>
@@ -221,7 +221,7 @@ async function CalcularCep() {
 
                                 <div className="cartao">
                                     <img className="img-cartao-5" src="/assets/images/ELO.svg" alt="" />
-                                    <label class="radio-container"> 
+                                    <label class="radio-container">
                                         <input type="radio" name="questao" />
                                         <span class="checkmark"></span>
                                     </label>
@@ -250,7 +250,7 @@ async function CalcularCep() {
 
                             <div className="Last-information-inputs2">
                                 <div className="last-information-text1">Número da Agência</div>
-                                <StyledInput value={nrAgencia} onChange={e => setNrAgencia(e.target.value)} className="input-lastInfo-text1"/>
+                                <StyledInput value={nrAgencia} onChange={e => setNrAgencia(e.target.value)} className="input-lastInfo-text1" />
 
                                 <div className="last-information-text1"> Data de Validade </div>
                                 <MaskedInput mask="99/99" placeholder="Insira a data" value={dtValidade} onChange={e => setDtValidade(e.target.value)} />
