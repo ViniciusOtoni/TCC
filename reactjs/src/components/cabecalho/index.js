@@ -3,70 +3,97 @@ import { Link, useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
+import Api from "../../services/api";
 
-function lerUsuarioQuelogou() {
-  let logado = Cookies.get("usuario-logado");
-  if (logado === undefined) {
-    return null;
-  }
+const api = new Api();
 
-  let usuarioLogado = JSON.parse(logado);
-  return usuarioLogado;
-}
 
-  
+
+
 
 export default function Cabecalho(props) {
   let usuarioLogado = lerUsuarioQuelogou() || {};
   const [nm] = useState(usuarioLogado.nm_usuario);
   const [img] = useState(usuarioLogado.img_usuario);
+  const [img2, setImg2] = useState('');
   const [pesquisa, setPesquisa] = useState('');
 
 
 
   const navigation = useHistory();
- 
-  
+
+
+  function lerUsuarioQuelogou() {
+    let logado = Cookies.get("usuario-logado");
+    if (logado === undefined) {
+      return null;
+    }
+
+    let usuarioLogado = JSON.parse(logado);
+    return usuarioLogado;
+  }
 
   const search = (event) => {
 
-    if(event.key === 'Enter' || event.type === "click"){
-        navigation.push({
-          pathname: '/venda',
-          state: {pesquisa}
-        })        
+    if (event.key === 'Enter' || event.type === "click") {
+      navigation.push({
+        pathname: '/venda',
+        state: { pesquisa }
+      })
     }
   }
 
   useEffect(() => {
+    lerUsuario()
   }, [pesquisa])
+
+  async function lerUsuario() {
+    let get = await api.listarUsuario(usuarioLogado.id_usuario)
   
+
+  
+    setImg2(get.img_usuario)
+  }
+
+
+
+
+  function getImage() {
+    if (img2.includes('http'))
+      return img2
+    else
+      return `http://localhost:3030/usuario?imagem=${img2}`
+
+  }
+
+  
+
   return (
     <StyledCabecalho corLetra={props.corLetra}>
       <main className="pc">
         <div className="logo-cabecalho">
-            <Link to="/">  
-                <img  src="/assets/images/logo.svg" alt="" />
-            </Link>
-            <Link to="/" style={{ textDecoration: "none" }}>
-                <div className="titulo"> GameBud </div>
-            </Link>
+          <Link to="/">
+            <img src="/assets/images/logo.svg" alt="" />
+          </Link>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <div className="titulo"> GameBud </div>
+          </Link>
         </div>
 
         <div className="pesquisa">
-              <img onClick={search} className="lupa" src="./assets/images/lupa.svg" alt=""/> 
-              <input id="button" onKeyPress={search} onChange={e => setPesquisa(e.target.value)}/> 
+          <img onClick={search} className="lupa" src="./assets/images/lupa.svg" alt="" />
+          <input id="button" onKeyPress={search} onChange={e => setPesquisa(e.target.value)} />
         </div>
 
         <Link to={Cookies.get("usuario-logado") === undefined ? "/login" : "/usuario"} // arrumar o usuario mandar pra home
-              style={{ textDecoration: "none" }}>
-          
+          style={{ textDecoration: "none" }}>
+
           {Cookies.get("usuario-logado") === undefined ? (
             <div className="login"> Login </div>
           ) : (
             <div className="row-user">
               <div className="user-image">
-                <img src={img} alt="" />
+                <img src={getImage()} alt="" />
               </div>
               <div className="user-login" title={nm}> {nm != null && nm.length >= 25 ? nm.substr(0, 25) + "..." : nm} </div>
             </div>
@@ -89,7 +116,7 @@ export default function Cabecalho(props) {
         </div>
 
         <div className="logo-cabecalho">
-          
+
           <img src="/assets/images/logo.svg" alt="" />
         </div>
         <div className="column">

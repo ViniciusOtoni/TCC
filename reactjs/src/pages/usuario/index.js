@@ -60,14 +60,13 @@ function UsuarioIndex() {
 
     async function lerUsuario() {
         barraCarregamento.current.continuousStart();
+        
         let get = await api.listarUsuario(usuarioLogado.id_usuario)
         
         if(get.erro)
             toast.error(get.erro)
 
-        setAll(get)
-        setarVariavel(all);
-
+        setarVariavel(get)
         barraCarregamento.current.complete();  
 
     }
@@ -86,24 +85,11 @@ function UsuarioIndex() {
             navegacao.push('/')
         }
     }
-  
+    
 
     async function alterar() {
 
-        let formData = new formData();
-        formData.append('imgUsuario', imgUsuario);
-        formData.append('id', usuarioLogado.id);
-        formData.append('nome', nome);
-        formData.append('cpf', cpf);
-        formData.append('senha', senha);
-        formData.append('email', email)
-       
-        //let put = await api.alterarUsuario(usuarioLogado.id_usuario, nome, cpf, senha, email);
-        let put = await axios.put('/usuario', formData, {
-            headers: {
-               'Content-type': 'nultpart/form-data' 
-            }
-        })
+        let put = await api.alterarUsuario(usuarioLogado.id, nome, cpf, senha, email, imgUsuario)
 
         const situacao = new Promise(resolve => setTimeout(resolve, 2000));
         
@@ -132,11 +118,21 @@ function UsuarioIndex() {
        
     }
 
+  
+
     function getImage() {
-        if (all.img_usuario.includes('http'))
-            return all.img_usuario
+        
+       
+        if (imagem.includes('http'))
+            return imagem
         else
-            return `http://localhost:3000/usuario?imagem=${all.img_usuario}`
+          return `http://localhost:3030/usuario?imagem=${imagem}`
+        
+    }
+
+    function verImagem () {
+        if (imgUsuario)
+            return URL.createObjectURL(imgUsuario)
     }
 
     async function setarVariavel(retornoAPI) {
@@ -145,19 +141,16 @@ function UsuarioIndex() {
         setSenha(retornoAPI.ds_senha)
         setCpf(retornoAPI.ds_cpf)
         setImagem(retornoAPI.img_usuario)
+        setAll(retornoAPI)
     }
 
-    function verImagem () {
-        if (imgUsuario)
-            return URL.createObjectURL(imgUsuario)
-    }
 
     useEffect(() => {
         lerUsuarioQuelogou()
         lerUsuario()
     }, [])
 
-    console.log(estadoDaSenha(estadoSenha))
+   
     return (
 
         <div style={{ backgroundColor: "#333333" }}>
@@ -171,7 +164,7 @@ function UsuarioIndex() {
                     <div className="user-picture">
                         <div className="img-user">
                                 {imgUsuario === null
-                                        ? <img src={getImage} alt="" style={{ marginRight: "3em" }} />
+                                        ? <img src={getImage()} alt="" style={{ marginRight: "3em" }} />
                                         : <img src={verImagem()} alt="" style={{marginRight: "3em"}} />
                                 }
                         </div>

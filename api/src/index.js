@@ -2,7 +2,10 @@ import db from "./db.js";
 import express from "express";
 import cors from "cors";
 import enviarEmail from "./email.js";
-import multer from 'multer'
+import multer from 'multer';
+
+
+import path from 'path'
 
 
 
@@ -14,14 +17,14 @@ app.use(cors());
 app.use(express.json());
 
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination: function(req, file, cb) {
         cb(null, 'uploads/')
     },
-    filename: function (req, file, cb) {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-        cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname))
+    filename: function(req, file, cb) {
+        const unique = Date.now() + "-" +  Math.round(Math.random() * 1E9);
+        cb(null, file.fieldname + "-" + unique + path.extname(file.originalname))
     }
-})
+});
 
 const upload = multer({ storage: storage })
 
@@ -870,22 +873,22 @@ app.get('/pedido/:idUsuario', async (req, resp) => {
 app.put('/usuario', upload.single('imgUsuario'), async (req, resp) => {
    
     try {
-        let corpo = req.body;
+        let {id, nome, cpf, email, senha} = req.body;
         const { path } = req.file;
 
-        if(corpo.nome == '' || corpo.cpf  == '' || corpo.email == '' || corpo.senha == '') {
+        if(nome == '' || cpf  == '' || email == '' || senha == '') {
             return resp.send({ erro: "Não Pode inserir campo Nulo"})
         }
 
         let r = await db.infoa_gab_usuario.update({
-            nm_usuario: corpo.nome,
-            ds_cpf: corpo.cpf,
-            ds_email: corpo.email,
-            ds_senha: corpo.senha,
+            nm_usuario: nome,
+            ds_cpf: cpf,
+            ds_email: email,
+            ds_senha: senha,
             img_usuario: path
         },
         {
-            where: {id_usuario: corpo.id}
+            where: {id_usuario: id}
         }        
         );
 
@@ -907,9 +910,12 @@ app.get('/usuario/:id', async (req, resp) => {
     }
 })
 
+
+
 app.get('/usuario', async (req, resp) => {
     let dirname = path.resolve();
     resp.sendFile(req.query.imagem, { root: path.join(dirname) });
+    
 })
 
 /*

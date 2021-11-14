@@ -276,21 +276,36 @@ export default class Api {
       return r.data;
   }
 
-  async alterarUsuario(id, nome, cpf, senha, email) {
-    let json = {
-      id,
-      nome,
-      cpf,
-      senha,
-      email
-    }
+  async alterarUsuario(id, nome, cpf, senha, email, imgUsuario) {
+    
+    let formData = new FormData();
+    formData.append('id', id);
+    formData.append('nome', nome);
+    formData.append('cpf', cpf);
+    formData.append('senha', senha);
+    formData.append('email', email)
+    formData.append('imgUsuario', imgUsuario);
+    
+    console.log(formData)
+    
 
-    let r = await api.put(`/usuario`, json)
+    
+
+    let r = await api.put(`/usuario`, formData, {
+      headers: {
+        'Content-type': 'nultpart/form-data' 
+      }
+    })
     return r.data;
   }
 
   async listarUsuario(id) {
     let r = await api.get(`/usuario/${id}`)
+    return r.data;
+  }
+
+  async listarimg(imagem) {
+    let r = await api.get(` /usuario?imagem=${imagem}`);
     return r.data;
   }
 /*
