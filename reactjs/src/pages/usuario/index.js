@@ -19,6 +19,7 @@ function UsuarioIndex() {
 
     let usuarioLogado = lerUsuarioQuelogou() || {}
 
+    const navegacao = useHistory()
     const [senha, setSenha] = useState('');
     const [cpf, setCpf] = useState('');
     const [email, setEmail] = useState('');
@@ -73,6 +74,18 @@ function UsuarioIndex() {
     
   
 
+
+    const logar = async () => {
+
+        let r = await api.login(email, senha)
+
+        if (r.error) {
+            toast.error(`${r.error}`)
+        } else {
+            Cookies.set('usuario-logado', JSON.stringify(r));
+            navegacao.push('/')
+        }
+    }
   
 
     async function alterar() {
@@ -104,8 +117,8 @@ function UsuarioIndex() {
            
         })
 
-        lerUsuario()
-       
+      
+       await logar()
     }
 
    
