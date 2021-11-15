@@ -24,7 +24,7 @@ function UsuarioIndex() {
     const [cpf, setCpf] = useState('');
     const [email, setEmail] = useState('');
     const [nome, setNome] = useState('');
-    const [imagem, setImagem] = useState('');
+    const [imagem, setImagem] = useState(null);
     const [estadoSenha, setEstadoSenha] = useState(0);
     const barraCarregamento = useRef(null);
 
@@ -83,13 +83,23 @@ function UsuarioIndex() {
         if(put.erro)
             return toast.error(put.erro)
               
-        toast.success('Usuario Alterado!')
+        
+        const resolveAfter3Sec = new Promise(resolve => setTimeout(resolve, 1500));
+        toast.promise(
+            resolveAfter3Sec,
+            {
+                pending: 'Alterando Seu Usuario',
+                success: 'Usuário Alterado 👌',
+               
+            }
+        )
 
         let login = await api.login(email, senha);
         await Cookies.set('usuario-logado', JSON.stringify(login));
       
-      
-        nave.push('/')
+       
+
+       
     }
 
    
