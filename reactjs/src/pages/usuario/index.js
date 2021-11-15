@@ -29,7 +29,6 @@ function UsuarioIndex() {
     const barraCarregamento = useRef(null);
 
 
-    
 
     function lerUsuarioQuelogou() {
         let logado = Cookies.get('usuario-logado');
@@ -89,12 +88,12 @@ function UsuarioIndex() {
 
     async function alterar() {
 
-        let put = await api.alterarUsuario(usuarioLogado.id, nome, cpf, senha, email, imagem)
+        let put = await api.alterarUsuario(usuarioLogado.id_usuario, nome, cpf, senha, email, imagem)
 
         const situacao = new Promise(resolve => setTimeout(resolve, 2000));
         
         if(put.erro)
-            toast.error(put.erro)
+            return   toast.error(put.erro)
               
         toast.promise(situacao, {
             pending: "Alterando informações...",

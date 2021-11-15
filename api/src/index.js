@@ -908,7 +908,7 @@ app.put('/usuario', async (req, resp) => {
 
         resp.send(r)
     } catch (error) {
-        resp.send(`${error}`)
+        resp.send({erro: error.toString() })
     }
 });
 
