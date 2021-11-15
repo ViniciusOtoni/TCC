@@ -53,7 +53,7 @@ export default function Venda(props) {
             setTotalPages(e.totalPaginas)
 
             if(e.items.length === 0) {
-                nave.push('/vendaSemItem')
+              return  nave.push('/vendaSemItem')
             }
             barraCarregamento.current.complete()
         }
