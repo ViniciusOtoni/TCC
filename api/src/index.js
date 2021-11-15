@@ -888,7 +888,7 @@ app.get('/pedido/:idUsuario', async (req, resp) => {
 app.put('/usuario', async (req, resp) => {
    
     try {
-        let { id, nome, cpf, email, senha, imagem } = req.body;
+        let { id, nome, cpf, email, senha} = req.body;
 
         if(nome == '' || cpf  == '' || email == '' || senha == '') {
             return resp.send({ erro: "Não Pode inserir campo Nulo"})
@@ -898,8 +898,8 @@ app.put('/usuario', async (req, resp) => {
             nm_usuario: nome,
             ds_cpf: cpf,
             ds_email: email,
-            ds_senha: senha,
-            img_usuario: imagem
+            ds_senha: senha
+           
         },
         {
             where: {id_usuario: id}
