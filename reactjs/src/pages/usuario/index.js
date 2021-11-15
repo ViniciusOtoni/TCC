@@ -116,9 +116,7 @@ function UsuarioIndex() {
             return 'text'
        
     }
-    console.log(imagem)
-  
-
+   
    
 
     async function setarVariavel(retornoAPI) {

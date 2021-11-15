@@ -9,6 +9,7 @@ import { useHistory } from 'react-router'
 import Cookie from 'js-cookie'
 import Api from '../../services/api'
 import { convert } from "../../utils/convertCurrency";
+import { exibirImagem } from '../../components/caixaJogo'
 
 // import Cookies from 'js-cookie'
 const api = new Api()
@@ -60,14 +61,14 @@ export default function VendaUnica(props) {
                         <div className="align-content">
                             <div className="content-images">
                                 <div className="images">
-                                    <img onClick={() => setImg(1)} src={img === 1 ? produto.imagem : produto.imagem_dois} alt="" />
-                                    <img onClick={() => setImg(2)} src={img === 2 ? produto.imagem : produto.imagem_tres} alt="" />
-                                    <img onClick={() => setImg(3)} src={img === 3 ? produto.imagem : produto.imagem_quatro} alt="" />
+                                    <img onClick={() => setImg(1)} src={exibirImagem(img === 1 ? produto.imagem : produto.imagem_dois)} alt="" />
+                                    <img onClick={() => setImg(2)} src={exibirImagem(img === 2 ? produto.imagem : produto.imagem_tres)} alt="" />
+                                    <img onClick={() => setImg(3)} src={exibirImagem(img === 3 ? produto.imagem : produto.imagem_quatro)} alt="" />
                                 </div>
-                                <img onClick={() => setImg(0)} className="image-main" src={img === 1 ? produto.imagem_dois
+                                <img onClick={() => setImg(0)} className="image-main" src={exibirImagem(img === 1 ? produto.imagem_dois
                                     : img === 2 ? produto.imagem_tres
                                         : img === 3 ? produto.imagem_quatro
-                                            : produto.imagem} alt="" />
+                                            : produto.imagem)} alt="" />
                             </div>
                             <div>
                                 <div className="align-stars">

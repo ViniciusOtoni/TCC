@@ -98,29 +98,33 @@ export default class Api {
   }
 
   async cadastrarProduto(
-    nm_produto,
-    vl_preco,
-    ds_categoria,
-    ds_codigo_barra,
-    img_produto,
-    img_secundaria,
-    img_terciaria,
-    img_quartenaria,
-    ds_produto
+    nome,
+    preco,
+    categoria,
+    codigoBarra,
+    imagem,
+    descricao
   ) {
-    let jsonProduto = {
-      nm_produto,
-      vl_preco,
-      ds_categoria,
-      ds_codigo_barra,
-      img_produto,
-      img_secundaria,
-      img_terciaria,
-      img_quartenaria,
-      ds_produto
-    };
+    
+    let formData = new FormData();
+    formData.append('nome', nome)
+    formData.append('preco', preco)
+    formData.append('categoria', categoria)
+    formData.append('codigoBarra', codigoBarra)
+    formData.append('imagem', imagem[0])
+    formData.append('imagem', imagem[1])
+    formData.append('imagem', imagem[2])
+    formData.append('imagem', imagem[3])
+    formData.append('descricao', descricao)
 
-    let r = await api.post(`/produto`, jsonProduto);
+
+    
+
+    let r = await api.post(`/produto`, formData, {
+      headers: {
+        'Content-Type': 'multpart/form-data'
+      }
+    });
     return r.data;
   }
 

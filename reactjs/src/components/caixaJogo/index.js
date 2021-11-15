@@ -5,23 +5,30 @@ import { useState } from "react";
 import { convert } from "../../utils/convertCurrency";
 
 
-
+function exibirImagem(img) {
+    if (img.includes('http'))
+        return img
+    else
+        return `http://localhost:3030/exibirImagem?imagem=${img}`
+}
 
 
 
 export default function CaixaJogo(props) {
 
 
-    const [ vlAvaliacao, setVlAvaliacao ] = useState(props.info.avalicao)
-    console.log(setVlAvaliacao)
+   
 
+    const [ vlAvaliacao, setVlAvaliacao ] = useState(props.info.avalicao)
+  
+    console.log(props.info)
     const x = props.info.preco
-    console.log(x);
+
 
     return (
        <StyledJogo> 
        
-        <div className="imagem-jogo"> <img src={props.info.imagem} alt="" /> </div>
+        <div className="imagem-jogo"> <img src={exibirImagem(props.info.imagem)} alt="" /> </div>
         <div className="nome-jogo" title={props.info.produto}> {props.info.produto != null && props.info.produto.length >= 27
                                                                                                         ? props.info.produto.substr(0, 27) + "..."
                                                                                                         : props.info.produto}  </div> 
@@ -38,3 +45,5 @@ export default function CaixaJogo(props) {
     </StyledJogo>
     )
 }
+
+export { exibirImagem };

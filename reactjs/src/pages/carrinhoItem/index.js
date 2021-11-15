@@ -11,6 +11,7 @@ import { StyledInput } from "../../components/input/styled"
 import { StyledButtonVerde } from "../../components/botaoVerde/styled"
 import { StyledCarrinhoItem } from "./styled"
 import { useState, useEffect } from "react"
+import { exibirImagem } from "../../components/caixaJogo"
 
 
 export default function CarrinhoItem() {

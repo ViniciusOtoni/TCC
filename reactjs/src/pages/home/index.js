@@ -38,6 +38,8 @@ export default function Home() {
         listarPopulares()
     }, [])
 
+   
+
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -57,6 +59,8 @@ export default function Home() {
             items: 1
         }
     };
+
+   
 
     return (
         <main style={{ backgroundColor: "#333333", margin: "auto", position: "relative" }}>

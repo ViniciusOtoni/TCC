@@ -39,7 +39,7 @@ export default function Cabecalho(props) {
         state: { pesquisa }
       })
     }
-  }
+  } 
 
   useEffect(() => {
    

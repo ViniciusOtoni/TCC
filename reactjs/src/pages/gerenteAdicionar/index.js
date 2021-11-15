@@ -19,10 +19,7 @@ export default function GerenteAlterar() {
     const [codBarra, setCodBarra] = useState('');
     const [categoria, setCategoria] = useState('');
     const [preco, setPreco] = useState('');
-    const [imagemPrincipal, setImagemPrincipal] = useState('');
-    const [imagemSecundaria, setImagemSecundaria] = useState('');
-    const [imagemTerciaria, setImagemTerciaria] = useState('');
-    const [imagemQuartenaria, setImagemQuartenaria] = useState('');
+    const [imagem, setImagem] = useState([]);
     const [dsProduto, setDsProduto ] = useState('');
     const navigation = useHistory();
 
@@ -35,10 +32,7 @@ export default function GerenteAlterar() {
             reconvert(preco),
             categoria,
             codBarra,
-            imagemPrincipal,
-            imagemSecundaria,
-            imagemTerciaria,
-            imagemQuartenaria,
+            imagem,
             dsProduto
         )
         
@@ -48,7 +42,7 @@ export default function GerenteAlterar() {
         toast.dark("produto cadastrado");
         navigation.push('/gerenteCadastrar');
     }
-
+    console.log(imagem)
 
     return (
         <div style={{ backgroundColor: "#333333", minHeight: "100vh" }}>
@@ -83,21 +77,10 @@ export default function GerenteAlterar() {
                         </div>
                         <div className="alternating">
                             <div className="topico5">  Imagem Principal: </div>
-                            <div className="input"> <StyledInput className="input-input" placeholder="URl da Imagem" value={imagemPrincipal} onChange={e => setImagemPrincipal(e.target.value)} />  </div>
+                            <div className="input"> <StyledInput type="file" className="input-input"  onChange={e => imagem.push(e.target.files[0])} multiple />  </div>
                         </div>
+                       
                         <div className="line">
-                            <div className="topico6"> Imagem Secundaria: </div>
-                            <div className="input"> <StyledInput className="input-input" placeholder="URl da Imagem" value={imagemSecundaria} onChange={e => setImagemSecundaria(e.target.value)} />  </div>
-                        </div>
-                        <div className="alternating">
-                            <div className="topico7"> Imagem Terciária: </div>
-                            <div className="input"> <StyledInput className="input-input" placeholder="URl da Imagem" value={imagemTerciaria} onChange={e => setImagemTerciaria(e.target.value)} />  </div>
-                        </div>
-                        <div className="line">
-                            <div className="topico8">   Imagem Quartenária:</div>
-                            <div className="input"> <StyledInput className="input-input" placeholder="URl da Imagem" value={imagemQuartenaria} onChange={e => setImagemQuartenaria(e.target.value)} /> </div>
-                        </div>
-                        <div className="alternating">
                             <div className="topico7" style={{paddingRight:"5.8em"}}> Descrição Do Produto: </div>
                             <div className="input"> <StyledInput className="input-input"  value={dsProduto} onChange={e => setDsProduto(e.target.value)} />  </div>
                         </div>

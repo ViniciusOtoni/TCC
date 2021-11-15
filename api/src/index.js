@@ -17,6 +17,23 @@ app.use(cors());
 app.use(express.json());
 
 
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/')
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname))
+    }
+})
+
+const upload = multer({storage: storage})
+
+app.get('/exibirImagem', async (req, resp) => {
+    let dirname = path.resolve();
+    resp.sendFile(req.query.imagem, {root: path.join(dirname)})
+})
+
 app.get('/produto/populares', async (req, resp) => {
     try {
         let r = await db.infoa_gab_produto.findAll({
@@ -187,26 +204,31 @@ app.get('/produto/:idProduto', async (req, resp) => {
     }
 })
 
-app.post('/produto', async (req, resp) => {
+app.post('/produto', upload.array('imagem', 4), async (req, resp) => {
     try {
-        let l = req.body
+        
+        const { nome, preco, categoria, codigoBarra, descricao } = req.body;
+        const path = req.files[0].path;
 
         if (
-            l.nm_produto == "" || l.vl_preco == '' ||
-            l.ds_categoria == '' || l.ds_codigo_barra == '' ||
-            l.img_produto == '' || 
-            l.ds_produto == ''
+            nome == ""                     || preco == ''       ||
+            categoria == ''                || codigoBarra == '' ||
+            req.files[0].path == undefined ||
+            req.files[1].path == undefined ||
+            req.files[2].path == undefined ||
+            req.files[3].path == undefined ||
+            descricao == ''
         ) resp.send({ erro: "Há campos nulos!" })
 
-        if (l.ds_codigo_barra < 0 || l.vl_preco < 0)
+        if (codigoBarra < 0 || preco < 0)
             resp.send({ erro: "Campo de preço ou código de barra menores que 0!" })
 
-        if (l.ds_codigo_barra.length < 12)
+        if (codigoBarra.length < 12)
             resp.send({ erro: "Código de barra deve conter 12 caracteres" })
 
         let r1 = await db.infoa_gab_produto.findOne({
             where: {
-                nm_produto: l.nm_produto
+                nm_produto: nome
             }
         })
 
@@ -214,19 +236,19 @@ app.post('/produto', async (req, resp) => {
             return resp.send('Produto já foi cadastrado!')
 
         let r = await db.infoa_gab_produto.create({
-            nm_produto: l.nm_produto,
-            vl_preco: l.vl_preco,
+            nm_produto: nome,
+            vl_preco: preco,
             dt_cadastro: Date.now(),
-            ds_categoria: l.ds_categoria,
-            ds_codigo_barra: l.ds_codigo_barra,
+            ds_categoria: categoria,
+            ds_codigo_barra: codigoBarra,
             bt_situacao: true,
             vl_avaliacao: 5,
-            img_produto: l.img_produto,
-            img_secundaria: l.img_secundaria,
-            img_terciaria: l.img_terciaria,
-            img_quartenaria: l.img_quartenaria,
+            img_produto: path,
+            img_secundaria: req.files[1].path,
+            img_terciaria: req.files[2].path,
+            img_quartenaria: req.files[3].path,
             qtd_parcelas: 0,
-            ds_produto: l.ds_produto
+            ds_produto: descricao
         })
 
         resp.send(r)
@@ -235,6 +257,11 @@ app.post('/produto', async (req, resp) => {
     }
 })
 
+
+app.get('/teste', async (req, resp) => {
+    let r = await db.infoa_gab_produto.findAll();
+    resp.send(r)
+})
 
 
 app.put('/produto/:idProduto', async (req, resp) => {

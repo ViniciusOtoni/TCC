@@ -8,6 +8,7 @@ import { convert } from "../../../../utils/convertCurrency"
 import { useState } from "react"
 import { useEffect } from "react"
 import { useHistory } from "react-router"
+import { exibirImagem } from "../../../../components/caixaJogo"
 
 
 export default function BoxItemCarrinho(props) {
@@ -42,7 +43,7 @@ export default function BoxItemCarrinho(props) {
     return (
         <StyledBoxItemCarrinho>
             <main className="pc">
-                <div className="foto"> <img src={produto.imagem} alt="" /> </div>
+                <div className="foto"> <img src={exibirImagem(produto.imagem)} alt="" /> </div>
                 <div className="column-esp">
                     <div className="nome-produto">  {produto.produto} </div>
                     <div className="row-vendido">
