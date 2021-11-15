@@ -16,18 +16,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, 'uploads/')
-    },
-    filename: function(req, file, cb) {
-        const unique = Date.now() + "-" +  Math.round(Math.random() * 1E9);
-        cb(null, file.fieldname + "-" + unique + path.extname(file.originalname))
-    }
-});
-
-const upload = multer({ storage: storage })
-
 
 app.get('/produto/populares', async (req, resp) => {
     try {
@@ -870,11 +858,10 @@ app.get('/pedido/:idUsuario', async (req, resp) => {
 
 })
 
-app.put('/usuario', upload.single('imgUsuario'), async (req, resp) => {
+app.put('/usuario', async (req, resp) => {
    
     try {
-        let {id, nome, cpf, email, senha} = req.body;
-        const { path } = req.file;
+        let { id, nome, cpf, email, senha, imagem } = req.body;
 
         if(nome == '' || cpf  == '' || email == '' || senha == '') {
             return resp.send({ erro: "Não Pode inserir campo Nulo"})
@@ -885,7 +872,7 @@ app.put('/usuario', upload.single('imgUsuario'), async (req, resp) => {
             ds_cpf: cpf,
             ds_email: email,
             ds_senha: senha,
-            img_usuario: path
+            img_usuario: imagem
         },
         {
             where: {id_usuario: id}
@@ -914,6 +901,7 @@ app.get('/usuario/:id', async (req, resp) => {
 
 app.get('/usuario', async (req, resp) => {
     let dirname = path.resolve();
+    
     resp.sendFile(req.query.imagem, { root: path.join(dirname) });
     
 })

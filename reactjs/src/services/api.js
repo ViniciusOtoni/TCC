@@ -276,26 +276,17 @@ export default class Api {
       return r.data;
   }
 
-  async alterarUsuario(id, nome, cpf, senha, email, imgUsuario) {
-    
-    let formData = new FormData();
-    formData.append('id', id);
-    formData.append('nome', nome);
-    formData.append('cpf', cpf);
-    formData.append('senha', senha);
-    formData.append('email', email)
-    formData.append('imgUsuario', imgUsuario);
-    
-    console.log(formData)
-    
+  async alterarUsuario(id, nome, cpf, email, senha, imagem) {
+    let json = {
+      id,
+      nome,
+      cpf,
+      email,
+      senha,
+      imagem
+    }
 
-    
-
-    let r = await api.put(`/usuario`, formData, {
-      headers: {
-        'Content-type': 'nultpart/form-data' 
-      }
-    })
+    let r = await api.put(`/usuario`, json)
     return r.data;
   }
 

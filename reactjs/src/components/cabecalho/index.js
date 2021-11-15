@@ -15,9 +15,7 @@ export default function Cabecalho(props) {
   let usuarioLogado = lerUsuarioQuelogou() || {};
   const [nm] = useState(usuarioLogado.nm_usuario);
   const [img] = useState(usuarioLogado.img_usuario);
-  const [img2, setImg2] = useState('');
   const [pesquisa, setPesquisa] = useState('');
-
 
 
   const navigation = useHistory();
@@ -44,28 +42,8 @@ export default function Cabecalho(props) {
   }
 
   useEffect(() => {
-    lerUsuario()
+   
   }, [pesquisa])
-
-  async function lerUsuario() {
-    let get = await api.listarUsuario(usuarioLogado.id_usuario)
-  
-
-  
-    setImg2(get.img_usuario)
-  }
-
-
-
-
-  function getImage() {
-    if (img2.includes('http'))
-      return img2
-    else
-      return `http://localhost:3030/usuario?imagem=${img2}`
-
-  }
-
   
 
   return (
@@ -93,11 +71,11 @@ export default function Cabecalho(props) {
           ) : (
             <div className="row-user">
               <div className="user-image">
-                <img src={getImage()} alt="" />
+                  <img src={ img } alt="" />
               </div>
               <div className="user-login" title={nm}> {nm != null && nm.length >= 25 ? nm.substr(0, 25) + "..." : nm} </div>
             </div>
-          )}
+          )} 
         </Link>
 
         <Link to="/escolhaEntrega" style={{ textDecoration: "none" }}>

@@ -9,7 +9,7 @@ import LoadingBar from 'react-top-loading-bar'
 
 
 import Api from "../../services/api";
-import axios from 'axios';
+
 const api = new Api();
 
 function UsuarioIndex() {
@@ -27,7 +27,7 @@ function UsuarioIndex() {
     const [imagem, setImagem] = useState('');
     const [estadoSenha, setEstadoSenha] = useState(0);
     const barraCarregamento = useRef(null);
-    const [imgUsuario, setImgUsuario] = useState(null);
+
 
     
 
@@ -89,7 +89,7 @@ function UsuarioIndex() {
 
     async function alterar() {
 
-        let put = await api.alterarUsuario(usuarioLogado.id, nome, cpf, senha, email, imgUsuario)
+        let put = await api.alterarUsuario(usuarioLogado.id, nome, cpf, senha, email, imagem)
 
         const situacao = new Promise(resolve => setTimeout(resolve, 2000));
         
@@ -102,7 +102,6 @@ function UsuarioIndex() {
             theme: 'light'
            
         })
-
       
        await logar()
     }
@@ -117,23 +116,10 @@ function UsuarioIndex() {
             return 'text'
        
     }
-
+    console.log(imagem)
   
 
-    function getImage() {
-        
-       
-        if (imagem.includes('http'))
-            return imagem
-        else
-          return `http://localhost:3030/usuario?imagem=${imagem}`
-        
-    }
-
-    function verImagem () {
-        if (imgUsuario)
-            return URL.createObjectURL(imgUsuario)
-    }
+   
 
     async function setarVariavel(retornoAPI) {
         setNome(retornoAPI.nm_usuario)
@@ -163,14 +149,11 @@ function UsuarioIndex() {
                 <article class="my-account">
                     <div className="user-picture">
                         <div className="img-user">
-                                {imgUsuario === null
-                                        ? <img src={getImage()} alt="" style={{ marginRight: "3em" }} />
-                                        : <img src={verImagem()} alt="" style={{marginRight: "3em"}} />
-                                }
+                            <img src={imagem} alt="" style={{ marginRight: "3em" }} />
                         </div>
                         <div className="camera">
                             <button>
-                               <input type="file" className="upload" onChange={(e) => setImgUsuario(e.target.files[0])} />
+                               <input type="file" className="upload" onChange={(e) => setImagem(e.target.files[0])} />
                             </button>
                         </div>
                     </div>
