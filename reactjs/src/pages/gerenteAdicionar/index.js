@@ -76,8 +76,8 @@ export default function GerenteAlterar() {
                             <div className="input"> <StyledInput className="input-input topico4-input" value={preco} onChange={e => setPreco(e.target.value)} /> </div>
                         </div>
                         <div className="alternating">
-                            <div className="topico5">  Imagem Principal: </div>
-                            <div className="input"> <StyledInput type="file" className="input-input"  onChange={e => imagem.push(e.target.files[0])} multiple />  </div>
+                            <div className="topico5">  Imagens </div>
+                            <div className="input"> <StyledInput type="file" className="input-input upload"  onChange={e => imagem.push(e.target.files[0])} multiple />  </div>
                         </div>
                        
                         <div className="line">

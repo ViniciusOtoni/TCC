@@ -80,7 +80,7 @@ function UsuarioIndex() {
         if (r.error) {
             toast.error(`${r.error}`)
         } else {
-            Cookies.set('usuario-logado', JSON.stringify(r));
+           
             navegacao.push('/')
         }
     }
@@ -90,19 +90,17 @@ function UsuarioIndex() {
 
         let put = await api.alterarUsuario(usuarioLogado.id_usuario, nome, cpf, senha, email, imagem)
 
-        const situacao = new Promise(resolve => setTimeout(resolve, 2000));
+        console.log(put)
         
         if(put.erro)
-            return   toast.error(put.erro)
+            return toast.error(put.erro)
               
-        toast.promise(situacao, {
-            pending: "Alterando informações...",
-            success: "Usuário alterado 👌",
-            theme: 'light'
-           
-        })
+        toast.success('Usuario Alterado!')
+
+        let login = await api.login(email, senha);
+        Cookies.set('usuario-logado', JSON.stringify(login));
       
-       await logar()
+      
     }
 
    
@@ -133,6 +131,7 @@ function UsuarioIndex() {
         lerUsuario()
     }, [])
 
+   
    
     return (
 

@@ -41,14 +41,9 @@ export default function GerenteProdutosCadastrados() {
             return toast.error(retorno.erro)
         
         
-        const situacao2 = new Promise(resolve => setTimeout(resolve, 1000));
+      
 
-        const a = toast.promise(situacao2, {
-            pending: "Remover Produto",
-            success: "Produto Removido",
-            theme: 'light'
-               
-        })
+        toast.success('Produto Removido')
            
         Listar(); 
     }

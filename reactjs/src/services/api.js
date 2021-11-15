@@ -286,8 +286,8 @@ export default class Api {
       nome,
       cpf,
       email,
-      senha,
-      imagem
+      senha
+    
     }
 
     let r = await api.put(`/usuario`, json)
