@@ -52,6 +52,7 @@ export default function GerenteProdutosCadastrados() {
         setPage(pagina)
     }
 
+    
    
 
     function search(x) {

@@ -114,6 +114,7 @@ function UsuarioIndex() {
        
     }
    
+    
    
 
     async function setarVariavel(retornoAPI) {
@@ -131,7 +132,7 @@ function UsuarioIndex() {
         lerUsuario()
     }, [])
 
-   
+
    
     return (
 
