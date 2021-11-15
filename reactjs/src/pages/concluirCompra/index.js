@@ -143,13 +143,13 @@ export default function ConcluirCompra(props) {
                 <main className="sub-main">
                     <div className="esquerda-grupo-input">
                         <div className="text-input">Inserir Cep</div>
-                        <MaskedInput mask="99999-999" value={cep} onChange={e => setCep(e.target.value)} onKeyPress={CalcularCep()} onBlur={CalcularCep()} placeholder="Insira o CEP" className="input-esquerda-grupo" />
+                        <MaskedInput mask="99999-999" value={cep} onChange={e => setCep(e.target.value)}   placeholder="Insira o CEP" className="input-esquerda-grupo" />
 
                         <div className="text-input">Inserir Nome da Rua</div>
-                        <StyledInput value={loc.logradouro} onChange={e => setNmRua(e.target.value)} placeholder="Nome da Rua" className="input-esquerda-grupo" />
+                        <StyledInput value={nmRua} onChange={e => setNmRua(e.target.value)} placeholder="Nome da Rua" className="input-esquerda-grupo" />
 
                         <div className="text-input">Inserir Nome do Bairro:</div>
-                        <StyledInput value={loc.bairro} onChange={e => setNmBairro(e.target.value)} placeholder="Nome do Bairro" className="input-esquerda-grupo" />
+                        <StyledInput value={nmBairro} onChange={e => setNmBairro(e.target.value)} placeholder="Nome do Bairro" className="input-esquerda-grupo" />
 
                         <div className="text-input">Complemento</div>
                         <StyledInput value={complemento} onChange={e => setComplemento(e.target.value)} placeholder="" className="input-esquerda-grupo" />
