@@ -280,7 +280,7 @@ export default class Api {
       return r.data;
   }
 
-  async alterarUsuario(id, nome, cpf, email, senha, imagem) {
+  async alterarUsuario(id, nome, cpf, email, senha) {
     let json = {
       id,
       nome,

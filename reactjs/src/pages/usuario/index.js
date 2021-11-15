@@ -73,22 +73,10 @@ function UsuarioIndex() {
   
 
 
-    const logar = async () => {
-
-        let r = await api.login(email, senha)
-
-        if (r.error) {
-            toast.error(`${r.error}`)
-        } else {
-           
-            navegacao.push('/')
-        }
-    }
-    
 
     async function alterar() {
 
-        let put = await api.alterarUsuario(usuarioLogado.id_usuario, nome, cpf, senha, email, imagem)
+        let put = await api.alterarUsuario(usuarioLogado.id_usuario, nome, cpf, email, senha, imagem)
 
         console.log(put)
         
@@ -98,9 +86,10 @@ function UsuarioIndex() {
         toast.success('Usuario Alterado!')
 
         let login = await api.login(email, senha);
-        Cookies.set('usuario-logado', JSON.stringify(login));
+        await Cookies.set('usuario-logado', JSON.stringify(login));
       
       
+        nave.push('/')
     }
 
    
