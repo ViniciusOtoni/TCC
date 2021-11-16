@@ -79,7 +79,7 @@ export default function ConcluirCompra(props) {
 
     function validarPreco() {
         if (infoProduto.length > 1)
-            return infoProduto.frete
+            return infoProduto.frete.toFixed(2)
         else
             return Preco
     }

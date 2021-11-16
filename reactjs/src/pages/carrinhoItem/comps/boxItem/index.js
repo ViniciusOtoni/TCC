@@ -72,7 +72,7 @@ export default function BoxItemCarrinho(props) {
                             <option value={9} > 9 </option>
                             <option value={10} > 10 </option>
                         </SelectInput> </div>
-                        <div className="valores-preco"> {`R$: ${convert(Number( produto.total ))}`} </div>
+                        <div className="valores-preco"> {`R$: ${convert(Number(produto.total).toFixed(2))}`} </div>
                     </div>
                     <div className="excluir" onClick={remover}> Excluir </div>
                 </div>
