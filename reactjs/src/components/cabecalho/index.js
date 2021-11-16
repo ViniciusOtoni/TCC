@@ -42,13 +42,14 @@ export default function Cabecalho(props) {
       })
     }
   }
-  
+  console.log(img)
 
   function exibirImg() {
     if (img.includes("http"))
         return img
     else
-        return `https://gameheroko.herokuapp.com//exibirImagem?imagem=${img}`
+        return `https://gameheroko.herokuapp.com/exibirImagem?imagem=${img}`
+        
 }
 
   useEffect(() => {

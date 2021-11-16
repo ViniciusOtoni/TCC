@@ -32,6 +32,7 @@ function UsuarioIndex() {
     const barraCarregamento = useRef(null);
 
 
+    console.log(imagem)
 
     function lerUsuarioQuelogou() {
         let logado = Cookies.get('usuario-logado');
@@ -119,7 +120,7 @@ function UsuarioIndex() {
         if (imagem.includes("http"))
             return imagem
         else
-            return `http://localhost:3030/exibirImagem?imagem=${imagem}`
+            return `http://gameheroko.herokuapp.com/exibirImagem?imagem=${imagem}`
     }
    
 
