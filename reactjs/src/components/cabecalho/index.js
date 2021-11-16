@@ -2,8 +2,10 @@ import { StyledCabecalho } from "./styled";
 import { Link, useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
+import { exibirImg } from "../../pages/usuario";
 
 import Api from "../../services/api";
+
 
 const api = new Api();
 
@@ -39,7 +41,15 @@ export default function Cabecalho(props) {
         state: { pesquisa }
       })
     }
-  } 
+  }
+  
+
+  function exibirImg() {
+    if (img.includes("http"))
+        return img
+    else
+        return `http://localhost:3030/exibirImagem?imagem=${img}`
+}
 
   useEffect(() => {
    
@@ -71,7 +81,7 @@ export default function Cabecalho(props) {
           ) : (
             <div className="row-user">
               <div className="user-image">
-                  <img src={ img } alt="" />
+                  <img src={ exibirImg() } alt="" />
               </div>
               <div className="user-login" title={nm}> {nm != null && nm.length >= 25 ? nm.substr(0, 25) + "..." : nm} </div>
             </div>

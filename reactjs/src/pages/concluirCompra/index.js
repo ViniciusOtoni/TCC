@@ -7,10 +7,11 @@ import { convert } from "../../utils/convertCurrency"
 import { useHistory } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 import Cookies from "js-cookie"
 import axios from "axios"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 
 import Api from "../../services/api"
 import MaskedInput from "../../components/mask/input.js"
@@ -28,6 +29,7 @@ export default function ConcluirCompra(props) {
     const [email, setEmail] = useState(usuarioLogado.ds_email)
     const [senha, setSenha] = useState(usuarioLogado.ds_senha)
     const [loc, setLoc] = useState({})
+
 
 
     const [cep, setCep] = useState('')
@@ -58,7 +60,6 @@ export default function ConcluirCompra(props) {
         lerUsuarioQuelogou()
     })
 
-    console.log(usuarioLogado)
 
 
     const nmProduto = infoProduto.map(x => {
@@ -100,7 +101,7 @@ export default function ConcluirCompra(props) {
         setHidden(true);
     }
 
-    console.log(formaPagamento)
+    
 
     const confirmarDados = async () => {
 
@@ -140,6 +141,7 @@ export default function ConcluirCompra(props) {
             <Cabecalho corLetra="nulo" />
             <Container>
                 <ToastContainer />
+             
                 <main className="sub-main">
                     <div className="esquerda-grupo-input">
                         <div className="text-input">Inserir Cep</div>

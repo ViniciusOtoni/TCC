@@ -12,6 +12,8 @@ import Api from "../../services/api";
 
 const api = new Api();
 
+
+
 function UsuarioIndex() {
 
     const nave = useHistory();
@@ -24,7 +26,8 @@ function UsuarioIndex() {
     const [cpf, setCpf] = useState('');
     const [email, setEmail] = useState('');
     const [nome, setNome] = useState('');
-    const [imagem, setImagem] = useState(null);
+    const [imagem, setImagem] = useState('');
+    const [imagem2, setImagem2] = useState(null)
     const [estadoSenha, setEstadoSenha] = useState(0);
     const barraCarregamento = useRef(null);
 
@@ -76,9 +79,9 @@ function UsuarioIndex() {
 
     async function alterar() {
 
-        let put = await api.alterarUsuario(usuarioLogado.id_usuario, nome, cpf, email, senha, imagem)
+        let put = await api.alterarUsuario(usuarioLogado.id_usuario, nome, cpf, email, senha, imagem2)
 
-        console.log(put)
+       
         
         if(put.erro)
             return toast.error(put.erro)
@@ -96,13 +99,9 @@ function UsuarioIndex() {
 
         let login = await api.login(email, senha);
         await Cookies.set('usuario-logado', JSON.stringify(login));
-      
-       
-
-       
     }
 
-   
+  
 
     function estadoDaSenha(senha) {
      
@@ -112,8 +111,16 @@ function UsuarioIndex() {
             return 'text'
        
     }
+
    
+  
     
+    function exibirImg() {
+        if (imagem.includes("http"))
+            return imagem
+        else
+            return `http://localhost:3030/exibirImagem?imagem=${imagem}`
+    }
    
 
     async function setarVariavel(retornoAPI) {
@@ -126,12 +133,17 @@ function UsuarioIndex() {
     }
 
 
-    useEffect(() => {
+    useEffect(() => {  
         lerUsuarioQuelogou()
         lerUsuario()
     }, [])
 
-
+    function preview() {
+        if (imagem2 === null)
+            return exibirImg()
+        else
+            return URL.createObjectURL(imagem2)
+    }
    
     return (
 
@@ -145,11 +157,11 @@ function UsuarioIndex() {
                 <article class="my-account">
                     <div className="user-picture">
                         <div className="img-user">
-                            <img src={imagem} alt="" style={{ marginRight: "3em" }} />
+                            <img src={preview()} alt="" style={{ marginRight: "3em" }} />
                         </div>
                         <div className="camera">
                             <button>
-                               <input type="file" className="upload" onChange={(e) => setImagem(e.target.files[0])} />
+                               <input type="file" className="upload" onChange={(e) => setImagem2(e.target.files[0])} />
                             </button>
                         </div>
                     </div>
@@ -199,4 +211,4 @@ function UsuarioIndex() {
     )
 }
 
-export default UsuarioIndex;
+export {UsuarioIndex}

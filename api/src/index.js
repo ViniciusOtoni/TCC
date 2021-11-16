@@ -209,6 +209,7 @@ app.post('/produto', upload.array('imagem', 4), async (req, resp) => {
         
         const { nome, preco, categoria, codigoBarra, descricao } = req.body;
         const path = req.files[0].path;
+        console.log(path)
 
         if (
             nome == ""                     || preco == ''       ||
@@ -253,9 +254,61 @@ app.post('/produto', upload.array('imagem', 4), async (req, resp) => {
 
         resp.send(r)
     } catch (e) {
-        resp.send({ erro: `${e.toString()}` })
+        resp.send({ erro: `Deu erro no post do produto` })
     }
 })
+
+
+
+app.put('/usuario', upload.single('imagem2'), async (req, resp) => {
+
+    const  {path}  = req.file;
+
+ 
+   
+   
+    try {
+        let { id, nome, cpf, email, senha} = req.body;
+
+        if(nome == '' || cpf  == '' || email == '' || senha == '') {
+            return resp.send({ erro: "Não Pode inserir campo Nulo"})
+        }
+
+        if (path === null || path === undefined) {
+            
+            let r = await db.infoa_gab_usuario.update({
+                nm_usuario: nome,
+                ds_cpf: cpf,
+                ds_email: email,
+                ds_senha: senha
+            
+            },
+            {
+                where: {id_usuario: id}
+            }        
+            );
+        } else {
+            
+            let r = await db.infoa_gab_usuario.update({
+                nm_usuario: nome,
+                ds_cpf: cpf,
+                ds_email: email,
+                ds_senha: senha,
+                img_usuario: path
+            
+            },
+            {
+                where: {id_usuario: id}
+            }        
+            );
+        }
+            
+
+        resp.send({Status: "Put de usuario realizado com sucesso"})
+    } catch (error) {
+        resp.send({erro: 'Deu erro ai seu viadinho do caralho' })
+    }
+});
 
 
 app.get('/teste', async (req, resp) => {
@@ -884,33 +937,6 @@ app.get('/pedido/:idUsuario', async (req, resp) => {
     })
 
 })
-
-app.put('/usuario', async (req, resp) => {
-   
-    try {
-        let { id, nome, cpf, email, senha} = req.body;
-
-        if(nome == '' || cpf  == '' || email == '' || senha == '') {
-            return resp.send({ erro: "Não Pode inserir campo Nulo"})
-        }
-
-        let r = await db.infoa_gab_usuario.update({
-            nm_usuario: nome,
-            ds_cpf: cpf,
-            ds_email: email,
-            ds_senha: senha
-           
-        },
-        {
-            where: {id_usuario: id}
-        }        
-        );
-
-        resp.send(r)
-    } catch (error) {
-        resp.send({erro: error.toString() })
-    }
-});
 
 app.get('/usuario/:id', async (req, resp) => {
     try {

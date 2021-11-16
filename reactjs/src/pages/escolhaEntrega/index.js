@@ -24,6 +24,7 @@ export default function EscolhaEntrega() {
     const [page, setPage] = useState(1)
     const [totalPage, setTotalPage] = useState(0)
     const [id, setId] = useState(usuarioLogado.id_usuario)
+   
 
  
 
@@ -32,8 +33,10 @@ export default function EscolhaEntrega() {
     }
 
     useEffect(() => {
+       
         
         const pedidosUsu = async () => {
+            
             let r = await api.listarPedidosDoUsuario(id, page)
     
     

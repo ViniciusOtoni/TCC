@@ -28,7 +28,7 @@ import CriarConta from './pages/criarConta';
 import CabecalhoAdm from './components/cabecalhoAdm';
 import gerenteEscolha from './pages/gerenteEscolha';
 import VendaSemItem from "./pages/vendaSemItem";
-import Usuario from './pages/usuario'
+import {UsuarioIndex} from './pages/usuario'
 
 export default function Rotes() {
   return (
@@ -62,7 +62,7 @@ export default function Rotes() {
         <Route path="/testeADM" component={CabecalhoAdm} />
         <Route path="/gerenteEscolha" component={gerenteEscolha} />
         <Route path="/vendaSemItem" component={VendaSemItem} />
-        <Route path="/usuario" component={Usuario} />
+        <Route path="/usuario" component={UsuarioIndex} />
 
         <Route path="/*" component={Error} />
       </Switch>
