@@ -32,7 +32,7 @@ function UsuarioIndex() {
     const barraCarregamento = useRef(null);
 
 
-    console.log(imagem)
+    
 
     function lerUsuarioQuelogou() {
         let logado = Cookies.get('usuario-logado');
@@ -140,7 +140,7 @@ function UsuarioIndex() {
     }, [])
 
     function preview() {
-        if (imagem2 === null)
+        if (imagem2 === '')
             return exibirImg()
         else
             return URL.createObjectURL(imagem2)
