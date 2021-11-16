@@ -262,9 +262,6 @@ app.post('/produto', upload.array('imagem', 4), async (req, resp) => {
 
 app.put('/usuario', upload.single('imagem2'), async (req, resp) => {
 
-    const  {path}  = req.file;
-
- 
    
    
     try {
@@ -274,7 +271,7 @@ app.put('/usuario', upload.single('imagem2'), async (req, resp) => {
             return resp.send({ erro: "Não Pode inserir campo Nulo"})
         }
 
-        if (path === null || path === undefined) {
+        if (!req.file) {
             
             let r = await db.infoa_gab_usuario.update({
                 nm_usuario: nome,
@@ -294,7 +291,7 @@ app.put('/usuario', upload.single('imagem2'), async (req, resp) => {
                 ds_cpf: cpf,
                 ds_email: email,
                 ds_senha: senha,
-                img_usuario: path
+                img_usuario: req.file.path
             
             },
             {
