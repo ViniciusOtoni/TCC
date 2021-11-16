@@ -27,7 +27,7 @@ function UsuarioIndex() {
     const [email, setEmail] = useState('');
     const [nome, setNome] = useState('');
     const [imagem, setImagem] = useState('');
-    const [imagem2, setImagem2] = useState(null)
+    const [imagem2, setImagem2] = useState('')
     const [estadoSenha, setEstadoSenha] = useState(0);
     const barraCarregamento = useRef(null);
 
