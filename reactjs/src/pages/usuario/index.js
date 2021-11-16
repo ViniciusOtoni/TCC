@@ -120,7 +120,7 @@ function UsuarioIndex() {
         if (imagem.includes("http"))
             return imagem
         else
-            return `http://gameheroko.herokuapp.com/exibirImagem?imagem=${imagem}`
+            return `https://gameheroko.herokuapp.com/exibirImagem?imagem=${imagem}`
     }
    
 
