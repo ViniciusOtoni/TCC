@@ -48,7 +48,7 @@ export default function Cabecalho(props) {
     if (img.includes("http"))
         return img
     else
-        return `http://localhost:3030/exibirImagem?imagem=${img}`
+        return `https://gameheroko.herokuapp.com//exibirImagem?imagem=${img}`
 }
 
   useEffect(() => {
