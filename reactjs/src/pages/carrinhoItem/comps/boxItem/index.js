@@ -17,10 +17,6 @@ export default function BoxItemCarrinho(props) {
     const [total, setTotal] = useState(produto.preco)
     const nave = useHistory()
 
-    console.log(setProduto)
-    console.log(total)
-    console.log(nave)
-
     function remover() {
         props.onRemove(produto.id)
         setQtd(0)

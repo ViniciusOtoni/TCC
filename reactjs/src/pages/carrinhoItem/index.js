@@ -23,9 +23,6 @@ export default function CarrinhoItem() {
     const [vlCep, setVlCep] = useState('');
     const navegation = useHistory()
 
-    // console.log(produto)
-    // console.log(teste)
-    // console.log(setTeste)
     
     useEffect(  
         function carregarCarrinho() {

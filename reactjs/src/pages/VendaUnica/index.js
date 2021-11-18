@@ -22,8 +22,6 @@ export default function VendaUnica(props) {
     const [vlAvaliacao, setVlAvaliacao] = useState(0)
     const [idProduto, setIdProduto] = useState(0)
 
-   console.log(produto)
-
     //Cookies.remove('carrinho')
 
     const atualizarAvaliacao = async (num, id) => {

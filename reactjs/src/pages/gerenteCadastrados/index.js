@@ -64,8 +64,6 @@ export default function GerenteProdutosCadastrados() {
             
             const e = await api.listarProdutos2(page, pesquisa);
            
-            console.log("pesquisa gerente: " + pesquisa)
-            console.log(e)
             SetProdutos([...e.items]);
             setTotalPages(e.totalPaginas);
             

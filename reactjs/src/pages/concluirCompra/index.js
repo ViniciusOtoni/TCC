@@ -49,8 +49,6 @@ export default function ConcluirCompra(props) {
     const [cpf, setCpf] = useState('')
     const [parcelas, setParcelas] = useState(2)
 
-    console.log(dtValidade)
-
     async function CalcularCep() {
         const r = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
         setLoc(r.data);

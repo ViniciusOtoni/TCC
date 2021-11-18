@@ -261,7 +261,7 @@ export default class Api {
       produtos: produtos,
     };
 
-    console.log(json);
+
 
     let r = await api.post(`/validarCompra`, json);
     return r.data;

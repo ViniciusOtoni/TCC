@@ -209,7 +209,6 @@ app.post('/produto', upload.array('imagem', 4), async (req, resp) => {
         
         const { nome, preco, categoria, codigoBarra, descricao } = req.body;
         const path = req.files[0].path;
-        console.log(path)
 
         if (
             nome == ""                     || preco == ''       ||

@@ -27,7 +27,6 @@ export default function GerentePedidos() {
         barraCarregamento.current.continuousStart();
         const r = await api.listarPedidos(page, pesquisa);
         
-        console.log(r)
         setInfoGeral([...r.items]);
         setTotalPage(r.totalPaginas)
     }

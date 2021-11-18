@@ -51,10 +51,6 @@ export default function EscolhaEntrega() {
         pedidosUsu()
     }, [ page, id, nave ])
 
-    console.log(infoPedido)
-
-   
-
 
     function lerUsuarioQuelogou() {
         let logado = Cookies.get('usuario-logado');

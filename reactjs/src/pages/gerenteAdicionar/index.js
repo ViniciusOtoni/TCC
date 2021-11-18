@@ -42,7 +42,6 @@ export default function GerenteAlterar() {
         toast.dark("produto cadastrado");
         navigation.push('/gerenteCadastrar');
     }
-    console.log(imagem)
 
     return (
         <div style={{ backgroundColor: "#333333", minHeight: "100vh" }}>
