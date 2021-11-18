@@ -102,7 +102,7 @@ export default function PopupBig(props) {
                 <div className="input"> <StyledInput value={vl4} onChange={r => setVl4(r.target.value)} /> </div>
 
                 <div className="img"> Imagem de Perfil: </div>
-                <div className="input"> <StyledInput value={vl5} onChange={r => setVl5(r.target.value)} /> </div>
+                <div className="input"> <StyledInput className="upload" type="file"  onChange={r => setVl5(r.target.files[0])} /> </div>
 
 
                 <div className="butao">  <StyledButtonPopup onClick={cadastrarUsuario}> Criar Conta! </StyledButtonPopup>   </div>

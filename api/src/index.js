@@ -443,7 +443,7 @@ app.post('/cadastrarGerente', async (req, resp) => {
 
 
 // Cadastrar Usuario
-app.post('/cadastrar', async (req, resp) => {
+app.post('/cadastrar', upload.single('img_usuario'), async (req, resp) => {
     try {
 
         let r = req.body;
@@ -480,8 +480,8 @@ app.post('/cadastrar', async (req, resp) => {
             ds_cpf: r.ds_cpf,
             ds_email: r.ds_email,
             ds_senha: r.ds_senha,
-            img_usuario: r.img_usuario,
-            ds_codigo: 'sanidjasnasdasda',
+            img_usuario: req.file.path,
+            ds_codigo: 'null',
             bt_gerente: false
         })
 

@@ -129,15 +129,18 @@ export default class Api {
   }
 
   async cadastrarUsuario(nm_usuario, ds_cpf, ds_email, ds_senha, img_usuario) {
-    let jsonUsu = {
-      nm_usuario,
-      ds_cpf,
-      ds_email,
-      ds_senha,
-      img_usuario,
-    };
+    let formData = new FormData();
+    formData.append('nm_usuario', nm_usuario)
+    formData.append('ds_cpf', ds_cpf)
+    formData.append('ds_email', ds_email)
+    formData.append('ds_senha', ds_senha)
+    formData.append('img_usuario', img_usuario)
 
-    let r = await api.post(`/cadastrar`, jsonUsu);
+    let r = await api.post(`/cadastrar`, formData, { 
+      headers: {
+        'Content-Type': 'multpart/form-data'
+      }
+     });
     return r.data;
   }
 
