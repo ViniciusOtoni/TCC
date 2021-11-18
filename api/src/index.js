@@ -265,13 +265,14 @@ app.put('/usuario', upload.single('imagem2'), async (req, resp) => {
    
    
     try {
+
         let { id, nome, cpf, email, senha} = req.body;
 
         if(nome == '' || cpf  == '' || email == '' || senha == '') {
             return resp.send({ erro: "Não Pode inserir campo Nulo"})
         }
 
-        if (!req.file) {
+        if (req.file === undefined) {
             
             let r = await db.infoa_gab_usuario.update({
                 nm_usuario: nome,
