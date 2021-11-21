@@ -25,7 +25,7 @@ export default function GerenteAlterar() {
 
 
     async function Cadastrar() {
-       
+      
 
         let retorno = await api.cadastrarProduto(
             nome,
@@ -38,6 +38,7 @@ export default function GerenteAlterar() {
         
         if (retorno.erro)
             return toast.error(retorno.erro)
+        
 
         toast.dark("produto cadastrado");
         navigation.push('/gerenteCadastrar');

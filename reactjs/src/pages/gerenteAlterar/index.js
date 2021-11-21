@@ -23,23 +23,22 @@ export default function GerenteAlterar(props) {
     const [imagemSecundaria, setImagemSecundaria] = useState('');
     const [imagemTerciaria, setImagemTerciaria] = useState('');
     const [imagemQuartenaria, setImagemQuartenaria] = useState('');
+    const [imagens, setImagens] = useState([]);
     const [dsProduto, setDsProduto] = useState('');
 
     const navigation = useHistory();
 
 
-
     async function Alterar() {
+        
 
+        console.log(imagens)
         let retorno = await api.AlterarProduto(
             nome,
             reconvert(preco),
             categoria,
             codBarra,
-            imagemPrincipal,
-            imagemSecundaria,
-            imagemTerciaria,
-            imagemQuartenaria,
+            imagens,
             dsProduto,
             infoProduto.id_produto
         );
@@ -105,22 +104,10 @@ export default function GerenteAlterar(props) {
                             <div className="input"> <StyledInput className="input-input topico4-input" value={convert(preco)} onChange={e => setPreco(e.target.value)} /> </div>
                         </div>
                         <div className="alternating">
-                            <div className="topico5">  Imagem Principal: </div>
-                            <div className="input"> <StyledInput className="input-input" placeholder="URl da Imagem" value={imagemPrincipal} onChange={e => setImagemPrincipal(e.target.value)} />  </div>
+                            <div className="topico5">  Imagens: </div>
+                            <div className="input"> <StyledInput className="upload" type="file" onChange={e => imagens.push(e.target.files[0])} multiple />  </div>
                         </div>
                         <div className="line">
-                            <div className="topico6"> Imagem Secundaria: </div>
-                            <div className="input"> <StyledInput className="input-input" placeholder="URl da Imagem" value={imagemSecundaria} onChange={e => setImagemSecundaria(e.target.value)} />  </div>
-                        </div>
-                        <div className="alternating">
-                            <div className="topico7"> Imagem Terciária: </div>
-                            <div className="input"> <StyledInput className="input-input" placeholder="URl da Imagem" value={imagemTerciaria} onChange={e => setImagemTerciaria(e.target.value)} />  </div>
-                        </div>
-                        <div className="line">
-                            <div className="topico8">   Imagem Quartenária:</div>
-                            <div className="input"> <StyledInput className="input-input" placeholder="URl da Imagem" value={imagemQuartenaria} onChange={e => setImagemQuartenaria(e.target.value)} /> </div>
-                        </div>
-                        <div className="alternating">
                             <div className="topico7"> Alterar Descrição: </div>
                             <div className="input"> <StyledInput className="input-input" value={dsProduto} onChange={e => setDsProduto(e.target.value)} />  </div>
                         </div>

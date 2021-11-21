@@ -50,6 +50,49 @@ const StyledGerenteAlterar = styled.div`
     width: 22em;
   }
 
+  
+  .upload {
+    display: flex;
+    color: transparent !important;
+
+ 
+  
+    width: 293px;
+  
+
+    position: relative;
+  }
+
+  .upload::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .upload::before {
+    content: url("/assets/images/upload.svg");
+   position: absolute;
+   right: 2%;
+   top: 20%;
+    //background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: hidden;
+    border-radius: 3px;
+
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+ 
+    font-weight: 700;
+    font-size: 10pt;
+    z-index: 1;
+    
+  }
+  .upload:hover::before {
+    border: none;
+  }
+  .upload:active::before {
+    //background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }
+
+
   option {
     font-family: Medio;
     font-size: 1em;
@@ -82,7 +125,7 @@ const StyledGerenteAlterar = styled.div`
     padding-right: 14.2em;
   }
   .topico5 {
-    padding-right: 7.8em;
+    padding-right: 12.3em;
   }
   .topico6 {
     padding-right: 6.5em;

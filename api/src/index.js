@@ -17,15 +17,16 @@ app.use(cors());
 app.use(express.json());
 
 
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/')
+      cb(null, 'uploads/')
     },
     filename: function (req, file, cb) {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname))
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+      cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname))
     }
-})
+  })
 
 const upload = multer({storage: storage})
 
@@ -208,7 +209,8 @@ app.post('/produto', upload.array('imagem', 4), async (req, resp) => {
     try {
         
         const { nome, preco, categoria, codigoBarra, descricao } = req.body;
-        const path = req.files[0].path;
+       
+        
 
         if (
             nome == ""                     || preco == ''       ||
@@ -243,7 +245,7 @@ app.post('/produto', upload.array('imagem', 4), async (req, resp) => {
             ds_codigo_barra: codigoBarra,
             bt_situacao: true,
             vl_avaliacao: 5,
-            img_produto: path,
+            img_produto: req.files[0].path,
             img_secundaria: req.files[1].path,
             img_terciaria: req.files[2].path,
             img_quartenaria: req.files[3].path,
@@ -253,7 +255,7 @@ app.post('/produto', upload.array('imagem', 4), async (req, resp) => {
 
         resp.send(r)
     } catch (e) {
-        resp.send({ erro: `Deu erro no post do produto` })
+        resp.send({ erro: e.toString() })
     }
 })
 
@@ -314,44 +316,57 @@ app.get('/teste', async (req, resp) => {
 })
 
 
-app.put('/produto/:idProduto', async (req, resp) => {
+app.put('/produto/:idProduto', upload.array('imagemPut', 4),  async (req, resp) => {
     try {
 
 
-        let { nm_produto, vl_preco, ds_categoria, ds_codigo_barra, img_produto, img_secundaria,
-            img_terciaria, img_quartenaria, ds_produto } = req.body;
-
+        let { nome, preco, categoria, codigoBarra, descricao } = req.body;
+     
         if (
-            nm_produto == "" || vl_preco == '' ||
-            ds_categoria == '' || ds_codigo_barra == '' ||
-            img_produto == '' || img_secundaria == '' ||
-            img_terciaria == '' || img_quartenaria == '' || ds_produto == ''
+            nome == "" || preco == '' ||
+            categoria == '' || codigoBarra == '' ||
+            descricao == ''
         ) resp.send({ erro: "Há campos nulos!" })
 
 
-        if (ds_produto.length > 170)
+        if (descricao.length > 170)
             resp.send({ erro: "Muito Grande a sua descrição!" })
 
-        if (vl_preco < 0 || ds_codigo_barra < 0)
+        if (descricao < 0 || codigoBarra < 0)
             resp.send({ erro: "Campo de preço ou código de barra nulos!" })
 
-        if (ds_codigo_barra.length < 12)
+        if (codigoBarra.length < 12)
             resp.send({ erro: "Código de barra deve conter 12 caracteres" })
 
-        let r = await db.infoa_gab_produto.update({
-            nm_produto: nm_produto,
-            vl_preco: vl_preco,
-            ds_categoria: ds_categoria,
-            ds_codigo_barra: ds_codigo_barra,
-            img_produto: img_produto,
-            img_secundaria: img_secundaria,
-            img_terciaria: img_terciaria,
-            img_quartenaria: img_quartenaria,
-            ds_produto: ds_produto
-        },
+        if (req.files === undefined || !req.files || req.files === []) {
+
+            let r = await db.infoa_gab_produto.update({
+                nm_produto: nome,
+                vl_preco: preco,
+                ds_categoria: categoria,
+                ds_codigo_barra: codigoBarra,
+                ds_produto: descricao
+            },
             {
                 where: { id_produto: req.params.idProduto }
             })
+        
+        } else {
+            let r = await db.infoa_gab_produto.update({
+                nm_produto: nome,
+                vl_preco: preco,
+                ds_categoria: categoria,
+                ds_codigo_barra: codigoBarra,
+                img_produto: req.files[0].path,
+                img_secundaria: req.files[1].path,
+                img_terciaria: req.files[2].path,
+                img_quartenaria: req.files[3].path,
+                ds_produto: descricao
+            },
+            {
+                where: { id_produto: req.params.idProduto }
+            })
+        }
 
         resp.sendStatus(200);
 
@@ -446,6 +461,7 @@ app.post('/cadastrar', upload.single('img_usuario'), async (req, resp) => {
     try {
 
         let r = req.body;
+        
 
         if (r.nm_usuario === '')
             return resp.send({ error: 'O campo do nome precisa sem preenchido' })

@@ -1,6 +1,7 @@
 import axios from "axios";
 const api = axios.create({
   baseURL: "https://gameheroko.herokuapp.com/",
+
 });
 
 export default class Api {
@@ -74,26 +75,27 @@ export default class Api {
     vl_preco,
     ds_categoria,
     ds_codigo_barra,
-    img_produto,
-    img_secundaria,
-    img_terciaria,
-    img_quartenaria,
+    imagens,
     ds_produto,
     idProduto
   ) {
-    let jsonProduto = {
-      nm_produto,
-      vl_preco,
-      ds_categoria,
-      ds_codigo_barra,
-      img_produto,
-      img_secundaria,
-      img_terciaria,
-      img_quartenaria,
-      ds_produto
-    };
+    let formData = new FormData();
+    formData.append('nome', nm_produto);
+    formData.append('preco', vl_preco);
+    formData.append('categoria', ds_categoria);
+    formData.append('codigoBarra', ds_codigo_barra);
+    formData.append('descricao', ds_produto);
+    formData.append('imagemPut', imagens[0]);
+    formData.append('imagemPut', imagens[1]);
+    formData.append('imagemPut', imagens[2]);
+    formData.append('imagemPut', imagens[3]);
 
-    let r = await api.put(`/produto/${idProduto}`, jsonProduto);
+    
+    let r = await api.put(`/produto/${idProduto}`, formData, {
+      headers: {
+        'Content-Type': 'multpart/form-data'
+      }
+    });
     return r.data;
   }
 
@@ -118,7 +120,7 @@ export default class Api {
     formData.append('descricao', descricao)
 
 
-    
+    console.log(imagem)
 
     let r = await api.post(`/produto`, formData, {
       headers: {
@@ -129,6 +131,7 @@ export default class Api {
   }
 
   async cadastrarUsuario(nm_usuario, ds_cpf, ds_email, ds_senha, img_usuario) {
+
     let formData = new FormData();
     formData.append('nm_usuario', nm_usuario)
     formData.append('ds_cpf', ds_cpf)
@@ -202,10 +205,6 @@ export default class Api {
     return r.data;
   }
 
-  async alterarProduto(id) {
-    let r = await api.put(`/produto/${id}`);
-    return r.data;
-  }
 
   async removerProduto(idProduto) {
     let r = await api.delete(`/produto/${idProduto}`);
@@ -309,9 +308,6 @@ export default class Api {
     let r = await api.get(` /usuario?imagem=${imagem}`);
     return r.data;
   }
-/*
-  async listarEntrega(id) {
-    let r = await api.get(`/entrega/${id}`)
-  }*/
+
 }
 
