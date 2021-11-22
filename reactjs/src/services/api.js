@@ -1,6 +1,6 @@
 import axios from "axios";
 const api = axios.create({
-  baseURL: "https://gameheroko.herokuapp.com/",
+  baseURL: "http://201.52.72.162/",
 
 });
 

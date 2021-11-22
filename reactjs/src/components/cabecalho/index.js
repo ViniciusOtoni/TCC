@@ -48,7 +48,7 @@ export default function Cabecalho(props) {
     if (img.includes("http"))
         return img
     else
-        return `https://gameheroko.herokuapp.com/exibirImagem?imagem=${img}`
+        return `http://201.52.72.162/exibirImagem?imagem=${img}`
         
 }
 
