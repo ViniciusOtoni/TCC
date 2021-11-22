@@ -118,7 +118,7 @@ function UsuarioIndex() {
         if (imagem.includes("http"))
             return imagem
         else
-            return `http://201.52.72.162:3030/exibirImagem?imagem=${imagem}`
+            return `http://192.168.0.80:3030/exibirImagem?imagem=${imagem}`
     }
    
 

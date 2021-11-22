@@ -48,7 +48,7 @@ export default function Cabecalho(props) {
     if (img.includes("http"))
         return img
     else
-        return `http://201.52.72.162:3030/exibirImagem?imagem=${img}`
+        return `http://192.168.0.80:3030/exibirImagem?imagem=${img}`
         
 }
 
