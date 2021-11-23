@@ -9,7 +9,7 @@ function exibirImagem(img) {
     if (img.includes('http'))
         return img
     else
-        return `http://201.52.72.162/exibirImagem?imagem=${img}`
+        return `http://201.52.72.162:3030/exibirImagem?imagem=${img}`
 }
 
 

@@ -112,15 +112,13 @@ function UsuarioIndex() {
             return 'text'
        
     }
-
-   
   
     
     function exibirImg() {
         if (imagem.includes("http"))
             return imagem
         else
-            return `http://201.52.72.162/exibirImagem?imagem=${imagem}`
+            return `http://201.52.72.162:3030/exibirImagem?imagem=${imagem}`
     }
    
 
